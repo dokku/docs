@@ -1,0 +1,1467 @@
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dokku.com/docs/checks-examples/">
+      
+      <link rel="icon" href="../assets/favicons/favicon-96x96.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+    
+    
+      
+        <title>Zero Downtime Deploys - Dokku Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+  <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
+  <link
+    rel="stylesheet"
+    href="../overrides/assets/stylesheets/main.css"
+  />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#zero-downtime-deploys" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://twitter.com/dokku">
+    For updates follow <strong>@dokku</strong> on
+    <span class="twemoji twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    <strong>Twitter</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+      
+  <img src="../assets/dokku-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dokku Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Zero Downtime Deploys
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dokku/dokku" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link md-tabs__link--active">
+        Docs
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://pro.dokku.com/docs/getting-started/" class="md-tabs__link">
+      Pro
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://pro.dokku.com/blog/" class="md-tabs__link">
+      Blog
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878" class="md-tabs__link">
+      Purchase Dokku Pro
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+      
+  <img src="../assets/dokku-logo.svg" alt="logo">
+
+    </a>
+    Dokku Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dokku/dokku" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" type="checkbox" id="__nav_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Getting Started with Dokku
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrading/" class="md-nav__link">
+        Upgrading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/where-to-get-help/" class="md-nav__link">
+        Where to Get Help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application-deployment/" class="md-nav__link">
+        Deploying to Dokku
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/buildpacks/" class="md-nav__link">
+        Buildpack Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/dockerfiles/" class="md-nav__link">
+        Dockerfile Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/images/" class="md-nav__link">
+        Image Tagging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-commands/" class="md-nav__link">
+        Remote Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/one-off-processes/" class="md-nav__link">
+        One-off Processes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process-management/" class="md-nav__link">
+        Process/Container management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Zero Downtime Deploys
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Zero Downtime Deploys
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#checks-examples" class="md-nav__link">
+    Checks Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-successful-rails-deployment" class="md-nav__link">
+    Example: Successful Rails Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Successful Rails Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checks-file" class="md-nav__link">
+    CHECKS file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-output" class="md-nav__link">
+    Deploy Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-failing-rails-deployment" class="md-nav__link">
+    Example: Failing Rails Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Failing Rails Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checks-file_1" class="md-nav__link">
+    CHECKS file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-output_1" class="md-nav__link">
+    Deploy Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration-management/" class="md-nav__link">
+        Environment Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dns/" class="md-nav__link">
+        DNS Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/ssl-configuration/" class="md-nav__link">
+        SSL Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-options/" class="md-nav__link">
+        Docker Container Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokku-events-logs/" class="md-nav__link">
+        Dokku Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Community Contributions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community Contributions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Community Contributions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/clients/" class="md-nav__link">
+        Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/plugin-creation/" class="md-nav__link">
+        Plugin Creation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/plugin-triggers/" class="md-nav__link">
+        Plugin triggers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/testing/" class="md-nav__link">
+        Dokku test suite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/release-process/" class="md-nav__link">
+        Release Process
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pro.dokku.com/docs/getting-started/" class="md-nav__link">
+        Pro
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pro.dokku.com/blog/" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878" class="md-nav__link">
+        Purchase Dokku Pro
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#checks-examples" class="md-nav__link">
+    Checks Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-successful-rails-deployment" class="md-nav__link">
+    Example: Successful Rails Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Successful Rails Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checks-file" class="md-nav__link">
+    CHECKS file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-output" class="md-nav__link">
+    Deploy Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-failing-rails-deployment" class="md-nav__link">
+    Example: Failing Rails Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Failing Rails Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checks-file_1" class="md-nav__link">
+    CHECKS file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-output_1" class="md-nav__link">
+    Deploy Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/dokku/dokku/edit/master/docs/checks-examples.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="zero-downtime-deploys">Zero Downtime Deploys</h1>
+<blockquote>
+<p>New as of 0.3.0</p>
+</blockquote>
+<p>Following a deploy, dokku will now wait <code>10</code> seconds before routing traffic to the new container. If the container is not running after this time, then the deploy is failed and your old container will continue serving traffic. You can modify this value using the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku config:set --global <span class="nv">DOKKU_DEFAULT_CHECKS_WAIT</span><span class="o">=</span><span class="m">30</span>
+</code></pre></div>
+<p>If your application needs a longer period to boot up - perhaps to load data into memory, or because of slow boot time - you may also use dokku's <code>checks</code> functionality to more precisely check whether an application can serve traffic or not.</p>
+<p>To specify checks, add a <code>CHECKS</code> file to the root of your project directory. This is a text file with one line per check. Empty lines and lines starting with <code>#</code> are ignored.</p>
+<p>A check is a relative URL and may be followed by expected content from the page, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/about      Our Amazing Team
+</code></pre></div>
+<p>Dokku will wait <code>5</code> seconds before running the checks to give the server time to start. This value can be overridden on a per-app basis in the <code>CHECKS</code> file by setting <code>WAIT=nn</code>. You may also override this for the global dokku installation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku config:set --global <span class="nv">DOKKU_CHECKS_WAIT</span><span class="o">=</span><span class="m">15</span>
+</code></pre></div>
+<p>Dokku will wait <code>60</code> seconds before stopping the old container so that existing connections are given a chance to complete. This value is also configurable globally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku config:set --global <span class="nv">DOKKU_WAIT_TO_RETIRE</span><span class="o">=</span><span class="m">120</span>
+</code></pre></div>
+<blockquote>
+<p>Note that during this time, multiple containers may be running on your server, which can be an issue for memory-hungry applications on memory-constrained servers.</p>
+</blockquote>
+<p>Dokku will retry the checks <code>5</code> times until the checks are successful. If all 5 checks fail, the deployment is considered failed. This can be overridden in the <code>CHECKS</code> file by setting <code>ATTEMPTS=nn</code>. This number is also configurable globally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku config:set --global <span class="nv">DOKKU_CHECKS_ATTEMPTS</span><span class="o">=</span><span class="m">2</span>
+</code></pre></div>
+<p>You can also choose to skip checks completely either globally or on a per-application basis:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># globally</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku config:set --global <span class="nv">DOKKU_SKIP_ALL_CHECKS</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># for APP</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dokku config:set APP <span class="nv">DOKKU_SKIP_ALL_CHECKS</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<h2 id="checks-examples">Checks Examples</h2>
+<p>The CHECKS file may contain empty lines, comments (lines starting with #),
+settings (NAME=VALUE) and check instructions.</p>
+<p>The format of a check instruction is a path, optionally followed by the
+expected content.  For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>/                       My Amazing App
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>/stylesheets/index.css  .body
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>/scripts/index.js       $(function()
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>/images/logo.png
+</code></pre></div>
+<p>To check an application that supports multiple hostnames, use relative URLs
+that include the hostname, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>//admin.example.com     Admin Dashboard
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>//static.example.com/logo.png
+</code></pre></div>
+<p>You can also specify the protocol to explicitly check HTTPS requests.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>https://admin.example.com     Admin Dashboard
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>https://static.example.com/logo.png
+</code></pre></div>
+<p>The default behavior is to wait for 5 seconds before running the first check, and timeout each check to 30 seconds.</p>
+<p>By default, checks will be attempted 5 times.  (Retried 4 times)</p>
+<p>You can change these by setting <code>WAIT</code>, <code>TIMEOUT</code> and <code>ATTEMPTS</code> to different values, for
+example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>WAIT=30     # Wait 1/2 minute
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>TIMEOUT=60  # Timeout after a minute
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ATTEMPTS=10  # attempt checks 10 times
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>/                       My Amazing App
+</code></pre></div>
+<h2 id="example-successful-rails-deployment">Example: Successful Rails Deployment</h2>
+<p>In this example, a rails applicaiton is successfully deployed to dokku.  The initial round of checks fails while the server is starting, but once it starts they succeed and the deployment is successful. <code>ATTEMPTS</code> is set to 6, but the third attempt succeeds.</p>
+<h3 id="checks-file">CHECKS file</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>WAIT=5
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ATTEMPTS=6
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>/check.txt simple_check
+</code></pre></div>
+<blockquote>
+<p>check.txt is a text file returning the string 'simple_check'</p>
+</blockquote>
+<h3 id="deploy-output">Deploy Output</h3>
+<blockquote>
+<p>Note: The output has been trimmed for brevity</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git push dokku master
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>-----&gt; Cleaning up...
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>-----&gt; Building myapp from herokuish...
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>-----&gt; Adding BUILD_ENV to build environment...
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>-----&gt; Ruby app detected
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>-----&gt; Compiling Ruby/Rails
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>-----&gt; Using Ruby version: ruby-2.0.0
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>.....
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>-----&gt; Discovering process types
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>       Procfile declares types -&gt; web
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>-----&gt; Releasing myapp...
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>-----&gt; Deploying myapp...
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>-----&gt; Running pre-flight checks
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>-----&gt; Attempt 1/6 Waiting for 5 seconds ...
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>       CHECKS expected result:
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>       http://localhost/check.txt =&gt; &quot;simple_check&quot;
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a> !
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>curl: (7) Failed to connect to 172.17.0.155 port 5000: Connection refused
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a> !    Check attempt 1/6 failed.
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>-----&gt; Attempt 2/6 Waiting for 5 seconds ...
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>       CHECKS expected result:
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>       http://localhost/check.txt =&gt; &quot;simple_check&quot;
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a> !
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>curl: (7) Failed to connect to 172.17.0.155 port 5000: Connection refused
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a> !    Check attempt 2/6 failed.
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>-----&gt; Attempt 3/6 Waiting for 5 seconds ...
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>       CHECKS expected result:
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>       http://localhost/check.txt =&gt; &quot;simple_check&quot;
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>-----&gt; All checks successful!
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>=====&gt; myapp container output:
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>       =&gt; Booting Thin
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>       =&gt; Rails 4.2.0 application starting in production on http://0.0.0.0:5000
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>       =&gt; Run `rails server -h` for more startup options
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>       =&gt; Ctrl-C to shutdown server
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>       Thin web server (v1.6.3 codename Protein Powder)
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>       Maximum connections set to 1024
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a>       Listening on 0.0.0.0:5000, CTRL+C to stop
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>=====&gt; end myapp container output
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a>-----&gt; Running post-deploy
+<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>-----&gt; Configuring myapp.dokku.example.com...
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>-----&gt; Creating http nginx.conf
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a>-----&gt; Running nginx-pre-reload
+<a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a>       Reloading nginx
+<a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a>-----&gt; Shutting down old container in 60 seconds
+<a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a>=====&gt; Application deployed:
+<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a>       http://myapp.dokku.example.com
+</code></pre></div>
+<h2 id="example-failing-rails-deployment">Example: Failing Rails Deployment</h2>
+<p>In this example, a Rails application fails to deploy.  The reason for the failure is that the postgres database connection fails.  The initial checks will fail while we wait for the server to start up, just like in the above example.  However, once the server does start accepting connections, we will see an error 500 due to the postgres database connection failure.</p>
+<p>Once the attempts have been exceeded, the deployment fails and we see the container output, which shows the Postgres connection errors.</p>
+<h3 id="checks-file_1">CHECKS file</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>WAIT=5
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ATTEMPTS=6
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>/
+</code></pre></div>
+<blockquote>
+<p>The check to the root url '/' would normally access the database.</p>
+</blockquote>
+<h3 id="deploy-output_1">Deploy Output</h3>
+<blockquote>
+<p>Note: The output has been trimmed for brevity</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git push dokku master
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>-----&gt; Cleaning up...
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>-----&gt; Building myapp from herokuish...
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>-----&gt; Adding BUILD_ENV to build environment...
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>-----&gt; Ruby app detected
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>-----&gt; Compiling Ruby/Rails
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>-----&gt; Using Ruby version: ruby-2.0.0
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>.....
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>Discovering process types
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>Procfile declares types -&gt; web
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>Releasing myapp...
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>Deploying myapp...
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>Running pre-flight checks
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>-----&gt; Attempt 1/6 Waiting for 5 seconds ...
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>       CHECKS expected result:
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>       http://localhost/ =&gt; &quot;&quot;
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a> !
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>curl: (7) Failed to connect to 172.17.0.188 port 5000: Connection refused
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a> !    Check attempt 1/6 failed.
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>-----&gt; Attempt 2/6 Waiting for 5 seconds ...
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>       CHECKS expected result:
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>       http://localhost/ =&gt; &quot;&quot;
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a> !
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>curl: (7) Failed to connect to 172.17.0.188 port 5000: Connection refused
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a> !    Check attempt 2/6 failed.
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>-----&gt; Attempt 3/6 Waiting for 5 seconds ...
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>       CHECKS expected result:
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>       http://localhost/ =&gt; &quot;&quot;
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a> !
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>curl: (22) The requested URL returned error: 500 Internal Server Error
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a> !    Check attempt 3/6 failed.
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>-----&gt; Attempt 4/6 Waiting for 5 seconds ...
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>       CHECKS expected result:
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>       http://localhost/ =&gt; &quot;&quot;
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a> !
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a>curl: (22) The requested URL returned error: 500 Internal Server Error
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a> !    Check attempt 4/6 failed.
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a>-----&gt; Attempt 5/6 Waiting for 5 seconds ...
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a>       CHECKS expected result:
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>       http://localhost/ =&gt; &quot;&quot;
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a> !
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a>curl: (22) The requested URL returned error: 500 Internal Server Error
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a> !    Check attempt 5/6 failed.
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a>-----&gt; Attempt 6/6 Waiting for 5 seconds ...
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a>       CHECKS expected result:
+<a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a>       http://localhost/ =&gt; &quot;&quot;
+<a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a> !
+<a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a>curl: (22) The requested URL returned error: 500 Internal Server Error
+<a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>Could not start due to 1 failed checks.
+<a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a> !    Check attempt 6/6 failed.
+<a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a>=====&gt; myapp container output:
+<a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a>       =&gt; Booting Thin
+<a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a>       =&gt; Rails 4.2.0 application starting in production on http://0.0.0.0:5000
+<a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a>       =&gt; Run `rails server -h` for more startup options
+<a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a>       =&gt; Ctrl-C to shutdown server
+<a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a>       Thin web server (v1.6.3 codename Protein Powder)
+<a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a>       Maximum connections set to 1024
+<a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a>       Listening on 0.0.0.0:5000, CTRL+C to stop
+<a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a>       Started GET &quot;/&quot; for 172.17.42.1 at 2015-03-26 21:36:47 +0000
+<a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a>         Is the server running on host &quot;172.17.42.1&quot; and accepting
+<a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a>         TCP/IP connections on port 5431?
+<a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a>       PG::ConnectionBad (could not connect to server: Connection refused
+<a id="__codelineno-13-66" name="__codelineno-13-66" href="#__codelineno-13-66"></a>         Is the server running on host &quot;172.17.42.1&quot; and accepting
+<a id="__codelineno-13-67" name="__codelineno-13-67" href="#__codelineno-13-67"></a>         TCP/IP connections on port 5431?
+<a id="__codelineno-13-68" name="__codelineno-13-68" href="#__codelineno-13-68"></a>       ):
+<a id="__codelineno-13-69" name="__codelineno-13-69" href="#__codelineno-13-69"></a>         vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize&#39;
+<a id="__codelineno-13-70" name="__codelineno-13-70" href="#__codelineno-13-70"></a>         vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new&#39;
+<a id="__codelineno-13-71" name="__codelineno-13-71" href="#__codelineno-13-71"></a>         vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect&#39;
+<a id="__codelineno-13-72" name="__codelineno-13-72" href="#__codelineno-13-72"></a>         vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize&#39;
+<a id="__codelineno-13-73" name="__codelineno-13-73" href="#__codelineno-13-73"></a>         vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new&#39;
+<a id="__codelineno-13-74" name="__codelineno-13-74" href="#__codelineno-13-74"></a>         vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection
+<a id="__codelineno-13-75" name="__codelineno-13-75" href="#__codelineno-13-75"></a>=====&gt; end myapp container output
+<a id="__codelineno-13-76" name="__codelineno-13-76" href="#__codelineno-13-76"></a>/usr/local/bin/dokku: line 49: 23409 Killed                  dokku deploy &quot;$APP&quot;
+<a id="__codelineno-13-77" name="__codelineno-13-77" href="#__codelineno-13-77"></a>To dokku@dokku.example.com:myapp
+<a id="__codelineno-13-78" name="__codelineno-13-78" href="#__codelineno-13-78"></a> ! [remote rejected] dokku -&gt; master (pre-receive hook declined)
+<a id="__codelineno-13-79" name="__codelineno-13-79" href="#__codelineno-13-79"></a>error: failed to push some refs to &#39;dokku@dokku.example.com:myapp&#39;
+</code></pre></div>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../process-management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Process/Container management" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Process/Container management
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../configuration-management/" class="md-footer__link md-footer__link--next" aria-label="Next: Environment Variables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Environment Variables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/dokku/dokku/issues" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 96v3.56c0 15.74-12.7 28.44-28.4 28.44H188.4c-15.7 0-29.3-12.7-29.3-28.44V96c0-53.02 43-96 96-96C309 0 352 42.98 352 96zm-310.63 9.4c12.5-12.52 32.76-12.52 45.26 0l63.97 64c.7.6 1.3 1.3 1.9 2 14.3-7.3 30.4-11.4 46.6-11.4H312c17.1 0 33.2 4.1 47.5 11.4.6-.7 1.2-1.4 1.9-2l64-64c12.5-12.52 32.7-12.52 45.2 0 12.5 12.5 12.5 32.7 0 45.2l-64 64c-1.5.7-1.3 1.3-2 1.9 6.1 12 10 25.4 11.1 39.5H480c17.7 0 32 14.3 32 32s-14.3 32-32 32h-64c0 24.6-5.5 47.8-15.4 68.6 2.1 1.3 4.2 2.9 6 4.8l64 64c12.5 12.5 12.5 32.7 0 45.2s-32.7 12.5-45.2 0l-63.1-63c-24.5 21.8-55.8 36.2-90.3 39.6V240c0-8.8-7.2-16-16.9-16-7.9 0-16 7.2-16 16v239.2c-33.6-3.4-64.9-17.8-89.4-39.6l-63.07 63c-12.5 12.5-32.76 12.5-45.26 0-12.49-12.5-12.49-32.7 0-45.2l64.03-64c1.8-1.9 3.9-3.5 6-4.8-9.9-20.8-15.4-44-15.4-68.6H32c-17.67 0-32-14.3-32-32s14.33-32 32-32h64.3c1.08-14.1 5-27.5 11.1-39.5-.7-.6-1.4-1.2-2-1.9l-64.03-64c-12.49-12.5-12.49-32.7 0-45.2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878" target="_blank" rel="noopener" title="dokku.dpdcart.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0c11.5 0 21.4 8.19 23.6 19.51L121.1 32h420.7c20.3 0 36.5 20.25 30.8 40.66l-54 192.04c-3.9 13.8-16.5 23.3-30.8 23.3H170.7l9.2 48H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H159.1c-10.6 0-20.5-8.2-22.7-19.5L76.14 48H24C10.75 48 0 37.25 0 24S10.75 0 24 0h72zm32 464c0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48-48-21.5-48-48zm384 0c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+  
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+
+  <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
+  <script src="../overrides/assets/javascripts/bundle.js"></script>
+
+  </body>
+</html>

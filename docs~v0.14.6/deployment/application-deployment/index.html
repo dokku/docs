@@ -1,0 +1,1984 @@
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dokku.com/docs/deployment/application-deployment/">
+      
+      <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+    
+    
+      
+        <title>Deploying to Dokku - Dokku Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+  <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
+  <link
+    rel="stylesheet"
+    href="../../overrides/assets/stylesheets/main.css"
+  />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploying-to-dokku" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://twitter.com/dokku">
+    For updates follow <strong>@dokku</strong> on
+    <span class="twemoji twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    <strong>Twitter</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+      
+  <img src="../../assets/dokku-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dokku Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploying to Dokku
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dokku/dokku" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/installation/" class="md-tabs__link md-tabs__link--active">
+        Docs
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://pro.dokku.com/docs/getting-started/" class="md-tabs__link">
+      Pro
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://pro.dokku.com/blog/" class="md-tabs__link">
+      Blog
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878" class="md-tabs__link">
+      Purchase Dokku Pro
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+      
+  <img src="../../assets/dokku-logo.svg" alt="logo">
+
+    </a>
+    Dokku Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dokku/dokku" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" type="checkbox" id="__nav_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_1">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        Getting Started with Dokku
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/upgrading/" class="md-nav__link">
+        Upgrading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/uninstalling/" class="md-nav__link">
+        Uninstalling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/where-to-get-help/" class="md-nav__link">
+        Where to Get Help
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deploying to Dokku
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Deploying to Dokku
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-tutorial" class="md-nav__link">
+    Deploy tutorial
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-app" class="md-nav__link">
+    Create the app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-backing-services" class="md-nav__link">
+    Create the backing services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linking-backing-services-to-applications" class="md-nav__link">
+    Linking backing services to applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-app" class="md-nav__link">
+    Deploy the app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skipping-deployment" class="md-nav__link">
+    Skipping deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redeploying-or-restarting" class="md-nav__link">
+    Redeploying or restarting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-with-private-git-submodules" class="md-nav__link">
+    Deploying with private git submodules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-to-subdomains" class="md-nav__link">
+    Deploying to subdomains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokkudocker-container-management-compatibility" class="md-nav__link">
+    Dokku/Docker container management compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-deploy-users" class="md-nav__link">
+    Adding deploy users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-vhost" class="md-nav__link">
+    Default vhost
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-non-master-branch" class="md-nav__link">
+    Deploying non-master branch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile-deployment" class="md-nav__link">
+    Dockerfile deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-tagging" class="md-nav__link">
+    Image tagging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-custom-buildpack" class="md-nav__link">
+    Specifying a custom buildpack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-a-deployed-app" class="md-nav__link">
+    Removing a deployed app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming-a-deployed-app" class="md-nav__link">
+    Renaming a deployed app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero-downtime-deploy" class="md-nav__link">
+    Zero downtime deploy
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application-management/" class="md-nav__link">
+        Application Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logs/" class="md-nav__link">
+        Log Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-commands/" class="md-nav__link">
+        Remote Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-off-processes/" class="md-nav__link">
+        One-off Processes and Cron
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process-management/" class="md-nav__link">
+        Process and Container Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-management/" class="md-nav__link">
+        User Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zero-downtime-deploys/" class="md-nav__link">
+        Zero Downtime Deploys
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Deployment Methods
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Deployment Methods" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment Methods
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/buildpacks/" class="md-nav__link">
+        Buildpack Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/dockerfiles/" class="md-nav__link">
+        Dockerfile Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/images/" class="md-nav__link">
+        Docker Image Tag Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/git/" class="md-nav__link">
+        Git Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/tar/" class="md-nav__link">
+        Tarball Deployment
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/environment-variables/" class="md-nav__link">
+        Environment Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/domains/" class="md-nav__link">
+        Domain Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/nginx/" class="md-nav__link">
+        Nginx Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/ssl/" class="md-nav__link">
+        SSL Configuration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Network Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Network Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/dns/" class="md-nav__link">
+        DNS Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/network/" class="md-nav__link">
+        Network Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/port-management/" class="md-nav__link">
+        Port Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/proxy-management/" class="md-nav__link">
+        Proxy Management
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          Advanced Usage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Usage" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
+        Backup and Recovery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
+        Deployment Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
+        Docker Container Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
+        Dokku Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
+        Persistent Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
+        Plugin Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
+        Repository Management
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Schedulers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Schedulers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Schedulers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/schedulers/docker-local/" class="md-nav__link">
+        Docker Local Scheduler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/plugin-creation/" class="md-nav__link">
+        Plugin Creation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/plugin-triggers/" class="md-nav__link">
+        Plugin triggers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing/" class="md-nav__link">
+        Dokku test suite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/release-process/" class="md-nav__link">
+        Release Process
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_9" type="checkbox" id="__nav_1_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_9">
+          Community Contributions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community Contributions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_9">
+          <span class="md-nav__icon md-icon"></span>
+          Community Contributions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/clients/" class="md-nav__link">
+        Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_10" type="checkbox" id="__nav_1_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_10">
+          Community Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_10">
+          <span class="md-nav__icon md-icon"></span>
+          Community Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/tutorials/deploying-with-gitlab-ci/" class="md-nav__link">
+        Deploying with Gitlab CI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/tutorials/run-on-external-volume/" class="md-nav__link">
+        Run Dokku on External Volume
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pro.dokku.com/docs/getting-started/" class="md-nav__link">
+        Pro
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pro.dokku.com/blog/" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878" class="md-nav__link">
+        Purchase Dokku Pro
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-tutorial" class="md-nav__link">
+    Deploy tutorial
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-app" class="md-nav__link">
+    Create the app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-backing-services" class="md-nav__link">
+    Create the backing services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linking-backing-services-to-applications" class="md-nav__link">
+    Linking backing services to applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-app" class="md-nav__link">
+    Deploy the app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skipping-deployment" class="md-nav__link">
+    Skipping deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redeploying-or-restarting" class="md-nav__link">
+    Redeploying or restarting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-with-private-git-submodules" class="md-nav__link">
+    Deploying with private git submodules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-to-subdomains" class="md-nav__link">
+    Deploying to subdomains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokkudocker-container-management-compatibility" class="md-nav__link">
+    Dokku/Docker container management compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-deploy-users" class="md-nav__link">
+    Adding deploy users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-vhost" class="md-nav__link">
+    Default vhost
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-non-master-branch" class="md-nav__link">
+    Deploying non-master branch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile-deployment" class="md-nav__link">
+    Dockerfile deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-tagging" class="md-nav__link">
+    Image tagging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-custom-buildpack" class="md-nav__link">
+    Specifying a custom buildpack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-a-deployed-app" class="md-nav__link">
+    Removing a deployed app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming-a-deployed-app" class="md-nav__link">
+    Renaming a deployed app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero-downtime-deploy" class="md-nav__link">
+    Zero downtime deploy
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/application-deployment.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="deploying-to-dokku">Deploying to Dokku</h1>
+<blockquote>
+<p>Note: This document uses the hostname <code>dokku.me</code> in commands. For your server, please
+substitute your server's hostname instead.</p>
+</blockquote>
+<h2 id="deploy-tutorial">Deploy tutorial</h2>
+<p>Once Dokku has been configured with at least one user, applications can be deployed via a <code>git push</code> command. To quickly see Dokku deployment in action, you can use the Heroku Ruby on Rails example app.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># from your local machine</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># SSH access to github must be enabled on this host</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git clone git@github.com:heroku/ruby-rails-sample.git
+</code></pre></div>
+<h3 id="create-the-app">Create the app</h3>
+<p>Create the application on the Dokku host. You will need to SSH onto the host to run this command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># on the Dokku host</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku apps:create ruby-rails-sample
+</code></pre></div>
+<h3 id="create-the-backing-services">Create the backing services</h3>
+<p>When you create a new app, Dokku by default <em>does not</em> provide any datastores such as MySQL or PostgreSQL. You will need to install plugins to handle that, but fortunately <a href="/docs/community/plugins.md#official-plugins-beta">Dokku has official plugins</a> for common datastores. Our sample app requires a PostgreSQL service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># on the Dokku host</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># install the postgres plugin</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># plugin installation requires root, hence the user change</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># create a postgres service with the name rails-database</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>dokku postgres:create rails-database
+</code></pre></div>
+<blockquote>
+<p>Each service may take a few moments to create.</p>
+</blockquote>
+<h3 id="linking-backing-services-to-applications">Linking backing services to applications</h3>
+<p>Once the service creation is complete, set the <code>DATABASE_URL</code> environment variable by linking the service.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># on the Dokku host</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># each official datastore offers a `link` method to link a service to any application</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>dokku postgres:link rails-database ruby-rails-sample
+</code></pre></div>
+<blockquote>
+<p>You can link a single service to multiple applications or use one service per application.</p>
+</blockquote>
+<h3 id="deploy-the-app">Deploy the app</h3>
+<blockquote>
+<p>Warning: Your application <em>should</em> respect the <code>PORT</code> environment variable or it may not respond to web requests.
+Please see the <a href="/docs/networking/port-management.md">port management documentation</a> for details.</p>
+</blockquote>
+<p>Now you can deploy the <code>ruby-rails-sample</code> app to your Dokku server. All you have to do is add a remote to name the app. Applications are created on-the-fly on the Dokku server.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># from your local machine</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">cd</span> ruby-rails-sample
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>git remote add dokku dokku@dokku.me:ruby-rails-sample
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>git push dokku master
+</code></pre></div>
+<blockquote>
+<p>Note: Some tools may not support the short-upstream syntax referenced above, and you may need to prefix
+the upstream with the scheme <code>ssh://</code> like so: <code>ssh://dokku@dokku.me:ruby-rails-sample</code>
+Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a">Git</a> documentation for more details.</p>
+<p>Note: Your private key should be registered with ssh-agent in local development. If you get a
+permission denied error when pushing you can register your private key by running
+<code>ssh-add -k ~/&lt;your private key&gt;</code>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Counting objects: 231, done.
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Delta compression using up to 8 threads.
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Compressing objects: 100% (162/162), done.
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Writing objects: 100% (231/231), 36.96 KiB | 0 bytes/s, done.
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Total 231 (delta 93), reused 147 (delta 53)
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>-----&gt; Cleaning up...
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>-----&gt; Building ruby-rails-sample from herokuish...
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>-----&gt; Adding BUILD_ENV to build environment...
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>-----&gt; Ruby app detected
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>-----&gt; Compiling Ruby/Rails
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>-----&gt; Using Ruby version: ruby-2.2.1
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>-----&gt; Installing dependencies using 1.9.7
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>       Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>       Fetching gem metadata from https://rubygems.org/...........
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>       Fetching version metadata from https://rubygems.org/...
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>       Fetching dependency metadata from https://rubygems.org/..
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>       Using rake 10.4.2
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>...
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>=====&gt; Application deployed:
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>       http://ruby-rails-sample.dokku.me
+</code></pre></div>
+<p>When the deploy finishes, the application's URL will be shown as seen above.</p>
+<p>Dokku supports deploying applications via <a href="https://devcenter.heroku.com/articles/buildpacks">Heroku buildpacks</a> with <a href="https://github.com/gliderlabs/herokuish#buildpacks">Herokuish</a> or using a project's <a href="https://docs.docker.com/reference/builder/">Dockerfile</a>.</p>
+<h3 id="skipping-deployment">Skipping deployment</h3>
+<p>If you only want to rebuild and tag a container, you can skip the deployment phase by setting <code>$DOKKU_SKIP_DEPLOY</code> to <code>true</code> by running:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># on the Dokku host</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dokku config:set ruby-rails-sample <span class="nv">DOKKU_SKIP_DEPLOY</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<h3 id="redeploying-or-restarting">Redeploying or restarting</h3>
+<p>If you need to redeploy (or restart) your app: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># on the Dokku host</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku ps:rebuild ruby-rails-sample
+</code></pre></div>
+<p>See the <a href="/docs/deployment/process-management.md">process scaling documentation</a> for more information.</p>
+<h3 id="deploying-with-private-git-submodules">Deploying with private git submodules</h3>
+<p>Dokku uses Git locally (i.e. not a Docker image) to build its own copy of your app repo, including submodules. This is done as the <code>dokku</code> user. Therefore, in order to deploy private Git submodules, you'll need to drop your deploy key in <code>/home/dokku/.ssh/</code> and potentially add <code>github.com</code> (or your VCS host key) into <code>/home/dokku/.ssh/known_hosts</code>. The following test should help confirm you've done it correctly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># on the Dokku host</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>su - dokku
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>ssh -T git@github.com
+</code></pre></div>
+<p>Note that if the buildpack or Dockerfile build process require SSH key access for other reasons, the above may not always apply.</p>
+<h2 id="deploying-to-subdomains">Deploying to subdomains</h2>
+<p>The name of remote repository is used as the name of application to be deployed, as for example above:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># from your local machine</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>git remote add dokku dokku@dokku.me:ruby-rails-sample
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>git push dokku master
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>remote: -----&gt; Application deployed:
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>remote:        http://ruby-rails-sample.dokku.me
+</code></pre></div>
+<p>You can also specify fully qualified names, say <code>app.dokku.me</code>, as</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># from your local machine</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>git remote add dokku dokku@dokku.me:app.dokku.me
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>git push dokku master
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>remote: -----&gt; Application deployed:
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>remote:        http://app.dokku.me
+</code></pre></div>
+<p>This is in particular useful, then you want to deploy to root domain, as</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># from your local machine</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>git remote add dokku dokku@dokku.me:dokku.me
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>git push dokku master
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>... deployment ...
+
+remote: -----&gt; Application deployed:
+remote:        http://dokku.me
+</code></pre></div>
+<h2 id="dokkudocker-container-management-compatibility">Dokku/Docker container management compatibility</h2>
+<p>Dokku is, at its core, a Docker container manager. Thus, it does not necessarily play well with other out-of-band processes interacting with the Docker daemon. One thing to note as in <a href="https://github.com/dokku/dokku/issues/1220">issue #1220</a>, Dokku executes a cleanup function prior to every deployment.</p>
+<p>As of 0.5.x, this function removes all containers with the label <code>dokku</code> where the status is either <code>dead</code> or <code>exited</code>, as well as all <code>dangling</code> images. Previous versions would remove <code>dead</code> or <code>exited</code> containers, regardless of their label.</p>
+<h2 id="adding-deploy-users">Adding deploy users</h2>
+<p>See the <a href="/docs/deployment/user-management.md">user management documentation</a>.</p>
+<h2 id="default-vhost">Default vhost</h2>
+<p>See the <a href="/docs/configuration/nginx.md#default-site">nginx documentation</a>.</p>
+<h2 id="deploying-non-master-branch">Deploying non-master branch</h2>
+<p>See the <a href="/docs/deployment/methods/git.md#changing-the-deploy-branch">Git documentation</a>.</p>
+<h2 id="dockerfile-deployment">Dockerfile deployment</h2>
+<p>See the <a href="/docs/deployment/methods/dockerfiles.md">Dockerfile documentation</a>.</p>
+<h2 id="image-tagging">Image tagging</h2>
+<p>See the <a href="/docs/deployment/methods/images.md">image tagging documentation</a>.</p>
+<h2 id="specifying-a-custom-buildpack">Specifying a custom buildpack</h2>
+<p>See the <a href="/docs/deployment/methods/buildpacks.md">buildpack documentation</a>.</p>
+<h2 id="removing-a-deployed-app">Removing a deployed app</h2>
+<p>See the <a href="/docs/deployment/application-management.md#removing-a-deployed-app">application management documentation</a>.</p>
+<h2 id="renaming-a-deployed-app">Renaming a deployed app</h2>
+<p>See the <a href="/docs/deployment/application-management.md#renaming-a-deployed-app">application management documentation</a>.</p>
+<h2 id="zero-downtime-deploy">Zero downtime deploy</h2>
+<p>See the <a href="/docs/deployment/zero-downtime-deploys.md">zero-downtime deploy documentation</a>.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../getting-started/where-to-get-help/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Where to Get Help" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Where to Get Help
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../application-management/" class="md-footer__link md-footer__link--next" aria-label="Next: Application Management" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Application Management
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/dokku/dokku/issues" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 96v3.56c0 15.74-12.7 28.44-28.4 28.44H188.4c-15.7 0-29.3-12.7-29.3-28.44V96c0-53.02 43-96 96-96C309 0 352 42.98 352 96zm-310.63 9.4c12.5-12.52 32.76-12.52 45.26 0l63.97 64c.7.6 1.3 1.3 1.9 2 14.3-7.3 30.4-11.4 46.6-11.4H312c17.1 0 33.2 4.1 47.5 11.4.6-.7 1.2-1.4 1.9-2l64-64c12.5-12.52 32.7-12.52 45.2 0 12.5 12.5 12.5 32.7 0 45.2l-64 64c-1.5.7-1.3 1.3-2 1.9 6.1 12 10 25.4 11.1 39.5H480c17.7 0 32 14.3 32 32s-14.3 32-32 32h-64c0 24.6-5.5 47.8-15.4 68.6 2.1 1.3 4.2 2.9 6 4.8l64 64c12.5 12.5 12.5 32.7 0 45.2s-32.7 12.5-45.2 0l-63.1-63c-24.5 21.8-55.8 36.2-90.3 39.6V240c0-8.8-7.2-16-16.9-16-7.9 0-16 7.2-16 16v239.2c-33.6-3.4-64.9-17.8-89.4-39.6l-63.07 63c-12.5 12.5-32.76 12.5-45.26 0-12.49-12.5-12.49-32.7 0-45.2l64.03-64c1.8-1.9 3.9-3.5 6-4.8-9.9-20.8-15.4-44-15.4-68.6H32c-17.67 0-32-14.3-32-32s14.33-32 32-32h64.3c1.08-14.1 5-27.5 11.1-39.5-.7-.6-1.4-1.2-2-1.9l-64.03-64c-12.49-12.5-12.49-32.7 0-45.2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878" target="_blank" rel="noopener" title="dokku.dpdcart.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0c11.5 0 21.4 8.19 23.6 19.51L121.1 32h420.7c20.3 0 36.5 20.25 30.8 40.66l-54 192.04c-3.9 13.8-16.5 23.3-30.8 23.3H170.7l9.2 48H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H159.1c-10.6 0-20.5-8.2-22.7-19.5L76.14 48H24C10.75 48 0 37.25 0 24S10.75 0 24 0h72zm32 464c0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48-48-21.5-48-48zm384 0c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+  
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+
+  <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
+  <script src="../../overrides/assets/javascripts/bundle.js"></script>
+
+  </body>
+</html>
