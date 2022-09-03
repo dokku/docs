@@ -5,93 +5,8 @@
         "aliases": []
     },
     {
-        "title": "0.10.5",
-        "version": "docs~v0.10.5",
-        "aliases": []
-    },
-    {
-        "title": "0.11.6",
-        "version": "docs~v0.11.6",
-        "aliases": []
-    },
-    {
-        "title": "0.12.13",
-        "version": "docs~v0.12.13",
-        "aliases": []
-    },
-    {
-        "title": "0.13.4",
-        "version": "docs~v0.13.4",
-        "aliases": []
-    },
-    {
-        "title": "0.14.6",
-        "version": "docs~v0.14.6",
-        "aliases": []
-    },
-    {
-        "title": "0.15.5",
-        "version": "docs~v0.15.5",
-        "aliases": []
-    },
-    {
-        "title": "0.16.4",
-        "version": "docs~v0.16.4",
-        "aliases": []
-    },
-    {
-        "title": "0.17.9",
-        "version": "docs~v0.17.9",
-        "aliases": []
-    },
-    {
-        "title": "0.18.5",
-        "version": "docs~v0.18.5",
-        "aliases": []
-    },
-    {
-        "title": "0.19.13",
-        "version": "docs~v0.19.13",
-        "aliases": []
-    },
-    {
-        "title": "0.20.4",
-        "version": "docs~v0.20.4",
-        "aliases": []
-    },
-    {
-        "title": "0.21.4",
-        "version": "docs~v0.21.4",
-        "aliases": []
-    },
-    {
-        "title": "0.22.9",
-        "version": "docs~v0.22.9",
-        "aliases": []
-    },
-    {
-        "title": "0.23.9",
-        "version": "docs~v0.23.9",
-        "aliases": []
-    },
-    {
-        "title": "0.24.10",
-        "version": "docs~v0.24.10",
-        "aliases": []
-    },
-    {
-        "title": "0.25.7",
-        "version": "docs~v0.25.7",
-        "aliases": []
-    },
-    {
-        "title": "0.26.8",
-        "version": "docs~v0.26.8",
-        "aliases": []
-    },
-    {
-        "title": "0.27.10",
-        "version": "docs~v0.27.10",
+        "title": "0.28.1",
+        "version": "docs~v0.28.1",
         "aliases": []
     },
     {
@@ -100,33 +15,98 @@
         "aliases": []
     },
     {
-        "title": "0.28.1",
-        "version": "docs~v0.28.1",
+        "title": "0.27.10",
+        "version": "docs~v0.27.10",
         "aliases": []
     },
     {
-        "title": "0.3.26",
-        "version": "docs~v0.3.26",
+        "title": "0.26.8",
+        "version": "docs~v0.26.8",
         "aliases": []
     },
     {
-        "title": "0.4.14",
-        "version": "docs~v0.4.14",
+        "title": "0.25.7",
+        "version": "docs~v0.25.7",
         "aliases": []
     },
     {
-        "title": "0.5.8",
-        "version": "docs~v0.5.8",
+        "title": "0.24.10",
+        "version": "docs~v0.24.10",
         "aliases": []
     },
     {
-        "title": "0.6.5",
-        "version": "docs~v0.6.5",
+        "title": "0.23.9",
+        "version": "docs~v0.23.9",
         "aliases": []
     },
     {
-        "title": "0.7.2",
-        "version": "docs~v0.7.2",
+        "title": "0.22.9",
+        "version": "docs~v0.22.9",
+        "aliases": []
+    },
+    {
+        "title": "0.21.4",
+        "version": "docs~v0.21.4",
+        "aliases": []
+    },
+    {
+        "title": "0.20.4",
+        "version": "docs~v0.20.4",
+        "aliases": []
+    },
+    {
+        "title": "0.19.13",
+        "version": "docs~v0.19.13",
+        "aliases": []
+    },
+    {
+        "title": "0.18.5",
+        "version": "docs~v0.18.5",
+        "aliases": []
+    },
+    {
+        "title": "0.17.9",
+        "version": "docs~v0.17.9",
+        "aliases": []
+    },
+    {
+        "title": "0.16.4",
+        "version": "docs~v0.16.4",
+        "aliases": []
+    },
+    {
+        "title": "0.15.5",
+        "version": "docs~v0.15.5",
+        "aliases": []
+    },
+    {
+        "title": "0.14.6",
+        "version": "docs~v0.14.6",
+        "aliases": []
+    },
+    {
+        "title": "0.13.4",
+        "version": "docs~v0.13.4",
+        "aliases": []
+    },
+    {
+        "title": "0.12.13",
+        "version": "docs~v0.12.13",
+        "aliases": []
+    },
+    {
+        "title": "0.11.6",
+        "version": "docs~v0.11.6",
+        "aliases": []
+    },
+    {
+        "title": "0.10.5",
+        "version": "docs~v0.10.5",
+        "aliases": []
+    },
+    {
+        "title": "0.9.4",
+        "version": "docs~v0.9.4",
         "aliases": []
     },
     {
@@ -135,8 +115,28 @@
         "aliases": []
     },
     {
-        "title": "0.9.4",
-        "version": "docs~v0.9.4",
+        "title": "0.7.2",
+        "version": "docs~v0.7.2",
+        "aliases": []
+    },
+    {
+        "title": "0.6.5",
+        "version": "docs~v0.6.5",
+        "aliases": []
+    },
+    {
+        "title": "0.5.8",
+        "version": "docs~v0.5.8",
+        "aliases": []
+    },
+    {
+        "title": "0.4.14",
+        "version": "docs~v0.4.14",
+        "aliases": []
+    },
+    {
+        "title": "0.3.26",
+        "version": "docs~v0.3.26",
         "aliases": []
     }
 ]
