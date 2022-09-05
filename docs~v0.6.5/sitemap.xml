@@ -2,212 +2,212 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dokku.com/docs/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/backup-recovery/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/deployment-tasks/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/docker-options/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/event-logs/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/persistent-storage/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/proxy-management/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/advanced-usage/repository-management/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/appendices/0.5.0-migration-guide/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/appendices/0.6.0-migration-guide/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/community/clients/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/community/plugins/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/configuration/dns/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/configuration/domains/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/configuration/environment-variables/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/configuration/nginx/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/configuration/ssl/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/application-deployment/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/application-management/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/one-off-processes/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/process-management/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/remote-commands/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/user-management/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/zero-downtime-deploys/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/methods/buildpacks/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/methods/dockerfiles/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/methods/images/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/deployment/methods/tar/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/development/plugin-creation/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/development/plugin-triggers/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/development/release-process/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/development/testing/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/advanced-installation/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/installation/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/troubleshooting/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/upgrading/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/where-to-get-help/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/install/azure/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/install/debian/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/install/digitalocean/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/install/linode/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/docs/getting-started/install/vagrant/</loc>
-         <lastmod>2022-09-03</lastmod>
+         <lastmod>2022-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
