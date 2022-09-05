@@ -28,11 +28,7 @@ http {
     }
 
     location / {
-      {{ if ne $.NGINX_DEFAULT_REQUEST "" }}
-        try_files $uri $uri/ /{{ $.NGINX_DEFAULT_REQUEST }};
-      {{ else }}
-        try_files $uri $uri/ =404;
-      {{ end }}
+      try_files $uri $uri/ =404;
     }
   }
 }
