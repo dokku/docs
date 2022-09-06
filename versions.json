@@ -1,6 +1,8 @@
 [
     {
-        "aliases": [],
+        "aliases": [
+            "latest"
+        ],
         "title": "latest",
         "version": "docs"
     },
