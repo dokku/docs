@@ -48,9 +48,9 @@
   <script src="{{ 'overrides/assets/javascripts/bundle.js' | url }}"></script>
 {% endblock %}
 
-{% block outdated %}
+{% block outdated_hidden %}
   You're not viewing the latest version.
-  <a href="{{ '../' ~ base_url }}">
+  <a href="{{ page.abs_url }}">
     <strong>Click here to go to latest.</strong>
   </a>
 {% endblock %}
