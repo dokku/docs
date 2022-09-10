@@ -2770,6 +2770,9 @@
 <p>By default, Dokku will deploy the renamed app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku apps:rename --skip-deploy node-js-app io-js-app
 </code></pre></div>
+<p>Remember to also change your git remote on your local machine in order to make <code>git push dokku main:master</code> work again. For this you can use <code>git remote set-url</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git remote set-url dokku dokku@dokku.me:io-js-app
+</code></pre></div>
 <h3 id="cloning-an-existing-app">Cloning an existing app</h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
@@ -2779,11 +2782,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku apps:clone node-js-app io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku apps:clone node-js-app io-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Cloning node-js-app to io-js-app... done
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Cloning node-js-app to io-js-app... done
 </code></pre></div>
 </div>
 </div>
@@ -2800,10 +2803,10 @@
 <p>If you have exposed specific ports via <code>docker-options</code> plugin, or performed anything that cannot be done against multiple applications, <code>apps:clone</code> may result in errors.</p>
 </div>
 <p>By default, Dokku will deploy this new app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku apps:clone --skip-deploy node-js-app io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku apps:clone --skip-deploy node-js-app io-js-app
 </code></pre></div>
 <p>Finally, if the application already exists, you may wish to ignore errors resulting from attempting to clone over it. To do so, you can use the <code>--ignore-existing</code> flag. A warning will be emitted, but the command will return <code>0</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku apps:clone --ignore-existing node-js-app io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku apps:clone --ignore-existing node-js-app io-js-app
 </code></pre></div>
 <h3 id="locking-app-deploys">Locking app deploys</h3>
 <div class="admonition tip">
@@ -2814,11 +2817,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku apps:lock node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku apps:lock node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>-----&gt; Deploy lock created
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>-----&gt; Deploy lock created
 </code></pre></div>
 </div>
 </div>
@@ -2836,13 +2839,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku apps:unlock node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku apps:unlock node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a> !     A deploy may be in progress.
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a> !     Removing the app lock will not stop in progress deploys.
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>-----&gt; Deploy lock removed.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a> !     A deploy may be in progress.
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a> !     Removing the app lock will not stop in progress deploys.
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>-----&gt; Deploy lock removed.
 </code></pre></div>
 </div>
 </div>
@@ -2856,11 +2859,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Shell</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku apps:locked node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku apps:locked node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Deploy lock does not exist
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Deploy lock does not exist
 </code></pre></div>
 </div>
 </div>
@@ -2874,28 +2877,28 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Shell</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku apps:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku apps:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>=====&gt; node-js-app app information
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>       App created at:              1635126111
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>       App dir:                     /home/dokku/node-js-app
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>       App deploy source:           git
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>       App locked:                  false
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>=====&gt; python-sample app information
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>       App created at:              1635126000
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>       App dir:                     /home/dokku/python-sample
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>       App deploy source:
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>       App deploy source metadata:
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>       App locked:                  false
-<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>=====&gt; ruby-sample app information
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>       App created at:              1635122462
-<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>       App dir:                     /home/dokku/ruby-sample
-<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>       App deploy source:           git
-<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>       App deploy source metadata:  c60921ea2799ca108276414b95ea197f16798d51
-<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>       App locked:                  false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>=====&gt; node-js-app app information
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>       App created at:              1635126111
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>       App dir:                     /home/dokku/node-js-app
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>       App deploy source:           git
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>       App locked:                  false
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>=====&gt; python-sample app information
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>       App created at:              1635126000
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>       App dir:                     /home/dokku/python-sample
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>       App deploy source:
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>       App deploy source metadata:
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>       App locked:                  false
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>=====&gt; ruby-sample app information
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>       App created at:              1635122462
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>       App dir:                     /home/dokku/ruby-sample
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>       App deploy source:           git
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>       App deploy source metadata:  c60921ea2799ca108276414b95ea197f16798d51
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>       App locked:                  false
 </code></pre></div>
 </div>
 </div>
@@ -2904,21 +2907,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Shell</label><label for="__tabbed_14_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku apps:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku apps:report node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>=====&gt; node-js-app app information
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>       App dir:                     /home/dokku/node-js-app
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>       App deploy source:           git
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>       App locked:                  false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>=====&gt; node-js-app app information
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>       App dir:                     /home/dokku/node-js-app
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>       App deploy source:           git
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>       App locked:                  false
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku apps:report node-js-app --app-dir
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku apps:report node-js-app --app-dir
 </code></pre></div>
 
 

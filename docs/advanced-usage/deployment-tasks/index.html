@@ -2572,7 +2572,7 @@
 <p>To support this, Dokku provides support for a special <code>release</code> command within your app's <code>Procfile</code>, as well as a special <code>scripts.dokku</code> key inside of your app's <code>app.json</code> file. Be aware that all commands are run within the context of the built docker image - no commands affect the host unless there are volume mounts attached to your app.</p>
 <p>Each "phase" has different expectations and limitations:</p>
 <ul>
-<li><code>app.json</code>: <code>scripts.dokku.predeploy</code></li>
+<li><code>app.json</code>: <code>scripts.dokku.predeploy</code><ul>
 <li>When to use: This should be used if your app does not support arbitrary build commands and you need to make changes to the built image.</li>
 <li>Are changes committed to the image at this phase: Yes</li>
 <li>Example use-cases<ul>
@@ -2580,15 +2580,17 @@
 <li>Installing a custom package from source or copying a binary into place</li>
 </ul>
 </li>
-<li><code>app.json</code>: <code>scripts.dokku.postdeploy</code></li>
+</ul>
+</li>
+<li><code>app.json</code>: <code>scripts.dokku.postdeploy</code><ul>
 <li>When to use: This should be used in conjunction with external systems to signal the completion of your deploy.</li>
 <li>Are changes committed to the image at this phase: No</li>
-<li>Example use-cases<ul>
+<li>Example use-cases</li>
 <li>Notifying slack that your app is deployed</li>
 <li>Coordinating traffic routing with a central load balancer</li>
 </ul>
 </li>
-<li><code>app.json</code>: <code>scripts.postdeploy</code></li>
+<li><code>app.json</code>: <code>scripts.postdeploy</code><ul>
 <li>When to use: This should be used when you wish to run a command <em>once</em>, after the app is created and not on subsequent deploys to the app.</li>
 <li>Are changes committed to the image at this phase: No</li>
 <li>Example use-cases<ul>
@@ -2596,13 +2598,17 @@
 <li>Loading seed/test data into the app’s test database</li>
 </ul>
 </li>
-<li><code>Procfile</code>: <code>release</code></li>
+</ul>
+</li>
+<li><code>Procfile</code>: <code>release</code><ul>
 <li>When to use: This should be used in conjunction with external systems to signal the completion of your app image build.</li>
 <li>Are changes committed to the image at this phase: No</li>
 <li>Example use-cases<ul>
 <li>Sending CSS, JS, and other assets from your app’s slug to a CDN or S3 bucket</li>
 <li>Priming or invalidating cache stores</li>
 <li>Running database migrations</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
