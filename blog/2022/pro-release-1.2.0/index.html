@@ -55,14 +55,14 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/2022/pro-release-1.2.0/">
+        <link rel="canonical" href="https://dokku.com/blog/2022/pro-release-1.2.0/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
     
     
       
-        <title>Pro release 1.2.0 - Dokku Documentation</title>
+        <title>Pro release 1.2.0 - Dokku Blog</title>
       
     
     
@@ -155,16 +155,12 @@
       
     </div>
     
-      <div data-md-component="outdated" hidden>
-        
-      </div>
-    
     
       
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Blog" class="md-header__button md-logo" aria-label="Dokku Blog" data-md-component="logo">
       
   <img src="../../assets/dokku-logo.svg" alt="logo">
 
@@ -176,7 +172,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Dokku Documentation
+            Dokku Blog
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -308,13 +304,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
         Blog
       </a>
     </li>
@@ -358,12 +356,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Blog" class="md-nav__button md-logo" aria-label="Dokku Blog" data-md-component="logo">
       
   <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
-    Dokku Documentation
+    Dokku Blog
   </label>
   
     <div class="md-nav__source">
@@ -490,12 +488,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -540,14 +540,16 @@
               
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -590,11 +592,199 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../release-1.2.0.md" class="md-nav__link">
-        None
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pro release 1.2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pro release 1.2.0
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#major-changes" class="md-nav__link">
+    Major Changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Major Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requires-dokku-0278" class="md-nav__link">
+    Requires Dokku 0.27.8+
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-required-service-plugin-versions" class="md-nav__link">
+    Minimum required service plugin versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-apis-for-community-plugins" class="md-nav__link">
+    New APIs for community plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="New APIs for community plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-support-for-the-community-http-auth-plugin" class="md-nav__link">
+    API support for the community HTTP Auth Plugin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-support-for-the-community-http-auth-plugin_1" class="md-nav__link">
+    API support for the community HTTP Auth Plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-ability-to-set-the-builder-on-a-per-app-basis" class="md-nav__link">
+    Add ability to set the builder on a per-app basis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team-management" class="md-nav__link">
+    Team Management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minor-changes" class="md-nav__link">
+    Minor Changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Minor Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#updated-dependencies" class="md-nav__link">
+    Updated Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-apps-in-dokku-pro" class="md-nav__link">
+    Filtering apps in Dokku Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ability-to-override-the-default-root-username" class="md-nav__link">
+    Ability to override the default root username
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typesense-service-support" class="md-nav__link">
+    Typesense service support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-checking-for-server-commands" class="md-nav__link">
+    Version checking for server commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-output-for-the-config-command" class="md-nav__link">
+    Enhanced output for the config command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix-log-formatting" class="md-nav__link">
+    Fix log formatting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-compiled-assets-during-project-search" class="md-nav__link">
+    Ignoring compiled assets during project search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardized-code-initialization" class="md-nav__link">
+    Standardized code initialization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokku-pro-pricing" class="md-nav__link">
+    Dokku Pro Pricing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
+    Coming up next?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -606,8 +796,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-1.1.0.md" class="md-nav__link">
-        None
+      <a href="../pro-release-1.1.0/" class="md-nav__link">
+        Pro release 1.1.0
       </a>
     </li>
   
@@ -791,9 +981,43 @@
   
   
   
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          2020
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2020" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          2020
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../2020 - 2020/comparing-buildpack-v3-to-herokuish.md - 2020/dokku-0.20.0.md" class="md-nav__link">
-        None
+      <a href="../../2020/comparing-buildpack-v3-to-herokuish/" class="md-nav__link">
+        Comparing Cloud Native Buildpacks to Herokuish
       </a>
     </li>
   
@@ -806,8 +1030,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2018 - 2018/automating-dokku-setup.md - 2018/the-dokku-experience.md" class="md-nav__link">
-        None
+      <a href="../../2020/dokku-0.20.0/" class="md-nav__link">
+        Dokku Release 0.20.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          2018
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2018" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          2018
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2018/automating-dokku-setup/" class="md-nav__link">
+        Automating Dokku Application Setup with Ansible
       </a>
     </li>
   
@@ -820,9 +1099,101 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016 - 2016/deploying-gogs-to-dokku.markdown - 2016/resource-management.markdown - 2016/welcome-to-dokku.markdown" class="md-nav__link">
-        None
+      <a href="../../2018/the-dokku-experience/" class="md-nav__link">
+        The Dokku Experience
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          2016
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2016" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          2016
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2016/deploying-gogs-to-dokku/" class="md-nav__link">
+        Tutorial: Deploying Gogs to Dokku
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2016/resource-management/" class="md-nav__link">
+        Resource Management in Dokku
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2016/welcome-to-dokku/" class="md-nav__link">
+        Welcome to Dokku!
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1253,13 +1624,13 @@ for selection:</p>
 <li>pack</li>
 </ul>
 <figure>
-<p><img alt="Builder Selection" src="/blog/2022/release-1.2.0/builder-selection.png" width="500" />
+<p><img alt="Builder Selection" src="/blog/assets/images/release-1.2.0/builder-selection.png" width="500" />
   </p>
 <figcaption>Selection a non-standard builder</figcaption>
 </figure>
 <p>It is also possible to set a custom build directory in the same UI.</p>
 <figure>
-<p><img alt="Builder Selection" src="/blog/2022/release-1.2.0/build-dir-input.png" width="500" />
+<p><img alt="Builder Selection" src="/blog/assets/images/release-1.2.0/build-dir-input.png" width="500" />
   </p>
 <figcaption>Selection a non-standard builder</figcaption>
 </figure>
@@ -1456,6 +1827,42 @@ this release of Dokku Pro!</p>
       
         <footer class="md-footer">
   
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../dokku-0.27.x-wrapup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dokku 0.27.x Wrapup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Dokku 0.27.x Wrapup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../pro-release-1.1.0/" class="md-footer__link md-footer__link--next" aria-label="Next: Pro release 1.1.0" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Pro release 1.1.0
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -1553,7 +1960,7 @@ this release of Dokku Pro!</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
   
