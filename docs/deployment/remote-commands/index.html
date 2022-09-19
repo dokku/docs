@@ -2590,11 +2590,15 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 </ul>
 <p>In addition, the following commands have special local side-effects:</p>
 <ul>
-<li><code>apps:create</code>:</li>
+<li><code>apps:create</code>:<ul>
 <li>If no local <code>--app</code> flag is specified or detected from a <code>dokku</code> git remote, a random name is generated and used for the app.</li>
 <li>The <code>dokku</code> git remote is set if not already set.</li>
-<li><code>apps:destroy</code>:</li>
+</ul>
+</li>
+<li><code>apps:destroy</code>:<ul>
 <li>Removes the local <code>dokku</code> git remote if set.</li>
+</ul>
+</li>
 </ul>
 <h2 id="unofficial-clients">Unofficial Clients</h2>
 <p>Please refer to the <a href="../../community/clients/">community clients</a> list for more details.</p>
