@@ -2114,19 +2114,59 @@
     Local Test Execution
   </a>
   
+    <nav class="md-nav" aria-label="Local Test Execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vagrant-vm" class="md-nav__link">
+    Vagrant VM
+  </a>
+  
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#vscode-dev-container" class="md-nav__link">
+    VSCode Dev Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-tests" class="md-nav__link">
+    Executing tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executing-app-tests" class="md-nav__link">
+    Executing App Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#executing-a-single-test-suite" class="md-nav__link">
     Executing a single test suite
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#executing-a-single-test" class="md-nav__link">
     Executing a single test
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2456,19 +2496,59 @@
     Local Test Execution
   </a>
   
+    <nav class="md-nav" aria-label="Local Test Execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vagrant-vm" class="md-nav__link">
+    Vagrant VM
+  </a>
+  
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#vscode-dev-container" class="md-nav__link">
+    VSCode Dev Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-tests" class="md-nav__link">
+    Executing tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executing-app-tests" class="md-nav__link">
+    Executing App Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#executing-a-single-test-suite" class="md-nav__link">
     Executing a single test suite
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#executing-a-single-test" class="md-nav__link">
     Executing a single test
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2502,6 +2582,7 @@
 <p>If you wish to skip tests for a particular commit, e.g. documentation changes, you may add the <code>[ci skip]</code> designator to your commit message. Commits that <em>should</em> be tested but have the above designator will not be merged.</p>
 <p>While we do provide official packages for a variety of platforms, as our test suite currently runs on Ubuntu Trusty 18.04, we only provide official installation support for that platform and the latest LTS release of Ubuntu (currently 20.04).</p>
 <h2 id="local-test-execution">Local Test Execution</h2>
+<h3 id="vagrant-vm">Vagrant VM</h3>
 <ul>
 <li>Setup Dokku in a <a href="../../getting-started/install/vagrant/">Vagrant VM</a>.</li>
 <li>Run the following to setup tests and execute them:</li>
@@ -2510,18 +2591,6 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo su -
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span> ~/dokku
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>make ci-dependencies setup-deploy-tests
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># execute the entire test suite (linter, bats tests, and app deployment tests)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>make <span class="nb">test</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># run linter</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>make lint
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># execute all bats tests</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>make unit-tests
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># execute all app deployment tests</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>make deploy-tests
 </code></pre></div>
 <p>After making changes to your local Dokku clone, don't forget to update the Vagrant Dokku install.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># update vagrant dokku install from local git clone</span>
@@ -2530,24 +2599,52 @@
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># build a specific plugin</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>make go-build-plugin copyplugin <span class="nv">PLUGIN_NAME</span><span class="o">=</span>apps
 </code></pre></div>
-<p>Additionally you may run a specific app deployment tests with a target similar to:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make deploy-test-nodejs-express
+<h3 id="vscode-dev-container">VSCode Dev Container</h3>
+<ul>
+<li>Open Dokku in a VSCode DevContainer</li>
+<li>Run the following in the VSCode terminal to setup tests and execute them:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make ci-dependencies setup-deploy-tests
+</code></pre></div>
+<p>After making changes to your local Dokku clone, don't forget to update the Vagrant Dokku install.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># update vagrant dokku install from local git clone</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>make copyfiles
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># build a specific plugin</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>make go-build-plugin copyplugin <span class="nv">PLUGIN_NAME</span><span class="o">=</span>apps
+</code></pre></div>
+<h3 id="executing-tests">Executing tests</h3>
+<p>Execute the entire test suite (linter, bats tests, and app deployment tests):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make <span class="nb">test</span>
+</code></pre></div>
+<p>Run the linter</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make lint
+</code></pre></div>
+<p>Execute all bats tests</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>make unit-tests
+</code></pre></div>
+<p>Execute all app deployment tests</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>make deploy-tests
+</code></pre></div>
+<h4 id="executing-app-tests">Executing App Tests</h4>
+<p>You may run a specific app deployment tests with a target similar to:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>make deploy-test-nodejs-express
 </code></pre></div>
 <p>For a full list of test make targets check out <code>tests.mk</code> in the root of the Dokku repository.</p>
-<h2 id="executing-a-single-test-suite">Executing a single test suite</h2>
+<h4 id="executing-a-single-test-suite">Executing a single test suite</h4>
 <p>When working on a particular plugin, it may be useful to run <em>only</em> a particular test suite. This can be done by specifying the test suite path:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bats tests/unit/10_apps.bats
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bats tests/unit/apps_1.bats
 </code></pre></div>
 <p>It is also possible to target multiple test suites at a time.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bats tests/unit/10_apps.bats tests/unit/10_certs.bats
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bats tests/unit/apps_1.bats tests/unit/certs.bats
 </code></pre></div>
-<h2 id="executing-a-single-test">Executing a single test</h2>
+<h4 id="executing-a-single-test">Executing a single test</h4>
 <p>In order to increase testing velocity, a wrapper script around Bats is available that can be used to run a single test case within a suite.</p>
 <p>Tests within a suite may be listed by specifying the suite as a parameter to <code>bats</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bats tests/unit/10_apps.bats
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>bats tests/unit/apps_1.bats
 </code></pre></div>
 <p>A single test can be specified via the <code>--filter</code> argument. The tests are selected via regex match, and all matches are executed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bats --filter clone tests/unit/10_apps.bats
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>bats --filter list tests/unit/apps_1.bats
 </code></pre></div>
 
 
