@@ -3061,7 +3061,7 @@
 </div>
 <p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. You may also provide a custom template for your application as follows:</p>
 <ul>
-<li>Copy the following example template to a file named <code>nginx.conf.sigil</code> and either:</li>
+<li>Copy the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> and either:</li>
 <li>If using a buildpack application, you <strong>must</strong> check it into the root of your app repo.</li>
 <li>If using a dockerfile or docker image for deploys, either:<ul>
 <li>If <code>WORKDIR</code> is specified, add the file to the <code>WORKDIR</code> specified in the last Dockerfile stage  (example: <code>WORKDIR /app</code> and <code>ADD nginx.conf.sigil /app</code>).</li>
@@ -3075,7 +3075,7 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The default template is available <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">here</a>, and can be used as a guide for your own, custom <code>nginx.conf.sigil</code> file. Please refer to the appropriate template file version for your Dokku version.</p>
+<p>The <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default template</a> may change with new releases of Dokku. Please refer to the appropriate template file version for your Dokku version, and make sure to look out for changes when you upgrade.</p>
 </div>
 <p>While enabled by default, using a custom nginx config can be disabled via <code>nginx:set</code>. This may be useful in cases where you do not want to allow users to override any higher-level customization of app nginx config.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># enable fetching custom config (default)</span>
