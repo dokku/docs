@@ -101,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dokku.com/docs/appendices/0.29.0-migration-guide/</loc>
+         <lastmod>2022-10-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dokku.com/docs/appendices/0.5.0-migration-guide/</loc>
          <lastmod>2022-10-29</lastmod>
          <changefreq>daily</changefreq>
