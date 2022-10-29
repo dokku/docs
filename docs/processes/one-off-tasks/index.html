@@ -2559,7 +2559,7 @@
 <h1 id="one-off-tasks">One-off Tasks</h1>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>run [-e|--env KEY=VALUE] [--no-tty] &lt;app&gt; &lt;cmd&gt;         # Run a command in a new container using the current app image
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>run:detached [-e|-env KEY=VALUE] [--no-tty] &lt;app&gt; &lt;cmd&gt; # Run a command in a new detached container using the current app image
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>run:list [&lt;app&gt;]                                        # List all run containers for an app
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>run:list [--format json|stdout] [&lt;app&gt;]                 # List all run containers for an app
 </code></pre></div>
 <p>Sometimes it is necessary to run a one-off command under an app. Dokku makes it easy to run a fresh container via the <code>run</code> command.</p>
 <h2 id="usage">Usage</h2>
@@ -2620,6 +2620,30 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app run containers
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>NAMES                   COMMAND            CREATED
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>node-js-app.run.28689   &quot;/exec sleep 15&quot;   2 seconds ago
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>COMMAND</code> displayed will be what Docker executes and may not exactly match the command specified by a <code>dokku run</code> command.</p>
+</div>
+<p>The output can also be shown in json format:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku run:list node-js-app --format json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  {
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    &quot;name&quot;: &quot;node-js-app.run.28689&quot;,
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    &quot;state&quot;: &quot;running&quot;,
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    &quot;command&quot;: &quot;\&quot;/exec &#39;sleep 15&#39;\&quot;&quot;,
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    &quot;created_at&quot;: &quot;2022-08-03 05:47:44 +0000 UTC&quot;
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  }
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>]
 </code></pre></div>
 </div>
 </div>
