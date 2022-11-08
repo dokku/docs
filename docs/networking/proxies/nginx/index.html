@@ -1826,6 +1826,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#disabling-custom-nginx-config" class="md-nav__link">
+    Disabling custom nginx config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#available-template-variables" class="md-nav__link">
     Available template variables
   </a>
@@ -2752,6 +2759,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#disabling-custom-nginx-config" class="md-nav__link">
+    Disabling custom nginx config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#available-template-variables" class="md-nav__link">
     Available template variables
   </a>
@@ -2922,11 +2936,15 @@
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    Introduced <span class="k">in</span> <span class="m">0</span>.19.2
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>By default, nginx will listen to all interfaces <span class="o">(</span><span class="sb">`</span><span class="o">[</span>::<span class="o">]</span><span class="sb">`</span> <span class="k">for</span> IPv6, <span class="sb">`</span><span class="m">0</span>.0.0.0<span class="sb">`</span> <span class="k">for</span> IPv4<span class="o">)</span> when proxying requests to applications. This may be changed using the <span class="sb">`</span>bind-address-ipv4<span class="sb">`</span> and <span class="sb">`</span>bind-address-ipv6<span class="sb">`</span> properties. This is useful <span class="k">in</span> cases where the proxying should be internal to a network or <span class="k">if</span> there are multiple network interfaces that should respond with different content.
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>!!! note <span class="s2">&quot;Note&quot;</span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="sb">```</span>shell
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>dokku nginx:set node-js-app bind-address-ipv4 <span class="m">127</span>.0.0.1
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>dokku nginx:set node-js-app bind-address-ipv6 ::1
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <span class="sb">`</span>proxy:build-config<span class="sb">`</span> command.
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>By default, nginx will listen to all interfaces <span class="o">(</span><span class="sb">`</span><span class="o">[</span>::<span class="o">]</span><span class="sb">`</span> <span class="k">for</span> IPv6, <span class="sb">`</span><span class="m">0</span>.0.0.0<span class="sb">`</span> <span class="k">for</span> IPv4<span class="o">)</span> when proxying requests to applications. This may be changed using the <span class="sb">`</span>bind-address-ipv4<span class="sb">`</span> and <span class="sb">`</span>bind-address-ipv6<span class="sb">`</span> properties. This is useful <span class="k">in</span> cases where the proxying should be internal to a network or <span class="k">if</span> there are multiple network interfaces that should respond with different content.
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="sb">```</span>shell
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>dokku nginx:set node-js-app bind-address-ipv4 <span class="m">127</span>.0.0.1
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>dokku nginx:set node-js-app bind-address-ipv6 ::1
 </code></pre></div>
 <p>This may be reverted by setting an empty bind address.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku nginx:set node-js-app bind-address-ipv4
@@ -2942,6 +2960,10 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
+</div>
 <p>If SSL certificates are present, HSTS will be automatically enabled. It can be toggled via <code>nginx:set</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku nginx:set node-js-app hsts <span class="nb">true</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku nginx:set node-js-app hsts <span class="nb">false</span>
@@ -2955,13 +2977,21 @@
 </ul>
 <p>Beware that if you enable the header and a subsequent deploy of your application results in an HTTP deploy (for whatever reason), the way the header works means that a browser will not attempt to request the HTTP version of your site if the HTTPS version fails until the max-age is reached.</p>
 <h4 id="globally-disabling-the-hsts-header">Globally disabling the HSTS Header</h4>
-<p>HSTS Header can be disabled for all apps by setting the <code>hsts</code> property to false after passing the <code>--global</code> flag to <code>nginx:set</code>. Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
+</div>
+<p>HSTS Header can be disabled for all apps by setting the <code>hsts</code> property to false after passing the <code>--global</code> flag to <code>nginx:set</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku nginx:set --global hsts <span class="nb">false</span>
 </code></pre></div>
 <p>Once the HSTS setting is disabled globally, it can be re-enabled on a per-app basis by setting the <code>hsts</code> property as normal.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku nginx:set node-js-app hsts <span class="nb">true</span>
 </code></pre></div>
 <h3 id="checking-access-logs">Checking access logs</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
+</div>
 <p>You may check nginx access logs via the <code>nginx:access-logs</code> command. This assumes that app access logs are being stored in <code>/var/log/nginx/$APP-access.log</code>, as is the default in the generated <code>nginx.conf</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku nginx:access-logs node-js-app
 </code></pre></div>
@@ -2979,6 +3009,10 @@
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.1</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>The path to where log files are stored can be changed by calling the <code>nginx:set</code> command with the following options:</p>
 <ul>
@@ -2998,6 +3032,10 @@
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.22.0</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>The format of the access log can be changed by calling the <code>nginx:set</code> command as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku nginx:set node-js-app access-log-format custom-format
@@ -3029,6 +3067,10 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.21.0</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
+</div>
 <p>When proxying requests to your applications, it may be useful to specify a proxy read timeout. This can be done via the <code>nginx:set</code> command as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku nginx:set node-js-app proxy-read-timeout 120s
 </code></pre></div>
@@ -3041,6 +3083,10 @@
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.23.0</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>Users can override the default <code>client_max_body_size</code> value - which limits file uploads - via <code>nginx:set</code>. Changing this value will only apply to every <code>server</code> stanza of the default <code>nginx.conf.sigil</code>; users of custom <code>nginx.conf.sigil</code> files must update their templates to support the new value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku nginx:set node-js-app client-max-body-size 50m
@@ -3092,6 +3138,11 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default template</a> may change with new releases of Dokku. Please refer to the appropriate template file version for your Dokku version, and make sure to look out for changes when you upgrade.</p>
+</div>
+<h4 id="disabling-custom-nginx-config">Disabling custom nginx config</h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>While enabled by default, using a custom nginx config can be disabled via <code>nginx:set</code>. This may be useful in cases where you do not want to allow users to override any higher-level customization of app nginx config.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># enable fetching custom config (default)</span>
