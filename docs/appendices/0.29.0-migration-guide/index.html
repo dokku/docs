@@ -2468,7 +2468,10 @@
 
 <h1 id="0290-migration-guide">0.29.0 Migration Guide</h1>
 <h2 id="changes">Changes</h2>
-<p>The output of <code>run:detached</code> now uses the container name - eg. <code>node-js-app.run.1</code> - vs the container id.</p>
+<ul>
+<li>The output of <code>run:detached</code> now uses the container name - eg. <code>node-js-app.run.1</code> - vs the container id.</li>
+<li>The ID of <code>cron</code> tasks is now base36-encoded instead of base64-encoded.</li>
+</ul>
 
 
 
