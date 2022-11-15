@@ -2601,9 +2601,11 @@
 <li><code>app.json</code>: <code>scripts.dokku.postdeploy</code><ul>
 <li>When to use: This should be used in conjunction with external systems to signal the completion of your deploy.</li>
 <li>Are changes committed to the image at this phase: No</li>
-<li>Example use-cases</li>
+<li>Example use-cases<ul>
 <li>Notifying slack that your app is deployed</li>
 <li>Coordinating traffic routing with a central load balancer</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>app.json</code>: <code>scripts.postdeploy</code><ul>
