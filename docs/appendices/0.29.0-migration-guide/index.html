@@ -739,6 +739,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#removals" class="md-nav__link">
+    Removals
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2448,6 +2455,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#removals" class="md-nav__link">
+    Removals
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2471,6 +2485,10 @@
 <ul>
 <li>The output of <code>run:detached</code> now uses the container name - eg. <code>node-js-app.run.1</code> - vs the container id.</li>
 <li>The ID of <code>cron</code> tasks is now base36-encoded instead of base64-encoded.</li>
+</ul>
+<h2 id="removals">Removals</h2>
+<ul>
+<li>The <code>DOKKU_WAIT_TO_RETIRE</code> environment variable has been migrated to a <code>checks</code> property named <code>wait-to-retire</code> and will be ignored if set as an environment variable.</li>
 </ul>
 
 
