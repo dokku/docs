@@ -3121,20 +3121,17 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
 </div>
-<p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. You may also provide a custom template for your application as follows:</p>
-<ul>
-<li>Copy the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> and either:</li>
-<li>If using a buildpack application, you <strong>must</strong> check it into the root of your app repo.</li>
-<li>If using a dockerfile or docker image for deploys, either:<ul>
-<li>If <code>WORKDIR</code> is specified, add the file to the <code>WORKDIR</code> specified in the last Dockerfile stage  (example: <code>WORKDIR /app</code> and <code>ADD nginx.conf.sigil /app</code>).</li>
-<li>If no <code>WORKDIR</code> is specified, add the file to the root (<code>/</code>) of the docker image (example: <code>ADD nginx.conf.sigil /</code>).</li>
-</ul>
-</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>When using a custom <code>nginx.conf.sigil</code> file, depending upon your application configuration, you <em>may</em> be exposing the file externally. As this file is extracted before the container is run, you can, safely delete it in a custom <code>entrypoint.sh</code> configured in a Dockerfile <code>ENTRYPOINT</code>.</p>
-</div>
+<p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. This may be overriden by committing the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> in the root of the app repository.</p>
+<p>By default, the <code>nginx.conf.sigil</code> path is pulled from the root of the app source code repository. To change the path from which the <code>nginx.conf.sigil</code> is extracted, the <code>nginx-conf-sigil-path</code> property can be modified via <code>nginx:set</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku nginx:set node-js-app nginx-conf-sigil-path dokku/nginx.conf.sigil
+</code></pre></div>
+<p>This property can also be changed globally, which will take into effect if there is no value at the app level.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku nginx:set --global nginx-conf-sigil-path dokku/nginx.conf.sigil
+</code></pre></div>
+<p>In either case, the value can be reset by specifying an empty value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku nginx:set node-js-app nginx-conf-sigil-path
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>dokku nginx:set --global nginx-conf-sigil-path
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default template</a> may change with new releases of Dokku. Please refer to the appropriate template file version for your Dokku version, and make sure to look out for changes when you upgrade.</p>
@@ -3145,25 +3142,25 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>While enabled by default, using a custom nginx config can be disabled via <code>nginx:set</code>. This may be useful in cases where you do not want to allow users to override any higher-level customization of app nginx config.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># enable fetching custom config (default)</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dokku nginx:set node-js-app disable-custom-config <span class="nb">false</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># disable fetching custom config</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>dokku nginx:set node-js-app disable-custom-config <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># enable fetching custom config (default)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku nginx:set node-js-app disable-custom-config <span class="nb">false</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># disable fetching custom config</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>dokku nginx:set node-js-app disable-custom-config <span class="nb">true</span>
 </code></pre></div>
 <p>Unsetting this value is the same as enabling custom nginx config usage.</p>
 <h4 id="available-template-variables">Available template variables</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>{{ .APP }}                          Application name
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>{{ .APP_SSL_PATH }}                 Path to SSL certificate and key
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>{{ .DOKKU_ROOT }}                   Global Dokku root directory (ex: app dir would be `{{ .DOKKU_ROOT }}/{{ .APP }}`)
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as `DOKKU_PROXY_PORT` config var)
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as `DOKKU_PROXY_SSL_PORT` config var)
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as `DOKKU_PROXY_PORT_MAP` config var)
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from `DOKKU_PROXY_PORT_MAP` config var)
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>{{ .RAW_TCP_PORTS }}                List of exposed tcp ports as defined by Dockerfile `EXPOSE` directive (**Dockerfile apps only**)
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>{{ .APP }}                          Application name
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>{{ .APP_SSL_PATH }}                 Path to SSL certificate and key
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>{{ .DOKKU_ROOT }}                   Global Dokku root directory (ex: app dir would be `{{ .DOKKU_ROOT }}/{{ .APP }}`)
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as `DOKKU_PROXY_PORT` config var)
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as `DOKKU_PROXY_SSL_PORT` config var)
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as `DOKKU_PROXY_PORT_MAP` config var)
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from `DOKKU_PROXY_PORT_MAP` config var)
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>{{ .RAW_TCP_PORTS }}                List of exposed tcp ports as defined by Dockerfile `EXPOSE` directive (**Dockerfile apps only**)
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
 </code></pre></div>
 <p>Finally, each process type has it's network listeners - a list of IP:PORT pairs for the respective app containers - exposed via an <code>.DOKKU_APP_${PROCESS_TYPE}_LISTENERS</code> variable - the <code>PROCESS_TYPE</code> will be upper-cased with hyphens transformed into underscores. Users can use the new variables to expose non-web processes via the nginx proxy.</p>
 <div class="admonition note">
@@ -3172,24 +3169,24 @@
 </div>
 <h4 id="customizing-via-configuration-files-included-by-the-default-templates">Customizing via configuration files included by the default templates</h4>
 <p>The default nginx.conf template will include everything from your apps <code>nginx.conf.d/</code> subdirectory in the main <code>server {}</code> block (see above):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>include {{ .DOKKU_ROOT }}/{{ .APP }}/nginx.conf.d/*.conf;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>include {{ .DOKKU_ROOT }}/{{ .APP }}/nginx.conf.d/*.conf;
 </code></pre></div>
 <p>That means you can put additional configuration in separate files. To increase the client request header timeout, the following can be performed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>mkdir /home/dokku/node-js-app/nginx.conf.d/
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nb">echo</span> <span class="s1">&#39;client_header_timeout 50s;&#39;</span> &gt; /home/dokku/node-js-app/nginx.conf.d/timeout.conf
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>chown dokku:dokku /home/dokku/node-js-app/nginx.conf.d/upload.conf
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>service nginx reload
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>mkdir /home/dokku/node-js-app/nginx.conf.d/
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nb">echo</span> <span class="s1">&#39;client_header_timeout 50s;&#39;</span> &gt; /home/dokku/node-js-app/nginx.conf.d/timeout.conf
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>chown dokku:dokku /home/dokku/node-js-app/nginx.conf.d/upload.conf
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>service nginx reload
 </code></pre></div>
 <p>The example above uses additional configuration files directly on the Dokku host. Unlike the <code>nginx.conf.sigil</code> file, these additional files will not be copied over from your application repo, and thus need to be placed in the <code>/home/dokku/node-js-app/nginx.conf.d/</code> directory manually.</p>
 <p>For PHP Buildpack users, you will also need to provide a <code>Procfile</code> and an accompanying <code>nginx.conf</code> file to customize the nginx config <em>within</em> the container. The following are example contents for your <code>Procfile</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>web: vendor/bin/heroku-php-nginx -C nginx.conf -i php.ini php/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>web: vendor/bin/heroku-php-nginx -C nginx.conf -i php.ini php/
 </code></pre></div>
 <p>Your <code>nginx.conf</code> file - not to be confused with Dokku's <code>nginx.conf.sigil</code> - would also need to be configured as shown in this example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>client_header_timeout 50s;
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>location / {
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    index index.php;
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    try_files $uri $uri/ /index.php$is_args$args;
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>client_header_timeout 50s;
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>location / {
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    index index.php;
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    try_files $uri $uri/ /index.php$is_args$args;
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>}
 </code></pre></div>
 <p>Please adjust the <code>Procfile</code> and <code>nginx.conf</code> file as appropriate.</p>
 <h3 id="custom-error-pages">Custom Error Pages</h3>
@@ -3203,33 +3200,33 @@
 <h3 id="default-site">Default site</h3>
 <p>By default, Dokku will route any received request with an unknown HOST header value to the lexicographically first site in the nginx config stack. If this is not the desired behavior, you may want to add the following configuration to the global nginx configuration.</p>
 <p>Create the file at <code>/etc/nginx/conf.d/00-default-vhost.conf</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">410</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
-<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="c1"># To handle HTTPS requests, you can uncomment the following section.</span>
-<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="c1">#</span>
-<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="c1"># Please note that in order to let this work as expected, you need a valid</span>
-<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="c1"># SSL certificate for any domains being served. Browsers will show SSL</span>
-<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="c1"># errors in all other cases.</span>
-<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="c1">#</span>
-<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="c1"># Note that the key and certificate files in the below example need to</span>
-<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="c1"># be copied into /etc/nginx/ssl/ folder.</span>
-<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="c1">#</span>
-<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="c1"># server {</span>
-<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a><span class="c1">#     listen 443 ssl;</span>
-<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="c1">#     listen [::]:443 ssl;</span>
-<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="c1">#     server_name _;</span>
-<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="c1">#     ssl_certificate /etc/nginx/ssl/cert.crt;</span>
-<a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a><span class="c1">#     ssl_certificate_key /etc/nginx/ssl/cert.key;</span>
-<a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a><span class="c1">#     access_log off;</span>
-<a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a><span class="c1">#     return 410;</span>
-<a id="__codelineno-30-27" name="__codelineno-30-27" href="#__codelineno-30-27"></a><span class="c1"># }</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">410</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="c1"># To handle HTTPS requests, you can uncomment the following section.</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="c1">#</span>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="c1"># Please note that in order to let this work as expected, you need a valid</span>
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="c1"># SSL certificate for any domains being served. Browsers will show SSL</span>
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="c1"># errors in all other cases.</span>
+<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="c1">#</span>
+<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="c1"># Note that the key and certificate files in the below example need to</span>
+<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="c1"># be copied into /etc/nginx/ssl/ folder.</span>
+<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a><span class="c1">#</span>
+<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a><span class="c1"># server {</span>
+<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a><span class="c1">#     listen 443 ssl;</span>
+<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="c1">#     listen [::]:443 ssl;</span>
+<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a><span class="c1">#     server_name _;</span>
+<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a><span class="c1">#     ssl_certificate /etc/nginx/ssl/cert.crt;</span>
+<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="c1">#     ssl_certificate_key /etc/nginx/ssl/cert.key;</span>
+<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a><span class="c1">#     access_log off;</span>
+<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a><span class="c1">#     return 410;</span>
+<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a><span class="c1"># }</span>
 </code></pre></div>
 <p>Make sure to reload nginx after creating this file by running <code>service nginx reload</code>.</p>
 <p>This will catch all unknown HOST header values and return a <code>410 Gone</code> response. You can replace the <code>return 410;</code> with <code>return 444;</code> which will cause nginx to not respond to requests that do not match known domains (connection refused).</p>
