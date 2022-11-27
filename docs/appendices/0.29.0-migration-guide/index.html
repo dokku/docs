@@ -2490,6 +2490,7 @@
 <h2 id="removals">Removals</h2>
 <ul>
 <li>The <code>DOKKU_WAIT_TO_RETIRE</code> environment variable has been migrated to a <code>checks</code> property named <code>wait-to-retire</code> and will be ignored if set as an environment variable.</li>
+<li>The <code>Procfile</code> is now extracted when source code is extracted for a build and not from the built image. Users can specify alternative paths via the <code>procfile-path</code> property of the <code>ps</code> plugin. See the <a href="../../processes/process-management/#changing-the-procfile-location">process management documentation</a> for more information on how to configure the <code>Procfile</code> path for your application.</li>
 </ul>
 
 

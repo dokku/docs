@@ -3122,7 +3122,7 @@
 <p>Introduced in 0.5.0</p>
 </div>
 <p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. This may be overriden by committing the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> in the root of the app repository.</p>
-<p>By default, the <code>nginx.conf.sigil</code> path is pulled from the root of the app source code repository. To change the path from which the <code>nginx.conf.sigil</code> is extracted, the <code>nginx-conf-sigil-path</code> property can be modified via <code>nginx:set</code>.</p>
+<p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>nginx.conf.sigil</code> file to use for a given app. This can be done via the <code>nginx:set</code> command. If a value is specified and that file does not exist in the app's build directory, Dokku will continue the build process as if the repository has no <code>nginx.conf.sigil</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku nginx:set node-js-app nginx-conf-sigil-path dokku/nginx.conf.sigil
 </code></pre></div>
 <p>This property can also be changed globally, which will take into effect if there is no value at the app level.</p>
