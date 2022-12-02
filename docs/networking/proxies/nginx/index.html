@@ -2909,6 +2909,10 @@
 <h3 id="request-proxying">Request Proxying</h3>
 <p>By default, the <code>web</code> process is the only process proxied by the nginx proxy implementation. Proxying to other process types may be handled by a custom <code>nginx.conf.sigil</code> file, as generally described <a href="./#customizing-the-nginx-configuration">below</a></p>
 <p>Nginx will proxy the requests in a <a href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">round-robin balancing fashion</a> to the different deployed (scaled) containers running the <code>web</code> proctype. This way, the host's resources can be fully leveraged for single-threaded applications (e.g. <code>dokku ps:scale node-js-app web=4</code> on a 4-core machine).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to how the plugin is implemented, if an app successfully starts up <code>web</code> containers but fails to deploy some other containers, nginx may eventually stop routing requests. Users should revert their code in these cases, or manually trigger <code>dokku proxy:build-config $APP</code> in order to ensure requests route to the new web containers.</p>
+</div>
 <h3 id="starting-nginx">Starting nginx</h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
