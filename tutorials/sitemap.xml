@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://dokku.com/tutorials/</loc>
+         <lastmod>2022-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dokku.com/tutorials/apps/deploying-gogs-to-dokku/</loc>
+         <lastmod>2022-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dokku.com/tutorials/automation/automating-dokku-setup/</loc>
+         <lastmod>2022-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dokku.com/tutorials/plugins/creating-a-datastore-plugin/</loc>
+         <lastmod>2022-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
