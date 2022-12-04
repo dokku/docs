@@ -2493,6 +2493,9 @@
 <ul>
 <li>The <code>DOKKU_WAIT_TO_RETIRE</code> environment variable has been migrated to a <code>checks</code> property named <code>wait-to-retire</code> and will be ignored if set as an environment variable.</li>
 <li>The <code>Procfile</code> is now extracted when source code is extracted for a build and not from the built image. Users can specify alternative paths via the <code>procfile-path</code> property of the <code>ps</code> plugin. See the <a href="../../processes/process-management/#changing-the-procfile-location">process management documentation</a> for more information on how to configure the <code>Procfile</code> path for your application.</li>
+<li>The <code>domains-setup</code> trigger has been removed. Initial app domains will now be automatically setup during app creation.</li>
+<li>The <code>URLS</code> file containing generated urls for an app is no longer generated or referenced. Users should retrieve app urls via the new <code>domains-urls</code> plugin trigger.</li>
+<li>The common function <code>get_app_urls</code> has been removed. Users should retrieve app urls via the new <code>domains-urls</code> plugin trigger.</li>
 </ul>
 
 
