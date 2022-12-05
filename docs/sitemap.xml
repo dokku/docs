@@ -141,11 +141,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dokku.com/docs/community/tutorials/run-on-external-volume/</loc>
-         <lastmod>2022-12-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://dokku.com/docs/configuration/domains/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
