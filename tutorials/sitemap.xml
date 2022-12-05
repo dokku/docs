@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dokku.com/tutorials/other/run-on-external-volume/</loc>
+         <lastmod>2022-12-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dokku.com/tutorials/plugins/creating-a-datastore-plugin/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
