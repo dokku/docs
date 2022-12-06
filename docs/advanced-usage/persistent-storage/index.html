@@ -2762,8 +2762,8 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku docker-options:add node-js-app build <span class="s2">&quot;-v /tmp/python-test:/opt/test&quot;</span>
 </code></pre></div>
 <p>You cannot use mounted volumes during the build phase of a Dockerfile deploy. This is because Docker does not support volumes when executing <code>docker build</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p><strong>This can cause data loss</strong> if you bind a mount under <code>/app</code> in buildpack apps as herokuish will attempt to remove the original app path during the build phase.</p>
 </div>
 <h2 id="app-user-and-persistent-storage-file-ownership-buildpack-apps-only">App User and Persistent Storage file ownership (buildpack apps only)</h2>
