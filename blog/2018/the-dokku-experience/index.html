@@ -549,6 +549,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_3_2">
@@ -562,6 +564,20 @@
           2022
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2022/dokku-0.28.x-wrapup/" class="md-nav__link">
+        Dokku 0.28.x Wrapup
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1181,9 +1197,10 @@
   <h1>The Dokku Experience</h1>
 
 <p>Dokku has historically had no way to introspect on the state of an installation. At one point in its history, we included a "backup" feature, which allowed users to export - and <em>maybe</em> import - configuration and data. The challenge is in exposing this information in an easily parseable manner.</p>
-<blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h3 id="plumbing-vs-porcelain">Plumbing vs Porcelain</h3>
 <p>To understand the challenges better, it is important to note that the internal representation of the state of Dokku is <em>very</em> different from how users interact with it. Data is stored in either <code>/home/dokku/APP</code> or <code>/var/lib/dokku</code>. Plugins may also store data on another host, and some implementations of the config plugin actually store configuration in distributed datastores. Dokku interacts with this data via a series of plugins - written in various languages - through <code>plugn</code>. This hairy mess is Dokku's Plumbing.</p>
 <p>Externally, developers use the <code>dokku</code> cli to orchestrate their applications. This is a well-known interface with clear documentation and usage examples. The cli rarely changes drastically, only doing so to allow for new functionality in a way that does not break existing use. The output format also rarely changes in backwards incompatible ways. If you know how to use one Dokku installation from 2 years ago, a modern install will be extremely familiar to you. This nice interface is called the Porcelain.</p>

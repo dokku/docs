@@ -549,6 +549,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_3_2">
@@ -562,6 +564,20 @@
           2022
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2022/dokku-0.28.x-wrapup/" class="md-nav__link">
+        Dokku 0.28.x Wrapup
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1331,9 +1347,10 @@
   <h1>Dokku 0.23.x Wrapup</h1>
 
 <p>Dokku version 0.24.0 was released earlier this week. This post covers the major changes that occurred throughout the lifetime of the 0.23.x series. A future post will cover the 0.24.0 release.</p>
-<blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h2 id="additions">Additions</h2>
 <h3 id="release-changes">Release changes</h3>
 <p>Dokku now has support for triggering releases via Github Actions. This will allow any maintainer to make a release of Dokku without needing to set anything up locally. The ability to auto-release plugins and tools in the Dokku ecosystem will slowly be added to all core projects over the coming weeks.</p>
@@ -1367,7 +1384,7 @@
 <p>As of <a href="https://github.com/dokku/dokku/pull/4373">#4373</a>, the Procfile is now extracted in the pre-deploy step for every deploy and otherwise not removed. Thus, it should always exist when necessary - web will be scale to 1 automatically and it won't need to be present on future ps:scale calls since we'll have the scale file - and the command can execute faster.</p>
 <h2 id="its-a-wrap">It's a wrap</h2>
 <p>And that's it for 0.23.x. Our next post will cover 0.24.0, as well as plans for future releases.</p>
-<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://glider-slackin.herokuapp.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
+<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 

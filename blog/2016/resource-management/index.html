@@ -549,6 +549,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_3_2">
@@ -562,6 +564,20 @@
           2022
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2022/dokku-0.28.x-wrapup/" class="md-nav__link">
+        Dokku 0.28.x Wrapup
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1208,9 +1224,10 @@
 
 <p>Every so often, user's ask if it's possible to use Dokku as the basis of a system where each user in Dokku would have access to <em>only</em> their applications. Because of various reasons, this isn't possible out of the box, though it's certainly within the realm of possibility.</p>
 <p>There are two requirements for such a system, one of which we'll cover here.</p>
-<blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h3 id="resource-management">Resource Management</h3>
 <p>A common issue you may come up against is how to limit resource usage for different applications. One user's use of memory should not cause OOM issues in another application. Similarly, you would not want a particular application to hog the network bandwidth unfairly, or saturate disk I/O.</p>
 <p>These are not new problems to containers, multiple users on a system, or Dokku. These same issues <em>also</em> occur when deploying services directly on a server, or even running applications on your computer. Remember the last time your torrenting application used up all your network and you couldn't load a web page?</p>

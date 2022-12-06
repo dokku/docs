@@ -549,6 +549,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_3_2">
@@ -562,6 +564,20 @@
           2022
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2022/dokku-0.28.x-wrapup/" class="md-nav__link">
+        Dokku 0.28.x Wrapup
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1317,9 +1333,10 @@
   <h1>Dokku Release 0.25.0</h1>
 
 <p>With the 0.25.x release of Dokku a few weeks ago, a folks may have questions as to why they would want to upgrade and how it would impact their workflows. We've cherry-picked a few more important changes, but feel free to go through the <a href="https://github.com/dokku/dokku/releases/tag/v0.25.0">release notes</a> for more information.</p>
-<blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h2 id="changes">Changes</h2>
 <h3 id="make-heroku-20focal-the-default-stack-for-herokuish-builds">Make heroku-20/focal the default stack for herokuish builds</h3>
 <p>With the release of newer versions of Ubuntu, the heroku-18 stack (based on Ubuntu 18.04) was getting a bit long in the tooth. We've since switched to <code>heroku-20</code> as our default. Many apps will continue to work as before, though some with compiled dependencies may have issues. This may be fixed by either of the following:</p>
@@ -1444,7 +1461,7 @@
 <p>This functionality can be used when trying to expose non-Dokku maintained services to the external world without requiring a deployed proxy. One nice side-effect is that this also means users can expose services with letsencrypt support.</p>
 <h2 id="the-next-minor-release">The Next Minor Release</h2>
 <p>Our next release will continue on the <a href="https://github.com/dokku/dokku/milestone/16">14 outstanding 1.0 issues</a>. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
-<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://glider-slackin.herokuapp.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
+<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 
