@@ -2633,7 +2633,6 @@
 <li>Schedules are performed on the hosting server's timezone, which is typically UTC.</li>
 <li>At this time, only the <code>PATH</code> and <code>SHELL</code> environment variables are specified in the cron template.</li>
 <li>Each scheduled task is executed within a one-off <code>run</code> container, and thus inherit any docker-options specified for <code>run</code> containers.Resources are never shared between scheduled tasks.</li>
-<li>Tasks are always executed using the <code>--rm</code> flag, and are never executed in detached mode.</li>
 <li>Scheduled cron tasks are supported on a per-scheduler basis, and are currently only implemented by the <code>docker-local</code> scheduler.</li>
 <li>Tasks for <em>all</em> apps managed by the <code>docker-local</code> scheduler are written to a single crontab file owned by the <code>dokku</code> user. The <code>dokku</code> user's crontab should be considered reserved for this purpose.</li>
 </ul>
@@ -2697,8 +2696,7 @@
 <p>Some installations may require more fine-grained control over cron usage. The following are advanced instructions for configuring cron.</p>
 <h4 id="using-run-for-cron-tasks">Using <code>run</code> for cron tasks</h4>
 <p>You can always use a one-off container to run an app task:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku --rm run node-js-app some-command
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku --rm-container run node-js-app some-command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku run node-js-app some-command
 </code></pre></div>
 <p>For tasks that should not be interrupted, run is the <em>preferred</em> method of handling cron tasks, as the container will continue running even during a deploy or scaling event. The trade-off is that there will be an increase in memory usage if there are multiple concurrent tasks running.</p>
 <h4 id="using-enter-for-cron-tasks">Using <code>enter</code> for cron tasks</h4>
@@ -2760,7 +2758,7 @@
 <a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>### PLACE ALL CRON TASKS BELOW
 <a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>
 <a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a># removes unresponsive users from the subscriber list to decrease bounce rates
-<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>0 0 * * * dokku dokku --rm run node-js-app some-command
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>0 0 * * * dokku dokku run node-js-app some-command
 <a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>
 <a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a># sends out our email alerts to users
 <a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>0 1 * * * dokku dokku ps:scale node-js-app cron=1 &amp;&amp; dokku enter node-js-app cron some-other-command &amp;&amp; dokku ps:scale node-js-app cron=0
