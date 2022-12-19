@@ -2457,14 +2457,20 @@
 <ul>
 <li>The output of <code>run:detached</code> now uses the container name - eg. <code>node-js-app.run.1</code> - vs the container id.</li>
 <li>The ID of <code>cron</code> tasks is now base36-encoded instead of base64-encoded.</li>
-<li>The <code>nginx.conf.sigil</code> is now extracted when source code is extracted for a build and not from the built image. Users can specify alternative paths via the <code>nginx-conf-sigil-path</code> property of the <code>nginx</code> plugin. See the <a href="../../networking/proxies/nginx/#customizing-the-nginx-configuration">nginx documentation</a> for more information on how to configure the <code>nginx.conf.sigil</code> path for your application.</li>
+<li>The <code>nginx.conf.sigil</code> is now extracted when source code is extracted for a build and not from the built image. Users can specify alternative paths via the <code>nginx-conf-sigil-path</code> property of the <code>nginx</code> plugin. See the <a href="../../networking/proxies/nginx/#customizing-the-nginx-configuration">nginx documentation</a> for more information on how to configure the <code>nginx.conf.sigil</code> path for your application.<ul>
+<li>For deploys via <code>git:from-image</code>, the <code>nginx.conf.sigil</code> file will be extracted from the source image, respecting the value of <code>nginx-conf-sigil-path</code>.</li>
+</ul>
+</li>
+<li>The <code>Procfile</code> is now extracted when source code is extracted for a build and not from the built image. Users can specify alternative paths via the <code>procfile-path</code> property of the <code>ps</code> plugin. See the <a href="../../processes/process-management/#changing-the-procfile-location">process management documentation</a> for more information on how to configure the <code>Procfile</code> path for your application.<ul>
+<li>For deploys via <code>git:from-image</code>, the <code>Procfile</code> file will be extracted from the source image, respecting the value of <code>procfile-path</code>.</li>
+</ul>
+</li>
 <li>The existing <code>pre-restore</code> hook has been renamed to <code>scheduler-pre-restore</code>. There is a new <code>pre-restore</code> hook that is triggered within the <code>ps:restore</code> command prior to restoring any apps.</li>
 <li>Nginx init commands are now performed via systemctl on Ubuntu systems when <code>/usr/bin/systemctl</code> is available.</li>
 </ul>
 <h2 id="removals">Removals</h2>
 <ul>
 <li>The <code>DOKKU_WAIT_TO_RETIRE</code> environment variable has been migrated to a <code>checks</code> property named <code>wait-to-retire</code> and will be ignored if set as an environment variable.</li>
-<li>The <code>Procfile</code> is now extracted when source code is extracted for a build and not from the built image. Users can specify alternative paths via the <code>procfile-path</code> property of the <code>ps</code> plugin. See the <a href="../../processes/process-management/#changing-the-procfile-location">process management documentation</a> for more information on how to configure the <code>Procfile</code> path for your application.</li>
 <li>The <code>domains-setup</code> trigger has been removed. Initial app domains will now be automatically setup during app creation.</li>
 <li>The <code>URLS</code> file containing generated urls for an app is no longer generated or referenced. Users should retrieve app urls via the new <code>domains-urls</code> plugin trigger.</li>
 <li>The common function <code>get_app_urls</code> has been removed. Users should retrieve app urls via the new <code>domains-urls</code> plugin trigger.</li>
