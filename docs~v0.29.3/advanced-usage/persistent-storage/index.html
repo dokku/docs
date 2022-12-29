@@ -1903,6 +1903,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#listing-persistent-storage" class="md-nav__link">
+    Listing persistent storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#creating-storage-directories" class="md-nav__link">
     Creating storage directories
   </a>
@@ -2521,6 +2528,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#listing-persistent-storage" class="md-nav__link">
+    Listing persistent storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#creating-storage-directories" class="md-nav__link">
     Creating storage directories
   </a>
@@ -2633,7 +2647,7 @@
 </div>
 <p>The preferred method to mount external containers to a Dokku managed container, is to use the Dokku storage plugin.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>storage:ensure-directory [--chown option] &lt;directory&gt;  # Creates a persistent storage directory in the recommended storage path
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>storage:list &lt;app&gt;                                     # List bind mounts for app&#39;s container(s) (host:container)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>storage:list &lt;app&gt; [--format text|json]                # List bind mounts for app&#39;s container(s) (host:container)
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>storage:mount &lt;app&gt; &lt;host-dir:container-dir&gt;           # Create a new bind mount
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>storage:report [&lt;app&gt;] [&lt;flag&gt;]                        # Displays a checks report for one or more apps
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>storage:unmount &lt;app&gt; &lt;host-dir:container-dir&gt;         # Remove an existing bind mount
@@ -2648,22 +2662,56 @@
 <li>docker volumes</li>
 </ul>
 <h2 id="usage">Usage</h2>
+<h3 id="listing-persistent-storage">Listing persistent storage</h3>
+<p>Persistent storage bind mounts are specified on a per-app basis, and can be listed with the <code>storage:list</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku storage:list node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>-----&gt; node-js-app volume bind-mounts:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>       /var/lib/dokku/data/storage/node-js-app:/app/storage
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The output format can also be set to <code>json</code> for programmatic access:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku storage:list node-js-app --format json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  {
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    &quot;host_path&quot;: &quot;/var/lib/dokku/data/storage/node-js-app&quot;,
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    &quot;container_path&quot;: &quot;/app/storage&quot;,
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    &quot;volume_options&quot;: &quot;&quot;
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  }
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>]
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="creating-storage-directories">Creating storage directories</h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.5</p>
 </div>
 <p>A storage directory can be created with the <code>storage:ensure-directory</code> command. This command will create a subdirectory in the recommended <code>/var/lib/dokku/data/storage</code> path - created during Dokku installation - and prepare it for use with an app.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku storage:ensure-directory lollipop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku storage:ensure-directory node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>-----&gt; Ensuring /var/lib/dokku/data/storage/lollipop exists
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>       Setting directory ownership to 32767:32767
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>       Directory ready for mounting
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----&gt; Ensuring /var/lib/dokku/data/storage/node-js-app exists
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>       Setting directory ownership to 32767:32767
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>       Directory ready for mounting
 </code></pre></div>
 </div>
 </div>
@@ -2685,13 +2733,13 @@
 </div>
 <h3 id="mounting-storage-into-apps">Mounting storage into apps</h3>
 <p>Dokku supports mounting both explicit host paths as well as docker volumes via the <code>storage:mount</code> command. This takes two arguments, an app name and a <code>host-path:container-path</code> or <code>docker-volume:container-path</code> combination.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># mount the directory into your container&#39;s /app/storage directory, relative to the container root (/)</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># explicit host paths _must_ exist prior to usage.</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>dokku storage:mount node-js-app /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># mount the docker volume into your container&#39;s /app/storage directory, relative to the container root (/)</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># docker volumes _must_ exist prior to usage.</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>dokku storage:mount node-js-app some-docker-volume:/app/storage
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># mount the directory into your container&#39;s /app/storage directory, relative to the container root (/)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># explicit host paths _must_ exist prior to usage.</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>dokku storage:mount node-js-app /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># mount the docker volume into your container&#39;s /app/storage directory, relative to the container root (/)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># docker volumes _must_ exist prior to usage.</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>dokku storage:mount node-js-app some-docker-volume:/app/storage
 </code></pre></div>
 <p>In the first example, Dokku will then mount the shared contents of <code>/var/lib/dokku/data/storage/node-js-app</code> to <code>/app/storage</code> inside the container.  The mount point is <em>not</em> relative to your app's working directory, and is instead relative to the root (<code>/</code>) of the container. Mounts are only available for containers created via <code>run</code> and by the deploy process, and not during the build process. In addition, the host path is never auto-created by either Dokku or Docker, and should be an explicit path, not one relative to the current working directory.</p>
 <div class="admonition info">
@@ -2699,18 +2747,18 @@
 <p>If the <code>/storage</code> path within the container had pre-existing content, the container files will be over-written. This may be an issue for users that create assets at build time but then mount a directory at the same place during runtime. Files are not merged.</p>
 </div>
 <p>Once persistent storage is mounted, the app requires a restart. See the <a href="../../processes/process-management/">process scaling documentation</a> for more information.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku ps:restart app-name
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku ps:restart app-name
 </code></pre></div>
 <h3 id="unmounting-storage">Unmounting storage</h3>
 <p>If an app no longer requires a mounted volume or directory, the <code>storage:unmount</code> command can be called. This takes the same arguments as the <code>storage:mount</code> command, an app name and a <code>host-path:container-path</code> or <code>docker-volume:container-path</code> combination.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># unmount the directory from your container&#39;s /app/storage directory, relative to the container root (/)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku storage:unmount node-js-app /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># unmount the docker volume from your container&#39;s /app/storage directory, relative to the container root (/)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dokku storage:unmount node-js-app some-docker-volume:/app/storage
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># unmount the directory from your container&#39;s /app/storage directory, relative to the container root (/)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku storage:unmount node-js-app /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># unmount the docker volume from your container&#39;s /app/storage directory, relative to the container root (/)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>dokku storage:unmount node-js-app some-docker-volume:/app/storage
 </code></pre></div>
 <p>Once persistent storage is unmounted, the app requires a restart. See the <a href="../../processes/process-management/">process scaling documentation</a> for more information.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku ps:restart app-name
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku ps:restart app-name
 </code></pre></div>
 <h3 id="displaying-storage-reports-for-an-app">Displaying storage reports for an app</h3>
 <div class="admonition tip">
@@ -2718,47 +2766,47 @@
 <p>Introduced in 0.8.1</p>
 </div>
 <p>You can get a report about the app's storage status using the <code>storage:report</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku storage:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku storage:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app storage information
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Storage build mounts:
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>=====&gt; python-sample storage information
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Storage build mounts:
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Storage deploy mounts:
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Storage run mounts:
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>=====&gt; ruby-sample storage information
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Storage build mounts:
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       Storage deploy mounts:
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       Storage run mounts:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>=====&gt; node-js-app storage information
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       Storage build mounts:
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>=====&gt; python-sample storage information
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>       Storage build mounts:
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>       Storage deploy mounts:
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>       Storage run mounts:
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>=====&gt; ruby-sample storage information
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>       Storage build mounts:
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>       Storage deploy mounts:
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>       Storage run mounts:
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can run the command for a specific app also.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku storage:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku storage:report node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app storage information
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Storage build mounts:
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>=====&gt; node-js-app storage information
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>       Storage build mounts:
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku storage:report node-js-app --storage-deploy-mounts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku storage:report node-js-app --storage-deploy-mounts
 </code></pre></div>
 <h2 id="use-cases">Use Cases</h2>
 <h3 id="sharing-storage-across-deploys">Sharing storage across deploys</h3>
@@ -2771,7 +2819,7 @@
 <p>Your app may have services that are running in memory and need to be backed up locally (like a key store). Mount a non ephemeral storage mount will allow backups that are not lost when the app is shut down.</p>
 <h3 id="build-phase">Build phase</h3>
 <p>By default, Dokku will only bind storage mounts during the deploy and run phases. Under certain conditions, one might want to bind a storage mount during the build phase. This can be accomplished by using the <code>docker-options</code> plugin directly.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku docker-options:add node-js-app build <span class="s2">&quot;-v /tmp/python-test:/opt/test&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku docker-options:add node-js-app build <span class="s2">&quot;-v /tmp/python-test:/opt/test&quot;</span>
 </code></pre></div>
 <p>You cannot use mounted volumes during the build phase of a Dockerfile deploy. This is because Docker does not support volumes when executing <code>docker build</code>.</p>
 <div class="admonition warning">
