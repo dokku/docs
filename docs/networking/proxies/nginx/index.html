@@ -3174,35 +3174,44 @@
 </ul>
 <p>These are provided as an alternative to the generic Nginx error page, are shared for <em>all</em> applications, and their contents are located on disk at <code>/var/lib/dokku/data/nginx-vhosts/dokku-errors</code>. To customize them for a specific app, create a custom <code>nginx.conf.sigil</code> as described above and change the paths to point elsewhere.</p>
 <h3 id="default-site">Default site</h3>
-<p>By default, Dokku will route any received request with an unknown HOST header value to the lexicographically first site in the nginx config stack. If this is not the desired behavior, you may want to add the following configuration to the global nginx configuration.</p>
+<p>By default, Dokku will route any received request with an unknown HOST header value to the lexicographically first site in the nginx config stack.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>some versions of Nginx may create a default site when installed. This site is simply a static page which says "Welcome to Nginx", and if this default site is enabled, Nginx will not route any requests with an unknown HOST header to Dokku. If you want Dokku to receive all requests, run the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>rm /etc/nginx/sites-enabled/default
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>dokku nginx:stop
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>dokku nginx:start
+</code></pre></div>
+</div>
+<p>If Dokku handling all requests is not the desired behavior, you may want to add the following configuration to the global nginx configuration.</p>
 <p>Create the file at <code>/etc/nginx/conf.d/00-default-vhost.conf</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">410</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="c1"># To handle HTTPS requests, you can uncomment the following section.</span>
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="c1">#</span>
-<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="c1"># Please note that in order to let this work as expected, you need a valid</span>
-<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="c1"># SSL certificate for any domains being served. Browsers will show SSL</span>
-<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="c1"># errors in all other cases.</span>
-<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="c1">#</span>
-<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="c1"># Note that the key and certificate files in the below example need to</span>
-<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="c1"># be copied into /etc/nginx/ssl/ folder.</span>
-<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a><span class="c1">#</span>
-<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a><span class="c1"># server {</span>
-<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a><span class="c1">#     listen 443 ssl;</span>
-<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="c1">#     listen [::]:443 ssl;</span>
-<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a><span class="c1">#     server_name _;</span>
-<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a><span class="c1">#     ssl_certificate /etc/nginx/ssl/cert.crt;</span>
-<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="c1">#     ssl_certificate_key /etc/nginx/ssl/cert.key;</span>
-<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a><span class="c1">#     access_log off;</span>
-<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a><span class="c1">#     return 410;</span>
-<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a><span class="c1"># }</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">410</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="c1"># To handle HTTPS requests, you can uncomment the following section.</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="c1">#</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="c1"># Please note that in order to let this work as expected, you need a valid</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="c1"># SSL certificate for any domains being served. Browsers will show SSL</span>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="c1"># errors in all other cases.</span>
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="c1">#</span>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="c1"># Note that the key and certificate files in the below example need to</span>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="c1"># be copied into /etc/nginx/ssl/ folder.</span>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="c1">#</span>
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="c1"># server {</span>
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="c1">#     listen 443 ssl;</span>
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="c1">#     listen [::]:443 ssl;</span>
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="c1">#     server_name _;</span>
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="c1">#     ssl_certificate /etc/nginx/ssl/cert.crt;</span>
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="c1">#     ssl_certificate_key /etc/nginx/ssl/cert.key;</span>
+<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="c1">#     access_log off;</span>
+<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="c1">#     return 410;</span>
+<a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a><span class="c1"># }</span>
 </code></pre></div>
 <p>Make sure to reload nginx after creating this file by running <code>service nginx reload</code>.</p>
 <p>This will catch all unknown HOST header values and return a <code>410 Gone</code> response. You can replace the <code>return 410;</code> with <code>return 444;</code> which will cause nginx to not respond to requests that do not match known domains (connection refused).</p>
