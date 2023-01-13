@@ -27,21 +27,21 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/advanced-usage/plugin-management/">
+        <link rel="canonical" href="https://dokku.com/docs/deployment/continuous-integration/github-actions/">
       
-      <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
+      <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
     
     
       
-        <title>Plugin Management - Dokku Documentation</title>
+        <title>GitHub Actions - Dokku Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
@@ -65,9 +65,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/extra.css">
+      <link rel="stylesheet" href="../../../assets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,7 +77,7 @@
   <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
   <link
     rel="stylesheet"
-    href="../../overrides/assets/stylesheets/main.css"
+    href="../../../overrides/assets/stylesheets/main.css"
   />
 
   </head>
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#plugin-management" class="md-skip">
+        <a href="#github-actions" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/advanced-usage/plugin-management/">
+  <a href="/docs/deployment/continuous-integration/github-actions/">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -148,9 +148,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Plugin Management
+              GitHub Actions
             
           </span>
         </div>
@@ -278,7 +278,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../getting-started/installation/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../getting-started/installation/" class="md-tabs__link md-tabs__link--active">
         Docs
       </a>
     </li>
@@ -358,9 +358,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     Dokku Documentation
@@ -517,7 +517,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../getting-started/installation/">Getting Started with Dokku</a>
+          <a href="../../../getting-started/installation/">Getting Started with Dokku</a>
           
             <label for="__nav_1_1_1">
               <span class="md-nav__icon md-icon"></span>
@@ -540,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/advanced-installation/" class="md-nav__link">
+      <a href="../../../getting-started/advanced-installation/" class="md-nav__link">
         Advanced installation
       </a>
     </li>
@@ -554,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/azure/" class="md-nav__link">
+      <a href="../../../getting-started/install/azure/" class="md-nav__link">
         Microsoft Azure Installation Notes
       </a>
     </li>
@@ -568,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/debian/" class="md-nav__link">
+      <a href="../../../getting-started/install/debian/" class="md-nav__link">
         Debian Package Installation Notes
       </a>
     </li>
@@ -582,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/digitalocean/" class="md-nav__link">
+      <a href="../../../getting-started/install/digitalocean/" class="md-nav__link">
         DigitalOcean Droplet Installation Notes
       </a>
     </li>
@@ -596,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/docker/" class="md-nav__link">
+      <a href="../../../getting-started/install/docker/" class="md-nav__link">
         Docker Installation Notes
       </a>
     </li>
@@ -610,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/dreamhost/" class="md-nav__link">
+      <a href="../../../getting-started/install/dreamhost/" class="md-nav__link">
         DreamHost Cloud Server Installation Notes
       </a>
     </li>
@@ -624,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/vagrant/" class="md-nav__link">
+      <a href="../../../getting-started/install/vagrant/" class="md-nav__link">
         Vagrant Installation Notes
       </a>
     </li>
@@ -694,7 +694,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../getting-started/upgrading/">Upgrading</a>
+          <a href="../../../getting-started/upgrading/">Upgrading</a>
           
             <label for="__nav_1_1_2">
               <span class="md-nav__icon md-icon"></span>
@@ -717,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.29.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.29.0-migration-guide/" class="md-nav__link">
         0.29.0 Migration Guide
       </a>
     </li>
@@ -731,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.28.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.28.0-migration-guide/" class="md-nav__link">
         0.28.0 Migration Guide
       </a>
     </li>
@@ -745,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.27.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.27.0-migration-guide/" class="md-nav__link">
         0.27.0 Migration Guide
       </a>
     </li>
@@ -759,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.26.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.26.0-migration-guide/" class="md-nav__link">
         0.26.0 Migration Guide
       </a>
     </li>
@@ -773,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.25.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.25.0-migration-guide/" class="md-nav__link">
         0.25.0 Migration Guide
       </a>
     </li>
@@ -787,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.24.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.24.0-migration-guide/" class="md-nav__link">
         0.24.0 Migration Guide
       </a>
     </li>
@@ -801,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.23.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.23.0-migration-guide/" class="md-nav__link">
         0.23.0 Migration Guide
       </a>
     </li>
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.22.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.22.0-migration-guide/" class="md-nav__link">
         0.22.0 Migration Guide
       </a>
     </li>
@@ -829,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.21.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.21.0-migration-guide/" class="md-nav__link">
         0.21.0 Migration Guide
       </a>
     </li>
@@ -843,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.20.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.20.0-migration-guide/" class="md-nav__link">
         0.20.0 Migration Guide
       </a>
     </li>
@@ -857,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.10.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.10.0-migration-guide/" class="md-nav__link">
         0.10.0 Migration Guide
       </a>
     </li>
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.9.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.9.0-migration-guide/" class="md-nav__link">
         0.9.0 Migration Guide
       </a>
     </li>
@@ -885,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.8.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.8.0-migration-guide/" class="md-nav__link">
         0.8.0 Migration Guide
       </a>
     </li>
@@ -899,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.7.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.7.0-migration-guide/" class="md-nav__link">
         0.7.0 Migration Guide
       </a>
     </li>
@@ -913,7 +913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.6.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.6.0-migration-guide/" class="md-nav__link">
         0.6.0 Migration Guide
       </a>
     </li>
@@ -927,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.5.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.5.0-migration-guide/" class="md-nav__link">
         0.5.0 Migration Guide
       </a>
     </li>
@@ -948,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/uninstalling/" class="md-nav__link">
+      <a href="../../../getting-started/uninstalling/" class="md-nav__link">
         Uninstalling
       </a>
     </li>
@@ -962,7 +962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/troubleshooting/" class="md-nav__link">
+      <a href="../../../getting-started/troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -976,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/where-to-get-help/" class="md-nav__link">
+      <a href="../../../getting-started/where-to-get-help/" class="md-nav__link">
         Where to Get Help
       </a>
     </li>
@@ -1029,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../enterprise/pro/" class="md-nav__link">
+      <a href="../../../enterprise/pro/" class="md-nav__link">
         Dokku Pro
       </a>
     </li>
@@ -1092,7 +1092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/application-deployment/" class="md-nav__link">
+      <a href="../../application-deployment/" class="md-nav__link">
         Deploying an Application
       </a>
     </li>
@@ -1106,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/application-management/" class="md-nav__link">
+      <a href="../../application-management/" class="md-nav__link">
         Application Management
       </a>
     </li>
@@ -1120,7 +1120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/logs/" class="md-nav__link">
+      <a href="../../logs/" class="md-nav__link">
         Log Management
       </a>
     </li>
@@ -1134,7 +1134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/remote-commands/" class="md-nav__link">
+      <a href="../../remote-commands/" class="md-nav__link">
         Remote Commands
       </a>
     </li>
@@ -1148,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/user-management/" class="md-nav__link">
+      <a href="../../user-management/" class="md-nav__link">
         User Management
       </a>
     </li>
@@ -1162,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/zero-downtime-deploys/" class="md-nav__link">
+      <a href="../../zero-downtime-deploys/" class="md-nav__link">
         Zero Downtime Deploy Checks
       </a>
     </li>
@@ -1225,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/builder-management/" class="md-nav__link">
+      <a href="../../builders/builder-management/" class="md-nav__link">
         Builder Management
       </a>
     </li>
@@ -1239,7 +1239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
+      <a href="../../builders/cloud-native-buildpacks/" class="md-nav__link">
         Cloud Native Buildpacks
       </a>
     </li>
@@ -1253,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
+      <a href="../../builders/herokuish-buildpacks/" class="md-nav__link">
         Herokuish Buildpacks
       </a>
     </li>
@@ -1267,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/dockerfiles/" class="md-nav__link">
+      <a href="../../builders/dockerfiles/" class="md-nav__link">
         Dockerfile Deployment
       </a>
     </li>
@@ -1281,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/lambda/" class="md-nav__link">
+      <a href="../../builders/lambda/" class="md-nav__link">
         Lambda Builder
       </a>
     </li>
@@ -1295,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/null/" class="md-nav__link">
+      <a href="../../builders/null/" class="md-nav__link">
         Null Builder
       </a>
     </li>
@@ -1348,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/git/" class="md-nav__link">
+      <a href="../../methods/git/" class="md-nav__link">
         Git Deployment
       </a>
     </li>
@@ -1405,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/environment-variables/" class="md-nav__link">
+      <a href="../../../configuration/environment-variables/" class="md-nav__link">
         Environment Variables
       </a>
     </li>
@@ -1419,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/domains/" class="md-nav__link">
+      <a href="../../../configuration/domains/" class="md-nav__link">
         Domain Configuration
       </a>
     </li>
@@ -1433,7 +1433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/ssl/" class="md-nav__link">
+      <a href="../../../configuration/ssl/" class="md-nav__link">
         SSL Configuration
       </a>
     </li>
@@ -1492,7 +1492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/entering-containers/" class="md-nav__link">
+      <a href="../../../processes/entering-containers/" class="md-nav__link">
         Entering containers
       </a>
     </li>
@@ -1506,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/one-off-tasks/" class="md-nav__link">
+      <a href="../../../processes/one-off-tasks/" class="md-nav__link">
         One-off Tasks
       </a>
     </li>
@@ -1520,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/process-management/" class="md-nav__link">
+      <a href="../../../processes/process-management/" class="md-nav__link">
         Process Management
       </a>
     </li>
@@ -1534,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/scheduled-cron-tasks/" class="md-nav__link">
+      <a href="../../../processes/scheduled-cron-tasks/" class="md-nav__link">
         Scheduled Cron Tasks
       </a>
     </li>
@@ -1591,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/dns/" class="md-nav__link">
+      <a href="../../../networking/dns/" class="md-nav__link">
         DNS Configuration
       </a>
     </li>
@@ -1605,7 +1605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/network/" class="md-nav__link">
+      <a href="../../../networking/network/" class="md-nav__link">
         Network Management
       </a>
     </li>
@@ -1619,7 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/port-management/" class="md-nav__link">
+      <a href="../../../networking/port-management/" class="md-nav__link">
         Port Management
       </a>
     </li>
@@ -1678,7 +1678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxy-management/" class="md-nav__link">
+      <a href="../../../networking/proxy-management/" class="md-nav__link">
         Proxy Management
       </a>
     </li>
@@ -1692,7 +1692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/caddy/" class="md-nav__link">
+      <a href="../../../networking/proxies/caddy/" class="md-nav__link">
         Caddy Proxy
       </a>
     </li>
@@ -1706,7 +1706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/nginx/" class="md-nav__link">
+      <a href="../../../networking/proxies/nginx/" class="md-nav__link">
         Nginx Proxy
       </a>
     </li>
@@ -1720,7 +1720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/traefik/" class="md-nav__link">
+      <a href="../../../networking/proxies/traefik/" class="md-nav__link">
         Traefik Proxy
       </a>
     </li>
@@ -1739,16 +1739,14 @@
               
   
   
-    
-  
   
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_10" type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_10" type="checkbox" id="__nav_1_10" >
       
       
       
@@ -1791,7 +1789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup-recovery/" class="md-nav__link">
+      <a href="../../../advanced-usage/backup-recovery/" class="md-nav__link">
         Backup and Recovery
       </a>
     </li>
@@ -1805,7 +1803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployment-tasks/" class="md-nav__link">
+      <a href="../../../advanced-usage/deployment-tasks/" class="md-nav__link">
         Deployment Tasks
       </a>
     </li>
@@ -1819,7 +1817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-options/" class="md-nav__link">
+      <a href="../../../advanced-usage/docker-options/" class="md-nav__link">
         Docker Container Options
       </a>
     </li>
@@ -1833,7 +1831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../registry-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/registry-management/" class="md-nav__link">
         Registry Management
       </a>
     </li>
@@ -1847,7 +1845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../event-logs/" class="md-nav__link">
+      <a href="../../../advanced-usage/event-logs/" class="md-nav__link">
         Dokku Event Logs
       </a>
     </li>
@@ -1861,7 +1859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../persistent-storage/" class="md-nav__link">
+      <a href="../../../advanced-usage/persistent-storage/" class="md-nav__link">
         Persistent Storage
       </a>
     </li>
@@ -1873,121 +1871,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Plugin Management
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../advanced-usage/plugin-management/" class="md-nav__link">
         Plugin Management
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#listing-plugins" class="md-nav__link">
-    Listing Plugins
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checking-if-a-plugin-is-installed" class="md-nav__link">
-    Checking if a plugin is installed
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-a-plugin" class="md-nav__link">
-    Installing a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-plugin-dependencies" class="md-nav__link">
-    Installing plugin dependencies
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updating-a-plugin" class="md-nav__link">
-    Updating a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uninstalling-a-plugin" class="md-nav__link">
-    Uninstalling a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disabling-a-plugin" class="md-nav__link">
-    Disabling a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enabling-a-plugin" class="md-nav__link">
-    Enabling a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triggering-a-plugin-trigger" class="md-nav__link">
-    Triggering a plugin trigger
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1999,7 +1887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/repository-management/" class="md-nav__link">
         Repository Management
       </a>
     </li>
@@ -2013,7 +1901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resource-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/resource-management/" class="md-nav__link">
         Resource Management
       </a>
     </li>
@@ -2074,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/scheduler-management/" class="md-nav__link">
+      <a href="../../schedulers/scheduler-management/" class="md-nav__link">
         Scheduler Management
       </a>
     </li>
@@ -2088,7 +1976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/docker-local/" class="md-nav__link">
+      <a href="../../schedulers/docker-local/" class="md-nav__link">
         Docker Local Scheduler
       </a>
     </li>
@@ -2102,7 +1990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/kubernetes/" class="md-nav__link">
+      <a href="../../schedulers/kubernetes/" class="md-nav__link">
         Kubernetes Scheduler
       </a>
     </li>
@@ -2116,7 +2004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/nomad/" class="md-nav__link">
+      <a href="../../schedulers/nomad/" class="md-nav__link">
         Nomad Scheduler
       </a>
     </li>
@@ -2130,7 +2018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/null/" class="md-nav__link">
+      <a href="../../schedulers/null/" class="md-nav__link">
         Null Scheduler
       </a>
     </li>
@@ -2189,7 +2077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/plugin-creation/" class="md-nav__link">
+      <a href="../../../development/plugin-creation/" class="md-nav__link">
         Plugin creation
       </a>
     </li>
@@ -2203,7 +2091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/plugin-triggers/" class="md-nav__link">
+      <a href="../../../development/plugin-triggers/" class="md-nav__link">
         Plugin triggers
       </a>
     </li>
@@ -2217,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/testing/" class="md-nav__link">
+      <a href="../../../development/testing/" class="md-nav__link">
         Running Tests
       </a>
     </li>
@@ -2231,7 +2119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/release-process/" class="md-nav__link">
+      <a href="../../../development/release-process/" class="md-nav__link">
         Release Process
       </a>
     </li>
@@ -2250,14 +2138,16 @@
               
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_13" type="checkbox" id="__nav_1_13" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_13" type="checkbox" id="__nav_1_13" checked>
       
       
       
@@ -2286,11 +2176,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/github-actions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         GitHub Actions
       </a>
+      
     </li>
   
 
@@ -2302,7 +2202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
+      <a href="../gitlab-ci/" class="md-nav__link">
         GitLab CI
       </a>
     </li>
@@ -2316,7 +2216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/generic/" class="md-nav__link">
+      <a href="../generic/" class="md-nav__link">
         Generic CI/CD Integration
       </a>
     </li>
@@ -2371,7 +2271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../community/clients/" class="md-nav__link">
+      <a href="../../../community/clients/" class="md-nav__link">
         Clients
       </a>
     </li>
@@ -2385,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../community/plugins/" class="md-nav__link">
+      <a href="../../../community/plugins/" class="md-nav__link">
         Plugins
       </a>
     </li>
@@ -2486,90 +2386,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#listing-plugins" class="md-nav__link">
-    Listing Plugins
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checking-if-a-plugin-is-installed" class="md-nav__link">
-    Checking if a plugin is installed
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-a-plugin" class="md-nav__link">
-    Installing a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-plugin-dependencies" class="md-nav__link">
-    Installing plugin dependencies
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updating-a-plugin" class="md-nav__link">
-    Updating a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uninstalling-a-plugin" class="md-nav__link">
-    Uninstalling a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disabling-a-plugin" class="md-nav__link">
-    Disabling a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enabling-a-plugin" class="md-nav__link">
-    Enabling a plugin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triggering-a-plugin-trigger" class="md-nav__link">
-    Triggering a plugin trigger
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2580,201 +2396,38 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/dokku/dokku/edit/master/docs/advanced-usage/plugin-management.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/continuous-integration/github-actions.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<h1 id="plugin-management">Plugin Management</h1>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.4.0</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>plugin:disable &lt;name&gt;                    # Disable an installed plugin (third-party only)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>plugin:enable &lt;name&gt;                     # Enable a previously disabled plugin
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>plugin:install [--core|git-url [--committish tag|branch|commit|--name custom-plugin-name]]           # Optionally download git-url (with custom tag/committish) &amp; run install trigger for active plugins (or only core ones)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>plugin:installed &lt;name&gt;                  # Checks if a plugin is installed
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>plugin:install-dependencies [--core]     # Run install-dependencies trigger for active plugins (or only core ones)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>plugin:list                              # Print active plugins
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>plugin:trigger &lt;args...&gt;.                # Trigger an arbitrary plugin hook
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>plugin:uninstall &lt;name&gt;                  # Uninstall a plugin (third-party only)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>plugin:update [name [committish]]        # Optionally update named plugin from git (with custom tag/committish) &amp; run update trigger for active plugins
+<h1 id="github-actions">GitHub Actions</h1>
+<p>The Dokku project has an official GitHub Action available on the <a href="https://github.com/marketplace/actions/dokku">GitHub Marketplace</a>. The simplest usage example is as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;deploy&#39;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">on</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cloning repo</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to dokku</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dokku/github-action@master</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">          </span><span class="nt">git_remote_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ssh://dokku@dokku.me:22/appname&#39;</span><span class="w"></span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">          </span><span class="nt">ssh_private_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SSH_PRIVATE_KEY }}</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># for 0.3.x</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span> /var/lib/dokku/plugins
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git clone &lt;git url&gt;
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>dokku plugins-install
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>These commands require <code>root</code> permissions as the <code>install</code> and <code>install-dependencies</code> plugin triggers may utilize commands such as <code>apt-get</code>. For non-core plugins, please inspect those plugins before running the following command as <code>root</code> user.</p>
-</div>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-plugins">Listing Plugins</h3>
-<p>Installed plugins can be listed via the <code>plugin:list</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku plugin:list
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>plugn: dev
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  00_dokku-standard    0.29.3 enabled    dokku core standard plugin
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  20_events            0.29.3 enabled    dokku core events logging plugin
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  app-json             0.29.3 enabled    dokku core app-json plugin
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  apps                 0.29.3 enabled    dokku core apps plugin
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  build-env            0.29.3 enabled    dokku core build-env plugin
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  buildpacks           0.29.3 enabled    dokku core buildpacks plugin
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  certs                0.29.3 enabled    dokku core certificate management plugin
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  checks               0.29.3 enabled    dokku core checks plugin
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  common               0.29.3 enabled    dokku core common plugin
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  config               0.29.3 enabled    dokku core config plugin
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  docker-options       0.29.3 enabled    dokku core docker-options plugin
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  domains              0.29.3 enabled    dokku core domains plugin
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  enter                0.29.3 enabled    dokku core enter plugin
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  git                  0.29.3 enabled    dokku core git plugin
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  logs                 0.29.3 enabled    dokku core logs plugin
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  network              0.29.3 enabled    dokku core network plugin
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>  nginx-vhosts         0.29.3 enabled    dokku core nginx-vhosts plugin
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>  plugin               0.29.3 enabled    dokku core plugin plugin
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  proxy                0.29.3 enabled    dokku core proxy plugin
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  ps                   0.29.3 enabled    dokku core ps plugin
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  repo                 0.29.3 enabled    dokku core repo plugin
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  resource             0.29.3 enabled    dokku core resource plugin
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  scheduler-docker-local 0.29.3 enabled    dokku core scheduler-docker-local plugin
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  shell                0.29.3 enabled    dokku core shell plugin
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  ssh-keys             0.29.3 enabled    dokku core ssh-keys plugin
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>  storage              0.29.3 enabled    dokku core storage plugin
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>  tags                 0.29.3 enabled    dokku core tags plugin
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  tar                  0.29.3 enabled    dokku core tar plugin
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>  trace                0.29.3 enabled    dokku core trace plugin
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>All plugin commands other than <code>plugin:list</code> and <code>plugin:help</code> require sudo access and must be run directly from the Dokku server.</p>
-</div>
-<h3 id="checking-if-a-plugin-is-installed">Checking if a plugin is installed</h3>
-<p>You can check if a plugin has been installed via the <code>plugin:installed</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku plugin:installed postgres
-</code></pre></div>
-<h3 id="installing-a-plugin">Installing a plugin</h3>
-<p>Installing a plugin is easy as well using the <code>plugin:install</code> command. This command will also trigger the <code>install</code> pluginhook on all existing plugins.</p>
-<p>The most common usage is to install a plugin from a url. This url may be any of the following:</p>
-<ul>
-<li><code>git</code>: For git+ssh based plugin repository clones.</li>
-<li><code>ssh</code>: For git+ssh based plugin repository clones.</li>
-<li><code>file</code>: For copying plugins from a path on disk.</li>
-<li><code>https</code>: For http based plugin repository clones.</li>
-</ul>
-<p>Additionally, any urls with the extensions <code>.tar.gz</code> or <code>.tgz</code> are treated as Gzipped Tarballs for installation purposes and will be downloaded and extracted into place.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku plugin:install https://github.com/dokku/dokku-postgres.git
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----&gt; Cloning plugin repo https://github.com/dokku/dokku-postgres.git to /var/lib/dokku/plugins/available/postgres
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Cloning into &#39;postgres&#39;...
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>remote: Counting objects: 646, done.
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>remote: Total 646 (delta 0), reused 0 (delta 0), pack-reused 646
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Receiving objects: 100% (646/646), 134.24 KiB | 0 bytes/s, done.
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Resolving deltas: 100% (406/406), done.
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Checking connectivity... done.
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>-----&gt; Plugin postgres enabled
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>For git-based plugin installation, a commit SHA-like object may be specified (tag/branch/commit sha) via the <code>--committish</code> argument and Dokku will attempt to install the specified commit object.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># where 2.0.0 is a potential git tag</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku plugin:install https://github.com/dokku/dokku-postgres.git --committish <span class="m">2</span>.0.0
-</code></pre></div>
-<p>Plugin names are interpolated based on the repository name minus the <code>dokku-</code> prefix. If the plugin being installed has a name other than what matches the repository name - or another name is desired - the <code>--name</code> flag can be used to override this interpolation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku plugin:install https://github.com/dokku/smoke-test-plugin.git --name smoke-test-plugin
-</code></pre></div>
-<p>The <code>--core</code> flag may also be indicated as the sole argument, though it is only for installation of core plugins, and thus not useful for end-user installations.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku plugin:install --core
-</code></pre></div>
-<p>Finally, all flags may be omitted to trigger the <code>install</code> procedures for both core and third-party plugins:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku plugin:install
-</code></pre></div>
-<h3 id="installing-plugin-dependencies">Installing plugin dependencies</h3>
-<p>In some cases, plugins will have system-level dependencies. These are not automatically installed via <code>plugin:install</code>, and must be separately via the <code>plugin:install-dependencies</code> command. This will run through all the <code>dependencies</code> trigger for all plugins.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku plugin:install-dependencies
-</code></pre></div>
-<p>This command may also target <em>just</em> core plugins via the <code>--core</code> flag. This is usually only useful for source-based installs of Dokku.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku plugin:install-dependencies --core
-</code></pre></div>
-<h3 id="updating-a-plugin">Updating a plugin</h3>
-<p>An installed, third-party plugin can be updated can updated via the <code>plugin:update</code> command. This should be done after any upgrades of Dokku as there may be changes in the internal api that require an update of how the plugin interfaces with Dokku.</p>
-<p>Please note that this command is only valid for plugin installs that were backed by a git-repository.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku plugin:update postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Plugin (postgres) updated
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>An optional commit SHA-like object may be specified.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku plugin:update postgres <span class="m">2</span>.0.0
-</code></pre></div>
-<h3 id="uninstalling-a-plugin">Uninstalling a plugin</h3>
-<p>Third party plugins can be uninstalled using the <code>plugin:uninstall</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku plugin:uninstall postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>-----&gt; Plugin postgres uninstalled
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="disabling-a-plugin">Disabling a plugin</h3>
-<p>Disabling a plugin can also be useful for debugging whether a third-party plugin is causing issues in a Dokku installation. Another common use case is for disabling core functionality for replacement with a third-party plugin.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku plugin:disable postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>-----&gt; Plugin postgres disabled
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="enabling-a-plugin">Enabling a plugin</h3>
-<p>Disabled plugins can be re-enabled via the <code>plugin:enable</code> command.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku plugin:enable postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>-----&gt; Plugin postgres enabled
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger</h3>
-<p>The <code>plugin:trigger</code> can be used to call any internal plugin trigger. This may have unintended consequences, and thus should only be called for development or debugging purposes.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku plugin:trigger some-internal-trigger args-go-here
-</code></pre></div>
+<p>For further usage documentation and other advanced examples, see the entry on the <a href="https://github.com/marketplace/actions/dokku">GitHub Marketplace</a>.</p>
 
 
 
@@ -2798,7 +2451,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../persistent-storage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Persistent Storage" rel="prev">
+        <a href="../../../development/release-process/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Release Process" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2807,20 +2460,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Persistent Storage
+              Release Process
             </div>
           </div>
         </a>
       
       
         
-        <a href="../repository-management/" class="md-footer__link md-footer__link--next" aria-label="Next: Repository Management" rel="next">
+        <a href="../gitlab-ci/" class="md-footer__link md-footer__link--next" aria-label="Next: GitLab CI" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Repository Management
+              GitLab CI
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -2927,16 +2580,16 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
     
 
   <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
-  <script src="../../overrides/assets/javascripts/bundle.js"></script>
+  <script src="../../../overrides/assets/javascripts/bundle.js"></script>
 
   </body>
 </html>
