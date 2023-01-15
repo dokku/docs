@@ -2790,11 +2790,7 @@
 </div>
 </div>
 <h3 id="routing-an-app-to-a-known-ipport-combination">Routing an app to a known ip:port combination</h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.25.0</p>
-</div>
-<p>In some cases, it may be necessary to route an app to an existing <code>$IP:$PORT</code> combination. This is particularly the case for internal admin tools or services that aren't run by Dokku but have a web ui that would benefit from being exposed by Dokku. This can be done by setting a value for <code>static-web-lister</code> and running a few other commands when creating an app.</p>
+<p>In some cases, it may be necessary to route an app to an existing <code>$IP:$PORT</code> combination. This is particularly the case for internal admin tools or services that aren't run by Dokku but have a web ui that would benefit from being exposed by Dokku. This can be done by using a proxy application and routing requests through that.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># for a service listening on:</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># - ip address: 127.0.0.1</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># - port: 8080</span>
@@ -2802,24 +2798,22 @@
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># create the app</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>dokku apps:create local-app
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># set the builder to the null builder, which does nothing</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>dokku builder:set local-app selected null
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># add an extra host that maps host.docker.internal to the docker gateway</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>dokku docker-options:add local-app deploy <span class="s2">&quot;--add-host=host.docker.internal:host-gateway&quot;</span>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># set the scheduler to the null scheduler, which does nothing</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>dokku scheduler:set local-app selected null
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># set the SERVICE_HOST to the mapped hostname</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>dokku config:set local-app <span class="nv">SERVICE_HOST</span><span class="o">=</span>host.docker.internal
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1"># set the static-web-listener network property to the ip:port combination for your app.</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>dokku network:set local-app static-web-listener <span class="m">127</span>.0.0.1:8080
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1"># set the SERVICE_PORT to the port combination for your app</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>dokku config:set local-app <span class="nv">SERVICE_PORT</span><span class="o">=</span><span class="m">8080</span>
 <a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1"># set the port map as desired for the port specified in your static-web-listener</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>dokku proxy:ports-set local-app http:80:8080
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1"># set the domains desired</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>dokku domains:set local-app local-app.dokku.me
 <a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
-<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># set the domains desired</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>dokku domains:set local-app local-app.dokku.me
-<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>
-<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>dokku proxy:build-config local-app
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># deploy the service-proxy service</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>dokku git:from-image service-proxy dokku/service-proxy:latest
 </code></pre></div>
-<p>Only a single <code>$IP:$PORT</code> combination can be routed to for a given app, and that <code>$IP:$PORT</code> combination <em>must</em> be accessible to the proxy, or requests to the app may not resolve.</p>
+<p>Only a single <code>$IP:$PORT</code> combination can be routed to for a given app, and that <code>$IP:$PORT</code> combination <em>must</em> be accessible to the service proxy on initial deploy, or the service proxy won't start.</p>
 <h3 id="attaching-an-app-to-a-network">Attaching an app to a network</h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
