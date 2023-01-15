@@ -1191,6 +1191,19 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-remote" class="md-nav__link">
+    Specifying a remote
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2486,6 +2499,19 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-remote" class="md-nav__link">
+    Specifying a remote
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2588,6 +2614,14 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 </ul>
 </li>
 </ul>
+<h4 id="specifying-a-remote">Specifying a remote</h4>
+<p>While many users will only ever push to a single dokku remote from a given repository, it may be useful to point the same repository at multiple remotes, especially in the case of pre-production environments. This can be done via the <code>remote</code> commands. These commands are <em>only</em> available within the official remote client, and are not server-side commands.</p>
+<p>To see your currently configured remote, run <code>dokku remote</code>. This will respect the <code>--remote</code> flag.</p>
+<p>To list all available remotes, run <code>dokku remote:list</code>. This is equivalent to running <code>git remote</code>.</p>
+<p>To add a remote, run <code>dokku remote:add $REMOTE_NAME dokku@dokku.me:$APP_NAME</code>, replacing <code>$REMOTE_NAME</code> with your desired remote name, the <code>$APP_NAME</code> with your desired app name and the host <code>dokku.me</code> with your Dokku host. This is equivalent to running <code>git remote add $REMOTE_NAME dokku@dokku.me:$APP_NAME</code>.</p>
+<p>To remove a remote, run <code>dokku remote:remove $REMOTE_NAME</code>. This is equivalent to running <code>git remote remove $REMOTE_NAME</code>.</p>
+<p>By default, the remote in use is <code>dokku</code>. To change the remote the client uses by default, run <code>dokku remote:set $REMOTE_NAME</code>, where <code>$REMOTE_NAME</code> is the name of your desired remote. This will not check the value specified, so that remote <em>must</em> be available or errors will occur when running normal client commands. Note that specifying <code>--remote</code> when running dokku commands will override this configuration value.</p>
+<p>To clear the configured remote, run <code>dokku remote:unset</code>. The client will unset the configured remote, and will default back to <code>dokku</code>, or the value of <code>--remote</code> if specified.</p>
 <h2 id="unofficial-clients">Unofficial Clients</h2>
 <p>Please refer to the <a href="../../community/clients/">community clients</a> list for more details.</p>
 
