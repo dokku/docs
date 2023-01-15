@@ -2433,7 +2433,7 @@
 </blockquote>
 </li>
 <li>
-<p>Connect to the server and add your ssh key to the install. Additionally, set the global domain name to <code>dokku.me</code>.</p>
+<p>Connect to the server via <code>vagrant ssh</code> and add your ssh key to the install. Additionally, set the global domain name to <code>dokku.me</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># usually your key is already available under the current user&#39;s `~/.ssh/authorized_keys` file</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat ~/.ssh/authorized_keys <span class="p">|</span> dokku ssh-keys:add admin
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
