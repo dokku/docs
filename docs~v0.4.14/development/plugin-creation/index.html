@@ -1148,9 +1148,9 @@
 <p>If you create your own plugin:</p>
 <ol>
 <li>Take a look at the plugins shipped with dokku and hack away!</li>
-<li>Check out the <a href="http://dokku.viewdocs.io/dokku/development/plugin-triggers">list of triggers</a> your plugin can implement.</li>
+<li>Check out the <a href="https://dokku.com/docs/development/plugin-triggers">list of triggers</a> your plugin can implement.</li>
 <li>Upload your plugin to github with a repository name in form of <code>dokku-&lt;name&gt;</code> (e.g. <code>dokku-mariadb</code>)</li>
-<li>Edit <a href="http://dokku.viewdocs.io/dokku/plugins">this page</a> and add a link to it.</li>
+<li>Edit <a href="https://dokku.com/docs/plugins">this page</a> and add a link to it.</li>
 <li>Subscribe to the <a href="http://progrium.com">dokku development blog</a> to be notified about API changes and releases</li>
 </ol>
 <h3 id="sample-plugin">Sample plugin</h3>
@@ -1223,7 +1223,7 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dokku config:unset --no-restart APP KEY1 <span class="o">[</span>KEY2 ...<span class="o">]</span>
 </code></pre></div>
 - From time to time you may want to allow other plugins access to (some of) your plugin's functionality. You can expose this by including a <code>functions</code> file in your plugin for others to source. Consider all functions in that file to be publicly accessible by other plugins. Any functions not wished to be made "public" should reside within your plugin trigger or commands files.
-- As of 0.4.0, we allow image tagging and deployment of said tagged images. Therefore, hard-coding of <code>$IMAGE</code> as <code>dokku/$APP</code> is no longer sufficient. Instead, for non <code>pre/post-build-*</code> plugins, use <code>get_running_image_tag()</code> &amp; <code>get_app_image_name()</code> as sourced from common/functions. See the <a href="http://dokku.viewdocs.io/dokku/development/plugin-triggers">plugin triggers</a> doc for examples.
+- As of 0.4.0, we allow image tagging and deployment of said tagged images. Therefore, hard-coding of <code>$IMAGE</code> as <code>dokku/$APP</code> is no longer sufficient. Instead, for non <code>pre/post-build-*</code> plugins, use <code>get_running_image_tag()</code> &amp; <code>get_app_image_name()</code> as sourced from common/functions. See the <a href="https://dokku.com/docs/development/plugin-triggers">plugin triggers</a> doc for examples.
 - As of 0.5.0, we use container labels to help cleanup intermediate containers with <code>dokku cleanup</code>. If manually calling <code>docker run</code>, include <code>$DOKKU_GLOBAL_RUN_ARGS</code>. This will ensure you intermediate containers labeled correctly.</p>
 
 

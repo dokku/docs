@@ -2109,7 +2109,7 @@ fatal: Could not read from remote repository.
 <p><strong>Solution:</strong></p>
 <p>This isn't usually an issue with Dokku, but rather an app config problem. This can happen when your application is configured to enforce secure connections/HSTS, but you don't have SSL set up for the app.</p>
 <p>In Rails at least, if your <code>application.rb</code> or <code>environmnents/production.rb</code> include the line <code>configure.force_ssl = true</code> which includes HSTS, try commenting that out and redeploying.</p>
-<p>If this solves the issue temporarily, longer term you should consider <a href="http://dokku.viewdocs.io/dokku/configuration/ssl/">configuring SSL</a>.</p>
+<p>If this solves the issue temporarily, longer term you should consider <a href="https://dokku.com/docs/configuration/ssl/">configuring SSL</a>.</p>
 
 
 
