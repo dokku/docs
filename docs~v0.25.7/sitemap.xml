@@ -136,7 +136,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dokku.com/docs/configuration/nginx/</loc>
+         <loc>https://dokku.com/docs/networking/proxies/nginx/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
     </url>

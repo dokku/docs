@@ -6,7 +6,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dokku.com/docs/advanced-installation/</loc>
+         <loc>https://dokku.com/docs/getting-started/advanced-installation/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -46,7 +46,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dokku.com/docs/installation/</loc>
+         <loc>https://dokku.com/docs/getting-started/installation/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -56,7 +56,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dokku.com/docs/plugins/</loc>
+         <loc>https://dokku.com/docs/community/plugins/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -91,7 +91,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dokku.com/docs/development/pluginhooks/</loc>
+         <loc>https://dokku.com/docs/development/plugin-triggers/</loc>
          <lastmod>2022-12-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
