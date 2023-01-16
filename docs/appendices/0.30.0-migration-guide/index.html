@@ -2459,6 +2459,7 @@
 <ul>
 <li>Support for <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a> has been removed. No major browser supports it as of 2021. Custom <code>nginx.conf.sigil</code> templates referencing spdy-related variables will continue to build until the 1.0.0 release.</li>
 <li>Support for the <code>DOKKU_SCALE</code> file - deprecated in 0.25.0 - has been removed in favor of the <code>formations</code> key in the <code>app.json</code> file. Please see the <a href="../../processes/process-management/#manually-managing-process-scaling">process management documentation</a> for more information on how to use the <code>formation</code> key of the <code>app.json</code> file.</li>
+<li>The deprecated <code>--detach</code> global flag for <code>dokku run</code> was removed. Please see the <a href="../../processes/one-off-tasks/#running-a-detached-container">one-off tasks documentation</a> for more information on running detached containers.</li>
 </ul>
 
 
