@@ -104,6 +104,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#building-the-image" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -780,9 +785,52 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deploying an image without a registry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Deploying an image without a registry
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-image" class="md-nav__link">
+    Building the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-image-onto-the-host" class="md-nav__link">
+    Loading the image onto the host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-the-image" class="md-nav__link">
+    Deploying the image
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -886,6 +934,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-image" class="md-nav__link">
+    Building the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-image-onto-the-host" class="md-nav__link">
+    Loading the image onto the host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-the-image" class="md-nav__link">
+    Deploying the image
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -909,10 +986,12 @@
 <p class="admonition-title">Note</p>
 <p>This tutorial assumes the app being deployed is named <code>node-js-app</code> and the Dokku server's hostname is <code>dokku.me</code>. Please modify these values as appropriate.</p>
 </div>
+<h3 id="building-the-image">Building the image</h3>
 <p>First, we'll assume the image is built. The following is one example for building a docker image, though your setup may vary. The image repository <em>must not</em> be <code>dokku/</code>, as that namespace is used internally for tagging images by Dokku.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># a good tag to use is the commit sha of your build</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker image build --tag app/node-js-app:2935cc3d .
 </code></pre></div>
+<h3 id="loading-the-image-onto-the-host">Loading the image onto the host</h3>
 <p>Next, we save the image to a file. This can be done with the <code>docker image save</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker image save --ouput node-js-app.tar
 </code></pre></div>
@@ -922,6 +1001,7 @@
 <p>Alternatively, you can save the image and load it in one command like so:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker image save <span class="p">|</span> ssh root@dokku.me <span class="s2">&quot;docker load&quot;</span>
 </code></pre></div>
+<h3 id="deploying-the-image">Deploying the image</h3>
 <p>Finally, we can deploy the image using the <code>git:from-image</code> Dokku command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh dokku@dokku.me git:from-image node-js-app app/node-js-app:2935cc3d
 </code></pre></div>
