@@ -1438,6 +1438,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#initializing-an-app-repository-from-a-remote-image-without-a-registry" class="md-nav__link">
+    Initializing an app repository from a remote image without a registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initializing-an-app-repository-from-a-remote-repository" class="md-nav__link">
     Initializing an app repository from a remote repository
   </a>
@@ -2554,6 +2561,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#initializing-an-app-repository-from-a-remote-image-without-a-registry" class="md-nav__link">
+    Initializing an app repository from a remote image without a registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initializing-an-app-repository-from-a-remote-repository" class="md-nav__link">
     Initializing an app repository from a remote repository
   </a>
@@ -2613,13 +2627,14 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git:auth &lt;host&gt; [&lt;username&gt; &lt;password&gt;]           # Configures netrc authentication for a given git server
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git:from-archive [--archive-type ARCHIVE_TYPE] &lt;app&gt; &lt;archive-url&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a given archive file
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git:from-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a given docker image
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git:sync [--build] &lt;app&gt; &lt;repository&gt; [&lt;git-ref&gt;] # Clone or fetch an app from remote git repo
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git:initialize &lt;app&gt;                              # Initialize a git repository for an app
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git:public-key                                    # Outputs the dokku public deploy key
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a git report for one or more apps
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)                     # Set or clear a git property for an app
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>git:status &lt;app&gt;                                  # Show the working tree status for an app
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>git:unlock &lt;app&gt; [--force]                        # Removes previous git clone folder for new deployment
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git:load-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a docker image loaded from stdin
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git:sync [--build] &lt;app&gt; &lt;repository&gt; [&lt;git-ref&gt;] # Clone or fetch an app from remote git repo
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git:initialize &lt;app&gt;                              # Initialize a git repository for an app
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git:public-key                                    # Outputs the dokku public deploy key
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a git report for one or more apps
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>git:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)                     # Set or clear a git property for an app
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>git:status &lt;app&gt;                                  # Show the working tree status for an app
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>git:unlock &lt;app&gt; [--force]                        # Removes previous git clone folder for new deployment
 </code></pre></div>
 <p>Git-based deployment has been the traditional method of deploying applications in Dokku. As of v0.12.0, Dokku introduces a few ways to customize the experience of deploying via <code>git push</code>. A Git-based deployment currently supports building applications via:</p>
 <ul>
@@ -2754,6 +2769,40 @@
 <p>Finally, if the archive url is specified as <code>--</code>, the archive will be fetched from stdin.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>curl -sSL https://github.com/dokku/smoke-test-app/releases/download/2.0.0/smoke-test-app.tar <span class="p">|</span> dokku git:from-archive node-js-app  --
 </code></pre></div>
+<h3 id="initializing-an-app-repository-from-a-remote-image-without-a-registry">Initializing an app repository from a remote image without a registry</h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.30.0</p>
+</div>
+<p>A Dokku app repository can be initialized or updated from the contents of an image archive tar file  via the <code>git:load-image</code> command. This method can be used when a Docker Registry is unavailable to act as an intermediary for storing an image, such as when building an image in CI and deploying directly from that image.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker image save dokku/node-js-getting-started:latest <span class="p">|</span> ssh dokku@dokku.me git:load-image node-js-app dokku/node-js-getting-started:latest
+</code></pre></div>
+<p>In the above example, we are saving the image to a tar file via <code>docker image save</code>, streaming that to the Dokku host, and then running <code>git:load-image</code> on the incoming stream. Dokku will build the app as if the repository contained <em>only</em> a <code>Dockerfile</code> with the following content:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">dokku/node-js-getting-started:latest</span>
+</code></pre></div>
+<p>When deploying an app via <code>git:load-image</code>, it is highly recommended to use a unique image tag when building the image. Not doing so will result in Dokku exiting <code>0</code> early as there will be no changes detected. If the image tag is reused but the underlying image is different, it is recommended to use the image digest instead of the tag. This can be retrieved via the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>docker inspect --format<span class="o">=</span><span class="s1">&#39;{{index .RepoDigests 0}}&#39;</span> <span class="nv">$IMAGE_NAME</span>
+</code></pre></div>
+<p>The resulting <code>git:load-image</code> call would then be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># where the image sha is: sha256:9d187c3025d03c033dcc71e3a284fee53be88cc4c0356a19242758bc80cab673</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>docker image save dokku/node-js-getting-started:latest <span class="p">|</span> ssh dokku@dokku.me git:load-image node-js-app dokku/node-js-getting-started@sha256:9d187c3025d03c033dcc71e3a284fee53be88cc4c0356a19242758bc80cab673
+</code></pre></div>
+<p>The <code>git:load-image</code> command can optionally take a git <code>user.name</code> and <code>user.email</code> argument (in that order) to customize the author. If the arguments are left empty, they will fallback to <code>Dokku</code> and <code>automated@dokku.sh</code>, respectively.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>docker image save dokku/node-js-getting-started:latest <span class="p">|</span> ssh dokku@dokku.me git:load-image node-js-app dokku/node-js-getting-started:latest <span class="s2">&quot;Camila&quot;</span> <span class="s2">&quot;camila@example.com&quot;</span>
+</code></pre></div>
+<p>Building an app from an image will result in the following files being extracted from the source image (with all custom paths specified for each file being respected):</p>
+<ul>
+<li>nginx.conf.sigil</li>
+<li>Procfile</li>
+</ul>
+<p>In the case where the repository is later modified to manually add any of the above files and deployed via <code>git push</code>, the files will still be extracted from the initial source image. To avoid this, please clear the <code>source-image</code> git property. It will be set back to the original source image on any subsequent <code>git:load-image</code> calls.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># sets an empty value</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dokku git:set node-js-app source-image
+</code></pre></div>
+<p>Finally, certain images may require a custom build context in order for <code>ONBUILD ADD</code> and <code>ONBUILD COPY</code> statements to succeed. A custom build context can be specified via the <code>--build-dir</code> flag. All files in the specified <code>build-dir</code> will be copied into the repository for use within the <code>docker build</code> process. The build context <em>must</em> be specified on each deploy, and is not otherwise persisted between builds.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>docker image save dokku/node-js-getting-started:latest <span class="p">|</span> ssh dokku@dokku.me git:load-image --build-dir path/to/build node-js-app dokku/node-js-getting-started:latest <span class="s2">&quot;Camila&quot;</span> <span class="s2">&quot;camila@example.com&quot;</span>
+</code></pre></div>
+<p>See the <a href="../../builders/dockerfiles/">dockerfile documentation</a> to learn about the different ways to configure Dockerfile-based deploys.</p>
 <h3 id="initializing-an-app-repository-from-a-remote-repository">Initializing an app repository from a remote repository</h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
@@ -2764,20 +2813,20 @@
 <p class="admonition-title">Info</p>
 <p>The application must exist before the repository can be initialized</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git
 </code></pre></div>
 <p>The <code>git:sync</code> command optionally takes an optional third parameter containing a git reference, which may be a branch, tag, or specific commit.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># specify a branch</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git main
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># specify a tag</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git <span class="m">1</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># specify a commit</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git 97e6c72491c7531507bfc5413903e0e00e31e1b0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># specify a branch</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git main
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># specify a tag</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git <span class="m">1</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="c1"># specify a commit</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git 97e6c72491c7531507bfc5413903e0e00e31e1b0
 </code></pre></div>
 <p>By default, this command does not trigger an application build. To do so during a <code>git:sync</code>, specify the <code>--build</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku git:sync --build node-js-app https://github.com/heroku/node-js-getting-started.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku git:sync --build node-js-app https://github.com/heroku/node-js-getting-started.git
 </code></pre></div>
 <h3 id="initializing-from-private-repositories">Initializing from private repositories</h3>
 <div class="admonition tip">
@@ -2790,21 +2839,21 @@
 <li>A configured <a href="https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html"><code>.netrc</code></a> entry.</li>
 </ul>
 <p>Dokku provides the <code>git:auth</code> command which can be used to configure a <code>netrc</code> entry for the remote server. This command can be used to add or remove configuration for any remote server.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># add credentials for github.com</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dokku git:auth github.com username personal-access-token
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># remove credentials for github.com</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>dokku git:auth github.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># add credentials for github.com</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>dokku git:auth github.com username personal-access-token
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># remove credentials for github.com</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>dokku git:auth github.com
 </code></pre></div>
 <p>For syncing to a private repository stored on a remote Git product such as GitHub or GitLab, Dokku's recommendation is to use a personal access token on a bot user where possible. Please see your service's documentation for information regarding the recommended best practices.</p>
 <h3 id="allowing-remote-repository-hosts">Allowing remote repository hosts</h3>
 <p>By default, the Dokku host may not have access to a server containing the remote repository. This can be initialized via the <code>git:allow-host</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku git:allow-host github.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku git:allow-host github.com
 </code></pre></div>
 <p>Note that this command is currently not idempotent and may add duplicate entries to the <code>~dokku/.ssh/known_hosts</code> file.</p>
 <h3 id="verifying-the-cloning-public-key">Verifying the cloning public key</h3>
 <p>In order to clone a remote repository, the remote server should have the Dokku host's public key configured. This plugin does not currently create this key, but if there is one available, it can be shown via the <code>git:public-key</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku git:public-key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku git:public-key
 </code></pre></div>
 <p>If there is no key, an error message is shown that displays the command that can be run on the Dokku server to generate a new public/private ssh key pair.</p>
 
