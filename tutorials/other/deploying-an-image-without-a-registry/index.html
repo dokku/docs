@@ -988,19 +988,23 @@
 </div>
 <h3 id="building-the-image">Building the image</h3>
 <p>First, we'll assume the image is built. The following is one example for building a docker image, though your setup may vary. The image repository <em>must not</em> be <code>dokku/</code>, as that namespace is used internally for tagging images by Dokku.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># a good tag to use is the commit sha of your build</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker image build --tag app/node-js-app:2935cc3d .
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker image build --tag app/node-js-app:2935cc3d .
 </code></pre></div>
+<p>It is recommended to tag your image with a unique tag per build, as otherwise the deployment step becomes tricky. A good tag to use is the commit sha of your build, which is usually provided by your CI provider of choice.</p>
 <h3 id="loading-the-image-onto-the-host">Loading the image onto the host</h3>
 <p>Next, we save the image to a file. This can be done with the <code>docker image save</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker image save --ouput node-js-app.tar
 </code></pre></div>
-<p>The image must then be loaded on the remote server. This should be performed with the <code>docker load</code> command, and must be performed by a user that has access to the docker daemon. Note that because this command is not exposed by Dokku, a user other than <code>dokku</code> must be used for the ssh command.</p>
+<p>The image must then be loaded on the remote server. This should be performed with the <code>docker load</code> command, and must be performed by a user that has access to the docker daemon.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cat node-js-app.tar <span class="p">|</span> ssh root@dokku.me <span class="s2">&quot;docker load&quot;</span>
 </code></pre></div>
 <p>Alternatively, you can save the image and load it in one command like so:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker image save <span class="p">|</span> ssh root@dokku.me <span class="s2">&quot;docker load&quot;</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Because this command is not exposed by Dokku, a user other than <code>dokku</code> must be used for the ssh command.</p>
+</div>
 <h3 id="deploying-the-image">Deploying the image</h3>
 <p>Finally, we can deploy the image using the <code>git:from-image</code> Dokku command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh dokku@dokku.me git:from-image node-js-app app/node-js-app:2935cc3d
