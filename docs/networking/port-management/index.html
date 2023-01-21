@@ -2797,7 +2797,7 @@
 <h4 id="applications-using-expose">Applications using EXPOSE</h4>
 <p>Dokku will extract all tcp ports exposed using the <code>EXPOSE</code> directive (one port per line) and setup nginx to proxy the same port numbers to listen publicly. If you would like to change the exposed port, you should do so within your <code>Dockerfile</code>.</p>
 <p>For example, if the Dokku installation is configured with the domain <code>dokku.me</code> and an application named <code>node-js-app</code> is deployed with following Dockerfile:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>FROM ubuntu:18.04
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>FROM ubuntu:20.04
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>EXPOSE 1234
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>RUN python -m SimpleHTTPServer 1234
 </code></pre></div>

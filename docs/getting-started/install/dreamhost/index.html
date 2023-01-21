@@ -2424,14 +2424,14 @@ cloud.</p>
 </code></pre></div>
 <p>This allows OpenStack client to connect to DreamHost API endpoints.
 The command below creates a new server instance named <code>my-dokku-instance</code>
-based on Ubuntu 18.04, with 2 GB RAM and 1 CPU (the flavor called
+based on Ubuntu 20.04, with 2 GB RAM and 1 CPU (the flavor called
 <code>supersonic</code>), opening network port access to HTTP and SSH (the
 <code>default</code> security group), and the name of the chosen SSH key. This
 key will be automatically added to the new server in the
 <code>authorized_keys</code> for the default SSH user (<code>ubuntu</code>), and it will
 be reused by Dokku.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>openstack server create <span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  --image Ubuntu-18.04 <span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  --image Ubuntu-20.04 <span class="se">\</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  --flavor gp1.supersonic <span class="se">\</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  --security-group default <span class="se">\</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  --key-name <span class="nv">$YOUR_SSH_KEYNAME</span> <span class="se">\</span>
