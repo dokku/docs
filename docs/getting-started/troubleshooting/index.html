@@ -1093,6 +1093,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i-deployed-a-new-app-but-now-subdomains-are-miss-routed" class="md-nav__link">
+    I deployed a new app but now subdomains are miss-routed
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2609,6 +2616,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i-deployed-a-new-app-but-now-subdomains-are-miss-routed" class="md-nav__link">
+    I deployed a new app but now subdomains are miss-routed
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2794,6 +2808,19 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>       Proxy type:                    nginx
 </code></pre></div>
 <p>Set <code>dokku proxy:ports-set front http:80:5000</code> to get proxy correctly configured for http endpoint.</p>
+<h3 id="i-deployed-a-new-app-but-now-subdomains-are-miss-routed">I deployed a new app but now subdomains are miss-routed</h3>
+<p>Sometimes nginx does something funky and cant actually reload for whatever reason.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Validate the configuration</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>$ sudo nginx -t
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is successful
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>$ sudo service nginx restart
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="c1"># Re-enable Letsencrypt</span>
+</code></pre></div>
+<p>Example: existing AppA (https) and AppB(https), deployed NEW (non-https) then noticed right away NEW's subdomain showed AppB's content and cert but under its own subdomain (cert miss-match of course).  AppB still works.  AppA also changed to show AppB content and cert..  Other apps were unaffected.</p>
+<p>Consider caddy and traefik support via docker containers if this continues to be an issue.</p>
 
 
 
