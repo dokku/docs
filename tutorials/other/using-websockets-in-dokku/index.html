@@ -964,6 +964,10 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>{{ end }}
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>}
 </code></pre></div>
+<p>Once the updates are made, commit the changes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git add nginx.conf.sigil
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git commit -m <span class="s2">&quot;feat: route /echo to ws process&quot;</span>
+</code></pre></div>
 <p>Note that we use the template variable <code>$.DOKKU_APP_WS_LISTENERS</code>, which maps to our <code>ws</code> process. If using a different process name, then the variable being listened to would be different. A few examples are below:</p>
 <table>
 <thead>
@@ -988,7 +992,10 @@
 </tbody>
 </table>
 <p>One thing to note in the above nginx template snippet is the check for the variable <code>$.DOKKU_APP_WS_LISTENERS</code>. Without this check, a deploy that doesn't scale up the <code>ws</code> process will fail to produce a valid <code>nginx.conf</code> file, failing the deploy. The variable will only have a value with there are processes scaled up.</p>
-<p>At this point, assuming the codebase in question is similar to the websocket-tutorial, a <code>git push dokku master</code> will start the processes up. Following this with a <code>dokku ps:scale websocket-example ws=1</code> will scale up the <code>ws</code> process, allowing websocket connections to flow through to your non-web process.</p>
+<p>At this point, assuming the codebase in question is similar to the websocket-tutorial, we can deploy the app and scale up our web processes, allowing websocket connections to flow through to your non-web process.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git push dokku master
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku ps:scale websocket-example <span class="nv">ws</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
 
 
 
