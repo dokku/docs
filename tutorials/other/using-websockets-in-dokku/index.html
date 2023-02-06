@@ -30,14 +30,14 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/tutorials/other/run-on-external-volume/">
+        <link rel="canonical" href="https://dokku.com/tutorials/other/using-websockets-in-dokku/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
     
     
       
-        <title>Run on an External Volume - Dokku Tutorials</title>
+        <title>Using Websockets with Nginx - Dokku Tutorials</title>
       
     
     
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Run on an External Volume
+              Using Websockets with Nginx
             
           </span>
         </div>
@@ -787,6 +787,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../run-on-external-volume/" class="md-nav__link">
+        Run on an External Volume
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -797,23 +811,9 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Run on an External Volume
-      </a>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../using-websockets-in-dokku/" class="md-nav__link">
         Using Websockets with Nginx
       </a>
+      
     </li>
   
 
@@ -912,63 +912,79 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/dokku/tutorials/edit/master/docs/other/run-on-external-volume.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/dokku/tutorials/edit/master/docs/other/using-websockets-in-dokku.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-  <h1>Run on an External Volume</h1>
+  <h1>Using Websockets with Nginx</h1>
 
-<p>In order to leverage cloud-provider facilities like <em>attachable volumes</em>, (<em>a.k.a. block storage</em>)
-the following is an easy tutorial to achieve Dokku runs on them.</p>
 <blockquote>
-<p>Warning: If the block storage is not available and attached on boot it is possible that containers will not correctly start. Please keep this in mind when considering moving Dokku and/or Docker to network attached storage.</p>
+<p>Note: The code for this tutorial is available on <a href="https://github.com/dokku/websocket-example">Github</a></p>
 </blockquote>
-<p>The following is intended to be executed on the dokku host machine as <code>root</code>.
-Say, <em>for instance</em>, that our volume is mapped into the systems as <code>/dev/vdb1</code>.</p>
-<p>Stop docker daemon</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>systemctl stop docker
+<p>In many frameworks, a separate process must be run to expose websockets due to the underlying language in use. This tutorial assumes that is the case, and therefore your app is assumed to run two processes, a <code>web</code> and a <code>ws</code> process. The following is an example Procfile for our <code>websocket-example</code> application.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">web</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">websocket-example web</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">ws</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">websocket-example ws</span><span class="w"></span>
 </code></pre></div>
-<p>Prepare the filesystem:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkfs -t ext4 /dev/vdb1
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir /mnt/volume
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mount /dev/vdb1 /mnt/volume
+<p>To route requests to the <code>ws</code> process, a custom <code>nginx.conf.sigil</code> will need to be placed into the app source. The latest is available <a href="https://raw.githubusercontent.com/dokku/dokku/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">here</a>, though you may wish to get the one for your particular version of Dokku. Copy that file to <code>nginx.conf.sigil</code> in the root of your repository and commit it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl -L --output nginx.conf.sigil https://raw.githubusercontent.com/dokku/dokku/master/plugins/nginx-vhosts/templates/nginx.conf.sigil
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git add nginx.conf.sigil
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git commit -m <span class="s2">&quot;feat: vendor nginx.conf.sigil&quot;</span>
 </code></pre></div>
-<p>Move the old data directories:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mv /home/dokku /home/dokku.OLD
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mv /var/lib/docker /var/lib/docker.OLD
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>mv /var/lib/dokku /var/lib/dokku.OLD
+<p>Next, add the following location block to the file. The are two locations that it can be added to, both after the <code>location /</code> block. The first block is for <code>http</code> support, while the latter is for <code>https</code> support. We can add it to both for simplicities sake:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">  </span><span class="k">location</span><span class="w"> </span><span class="s">/echo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kn">proxy_buffering</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.APP</span><span class="w"> </span><span class="err">}}</span><span class="s">-ws-5000</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>Move the data on the volume</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir /mnt/volume/home/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mkdir -p /mnt/volume/var/lib/
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>mv /home/dokku.OLD /mnt/volume/home/dokku
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>mv /var/lib/dokku.OLD /mnt/volume/var/lib/dokku
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>mv /var/lib/docker.OLD /mnt/volume/var/lib/docker
+<p>In the above <code>location</code> block, the path is set to <code>/echo</code>. This is the path that the <code>ws</code> process responds to requests on. If your path is something else, this can be changed.</p>
+<p>Note that the <code>proxy_pass</code> line omits a trailing slash (<code>/</code>). This allows the request to flow to the <code>ws</code> process at <code>/echo</code>. If a trailing slash is added, then the request made to the <code>ws</code> process will be at <code>/</code>. Please see <a href="https://stackoverflow.com/a/22759570/1515875">this stackoverflow answer</a> for more details on how trailing slashes work with proxy pass.</p>
+<p>Once the <code>location</code> blocks are added, we can add the upstream block at the end of the file. The following upstream block assumes the <code>ws</code> process is listening on port <code>5000</code>, but this may be changed as appropriate.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>upstream {{ $.APP }}-ws-5000 {
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>{{ if not $.DOKKU_APP_WS_LISTENERS }}
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  server 127.0.0.1:65535; # force a 502
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>{{ else }}
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>{{ range $listeners := $.DOKKU_APP_WS_LISTENERS | split &quot; &quot; }}
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>{{ $listener_list := $listeners | split &quot;:&quot; }}
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>{{ $listener_ip := index $listener_list 0 }}
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  server {{ $listener_ip }}:5000;{{ end }}
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>{{ end }}
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>}
 </code></pre></div>
-<p>Prepare the mountpoints</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir /home/dokku
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mkdir /var/lib/dokku
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>mkdir /var/lib/docker
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>chown dokku:dokku /home/dokku   <span class="c1"># respect the original ownership</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>chmod <span class="m">711</span> /var/lib/docker       <span class="c1"># respect the original permissions</span>
-</code></pre></div>
-<p>Mount bind</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mount -o <span class="nb">bind</span> /mnt/volume/home/dokku /home/dokku
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mount -o <span class="nb">bind</span> /mnt/volume/var/lib/dokku /var/lib/dokku
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>mount -o <span class="nb">bind</span> /mnt/volume/var/lib/docker /var/lib/docker
-</code></pre></div>
-<p>Start docker daemon</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl start docker
-</code></pre></div>
-<p>At this point all should be working fine, please check it out.</p>
-<p>Then, let the changes be reboot-persistent</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span> <span class="s1">&#39;/dev/vdb1 /mnt/volume ext4 defaults 0 2&#39;</span> <span class="p">|</span> sudo tee -a /etc/fstab
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">echo</span> <span class="s1">&#39;/mnt/volume/home/dokku /home/dokku none defaults,bind 0 0&#39;</span> <span class="p">|</span> sudo tee -a /etc/fstab
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">echo</span> <span class="s1">&#39;/mnt/volume/var/lib/dokku /var/lib/dokku none defaults,bind 0 0&#39;</span> <span class="p">|</span> sudo tee -a /etc/fstab
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">echo</span> <span class="s1">&#39;/mnt/volume/var/lib/docker /var/lib/docker none defaults,bind 0 0&#39;</span> <span class="p">|</span> sudo tee -a /etc/fstab
-</code></pre></div>
+<p>Note that we use the template variable <code>$.DOKKU_APP_WS_LISTENERS</code>, which maps to our <code>ws</code> process. If using a different process name, then the variable being listened to would be different. A few examples are below:</p>
+<table>
+<thead>
+<tr>
+<th>process name</th>
+<th>variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ws</td>
+<td>$.DOKKU_APP_WS_LISTENERS</td>
+</tr>
+<tr>
+<td>websocket</td>
+<td>$.DOKKU_APP_WEBSOCKET_LISTENERS</td>
+</tr>
+<tr>
+<td>web-socket</td>
+<td>$.DOKKU_APP_WEB_SOCKET_LISTENERS</td>
+</tr>
+</tbody>
+</table>
+<p>One thing to note in the above nginx template snippet is the check for the variable <code>$.DOKKU_APP_WS_LISTENERS</code>. Without this check, a deploy that doesn't scale up the <code>ws</code> process will fail to produce a valid <code>nginx.conf</code> file, failing the deploy. The variable will only have a value with there are processes scaled up.</p>
+<p>At this point, assuming the codebase in question is similar to the websocket-tutorial, a <code>git push dokku master</code> will start the processes up. Following this with a <code>dokku ps:scale websocket-example ws=1</code> will scale up the <code>ws</code> process, allowing websocket connections to flow through to your non-web process.</p>
 
 
 
@@ -992,7 +1008,7 @@ Say, <em>for instance</em>, that our volume is mapped into the systems as <code>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../deploying-an-image-without-a-registry/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploying an image without a registry" rel="prev">
+        <a href="../run-on-external-volume/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Run on an External Volume" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1001,26 +1017,11 @@ Say, <em>for instance</em>, that our volume is mapped into the systems as <code>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Deploying an image without a registry
+              Run on an External Volume
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../using-websockets-in-dokku/" class="md-footer__link md-footer__link--next" aria-label="Next: Using Websockets with Nginx" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Using Websockets with Nginx
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
