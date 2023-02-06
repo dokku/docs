@@ -920,9 +920,10 @@
 
   <h1>Using Websockets with Nginx</h1>
 
-<blockquote>
-<p>Note: The code for this tutorial is available on <a href="https://github.com/dokku/websocket-example">Github</a></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The code for this tutorial is available on <a href="https://github.com/dokku/websocket-example">Github</a></p>
+</div>
 <p>In many frameworks, a separate process must be run to expose websockets due to the underlying language in use. This tutorial assumes that is the case, and therefore your app is assumed to run two processes, a <code>web</code> and a <code>ws</code> process. The following is an example Procfile for our <code>websocket-example</code> application.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">web</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">websocket-example web</span><span class="w"></span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">ws</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">websocket-example ws</span><span class="w"></span>
@@ -943,13 +944,16 @@
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.APP</span><span class="w"> </span><span class="err">}}</span><span class="s">-ws-5000</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.APP</span><span class="w"> </span><span class="err">}}</span><span class="s">-ws</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>In the above <code>location</code> block, the path is set to <code>/echo</code>. This is the path that the <code>ws</code> process responds to requests on. If your path is something else, this can be changed.</p>
-<p>Note that the <code>proxy_pass</code> line omits a trailing slash (<code>/</code>). This allows the request to flow to the <code>ws</code> process at <code>/echo</code>. If a trailing slash is added, then the request made to the <code>ws</code> process will be at <code>/</code>. Please see <a href="https://stackoverflow.com/a/22759570/1515875">this stackoverflow answer</a> for more details on how trailing slashes work with proxy pass.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>proxy_pass</code> line omits a trailing slash (<code>/</code>). This allows the request to flow to the <code>ws</code> process at <code>/echo</code>. If a trailing slash is added, then the request made to the <code>ws</code> process will be at <code>/</code>. Please see <a href="https://stackoverflow.com/a/22759570/1515875">this stackoverflow answer</a> for more details on how trailing slashes work with proxy pass.</p>
+</div>
 <p>Once the <code>location</code> blocks are added, we can add the upstream block at the end of the file. The following upstream block assumes the <code>ws</code> process is listening on port <code>5000</code>, but this may be changed as appropriate.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>upstream {{ $.APP }}-ws-5000 {
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>upstream {{ $.APP }}-ws {
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>{{ if not $.DOKKU_APP_WS_LISTENERS }}
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  server 127.0.0.1:65535; # force a 502
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>{{ else }}
@@ -970,16 +974,16 @@
 </thead>
 <tbody>
 <tr>
-<td>ws</td>
-<td>$.DOKKU_APP_WS_LISTENERS</td>
+<td><code>ws</code></td>
+<td><code>$.DOKKU_APP_WS_LISTENERS</code></td>
 </tr>
 <tr>
-<td>websocket</td>
-<td>$.DOKKU_APP_WEBSOCKET_LISTENERS</td>
+<td><code>websocket</code></td>
+<td><code>$.DOKKU_APP_WEBSOCKET_LISTENERS</code></td>
 </tr>
 <tr>
-<td>web-socket</td>
-<td>$.DOKKU_APP_WEB_SOCKET_LISTENERS</td>
+<td><code>web-socket</code></td>
+<td><code>$.DOKKU_APP_WEB_SOCKET_LISTENERS</code></td>
 </tr>
 </tbody>
 </table>
