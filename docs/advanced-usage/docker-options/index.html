@@ -2548,7 +2548,7 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>When specifying multiple phases, they <strong>must</strong> be comma-separated <em>without</em> spaces in between each phase, like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku docker-options:add node-js-app deploy,run <span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy,run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
 </code></pre></div>
 </div>
 <h2 id="about-dokku-phases">About Dokku phases</h2>
@@ -2565,22 +2565,22 @@
 <h3 id="add-docker-options">Add Docker options</h3>
 <p>Add some options for the deployed/running app and when executing <a href="../../processes/one-off-tasks/"><code>dokku run</code></a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Mount a host volume in a Docker container: &quot;-v /host/path:/container/path&quot;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku docker-options:add node-js-app deploy <span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>dokku docker-options:add node-js-app run <span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When <a href="https://docs.docker.com/engine/reference/run/#volume-shared-filesystems">mounting a host directory</a> in a Dokku app you should first create that directory as user <code>dokku</code> and then mount the directory under <code>/app</code> in the container using <code>docker-options</code> as above. Otherwise the app will lack write permission in the directory.</p>
 </div>
 <h3 id="remove-a-docker-option">Remove a Docker option</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku docker-options:remove node-js-app run <span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
 </code></pre></div>
 <h3 id="clear-all-docker-options-for-an-app">Clear all Docker options for an app</h3>
 <p>Docker options can be removed for a specific app using the <code>docker-options:clear</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku docker-options:clear node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2593,7 +2593,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label><label for="__tabbed_2_3">Shell</label><label for="__tabbed_2_4">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku docker-options:clear node-js-app run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app<span class="w"> </span>run
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2601,7 +2601,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku docker-options:clear node-js-app build,run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app<span class="w"> </span>build,run
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2620,7 +2620,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku docker-options:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>docker-options:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2644,7 +2644,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku docker-options:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>docker-options:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2657,7 +2657,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku docker-options:report node-js-app --docker-options-build
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>docker-options:report<span class="w"> </span>node-js-app<span class="w"> </span>--docker-options-build
 </code></pre></div>
 
 

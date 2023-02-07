@@ -2550,7 +2550,7 @@
 <li>A <code>lambda.yml</code> exists in the root of the app repository.</li>
 </ul>
 <p>The builder may also be selected via the <code>builder:set</code> command</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku builder:set node-js-app selected lambda
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>lambda
 </code></pre></div>
 <h3 id="supported-languages">Supported languages</h3>
 <p>The <code>lambda</code> builder plugin supports the following AWS runtime languages on Amazon Linux 2:</p>
@@ -2566,23 +2566,23 @@
 <p>The <code>lambda</code> builder plugin delegates all build logic to <a href="https://github.com/dokku/lambda-builder">lambda-builder</a>, including language detection and build/runtime environment specification. The lambda-builder tool supports a <code>lambda.yml</code> file format for customizing how apps are built. Please see the readme for lambda-builder for more information on different options.</p>
 <h3 id="changing-the-lambdayml-location">Changing the <code>lambda.yml</code> location</h3>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>lambda.yml</code> file to use for a given app. This can be done via the <code>builder-lambda:set</code> command. If a value is specified and that file does not exist in the app's build directory, then the build will fail.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku builder-lambda:set node-js-app lambdayml-path lambda2.yml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder-lambda:set<span class="w"> </span>node-js-app<span class="w"> </span>lambdayml-path<span class="w"> </span>lambda2.yml
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku builder-lambda:set node-js-app lambdayml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-lambda:set<span class="w"> </span>node-js-app<span class="w"> </span>lambdayml-path
 </code></pre></div>
 <p>The <code>lambdayml-path</code> property can also be set globally. The global default is <code>lambda.yml</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku builder-lambda:set --global lambdayml-path lambda2.yml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-lambda:set<span class="w"> </span>--global<span class="w"> </span>lambdayml-path<span class="w"> </span>lambda2.yml
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku builder-lambda:set --global lambdayml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-lambda:set<span class="w"> </span>--global<span class="w"> </span>lambdayml-path
 </code></pre></div>
 <h3 id="displaying-builder-lambda-reports-for-an-app">Displaying builder-lambda reports for an app</h3>
 <p>You can get a report about the app's storage status using the <code>builder-lambda:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku builder-lambda:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-lambda:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2606,7 +2606,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku builder-lambda:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-lambda:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2622,7 +2622,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku builder-lambda:report node-js-app --builder-lambda-lambdayml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-lambda:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-lambda-lambdayml-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">

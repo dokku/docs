@@ -2703,68 +2703,68 @@
 </ul>
 <h3 id="switching-to-caddy">Switching to Caddy</h3>
 <p>To use the Caddy plugin, use the <code>proxy:set</code> command for the app in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku proxy:set node-js-app caddy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>caddy
 </code></pre></div>
 <p>This will enable the docker label-based Caddy integration. All future deploys will inject the correct labels for Caddy to read and route requests to containers. Due to the docker label-based integration used by Caddy, a single deploy or rebuild will be required before requests will route successfully.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku ps:rebuild node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Any changes to domains or port mappings will also require either a deploy or rebuild.</p>
 <h3 id="starting-caddy-container">Starting Caddy container</h3>
 <p>Caddy can be started via the <code>caddy:start</code> command. This will start a Caddy container via the <code>docker compose up</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku caddy:start
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>caddy:start
 </code></pre></div>
 <h3 id="stopping-the-caddy-container">Stopping the Caddy container</h3>
 <p>Caddy may be stopped via the <code>caddy:stop</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku caddy:stop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>caddy:stop
 </code></pre></div>
 <p>The Caddy container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
 <h3 id="showing-the-caddy-compose-config">Showing the Caddy compose config</h3>
 <p>For debugging purposes, it may be useful to show the Caddy compose config. This can be achieved via the <code>caddy:show-config</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku caddy:show-config
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>caddy:show-config
 </code></pre></div>
 <h3 id="customizing-the-caddy-container-image">Customizing the Caddy container image</h3>
 <p>While the default Caddy image is hardcoded, users may specify an alternative by setting the <code>image</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku caddy:set --global image lucaslorentz/caddy-docker-proxy:2.7
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>lucaslorentz/caddy-docker-proxy:2.7
 </code></pre></div>
 <h4 id="checking-the-caddy-containers-logs">Checking the Caddy container's logs</h4>
 <p>It may be necessary to check the Caddy container's logs to ensure that Caddy is operating as expected. This can be performed with the <code>caddy:logs</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku caddy:logs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>caddy:logs
 </code></pre></div>
 <p>This command also supports the following modifiers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--num NUM        <span class="c1"># the number of lines to display</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--tail           <span class="c1"># continually stream logs</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
 </code></pre></div>
 <p>You can use these modifiers as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku caddy:logs --tail --num <span class="m">10</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>caddy:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the vector container, with an initial history of 10 log lines</p>
 <h3 id="changing-the-caddy-log-level">Changing the Caddy log level</h3>
 <p>Caddy log output is set to <code>ERROR</code> by default. It may be changed by setting the <code>log-level</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku caddy:set --global log-level DEBUG
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying,  the Caddy container will need to be restarted.</p>
 <h3 id="ssl-configuration">SSL Configuration</h3>
 <p>The caddy plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration</h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku caddy:set --global letsencrypt-email automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling, the Caddy container will need to be restarted and apps will need to be rebuilt. All http requests will then be redirected to https.</p>
 <h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server</h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku caddy:set --global letsencrypt-server https://acme-staging-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>After enabling, the Caddy container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
 <h3 id="using-caddys-internal-tls-server">Using Caddy's Internal TLS server</h3>
 <p>To switch to Caddy's internal TLS server for certificate provisioning, set the <code>tls-internal</code> property. This can only be set on a per-app basis.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku caddy:set node-js-app tls-internal <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>node-js-app<span class="w"> </span>tls-internal<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <h2 id="displaying-caddy-reports-for-an-app">Displaying Caddy reports for an app</h2>
 <p>You can get a report about the app's Caddy config using the <code>caddy:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku caddy:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>caddy:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2797,7 +2797,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku caddy:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>caddy:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2813,7 +2813,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku caddy:report node-js-app --caddy-image
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>caddy:report<span class="w"> </span>node-js-app<span class="w"> </span>--caddy-image
 </code></pre></div>
 
 

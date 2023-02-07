@@ -2720,38 +2720,38 @@
 <p>Introduced in 0.13.0</p>
 </div>
 <p>A common administrative task to perform is calling <code>docker inspect</code> on the containers that are running for an app. This can be an error-prone task to perform, and may also reveal sensitive environment variables if not done correctly. Dokku provides a wrapper around this command via the <code>ps:inspect</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku ps:inspect node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ps:inspect<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>This command will gather all the running container IDs for your app and call <code>docker inspect</code>, sanitizing the output data so it can be copy-pasted elsewhere safely.</p>
 <h3 id="rebuilding-apps">Rebuilding apps</h3>
 <p>It may be useful to rebuild an app at will, such as for commands that do not rebuild an app or when skipping a rebuild after setting multiple config values. For these use cases, the <code>ps:rebuild</code> function can be used.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku ps:rebuild node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>All apps may be rebuilt by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku ps:rebuild --all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all
 </code></pre></div>
 <p>By default, rebuilding all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku ps:rebuild --all --parallel <span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku ps:rebuild --all --parallel -1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <p>A missing linked container will result in failure to boot apps. Services should all be started for apps being rebuilt.</p>
 <h3 id="restarting-apps">Restarting apps</h3>
 <p>An app may be restarted using the <code>ps:restart</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku ps:restart node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>A single process type - such as <code>web</code> or <code>worker</code> - may also be specified. This <em>does not</em> support specifying a given instance of a process type, and only supports restarting all instances of that process type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku ps:restart node-js-app web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>node-js-app<span class="w"> </span>web
 </code></pre></div>
 <p>All apps may be restarted by using the <code>--all</code> flag. This flag is incompatible with specifying a process type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku ps:restart --all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all
 </code></pre></div>
 <p>By default, restarting all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku ps:restart --all --parallel <span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku ps:restart --all --parallel -1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <p>A missing linked container will result in failure to boot apps. Services should all be started for apps being rebuilt.</p>
 <h3 id="displaying-existing-scale-properties">Displaying existing scale properties</h3>
@@ -2759,7 +2759,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku ps:scale node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2778,13 +2778,13 @@
 <p>This functionality is disabled if the formation is managed via the <code>formation</code> key of <code>app.json</code>.</p>
 </div>
 <p>Dokku can also manage scaling itself via the <code>ps:scale</code> command. This command can be used to scale multiple process types at the same time.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku ps:scale node-js-app <span class="nv">web</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <p>Multiple process types can be scaled at once:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku ps:scale node-js-app <span class="nv">web</span><span class="o">=</span><span class="m">1</span> <span class="nv">worker</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">worker</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <p>If desired, the corresponding deploy will be skipped by using the <code>--skip-deploy</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku ps:scale --skip-deploy node-js-app <span class="nv">web</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <h4 id="manually-managing-process-scaling">Manually managing process scaling</h4>
 <div class="admonition info">
@@ -2798,16 +2798,16 @@
 <li>Docker Image: <code>WORKDIR/app.json</code> or <code>/app.json</code> (if no working directory specified)</li>
 </ul>
 <p>The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="err">{</span><span class="w"></span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="s">&quot;formation&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="s">&quot;web&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">      </span><span class="s">&quot;quantity&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="err">},</span><span class="w"></span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="s">&quot;worker&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">      </span><span class="s">&quot;quantity&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="err">}</span><span class="w"></span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">  </span><span class="err">}</span><span class="w"></span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="err">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="err">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="s">&quot;formation&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="s">&quot;web&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">      </span><span class="s">&quot;quantity&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="err">},</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="s">&quot;worker&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">      </span><span class="s">&quot;quantity&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">4</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="err">}</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">  </span><span class="err">}</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="err">}</span>
 </code></pre></div>
 <p>Removing the file will result in Dokku respecting the <code>ps:scale</code> command for setting scale values. The values set via the <code>app.json</code> file from a previous deploy will be respected.</p>
 <h4 id="the-web-process">The <code>web</code> process</h4>
@@ -2821,42 +2821,42 @@
 </ul>
 <h4 id="changing-the-procfile-location">Changing the <code>Procfile</code> location</h4>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>Procfile</code> file to use for a given app. This can be done via the <code>ps:set</code> command. If a value is specified and that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>Procfile</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku ps:set node-js-app procfile-path Procfile2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path<span class="w"> </span>Procfile2
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku ps:set node-js-app procfile-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path
 </code></pre></div>
 <p>The <code>procfile-path</code> property can also be set globally. The global default is <code>Procfile</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku ps:set --global procfile-path global-Procfile
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>procfile-path<span class="w"> </span>global-Procfile
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku ps:set --global procfile-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>procfile-path
 </code></pre></div>
 <h3 id="stopping-apps">Stopping apps</h3>
 <p>Deployed apps can be stopped using the <code>ps:stop</code> command. This turns off all running containers for an app, and will result in a <strong>502 Bad Gateway</strong> response for the default nginx proxy implementation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku ps:stop node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>All apps may be stopped by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku ps:stop --all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all
 </code></pre></div>
 <p>By default, stopping all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku ps:stop --all --parallel <span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku ps:stop --all --parallel -1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <h3 id="starting-apps">Starting apps</h3>
 <p>All stopped containers can be started using the <code>ps:start</code> command. This is similar to running <code>ps:restart</code>, except no action will be taken if the app containers are running.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku ps:start node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>All apps may be started by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku ps:start --all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all
 </code></pre></div>
 <p>By default, starting all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku ps:start --all --parallel <span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku ps:start --all --parallel -1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <h3 id="restart-policies">Restart policies</h3>
 <div class="admonition tip">
@@ -2871,19 +2871,19 @@
 </div>
 <p>You can configure this via the <code>ps:set</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># always restart an exited container</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>dokku ps:set node-js-app restart-policy always
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>always
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
 <a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># never restart an exited container</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>dokku ps:set node-js-app restart-policy no
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>no
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># only restart it on Docker restart if it was not manually stopped</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>dokku ps:set node-js-app restart-policy unless-stopped
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>unless-stopped
 <a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
 <a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="c1"># restart only on non-zero exit status</span>
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>dokku ps:set node-js-app restart-policy on-failure
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure
 <a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
 <a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="c1"># restart only on non-zero exit status up to 20 times</span>
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>dokku ps:set node-js-app restart-policy on-failure:20
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure:20
 </code></pre></div>
 <p>Restart policies have no bearing on server reboot, and Dokku will always attempt to restart your apps at that point unless they were manually stopped.</p>
 <p>Dokku also runs <code>dokku-event-listener</code> in the background via the system's init service. This monitors container state, performing the following actions:</p>
@@ -2900,7 +2900,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku ps:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>ps:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2942,7 +2942,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku ps:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2958,7 +2958,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku ps:report node-js-app --deployed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app<span class="w"> </span>--deployed
 </code></pre></div>
 <h3 id="restoring-apps-after-a-server-reboot">Restoring apps after a server reboot</h3>
 <p>When a server reboots or Docker is restarted/upgraded, Docker may or may not start old app containers automatically, and may in some cases re-assign container IP addresses. To combat this issue, Dokku uses an init process that triggers <code>dokku ps:restore</code> after the Docker daemon is detected as starting. When triggered, the <code>dokku ps:restore</code> command will serially (one by one) run the following for each:</p>

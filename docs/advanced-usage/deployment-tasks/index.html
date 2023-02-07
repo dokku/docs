@@ -2632,16 +2632,16 @@
 </div>
 <h3 id="changing-the-appjson-location">Changing the <code>app.json</code> location</h3>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>app.json</code> file to use for a given app. This can be done via the <code>app-json:set</code> command. If a value is specified and that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>app.json</code> file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku app-json:set node-js-app appjson-path second-app.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>app-json:set<span class="w"> </span>node-js-app<span class="w"> </span>appjson-path<span class="w"> </span>second-app.json
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku app-json:set node-js-app appjson-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>app-json:set<span class="w"> </span>node-js-app<span class="w"> </span>appjson-path
 </code></pre></div>
 <p>The <code>appjson-path</code> property can also be set globally. The global default is <code>app.json</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku app-json:set --global appjson-path global-app.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>app-json:set<span class="w"> </span>--global<span class="w"> </span>appjson-path<span class="w"> </span>global-app.json
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku app-json:set --global appjson-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>app-json:set<span class="w"> </span>--global<span class="w"> </span>appjson-path
 </code></pre></div>
 <h3 id="displaying-app-json-reports-for-an-app">Displaying app-json reports for an app</h3>
 <div class="admonition tip">
@@ -2652,7 +2652,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku app-json:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>app-json:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2676,7 +2676,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku app-json:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>app-json:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2692,7 +2692,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku app-json:report node-js-app --app-json-appjson-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>app-json:report<span class="w"> </span>node-js-app<span class="w"> </span>--app-json-appjson-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2715,15 +2715,15 @@
 <p>Any failed <code>app.json</code> deployment task will fail the deploy. In the case of either phase, a failure will not affect any running containers.</p>
 </div>
 <p>The following is an example <code>app.json</code> file. Please note that only the <code>scripts.dokku.predeploy</code> and <code>scripts.dokku.postdeploy</code> tasks are supported by Dokku at this time. All other fields will be ignored and can be omitted.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">&quot;dokku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">      </span><span class="nt">&quot;predeploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;touch /app/predeploy.test&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">&quot;postdeploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;curl https://some.external.api.service.com/deployment?state=success&quot;</span><span class="w"></span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="nt">&quot;postdeploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;curl https://some.external.api.service.com/created?state=success&quot;</span><span class="w"></span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">&quot;dokku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">      </span><span class="nt">&quot;predeploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;touch /app/predeploy.test&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">&quot;postdeploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;curl https://some.external.api.service.com/deployment?state=success&quot;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="nt">&quot;postdeploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;curl https://some.external.api.service.com/created?state=success&quot;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="procfile-release-command">Procfile Release command</h4>
 <div class="admonition tip">
@@ -2732,7 +2732,7 @@
 </div>
 <p>The <code>Procfile</code> also supports a special <code>release</code> command which acts in a similar way to the <a href="https://devcenter.heroku.com/articles/release-phase">Heroku Release Phase</a>. This command is executed <em>after</em> an app's docker image is built, but <em>before</em> any containers are scheduled. This is also run <em>after</em> any command executed by <code>scripts.dokku.predeploy</code>.</p>
 <p>To use the <code>release</code> command, simply add a <code>release</code> stanza to your Procfile.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nl">release</span><span class="p">:</span><span class="w"> </span>curl<span class="w"> </span>https<span class="err">:</span>//some.external.api.service.com/deployment<span class="err">?</span><span class="nv">state</span><span class="p">=</span><span class="s">built</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nl">release</span><span class="p">:</span><span class="w"> </span>curl<span class="w"> </span>https<span class="err">:</span>//some.external.api.service.com/deployment<span class="err">?</span><span class="nv">state</span><span class="p">=</span><span class="s">built</span>
 </code></pre></div>
 <p>Unlike the <code>scripts.dokku.predeploy</code> command, changes made during by the <code>release</code> command are <em>not</em> persisted to disk.</p>
 

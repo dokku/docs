@@ -2738,7 +2738,7 @@
 <li>This can be via a committed <code>.buildpacks</code> file or managed via the <code>buildpacks</code> plugin commands.</li>
 </ul>
 <p>The builder can also be specified via the <code>builder:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku builder:set node-js-app selected herokuish
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>herokuish
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -2750,7 +2750,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># running for an app with no buildpacks specified</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku buildpacks:list node-js-app
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>buildpacks:list<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2759,7 +2759,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># running for an app with two buildpacks specified</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku buildpacks:list node-js-app
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku<span class="w"> </span>buildpacks:list<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2776,28 +2776,28 @@
 <p>Please check the documentation for your particular buildpack as you may need to include configuration files (such as a Procfile) in your project root.</p>
 </div>
 <p>To add a custom buildpack, use the <code>buildpacks:add</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku buildpacks:add node-js-app https://github.com/heroku/heroku-buildpack-nodejs.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>buildpacks:add<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs.git
 </code></pre></div>
 <p>When no buildpacks are currently specified, the specified buildpack will be the only one executed for detection and compilation.</p>
 <p>Multiple buildpacks may be specified by using the <code>buildpacks:add</code> command multiple times.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku buildpacks:add node-js-app https://github.com/heroku/heroku-buildpack-ruby.git
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dokku buildpacks:add node-js-app https://github.com/heroku/heroku-buildpack-nodejs.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>buildpacks:add<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dokku<span class="w"> </span>buildpacks:add<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs.git
 </code></pre></div>
 <p>Buildpacks are executed in order, may be inserted at a specified index via the <code>--index</code> flag. This flag is specified starting at a 1-index value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># will add the golang buildpack at the second position, bumping all proceeding ones by 1 position</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku buildpacks:add --index <span class="m">2</span> node-js-app https://github.com/heroku/heroku-buildpack-golang.git
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku<span class="w"> </span>buildpacks:add<span class="w"> </span>--index<span class="w"> </span><span class="m">2</span><span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-golang.git
 </code></pre></div>
 <h3 id="overwriting-a-buildpack-position">Overwriting a buildpack position</h3>
 <p>In some cases, it may be necessary to swap out a given buildpack. Rather than needing to re-specify each buildpack, the <code>buildpacks:set</code> command can be used to overwrite a buildpack at a given position.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku buildpacks:set node-js-app https://github.com/heroku/heroku-buildpack-ruby.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
 </code></pre></div>
 <p>By default, this will overwrite the <em>first</em> buildpack specified. To specify an index, the <code>--index</code> flag may be used. This flag is specified starting at a 1-index value, and defaults to <code>1</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># the following are equivalent commands</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku buildpacks:set node-js-app https://github.com/heroku/heroku-buildpack-ruby.git
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>dokku buildpacks:set --index <span class="m">1</span> node-js-app https://github.com/heroku/heroku-buildpack-ruby.git
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>--index<span class="w"> </span><span class="m">1</span><span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
 </code></pre></div>
 <p>If the index specified is larger than the number of buildpacks currently configured, the buildpack will be appended to the end of the list.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku buildpacks:set --index <span class="m">99</span> node-js-app https://github.com/heroku/heroku-buildpack-ruby.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>--index<span class="w"> </span><span class="m">99</span><span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
 </code></pre></div>
 <h3 id="removing-a-buildpack">Removing a buildpack</h3>
 <div class="admonition info">
@@ -2805,10 +2805,10 @@
 <p>At least one of a buildpack or index must be specified</p>
 </div>
 <p>A single buildpack can be removed by name via the <code>buildpacks:remove</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku buildpacks:remove node-js-app https://github.com/heroku/heroku-buildpack-ruby.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>buildpacks:remove<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
 </code></pre></div>
 <p>Buildpacks can also be removed by index via the <code>--index</code> flag. This flag is specified starting at a 1-index value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku buildpacks:remove node-js-app --index <span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:remove<span class="w"> </span>node-js-app<span class="w"> </span>--index<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <h3 id="clearing-all-buildpacks">Clearing all buildpacks</h3>
 <div class="admonition info">
@@ -2816,7 +2816,7 @@
 <p>This does not affect automatically detected buildpacks, nor does it impact any specified <code>BUILDPACK_URL</code> environment variable.</p>
 </div>
 <p>The <code>buildpacks:clear</code> command can be used to clear all configured buildpacks for a specified app.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku buildpacks:clear node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>buildpacks:clear<span class="w"> </span>node-js-app
 </code></pre></div>
 <h3 id="customizing-the-buildpack-stack-builder">Customizing the Buildpack stack builder</h3>
 <div class="admonition tip">
@@ -2824,18 +2824,18 @@
 <p>Introduced in 0.23.0</p>
 </div>
 <p>The default stack builder in use by Herokuish buildpacks in Dokku is based on <code>gliderlabs/herokuish:latest</code>. Typically, this is installed via an OS package which pulls the requisite Docker image. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>buildpacks:set-property</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku buildpacks:set-property node-js-app stack gliderlabs/herokuish:latest
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>gliderlabs/herokuish:latest
 </code></pre></div>
 <p>The specified stack builder can also be unset by omitting the name of the stack builder when calling <code>buildpacks:set-property</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku buildpacks:set-property node-js-app stack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
 </code></pre></div>
 <p>A change in the stack builder value will execute the <code>post-stack-set</code> trigger.</p>
 <p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_IMAGE</code> environment variable (<code>gliderlabs/herokuish:latest-20</code> by default).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># set globally</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku buildpacks:set-property --global stack gliderlabs/herokuish:latest
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>gliderlabs/herokuish:latest
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># unset globally</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>dokku buildpacks:set-property --global stack
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack
 </code></pre></div>
 <h3 id="allowing-herokuish-for-non-amd64-platforms">Allowing herokuish for non-amd64 platforms</h3>
 <div class="admonition tip">
@@ -2844,23 +2844,23 @@
 </div>
 <p>By default, the builder-herokuish plugin is not enabled for non-amd64 platforms, and attempting to use it is blocked. This is because the majority of buildpacks are not cross-platform compatible, and thus building apps will either be considerably slower - due to emulating the amd64 platform - or won't work - due to building amd64 packages on arm/arm64 platforms.</p>
 <p>To force-enable herokuish on non-amd64 platforms, the <code>allowed</code> property can be set via <code>builder-herokuish:set</code>. The default value depends on the host platform architecture (<code>true</code> on amd64, <code>false</code> otherwise).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku builder-herokuish:set node-js-app allowed <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>builder-herokuish:set<span class="w"> </span>node-js-app<span class="w"> </span>allowed<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku builder-herokuish:set node-js-app allowed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>builder-herokuish:set<span class="w"> </span>node-js-app<span class="w"> </span>allowed
 </code></pre></div>
 <p>The <code>allowed</code> property can also be set globally. The global default is platform-dependent, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku builder-herokuish:set --global allowed <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>builder-herokuish:set<span class="w"> </span>--global<span class="w"> </span>allowed<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku builder-herokuish:set --global allowed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>builder-herokuish:set<span class="w"> </span>--global<span class="w"> </span>allowed
 </code></pre></div>
 <h3 id="displaying-buildpack-reports-for-an-app">Displaying buildpack reports for an app</h3>
 <p>You can get a report about the app's buildpacks status using the <code>buildpacks:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku buildpacks:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>buildpacks:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2887,7 +2887,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku buildpacks:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2898,7 +2898,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku buildpacks:report node-js-app --buildpacks-list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app<span class="w"> </span>--buildpacks-list
 </code></pre></div>
 <h3 id="displaying-builder-herokuish-reports-for-an-app">Displaying builder-herokuish reports for an app</h3>
 <div class="admonition tip">
@@ -2909,7 +2909,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku builder-herokuish:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>builder-herokuish:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2933,7 +2933,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku builder-herokuish:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>builder-herokuish:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2949,7 +2949,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku builder-herokuish:report node-js-app --builder-herokuish-allowed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>builder-herokuish:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-herokuish-allowed
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2961,7 +2961,7 @@
 <h2 id="errata">Errata</h2>
 <h3 id="switching-from-dockerfile-deployments">Switching from Dockerfile deployments</h3>
 <p>If an application was previously deployed via Dockerfile, the following commands should be run before a buildpack deploy will succeed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku config:unset --no-restart node-js-app DOKKU_PROXY_PORT_MAP
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>config:unset<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span>DOKKU_PROXY_PORT_MAP
 </code></pre></div>
 <h3 id="using-a-specific-buildpack-version">Using a specific buildpack version</h3>
 <div class="admonition info">
@@ -2970,11 +2970,11 @@
 </div>
 <p>By default, Dokku uses the <a href="https://github.com/gliderlabs/herokuish/">gliderlabs/herokuish</a> project, which pins all of it's vendored buildpacks. There may be occasions where the pinned version results in a broken deploy, or does not have a particular feature that is required to build your project. To use a more recent version of a given buildpack, the buildpack may be specified <em>without</em> a Git commit SHA like so:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># using the latest nodejs buildpack</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>dokku buildpacks:set node-js-app https://github.com/heroku/heroku-buildpack-nodejs
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs
 </code></pre></div>
 <p>This will use the latest commit on the <code>master</code> branch of the specified buildpack. To pin to a newer version of a buildpack, a sha may also be specified by using the form <code>REPOSITORY_URL#COMMIT_SHA</code>, where <code>COMMIT_SHA</code> is any tree-ish git object - usually a git tag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># using v87 of the nodejs buildpack</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku buildpacks:set node-js-app https://github.com/heroku/heroku-buildpack-nodejs#v87
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs#v87
 </code></pre></div>
 <h3 id="specifying-commands-via-procfile">Specifying commands via Procfile</h3>
 <p>While many buildpacks have a default command that is run when a detected repository is pushed, it is possible to override this command via a Procfile. A Procfile can also be used to specify multiple commands, each of which is subject to process scaling. See the <a href="../../../processes/process-management/">process scaling documentation</a> for more details around scaling individual processes.</p>
@@ -2985,15 +2985,15 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>&lt;process type&gt;: &lt;command&gt;
 </code></pre></div>
 <p>If, for example, you have multiple queue workers and wish to scale them separately, the following would be a valid way to work around the requirement of not duplicating process types:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nl">worker</span><span class="p">:</span><span class="w">           </span>env<span class="w"> </span>QUEUE<span class="err">=*</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work<span class="w"></span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nl">importantworker</span><span class="p">:</span><span class="w">  </span>env<span class="w"> </span><span class="nv">QUEUE</span><span class="p">=</span><span class="s">important</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work<span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nl">worker</span><span class="p">:</span><span class="w">           </span>env<span class="w"> </span>QUEUE<span class="err">=*</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nl">importantworker</span><span class="p">:</span><span class="w">  </span>env<span class="w"> </span><span class="nv">QUEUE</span><span class="p">=</span><span class="s">important</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
 </code></pre></div>
 <p>The <code>web</code> process type holds some significance in that it is the only process type that is automatically scaled to <code>1</code> on the initial application deploy. See the <a href="../../../processes/process-management/">process scaling documentation</a> for more details around scaling individual processes.</p>
 <h3 id="curl-build-timeouts"><code>curl</code> build timeouts</h3>
 <p>Certain buildpacks may time out in retrieving dependencies via <code>curl</code>. This can happen when your network connection is poor or if there is significant network congestion. You may see a message similar to <code>gzip: stdin: unexpected end of file</code> after a <code>curl</code> command.</p>
 <p>If you see output similar this when deploying , you may need to override the <code>curl</code> timeouts to increase the length of time allotted to those tasks. You can do so via the <code>config</code> plugin:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku config:set --global <span class="nv">CURL_TIMEOUT</span><span class="o">=</span><span class="m">1200</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dokku config:set --global <span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_TIMEOUT</span><span class="o">=</span><span class="m">1200</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
 </code></pre></div>
 <h3 id="clearing-buildpack-cache">Clearing buildpack cache</h3>
 <p>See the <a href="../../../advanced-usage/repository-management/#clearing-app-cache">repository management documentation</a> for more information on how to clear buildpack build cache for an application.</p>

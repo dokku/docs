@@ -2642,7 +2642,7 @@
 </ul>
 <h3 id="switching-from-buildpack-deployments">Switching from buildpack deployments</h3>
 <p>If an application was previously deployed via buildpacks, the following commands should be run before a Dockerfile deploy will succeed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku config:unset --no-restart node-js-app DOKKU_PROXY_PORT_MAP
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>config:unset<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span>DOKKU_PROXY_PORT_MAP
 </code></pre></div>
 <h3 id="changing-the-dockerfile-location">Changing the <code>Dockerfile</code> location</h3>
 <div class="admonition info">
@@ -2650,16 +2650,16 @@
 <p>The previous method to perform this - via <code>docker-options:add</code> - should be removed in favor of the <code>builder-dockerfile:set</code> command outlined here.</p>
 </div>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>Dockerfile</code> file to use for a given app. This can be done via the <code>builder-dockerfile:set</code> command. If a value is specified and that file does not exist in the app's build directory, then the build will fail.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku builder-dockerfile:set node-js-app dockerfile-path Dockerfile2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path<span class="w"> </span>Dockerfile2
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku builder-dockerfile:set node-js-app dockerfile-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path
 </code></pre></div>
 <p>The <code>dockerfile-path</code> property can also be set globally. The global default is <code>Dockerfile</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku builder-dockerfile:set --global dockerfile-path Dockerfile2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>--global<span class="w"> </span>dockerfile-path<span class="w"> </span>Dockerfile2
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku builder-dockerfile:set --global dockerfile-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>--global<span class="w"> </span>dockerfile-path
 </code></pre></div>
 <h3 id="displaying-builder-dockerfile-reports-for-an-app">Displaying builder-dockerfile reports for an app</h3>
 <div class="admonition tip">
@@ -2670,7 +2670,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku builder-dockerfile:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-dockerfile:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2694,7 +2694,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku builder-dockerfile:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-dockerfile:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2710,7 +2710,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku builder-dockerfile:report node-js-app --builder-dockerfile-dockerfile-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-dockerfile:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-dockerfile-dockerfile-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2722,7 +2722,7 @@
 <h3 id="build-time-configuration-variables">Build-time configuration variables</h3>
 <p>For security reasons - and as per <a href="https://github.com/docker/docker/issues/13490">Docker recommendations</a> - Dockerfile-based deploys have variables available only during runtime.</p>
 <p>For users that require customization in the <code>build</code> phase, you may use build arguments via the <a href="../../../advanced-usage/docker-options/">docker-options plugin</a>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku docker-options:add node-js-app build <span class="s1">&#39;--build-arg NODE_ENV=production&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--build-arg NODE_ENV=production&#39;</span>
 </code></pre></div>
 <p>Once set, the Dockerfile usage would be as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
@@ -2731,7 +2731,7 @@
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">ARG</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c"># use the argument</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$NODE_ENV</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$NODE_ENV</span>
 </code></pre></div>
 <p>You may also set the argument as an environment variable</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
@@ -2741,26 +2741,26 @@
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c"># assign it to an environment variable</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c"># we can wrap the variable in brackets</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">ENV</span><span class="w"> </span>NODE_ENV <span class="si">${</span><span class="nv">NODE_ENV</span><span class="si">}</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">ENV</span><span class="w"> </span>NODE_ENV<span class="w"> </span><span class="si">${</span><span class="nv">NODE_ENV</span><span class="si">}</span>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c"># or omit them completely</span>
 <a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="c"># use the argument</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$NODE_ENV</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$NODE_ENV</span>
 </code></pre></div>
 <h3 id="building-images-with-docker-buildkit">Building images with Docker Buildkit</h3>
 <p>If your Dockerfile is using Docker engine's <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">buildkit</a> (not to be confused with buildpacks), then the <code>DOCKER_BUILDKIT=1</code> environment variable needs to be set. Additionally, complete build log output can be forced via <code>BUILDKIT_PROGRESS=plain</code>. Both of these environment variables can be set as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">echo</span> <span class="s2">&quot;export DOCKER_BUILDKIT=1&quot;</span> <span class="p">|</span> sudo tee -a /etc/default/dokku
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">echo</span> <span class="s2">&quot;export BUILDKIT_PROGRESS=plain&quot;</span> <span class="p">|</span> sudo tee -a /etc/default/dokku
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export DOCKER_BUILDKIT=1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export BUILDKIT_PROGRESS=plain&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
 </code></pre></div>
 <h4 id="buildkit-directory-caching">Buildkit directory caching</h4>
 <p>Buildkit implements the <code>RUN --mount</code> option, enabling mount directory caches for <code>RUN</code> directives. The following is an example that mounts debian packaging related directories, which can speed up fetching of remote package data.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">debian:latest</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/lib/apt/lists,type<span class="o">=</span>cache <span class="se">\</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    --mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/cache/apt,type<span class="o">=</span>cache <span class="se">\</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    apt-get update <span class="se">\</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a> <span class="o">&amp;&amp;</span> <span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive apt-get install -y --no-install-recommends <span class="se">\</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>      git
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/lib/apt/lists,type<span class="o">=</span>cache<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/cache/apt,type<span class="o">=</span>cache<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">      </span>git
 </code></pre></div>
 <p>Mount cache targets may vary depending on the tool in use, and users are encouraged to investigate the directories that apply for their language and framework.</p>
 <p>You would adjust the cache directory for whatever application cache you have, e.g. <code>/root/.pnpm-store/v3</code> for pnpm, <code>$HOME/.m2</code> for maven, or <code>/root/.cache</code> for golang.</p>
@@ -2769,7 +2769,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>You can do:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku config:set node-js-app <span class="nv">DOKKU_DOCKERFILE_START_CMD</span><span class="o">=</span><span class="s2">&quot;--harmony server.js&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_DOCKERFILE_START_CMD</span><span class="o">=</span><span class="s2">&quot;--harmony server.js&quot;</span>
 </code></pre></div>
 <p>To tell Docker what to run.</p>
 <p>Setting <code>$DOKKU_DOCKERFILE_CACHE_BUILD</code> to <code>true</code> or <code>false</code> will enable or disable Docker's image layer cache. Lastly, for more granular build control, you may also pass any <code>docker build</code> option to <code>docker</code>, by setting <code>$DOKKU_DOCKER_BUILD_OPTS</code>.</p>
@@ -2783,13 +2783,13 @@ with a buildpack deployed app. The <code>Procfile</code> should contain one or m
 When you deploy your app, a Docker image will be built. The <code>Procfile</code> will be extracted from the image
 (it must be in the folder defined in your <code>Dockerfile</code> as <code>WORKDIR</code> or <code>/app</code>) and the commands
 in it will be passed to <code>docker run</code> to start your process(es). Here's an example <code>Procfile</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nl">web</span><span class="p">:</span><span class="w"> </span>bin/run-prod.sh<span class="w"></span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nl">worker</span><span class="p">:</span><span class="w"> </span>bin/run-worker.sh<span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nl">web</span><span class="p">:</span><span class="w"> </span>bin/run-prod.sh
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nl">worker</span><span class="p">:</span><span class="w"> </span>bin/run-worker.sh
 </code></pre></div>
 <p>And <code>Dockerfile</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">COPY</span><span class="w"> </span>. ./
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>./
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;bin/run-dev.sh&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>When you deploy this app the <code>web</code> process will automatically be scaled to 1 and your Docker container

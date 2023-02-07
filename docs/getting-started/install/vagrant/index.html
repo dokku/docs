@@ -2418,7 +2418,7 @@
 </li>
 <li>
 <p>Clone Dokku.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/dokku/dokku.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku.git
 </code></pre></div>
 </li>
 <li>
@@ -2430,19 +2430,19 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># - `DOKKU_DOMAIN`</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># - `DOKKU_IP`</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># - `FORWARDED_PORT`.</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">cd</span> path/to/dokku
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">cd</span><span class="w"> </span>path/to/dokku
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># for most users</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>vagrant up
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>vagrant<span class="w"> </span>up
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># windows users must instead use the following in an elevated command prompt</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>vagrant up dokku-windows
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>vagrant<span class="w"> </span>up<span class="w"> </span>dokku-windows
 </code></pre></div>
 </li>
 <li>
 <p>Setup SSH Config in <code>~/.ssh/config</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">Host dokku.me</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="na">Port 22</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">Host dokku.me</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="na">Port 22</span>
 </code></pre></div>
 <blockquote>
 <p>For users that have customized the IP address of their VM - either in a custom <code>Vagrantfile</code> or via the <code>DOKKU_IP</code> environment variable - and are not using <code>10.0.0.2</code> for the Vagrant IP, you'll need to instead use the output of <code>vagrant ssh-config dokku</code> for your <code>~/.ssh/config</code> entry. </p>
@@ -2451,10 +2451,10 @@
 <li>
 <p>Connect to the server via <code>vagrant ssh</code> and add your ssh key to the install. Additionally, set the global domain name to <code>dokku.me</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># usually your key is already available under the current user&#39;s `~/.ssh/authorized_keys` file</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat ~/.ssh/authorized_keys <span class="p">|</span> dokku ssh-keys:add admin
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat<span class="w"> </span>~/.ssh/authorized_keys<span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>admin
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># you can use any domain you already have access to</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>dokku domains:set-global dokku.me
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span>dokku.me
 </code></pre></div>
 <blockquote>
 <p>Please note, the <code>dokku.me</code> domain is setup to point to <code>10.0.0.2</code> along with all subdomains (i.e. <code>yourapp.dokku.me</code>). If you change the <code>DOKKU_IP</code> in your Vagrant setup you'll need to update your <code>/etc/hosts</code> file to point your reconfigured IP address.</p>
