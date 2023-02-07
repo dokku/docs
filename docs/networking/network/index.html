@@ -2861,7 +2861,11 @@
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku network:set --global initial-network
 </code></pre></div>
 <h4 id="network-aliases">Network Aliases</h4>
-<p>When a container created for a deployment is being attached to a network - regardless of which <code>attach</code> property was used - a network alias of the pattern <code>APP.PROC_TYPE</code> will be added to all containers. This can be used to load-balance requests between containers. For an application named <code>node-js-app</code> with a process type of web, the network alias - or resolvable DNS record within the network - will be:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is only available when an app has been attached to a network other than the default <code>bridge</code> network.</p>
+</div>
+<p>When a container created for a deployment is being attached to a network - regardless of which network property was used - a network alias of the pattern <code>APP.PROC_TYPE</code> will be added to all containers. This can be used to load-balance requests between containers. For an application named <code>node-js-app</code> with a process type of web, the network alias - or resolvable DNS record within the network - will be:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>node-js-app.web
 </code></pre></div>
 <p>The fully-qualified URL for the resource will depend upon the <code>PORT</code> being listened to by the application. Applications built via buildpacks will have their <code>PORT</code> environment variable set to <code>5000</code>, and as such internal network requests for the above example should point to the following:</p>
