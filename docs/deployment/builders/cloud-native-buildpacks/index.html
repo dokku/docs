@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/deployment/builders/cloud-native-buildpacks/">
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2584,13 +2584,13 @@
 <p>This builder will be auto-detected in either the following cases:</p>
 <ul>
 <li>The <code>DOKKU_CNB_EXPERIMENTAL</code> app environment variable is set to <code>1</code>.
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku config:set --no-restart node-js-app <span class="nv">DOKKU_CNB_EXPERIMENTAL</span><span class="o">=</span><span class="m">1</span>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_CNB_EXPERIMENTAL</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div></li>
 <li>A <code>project.toml</code> file exists in the root of the app repository.</li>
 <li>This file is consumed by <code>pack-cli</code> and used to describe how the app is built.</li>
 </ul>
 <p>The builder can also be specified via the <code>builder:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku builder:set node-js-app selected pack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>pack
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -2598,16 +2598,16 @@
 </div>
 <h3 id="changing-the-projecttoml-location">Changing the <code>project.toml</code> location</h3>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>project.toml</code> file to use for a given app. This can be done via the <code>builder-pack:set</code> command. If a value other than <code>project.toml</code> is specified and that file does not exist in the app's build directory, Dokku will continue the build process as if the repository has no <code>project.toml</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku builder-pack:set node-js-app projecttoml-path project2.toml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path<span class="w"> </span>project2.toml
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku builder-pack:set node-js-app projecttoml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path
 </code></pre></div>
 <p>The <code>projecttoml-path</code> property can also be set globally. The global default is <code>project.toml</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku builder-pack:set --global projecttoml-path project2.toml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path<span class="w"> </span>project2.toml
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku builder-pack:set --global projecttoml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path
 </code></pre></div>
 <h3 id="displaying-builder-pack-reports-for-an-app">Displaying builder-pack reports for an app</h3>
 <div class="admonition tip">
@@ -2618,7 +2618,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku builder-pack:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-pack:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2642,7 +2642,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku builder-pack:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-pack:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2658,7 +2658,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku builder-pack:report node-js-app --builder-pack-projecttoml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>builder-pack:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-pack-projecttoml-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2673,18 +2673,18 @@
 <p>Introduced in 0.23.0</p>
 </div>
 <p>The default stack builder in use by CNB buildpacks in Dokku is based on <code>heroku/buildpacks</code>. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>buildpacks:set-property</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku buildpacks:set-property node-js-app stack paketobuildpacks/build:base-cnb
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 </code></pre></div>
 <p>The specified stack builder can also be unset by omitting the name of the stack builder when calling <code>buildpacks:set-property</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku buildpacks:set-property node-js-app stack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
 </code></pre></div>
 <p>A change in the stack builder value will execute the <code>post-stack-set</code> trigger.</p>
 <p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_CNB_BUILDER</code> environment variable (<code>heroku/buildpacks</code> by default).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># set globally</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku buildpacks:set-property --global stack paketobuildpacks/build:base-cnb
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># unset globally</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>dokku buildpacks:set-property --global stack
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack
 </code></pre></div>
 
 

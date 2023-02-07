@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/deployment/continuous-integration/generic/">
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2468,7 +2468,7 @@
 <p>The simplest usage of the image is as follows.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># where the `.env` file contains `GIT_REMOTE_URL` and `SSH_PRIVATE_KEY`</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker run --rm -v<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">:/app&quot;</span> --env-file<span class="o">=</span>.env dokku/ci-docker-image dokku-deploy
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">:/app&quot;</span><span class="w"> </span>--env-file<span class="o">=</span>.env<span class="w"> </span>dokku/ci-docker-image<span class="w"> </span>dokku-deploy
 </code></pre></div>
 <p>For more configuration examples and further documentation, see the <a href="https://github.com/dokku/ci-docker-image">ci-docker-image</a> readme.</p>
 

@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/deployment/zero-downtime-deploys/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2750,7 +2750,7 @@ checks will fail. To avoid this:</p>
 <h2 id="configuring-checks-settings">Configuring checks settings</h2>
 <h3 id="wait-to-retire">wait-to-retire</h3>
 <p>After a successful deploy, the grace period given to old containers before they are stopped/terminated is determined by the value of <code>wait-to-retire</code>. This is useful for ensuring completion of long-running HTTP connections.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku checks:set node-js-app wait-to-retire <span class="m">30</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>checks:set<span class="w"> </span>node-js-app<span class="w"> </span>wait-to-retire<span class="w"> </span><span class="m">30</span>
 </code></pre></div>
 <p>Defaults to <code>60</code>.</p>
 <h2 id="configuring-check-settings-using-the-config-plugin">Configuring check settings using the <code>config</code> plugin</h2>
@@ -2775,7 +2775,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># process type specification is optional</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku checks:skip node-js-app worker,web
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>checks:skip<span class="w"> </span>node-js-app<span class="w"> </span>worker,web
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2792,7 +2792,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku checks:disable node-js-app worker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>checks:disable<span class="w"> </span>node-js-app<span class="w"> </span>worker
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2814,7 +2814,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku checks:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>checks:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2844,7 +2844,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku checks:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>checks:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2859,7 +2859,7 @@ checks will fail. To avoid this:</p>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku checks:report node-js-app --checks-disabled-list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>checks:report<span class="w"> </span>node-js-app<span class="w"> </span>--checks-disabled-list
 </code></pre></div>
 <h2 id="customizing-checks">Customizing checks</h2>
 <p>If your application needs a longer period to boot up - perhaps to load data into memory, or because of slow boot time - you may also use Dokku's <code>checks</code> functionality to more precisely check whether an application can serve traffic or not.</p>
@@ -2937,7 +2937,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku checks:run APP
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>checks:run<span class="w"> </span>APP
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2968,7 +2968,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku checks:run node-js-app worker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>checks:run<span class="w"> </span>node-js-app<span class="w"> </span>worker
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2987,7 +2987,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku checks:run node-js-app web.2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>checks:run<span class="w"> </span>node-js-app<span class="w"> </span>web.2
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3006,7 +3006,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku checks:run node-js-app non-existent
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>checks:run<span class="w"> </span>node-js-app<span class="w"> </span>non-existent
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3020,7 +3020,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku checks:run node-js-app web.3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>checks:run<span class="w"> </span>node-js-app<span class="w"> </span>web.3
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3048,7 +3048,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git push dokku master
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3122,7 +3122,7 @@ checks will fail. To avoid this:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>git push dokku master
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
 </code></pre></div>
 </div>
 <div class="tabbed-block">

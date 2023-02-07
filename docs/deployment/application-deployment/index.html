@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/deployment/application-deployment/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2739,12 +2739,12 @@
 <p>Once you have configured Dokku with at least one user, you can deploy applications using <code>git push</code>. To quickly see Dokku deployment in action, try using <a href="https://github.com/heroku/ruby-getting-started">the Heroku Ruby on Rails "Getting Started" app</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># from your local machine</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># SSH access to github must be enabled on this host</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git clone https://github.com/heroku/ruby-getting-started
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/heroku/ruby-getting-started
 </code></pre></div>
 <h3 id="create-the-app">Create the app</h3>
 <p>SSH into the Dokku host and create the application as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># on the Dokku host</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku apps:create ruby-getting-started
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>ruby-getting-started
 </code></pre></div>
 <h3 id="create-the-backing-services">Create the backing services</h3>
 <p>Dokku by default <strong>does not</strong> provide datastores (e.g. MySQL, PostgreSQL) on a newly created app. You can add datastore support by installing plugins, and the Dokku project <a href="../../community/plugins/#official-plugins-beta">provides official plugins</a> for common datastores.</p>
@@ -2752,17 +2752,17 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># on the Dokku host</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># install the postgres plugin</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># plugin installation requires root, hence the user change</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># create a postgres service with the name railsdatabase</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>dokku postgres:create railsdatabase
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>dokku<span class="w"> </span>postgres:create<span class="w"> </span>railsdatabase
 </code></pre></div>
 <p>Each service may take a few moments to create.</p>
 <h3 id="linking-backing-services-to-applications">Linking backing services to applications</h3>
 <p>Once the services have been created, you then set the <code>DATABASE_URL</code> environment variable by linking the service, as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># on the Dokku host</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># each official datastore offers a `link` method to link a service to any application</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>dokku postgres:link railsdatabase ruby-getting-started
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>dokku<span class="w"> </span>postgres:link<span class="w"> </span>railsdatabase<span class="w"> </span>ruby-getting-started
 </code></pre></div>
 <p>Dokku supports linking a single service to multiple applications as well as linking only one service per application.</p>
 <h3 id="deploy-the-app">Deploy the app</h3>
@@ -2773,9 +2773,9 @@
 <p>Now you can deploy the <code>ruby-getting-started</code> app to your Dokku server. All you have to do is add a remote to name the app. Applications are created on-the-fly on the Dokku server.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># from your local machine</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">cd</span> ruby-getting-started
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>git remote add dokku dokku@dokku.me:ruby-getting-started
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>git push dokku main:master
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">cd</span><span class="w"> </span>ruby-getting-started
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:ruby-getting-started
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>main:master
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2825,43 +2825,43 @@ Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a
 <p>While SSL certificates can be imported, automated SSL via Letsencrypt requires that all domains on an app correctly point at your server's public ip address. Please keep this in mind when using Letsencrypt.</p>
 </div>
 <p>For many users, responding to requests via <code>https</code> will be desirable. Dokku has a complete <a href="../../configuration/ssl/">ssl plugin</a> built in that can be used to import SSL certificates (below is a short example, please refer to the <a href="../../configuration/ssl/">ssl documentation</a> for more information):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku certs:add ruby-getting-started server.crt server.key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>certs:add<span class="w"> </span>ruby-getting-started<span class="w"> </span>server.crt<span class="w"> </span>server.key
 </code></pre></div>
 <p>As an alternative, the Dokku project offers an optional letsencrypt plugin that can be used to automate SSL certificate retrieval and renewal.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># on the Dokku host</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># install the letsencrypt plugin</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># plugin installation requires root, hence the user change</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>sudo<span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-letsencrypt.git
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># configure the plugin</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>dokku config:set --global <span class="nv">DOKKU_LETSENCRYPT_EMAIL</span><span class="o">=</span>your-email@your.domain.com
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">DOKKU_LETSENCRYPT_EMAIL</span><span class="o">=</span>your-email@your.domain.com
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># set a custom domain that you own for your application</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>dokku domains:set ruby-getting-started ruby-getting-started.your.domain.com
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>ruby-getting-started<span class="w"> </span>ruby-getting-started.your.domain.com
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># enable letsencrypt</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>dokku letsencrypt:enable ruby-getting-started
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>dokku<span class="w"> </span>letsencrypt:enable<span class="w"> </span>ruby-getting-started
 <a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
 <a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1"># enable auto-renewal</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>dokku letsencrypt:cron-job --add
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>dokku<span class="w"> </span>letsencrypt:cron-job<span class="w"> </span>--add
 </code></pre></div>
 <h3 id="skipping-deployment">Skipping deployment</h3>
 <p>If you only want to rebuild and tag a container, you can skip the deployment phase by setting <code>$DOKKU_SKIP_DEPLOY</code> to <code>true</code> by running:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># on the Dokku host</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dokku config:set ruby-getting-started <span class="nv">DOKKU_SKIP_DEPLOY</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>ruby-getting-started<span class="w"> </span><span class="nv">DOKKU_SKIP_DEPLOY</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <h3 id="redeploying-or-restarting">Redeploying or restarting</h3>
 <p>If you need to redeploy or restart your app:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># on the Dokku host</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku ps:rebuild ruby-getting-started
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>ruby-getting-started
 </code></pre></div>
 <p>See the <a href="../../processes/process-management/">process scaling documentation</a> for more information on how to manage your app processes.</p>
 <h3 id="deploying-with-private-git-submodules">Deploying with private Git submodules</h3>
 <p>Dokku uses Git locally (i.e. not a Docker image) to build its own copy of your app repo, including submodules, as the <code>dokku</code> user. This means that in order to deploy private Git submodules, you need to put your deploy key in <code>/home/dokku/.ssh/</code> and potentially add <code>github.com</code> (or your VCS host key) into <code>/home/dokku/.ssh/known_hosts</code>. You can use the following test to confirm your setup is correct:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># on the Dokku host</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>su - dokku
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>ssh -T git@github.com
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>su<span class="w"> </span>-<span class="w"> </span>dokku
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>ssh-keyscan<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>github.com<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.ssh/known_hosts
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2875,8 +2875,8 @@ Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># from your local machine</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># the below example assumes your app server domain or IP is dokku.me. Push in the form of: dokku@{serveripordomain}:{dokkuappname}</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>git remote add dokku dokku@dokku.me:ruby-getting-started
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>git push dokku main:master
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:ruby-getting-started
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>main:master
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2892,8 +2892,8 @@ Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># from your local machine</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>git remote add dokku dokku@dokku.me:app.dokku.me
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>git push dokku main:master
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:app.dokku.me
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>main:master
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2909,8 +2909,8 @@ Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># from your local machine</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># the remote username *must* be dokku or pushes will fail</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>git remote add dokku dokku@dokku.me:dokku.me
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>git push dokku main:master
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:dokku.me
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>main:master
 </code></pre></div>
 </div>
 <div class="tabbed-block">

@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/advanced-usage/registry-management/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2534,38 +2534,38 @@
 <h3 id="logging-into-a-registry">Logging into a registry</h3>
 <p>The <code>registry:login</code> command can be used to log into a docker registry. The following are examples for logging into various common registries:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># hub.docker.com</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku registry:login docker.io <span class="nv">$USERNAME</span> <span class="nv">$PASSWORD</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>docker.io<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$PASSWORD</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># digitalocean</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># the username and password are both defined as the same api token</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>dokku registry:login registry.digitalocean.com <span class="nv">$DIGITALOCEAN_API_TOKEN</span> <span class="nv">$DIGITALOCEAN_API_TOKEN</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>registry.digitalocean.com<span class="w"> </span><span class="nv">$DIGITALOCEAN_API_TOKEN</span><span class="w"> </span><span class="nv">$DIGITALOCEAN_API_TOKEN</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># github container registry</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># see the following link for information on retrieving a personal access token</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">#   https://docs.github.com/en/packages/guides/pushing-and-pulling-docker-images#authenticating-to-github-container-registry</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>dokku registry:login ghcr.io <span class="nv">$USERNAME</span> <span class="nv">$REGISTRY_PAT_TOKEN</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>ghcr.io<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$REGISTRY_PAT_TOKEN</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># quay</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># a robot user may be used to login</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>dokku registry:login quay.io <span class="nv">$USERNAME</span> <span class="nv">$PASSWORD</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>quay.io<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$PASSWORD</span>
 </code></pre></div>
 <p>For security reasons, the password may also be specified as stdin by specifying the <code>--password-stdin</code> flag. This is supported regardless of the registry being logged into.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$PASSWORD</span><span class="s2">&quot;</span> <span class="p">|</span> dokku registry:login --password-stdin docker.io <span class="nv">$USERNAME</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>registry:login<span class="w"> </span>--password-stdin<span class="w"> </span>docker.io<span class="w"> </span><span class="nv">$USERNAME</span>
 </code></pre></div>
 <p>For certain Docker registries - such as Amazon ECR or Google's GCR registries - users may instead wish to use a docker credential helper to automatically authenticate against a server; please see the documentation regarding the credential helper in question for further setup instructions.</p>
 <h3 id="setting-a-remote-server">Setting a remote server</h3>
 <p>To specify a remote server registry for pushes, set the <code>server</code> property via the <code>registry:set</code> command. The default value for this property is empty string. Setting the value to <code>docker.io</code> or <code>hub.docker.com</code> will result in the computed value being empty string (as that is the default, implicit registry), while any non-zero length value will have a <code>/</code> appended to it if there is not one already.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku registry:set node-js-app server docker.io
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>server<span class="w"> </span>docker.io
 </code></pre></div>
 <p>This property can be set for a single app or globally via the <code>--global</code> flag. When set globally, the app-specific value will always overide the global value. The default global value for this property is empty string.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku registry:set --global server docker.io
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>server<span class="w"> </span>docker.io
 </code></pre></div>
 <p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># per-app</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku registry:set node-js-app server
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>server
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># globally</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dokku registry:set --global server
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>server
 </code></pre></div>
 <p>The following are the values that should be used for common remote servers:</p>
 <ul>
@@ -2589,25 +2589,25 @@
 </ul>
 <h3 id="specifying-an-image-repository-name">Specifying an image repository name</h3>
 <p>By default, Dokku uses the value <code>dokku/$APP_NAME</code> as the image repository that is pushed and deployed. For certain registries, the <code>dokku</code> namespace may not be available to your user. In these cases, the value can be set by changing the value of the <code>image-repo</code> property via the <code>registry:set</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku registry:set node-js-app image-repo my-awesome-prefix/node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>image-repo<span class="w"> </span>my-awesome-prefix/node-js-app
 </code></pre></div>
 <p>Setting the property value to an empty string will reset the value to the system default. Resetting the value has to be done per-app.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># per-app</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku registry:set node-js-app push-on-release
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
 </code></pre></div>
 <h3 id="pushing-images-on-build">Pushing images on build</h3>
 <p>To push the image on release, set the <code>push-on-release</code> property to <code>true</code> via the <code>registry:set</code> command. The default value for this property is <code>false</code>. Setting the property to <code>true</code> will result in the image being tagged with an ID that is incremented with every release. This tag will be what is used for running app code.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku registry:set node-js-app push-on-release <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>This property can be set for a single app or globally via the <code>--global</code> flag. When set globally, the app-specific value will always overide the global value. The default global value for this property is <code>false</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku registry:set --global push-on-release <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># per-app</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku registry:set node-js-app push-on-release
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># globally</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>dokku registry:set --global push-on-release
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
 </code></pre></div>
 
 

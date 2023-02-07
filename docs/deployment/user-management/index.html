@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/deployment/user-management/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2555,7 +2555,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku ssh-keys:list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ssh-keys:list
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2575,24 +2575,24 @@
 <p>Introduced in 0.20.2</p>
 </div>
 <p>The keys for a specific user may be listed by specifying a second argument to the <code>ssh-keys:list</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku ssh-keys:list admin
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>ssh-keys:list<span class="w"> </span>admin
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>0.22.3</p>
 </div>
 <p>The output format may be specified via the <code>--format</code> flag. Supported values include <code>json</code> and <code>text</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku ssh-keys:list --format json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>ssh-keys:list<span class="w"> </span>--format<span class="w"> </span>json
 </code></pre></div>
 <p>This can additionally be used to filter to keys for a particular user:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku ssh-keys:list --format json admin
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>ssh-keys:list<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>admin
 </code></pre></div>
 <h3 id="adding-ssh-keys">Adding SSH keys</h3>
 <p>You can add your public key to Dokku with the <code>ssh-keys:add</code> command. The output will be the fingerprint of the SSH key:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku ssh-keys:add KEY_NAME path/to/id_rsa.pub
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>KEY_NAME<span class="w"> </span>path/to/id_rsa.pub
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2607,17 +2607,17 @@
 <p><code>KEY_NAME</code> is a unique name which is used to identify public keys. Attempting to re-use a key name will result in an error. The SSH (Git) user is <em>always</em> <code>dokku</code>, as this is the system user that the <code>dokku</code> binary uses to perform all its actions.</p>
 </div>
 <p>Admin users and root can add keys remotely by specifying the <code>dokku</code> bin on their <code>ssh</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@dokku.me dokku ssh-keys:add KEY_NAME
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>root@dokku.me<span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>KEY_NAME
 </code></pre></div>
 <p>If you are using the Vagrant installation, you can also use the <code>make vagrant-acl-add</code> target to add your public key to Dokku (it will use your host username as the <code>USER</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat ~/.ssh/id_rsa.pub <span class="p">|</span> make vagrant-acl-add
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>make<span class="w"> </span>vagrant-acl-add
 </code></pre></div>
 <h3 id="removing-ssh-keys">Removing SSH keys</h3>
 <p>As key names are unique, they can be used to remove a public SSH key.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku ssh-keys:remove KEY_NAME
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>ssh-keys:remove<span class="w"> </span>KEY_NAME
 </code></pre></div>
 <p>An SSH Key can also be removed by fingerprint.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku ssh-keys:remove --fingerprint FINGERPRINT
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ssh-keys:remove<span class="w"> </span>--fingerprint<span class="w"> </span>FINGERPRINT
 </code></pre></div>
 <h2 id="scoping-commands-to-specific-users">Scoping commands to specific users</h2>
 <p>Support for scoping commands to specific users can be added through plugins that take advantage of the <a href="../../development/plugin-triggers/#user-auth">user-auth</a> plugin trigger to handle command authorization.

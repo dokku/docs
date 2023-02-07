@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/networking/proxies/nginx/">
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2907,40 +2907,40 @@
 <p>Introduced in 0.28.0</p>
 </div>
 <p>The nginx server can be started via <code>nginx:start</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku nginx:start
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>nginx:start
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="sb">````</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">### Stopping nginx</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>!!! tip <span class="s2">&quot;New&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>!!!<span class="w"> </span>tip<span class="w"> </span><span class="s2">&quot;New&quot;</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    Introduced <span class="k">in</span> <span class="m">0</span>.28.0
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>Introduced<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.28.0
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>The nginx server can be stopped via <span class="sb">`</span>nginx:stop<span class="sb">`</span>.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>The<span class="w"> </span>nginx<span class="w"> </span>server<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>stopped<span class="w"> </span>via<span class="w"> </span><span class="sb">`</span>nginx:stop<span class="sb">`</span>.
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="sb">```</span>shell
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>dokku nginx:stop
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>dokku<span class="w"> </span>nginx:stop
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="sb">````</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1">### Binding to specific addresses</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>!!! tip <span class="s2">&quot;New&quot;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>!!!<span class="w"> </span>tip<span class="w"> </span><span class="s2">&quot;New&quot;</span>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    Introduced <span class="k">in</span> <span class="m">0</span>.19.2
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span>Introduced<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.19.2
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>!!! note <span class="s2">&quot;Note&quot;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>!!!<span class="w"> </span>note<span class="w"> </span><span class="s2">&quot;Note&quot;</span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <span class="sb">`</span>proxy:build-config<span class="sb">`</span> command.
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span>Changing<span class="w"> </span>this<span class="w"> </span>value<span class="w"> </span>globally<span class="w"> </span>or<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>per-app<span class="w"> </span>basis<span class="w"> </span>will<span class="w"> </span>require<span class="w"> </span>rebuilding<span class="w"> </span>the<span class="w"> </span>nginx<span class="w"> </span>config<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>proxy:build-config<span class="sb">`</span><span class="w"> </span>command.
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>By default, nginx will listen to all interfaces <span class="o">(</span><span class="sb">`</span><span class="o">[</span>::<span class="o">]</span><span class="sb">`</span> <span class="k">for</span> IPv6, <span class="sb">`</span><span class="m">0</span>.0.0.0<span class="sb">`</span> <span class="k">for</span> IPv4<span class="o">)</span> when proxying requests to applications. This may be changed using the <span class="sb">`</span>bind-address-ipv4<span class="sb">`</span> and <span class="sb">`</span>bind-address-ipv6<span class="sb">`</span> properties. This is useful <span class="k">in</span> cases where the proxying should be internal to a network or <span class="k">if</span> there are multiple network interfaces that should respond with different content.
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>By<span class="w"> </span>default,<span class="w"> </span>nginx<span class="w"> </span>will<span class="w"> </span>listen<span class="w"> </span>to<span class="w"> </span>all<span class="w"> </span>interfaces<span class="w"> </span><span class="o">(</span><span class="sb">`</span><span class="o">[</span>::<span class="o">]</span><span class="sb">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>IPv6,<span class="w"> </span><span class="sb">`</span><span class="m">0</span>.0.0.0<span class="sb">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>IPv4<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>proxying<span class="w"> </span>requests<span class="w"> </span>to<span class="w"> </span>applications.<span class="w"> </span>This<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>changed<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>bind-address-ipv4<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span><span class="sb">`</span>bind-address-ipv6<span class="sb">`</span><span class="w"> </span>properties.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>useful<span class="w"> </span><span class="k">in</span><span class="w"> </span>cases<span class="w"> </span>where<span class="w"> </span>the<span class="w"> </span>proxying<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>internal<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>network<span class="w"> </span>or<span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>multiple<span class="w"> </span>network<span class="w"> </span>interfaces<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>respond<span class="w"> </span>with<span class="w"> </span>different<span class="w"> </span>content.
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="sb">```</span>shell
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>dokku nginx:set node-js-app bind-address-ipv4 <span class="m">127</span>.0.0.1
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>dokku nginx:set node-js-app bind-address-ipv6 ::1
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-address-ipv4<span class="w"> </span><span class="m">127</span>.0.0.1
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-address-ipv6<span class="w"> </span>::1
 </code></pre></div>
 <p>This may be reverted by setting an empty bind address.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku nginx:set node-js-app bind-address-ipv4
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku nginx:set node-js-app bind-address-ipv6
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-address-ipv4
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-address-ipv6
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2957,8 +2957,8 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>If SSL certificates are present, HSTS will be automatically enabled. It can be toggled via <code>nginx:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku nginx:set node-js-app hsts <span class="nb">true</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku nginx:set node-js-app hsts <span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>hsts<span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>hsts<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <p>The following options are also available via the <code>nginx:set</code> command:</p>
 <ul>
@@ -2974,10 +2974,10 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>HSTS Header can be disabled for all apps by setting the <code>hsts</code> property to false after passing the <code>--global</code> flag to <code>nginx:set</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku nginx:set --global hsts <span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>--global<span class="w"> </span>hsts<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <p>Once the HSTS setting is disabled globally, it can be re-enabled on a per-app basis by setting the <code>hsts</code> property as normal.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku nginx:set node-js-app hsts <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>hsts<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <h3 id="checking-access-logs">Checking access logs</h3>
 <div class="admonition note">
@@ -2985,17 +2985,17 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>You may check nginx access logs via the <code>nginx:access-logs</code> command. This assumes that app access logs are being stored in <code>/var/log/nginx/$APP-access.log</code>, as is the default in the generated <code>nginx.conf</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku nginx:access-logs node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>nginx:access-logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>You may also follow the logs by specifying the <code>-t</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku nginx:access-logs node-js-app -t
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>nginx:access-logs<span class="w"> </span>node-js-app<span class="w"> </span>-t
 </code></pre></div>
 <h3 id="checking-error-logs">Checking error logs</h3>
 <p>You may check nginx error logs via the <code>nginx:error-logs</code> command. This assumes that app error logs are being stored in <code>/var/log/nginx/$APP-error.log</code>, as is the default in the generated <code>nginx.conf</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku nginx:error-logs node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>nginx:error-logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>You may also follow the logs by specifying the <code>-t</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku nginx:error-logs node-js-app -t
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>nginx:error-logs<span class="w"> </span>node-js-app<span class="w"> </span>-t
 </code></pre></div>
 <h3 id="changing-log-path">Changing log path</h3>
 <div class="admonition tip">
@@ -3012,12 +3012,12 @@
 <li><code>error-log-path</code> (type: string, default: <code>${NGINX_LOG_ROOT}/${APP}-error.log</code>): Log path for nginx error logs</li>
 </ul>
 <p>The defaults should not be changed without verifying that the paths will be writeable by nginx. However, this setting is useful for enabling or disabling logging by setting the values to <code>off</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku nginx:set node-js-app access-log-path off
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku nginx:set node-js-app error-log-path off
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>access-log-path<span class="w"> </span>off
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>error-log-path<span class="w"> </span>off
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku nginx:set node-js-app access-log-path
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku nginx:set node-js-app error-log-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>access-log-path
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>error-log-path
 </code></pre></div>
 <p>In all cases, the nginx config must be regenerated after setting the above values.</p>
 <h3 id="changing-log-format">Changing log format</h3>
@@ -3030,29 +3030,29 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>The format of the access log can be changed by calling the <code>nginx:set</code> command as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku nginx:set node-js-app access-log-format custom-format
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>access-log-format<span class="w"> </span>custom-format
 </code></pre></div>
 <p>Prior to changing the log-format, log formats should be specified at a file such as <code>/etc/nginx/conf.d/00-log-formats.conf</code>. This will ensure they are available within your app's nginx context. For instance, the following may be added to the above file. It only needs to be specified once to be used for all apps.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># /etc/nginx/conf.d/00-log-formats.conf</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># escape=json was added in nginx 1.11.8</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">log_format</span><span class="w"> </span><span class="s">json_combined</span><span class="w"> </span><span class="s">escape=json</span><span class="w"></span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span><span class="w"></span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="s">&#39;&quot;time_local&quot;:&quot;</span><span class="nv">$time_local&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="s">&#39;&quot;remote_addr&quot;:&quot;</span><span class="nv">$remote_addr&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="s">&#39;&quot;remote_user&quot;:&quot;</span><span class="nv">$remote_user&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="s">&#39;&quot;request&quot;:&quot;</span><span class="nv">$request&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="s">&#39;&quot;status&quot;:&quot;</span><span class="nv">$status&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="s">&#39;&quot;body_bytes_sent&quot;:&quot;</span><span class="nv">$body_bytes_sent&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="s">&#39;&quot;request_time&quot;:&quot;</span><span class="nv">$request_time&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="s">&#39;&quot;http_referrer&quot;:&quot;</span><span class="nv">$http_referer&quot;,&#39;</span><span class="w"></span>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="s">&#39;&quot;http_user_agent&quot;:&quot;</span><span class="nv">$http_user_agent&quot;&#39;</span><span class="w"></span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">  </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">log_format</span><span class="w"> </span><span class="s">json_combined</span><span class="w"> </span><span class="s">escape=json</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="s">&#39;&quot;time_local&quot;:&quot;</span><span class="nv">$time_local&quot;,&#39;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="s">&#39;&quot;remote_addr&quot;:&quot;</span><span class="nv">$remote_addr&quot;,&#39;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="s">&#39;&quot;remote_user&quot;:&quot;</span><span class="nv">$remote_user&quot;,&#39;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="s">&#39;&quot;request&quot;:&quot;</span><span class="nv">$request&quot;,&#39;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="s">&#39;&quot;status&quot;:&quot;</span><span class="nv">$status&quot;,&#39;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="s">&#39;&quot;body_bytes_sent&quot;:&quot;</span><span class="nv">$body_bytes_sent&quot;,&#39;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="s">&#39;&quot;request_time&quot;:&quot;</span><span class="nv">$request_time&quot;,&#39;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="s">&#39;&quot;http_referrer&quot;:&quot;</span><span class="nv">$http_referer&quot;,&#39;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="s">&#39;&quot;http_user_agent&quot;:&quot;</span><span class="nv">$http_user_agent&quot;&#39;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">  </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>Next, the format should be set for the given app.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku nginx:set node-js-app access-log-format json_combined
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>access-log-format<span class="w"> </span>json_combined
 </code></pre></div>
 <p>Finally, a proxy rebuild will change the format as desired.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku proxy:build-config node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>node-js-app
 </code></pre></div>
 <h3 id="specifying-a-read-timeout">Specifying a read timeout</h3>
 <div class="admonition tip">
@@ -3064,11 +3064,11 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>When proxying requests to your applications, it may be useful to specify a proxy read timeout. This can be done via the <code>nginx:set</code> command as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku nginx:set node-js-app proxy-read-timeout 120s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>proxy-read-timeout<span class="w"> </span>120s
 </code></pre></div>
 <p>The default value is <code>60s</code>, and all numeric values <em>must</em> have a trailing time value specified (<code>s</code> for seconds, <code>m</code> for minutes).</p>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku nginx:set node-js-app proxy-read-timeout
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>proxy-read-timeout
 </code></pre></div>
 <p>In all cases, the nginx config must be regenerated after setting the above value.</p>
 <h3 id="specifying-a-custom-client_max_body_size">Specifying a custom client_max_body_size</h3>
@@ -3081,21 +3081,21 @@
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 </div>
 <p>Users can override the default <code>client_max_body_size</code> value - which limits file uploads - via <code>nginx:set</code>. Changing this value will only apply to every <code>server</code> stanza of the default <code>nginx.conf.sigil</code>; users of custom <code>nginx.conf.sigil</code> files must update their templates to support the new value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku nginx:set node-js-app client-max-body-size 50m
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>client-max-body-size<span class="w"> </span>50m
 </code></pre></div>
 <p>The default value is empty string, which will result in nginx falling back to any configured, higher-level defaults (or <code>1m</code> if unconfigued; all numerical values <em>must</em> have a size unit specified (<code>k</code> for kilobytes, <code>m</code> for megabytes).</p>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku nginx:set node-js-app client-max-body-size
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>client-max-body-size
 </code></pre></div>
 <p>In all cases, the nginx config must be regenerated after setting the above value.</p>
 <p>Changing this value when using the PHP buildpack (or any other buildpack that uses an intermediary server) will require changing the value in the server config shipped with that buildpack. Consult your buildpack documentation for further details.</p>
 <h3 id="showing-the-nginx-config">Showing the nginx config</h3>
 <p>For debugging purposes, it may be useful to show the nginx config. This can be achieved via the <code>nginx:show-config</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku nginx:show-config node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>nginx:show-config<span class="w"> </span>node-js-app
 </code></pre></div>
 <h3 id="validating-nginx-configs">Validating nginx configs</h3>
 <p>It may be desired to validate an nginx config outside of the deployment process. To do so, run the <code>nginx:validate-config</code> command. With no arguments, this will validate all app nginx configs, one at a time. A minimal wrapper nginx config is generated for each app's nginx config, upon which <code>nginx -t</code> will be run.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku nginx:validate-config
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>nginx:validate-config
 </code></pre></div>
 <p>As app nginx configs are actually executed within a shared context, it is possible for an individual config to be invalid when being validated standalone but <em>also</em> be valid within the global server context. As such, the exit code for the <code>nginx:validate-config</code> command is the exit code of <code>nginx -t</code> against the server's real nginx config.</p>
 <p>The <code>nginx:validate-config</code> command also takes an optional <code>--clean</code> flag. If specified, invalid nginx configs will be removed.</p>
@@ -3103,10 +3103,10 @@
 <p class="admonition-title">Warning</p>
 <p>Invalid app nginx config's will be removed <em>even if</em> the config is valid in the global server context.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku nginx:validate-config --clean
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>nginx:validate-config<span class="w"> </span>--clean
 </code></pre></div>
 <p>The <code>--clean</code> flag may also be specified for a given app:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku nginx:validate-config node-js-app --clean
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>nginx:validate-config<span class="w"> </span>node-js-app<span class="w"> </span>--clean
 </code></pre></div>
 <h3 id="customizing-the-nginx-configuration">Customizing the nginx configuration</h3>
 <div class="admonition tip">
@@ -3115,14 +3115,14 @@
 </div>
 <p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. This may be overriden by committing the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> in the root of the app repository.</p>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>nginx.conf.sigil</code> file to use for a given app. This can be done via the <code>nginx:set</code> command. If a value is specified and that file does not exist in the app's build directory, Dokku will continue the build process as if the repository has no <code>nginx.conf.sigil</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku nginx:set node-js-app nginx-conf-sigil-path dokku/nginx.conf.sigil
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>nginx-conf-sigil-path<span class="w"> </span>dokku/nginx.conf.sigil
 </code></pre></div>
 <p>This property can also be changed globally, which will take into effect if there is no value at the app level.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku nginx:set --global nginx-conf-sigil-path dokku/nginx.conf.sigil
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>--global<span class="w"> </span>nginx-conf-sigil-path<span class="w"> </span>dokku/nginx.conf.sigil
 </code></pre></div>
 <p>In either case, the value can be reset by specifying an empty value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku nginx:set node-js-app nginx-conf-sigil-path
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>dokku nginx:set --global nginx-conf-sigil-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>nginx-conf-sigil-path
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>--global<span class="w"> </span>nginx-conf-sigil-path
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -3135,10 +3135,10 @@
 </div>
 <p>While enabled by default, using a custom nginx config can be disabled via <code>nginx:set</code>. This may be useful in cases where you do not want to allow users to override any higher-level customization of app nginx config.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># enable fetching custom config (default)</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku nginx:set node-js-app disable-custom-config <span class="nb">false</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-custom-config<span class="w"> </span><span class="nb">false</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># disable fetching custom config</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>dokku nginx:set node-js-app disable-custom-config <span class="nb">true</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-custom-config<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>Unsetting this value is the same as enabling custom nginx config usage.</p>
 <h4 id="available-template-variables">Available template variables</h4>
@@ -3164,10 +3164,10 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>include {{ .DOKKU_ROOT }}/{{ .APP }}/nginx.conf.d/*.conf;
 </code></pre></div>
 <p>That means you can put additional configuration in separate files. To increase the client request header timeout, the following can be performed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>mkdir /home/dokku/node-js-app/nginx.conf.d/
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nb">echo</span> <span class="s1">&#39;client_header_timeout 50s;&#39;</span> &gt; /home/dokku/node-js-app/nginx.conf.d/timeout.conf
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>chown dokku:dokku /home/dokku/node-js-app/nginx.conf.d/upload.conf
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>service nginx reload
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>mkdir<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;client_header_timeout 50s;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/timeout.conf
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>chown<span class="w"> </span>dokku:dokku<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/upload.conf
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>service<span class="w"> </span>nginx<span class="w"> </span>reload
 </code></pre></div>
 <p>The example above uses additional configuration files directly on the Dokku host. Unlike the <code>nginx.conf.sigil</code> file, these additional files will not be copied over from your application repo, and thus need to be placed in the <code>/home/dokku/node-js-app/nginx.conf.d/</code> directory manually.</p>
 <p>For PHP Buildpack users, you will also need to provide a <code>Procfile</code> and an accompanying <code>nginx.conf</code> file to customize the nginx config <em>within</em> the container. The following are example contents for your <code>Procfile</code></p>
@@ -3201,9 +3201,9 @@
 </div>
 <p>If services should only be accessed via their domain name, you may want to disable the default site by adding the following configuration to the global nginx configuration.</p>
 <p>Create the file at <code>/etc/nginx/conf.d/00-default-vhost.conf</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
 <a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">    </span><span class="c1"># If services hosted by dokku are available via HTTPS, it is recommended</span>
 <a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">    </span><span class="c1"># to also uncomment the following section.</span>
@@ -3218,10 +3218,10 @@
 <a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="w">    </span><span class="c1">#ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;</span>
 <a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">    </span><span class="c1">#ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;</span>
 <a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>
-<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">444</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">444</span><span class="p">;</span>
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="p">}</span>
 </code></pre></div>
 <p>Make sure to reload nginx after creating this file by running <code>systemctl reload nginx.service</code>.</p>
 <p>This will catch all unknown HOST header values and close the connection without responding. You can replace the <code>return 444;</code> with <code>return 410;</code> which will cause nginx to respond with an error page.</p>

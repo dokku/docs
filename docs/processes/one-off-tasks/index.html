@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/processes/one-off-tasks/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2630,10 +2630,10 @@
 <p>Introduced in 0.25.0, this container will be removed after the process exits.</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># runs `ls -lah` in the `/app` directory of the app `node-js-app`</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku run node-js-app ls -lah
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># optionally, run can be passed custom environment variables</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>dokku run --env <span class="s2">&quot;NODE_ENV=development&quot;</span> --env <span class="s2">&quot;PATH=/custom/path&quot;</span> node-js-app npm run mytask
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>dokku<span class="w"> </span>run<span class="w"> </span>--env<span class="w"> </span><span class="s2">&quot;NODE_ENV=development&quot;</span><span class="w"> </span>--env<span class="w"> </span><span class="s2">&quot;PATH=/custom/path&quot;</span><span class="w"> </span>node-js-app<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>mytask
 </code></pre></div>
 <p>One off containers are removed at the end of process execution.</p>
 <h4 id="running-procfile-commands">Running Procfile commands</h4>
@@ -2641,11 +2641,11 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>console: bundle exec racksh
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># runs `bundle exec racksh` in the `/app` directory of the app `my-app`</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku run my-app console
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>run<span class="w"> </span>my-app<span class="w"> </span>console
 </code></pre></div>
 <h4 id="specifying-container-labels">Specifying container labels</h4>
 <p>Containers may have specific labels attached. In order to avoid issues with dokku internals, do not use any labels beginning with either <code>com.dokku</code> or <code>org.label-schema</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku --label<span class="o">=</span>com.example.test-label<span class="o">=</span>value run node-js-app ls -lah
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>--label<span class="o">=</span>com.example.test-label<span class="o">=</span>value<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 </code></pre></div>
 <h4 id="disabling-tty">Disabling TTY</h4>
 <div class="admonition tip">
@@ -2653,7 +2653,7 @@
 <p>Introduced in 0.25.0</p>
 </div>
 <p>One-off containers default to interactive mode where possible. To disable this behavior, specify the <code>--no-tty</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku run --no-tty node-js-app ls -lah
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>run<span class="w"> </span>--no-tty<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 </code></pre></div>
 <h3 id="running-a-detached-container">Running a detached container</h3>
 <div class="admonition tip">
@@ -2661,12 +2661,12 @@
 <p>Introduced in 0.25.0</p>
 </div>
 <p>Finally, a container can be run in "detached" mode via the <code>run:detached</code> Dokku command. Running a process in detached mode will immediately return a <code>CONTAINER_ID</code>. Detached containers are run without a tty and are also removed at the end of process execution.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku run:detached node-js-app ls -lah
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>run:detached<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># returns the ID of the new container</span>
 </code></pre></div>
 <h3 id="displaying-one-off-container-logs">Displaying one-off container logs</h3>
 <p>You can easily get logs of all one-off containers for an app using the <code>logs</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku run:logs node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Logs are pulled via integration with the scheduler for the specified application via "live tailing". As such, logs from previously running deployments are usually not available. Users that desire to see logs from previous deployments for debugging purposes should persist those logs to external services. Please see Dokku's <a href="../../deployment/logs/#vector-logging-shipping">vector integration</a> for more information on how to persist logs across deployments to ship logs to another service or a third-party platform.</p>
 <h4 id="behavioral-modifiers">Behavioral modifiers</h4>
@@ -2677,7 +2677,7 @@
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-q, --quiet          # display raw logs without colors, time and names
 </code></pre></div>
 <p>You can use these modifiers as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku run:logs -t --container node-js-app.run.1234
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>-t<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.1234
 </code></pre></div>
 <p>The above command will show logs continually from the <code>node-js-app.run.1234</code> one-off run process.</p>
 <h3 id="listing-one-off-containers">Listing one-off containers</h3>
@@ -2689,7 +2689,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku run:list node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>run:list<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2708,7 +2708,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku run:list node-js-app --format json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>run:list<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2736,13 +2736,13 @@
 <div class="tabbed-block">
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># start a container</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># the output will be something like: node-js-app.run.2313</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>dokku run node-js-app sleep <span class="m">300</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># stop the container</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>dokku run:stop --container node-js-app.run.2313
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>dokku<span class="w"> </span>run:stop<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.2313
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="sb">````</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku run:stop node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>run:stop<span class="w"> </span>node-js-app
 </code></pre></div></p>
 </div>
 <div class="tabbed-block">

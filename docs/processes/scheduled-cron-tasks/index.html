@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://dokku.com/docs/processes/scheduled-cron-tasks/">
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.4.2">
     
     
       
@@ -2657,7 +2657,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku cron:list node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>cron:list<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2673,7 +2673,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku cron:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>cron:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2691,7 +2691,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku cron:report node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>cron:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2702,7 +2702,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku cron:report node-js-app --cron-task-count
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>cron:report<span class="w"> </span>node-js-app<span class="w"> </span>--cron-task-count
 </code></pre></div>
 <h3 id="self-managed-cron">Self Managed Cron</h3>
 <div class="admonition warning">
@@ -2712,18 +2712,18 @@
 <p>Some installations may require more fine-grained control over cron usage. The following are advanced instructions for configuring cron.</p>
 <h4 id="using-run-for-cron-tasks">Using <code>run</code> for cron tasks</h4>
 <p>You can always use a one-off container to run an app task:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku run node-js-app some-command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>some-command
 </code></pre></div>
 <p>For tasks that should not be interrupted, run is the <em>preferred</em> method of handling cron tasks, as the container will continue running even during a deploy or scaling event. The trade-off is that there will be an increase in memory usage if there are multiple concurrent tasks running.</p>
 <h4 id="using-enter-for-cron-tasks">Using <code>enter</code> for cron tasks</h4>
 <p>Your Procfile can have the following entry:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nl">cron</span><span class="p">:</span><span class="w"> </span>sleep<span class="w"> </span>infinity<span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nl">cron</span><span class="p">:</span><span class="w"> </span>sleep<span class="w"> </span>infinity
 </code></pre></div>
 <p>With the <code>cron</code> process scaled to <code>1</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku ps:scale node-js-app <span class="nv">cron</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">cron</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <p>You can now run all your commands in that container:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku enter node-js-app cron some-command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>enter<span class="w"> </span>node-js-app<span class="w"> </span>cron<span class="w"> </span>some-command
 </code></pre></div>
 <p>Note that you can also run multiple commands at the same time to reduce memory usage, though that may result in polluting the container environment.</p>
 <p>For tasks that will properly resume, you <em>should</em> use the above method, as running tasks will be interrupted during deploys and scaling events, and subsequent commands will always run with the latest container. Note that if you scale the cron container down, this may interrupt proper running of the task.</p>
