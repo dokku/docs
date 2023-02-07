@@ -2479,29 +2479,29 @@
 <p class="admonition-title">Note</p>
 <p>Whitespace and special characters get tricky. If you are using dokku locally you don't need to do any special escaping. If you are using dokku over ssh you will need to backslash-escape spaces:</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">ENV</span><span class="o">=</span>prod<span class="w"> </span><span class="nv">COMPILE_ASSETS</span><span class="o">=</span><span class="m">1</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku config:set node-js-app <span class="nv">ENV</span><span class="o">=</span>prod <span class="nv">COMPILE_ASSETS</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">KEY</span><span class="o">=</span><span class="s2">&quot;VAL\ WITH\ SPACES&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku config:set node-js-app <span class="nv">KEY</span><span class="o">=</span><span class="s2">&quot;VAL\ WITH\ SPACES&quot;</span>
 </code></pre></div></p>
 <p>Dokku can also read base64 encoded values. That's the easiest way to set a value with newlines or spaces. To set a value with newlines you need to base64 encode it first and pass the <code>--encoded</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--encoded<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">KEY</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>base64<span class="w"> </span>~/.ssh/id_rsa<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku config:set --encoded node-js-app <span class="nv">KEY</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>base64 ~/.ssh/id_rsa<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>When setting or unsetting environment variables, you may wish to avoid an application restart. This is useful when developing plugins or when setting multiple environment variables in a scripted manner. To do so, use the <code>--no-restart</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">ENV</span><span class="o">=</span>prod
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku config:set --no-restart node-js-app <span class="nv">ENV</span><span class="o">=</span>prod
 </code></pre></div>
 <p>If you wish to have the variables output in an <code>eval</code>-compatible form, you can use the <code>config:export</code> command</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>config:export<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku config:export node-js-app
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># outputs variables in the form:</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">#</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">#   export ENV=&#39;prod&#39;</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">#   export COMPILE_ASSETS=&#39;1&#39;</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># source in all the node-js-app app environment variables</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>dokku<span class="w"> </span>config:export<span class="w"> </span>node-js-app<span class="k">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">eval</span> <span class="k">$(</span>dokku config:export node-js-app<span class="k">)</span>
 </code></pre></div>
 <p>You can control the format of the exported variables with the <code>--format</code> flag.
 <code>--format=shell</code> will output the variables in a single-line for usage in command-line utilities:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>config:export<span class="w"> </span>--format<span class="w"> </span>shell<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku config:export --format shell node-js-app
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># outputs variables in the form:</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">#</span>

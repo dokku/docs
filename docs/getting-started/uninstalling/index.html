@@ -2484,24 +2484,24 @@
 <p>While we hate to see you go, if you need to uninstall Dokku, the following may help you out:</p>
 <h2 id="arch-uninstallation">Arch Uninstallation</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># purge dokku from your system</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>yay<span class="w"> </span>-Rsn<span class="w"> </span>dokku
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>yay -Rsn dokku
 </code></pre></div>
 <h2 id="debian-uninstallation">Debian Uninstallation</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># purge dokku from your system</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>apt-get<span class="w"> </span>purge<span class="w"> </span>dokku<span class="w"> </span>herokuish
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>apt-get purge dokku herokuish
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># remove any dependencies that are no longer necessary</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>apt-get<span class="w"> </span>autoremove
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>apt-get autoremove
 </code></pre></div>
 <h2 id="makefile-uninstallation">Makefile Uninstallation</h2>
 <p>This is a manual deletion process, and as it is not a recommended installation method, there is currently no automated uninstallation.</p>
 <p>All service plugins should be unlinked from applications, stopped, and destroyed.</p>
 <p>All applications should be stopped, and all docker containers and images deleted:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># stop all applications</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku ps:stop --all
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># cleanup containers and images</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>dokku<span class="w"> </span>cleanup
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>dokku cleanup
 </code></pre></div>
 <p>The following user/group must be deleted:</p>
 <ul>

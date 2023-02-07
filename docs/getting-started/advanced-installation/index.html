@@ -2571,29 +2571,29 @@
 <h2 id="installing-from-source">Installing from Source</h2>
 <p>You can always install Dokku straight from the latest - potentially unstable - <code>master</code> branch via the following Bash command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># using a branch results in installing from source</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>https://dokku.com/install/master/bootstrap.sh<span class="p">;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget https://dokku.com/install/master/bootstrap.sh<span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo <span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master bash bootstrap.sh
 </code></pre></div>
 <h2 id="development">Development</h2>
 <p>If you plan on developing Dokku, the easiest way to install from your own repository is cloning the repository and calling the install script. Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/dokku.git
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git clone https://github.com/yourusername/dokku.git
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span> dokku
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo make install
 </code></pre></div>
 <p>The <code>Makefile</code> allows source URLs to be overridden to include customizations from your own repositories. The <code>DOCKER_URL</code>, <code>PLUGN_URL</code>, <code>SSHCOMMAND_URL</code> and <code>STACK_URL</code> environment variables may be set to override the defaults (see the <code>Makefile</code> for how these apply). Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span><span class="nv">SSHCOMMAND_URL</span><span class="o">=</span>https://raw.githubusercontent.com/yourusername/sshcommand/master/sshcommand<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo <span class="nv">SSHCOMMAND_URL</span><span class="o">=</span>https://raw.githubusercontent.com/yourusername/sshcommand/master/sshcommand make install
 </code></pre></div>
 <h2 id="bootstrap-a-server-from-your-own-repository">Bootstrap a server from your own repository</h2>
 <p>The bootstrap script allows the Dokku repository URL to be overridden to bootstrap a host from your own clone of Dokku using the <code>DOKKU_REPO</code> environment variable. Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>wget<span class="w"> </span>https://dokku.com/install/master/bootstrap.sh<span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>bootstrap.sh
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_REPO</span><span class="o">=</span>https://github.com/yourusername/dokku.git<span class="w"> </span><span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master<span class="w"> </span>./bootstrap.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>wget https://dokku.com/install/master/bootstrap.sh<span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>chmod +x bootstrap.sh
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo <span class="nv">DOKKU_REPO</span><span class="o">=</span>https://github.com/yourusername/dokku.git <span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master ./bootstrap.sh
 </code></pre></div>
 <h2 id="custom-herokuish-build">Custom Herokuish build</h2>
 <p>Dokku ships with a pre-built version of version of the <a href="https://github.com/gliderlabs/herokuish">Herokuish</a> component by default. If you want to build your own version you can specify that with an environment variable.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku.git
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">STACK_URL</span><span class="o">=</span>https://github.com/gliderlabs/herokuish.git<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git clone https://github.com/dokku/dokku.git
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span> dokku
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo <span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span> <span class="nv">STACK_URL</span><span class="o">=</span>https://github.com/gliderlabs/herokuish.git make install
 </code></pre></div>
 <h2 id="skipping-herokuish-installation">Skipping Herokuish installation</h2>
 <p>The Herokuish package is recommended but not required if not using Heroku buildpacks for deployment. Debian-based OS users can run the bootstrap installer via <code>sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " bash bootstrap.sh</code> to skip the dependency. Please note that this will <em>also</em> skip installation of other recommended dependencies.</p>
@@ -2606,16 +2606,16 @@
 <p>Having less than 1 GB of system memory available for Dokku and its containers may result in unexpected errors, such as <code>! [remote rejected] master -&gt; master (pre-receive hook declined)</code> during installation of NPM dependencies (https://github.com/npm/npm/issues/3867).</p>
 <p>To work around this issue, it might suffice to augment the Linux swap file size to a maximum of twice the physical memory size.</p>
 <p>To resize the swap file of a 512 MB machine to 1 GB, follow these steps while in SSH within your machine:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>/var
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>touch<span class="w"> </span>swap.img
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>swap.img
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span> /var
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>touch swap.img
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>chmod <span class="m">600</span> swap.img
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/var/swap.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1024k<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1000</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>mkswap<span class="w"> </span>/var/swap.img
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>swapon<span class="w"> </span>/var/swap.img
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/var/swap.img <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span><span class="m">1000</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>mkswap /var/swap.img
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>swapon /var/swap.img
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>free
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/var/swap.img    none    swap    sw    0    0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">echo</span> <span class="s2">&quot;/var/swap.img    none    swap    sw    0    0&quot;</span> &gt;&gt; /etc/fstab
 </code></pre></div>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-virtual-memory-swap-file-on-a-vps">Reference</a></p>
 

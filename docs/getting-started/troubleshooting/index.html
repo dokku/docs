@@ -2660,7 +2660,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>trace:on
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku trace:on
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2673,7 +2673,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>trace:off
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku trace:off
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2685,22 +2685,22 @@
 <h2 id="common-problems">Common Problems</h2>
 <h3 id="i-deployed-my-app-but-i-am-getting-the-default-nginx-page">I deployed my app but I am getting the default nginx page.</h3>
 <p>Most of the time it's caused by some defaults newer versions of nginx set. To make sure that's the issue you're having run the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nginx<span class="w"> </span>-t
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nginx -t
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">## nginx: [emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size: 32</span>
 </code></pre></div>
 <p>If you get a similar error just edit <code>/etc/nginx/nginx.conf</code> and add the following line to your <code>http</code> section:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">http</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kn">(...</span><span class="w"> </span><span class="s">existing</span><span class="w"> </span><span class="s">content</span><span class="w"> </span><span class="s">...)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="s">server_names_hash_bucket_size</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kn">(...)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="err">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">http</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kn">(...</span><span class="w"> </span><span class="s">existing</span><span class="w"> </span><span class="s">content</span><span class="w"> </span><span class="s">...)</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="s">server_names_hash_bucket_size</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kn">(...)</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="err">}</span><span class="w"></span>
 </code></pre></div>
 <p>Note that the <code>server_names_hash_bucket_size</code> setting defines the maximum domain name length.
 A value of 64 would allow domains with up to 64 characters. Set it to 128 if you need longer ones.</p>
 <p>Save the file and try stopping nginx and starting it again:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/etc/init.d/nginx<span class="w"> </span>stop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/etc/init.d/nginx stop
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">## * Stopping nginx nginx                                        [ OK ]</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>/etc/init.d/nginx<span class="w"> </span>start
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>/etc/init.d/nginx start
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">## * Starting nginx nginx                                        [ OK ]</span>
 </code></pre></div>
 <hr />
@@ -2724,19 +2724,19 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <h3 id="i-get-the-aforementioned-error-in-the-build-phase-after-turning-on-dokku-tracing">I get the aforementioned error in the build phase (after turning on Dokku tracing)</h3>
 <p>Most errors that happen in this phase are due to transient network issues (either locally or remotely) buildpack bugs.</p>
 <p>Find the failed phase's container image (<code>077581956a92</code> in this example).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>build
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker ps -a  <span class="p">|</span> grep build
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">## 94d9515e6d93        077581956a92                &quot;/build&quot;       29 minutes ago      Exited (0) 25 minutes ago                       cocky_bell</span>
 </code></pre></div>
 <p>Start a new container with the failed image and poke around (i.e. ensure you can access the internet from within the container or attempt the failed command, if known).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>077581956a92<span class="w"> </span>/bin/bash
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-S<span class="w"> </span>icanhazip.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker run -ti 077581956a92 /bin/bash
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>curl -s -S icanhazip.com
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">## 192.168.0.1</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>curl<span class="w"> </span>http://s3pository.heroku.com/node/v0.10.30/node-v0.10.30-linux-x64.tar.gz<span class="w"> </span>-o<span class="w"> </span>node-v0.10.30-linux-x64.tar.gz
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>tar<span class="w"> </span>tzf<span class="w"> </span>node-v0.10.30-linux-x64.tar.gz
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>curl http://s3pository.heroku.com/node/v0.10.30/node-v0.10.30-linux-x64.tar.gz -o node-v0.10.30-linux-x64.tar.gz
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>tar tzf node-v0.10.30-linux-x64.tar.gz
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1">## ...</span>
 </code></pre></div>
 <p>Sometimes (especially on DigitalOcean) deploying again seems to get past these seemingly transient issues. Additionally we've seen issues if changing networks that have different DNS resolvers. In this case, you can run the following to update your <code>resolv.conf</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>resolvconf<span class="w"> </span>-u
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>resolvconf -u
 </code></pre></div>
 <p>Please see https://github.com/dokku/dokku/issues/841 and https://github.com/dokku/dokku/issues/649.</p>
 <h3 id="after-adding-an-ssh-key-i-am-told-i-cannot-read-from-the-remote-repository-on-push">After adding an SSH key, I am told I cannot read from the remote repository on push</h3>
@@ -2754,14 +2754,14 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 </code></pre></div>
 <p>You get asked for a password because your SSH secret key can't be found. This may happen if the private key corresponding to the public key you added with <code>sshcommand acl-add</code> is not located in the default location <code>~/.ssh/id_rsa</code>.</p>
 <p>You have to point SSH to the correct secret key for your domain name. Add the following to your <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="na">Host DOKKU_HOSTNAME</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">IdentityFile &quot;~/.ssh/KEYNAME&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="na">Host DOKKU_HOSTNAME</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">IdentityFile &quot;~/.ssh/KEYNAME&quot;</span><span class="w"></span>
 </code></pre></div>
 <p>Also see <a href="https://github.com/dokku/dokku/issues/116">issue #116</a>.</p>
 <h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-and-receiving-bad-gateway-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors and receiving <strong>Bad Gateway</strong> when attempting to access the application.</h3>
 <p>In many cases the application will require the a <code>process.env.PORT</code> port opposed to a specified port.</p>
 <p>When specifying your port you may want to use something similar to:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="w"></span>
 </code></pre></div>
 <p>Please see https://github.com/dokku/dokku/issues/282.</p>
 <h3 id="deployment-fails-because-of-slow-internet-connection-messages-shows-gzip-stdin-unexpected-end-of-file">Deployment fails because of slow internet connection, messages shows <code>gzip: stdin: unexpected end of file</code>.</h3>
@@ -2774,27 +2774,27 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a> !     tar: Error is not recoverable: exiting now
 </code></pre></div>
 <p>it might that the cURL command that is supposed to fetch the buildpack (anything in the low megabyte file size range) takes too long to finish, due to slowish connection.  To overwrite the default values (connection timeout: 90 seconds, total maximum time for operation: 600 seconds), set the following environment variables:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_TIMEOUT</span><span class="o">=</span><span class="m">1200</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku config:set --global <span class="nv">CURL_TIMEOUT</span><span class="o">=</span><span class="m">1200</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku config:set --global <span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
 </code></pre></div>
 <p>Please see https://github.com/dokku/dokku/issues/509.</p>
 <p>Another reason for this error (although it may respond immediately ruling out a timeout issue) may be because you've set the config setting <code>SSL_CERT_FILE</code>. Using a config setting with this key interferes with the buildpack's ability to download its dependencies, so you must rename the config setting to something else, e.g. <code>MY_APP_SSL_CERT_FILE</code>.</p>
 <h3 id="build-fails-with-killed-message">Build fails with <code>Killed</code> message.</h3>
 <p>This generally occurs when the server runs out of memory. You can either add more RAM to your server or setup swap space. The follow script will create 2 GB of swap space.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0600</span><span class="w"> </span>/dev/null<span class="w"> </span>/swapfile
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/swapfile<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1k<span class="w"> </span><span class="nv">count</span><span class="o">=</span>2048k
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>mkswap<span class="w"> </span>/swapfile
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>swapon<span class="w"> </span>/swapfile
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/swapfile       swap    swap    auto      0       0&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">10</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nb">echo</span><span class="w"> </span>vm.swappiness<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo install -o root -g root -m <span class="m">0600</span> /dev/null /swapfile
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/swapfile <span class="nv">bs</span><span class="o">=</span>1k <span class="nv">count</span><span class="o">=</span>2048k
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>mkswap /swapfile
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>swapon /swapfile
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">echo</span> <span class="s2">&quot;/swapfile       swap    swap    auto      0       0&quot;</span> <span class="p">|</span> sudo tee -a /etc/fstab
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>sudo sysctl -w vm.swappiness<span class="o">=</span><span class="m">10</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nb">echo</span> vm.swappiness <span class="o">=</span> <span class="m">10</span> <span class="p">|</span> sudo tee -a /etc/sysctl.conf
 </code></pre></div>
 <h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-but-im-receiving-connection-timeout-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors but I'm receiving Connection Timeout when attempting to access the application.</h3>
 <p>This can occur if Dokku is running on a system with a firewall like UFW enabled (some OS versions like Ubuntu have this enabled by default). You can check if this is your case by running the following script:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo ufw status
 </code></pre></div>
 <p>If the previous script returned <code>Status: active</code> and a list of ports, UFW is enabled and is probably the cause of the symptom described above. To disable it, run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>disable
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo ufw disable
 </code></pre></div>
 <h3 id="i-cant-connect-to-my-application-because-the-server-is-sending-an-invalid-response-or-cant-provide-a-secure-connection">I can't connect to my application because the server is sending an invalid response, or can't provide a secure connection.</h3>
 <p>This isn't usually an issue with Dokku, but rather an app config problem. This can happen when your application is configured to enforce secure connections/HSTS, but you don't have SSL set up for the app.</p>
@@ -2811,11 +2811,11 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <h3 id="i-deployed-a-new-app-but-now-subdomains-are-miss-routed">I deployed a new app but now subdomains are miss-routed</h3>
 <p>Sometimes nginx does something funky and cant actually reload for whatever reason.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Validate the configuration</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>nginx:<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>/etc/nginx/nginx.conf<span class="w"> </span>syntax<span class="w"> </span>is<span class="w"> </span>ok
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>nginx:<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>/etc/nginx/nginx.conf<span class="w"> </span><span class="nb">test</span><span class="w"> </span>is<span class="w"> </span>successful
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>$ sudo nginx -t
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is successful
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>$<span class="w"> </span>sudo<span class="w"> </span>service<span class="w"> </span>nginx<span class="w"> </span>restart
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>$ sudo service nginx restart
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
 <a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="c1"># Re-enable Letsencrypt</span>
 </code></pre></div>

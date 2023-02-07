@@ -2568,16 +2568,16 @@
 <p>Builders run a detection script against a source code repository, and the first detected builder will be used to build the app artifact. The exception to this is when a <code>Dockerfile</code> is detected and the app is also able to use either <code>herokuish</code> or <code>pack-cli</code> for building, in which case one of the latter will be chosen.</p>
 <h3 id="overriding-the-auto-selected-builder">Overriding the auto-selected builder</h3>
 <p>If desired, the builder can be specified via the <code>builder:set</code> command by speifying a value for <code>selected</code>. The selected builder will always be used.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>dockerfile
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku builder:set node-js-app selected dockerfile
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku builder:set node-js-app selected
 </code></pre></div>
 <p>The <code>selected</code> property can also be set globally. The global default is an empty string, and auto-detection will be performed when no value is set per-app or globally.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>selected<span class="w"> </span>herokuish
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku builder:set --global selected herokuish
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>selected
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku builder:set --global selected
 </code></pre></div>
 <h4 id="changing-the-build-directory">Changing the build directory</h4>
 <div class="admonition warning">
@@ -2585,23 +2585,23 @@
 <p>Please keep in mind that setting a custom build directory will result in loss of any changes to the top-level directory, such as the <code>git.keep-git-dir</code> property.</p>
 </div>
 <p>When deploying a monorepo, it may be desirable to specify the specific build directory to use for a given app. This can be done via the <code>builder:set</code> command. If a value is specified and that directory does not exist within the repository, the build will fail.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>build-dir<span class="w"> </span>app2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku builder:set node-js-app build-dir app2
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>build-dir
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku builder:set node-js-app build-dir
 </code></pre></div>
 <p>The <code>build-dir</code> property can also be set globally. The global default is empty string, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>build-dir<span class="w"> </span>app2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku builder:set --global build-dir app2
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>build-dir
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku builder:set --global build-dir
 </code></pre></div>
 <h3 id="displaying-builder-reports-for-an-app">Displaying builder reports for an app</h3>
 <p>You can get a report about the app's builder status using the <code>builder:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>builder:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku builder:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2634,7 +2634,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku builder:report node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2645,7 +2645,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-selected
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku builder:report node-js-app --builder-selected
 </code></pre></div>
 <h3 id="custom-builders">Custom builders</h3>
 <p>To create a custom builder, the following triggers must be implemented:</p>

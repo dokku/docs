@@ -2698,7 +2698,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>network:list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku network:list
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2715,7 +2715,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>--quiet<span class="w"> </span>network:list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku --quiet network:list
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2736,7 +2736,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>network:create<span class="w"> </span>test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku network:create test-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2756,17 +2756,17 @@
 <p class="admonition-title">Info</p>
 <p>test</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>network:destroy<span class="w"> </span>test-network
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku network:destroy test-network
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w"> </span>!<span class="w">     </span>WARNING:<span class="w"> </span>Potentially<span class="w"> </span>Destructive<span class="w"> </span>Action
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w"> </span>!<span class="w">     </span>This<span class="w"> </span><span class="nb">command</span><span class="w"> </span>will<span class="w"> </span>destroy<span class="w"> </span>network<span class="w"> </span>test.
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span>!<span class="w">     </span>To<span class="w"> </span>proceed,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s2">&quot;test&quot;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-----&gt;<span class="w"> </span>Destroying<span class="w"> </span>network<span class="w"> </span><span class="nb">test</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> !     This <span class="nb">command</span> will destroy network test.
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a> !     To proceed, <span class="nb">type</span> <span class="s2">&quot;test&quot;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-----&gt; Destroying network <span class="nb">test</span>
 </code></pre></div></p>
 <p>As the command is destructive, it will default to asking for confirmation before executing the removal of the network. This may be avoided by providing the <code>--force</code> flag:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>network:destroy<span class="w"> </span>test-network
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku --force network:destroy test-network
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt;<span class="w"> </span>Destroying<span class="w"> </span>network<span class="w"> </span><span class="nb">test</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt; Destroying network <span class="nb">test</span>
 </code></pre></div></p>
 <h3 id="checking-if-a-network-exists">Checking if a network exists</h3>
 <div class="admonition tip">
@@ -2777,7 +2777,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>network:exists<span class="w"> </span>nonexistent-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku network:exists nonexistent-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2796,7 +2796,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>network:info<span class="w"> </span>test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku network:info test-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2812,22 +2812,22 @@
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># - port: 8080</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># create the app</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>local-app
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>dokku apps:create local-app
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># add an extra host that maps host.docker.internal to the docker gateway</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>local-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--add-host=host.docker.internal:host-gateway&quot;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>dokku docker-options:add local-app deploy <span class="s2">&quot;--add-host=host.docker.internal:host-gateway&quot;</span>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
 <a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># set the SERVICE_HOST to the mapped hostname</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>local-app<span class="w"> </span><span class="nv">SERVICE_HOST</span><span class="o">=</span>host.docker.internal
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>dokku config:set local-app <span class="nv">SERVICE_HOST</span><span class="o">=</span>host.docker.internal
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
 <a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1"># set the SERVICE_PORT to the port combination for your app</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>local-app<span class="w"> </span><span class="nv">SERVICE_PORT</span><span class="o">=</span><span class="m">8080</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>dokku config:set local-app <span class="nv">SERVICE_PORT</span><span class="o">=</span><span class="m">8080</span>
 <a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
 <a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1"># set the domains desired</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>local-app<span class="w"> </span>local-app.dokku.me
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>dokku domains:set local-app local-app.dokku.me
 <a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
 <a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># deploy the service-proxy image</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>dokku<span class="w"> </span>git:from-image<span class="w"> </span>local-app<span class="w"> </span>dokku/service-proxy:latest
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>dokku git:from-image local-app dokku/service-proxy:latest
 </code></pre></div>
 <p>Only a single <code>$IP:$PORT</code> combination can be routed to for a given app, and that <code>$IP:$PORT</code> combination <em>must</em> be accessible to the service proxy on initial deploy, or the service proxy won't start.</p>
 <h3 id="attaching-an-app-to-a-network">Attaching an app to a network</h3>
@@ -2837,28 +2837,28 @@
 </div>
 <p>Apps will default to being associated with the default <code>bridge</code> network or a network specified by the <code>initial-network</code> network property. Additionally, an app can be attached to <code>attachable</code> networks by changing the <code>attach-post-create</code> or <code>attach-post-deploy</code> network properties when using the <a href="../../deployment/schedulers/docker-local/">docker-local scheduler</a>. A change in these values will require an app deploy or rebuild.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># associates the network after a container is created but before it is started</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku network:set node-js-app attach-post-create test-network
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># associates the network after the deploy is successful but before the proxy is updated</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy<span class="w"> </span>other-test-network
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>dokku network:set node-js-app attach-post-deploy other-test-network
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># associates the network at container creation</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network<span class="w"> </span>global-network
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>dokku network:set node-js-app initial-network global-network
 </code></pre></div>
 <p>Setting the <code>attach</code> network property to an empty value will de-associate the container with the network.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku network:set node-js-app attach-post-create
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku network:set node-js-app attach-post-deploy
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>dokku network:set node-js-app initial-network
 </code></pre></div>
 <p>The network properties can also be set globally. The global default value is an empty string, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-create<span class="w"> </span>global-create-network
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy<span class="w"> </span>global-deploy-network
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network<span class="w"> </span>global-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku network:set --global attach-post-create global-create-network
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku network:set --global attach-post-deploy global-deploy-network
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>dokku network:set --global initial-network global-network
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-create
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku network:set --global attach-post-create
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku network:set --global attach-post-deploy
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku network:set --global initial-network
 </code></pre></div>
 <h4 id="network-aliases">Network Aliases</h4>
 <div class="admonition note">
@@ -2876,20 +2876,20 @@
 <p>When attaching applications to networks, a custom TLD can be specified via the <code>network:set</code> command. This TLD is suffixed to the network alias for the application/process-type combination for <em>all</em> networks to which the application is attached, and cannot be customized per network. The default value is an empty string.</p>
 <p>To specify a TLD of <code>svc.cluster.local</code> for your application, run the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># replace node-js-app with your application name</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>tld<span class="w"> </span>svc.cluster.local
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dokku network:set node-js-app tld svc.cluster.local
 </code></pre></div>
 <p>With an application named <code>node-js-app</code> and a process-type named <code>web</code>, the above command will turn the network alias into:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>node-js-app.web.svc.cluster.local
 </code></pre></div>
 <p>Note that this has no impact on container port handling, and users must still specify the container port when making internal network requests.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>tld
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku network:set node-js-app tld
 </code></pre></div>
 <p>The <code>tld</code> property can also be set globally. The global default is emty string, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld<span class="w"> </span>svc.cluster.local
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku network:set --global tld svc.cluster.local
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku network:set --global tld
 </code></pre></div>
 <h4 id="when-to-attach-containers-to-a-network">When to attach containers to a network</h4>
 <p>Containers can be attached to a network for a variety of reasons:</p>
@@ -2941,7 +2941,7 @@
 </div>
 <h3 id="rebuilding-network-settings">Rebuilding network settings</h3>
 <p>There are cases where you may need to rebuild the network configuration for an app, such as on app boot or container restart. In these cases, you can use the <code>network:rebuild</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>network:rebuild<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku network:rebuild node-js-app
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -2949,7 +2949,7 @@
 </div>
 <h3 id="rebuilding-all-network-settings">Rebuilding all network settings</h3>
 <p>In some cases, a docker upgrade may reset container IPs or Ports. In both cases, you can quickly rewrite those files by using the <code>network:rebuildall</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>network:rebuildall
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku network:rebuildall
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -2963,18 +2963,18 @@
 <p>By default, an app will only bind to the internal interface. This behavior can be modified per app by changing the <code>bind-all-interfaces</code> network property.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># bind to the default docker interface (`docker0`) with a random internal ip</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1"># this is the default behavior</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">false</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>dokku network:set node-js-app bind-all-interfaces <span class="nb">false</span>
 <a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="c1"># bind to all interfaces (`0.0.0.0`) on a random port for each upstream port</span>
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="c1"># this will make the app container directly accessible by other hosts on your network</span>
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># ports are randomized for every deploy, e.g. `0.0.0.0:32771-&gt;5000/tcp`.</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>dokku network:set node-js-app bind-all-interfaces <span class="nb">true</span>
 </code></pre></div>
 <p>By way of example, in the default case, each container is bound to the docker interface:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>docker<span class="w"> </span>ps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>docker ps
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2993,10 +2993,10 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku network:set node-js-app bind-all-interfaces <span class="nb">true</span>
 <a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
 <a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="c1"># container bound to all interfaces</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>docker<span class="w"> </span>ps
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>docker ps
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3007,17 +3007,17 @@
 </div>
 </div>
 <p>The <code>bind-all-interfaces</code> property can also be set globally. The global default is <code>false</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku network:set --global bind-all-interfaces <span class="nb">true</span>
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku network:set --global bind-all-interfaces
 </code></pre></div>
 <h3 id="displaying-network-reports-for-an-app">Displaying network reports for an app</h3>
 <p>You can get a report about the app's network status using the <code>network:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>network:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku network:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3080,7 +3080,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku network:report node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3106,7 +3106,7 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app<span class="w"> </span>--network-bind-all-interfaces
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku network:report node-js-app --network-bind-all-interfaces
 </code></pre></div>
 
 

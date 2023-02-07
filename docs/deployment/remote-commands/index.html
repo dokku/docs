@@ -2564,8 +2564,8 @@
 <p>Dokku commands can be run over SSH. Anywhere you would run <code>dokku &lt;command&gt;</code>, just run <code>ssh -t dokku@dokku.me &lt;command&gt;</code>
 The <code>-t</code> is used to request a pty. It is highly recommended to do so.
 To avoid the need to type the <code>-t</code> option each time, create/modify a section in the <code>.ssh/config</code> on the client side, as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">Host dokku.me</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="na">RequestTTY yes</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">Host dokku.me</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="na">RequestTTY yes</span><span class="w"></span>
 </code></pre></div>
 <h2 id="behavioral-modifiers">Behavioral modifiers</h2>
 <p>Dokku also supports certain command line arguments that augment its behavior. If using these over SSH, you must use the form <code>ssh -t dokku@dokku.me -- &lt;command&gt;</code>
@@ -2580,29 +2580,29 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 <p>It can be installed either via the <a href="https://brew.sh">Homebrew</a> package manager (macOS only), or manually.</p>
 <h3 id="installation-via-homebrew">Installation via Homebrew</h3>
 <p>To install, simply run the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>dokku/repo/dokku
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew install dokku/repo/dokku
 </code></pre></div>
 <h3 id="manual-installation">Manual installation</h3>
 <p>To install manually, simply clone the Dokku repository down and add the <code>dokku</code> alias pointing at the script:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:dokku/dokku.git<span class="w"> </span>~/.dokku
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git clone git@github.com:dokku/dokku.git ~/.dokku
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># optional: make sure that the dokku_client.sh version matches your Dokku version</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">cd</span><span class="w"> </span>~/.dokku
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>git<span class="w"> </span>checkout<span class="w"> </span>&lt;tag/branch&gt;
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">cd</span> ~/.dokku
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>git checkout &lt;tag/branch&gt;
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># add the following to either your</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># .bashrc, .bash_profile, or .profile file</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">dokku</span><span class="o">=</span><span class="s1">&#39;$HOME/.dokku/contrib/dokku_client.sh&#39;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">alias</span> <span class="nv">dokku</span><span class="o">=</span><span class="s1">&#39;$HOME/.dokku/contrib/dokku_client.sh&#39;</span>
 </code></pre></div>
 <p>Alternatively, if using another shell such as <strong>zsh</strong>, create an alias command which invokes the script using <strong>bash</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># zsh: add the following to either .zshenv or .zshrc</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">dokku</span><span class="o">=</span><span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">alias</span> <span class="nv">dokku</span><span class="o">=</span><span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># fish: add the following to ~/.config/fish/config.fish</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">alias</span><span class="w"> </span>dokku<span class="w"> </span><span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">alias</span> dokku <span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># csh: add the following to .cshrc</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">alias</span><span class="w"> </span>dokku<span class="w"> </span><span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">alias</span> dokku <span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
 </code></pre></div>
 <h3 id="usage">Usage</h3>
 <p>All commands have the application name automatically set via the <code>--app</code> flag on the remote server, and thus the app name does not need to be specified manually for core plugins.</p>
