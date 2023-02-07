@@ -2896,7 +2896,7 @@
 </ul>
 <p>Whatever the reason, the semantics of the two network hooks are important and are outlined before.</p>
 <ul>
-<li><code>attach-post-create</code>:</li>
+<li><code>attach-post-create</code>:<ul>
 <li>Phase it applies to:<ul>
 <li><code>build</code>: Intermediate containers created during the build process.</li>
 <li><code>deploy</code>: Deployed app containers.</li>
@@ -2906,7 +2906,9 @@
 <li>Container state on attach: <code>created</code> but not <code>running</code></li>
 <li>Use case: When the container needs to access a resource on the network.</li>
 <li>Example: The app needs to talk to a database on the same network when it first boots.</li>
-<li><code>attach-post-deploy</code></li>
+</ul>
+</li>
+<li><code>attach-post-deploy</code><ul>
 <li>Phase it applies to:<ul>
 <li><code>deploy</code>: Deployed app containers.</li>
 </ul>
@@ -2914,7 +2916,9 @@
 <li>Container state on attach: <code>running</code></li>
 <li>Use case: When another container on the network needs to access <em>this</em> container.</li>
 <li>Example: A background process needs to communicate with the web process exposed by this container.</li>
-<li><code>initial-network</code>:</li>
+</ul>
+</li>
+<li><code>initial-network</code>:<ul>
 <li>Phase it applies to:<ul>
 <li><code>build</code>: Intermediate containers created during the build process.</li>
 <li><code>deploy</code>: Deployed app containers.</li>
@@ -2924,6 +2928,8 @@
 <li>Container state on attach: <code>created</code></li>
 <li>Use case: When another container on the network is already running and needed by this container.</li>
 <li>Example: A key-value store exposing itself to all your apps may be on the <code>initial-network</code>.</li>
+</ul>
+</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
