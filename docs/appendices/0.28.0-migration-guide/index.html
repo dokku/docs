@@ -1738,6 +1738,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
@@ -1774,6 +1776,20 @@
     <li class="md-nav__item">
       <a href="../../networking/proxies/caddy/" class="md-nav__link">
         Caddy Proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/proxies/haproxy/" class="md-nav__link">
+        Haproxy Proxy
       </a>
     </li>
   
@@ -2532,10 +2548,10 @@
 <h2 id="deprecations">Deprecations</h2>
 <p>Ubuntu 18.04 is now a deprecated installation target. The operating system will be considered EOL by Canonical in April 2023. Users are encouraged to upgrade to Ubuntu 22.04 or consider switching their instllation method to the <a href="../../getting-started/install/docker/">Docker-based installation method</a> to avoid any disruption in usage.</p>
 <h2 id="additions">Additions</h2>
-<p>New in 0.28.0 are the Caddy and Traefik plugins. As community plugins wrapping these proxies exist, users should:</p>
+<p>New in 0.28.0 are the Caddy, Haproxy and Traefik plugins. As community plugins wrapping these proxies exist, users should:</p>
 <ul>
 <li>Recommended: Uninstall the community plugin in question and switch all config to the new plugins.</li>
-<li>Upgrade the community plugin to a version that does not use the <code>proxy:set</code> value of <code>caddy</code> or <code>traefik</code>.</li>
+<li>Upgrade the community plugin to a version that does not use the <code>proxy:set</code> value of <code>caddy</code>, <code>haproxy</code> or <code>traefik</code>.</li>
 </ul>
 
 
