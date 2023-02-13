@@ -2519,6 +2519,35 @@
 </ul>
 </li>
 <li>The ability to call <code>logs:failed</code> without specifying an app or <code>--all</code> flag has been removed. This was deprecated in 0.22.0. Please see the <a href="../../deployment/logs/#failed-deploy-logs">logs:failed</a>.</li>
+<li>The following app shell functions - deprecated since 0.20.0 - have been removed in favor of their plugin trigger equivalents. Sourcing the <code>app/functions</code> file will fail going forward.<ul>
+<li><code>apps#apps_create()</code> is removed in favor of <code>plugn trigger app-create</code>.</li>
+<li><code>apps#apps_destroy()</code> is removed in favor of <code>plugn trigger app-destroy</code>.</li>
+<li><code>apps#apps_exists()</code> is removed in favor of <code>plugn trigger app-exists</code>.</li>
+<li><code>apps#apps_maybe_create()</code> is removed in favor of <code>plugn trigger app-maybe-create</code>.</li>
+</ul>
+</li>
+<li>The following common shell functions have been removed:<ul>
+<li><code>common#is_container_running()</code> (deprecated since 0.12.6) is removed in favor of <code>common#is_container_status()</code>.</li>
+<li><code>common#is_app_running()</code> (deprecated since 0.22.0) is removed in favor of <code>ps#fn-ps-is-app-running()</code>.</li>
+</ul>
+</li>
+<li>The global <code>--rm-container</code> and <code>--rm</code> flags - deprecated since 0.25.0 - have been removed.</li>
+<li>The following git shell functions have been removed:<ul>
+<li><code>git#use_git_worktree()</code> (deprecated since 0.23.7) has been removed. There is no alternative as the function has been made internal.</li>
+<li><code>git#git_deploy_branch()</code>(deprecated since 0.21.0) has been removed in favor of <code>plugn trigger git-deploy-branch</code>.</li>
+</ul>
+</li>
+<li>The following nginx commands - deprecated since 0.20.0 - have been removed:<ul>
+<li><code>nginx:show-conf</code> has been removed in favor of <code>nginx:show-config</code>.</li>
+<li><code>nginx:validate</code> has been removed in favor of <code>nginx:validate-config</code>.</li>
+<li><code>nginx:build-config</code> - deprecated since 0.21.0 - has been removed in favor of <code>proxy:build-config</code>.</li>
+</ul>
+</li>
+<li>The following proxy functions - deprecated since 0.20.0 - have been removed in favor of their plugin trigger equivalents. Sourcing the <code>proxy/functions</code> file will fail going forward.<ul>
+<li><code>proxy#is_app_proxy_enabled()</code> is removed in favor of <code>plugn trigger proxy-is-enabled</code>.</li>
+<li><code>proxy#get_app_proxy_type()</code> is removed in favor of <code>plugn trigger proxy-type</code>.</li>
+</ul>
+</li>
 </ul>
 
 
