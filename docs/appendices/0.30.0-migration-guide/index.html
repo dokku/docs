@@ -754,6 +754,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    Changes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#removals" class="md-nav__link">
     Removals
   </a>
@@ -2468,6 +2475,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    Changes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#removals" class="md-nav__link">
     Removals
   </a>
@@ -2507,6 +2521,10 @@
 
 
 <h1 id="0300-migration-guide">0.30.0 Migration Guide</h1>
+<h2 id="changes">Changes</h2>
+<ul>
+<li>The <code>app.json</code> file is now extracted from the source code instead of the built image. For deploys via <code>git:from-image</code>, the file is extracted from the built image.</li>
+</ul>
 <h2 id="removals">Removals</h2>
 <ul>
 <li>Support for <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a> has been removed. No major browser supports it as of 2021. Custom <code>nginx.conf.sigil</code> templates referencing spdy-related variables will continue to build until the 1.0.0 release.</li>
