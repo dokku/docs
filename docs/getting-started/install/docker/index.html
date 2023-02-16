@@ -2536,7 +2536,7 @@
 
 <h1 id="docker-installation-notes">Docker Installation Notes</h1>
 <p>Pull the dokku/dokku image:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>dokku/dokku:0.29.4
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>dokku/dokku:0.30.0
 </code></pre></div>
 <p>Next, run the image.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
@@ -2548,7 +2548,7 @@
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--publish<span class="w"> </span><span class="m">8443</span>:443<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--volume<span class="w"> </span>/var/lib/dokku:/mnt/dokku<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>dokku/dokku:0.29.4
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>dokku/dokku:0.30.0
 </code></pre></div>
 <p>The above command will start a new docker container that is ready when a message similar to <code>Runit started as PID 12345</code> appears.</p>
 <p>Dokku is run in the following configuration:</p>
