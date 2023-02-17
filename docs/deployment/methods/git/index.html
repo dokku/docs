@@ -2791,8 +2791,9 @@
 <p>If the image is a private image that requires a docker login to access, the <code>registry:login</code> command should be used to log into the registry. See the <a href="../../../advanced-usage/registry-management/#logging-into-a-registry">registry documentation</a> for more details on this process.</p>
 <p>Building an app from an image will result in the following files being extracted from the source image (with all custom paths specified for each file being respected):</p>
 <ul>
-<li>nginx.conf.sigil</li>
-<li>Procfile</li>
+<li><code>app.json</code></li>
+<li><code>nginx.conf.sigil</code></li>
+<li><code>Procfile</code></li>
 </ul>
 <p>In the case where the repository is later modified to manually add any of the above files and deployed via <code>git push</code>, the files will still be extracted from the initial source image. To avoid this, please clear the <code>source-image</code> git property. It will be set back to the original source image on any subsequent <code>git:from-image</code> calls.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># sets an empty value</span>
@@ -2844,8 +2845,9 @@
 </code></pre></div>
 <p>Building an app from an image will result in the following files being extracted from the source image (with all custom paths specified for each file being respected):</p>
 <ul>
-<li>nginx.conf.sigil</li>
-<li>Procfile</li>
+<li><code>app.json</code></li>
+<li><code>nginx.conf.sigil</code></li>
+<li><code>Procfile</code></li>
 </ul>
 <p>In the case where the repository is later modified to manually add any of the above files and deployed via <code>git push</code>, the files will still be extracted from the initial source image. To avoid this, please clear the <code>source-image</code> git property. It will be set back to the original source image on any subsequent <code>git:load-image</code> calls.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># sets an empty value</span>
