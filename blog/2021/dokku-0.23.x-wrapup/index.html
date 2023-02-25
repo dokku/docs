@@ -1381,7 +1381,7 @@
 <p>The change in <a href="https://github.com/dokku/dokku/pull/4384">#4384</a> allows alternative plugins - such as dokku-letsencrypt - to inject scheduled cron tasks into the cron system used by Dokku. Cron systems can choose to include or not include a cron task based on the specified scheduler, and can also optionally use a third parameter to store arbitrary information.</p>
 <h3 id="ability-to-clear-an-individual-resource-value">Ability to clear an individual resource value</h3>
 <p>As of (#4372)[https://github.com/dokku/dokku/pull/4372], a resource value can be individually cleared by setting the value to the special value <code>clear</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku resource:limit --cpu clear node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>resource:limit<span class="w"> </span>--cpu<span class="w"> </span>clear<span class="w"> </span>node-js-app
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>=====&gt; Setting resource limits for node-js-app
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>       cpu: cleared

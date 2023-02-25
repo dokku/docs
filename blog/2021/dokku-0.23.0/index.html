@@ -1439,19 +1439,19 @@
 <p>In previous releases, users of derivative <code>gliderlabs/herokuish</code> images would need to specify a <code>DOKKU_IMAGE</code> environment variable in order to use their version over what we ship by default. While this was a reasonable approach that worked when there was only one <code>herokuish</code> image version being maintained, we've recently decided to add support for building both <code>18.04</code> and <code>20.04</code> based images. Additionally, this approach does not work at all for our <a href="https://dokku.com/docs/deployment/builders/cloud-native-buildpacks/">Cloud Native Buildpack</a> support.</p>
 <p>As of <code>0.23.0</code>, there is now a way to set the stack builder image in use. Herokuish users (the majority of Dokku users at this time) will be able to specify either the 18.04, 20.04, or any other image as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># app-specific command</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dokku buildpacks:set-property <span class="nv">$APP</span> <span class="nv">$SOME_IMAGE</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span><span class="nv">$APP</span><span class="w"> </span><span class="nv">$SOME_IMAGE</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># global command</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>dokku buildpacks:set-property --global stack <span class="nv">$SOME_IMAGE</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span><span class="nv">$SOME_IMAGE</span>
 </code></pre></div>
 <p>Any tag listed on <a href="https://hub.docker.com/r/gliderlabs/herokuish/tags?page=1&amp;ordering=last_updated">Docker Hub</a> can be used, and folks can derive their custom herokuish image as needed for their own platforms. For general users, we <em>highly</em> recommend sticking to the shipped defaults.</p>
 <p>Cloud Native Buildpack users have access to the same command, and can use it to specify an alternative builder image. Below switches the global builder image from <code>heroku/buildpacks</code> to the <a href="https://paketo.io/">packeto</a> buildpacks maintained by CloudFoundry:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku buildpacks:set-property --global stack paketobuildpacks/build:base-cnb
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 </code></pre></div>
 <p>We'll continue working to add full support for buildpacks commands to the Cloud Native Buildpack support, and hope this initial work makes it easier to use.</p>
 <h3 id="container-logrotation">Container Logrotation</h3>
 <p>With the addition of <a href="https://dokku.com/docs/deployment/logs/#vector-logging-shipping">Vector-based Log Shipping</a> in 0.22.x, we still had a need to ensure logs didn't consume host resources. Assuming default docker log settings, it is now possible to set the <a href="https://dokku.com/docs/deployment/logs/#docker-log-retention">docker log retention</a> via <code>logs:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku logs:set --global max-size 20m
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>max-size<span class="w"> </span>20m
 </code></pre></div>
 <p>This new setting injects a property into the <code>docker run</code> calls (though is exposed via trigger for alternative schedulers), defaults to <code>10m</code>, and can be set both globally and on a per-app basis. Please rebuild your apps to have this come into effect.</p>
 <h3 id="nginx-configuration">Nginx Configuration</h3>
@@ -1467,24 +1467,24 @@
 <p>We'll continue adding support to additional properties (both globally and otherwise) as the needs arise from the community. Checkout our <a href="https://dokku.com/docs/configuration/nginx/">nginx documentation</a> for further details.</p>
 <h3 id="scheduled-cron-task-management">Scheduled Cron Task Management</h3>
 <p>For years, we've asked folks to manage a custom cron file outside of the Dokku deployment process. While this was all well and good, it doesn't work well for less technical users or those who do not have server access. We've added support to the <code>app.json</code> file for specifying a list of commands and the schedule for which to run said commands. <a href="https://dokku.com/docs/processes/scheduled-cron-tasks/">Usage is simple</a>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;cron&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node run some-command-here&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="nt">&quot;schedule&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@daily&quot;</span><span class="w"></span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">]</span><span class="w"></span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;cron&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node run some-command-here&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="nt">&quot;schedule&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@daily&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
 </code></pre></div>
 <p>Scheduled cron tasks are run within isolated Docker containers, and any number of commands can be added to a given app. While this isn't currently supported in alternative schedulers, the functionality was built with such support in mind.</p>
 <p>Checkout the <a href="https://dokku.com/docs/processes/scheduled-cron-tasks/">scheduled cron task documentation</a> for more details on how the functionality works. We'd definitely love your feedback!</p>
 <h3 id="git-repository-syncing-support">Git Repository Syncing support</h3>
 <p>This is one of the more exciting features. Users may now run a command to specify a remote repository to sync - and build! - an app from via the <code>git:sync</code> command. This makes it possible to build webhook-like functionality by wrapping the command in a web api of sorts.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># just sync some code, maybe to setup a repository</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dokku git:sync node-js-app https://github.com/heroku/node-js-getting-started.git
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dokku<span class="w"> </span>git:sync<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/node-js-getting-started.git
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># sync and build the repository!</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>dokku git:sync --build node-js-app https://github.com/heroku/node-js-getting-started.git
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>dokku<span class="w"> </span>git:sync<span class="w"> </span>--build<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/node-js-getting-started.git
 </code></pre></div>
 <p>We hope to continue adding interesting git-based workflows in upcoming releases, but hope that this feature is well-used by platform developers.</p>
 <p>Thanks to <a href="https://github.com/crisward">@crisward</a> for the inspiration via his <a href="https://github.com/crisward/dokku-clone">dokku-clone</a> project.</p>

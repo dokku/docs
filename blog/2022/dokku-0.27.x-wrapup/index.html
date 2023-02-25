@@ -1325,7 +1325,7 @@
 <p>Dokku now properly removes intermediate images if the build fails.</p>
 <h3 id="support-for-special-characters-in-docker-container-options">Support for special characters in docker container options</h3>
 <p>Dokku now supports using special characters, such as parenthesis, in container options. Here is an example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku docker-options:add node-js-app deploy <span class="s1">&#39;--label &quot;some.key=Host(\`node-js-app.dokku.arketyped.net\`)&quot;&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s1">&#39;--label &quot;some.key=Host(\`node-js-app.dokku.arketyped.net\`)&quot;&#39;</span>
 </code></pre></div>
 <p>Some characters should be escaped - and quoting matters! - but label-based proxy-implementations can now take full advantage of apps deployed via Dokku.</p>
 <h2 id="its-a-wrap">It's a wrap</h2>
