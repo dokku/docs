@@ -992,7 +992,7 @@
 </tbody>
 </table>
 <p>One thing to note in the above nginx template snippet is the check for the variable <code>$.DOKKU_APP_WS_LISTENERS</code>. Without this check, a deploy that doesn't scale up the <code>ws</code> process will fail to produce a valid <code>nginx.conf</code> file, failing the deploy. The variable will only have a value with there are processes scaled up.</p>
-<p>At this point, assuming the codebase in question is similar to the websocket-tutorial, we can deploy the app and scale up our web processes, allowing websocket connections to flow through to your non-web process.</p>
+<p>At this point, assuming the codebase in question is similar to the websocket-tutorial, we can deploy the app and scale up our <code>ws</code> process, allowing websocket connections to flow through to your non-web process.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git push dokku master
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku ps:scale websocket-example <span class="nv">ws</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
