@@ -2844,7 +2844,7 @@
 <p class="admonition-title">Info</p>
 <p>Changed as of 0.5.0</p>
 </div>
-<p>Dokku's default proxy implementation - nginx - supports HTTP and GRPC request proxying. At this time, we do not support proxying plain TCP or UDP ports. UDP ports can be exposed by disabling the nginx proxy with <code>dokku proxy:disable myapp</code>. If you would like to investigate alternative proxy methods, please refer to our <a href="../proxy-management/">proxy management documentation</a>.</p>
+<p>Dokku's default proxy implementation - nginx - supports HTTP and GRPC request proxying. At this time, we do not support proxying plain TCP or UDP ports. UDP ports can be exposed by disabling the nginx proxy with <code>dokku proxy:disable myapp</code> and manually exposing the ports via the <code>docker-options</code> plugin. For example, <code>dokku docker-options:add myapp deploy "-p 2456:2456/udp'</code>. If you would like to investigate alternative proxy methods, please refer to our <a href="../proxy-management/">proxy management documentation</a>.</p>
 <h4 id="applications-using-expose">Applications using EXPOSE</h4>
 <p>Dokku will extract all tcp ports exposed using the <code>EXPOSE</code> directive (one port per line) and setup nginx to proxy the same port numbers to listen publicly. If you would like to change the exposed port, you should do so within your <code>Dockerfile</code>.</p>
 <p>For example, if the Dokku installation is configured with the domain <code>dokku.me</code> and an application named <code>node-js-app</code> is deployed with following Dockerfile:</p>
