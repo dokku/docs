@@ -634,6 +634,26 @@
     Plugin Installation
   </a>
   
+    <nav class="md-nav" aria-label="Plugin Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-dokku-start" class="md-nav__link">
+    On Dokku start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prior-to-dokku-start" class="md-nav__link">
+    Prior to Dokku start
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2486,6 +2506,26 @@
     Plugin Installation
   </a>
   
+    <nav class="md-nav" aria-label="Plugin Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-dokku-start" class="md-nav__link">
+    On Dokku start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prior-to-dokku-start" class="md-nav__link">
+    Prior to Dokku start
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2564,6 +2604,7 @@
 <p>Application repositories, plugin config, as well as plugin data are persisted to disk within the specified host directory for <code>/var/lib/dokku</code>.</p>
 <p>Other docker container options can also be used when running Dokku, though the specific outcome will depend upon the specified options. For example, the Dokku container's nginx port can be bound to a specific host ip by specifying <code>--publish $HOST_IP:8080:80</code>, where <code>$HOST_IP</code> is the IP desired. Please see the <a href="https://docs.docker.com/engine/reference/commandline/run/">docker container run documentation</a> for further explanation for various docker arguments.</p>
 <h2 id="plugin-installation">Plugin Installation</h2>
+<h3 id="on-dokku-start">On Dokku start</h3>
 <p>To install custom plugins, create a <code>plugin-list</code> file in the host's <code>/var/lib/dokku</code> directory. The plugins listed herein will be automatically installed by Dokku on container boot. This file should be the following format:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">plugin_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repository_url</span>
 </code></pre></div>
@@ -2571,16 +2612,22 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">postgres</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-postgres.git</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">redis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-redis.git</span>
 </code></pre></div>
+<h3 id="prior-to-dokku-start">Prior to Dokku start</h3>
+<p>The alternative is to build a custom docker image via a custom Dockerfile. This Dockerfile can run any <code>plugin:install</code> command. Note that the version installed at that time will be the one that persists. Below is an example Dockerfile showing this method.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">dokku/dokku:0.30.1</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>postgres
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-redis.git<span class="w"> </span>redis
+</code></pre></div>
 <h2 id="ssh-key-management">SSH Key Management</h2>
 <p>To initialize ssh-keys within the container, use <code>docker exec</code> to enter the container and run the appropriate ssh-keys commands.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dokku<span class="w"> </span>bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dokku<span class="w"> </span>bash
 </code></pre></div>
 <p>Please see the <a href="../../../deployment/user-management/">user management documentation</a> for more information.</p>
 <h2 id="pushing-applications">Pushing Applications</h2>
 <p>When exposing the Dokku container's SSH port (22) on 3022, something similar to the following will need to be setup within the user's <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Host dokku.docker
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  HostName 127.0.0.1
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  Port 3022
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Host dokku.docker
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  HostName 127.0.0.1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  Port 3022
 </code></pre></div>
 <p>In the above example, the hostname <code>127.0.0.1</code> is being aliased to <code>dokku.docker</code>, while the port is being overriden to <code>3022</code>. All SSH commands - including git pushes - for the hostname <code>dokku.docker</code> will be transparently sent to <code>127.0.0.1:3022</code>.</p>
 

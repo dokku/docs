@@ -2718,6 +2718,10 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>plugin:installed<span class="w"> </span>postgres
 </code></pre></div>
 <h3 id="installing-a-plugin">Installing a plugin</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Plugins installed in this method within a <a href="../../getting-started/install/docker/">docker-based installation</a> of Dokku do not persist across installs. Please see the <a href="../../getting-started/install/docker/#plugin-installation">plugin installation section</a> of the docker-based installation docs for further details.</p>
+</div>
 <p>Installing a plugin is easy as well using the <code>plugin:install</code> command. This command will also trigger the <code>install</code> pluginhook on all existing plugins.</p>
 <p>The most common usage is to install a plugin from a url. This url may be any of the following:</p>
 <ul>
