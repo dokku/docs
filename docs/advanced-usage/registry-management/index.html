@@ -2620,23 +2620,35 @@
 </code></pre></div>
 <p>The following are the values that should be used for common remote servers:</p>
 <ul>
-<li>Amazon Elastic Container Registry:</li>
+<li>Amazon Elastic Container Registry:<ul>
 <li>value: <code>$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/</code></li>
 <li>notes: The <code>$AWS_ACCOUNT_ID</code> and <code>$AWS_REGION</code> should match the values for your account and region, respectively. Additionally, an IAM profile that allows <code>push</code> access to the repository specified by <code>image-repo</code> should be attached to your Dokku server.</li>
-<li>Azure Container Registry:</li>
+</ul>
+</li>
+<li>Azure Container Registry:<ul>
 <li>value <code>$REGISTRY_NAME.azurecr.io/</code></li>
 <li>notes: The <code>$AKS_REGISTRY_NAME</code> should match the name of the registry created on your account.</li>
-<li>Docker Hub:</li>
+</ul>
+</li>
+<li>Docker Hub:<ul>
 <li>value: <code>docker.io/</code></li>
 <li>notes: Requires owning the namespace used in the <code>image-repo</code> value.</li>
-<li>Digitalocean:</li>
+</ul>
+</li>
+<li>Digitalocean:<ul>
 <li>value: <code>registry.digitalocean.com/</code></li>
 <li>notes: Requires setting the correct <code>image-repo</code> value for your registry.</li>
-<li>Github Container Registry:</li>
+</ul>
+</li>
+<li>Github Container Registry:<ul>
 <li>value: <code>ghcr.io/</code></li>
 <li>notes: Requires that the authenticated user has access to the namespace used in the <code>image-repo</code> value.</li>
-<li>Quay.io:</li>
+</ul>
+</li>
+<li>Quay.io:<ul>
 <li>value: <code>quay.io/</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="specifying-an-image-repository-name">Specifying an image repository name</h3>
 <p>By default, Dokku uses the value <code>dokku/$APP_NAME</code> as the image repository that is pushed and deployed. For certain registries, the <code>dokku</code> namespace may not be available to your user. In these cases, the value can be set by changing the value of the <code>image-repo</code> property via the <code>registry:set</code> command.</p>
