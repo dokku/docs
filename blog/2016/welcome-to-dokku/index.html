@@ -1300,7 +1300,7 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h3 id="what-is-dokku">What is dokku?</h3>
+<h3 id="what-is-dokku">What is dokku?<a class="headerlink" href="#what-is-dokku" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Dokku is a docker-powered PaaS that helps you build and manage the lifecycle of applications.</p>
 </blockquote>
@@ -1310,7 +1310,7 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a># magic
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>curl -kSso /dev/null -w &quot;%{http_code}&quot; &quot;http://your-app.example.com&quot; | grep 200
 </code></pre></div>
-<h3 id="what-is-magic-in-the-dokku-pipeline">What is "magic" in the dokku pipeline?</h3>
+<h3 id="what-is-magic-in-the-dokku-pipeline">What is "magic" in the dokku pipeline?<a class="headerlink" href="#what-is-magic-in-the-dokku-pipeline" title="Permanent link">&para;</a></h3>
 <p>The "magic" comes from several pieces of tech:</p>
 <ul>
 <li><code>sshcommand</code>: kicks off the proper dokku command on git push.</li>
@@ -1319,7 +1319,7 @@
 <li>various scripts that implement the bulk of our feature-set.</li>
 </ul>
 <p>All three named pieces of software came from the original creator of Dokku, <a href="http://progrium.com/blog/">Jeff Lindsay</a>. Both <code>sshcommand</code> and <code>plugn</code> are now wholly maintained by the <a href="https://github.com/orgs/dokku/people">Dokku Team</a>, while the latter is currently under the care of <a href="https://gliderlabs.com/">Glider Labs</a>, with maintenance being done by the Dokku Team as necessary.</p>
-<h3 id="what-are-these-various-scripts">What are these "various scripts"?</h3>
+<h3 id="what-are-these-various-scripts">What are these "various scripts"?<a class="headerlink" href="#what-are-these-various-scripts" title="Permanent link">&para;</a></h3>
 <p>It's important to note that dokku is by and large composed of shell scripts targeting modern bash. Why?</p>
 <ul>
 <li>Shell is relatively easy to pick up.</li>
@@ -1333,7 +1333,7 @@
 <li><a href="https://dokku.com/docs/advanced-usage/persistent-storage/">storage</a>: a persistent storage plugin for use with applications that do not (yet) conform to all 12-factor design requirements.</li>
 </ul>
 <p>Plugins can be built in any language - in fact, some prototypes have been written in a hybrid of golang/bash or python. For the foreseeable future, however, we do not envision rewriting the core in another language.</p>
-<h3 id="what-is-the-goal-of-dokku">What is the goal of dokku?</h3>
+<h3 id="what-is-the-goal-of-dokku">What is the goal of dokku?<a class="headerlink" href="#what-is-the-goal-of-dokku" title="Permanent link">&para;</a></h3>
 <p>Dokku's goal is to provide a simple, hackable build environment for developers to quickly get their code from their laptops into the cloud. Our personal goal is to make the deployment part easy, so all you have to do is worry about writing code.</p>
 <hr />
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>

@@ -1593,8 +1593,8 @@ plugins that tackled authentication, each implementation had it's rough edges du
 to interfaces in Dokku itself. Dokku Pro 1.2.0 polishes those edges while
 introducing a flexible permission system for organizations that need it.</p>
 <p>Here are a few of the updates included in Dokku Pro 1.2.0.</p>
-<h2 id="major-changes">Major Changes</h2>
-<h3 id="requires-dokku-0278">Requires Dokku 0.27.8+</h3>
+<h2 id="major-changes">Major Changes<a class="headerlink" href="#major-changes" title="Permanent link">&para;</a></h2>
+<h3 id="requires-dokku-0278">Requires Dokku 0.27.8+<a class="headerlink" href="#requires-dokku-0278" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Dokku Pro 1.2+ will refuse to start if the minimum Dokku version is not installed.</p>
@@ -1610,7 +1610,7 @@ this upgrade does not cause too many issues for folks.</p>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
 </code></pre></div>
-<h3 id="minimum-required-service-plugin-versions">Minimum required service plugin versions</h3>
+<h3 id="minimum-required-service-plugin-versions">Minimum required service plugin versions<a class="headerlink" href="#minimum-required-service-plugin-versions" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Dokku Pro 1.2+ will refuse to start if an installed plugin is not at the
@@ -1712,11 +1712,11 @@ them, service linking may time out.</p>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
 </code></pre></div>
-<h3 id="new-apis-for-community-plugins">New APIs for community plugins</h3>
+<h3 id="new-apis-for-community-plugins">New APIs for community plugins<a class="headerlink" href="#new-apis-for-community-plugins" title="Permanent link">&para;</a></h3>
 <p>Two plugins were added to Dokku Pro's HTTP API. API Support for Dokku features
 generally comes first, while later releases will include changes to the Web UI
 to include these additions.</p>
-<h4 id="api-support-for-the-community-http-auth-plugin">API support for the community HTTP Auth Plugin</h4>
+<h4 id="api-support-for-the-community-http-auth-plugin">API support for the community HTTP Auth Plugin<a class="headerlink" href="#api-support-for-the-community-http-auth-plugin" title="Permanent link">&para;</a></h4>
 <p>Authentication comes in many forms, and while most apps have this built-in,
 simpler, pre-packaged applications may not. Dokku Pro introduces support for the
 community <a href="https://github.com/dokku/dokku-http-auth">http-auth</a> plugin, with
@@ -1724,7 +1724,7 @@ full API support for managing both user-based and IP-based access controls. This
 comes with documentation in our included Swagger UI.</p>
 <p>A future release of Dokku Pro will include a section in the UI for managing
 network components for apps, including HTTP Auth support.</p>
-<h4 id="api-support-for-the-community-http-auth-plugin_1">API support for the community HTTP Auth Plugin</h4>
+<h4 id="api-support-for-the-community-http-auth-plugin_1">API support for the community HTTP Auth Plugin<a class="headerlink" href="#api-support-for-the-community-http-auth-plugin_1" title="Permanent link">&para;</a></h4>
 <p>In addition to authentication requirements, it may be necessary to enable or
 disable <em>all</em> access to your application. The community
 <a href="https://github.com/dokku/dokku-maintenance">maintenance</a> plugin provides the
@@ -1733,7 +1733,7 @@ ability to do just that.</p>
 via API, fully-documented within our included Swagger UI. A future release of
 Dokku Pro will include a section in the UI for managing network components for
 apps, including setting apps in maintenance mode.</p>
-<h3 id="add-ability-to-set-the-builder-on-a-per-app-basis">Add ability to set the builder on a per-app basis</h3>
+<h3 id="add-ability-to-set-the-builder-on-a-per-app-basis">Add ability to set the builder on a per-app basis<a class="headerlink" href="#add-ability-to-set-the-builder-on-a-per-app-basis" title="Permanent link">&para;</a></h3>
 <p>We've added the ability to set an app builder on a per-app basis. This
 automatically picks up the following builders (if installed) and displays them
 for selection:</p>
@@ -1758,7 +1758,7 @@ for selection:</p>
 <figcaption>Selection a non-standard builder</figcaption>
 </figure>
 <p>Both of these include API access, documented in our included Swagger UI.</p>
-<h3 id="team-management">Team Management</h3>
+<h3 id="team-management">Team Management<a class="headerlink" href="#team-management" title="Permanent link">&para;</a></h3>
 <p>Access control is a complex topic, and one Dokku has traditionally shied away
 from. Dokku does not have a traditional user model, and it associates a simple
 name to each ssh-key that a user uses to interact with the CLI over SSH. Until
@@ -1786,16 +1786,16 @@ Dokku Pro will include API support for team management as well as Web UI
 integration for managing teams.</p>
 <p>Checkout the <a href="/docs/features/team-management/">team management documentation</a>
 for more information on how team-based access control works.</p>
-<h2 id="minor-changes">Minor Changes</h2>
+<h2 id="minor-changes">Minor Changes<a class="headerlink" href="#minor-changes" title="Permanent link">&para;</a></h2>
 <p>Some of the more minor changes were made to make development of Dokku Pro itself
 much more pleasant. Rather than having a "miscellaneous bug fixes and improvements"
 section as you'd see in many other public product release notes, we'll outline
 them below.</p>
-<h4 id="updated-dependencies">Updated Dependencies</h4>
+<h4 id="updated-dependencies">Updated Dependencies<a class="headerlink" href="#updated-dependencies" title="Permanent link">&para;</a></h4>
 <p>Dokku Pro uses a ton of code itself. We've started the efforts to get the
 server-side code up to date in an automatic fashion, and are ramping up efforts
 to modernize the Web UI as well.</p>
-<h4 id="filtering-apps-in-dokku-pro">Filtering apps in Dokku Pro</h4>
+<h4 id="filtering-apps-in-dokku-pro">Filtering apps in Dokku Pro<a class="headerlink" href="#filtering-apps-in-dokku-pro" title="Permanent link">&para;</a></h4>
 <p>For some use-cases, it may be necessary to hide some apps from the Web UI and
 API. In the case of Dokku's own installation of Dokku Pro, there are some
 testing apps that have no value other than being placeholders for requests, and
@@ -1807,20 +1807,20 @@ comma-delimited list of apps to hide. These apps will be hidden from API
 responses and the Web UI as a result.</p>
 <p>Checkout the <a href="/docs/operating/configuration/">configuration documentation</a> for
 more information on this new setting.</p>
-<h4 id="ability-to-override-the-default-root-username">Ability to override the default root username</h4>
+<h4 id="ability-to-override-the-default-root-username">Ability to override the default root username<a class="headerlink" href="#ability-to-override-the-default-root-username" title="Permanent link">&para;</a></h4>
 <p>While the password for authentication is configurable, the <code>root</code> username was
 not. An <code>ROOT_USERNAME</code> can be set in the Dokku config to override the default
 <code>root</code> username. You can now login as the <code>lollipop</code> user if desired.</p>
 <p>Checkout the <a href="/docs/operating/configuration/">configuration documentation</a> for
 more information on this new setting.</p>
-<h4 id="typesense-service-support">Typesense service support</h4>
+<h4 id="typesense-service-support">Typesense service support<a class="headerlink" href="#typesense-service-support" title="Permanent link">&para;</a></h4>
 <p>Support for the new <a href="https://github.com/dokku/dokku-typesense">typesense</a> plugin
 has been added to services in Dokku. Users can expect the same functionality
 they would from other services in Dokku, including complete support in our API,
 Swagger UI documentation, and exposure in the Web UI.</p>
 <p>New services will be added to future Dokku Pro releases as they are made
 available.</p>
-<h4 id="version-checking-for-server-commands">Version checking for server commands</h4>
+<h4 id="version-checking-for-server-commands">Version checking for server commands<a class="headerlink" href="#version-checking-for-server-commands" title="Permanent link">&para;</a></h4>
 <p>As mentioned above, we now check for specific versions of Dokku and installed
 plugins on start of the Dokku Pro server. Users wishing to use supported plugins
 that do not have at least the minimum version specified will have Dokku Pro fail
@@ -1835,28 +1835,28 @@ and any plugins you use.</p>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
 </code></pre></div>
-<h4 id="enhanced-output-for-the-config-command">Enhanced output for the config command</h4>
+<h4 id="enhanced-output-for-the-config-command">Enhanced output for the config command<a class="headerlink" href="#enhanced-output-for-the-config-command" title="Permanent link">&para;</a></h4>
 <p>When running the <code>dokku-pro config</code> command, we previously hardcoded how certain
 config was output. This has been refactored in such a way that we no longer
 need to update the config command when adding new configuration properties.</p>
-<h4 id="fix-log-formatting">Fix log formatting</h4>
+<h4 id="fix-log-formatting">Fix log formatting<a class="headerlink" href="#fix-log-formatting" title="Permanent link">&para;</a></h4>
 <p>Log output was a bit broken for the help and version commands, and elsewhere.
 Dokku Pro now will only log in JSON format when there is no TTY - for example,
 when running under <code>systemd</code> - and will have human-readable output otherwise</p>
 <p>Additionally, we now use a single logging mechanism across the codebase, ensuring
 most - if not all - logs are in the proper format, regardless of where the log
 call is created.</p>
-<h4 id="ignoring-compiled-assets-during-project-search">Ignoring compiled assets during project search</h4>
+<h4 id="ignoring-compiled-assets-during-project-search">Ignoring compiled assets during project search<a class="headerlink" href="#ignoring-compiled-assets-during-project-search" title="Permanent link">&para;</a></h4>
 <p>This was actually a fairly painful issue, workflow-wise. Searching for instances
 of code during refactoring was made painful due to including compiled assets,
 binary files, and external dependencies. These are now ignored so the editor does
 not lock up when searching for a random bit of javascript :)</p>
-<h4 id="standardized-code-initialization">Standardized code initialization</h4>
+<h4 id="standardized-code-initialization">Standardized code initialization<a class="headerlink" href="#standardized-code-initialization" title="Permanent link">&para;</a></h4>
 <p>Previously, Dokku Pro would set up certain checks and load config on-the-fly.
 This led to race conditions in certain cases, and was messier to understand.
 All initialization code has now been placed in a central location that is easy
 to understand when first diving into the code.</p>
-<h2 id="dokku-pro-pricing">Dokku Pro Pricing</h2>
+<h2 id="dokku-pro-pricing">Dokku Pro Pricing<a class="headerlink" href="#dokku-pro-pricing" title="Permanent link">&para;</a></h2>
 <p>With a new release comes a price increase. Although it was mentioned in the
 1.1.0 release post, we previously avoided a price increase to give folks more
 time to consider supporting Dokku Pro development at a lower price point. With
@@ -1868,7 +1868,7 @@ all upgrades of Dokku Pro as long as they are made. Folks wishing to support
 continued development of the project are encouraged to purchase today before the
 price is increased.</p>
 <p><a class="md-button" href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878">Get your copy today</a></p>
-<h2 id="coming-up-next">Coming up next?</h2>
+<h2 id="coming-up-next">Coming up next?<a class="headerlink" href="#coming-up-next" title="Permanent link">&para;</a></h2>
 <p>Here is what we'll be working towards over the next few releases</p>
 <ul>
 <li>API and Web UI support for team management</li>

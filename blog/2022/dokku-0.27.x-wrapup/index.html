@@ -1382,24 +1382,24 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="additions">Additions</h2>
-<h3 id="os-and-architecture-support">OS and Architecture Support</h3>
+<h2 id="additions">Additions<a class="headerlink" href="#additions" title="Permanent link">&para;</a></h2>
+<h3 id="os-and-architecture-support">OS and Architecture Support<a class="headerlink" href="#os-and-architecture-support" title="Permanent link">&para;</a></h3>
 <p>Ubuntu Focal was added as a release target. We also added support for ARM (32-bit) and ARM64 architectures. Users on Raspberry Pis should be able to install the latest Dokku, regardless of OS or Architecture.</p>
 <p>Additionally, the Dokku docker image is now based on Focal :)</p>
-<h3 id="app-and-service-filtering">App and service filtering</h3>
+<h3 id="app-and-service-filtering">App and service filtering<a class="headerlink" href="#app-and-service-filtering" title="Permanent link">&para;</a></h3>
 <p>It is now possible to filter apps and services via the <code>user-auth-app</code> and <code>user-auth-service</code> triggers. These can be implemented in custom plugins to constrain what a user has access to, and is in use within <a href="https://pro.dokku.com">Dokku Pro</a> for it's <a href="https://pro.dokku.com/docs/features/teams-management/">team-management system</a>.</p>
-<h2 id="fixes">Fixes</h2>
-<h3 id="app-domain-renames-are-scoped-to-global-domains">App domain renames are scoped to global domains</h3>
+<h2 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">&para;</a></h2>
+<h3 id="app-domain-renames-are-scoped-to-global-domains">App domain renames are scoped to global domains<a class="headerlink" href="#app-domain-renames-are-scoped-to-global-domains" title="Permanent link">&para;</a></h3>
 <p>Previously, if you had an app named <code>test</code> with a domain of <code>tester.com</code> and renamed it to <code>test-2</code>, we would rename the domain to <code>test-2er.com</code>. We've now scoped this so app renames only impact domains associated with any global domains on the server.</p>
-<h3 id="remove-bad-intermediate-containers">Remove bad intermediate containers</h3>
+<h3 id="remove-bad-intermediate-containers">Remove bad intermediate containers<a class="headerlink" href="#remove-bad-intermediate-containers" title="Permanent link">&para;</a></h3>
 <p>Due to how Dokku handles the build process, intermediate containers reuse the internal docker image name for an app. This means that it is sometimes possible to execute <code>dokku run</code> against an intermediate image.</p>
 <p>Dokku now properly removes intermediate images if the build fails.</p>
-<h3 id="support-for-special-characters-in-docker-container-options">Support for special characters in docker container options</h3>
+<h3 id="support-for-special-characters-in-docker-container-options">Support for special characters in docker container options<a class="headerlink" href="#support-for-special-characters-in-docker-container-options" title="Permanent link">&para;</a></h3>
 <p>Dokku now supports using special characters, such as parenthesis, in container options. Here is an example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s1">&#39;--label &quot;some.key=Host(\`node-js-app.dokku.arketyped.net\`)&quot;&#39;</span>
 </code></pre></div>
 <p>Some characters should be escaped - and quoting matters! - but label-based proxy-implementations can now take full advantage of apps deployed via Dokku.</p>
-<h2 id="its-a-wrap">It's a wrap</h2>
+<h2 id="its-a-wrap">It's a wrap<a class="headerlink" href="#its-a-wrap" title="Permanent link">&para;</a></h2>
 <p>Those were the major changes in 0.27.x. Our next post will cover 0.28.0!</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />

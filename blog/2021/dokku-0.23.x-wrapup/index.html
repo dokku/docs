@@ -1438,38 +1438,38 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="additions">Additions</h2>
-<h3 id="release-changes">Release changes</h3>
+<h2 id="additions">Additions<a class="headerlink" href="#additions" title="Permanent link">&para;</a></h2>
+<h3 id="release-changes">Release changes<a class="headerlink" href="#release-changes" title="Permanent link">&para;</a></h3>
 <p>Dokku now has support for triggering releases via Github Actions. This will allow any maintainer to make a release of Dokku without needing to set anything up locally. The ability to auto-release plugins and tools in the Dokku ecosystem will slowly be added to all core projects over the coming weeks.</p>
 <p>In addition, we now update the official Azure ARM template for Dokku during the release process, as well as bump the homebrew repo for the remote cli tool. We hope to extend this official release bumping to other image maintained for Dokku in the near future.</p>
-<h3 id="report-output-as-json">Report output as json</h3>
+<h3 id="report-output-as-json">Report output as json<a class="headerlink" href="#report-output-as-json" title="Permanent link">&para;</a></h3>
 <p>While undocumented, all of the golang plugins now support displaying report output as json (<a href="https://github.com/dokku/dokku/pull/4369">#4369</a>). This makes it easier for tools to parse the reports.</p>
 <p>A future release will hopefully extend this to all plugins, and provide a framework for non-core plugins to also have json formatting support in <code>:report</code> output.</p>
-<h3 id="modifying-x-forwarded-ssl-in-nginx-configurations">Modifying <code>X-Forwarded-Ssl</code> in nginx configurations</h3>
+<h3 id="modifying-x-forwarded-ssl-in-nginx-configurations">Modifying <code>X-Forwarded-Ssl</code> in nginx configurations<a class="headerlink" href="#modifying-x-forwarded-ssl-in-nginx-configurations" title="Permanent link">&para;</a></h3>
 <p>Some load balancers require specifying a value for <code>X-Forwarded-Ssl</code>. The ability to do so was added in <a href="https://github.com/dokku/dokku/pull/4420">#4420</a>. Note that this is a non-standard version of setting <code>x-forwarded-proto</code> to <code>https</code>, and should only be done as a last resort.</p>
-<h3 id="add-support-for-injected-cron-entries-from-external-plugins">Add support for injected cron entries from external plugins</h3>
+<h3 id="add-support-for-injected-cron-entries-from-external-plugins">Add support for injected cron entries from external plugins<a class="headerlink" href="#add-support-for-injected-cron-entries-from-external-plugins" title="Permanent link">&para;</a></h3>
 <p>One of the things lost by the addition of scheduled cron task support in 0.23.0 was the ability to set cron tasks from plugins. This functionality was used by the dokku-letsencrypt plugin to support it's auto-renew functionality.</p>
 <p>The change in <a href="https://github.com/dokku/dokku/pull/4384">#4384</a> allows alternative plugins - such as dokku-letsencrypt - to inject scheduled cron tasks into the cron system used by Dokku. Cron systems can choose to include or not include a cron task based on the specified scheduler, and can also optionally use a third parameter to store arbitrary information.</p>
-<h3 id="ability-to-clear-an-individual-resource-value">Ability to clear an individual resource value</h3>
+<h3 id="ability-to-clear-an-individual-resource-value">Ability to clear an individual resource value<a class="headerlink" href="#ability-to-clear-an-individual-resource-value" title="Permanent link">&para;</a></h3>
 <p>As of (#4372)[https://github.com/dokku/dokku/pull/4372], a resource value can be individually cleared by setting the value to the special value <code>clear</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>resource:limit<span class="w"> </span>--cpu<span class="w"> </span>clear<span class="w"> </span>node-js-app
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>=====&gt; Setting resource limits for node-js-app
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>       cpu: cleared
 </code></pre></div>
-<h3 id="a-new-null-buildpack-was-added">A new 'null' buildpack was added</h3>
+<h3 id="a-new-null-buildpack-was-added">A new 'null' buildpack was added<a class="headerlink" href="#a-new-null-buildpack-was-added" title="Permanent link">&para;</a></h3>
 <p>Herokuish 0.5.25 introduces a new <code>null</code> buildpack. This buildpack does nothing, which is useful if your app vendors all it's dependencies and does not need to be built.</p>
 <p>To use it, include a <code>.null</code> file in your app repository. No other changes are necessary.</p>
-<h2 id="changes">Changes</h2>
-<h3 id="documentation-is-now-at-dokkucom">Documentation is now at dokku.com</h3>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<h3 id="documentation-is-now-at-dokkucom">Documentation is now at dokku.com<a class="headerlink" href="#documentation-is-now-at-dokkucom" title="Permanent link">&para;</a></h3>
 <p>The documentation has moved from the global viewdocs to it's own fork, hosted at <a href="https://dokku.com">dokku.com</a>. Future documentation changes will enable embedded docs for official plugins, doc search, as well as including the blog on the main domain.</p>
 <p>As an added bonus, our documentation now has SSL!</p>
-<h3 id="checking-if-an-app-was-deployed">Checking if an app was deployed</h3>
+<h3 id="checking-if-an-app-was-deployed">Checking if an app was deployed<a class="headerlink" href="#checking-if-an-app-was-deployed" title="Permanent link">&para;</a></h3>
 <p>Previously, checking if an app was deployed actually checked if there were any running processes. This is not only incorrect, but also fails to take into account applications that do not have running processes and are only used for one-off commands.</p>
 <p>The fix in <a href="https://github.com/dokku/dokku/pull/4402">#4402</a> migrates apps to the new "deployed" property which is set in core-post-deploy. The result is a slightly faster "deployed" check that is correct and allows non-scaled apps to actually work.</p>
-<h3 id="better-procfile-extraction">Better Procfile extraction</h3>
+<h3 id="better-procfile-extraction">Better Procfile extraction<a class="headerlink" href="#better-procfile-extraction" title="Permanent link">&para;</a></h3>
 <p>As of <a href="https://github.com/dokku/dokku/pull/4373">#4373</a>, the Procfile is now extracted in the pre-deploy step for every deploy and otherwise not removed. Thus, it should always exist when necessary - web will be scale to 1 automatically and it won't need to be present on future ps:scale calls since we'll have the scale file - and the command can execute faster.</p>
-<h2 id="its-a-wrap">It's a wrap</h2>
+<h2 id="its-a-wrap">It's a wrap<a class="headerlink" href="#its-a-wrap" title="Permanent link">&para;</a></h2>
 <p>And that's it for 0.23.x. Our next post will cover 0.24.0, as well as plans for future releases.</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />

@@ -1661,12 +1661,12 @@ technically worked, there were quite a few places for easy improvement, as well
 as obvious holes in the existing functionality. Dokku Pro 1.1.0 aims to fill
 some of those needs, laying the groundwork for future enhancements.</p>
 <p>Here are a few of the updates included in Dokku Pro 1.1.0.</p>
-<h2 id="major-changes">Major Changes</h2>
-<h3 id="this-lovely-docs-site">This lovely docs site</h3>
+<h2 id="major-changes">Major Changes<a class="headerlink" href="#major-changes" title="Permanent link">&para;</a></h2>
+<h3 id="this-lovely-docs-site">This lovely docs site<a class="headerlink" href="#this-lovely-docs-site" title="Permanent link">&para;</a></h3>
 <p>We've added a more comprehensive documentation site for Dokku Pro. The
 documentation will continue to improve and will always reference the latest
 version of Dokku Pro (currently 1.1.0). Enjoy!</p>
-<h3 id="requires-dokku-0270">Requires Dokku 0.27.0</h3>
+<h3 id="requires-dokku-0270">Requires Dokku 0.27.0<a class="headerlink" href="#requires-dokku-0270" title="Permanent link">&para;</a></h3>
 <p>The minimum Dokku version increase was made to ensure memory-scaling worked properly.
 Users of older version of Dokku <em>may</em> still have working installs, though memory
 scaling will not work correctly for the <code>docker-local</code> scheduler.</p>
@@ -1678,7 +1678,7 @@ scaling will not work correctly for the <code>docker-local</code> scheduler.</p>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
 </code></pre></div>
-<h3 id="minimum-required-datastore-plugin-versions">Minimum required datastore plugin versions</h3>
+<h3 id="minimum-required-datastore-plugin-versions">Minimum required datastore plugin versions<a class="headerlink" href="#minimum-required-datastore-plugin-versions" title="Permanent link">&para;</a></h3>
 <p>As a reminder, it is also recommended to update all datastore plugins to ensure
 services are properly listed in the API and UI. In addition, the upgrades are
 necessary for support for deferred app rebuilds during service linking. Without
@@ -1770,7 +1770,7 @@ them, service linking may time out.</p>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
 </code></pre></div>
-<h3 id="add-ability-to-link-an-app-to-a-service">Add ability to link an app to a service</h3>
+<h3 id="add-ability-to-link-an-app-to-a-service">Add ability to link an app to a service<a class="headerlink" href="#add-ability-to-link-an-app-to-a-service" title="Permanent link">&para;</a></h3>
 <p>Users are now able to link apps to services. This required a ton of changes to
 how datastores worked in the API, and the resulting refactor makes it much easier
 to add new datastores to Dokku Pro.</p>
@@ -1781,7 +1781,7 @@ to add new datastores to Dokku Pro.</p>
   </p>
 <figcaption>UI for managing service links</figcaption>
 </figure>
-<h3 id="refactor-datastore-and-service-apis-for-easier-expansion">Refactor datastore and service apis for easier expansion</h3>
+<h3 id="refactor-datastore-and-service-apis-for-easier-expansion">Refactor datastore and service apis for easier expansion<a class="headerlink" href="#refactor-datastore-and-service-apis-for-easier-expansion" title="Permanent link">&para;</a></h3>
 <p>In order to make service linking work, we required a few changes:</p>
 <ul>
 <li>exposing a single api for listing all available datastores</li>
@@ -1797,7 +1797,7 @@ Dokku server. This makes it much simpler to support a new datastore - now a 2-li
 versus the previous method of generating various files that still needed work to
 plug into the api model layer.</p>
 <p>These APIs are now considered stable for external use. Enjoy!</p>
-<h3 id="implement-resource-scaling-ui">Implement resource scaling ui</h3>
+<h3 id="implement-resource-scaling-ui">Implement resource scaling ui<a class="headerlink" href="#implement-resource-scaling-ui" title="Permanent link">&para;</a></h3>
 <p>The initial release of Dokku Pro included process count scaling, but offered
 nothing for container resources. New in 1.1.0, we added the ability to set
 memory reservations.</p>
@@ -1813,7 +1813,7 @@ releases, and hope to include both memory <em>and</em> CPU for limits and reserv
 in a way that makes sense for our users.</p>
 <p>See <a href="https://twitter.com/dokku/status/1490755087697858565">this tweet thread</a> for
 more details on how... interesting this functionality ended up.</p>
-<h3 id="add-swagger-support">Add swagger support</h3>
+<h3 id="add-swagger-support">Add swagger support<a class="headerlink" href="#add-swagger-support" title="Permanent link">&para;</a></h3>
 <p>An interactive Swagger UI for Dokku Pro is now available at the <code>/swagger</code> endpoint.
 Users can also access the OpenAPI 3.0.1 spec at <code>/swagger/openapi.yml</code>.</p>
 <figure>
@@ -1821,7 +1821,7 @@ Users can also access the OpenAPI 3.0.1 spec at <code>/swagger/openapi.yml</code
   </p>
 <figcaption>Integrated Swagger UI</figcaption>
 </figure>
-<h3 id="add-ability-to-set-the-scheduler-on-a-per-app-basis">Add ability to set the scheduler on a per-app basis</h3>
+<h3 id="add-ability-to-set-the-scheduler-on-a-per-app-basis">Add ability to set the scheduler on a per-app basis<a class="headerlink" href="#add-ability-to-set-the-scheduler-on-a-per-app-basis" title="Permanent link">&para;</a></h3>
 <p>We've added the ability to set an app scheduler on a per-app basis. This
 automatically picks up the following schedulers (if installed) and displays them
 for selection:</p>
@@ -1836,48 +1836,48 @@ for selection:</p>
   </p>
 <figcaption>Selection a non-standard scheduler</figcaption>
 </figure>
-<h2 id="minor-changes">Minor Changes</h2>
-<h4 id="allow-customizing-the-network-dokku-pro-listens-on">Allow customizing the network dokku-pro listens on</h4>
+<h2 id="minor-changes">Minor Changes<a class="headerlink" href="#minor-changes" title="Permanent link">&para;</a></h2>
+<h4 id="allow-customizing-the-network-dokku-pro-listens-on">Allow customizing the network dokku-pro listens on<a class="headerlink" href="#allow-customizing-the-network-dokku-pro-listens-on" title="Permanent link">&para;</a></h4>
 <p>If you are running Dokku Pro on a local network that doesn't have IPv6 support,
 you can now set the <code>SERVER_NETWORK</code> configuration variable to <code>tcp4</code> to listen
 only on IPv4.</p>
-<h4 id="set-higher-default-write-timeout-to-allow-for-slow-service-creation-calls-to-complete">Set higher default write timeout to allow for slow service creation calls to complete</h4>
+<h4 id="set-higher-default-write-timeout-to-allow-for-slow-service-creation-calls-to-complete">Set higher default write timeout to allow for slow service creation calls to complete<a class="headerlink" href="#set-higher-default-write-timeout-to-allow-for-slow-service-creation-calls-to-complete" title="Permanent link">&para;</a></h4>
 <p>The default server read and write timeouts were too low for certain tasks - notably
 datastore creation and destruction - to complete in time, resulting in UI errors.
 These are now configurable via <code>SERVER_READ_TIMEOUT</code> and <code>SERVER_WRITE_TIMEOUT</code>,
 and also have higher default values. Folks on slower servers should see significant
 improvement in their overall user experience.</p>
-<h4 id="add-cli-command-for-outputting-current-dokku-pro-settings">Add cli command for outputting current dokku-pro settings</h4>
+<h4 id="add-cli-command-for-outputting-current-dokku-pro-settings">Add cli command for outputting current dokku-pro settings<a class="headerlink" href="#add-cli-command-for-outputting-current-dokku-pro-settings" title="Permanent link">&para;</a></h4>
 <p>One annoying issue when debugging an installation is ensuring all the configuration
 variables are set properly. Users can now run <code>dokku-pro config</code> to show a user-friendly
 version of the current server config. This can be used to verify that the Dokku Pro
 license and other configuration options are as you expect.</p>
-<h2 id="ui-changes">UI Changes</h2>
-<h4 id="always-use-correct-icon-size-for-app-status">Always use correct icon size for app status</h4>
+<h2 id="ui-changes">UI Changes<a class="headerlink" href="#ui-changes" title="Permanent link">&para;</a></h2>
+<h4 id="always-use-correct-icon-size-for-app-status">Always use correct icon size for app status<a class="headerlink" href="#always-use-correct-icon-size-for-app-status" title="Permanent link">&para;</a></h4>
 <p>The app status icon was sometimes too large. While big head mode is cool, its not
 so much in a UI. We now use the correct image size.</p>
-<h4 id="fix-issue-in-ui-when-saving-a-domain-for-an-app">Fix issue in ui when saving a domain for an app</h4>
+<h4 id="fix-issue-in-ui-when-saving-a-domain-for-an-app">Fix issue in ui when saving a domain for an app<a class="headerlink" href="#fix-issue-in-ui-when-saving-a-domain-for-an-app" title="Permanent link">&para;</a></h4>
 <p>Apps with no domains had issues saving an initial domain without using the CLI.
 Since one of the goals of Dokku Pro is to supply a web UI, this seems a bit backwards.
 You can now properly set domains for new apps!</p>
-<h4 id="correct-process-type-name-in-the-scaling-ui">Correct process type name in the scaling UI</h4>
+<h4 id="correct-process-type-name-in-the-scaling-ui">Correct process type name in the scaling UI<a class="headerlink" href="#correct-process-type-name-in-the-scaling-ui" title="Permanent link">&para;</a></h4>
 <p>The process scaling ui showed the app name instead of the process type. This made
 no sense and was confusing for users with multiple process types.</p>
-<h4 id="make-the-envdomains-settings-pages-span-the-entire-page">Make the env/domains settings pages span the entire page</h4>
+<h4 id="make-the-envdomains-settings-pages-span-the-entire-page">Make the env/domains settings pages span the entire page<a class="headerlink" href="#make-the-envdomains-settings-pages-span-the-entire-page" title="Permanent link">&para;</a></h4>
 <p>There was a minor change to the environment variable and domain setting pages that
 made better use of the screen real estate.</p>
-<h3 id="api-changes">API Changes</h3>
-<h4 id="add-meilisearch-datastore-plugin">Add meilisearch datastore plugin</h4>
+<h3 id="api-changes">API Changes<a class="headerlink" href="#api-changes" title="Permanent link">&para;</a></h3>
+<h4 id="add-meilisearch-datastore-plugin">Add meilisearch datastore plugin<a class="headerlink" href="#add-meilisearch-datastore-plugin" title="Permanent link">&para;</a></h4>
 <p>Taking advantage of our new datastore plumbing, we added the <a href="https://github.com/dokku/dokku-meilisearch">Meilisearch</a>
 plugin to Dokku Pro.</p>
-<h4 id="add-better-error-messaging-when-validating-api-entities-from-composite-keys">Add better error messaging when validating api entities from composite keys</h4>
+<h4 id="add-better-error-messaging-when-validating-api-entities-from-composite-keys">Add better error messaging when validating api entities from composite keys<a class="headerlink" href="#add-better-error-messaging-when-validating-api-entities-from-composite-keys" title="Permanent link">&para;</a></h4>
 <p>When interacting with entities that have composite primary keys - domains, environment
 variables, formations - users would get somewhat opaque error messages. These
 have been updated to include more detail.</p>
-<h4 id="fix-access-to-service-relationships-in-the-api">Fix access to service relationships in the api</h4>
+<h4 id="fix-access-to-service-relationships-in-the-api">Fix access to service relationships in the api<a class="headerlink" href="#fix-access-to-service-relationships-in-the-api" title="Permanent link">&para;</a></h4>
 <p>Services now come back as properly associated with apps, making many of the normal
 json-api relationship endpoints work.</p>
-<h2 id="dokku-pro-pricing">Dokku Pro Pricing</h2>
+<h2 id="dokku-pro-pricing">Dokku Pro Pricing<a class="headerlink" href="#dokku-pro-pricing" title="Permanent link">&para;</a></h2>
 <p>Now that there is a new release of Dokku Pro, the early bird pricing will increase.
 This was previously mentioned in various Dokku Pro announcements, but the price
 will continue to increase by various amounts until the product settles.</p>
@@ -1886,7 +1886,7 @@ all upgrades of Dokku Pro as long as they are made. Folks wishing to support
 continued development of the project are encouraged to purchase today before the
 price is increased.</p>
 <p><a class="md-button" href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878">Get your copy today</a></p>
-<h2 id="coming-up-next">Coming up next?</h2>
+<h2 id="coming-up-next">Coming up next?<a class="headerlink" href="#coming-up-next" title="Permanent link">&para;</a></h2>
 <p>The next milestone will continue to have many minor additions, with some effort
 made on the following additions:</p>
 <ul>

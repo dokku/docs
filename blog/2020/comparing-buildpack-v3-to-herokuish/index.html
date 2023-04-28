@@ -1464,7 +1464,7 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="history-channel-vault">History Channel Vault</h2>
+<h2 id="history-channel-vault">History Channel Vault<a class="headerlink" href="#history-channel-vault" title="Permanent link">&para;</a></h2>
 <p>When Heroku first launched, they provided support for Rack applications, which worked fairly well for the budding Ruby community. As the Ruby community grew, this initial support started to become limiting for their users, and thus the Heroku community started reworking their internal tech to be more flexible in functionality they supported and how they launched processes, In fact, a lot of the fancy features and patterns you'll see in a modern PaaS - 12 factor apps, Procfile support, etc. - were first prototyped or promoted by Heroku. The process of detecting support, building app slugs, and releasing the built artifacts was one such initiative. Eventually, Heroku rebuilt their platform to support alternative programming runtimes as well as community contributed runtimes in what is now known as a buildpacks.</p>
 <p>As time marched on, the Cloud Foundry software from Pivotal picked up the buildpack tech. This would seem like an overall great thing for the community - buildpacks that have better support for enterprise environments and needs would certainly help with adoption in the corporate world - but ended up being not as great. As there was no real specification for Buildpack technology, Pivotal ended up diverging from Heroku's implementation, resulting in:</p>
 <ul>
@@ -1474,13 +1474,13 @@
 <p>For buildpack authors, the standards were largely compatible - and it would likely be possible to support both at once - but in practice you really only wrote a buildpack for the platform you were using. This also meant that new features for, say, the NodeJs buildpack would need to be implemented twice in order to be supported on these two platforms.</p>
 <p>Additionally, the buildpack spec never specified anything about the underlying platform, so building a buildpack for Heroku's platform that depends on some OS-level dependency might not work at all when used with Cloud Foundry or vice versa.</p>
 <p>Suffice to say, this divergence isn't great for the community, nor great for pushing the technology forward. I'll skip all the details - mostly because I don't know them! - but the emergence of containers and related technologies enabled the folks at Heroku and Pivotal to combine efforts to on a unified v3 specification, which is now CNB. Think of it as two mini lion bots coming together to form one super-bot!</p>
-<h2 id="comparing-buildpack-tech">Comparing Buildpack tech</h2>
+<h2 id="comparing-buildpack-tech">Comparing Buildpack tech<a class="headerlink" href="#comparing-buildpack-tech" title="Permanent link">&para;</a></h2>
 <p>While the new specification - still under development - provides a new, unified way to create and distribute buildpacks, there can still be differences between platforms. At this point in time, there are actually two different main "builders" - a collection of buildpacks - that folks in the community can use to play around with CNBs (both are based on the Bionic stack). They do provide slightly different functionality, so a comparison between them seems like a reasonable thing to do. We'll also compare CNBs to <code>gliderlabs/herokuish</code>, which is the main OSS implementation of the buildpack v2a technology.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>At the time of writing, Heroku's builder contains v2a buildpacks with a shim to allow them to run under the v3 specification. Additionally, there is a possibility that the organizations will collaborate on buildpacks in the future - who wants to rebuild the wheel? - but this is sort of all in the air. Please keep this in mind if reading this blog post a few months/years from the time of publication.</p>
 </div>
-<h3 id="installing-dependencies">Installing dependencies</h3>
+<h3 id="installing-dependencies">Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permanent link">&para;</a></h3>
 <p>For local testing, the CNB project provides the <code>pack</code> cli tool to simulate what would be available in a platform. There are related projects for Kubernetes and other tools in the deployment space, but <code>pack</code> is great for local testing, so we'll want to install that.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># on a mac with homebrew</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>brew<span class="w"> </span>install<span class="w"> </span>buildpacks/tap/pack
@@ -1501,9 +1501,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>image<span class="w"> </span>pull<span class="w"> </span>gliderlabs/herokuish:latest<span class="w"> </span><span class="c1"># build and run</span>
 </code></pre></div>
 <p>Neither Cloud Foundry nor Heroku currently publish a <code>Dockerfile</code> for their images, so they are still somewhat of a black box. It's also not super clear from the documentation as to what the <code>bionic</code> stack is. We can only hope - but not assume - that these will be published for public recreation in the future.</p>
-<h3 id="building-apps">Building apps</h3>
+<h3 id="building-apps">Building apps<a class="headerlink" href="#building-apps" title="Permanent link">&para;</a></h3>
 <p>The app we'll be playing with is the <a href="https://github.com/heroku/node-js-getting-started">node-js-getting-started</a> app by Heroku. You can play around with your own app to see the results; also NodeJs is currently supported with both builders as well as the <code>gliderlabs/herokuish</code> project.</p>
-<h4 id="with-cnb">With CNB</h4>
+<h4 id="with-cnb">With CNB<a class="headerlink" href="#with-cnb" title="Permanent link">&para;</a></h4>
 <p>Building an app with CNB is the same regardless of your chosen builder, which is nice. The following command will build the app in the current directory with the Cloud Foundry builder:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pack<span class="w"> </span>set-default-builder<span class="w"> </span>cloudfoundry/cnb:latest
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pack<span class="w"> </span>build<span class="w"> </span>--no-pull<span class="w"> </span>--path<span class="w"> </span>.<span class="w"> </span><span class="s2">&quot;app/nodejs-cloudfoundry:latest&quot;</span>
@@ -1522,7 +1522,7 @@
 <p class="admonition-title">Note</p>
 <p>As an aside, the <code>buildpacks/lifecycle</code> project - and therefore pack - creates OCI compatible images, so tooling that only works with the older <a href="https://github.com/moby/moby/tree/master/image/spec">Docker Image Specification</a> may fail when using pack-built images.</p>
 </div>
-<h4 id="with-herokuish">With Herokuish</h4>
+<h4 id="with-herokuish">With Herokuish<a class="headerlink" href="#with-herokuish" title="Permanent link">&para;</a></h4>
 <p>Building an image with <code>gliderlabs/herokuish</code> is a bit more complicated. While it is distributed as a binary and a docker image, most folks default to using the docker image. Some platforms - notably Gitlab - utilize it via a <code>Dockerfile</code>, but this doesn't allow you to take advantage of build cache. The below simulates the patterns used by the <code>pack</code> cli tool:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># use a cache volume</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># this can also be substituted with a directory on disk</span>
@@ -1541,7 +1541,7 @@
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>docker<span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>/tmp/cid<span class="k">)</span>
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/tmp/cid<span class="w"> </span>
 </code></pre></div>
-<h3 id="running-an-app">Running an app</h3>
+<h3 id="running-an-app">Running an app<a class="headerlink" href="#running-an-app" title="Permanent link">&para;</a></h3>
 <p>This part is likely the most similar thing across all platforms. Both the CNB images utilize a special <code>launcher</code> process to run your process type for you, so all you really need to do is specify that process type.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># cloudfoundry</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">5000</span><span class="w"> </span>--name<span class="w"> </span>app.nodejs.cloudfoundry<span class="w"> </span>app/nodejs-cloudfoundry:latest<span class="w"> </span>web
@@ -1565,9 +1565,9 @@
 </code></pre></div>
 <p>Startup time is a bit longer with <code>herokuish</code> as it will change ownership on files within the <code>/app</code> directory.</p>
 <p>Another difference between the two is the environment within which both images run in, which we'll get into next.</p>
-<h3 id="inspecting-the-built-image">Inspecting the built image</h3>
+<h3 id="inspecting-the-built-image">Inspecting the built image<a class="headerlink" href="#inspecting-the-built-image" title="Permanent link">&para;</a></h3>
 <p>Once we have a running app, lets inspect our artifact.</p>
-<h4 id="with-cnb_1">With CNB</h4>
+<h4 id="with-cnb_1">With CNB<a class="headerlink" href="#with-cnb_1" title="Permanent link">&para;</a></h4>
 <p>Executing a command on the CNB-backed containers is the same as executing a command with any other docker image. Processes are automatically invoked within the correct app environment, which is great for one-off commands.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># cloudfoundry</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.cloudfoundry<span class="w"> </span>id
@@ -1597,7 +1597,7 @@
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>heroku       1  0.9  1.7 566792 36728 ?        Ssl  02:46   0:00 node index.js
 </code></pre></div>
 <p>Please bear in mind that PID 1 in the container will depend upon what the buildpack launches. Aside from that note, there is nothing new with CNB and pack in regards to running commands when compared to normal docker operations, so anyone familiar with Docker will feel right at home.</p>
-<h4 id="with-herokuish_1">With Herokuish</h4>
+<h4 id="with-herokuish_1">With Herokuish<a class="headerlink" href="#with-herokuish_1" title="Permanent link">&para;</a></h4>
 <p>On the herokuish platform, a process must be executed with the <code>/exec</code> command as a prefix. This will give you an environment that simulates running a command in the heroku stack.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.herokuish<span class="w"> </span>/exec<span class="w"> </span>id
 </code></pre></div>
@@ -1614,7 +1614,7 @@
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>herokui+    13  2.7  1.9 566160 40020 ?        Sl   02:57   0:00 node index.js
 </code></pre></div>
 <p>You'll notice that, in addition to your app, there is also the <code>/start web</code> process. This spawns your app with the correct environment, so just a bit different from CNB containers.</p>
-<h3 id="cleaning-up">Cleaning up</h3>
+<h3 id="cleaning-up">Cleaning up<a class="headerlink" href="#cleaning-up" title="Permanent link">&para;</a></h3>
 <p>Removing the containers and images is relatively straightforward, as we use traditional docker commands.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># cloudfoundry</span>
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nv">IMAGE</span><span class="o">=</span><span class="s2">&quot;app/nodejs-cloudfoundry:latest&quot;</span>
@@ -1640,7 +1640,7 @@
 <a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a>docker<span class="w"> </span>image<span class="w"> </span>rm<span class="w"> </span>gliderlabs/herokuish:latest<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 <a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a>docker<span class="w"> </span>image<span class="w"> </span>rm<span class="w"> </span>app/nodejs-herokuish:latest<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<h2 id="dokku-and-cloud-native-buildpacks">Dokku and Cloud Native Buildpacks</h2>
+<h2 id="dokku-and-cloud-native-buildpacks">Dokku and Cloud Native Buildpacks<a class="headerlink" href="#dokku-and-cloud-native-buildpacks" title="Permanent link">&para;</a></h2>
 <p>In an ideal world, all the functionality currently provided by Heroku's v2a Buildpacks and its ecosystem would immediately exist with Cloud Native Buildpacks. Unfortunately, the spec is still evolving - though nearing a v1! - and the user-base is comparatively small. If you are a buildpack author or a vendor using buildpack technology, now is likely the best time to get involved and raise concerns with the spec and ecosystem.</p>
 <p>That said, Dokku has active development towards the addition of CNB to the platform. In our case, we will likely have it as an experimental feature controlled through the use of environment variables, and folks will be able to switch their installations between CNB and Herokuish. This will also likely require changes to certain plugins - in particular, those that interact with the built images - but these will hopefully be fairly minimal.</p>
 <p>Long-term, the plan is to deprecate and eventually remove gliderlabs/herokuish support. The purpose of the Herokuish project was to allow folks to emulate the Heroku build/runtime environment. Heroku - amongst others - will be moving to CNB at some point, and already provide a shim for existing buildpacks in the new system. So in theory, any CNB platform would be able to use that shim + any tooling that supports CNB for buildpack support.</p>
@@ -1653,7 +1653,7 @@
 </ul>
 <p>The best course of action is for Herokuish to become unsupported once <code>pack</code> hits a stable release. It is unlikely that support for Herokuish will continue at that point, and only general maintenance work (upgrading buildpacks) would be performed at that time. Long-term, the project will likely be archived completely in favor of the upstream CNB projects.</p>
 <p>There isn't any timeline for the above other than experimental support for CNB in Dokku will land at some point in the near future, so folks installing and using Dokku won't need to worry too much about the process. Long-term, there will be a migration path outlined for users, and how that impacts users will depend on how much tooling is necessary to shim in the existing ecosystem around buildpacks. We hope to keep this minimal, but sometimes you need to break some eggs to make an omelette.</p>
-<h2 id="cloud-native-buildpacks-are-the-future">Cloud Native Buildpacks are the future</h2>
+<h2 id="cloud-native-buildpacks-are-the-future">Cloud Native Buildpacks are the future<a class="headerlink" href="#cloud-native-buildpacks-are-the-future" title="Permanent link">&para;</a></h2>
 <p>The Dokku project is incredibly excited about Cloud Native Buildpacks and it's implications for speeding up how we build secure applications and services. While the existing community is fairly small, the contributors are very dedicated to getting everything just right, and we expect that this will be a great boon to users of both Dokku and buildpacks in general.</p>
 <p>If you'd like to have a say in how the CNB initiative develops, please feel free to join in with development or comment in the Slack community - they are a bunch of very friendly folks - where much of the current development is focused.</p>
 <ul>

@@ -1410,16 +1410,16 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="changes">Changes</h2>
-<h3 id="change-exit-code-when-app-does-not-exist">Change exit code when app does not exist</h3>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<h3 id="change-exit-code-when-app-does-not-exist">Change exit code when app does not exist<a class="headerlink" href="#change-exit-code-when-app-does-not-exist" title="Permanent link">&para;</a></h3>
 <p>This will allow wrappers around dokku to avoid needing two calls to dokku - one for apps:exists, the other for the command you want to run itself - to see if the app does not exist or if the error was something else.</p>
 <p>Builders of UI systems on top of Dokku may wish to take advantage of this functionality to decrease the number of calls they need to make to Dokku.</p>
 <p>Finally, plugin developers should always use <code>verify_app_name()</code> (shell) and <code>common.VerifyAppName()</code> (go) when verifying the app name to ensure they also receive this same functionality.</p>
-<h2 id="new-features">New Features</h2>
-<h3 id="support-for-herokus-postdeploy-deployment-task">Support for heroku's <code>postdeploy</code> deployment task</h3>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h3 id="support-for-herokus-postdeploy-deployment-task">Support for heroku's <code>postdeploy</code> deployment task<a class="headerlink" href="#support-for-herokus-postdeploy-deployment-task" title="Permanent link">&para;</a></h3>
 <p>Our existing deployment task support covered a wide range of use cases, but of course did not implement Heroku's own <code>postdeploy</code> support. This deployment task is commonly used to seed data into apps, especially for Heroku's "review app" functionality.</p>
 <p>As of 0.24.0, Dokku implements support for Heroku's <code>postdeploy</code> hook. This is currently triggered during the <code>postdeploy</code> on the first deploy of an app, mimicking heroku. It currently happens after the <code>release</code> task, during the <code>pre-deploy</code> trigger, which more or less mimics the <code>release</code> phase.</p>
-<h3 id="git-authentication-handling-via-netrc">Git Authentication handling via .netrc</h3>
+<h3 id="git-authentication-handling-via-netrc">Git Authentication handling via .netrc<a class="headerlink" href="#git-authentication-handling-via-netrc" title="Permanent link">&para;</a></h3>
 <p>With the new <code>git:sync</code> functionality introduced in <code>0.23.0</code>, users of private repositories immediately saw an issue with their ability to use the feature. To enable those users to deploy private apps, the <a href="https://github.com/dokku/netrc"><code>netrc</code></a> binary was built, and a wrapper <code>git:auth</code> command was added to Dokku.</p>
 <p>This new command allows users to specify custom git server authentication information for use with <code>git:sync</code> by modifying the <code>~dokku/.netrc</code> file. The alternative is to use ssh keys, which is still supported.</p>
 <p>This PR additionally outputs an error message when we detect an auth error:</p>
@@ -1430,7 +1430,7 @@
 </code></pre></div>
 <p>This should allow folks to figure out what they need to do.</p>
 <p>Lastly, the clone/fetch commands no longer use <code>-qq</code> or stderr redirection. If there are other errors, this will allow operators to have some debugging information.</p>
-<h3 id="simplified-docker-image-deployment-via-gitfrom-image">Simplified docker image deployment via <code>git:from-image</code></h3>
+<h3 id="simplified-docker-image-deployment-via-gitfrom-image">Simplified docker image deployment via <code>git:from-image</code><a class="headerlink" href="#simplified-docker-image-deployment-via-gitfrom-image" title="Permanent link">&para;</a></h3>
 <p>There are a ton of people that want to deploy a docker image. To do that, they currently need to:</p>
 <ul>
 <li>pull the image via <code>docker pull</code></li>
@@ -1443,11 +1443,11 @@
 <p>Pull Request <a href="https://github.com/dokku/dokku/pull/4450">#4450</a> implements <code>git:from-image</code>. Under the hood, this command creates or updates the git repository for the app with the specified image. The workflow implements all the above steps for users in a way that allows ignoring direct exposure of <code>docker pull</code> as a Dokku command (which would open the flood gates to all docker commands). It also keeps the git workflow (so you get history) and enables a whole class of users to properly deploy docker images.</p>
 <p>There is other stuff this might enable, like an app library, but the main idea is to enable a class of users that has been typically under-served.</p>
 <p>For <code>tags</code> plugin users, note that this functionality deprecates the <code>tags</code> plugin, which will be removed in the next minor release. Please migrate any workflows currently using the <code>tags</code> plugin to <code>git:from-image</code>.</p>
-<h3 id="simplified-archive-deployment-via-gitfrom-archive">Simplified archive deployment via <code>git:from-archive</code></h3>
+<h3 id="simplified-archive-deployment-via-gitfrom-archive">Simplified archive deployment via <code>git:from-archive</code><a class="headerlink" href="#simplified-archive-deployment-via-gitfrom-archive" title="Permanent link">&para;</a></h3>
 <p>Similar to <code>git:from-image</code> - and using the same internal infrastructure to manage history - there is a new <code>git:from-archive</code> command. This new command supports deploying <code>.tar</code>, <code>.tar.gz</code>, and <code>.zip</code> files to apps, keeping git history with every deploy. In addition to a url, it also supports piping the archive in via stdin.</p>
 <p>The <code>git:from-archive</code> command is meant to be used in cases where the deployment model is to deploy from a git tag. This may mean that the artifact is already built and just needs extraction, or can continue to use the normal build process available in Dokku.</p>
 <p>For <code>tar</code> plugin users, note that this functionality deprecates the <code>tar</code> plugin, which will be removed in the next minor release. Please migrate any workflows currently using the <code>tar</code> plugin to <code>git:from-image</code>.</p>
-<h3 id="specifying-app-builders">Specifying app builders</h3>
+<h3 id="specifying-app-builders">Specifying app builders<a class="headerlink" href="#specifying-app-builders" title="Permanent link">&para;</a></h3>
 <p>Dokku currently supports three different types of app builders:</p>
 <ul>
 <li>Dockerfile</li>
@@ -1459,10 +1459,10 @@
 <p>If the final list of detected builders is empty, then Dokku will default to herokuish (and <code>pack/CNB</code> once that is stable). Users may also override the builder via the <code>builder:set</code> command.</p>
 <p>This change enables users to build custom builder plugins and have those plugins used for building an image asset. By way of example, an enterprising user could create a <code>builder-lambda</code> based on lambci, and then pair this with a scheduler plugin that updates a lambda function on AWS. Alternatively, a user might decide they wish to place their Dockerfile in a specific directory for their applications - such as an <code>_infrastructure</code> directory - and create a plugin to override how that is detected within Dokku.</p>
 <p>An enterprising user has already built a <a href="https://github.com/jameysharp/dokku-builder-nix"><code>builder-nix</code></a> plugin that builds Docker images via NixOS.</p>
-<h3 id="parallelism-for-some-proxy-commands">Parallelism for some proxy commands</h3>
+<h3 id="parallelism-for-some-proxy-commands">Parallelism for some proxy commands<a class="headerlink" href="#parallelism-for-some-proxy-commands" title="Permanent link">&para;</a></h3>
 <p>Being able to specify <code>--all</code> and increase parallelism of save commands is always great. As of 0.24.0, the commands <code>proxy:enable</code>, <code>proxy:disable</code> and <code>proxy:build-config</code> now support the <code>--all</code> flag in addition to general parallelism.</p>
 <p>If parallelism is needed for a specific command, please file an issue to get it added :)</p>
-<h2 id="the-next-minor-release">The Next Minor Release</h2>
+<h2 id="the-next-minor-release">The Next Minor Release<a class="headerlink" href="#the-next-minor-release" title="Permanent link">&para;</a></h2>
 <p>Our next release will continue on the <a href="https://github.com/dokku/dokku/milestone/16">16 outstanding 1.0 issues</a>. We hope to knock out a few of these, especially those related to Dockerfile and ports handling. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />

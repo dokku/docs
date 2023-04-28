@@ -1288,11 +1288,11 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h3 id="plumbing-vs-porcelain">Plumbing vs Porcelain</h3>
+<h3 id="plumbing-vs-porcelain">Plumbing vs Porcelain<a class="headerlink" href="#plumbing-vs-porcelain" title="Permanent link">&para;</a></h3>
 <p>To understand the challenges better, it is important to note that the internal representation of the state of Dokku is <em>very</em> different from how users interact with it. Data is stored in either <code>/home/dokku/APP</code> or <code>/var/lib/dokku</code>. Plugins may also store data on another host, and some implementations of the config plugin actually store configuration in distributed datastores. Dokku interacts with this data via a series of plugins - written in various languages - through <code>plugn</code>. This hairy mess is Dokku's Plumbing.</p>
 <p>Externally, developers use the <code>dokku</code> cli to orchestrate their applications. This is a well-known interface with clear documentation and usage examples. The cli rarely changes drastically, only doing so to allow for new functionality in a way that does not break existing use. The output format also rarely changes in backwards incompatible ways. If you know how to use one Dokku installation from 2 years ago, a modern install will be extremely familiar to you. This nice interface is called the Porcelain.</p>
 <p>The analogy is thus: most folks using a restroom are well-acquainted with a toilet, every toilet is similar, allowing for differences in color, size, and features - a bidet could be nice, as could an auto-flush feature. Very few folks know anything about the pipes that move waste and water around, only caring when it is broken or needs updating to support newer toilet features. The important thing is that you know how to use the toilet, that it does what you expect, and that you don't need to re-learn how to use it.</p>
-<h3 id="a-common-interface">A Common Interface</h3>
+<h3 id="a-common-interface">A Common Interface<a class="headerlink" href="#a-common-interface" title="Permanent link">&para;</a></h3>
 <p>When you use Dokku, you'll notice a few things:</p>
 <ul>
 <li>Plugins almost always show help with no specified subcommand.</li>
@@ -1312,7 +1312,7 @@
 <li>Split <code>:report</code> output on well-known delimiters (<code>:</code>)</li>
 </ul>
 <p>The consistency here paves the way for automation.</p>
-<h3 id="interfacing-with-dokku">Interfacing with Dokku</h3>
+<h3 id="interfacing-with-dokku">Interfacing with Dokku<a class="headerlink" href="#interfacing-with-dokku" title="Permanent link">&para;</a></h3>
 <p>While we have a cli aimed at humans, as developers, we yearn for interfaces computers can automate. Our next blog post will cover how developers may interact with Dokku in a declarative fashion in order to ensure that their servers and applications are configured as expected.</p>
 <hr />
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>

@@ -1410,12 +1410,12 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="discussions">Discussions</h2>
+<h2 id="discussions">Discussions<a class="headerlink" href="#discussions" title="Permanent link">&para;</a></h2>
 <p>Where should you get help? We've added <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> support to the main project. Folks are encouraged to post questions and seek help from the community there. This will be a monitored channel, and is subject to the <a href="https://github.com/dokku/.github/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
 <p>If you are seeking more "live" support, join the <code>#dokku</code> channel on the <a href="https://slack.dokku.com/">Gliderlabs Slack</a>. A member of the core team - in addition to community members! - will attempt to help you given enough time and information.</p>
 <p>Users can continue posting to Stackoverflow or other locations, though those will not be actively monitored for issues.</p>
-<h2 id="releases">Releases</h2>
-<h3 id="021x">0.21.x</h3>
+<h2 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h2>
+<h3 id="021x">0.21.x<a class="headerlink" href="#021x" title="Permanent link">&para;</a></h3>
 <p>We released quite a few major things in the 0.21.0 release:</p>
 <ul>
 <li>Ubuntu 20.04 support: Our packages generally support all releases of Debian and Ubuntu, though having an official package repository for your OS is always nice.</li>
@@ -1423,14 +1423,14 @@
 <li>Upgrades of herokuish, plugn, procfile-util, sigil, and sshcommand: Dokku occasionally reaches out to single-purpose tooling for certain functionality, and our tight integration means we occasionally need to do things internally to support toolchain upgrades.</li>
 </ul>
 <p>Other than the above, 0.21.0 was mostly a bugfix release. Hopefully it was to your liking.</p>
-<h3 id="022x">0.22.x</h3>
+<h3 id="022x">0.22.x<a class="headerlink" href="#022x" title="Permanent link">&para;</a></h3>
 <p>The 0.22.x was a bit more expansive in the number of changes it introduced. There were a number of <a href="https://dokku.com/docs/appendices/0.22.0-migration-guide/">changes and deprecations</a>, the most major of which were:</p>
 <ul>
 <li>Process type names specified in <code>Procfile</code> files and app names may no longer use characters not valid in DNS Label Names (RFC 1123). This allows us to properly support networking in alternative schedulers - such as Kubernetes and Nomad - as well as internal app networking with the default Docker Local scheduler.</li>
 <li>The <code>ps</code> plugin had it's <code>*all</code> commands removed in favor of a <code>--all</code> flag. This was actually fairly major, as it changes how parallelism works within Dokku, and makes it easier to support parallel commands against multiple applications. In the future, you'll be seeing more <code>--all</code> flag support in Dokku (as well as <code>--global</code> as necessary).</li>
 </ul>
 <p>What else showed up in 0.22.x?</p>
-<h4 id="cloud-native-buildpacks-support">Cloud Native Buildpacks support</h4>
+<h4 id="cloud-native-buildpacks-support">Cloud Native Buildpacks support<a class="headerlink" href="#cloud-native-buildpacks-support" title="Permanent link">&para;</a></h4>
 <p><a href="https://buildpacks.io/">Cloud Native Buildpacks</a> are the future of Dokku's Buildpack support. We previously <a href="/technology/comparing-buildpack-v3-to-herokuish">blogged about it</a>, comparing it to our current Herokuish support. This new initiative is supported by a wide range of folks affiliated with the <a href="https://www.cncf.io/">Cloud Native Computing Foundation</a>, and we're hoping to see tighter integration with Dokku in the future.</p>
 <p>While it's still in development, this functionality is currently behind an app-specific environment variable and depends on the <code>pack</code> binary. To use it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># where $APP is your app name</span>
@@ -1450,18 +1450,18 @@
 <li>default to CNB</li>
 </ul>
 <p>Definitely a space to watch.</p>
-<h4 id="aggressive-container-cleanup">Aggressive Container Cleanup</h4>
+<h4 id="aggressive-container-cleanup">Aggressive Container Cleanup<a class="headerlink" href="#aggressive-container-cleanup" title="Permanent link">&para;</a></h4>
 <p>Previous releases of Dokku would leave behind intermediate containers for debugging purposes. As Dokku has largely stabilized, these containers are no longer as necessary. The intermediate containers are commonly confused for containers that utilize server resources. Even worse, Docker will occasionally start these intermediate containers on reboot (Docker does not keep track of whether a container was manually stopped or not), causing actual performance issues for servers.</p>
 <p>In 0.22.x, we start deleting these intermediate containers at most 5 minutes after a deploy, and sometimes even sooner. We also cleanup images that may have been used during this process. While the cleanup time is not currently configurable, we hope that this change allows folks to feel better about resource utilization on more constrained servers.</p>
-<h4 id="nginx-configuration-knobs">Nginx Configuration Knobs</h4>
+<h4 id="nginx-configuration-knobs">Nginx Configuration Knobs<a class="headerlink" href="#nginx-configuration-knobs" title="Permanent link">&para;</a></h4>
 <p>While we attempt to ship with the best nginx configuration by default, folks may want to tune specific knobs to match their setup without needing to ship an <code>nginx.conf.sigil</code> that may become outdated. We've added an <code>nginx:set</code> command that can be used to set various nginx settings, and will continue to add more settings over time.</p>
 <p>Additionally, for installations that have a single <code>nginx.conf.sigil</code> that should be used amongst all apps by default, we've added the ability to set the location of the global defaults via a plugin trigger. This is exceptionally useful for platform creators that must inject some special configuration to integrate with their platform.</p>
 <p>Finally, if you wish to disable app-side <code>nginx.conf.sigil</code> extraction, we've added a tunable property for this via <code>nginx:set</code> (<code>disable-custom-config</code>). While this cannot currently be set globally or as a default, enterprising platform developers may create plugins that inject properties on app creation...</p>
-<h4 id="vector-based-log-shipping">Vector-based Log Shipping</h4>
+<h4 id="vector-based-log-shipping">Vector-based Log Shipping<a class="headerlink" href="#vector-based-log-shipping" title="Permanent link">&para;</a></h4>
 <p>This came late in the 0.22.x lifecycle (0.22.6/0.22.7), but was added to address the logging options issue (<a href="https://github.com/dokku/dokku/issues/2268">#2268</a>). Vector is an open-source, lightweight and ultra-fast tool for building observability pipelines. Dokku integrates with it for shipping container logs for the <code>docker-local</code> scheduler. Users may configure log-shipping on a per-app or global basis, neither of which interfere with the <code>dokku logs</code> commands.</p>
 <p>Vector is based on the idea of <code>inputs</code>, <code>transforms</code> and <code>sinks</code>. Dokku will automatically inject the correct <code>inputs</code> for all Docker containers, and it is up to you to define a <code>sink</code> to which you can send container logs (globally or per-app). Dokku does not currently support customizing transforms, though this may come in a future release.</p>
 <p>Checkout the <a href="https://dokku.com/docs/deployment/logs/#vector-logging-shipping">Vector Log Shipping docs</a> for more usage information.</p>
-<h4 id="golang-plugin-rewrites">Golang Plugin Rewrites</h4>
+<h4 id="golang-plugin-rewrites">Golang Plugin Rewrites<a class="headerlink" href="#golang-plugin-rewrites" title="Permanent link">&para;</a></h4>
 <p>A few plugins have been rewritten in Golang:</p>
 <ul>
 <li>app-json</li>
@@ -1478,7 +1478,7 @@
 </ul>
 <p>While all of these have been performed one time or another in bash, the fact is that there are a ton of edge cases that have popped up over the years that make it super difficult to even reason about some of the code, whereas it is fairly easy for me to handle these within Golang (either with the standard library or something off-the-shelf).</p>
 <p>All that said, not all plugins will be rewritten in Golang - the <code>git</code> plugin is likely to stay as is - and some plugins may see hybrid rewrites as necessary, but this should hopefully give folks a bit of an idea as to why the Dokku codebase is not predominantly written in shell.</p>
-<h2 id="future-development">Future Development</h2>
+<h2 id="future-development">Future Development<a class="headerlink" href="#future-development" title="Permanent link">&para;</a></h2>
 <p>0.22.x was a feature-packed release, and we're not slowing down. 0.23.x is around the corner, and will include quite a few interesting features for folks. We'll save those notes for the next blog post :)</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />

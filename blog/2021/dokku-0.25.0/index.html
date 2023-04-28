@@ -1424,15 +1424,15 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="changes">Changes</h2>
-<h3 id="make-heroku-20focal-the-default-stack-for-herokuish-builds">Make heroku-20/focal the default stack for herokuish builds</h3>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<h3 id="make-heroku-20focal-the-default-stack-for-herokuish-builds">Make heroku-20/focal the default stack for herokuish builds<a class="headerlink" href="#make-heroku-20focal-the-default-stack-for-herokuish-builds" title="Permanent link">&para;</a></h3>
 <p>With the release of newer versions of Ubuntu, the heroku-18 stack (based on Ubuntu 18.04) was getting a bit long in the tooth. We've since switched to <code>heroku-20</code> as our default. Many apps will continue to work as before, though some with compiled dependencies may have issues. This may be fixed by either of the following:</p>
 <ul>
 <li>Clearing build cache, which will force a rebuild: <code>dokku repo:purge-cache $APP</code></li>
 <li>Setting the stack to <code>heroku-18</code>: <code>dokku buildpacks:set-property $APP stack gliderlabs/herokuish:latest-18</code></li>
 </ul>
 <p>Users may also set the <code>stack</code> property globally by specifying <code>--global</code> instead of an app name.</p>
-<h3 id="drop-web-installer-in-favor-of-setup-via-cli">Drop web installer in favor of setup via cli</h3>
+<h3 id="drop-web-installer-in-favor-of-setup-via-cli">Drop web installer in favor of setup via cli<a class="headerlink" href="#drop-web-installer-in-favor-of-setup-via-cli" title="Permanent link">&para;</a></h3>
 <p>Dokku has had a Web installer for years. This installer has been useful for getting started - especially when setup via a cloud image on popular hosting providers - but has been an open security risk for those that forget that it exists.</p>
 <p>Rather than try weird schemes to lock it down or notify users that it is still around, we've decided to remove it completely. It's usage is replaced by the following commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># usually your key is already available under the current user&#39;s `~/.ssh/authorized_keys` file</span>
@@ -1442,11 +1442,11 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span>dokku.me
 </code></pre></div>
 <p>We strive to make Dokku secure by default, and this is a step in that direction.</p>
-<h3 id="drop-support-for-ubuntu-1604">Drop support for Ubuntu 16.04</h3>
+<h3 id="drop-support-for-ubuntu-1604">Drop support for Ubuntu 16.04<a class="headerlink" href="#drop-support-for-ubuntu-1604" title="Permanent link">&para;</a></h3>
 <p>While our debian packages are generic enough to use on any Debian-based operating system, we've dropped support for Ubuntu 16.04 as it reached the public End of Life in April of 2021. This allows us to spend more time testing on newer systems. We've also added initial support for Debian Bullseye (in 0.25.2) for those using Debian's latest release.</p>
 <p>We will continue to add support for other operating systems as time goes on.</p>
-<h2 id="new-features">New Features</h2>
-<h3 id="add-support-for-the-formation-key-in-appjson">Add support for the formation key in <code>app.json</code></h3>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h3 id="add-support-for-the-formation-key-in-appjson">Add support for the formation key in <code>app.json</code><a class="headerlink" href="#add-support-for-the-formation-key-in-appjson" title="Permanent link">&para;</a></h3>
 <p>Dokku has long had support for a <code>DOKKU_SCALE</code> file that tracked repo-specified scaling settings for apps. This was <em>also</em> the name for a file on disk that held the scale contents. Code handling whether a user could scale or not was quite brittle.</p>
 <p>Users may now specify a <code>formation</code> key in their <code>app.json</code> file. This is similar to heroku, and currently supports scale <code>quantity</code> on a per-process basis.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
@@ -1462,7 +1462,7 @@
 </code></pre></div>
 <p>The goal here is to consolidate various app config stored in a variety of files in repo into one <code>app.json</code> file. We'll be following Heroku's specification around this file where possible, but will extend it where necessary - as we did with <a href="/release/dokku-0.23.0">Cron support in 0.23.x</a>.</p>
 <p>See the <a href="https://dokku.com/docs/processes/process-management/#manually-managing-process-scaling">process management documentation</a> for more information on how to use this in your apps.</p>
-<h3 id="add-monorepo-support">Add monorepo support</h3>
+<h3 id="add-monorepo-support">Add monorepo support<a class="headerlink" href="#add-monorepo-support" title="Permanent link">&para;</a></h3>
 <p>Some users may find a need to deploy an app several times with slightly different settings each time. This generally works by setting environment variables as necessary, but some things require changing which in-repo files are used. We've made changes across Dokku to respect changing the following:</p>
 <ul>
 <li><code>appjson-path</code>:<ul>
@@ -1492,7 +1492,7 @@
 </li>
 </ul>
 <p>Feel free to file issues for any other files in use by Dokku that should be changed to allow better monorepo support.</p>
-<h3 id="implement-the-registry-plugin">Implement the <code>registry</code> plugin</h3>
+<h3 id="implement-the-registry-plugin">Implement the <code>registry</code> plugin<a class="headerlink" href="#implement-the-registry-plugin" title="Permanent link">&para;</a></h3>
 <p>Users of the new <code>git:from-image</code> functionality <a href="/release/dokku-0.24.0">introduced in 0.24</a> may have noticed missing support for authenticating against remote registries. This was added in the new <a href="https://dokku.com/docs/advanced-usage/registry-management/">registry management plugin</a>, and generally supports the same interface you'd see with <code>docker login</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># hub.docker.com</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>docker.io<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$PASSWORD</span>
@@ -1508,12 +1508,12 @@
 </code></pre></div>
 <p>Users of the community <a href="https://github.com/dokku/dokku-registry">dokku-registry</a> plugin should uninstall that plugin before upgrading Dokku, and then ensure that their apps are re-configured with the built-in plugin.</p>
 <p>See the <a href="https://dokku.com/docs/advanced-usage/registry-management/">registry management documentation</a> for more information on how to use the registry plugin.</p>
-<h3 id="revamp-the-dokku-run-command">Revamp the <code>dokku run</code> command</h3>
+<h3 id="revamp-the-dokku-run-command">Revamp the <code>dokku run</code> command<a class="headerlink" href="#revamp-the-dokku-run-command" title="Permanent link">&para;</a></h3>
 <p>The <code>dokku run</code> command was often misunderstood. Users assumed the containers would disappear after use, and there was no way to understand what containers were running via <code>dokku run</code>.</p>
 <p>The new release automatically includes the <code>--rm</code> flag on containers created by <code>dokku run</code>. Users wishing to run detached containers should use the <code>dokku run:detached</code> command.</p>
 <p>We also introduced the <code>run:list</code> command, which can be used to list all containers created by <code>dokku run</code> (by filtering on the <code>com.dokku.container-type=run</code> docker label). Users will be able to quickly see what is currently running. In the future, users may be able to enter those running containers via <code>run:enter</code>, and remove any errant ones via <code>run:destroy</code>.</p>
 <p>Please note that implementation and semantics of <code>dokku run</code> are up to individual scheduler plugins.</p>
-<h3 id="routing-to-non-dokku-managed-apps">Routing to non-Dokku managed apps</h3>
+<h3 id="routing-to-non-dokku-managed-apps">Routing to non-Dokku managed apps<a class="headerlink" href="#routing-to-non-dokku-managed-apps" title="Permanent link">&para;</a></h3>
 <p>In some cases, it may be necessary to route an app to an existing <code>$IP:$PORT</code> combination. This is particularly the case for internal admin tools or services that aren't run by Dokku but have a web ui that would benefit from being exposed by Dokku. This can be done by setting a value for <code>static-web-lister</code> network property and running a few other commands when creating an app.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># for a service listening on:</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># - ip address: 127.0.0.1</span>
@@ -1546,7 +1546,7 @@
 </code></pre></div>
 <p>The above takes advantage of new <code>null</code> builder and scheduler plugins that do nothing during the build or schedule phases.</p>
 <p>This functionality can be used when trying to expose non-Dokku maintained services to the external world without requiring a deployed proxy. One nice side-effect is that this also means users can expose services with letsencrypt support.</p>
-<h2 id="the-next-minor-release">The Next Minor Release</h2>
+<h2 id="the-next-minor-release">The Next Minor Release<a class="headerlink" href="#the-next-minor-release" title="Permanent link">&para;</a></h2>
 <p>Our next release will continue on the <a href="https://github.com/dokku/dokku/milestone/16">14 outstanding 1.0 issues</a>. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />

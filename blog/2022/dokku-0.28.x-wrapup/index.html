@@ -1516,45 +1516,45 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="removals">Removals</h2>
-<h3 id="no-more-support-for-centos-7-debian-9-fedora-opensuse">No more support for Centos 7, Debian 9, Fedora, OpenSuse</h3>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
+<h3 id="no-more-support-for-centos-7-debian-9-fedora-opensuse">No more support for Centos 7, Debian 9, Fedora, OpenSuse<a class="headerlink" href="#no-more-support-for-centos-7-debian-9-fedora-opensuse" title="Permanent link">&para;</a></h3>
 <p>With the maturation of our <a href="https://dokku.com/docs/getting-started/install/docker/">Docker-based deployment</a> offering, we've removed official support for these other operating systems.</p>
 <p>Why would we do this? For Centos, Fedora, and OpenSuse, they were simply untested integrations that were half-baked into Dokku over the years. Worse, we only ever built a package for Centos, and never actually guaranteed support for the others.</p>
 <p>As far as Debian 9 is concerned, the OS reached end-of-life in July of 2022, and it only makes sense to drop support for something unsupported upstream.</p>
-<h2 id="deprecations">Deprecations</h2>
-<h3 id="ubuntu-1804-is-deprecated">Ubuntu 18.04 is deprecated</h3>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
+<h3 id="ubuntu-1804-is-deprecated">Ubuntu 18.04 is deprecated<a class="headerlink" href="#ubuntu-1804-is-deprecated" title="Permanent link">&para;</a></h3>
 <p>Ubuntu 18.04 is now a deprecated installation target. The operating system will be considered EOL by Canonical in April 2023. Users are encouraged to upgrade to Ubuntu 22.04 or consider switching their installation method to the Docker-based installation method to avoid any disruption in usage.</p>
-<h2 id="additions">Additions</h2>
-<h3 id="the-automatic-init-process-can-now-be-disabled">The automatic init process can now be disabled</h3>
+<h2 id="additions">Additions<a class="headerlink" href="#additions" title="Permanent link">&para;</a></h2>
+<h3 id="the-automatic-init-process-can-now-be-disabled">The automatic init process can now be disabled<a class="headerlink" href="#the-automatic-init-process-can-now-be-disabled" title="Permanent link">&para;</a></h3>
 <p>This change allows projects using s6 overlay - in particular <a href="https://linuxserver.io/">linxserver</a> images - the ability to disable --init flag injection. </p>
 <p>Additionally, force-disable --init flag usage for all linuxserver images. <a href="https://linuxserver.io/">Linuxserver</a> images uses S6, and there are enough of them that this makes sense to autodetect on behalf of users.</p>
 <p>Users should be able to more easily deploy s6-based images, whether they are official Linuxserver ones or images they've built on their own :)</p>
-<h3 id="new-proxy-implementations">New Proxy Implementations</h3>
+<h3 id="new-proxy-implementations">New Proxy Implementations<a class="headerlink" href="#new-proxy-implementations" title="Permanent link">&para;</a></h3>
 <p>As we've grown, the nginx plugin has seen a few warts. Notably, it doesn't tightly integrate with Docker, which sometimes causes requests to either route to the wrong container or fail when the container changes IP address. Additionally, our Letsencrypt integration on top of it is a bit of a hack.</p>
 <p>As a result, we've decided to create official alternative proxy integrations to our existing nginx plugin. The first two are <code>caddy</code> and <code>traefik</code>, both of which boast healthy development processes and have great integrations with Docker-based deployment environments. In a future release, we also hope to add an official <code>haproxy</code> plugin, and may revisit our <code>nginx</code> integration as well.</p>
 <p>Please note that none of this means we're dropping support for our existing <code>nginx</code> integration. Users should feel comfortable depending on nginx, switching only as needed.</p>
-<h4 id="an-official-caddy-proxy-implementation">An official caddy proxy implementation</h4>
+<h4 id="an-official-caddy-proxy-implementation">An official caddy proxy implementation<a class="headerlink" href="#an-official-caddy-proxy-implementation" title="Permanent link">&para;</a></h4>
 <p>This plugin uses a docker-compose based Caddy installation in conjunction with injected container labels to route requests. It only exposes the minimal necessary for routing traffic to docker containers. Users wishing to customize further labels may explore using the docker-options plugin to attach additional labels during the 'deploy' phase.</p>
 <p>One big change is that requests are routed as soon as the container is running and passing <a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#active-health-checks">healthchecks</a>.</p>
 <p>Checkout the official <a href="https://dokku.com/docs/networking/proxies/caddy/">caddy integration documentation here</a>!</p>
-<h4 id="an-official-traefik-proxy-implementation">An official traefik proxy implementation</h4>
+<h4 id="an-official-traefik-proxy-implementation">An official traefik proxy implementation<a class="headerlink" href="#an-official-traefik-proxy-implementation" title="Permanent link">&para;</a></h4>
 <p>While Caddy is great, some folks may wish to pursue deeper, Traefik-based integration instead. Unlike Caddy, Traefik provides native integration with many schedulers, providing even deeper integration for your routing needs.</p>
 <p>This plugin uses a docker-compose based Traefik installation in conjunction with injected container labels to route requests. It only exposes the minimal necessary for routing traffic to docker containers. Users wishing to customize further labels may explore using the docker-options plugin to attach additional labels during the 'deploy' phase.</p>
 <p>Requests are routed as soon as the container is running and passing <a href="https://doc.traefik.io/traefik/routing/services/#health-check">healthchecks</a>.</p>
 <p>Checkout the official <a href="https://dokku.com/docs/networking/proxies/traefik/">traefik integration documentation here</a>!</p>
-<h3 id="a-builder-for-lambda-functions">A builder for lambda functions</h3>
+<h3 id="a-builder-for-lambda-functions">A builder for lambda functions<a class="headerlink" href="#a-builder-for-lambda-functions" title="Permanent link">&para;</a></h3>
 <p>Dokku has always been a something of a generic workflow tool. Source code comes in, gets built into an artifact, and then can be scheduled.</p>
 <p>With 0.28.x, we've introduced a new <code>builder-lambda</code> plugin. This plugin emulates the lambda build process, generating both a runnable docker image and a tarball that is compatible with AWS Lambda. We hope to bring an AWS Lambda-compatible scheduler to Dokku in the near future.</p>
 <p>Checkout the official <a href="https://dokku.com/docs/deployment/builders/lambda/">builder-lambda documentation here</a>!</p>
-<h3 id="add-support-for-devcontainers-on-arm64-instances">Add support for devcontainers on ARM64 instances</h3>
+<h3 id="add-support-for-devcontainers-on-arm64-instances">Add support for devcontainers on ARM64 instances<a class="headerlink" href="#add-support-for-devcontainers-on-arm64-instances" title="Permanent link">&para;</a></h3>
 <p>Lots of developers - including myself! - are moving to M1/M2 MacOS installations, and development of Dokku must continue. The 0.28.x series adds support for using VSCode Devcontainers on ARM64 instances, allowing development to continue unabated.</p>
 <p>Truthfully, this is somewhat selfish as my main driver had to change - RIP my Intel Mac - but hopefully others contributing to Dokku also benefit :)</p>
-<h2 id="fixes">Fixes</h2>
-<h3 id="set-corebaretrue-on-correct-repository-path">Set core.bare=true on correct repository path</h3>
+<h2 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">&para;</a></h2>
+<h3 id="set-corebaretrue-on-correct-repository-path">Set core.bare=true on correct repository path<a class="headerlink" href="#set-corebaretrue-on-correct-repository-path" title="Permanent link">&para;</a></h3>
 <p>When deploying a project via <code>git:sync</code>, it was possible to get into a state where your repo was no longer able to have <code>git push</code> executed against it. This change fixes that, so folks can initialize apps via <code>git:sync</code> for the first time and then <code>git push</code> afterwards.</p>
-<h3 id="ignore-https-mappings-when-no-ssl-certificate-exists">Ignore https mappings when no ssl certificate exists</h3>
+<h3 id="ignore-https-mappings-when-no-ssl-certificate-exists">Ignore https mappings when no ssl certificate exists<a class="headerlink" href="#ignore-https-mappings-when-no-ssl-certificate-exists" title="Permanent link">&para;</a></h3>
 <p>This fixes issues where users may somehow add an https mapping but are missing an ssl certificate, causing nginx to not load properly. We now ignore the mapping and warn users of the misconfiguration.</p>
-<h2 id="its-a-wrap">It's a wrap</h2>
+<h2 id="its-a-wrap">It's a wrap<a class="headerlink" href="#its-a-wrap" title="Permanent link">&para;</a></h2>
 <p>Those were the major changes in 0.28.x. Our next post will cover 0.29.0!</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />

@@ -1356,12 +1356,12 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="changes">Changes!</h2>
-<h3 id="code-deprecations-and-removals">Code Deprecations and Removals</h3>
+<h2 id="changes">Changes!<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<h3 id="code-deprecations-and-removals">Code Deprecations and Removals<a class="headerlink" href="#code-deprecations-and-removals" title="Permanent link">&para;</a></h3>
 <p>As noted in the <a href="https://dokku.com/docs/appendices/0.20.0-migration-guide/">migration guide</a>, we removed quite a few default commands. These were replaced with <code>:help</code> output, and <code>:list</code> commands were provided where possible.</p>
 <p>We've also dropped support for unsupported versions of Debian and Ubuntu. Dokku no longer runs tests on older versions of Ubuntu, and Debian support for older releases was completely untested. While newer packages may work in the future, users should upgrade their operating systems where possible.</p>
 <p>Finally, quite a bit of code was moved into golang, and as such certain shell functions are deprecated in favor of <a href="https://dokku.com/docs/appendices/0.20.0-migration-guide/#deprecations">new plugin triggers</a>. Usage will trigger warnings in logging output. Please switch to the new triggers in custom plugins where possible, as we well continue to remove deprecated code in the future.</p>
-<h3 id="custom-networks">Custom networks</h3>
+<h3 id="custom-networks">Custom networks<a class="headerlink" href="#custom-networks" title="Permanent link">&para;</a></h3>
 <p>In previous versions of Dokku, containers could only communicate with each other through one of the following methods:</p>
 <ul>
 <li>An intermediate datastore, whether that be a database, queuing system, or caching layer.</li>
@@ -1402,15 +1402,15 @@
 <p>Here is a fun incoming bandwidth chart of a user switching to the new network support for their apps:</p>
 <p><a href="/blog/assets/images/0.20.0/bandwidth-decrease.png"><img alt="bandwidth decrease" src="/blog/assets/images/0.20.0/bandwidth-decrease.png" /></a></p>
 <p>See the <a href="https://dokku.com/docs/networking/network/">network documentation for more information</a></p>
-<h3 id="routing-non-web-containers">Routing non-web containers</h3>
+<h3 id="routing-non-web-containers">Routing non-web containers<a class="headerlink" href="#routing-non-web-containers" title="Permanent link">&para;</a></h3>
 <p>Users wishing to route non-web containers would previously have to either hack their nginx config or use a custom plugin to try and inject location and upstream blocks into the correct place. The lack of built-in support made it difficult to support cases where there might be a websocket process, or some command-and-conquer service that exposed a tcp connection in addition to the traditional web process.</p>
 <p>As of 0.20.0, we now inject a custom <code>.DOKKU_APP_${PROCESS_TYPE}_LISTENERS</code> variable into all <code>nginx.conf.sigil</code> files. This will allow folks to inject http(s) processes into the nginx.conf.sigil, which brings initial support for proxying non-web processes.</p>
 <p>Future improvements might include <code>tcp</code> support - via the nginx <code>stream</code> module - and injection of custom location blocks for even easier proxying of non-web processes.</p>
 <p>Users are encouraged to switch their custom configs to use the new <code>.DOKKU_APP_WEB_LISTENERS</code> variable when constructing upstreams. See the <a href="https://dokku.com/docs/configuration/nginx/#customizing-the-nginx-configuration">nginx template documentation for more information</a>.</p>
-<h3 id="hsts-enabled-by-default">HSTS Enabled by Default</h3>
+<h3 id="hsts-enabled-by-default">HSTS Enabled by Default<a class="headerlink" href="#hsts-enabled-by-default" title="Permanent link">&para;</a></h3>
 <p>If you have an SSL certificate and are proxying requests using the <code>nginx</code> plugin, then HSTS will be enabled by default. It is enabled by default - including for subdomains - though without browser preloading. Please note that the default cache setting is 182 days, so pre-configure this value if you believe you will need to manipulate HSTS support.</p>
 <p>See the <a href="https://dokku.com/docs/configuration/nginx/#hsts-header">nginx hsts documentation for more information</a>.</p>
-<h3 id="restarting-docker-containers-recover-from-ip-changes">Restarting docker containers recover from IP changes</h3>
+<h3 id="restarting-docker-containers-recover-from-ip-changes">Restarting docker containers recover from IP changes<a class="headerlink" href="#restarting-docker-containers-recover-from-ip-changes" title="Permanent link">&para;</a></h3>
 <p>Docker has undefined behavior around IP address persistence when containers restart, either due to failure or because of server reboot. This has resulted in issues where restarting containers lose their IP addresses, breaking any proxy method that is associated with a container IP instead of the container name (read: how Dokku works!). This sometimes caused nasty issues where apps deployed on Dokku might mistakenly have their nginx route incorrect apps to users on server reboot, or just straight-up fail to serve requests even when the app is working after a container restart.</p>
 <p>In 0.20.2, we included the <a href="https://github.com/dokku/dokku-event-listener">dokku-event-listener</a> as a recommended package. It is usable with older versions of dokku, and can be installed like so:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># update your apt repository
@@ -1420,7 +1420,7 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>apt install dokku-event-listener
 </code></pre></div>
 <p>The <code>dokku-event-listener</code> daemon will properly listen to container events - start, restart, delete, destroy, die - and reload the nginx config for the related app as appropriate. It will even rebuild the application if we've hit the max container restart count. It will also output debug logging that you can use to correlate application crashes with service outages.</p>
-<h2 id="future-development">Future development</h2>
+<h2 id="future-development">Future development<a class="headerlink" href="#future-development" title="Permanent link">&para;</a></h2>
 <p>As Dokku continues to mature towards a <a href="https://github.com/dokku/dokku/milestones/v1.0.0">1.0</a> target, the following areas will be of greater focus in upcoming releases:</p>
 <ul>
 <li>Security Improvements:</li>

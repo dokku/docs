@@ -1478,7 +1478,7 @@
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="removals-in-030x">Removals in 0.30.x</h2>
+<h2 id="removals-in-030x">Removals in 0.30.x<a class="headerlink" href="#removals-in-030x" title="Permanent link">&para;</a></h2>
 <p>The following functionality has long been deprecated and is now removed:</p>
 <ul>
 <li>The <code>logs:failed</code> command now requires specifying an app (or the <code>--all</code> flag).</li>
@@ -1494,40 +1494,40 @@
 </li>
 </ul>
 <p>We also removed a ton of deprecated commands and functions across dokku in <a href="https://github.com/dokku/dokku/pull/5659">#5659</a>.</p>
-<h2 id="changes-in-030x">Changes in 0.30.x</h2>
-<h3 id="eol-of-ubuntu-1804-support">EOL of Ubuntu 18.04 support</h3>
+<h2 id="changes-in-030x">Changes in 0.30.x<a class="headerlink" href="#changes-in-030x" title="Permanent link">&para;</a></h2>
+<h3 id="eol-of-ubuntu-1804-support">EOL of Ubuntu 18.04 support<a class="headerlink" href="#eol-of-ubuntu-1804-support" title="Permanent link">&para;</a></h3>
 <p>With upstream dropping LTS support, Ubuntu 18.04 support in Dokku is EOL. Users are <em>heavily</em> encouraged to upgrade their operating systems to Ubuntu 20.04 or Ubuntu 22.04, either via an upgrade or fresh install. The next release of Dokku will stop releasing for Ubuntu 18.04 and packages will be removed in the future.</p>
 <p>Please note that while our existing packages <em>may</em> continue to run on Ubuntu 18.04, issues for those running on 18.04 may be summarily closed.</p>
 <p>Finally, Herokuish will also shortly drop Ubuntu 18.04 releases. Users are heavily encouraged to upgrade their apps to newer stacks, as those apps may fail to build for a variety of reasons.</p>
-<h3 id="appjson-extraction-moved-from-image-to-repository">app.json extraction moved from image to repository</h3>
+<h3 id="appjson-extraction-moved-from-image-to-repository">app.json extraction moved from image to repository<a class="headerlink" href="#appjson-extraction-moved-from-image-to-repository" title="Permanent link">&para;</a></h3>
 <p>In 0.29.x, we moved file extraction for various supporting files from the built image to the app source. This change now also applies to <code>app.json</code>. This was done in order to standardize how mono-repo codebases were built.</p>
 <p>With 0.30.x, we now extract <code>app.json</code> from the repository source code where possible. This allows our monorepo codebase handling to act the same everywhere and also speeds up app builds.</p>
-<h2 id="new-in-030x">New in 0.30.x</h2>
-<h4 id="an-official-haproxy-proxy-implementation">An official haproxy proxy implementation</h4>
+<h2 id="new-in-030x">New in 0.30.x<a class="headerlink" href="#new-in-030x" title="Permanent link">&para;</a></h2>
+<h4 id="an-official-haproxy-proxy-implementation">An official haproxy proxy implementation<a class="headerlink" href="#an-official-haproxy-proxy-implementation" title="Permanent link">&para;</a></h4>
 <p>This plugin uses a docker-compose based Haproxy installation in conjunction with injected container labels to route requests. It only exposes the minimal necessary for routing traffic to docker containers. Users wishing to customize further labels may explore using the docker-options plugin to attach additional labels during the 'deploy' phase.</p>
 <p>Big thanks to <a href="https://github.com/byjg">@byjg</a> for their work on <a href="https://github.com/byjg/docker-easy-haproxy/">EasyHAProxy</a></p>
 <p>Checkout the official <a href="https://dokku.com/docs/networking/proxies/haproxy/">haproxy integration documentation here</a>!</p>
-<h3 id="simplified-image-deployment-via-gitload-image">Simplified image deployment via <code>git:load-image</code></h3>
+<h3 id="simplified-image-deployment-via-gitload-image">Simplified image deployment via <code>git:load-image</code><a class="headerlink" href="#simplified-image-deployment-via-gitload-image" title="Permanent link">&para;</a></h3>
 <p>Similar to <code>git:load-image</code> - and using the same internal infrastructure to manage history - there is a new <code>git:load-image</code> command. This new command supports deploying the output of <code>docker image save $IMAGE_NAME</code> on stdin, keeping git history with every deploy.</p>
 <p>The <code>git:load-image</code> command is meant to be used in cases where the deployment model is to deploy from a built docker image in CI. This is useful when users do not have an intermediate docker registry available from which they can deploy.</p>
 <p>See the <a href="https://dokku.com/docs/deployment/methods/git/#initializing-an-app-repository-from-a-remote-image-without-a-registry">git documentation</a> for further details.</p>
-<h3 id="interacting-with-multiple-dokku-remotes-via-the-official-client">Interacting with multiple dokku remotes via the official client</h3>
+<h3 id="interacting-with-multiple-dokku-remotes-via-the-official-client">Interacting with multiple dokku remotes via the official client<a class="headerlink" href="#interacting-with-multiple-dokku-remotes-via-the-official-client" title="Permanent link">&para;</a></h3>
 <p>In some cases, users may deploy a given repository to multiple Dokku apps. This is especially useful when deploying to pre-production environments or using review apps. The official client now supports a series of <code>remote</code> subcommands that allow users to manage remotes for a local repository.</p>
 <p>See the <a href="https://dokku.com/docs/deployment/remote-commands/#specifying-a-remote">remote client documentation</a> for further details.</p>
-<h2 id="bug-fixes">Bug Fixes</h2>
-<h3 id="nginx-proxy-rebuilds-early-to-avoid-downtime">Nginx proxy rebuilds early to avoid downtime</h3>
+<h2 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h2>
+<h3 id="nginx-proxy-rebuilds-early-to-avoid-downtime">Nginx proxy rebuilds early to avoid downtime<a class="headerlink" href="#nginx-proxy-rebuilds-early-to-avoid-downtime" title="Permanent link">&para;</a></h3>
 <p>In a previous release, we moved the <code>web</code> process to be deployed first. This allowed folks to quickly see errors on their mainline process, vs seeing those near the end. The end result, however, made it so that apps with large numbers of process types had downtime as the old <code>web</code> containers were removed after a minute if the app also used <code>nginx</code> as it's proxy layer. Users of other proxy implementations - such as Caddy, Haproxy, and Traefik - are not affected by this bug.</p>
 <p>We now trigger an early rebuild of the nginx config for users utilizing the <code>nginx</code> proxy implementation. Concerned users should switch to other proxy implementations to be completely unaffected by this change.</p>
 <p>Note that a future release of Dokku will also provide an optional nginx-proxy layer based on labels similar to our other proxy implementations. This will avoid long-standing downtime issues and hopefully allow us to be more flexible in how applications can be proxied. See the <a href="https://github.com/dokku/nginx-docker-proxy">nginx-docker-proxy</a> project for more details.</p>
-<h3 id="avoid-reinstalling-plugins-in-the-provided-dokku-docker-image">Avoid reinstalling plugins in the provided Dokku docker image</h3>
+<h3 id="avoid-reinstalling-plugins-in-the-provided-dokku-docker-image">Avoid reinstalling plugins in the provided Dokku docker image<a class="headerlink" href="#avoid-reinstalling-plugins-in-the-provided-dokku-docker-image" title="Permanent link">&para;</a></h3>
 <p>We now no longer attempt to reinstall plugins that already exist. This fixes issues for users that specify plugins via a <code>plugin-list</code> versus installing directly to the docker image via a custom Dockerfile.</p>
-<h3 id="fix-pack-entrypoint-support">Fix pack entrypoint support</h3>
+<h3 id="fix-pack-entrypoint-support">Fix pack entrypoint support<a class="headerlink" href="#fix-pack-entrypoint-support" title="Permanent link">&para;</a></h3>
 <p>A recent change in CNB's pack utility changed how processes were launched, causing any process to fail to start. We now specify a custom entrypoint to fix this issue. Users of CNB can get back to building their apps!</p>
-<h2 id="dokku-pro">Dokku Pro</h2>
+<h2 id="dokku-pro">Dokku Pro<a class="headerlink" href="#dokku-pro" title="Permanent link">&para;</a></h2>
 <p>Dokku Pro is a commercial offering that provides a familiar Web UI for all common tasks performed by developers. End users can expect an interface that provides various complex cli commands in an intuitive, app-centric manner, quickly speeding up tasks that might otherwise be difficult for new and old users to perform. Additionally, it provides a way to perform these tasks remotely via a json api, enabling easier, audited remote management of servers. Finally, Dokku Pro provides an alternative, https-based method for deploying code which can be used in environments that lockdown ssh access to servers.</p>
 <p>Interested in purchasing <a href="https://pro.dokku.com/">Dokku Pro</a>? Dokku Pro is currently provided under early bird pricing (with the price going up as we continue to release new versions). Server licenses are sold in perpetuity, so lock in lower pricing today!</p>
 <p><a data-dpd-type="button" data-text="PURCHASE NOW" data-variant="price-right" data-button-size="dpd-large" data-bg-color="469d3d" data-bg-color-hover="5cc052" data-text-color="ffffff" data-pr-bg-color="ffffff" data-pr-color="000000" data-lightbox="1" href="https://dokku.dpdcart.com/cart/add?product_id=217344&amp;method_id=236878">Purchase Now</a><script src="https://dokku.dpdcart.com/dpd.js"></script></p>
-<h2 id="the-next-minor-release">The Next Minor Release</h2>
+<h2 id="the-next-minor-release">The Next Minor Release<a class="headerlink" href="#the-next-minor-release" title="Permanent link">&para;</a></h2>
 <p>Our next release will continue on the <a href="https://github.com/dokku/dokku/milestone/16">7 outstanding 1.0 issues</a>. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />
