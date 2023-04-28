@@ -1016,12 +1016,12 @@
 <p class="admonition-title">Note</p>
 <p>This tutorial assumes the app being deployed is named <code>node-js-app</code> and the Dokku server's hostname is <code>dokku.me</code>. Please modify these values as appropriate.</p>
 </div>
-<h3 id="building-the-image">Building the image</h3>
+<h3 id="building-the-image">Building the image<a class="headerlink" href="#building-the-image" title="Permanent link">&para;</a></h3>
 <p>First, we'll assume the image is built. The following is one example for building a docker image, though your setup may vary. The image repository <em>must not</em> be <code>dokku/</code>, as that namespace is used internally for tagging images by Dokku.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>image<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>app/node-js-app:2935cc3d<span class="w"> </span>.
 </code></pre></div>
 <p>It is recommended to tag your image with a unique tag per build, as otherwise the deployment step becomes tricky. A good tag to use is the commit sha of your build, which is usually provided by your CI provider of choice.</p>
-<h3 id="loading-the-image-onto-the-host">Loading the image onto the host</h3>
+<h3 id="loading-the-image-onto-the-host">Loading the image onto the host<a class="headerlink" href="#loading-the-image-onto-the-host" title="Permanent link">&para;</a></h3>
 <p>Next, we save the image to a file. This can be done with the <code>docker image save</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>image<span class="w"> </span>save<span class="w"> </span>--ouput<span class="w"> </span>node-js-app.tar
 </code></pre></div>
@@ -1035,7 +1035,7 @@
 <p class="admonition-title">Warning</p>
 <p>Because this command is not exposed by Dokku, a user other than <code>dokku</code> must be used for the ssh command.</p>
 </div>
-<h3 id="deploying-the-image">Deploying the image</h3>
+<h3 id="deploying-the-image">Deploying the image<a class="headerlink" href="#deploying-the-image" title="Permanent link">&para;</a></h3>
 <p>Finally, we can deploy the image using the <code>git:from-image</code> Dokku command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>dokku@dokku.me<span class="w"> </span>git:from-image<span class="w"> </span>node-js-app<span class="w"> </span>app/node-js-app:2935cc3d
 </code></pre></div>

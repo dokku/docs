@@ -1066,7 +1066,7 @@
 <blockquote>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </blockquote>
-<h3 id="running-code-on-server-boot">Running Code on Server Boot</h3>
+<h3 id="running-code-on-server-boot">Running Code on Server Boot<a class="headerlink" href="#running-code-on-server-boot" title="Permanent link">&para;</a></h3>
 <p>Regardless of whether this is for a single replacement server, or if it is for a series of servers, running code to <em>provision</em> Dokku and necessary applications at boot time is ideal. Doing so will allow us to reduce the amount of time it takes to recover from service failure, as well as make it easier to do this on a fleet of servers. To this end, we can utilize <strong>User Data</strong>.</p>
 <p>"User Data" is a bit of configuration that can be run by a process called <code>cloud-init</code>. You should consider <code>cloud-init</code> to be the defacto server initialization tool for cloud servers; many popular server providers support it, such as Amazon Web Services, Azure, Digital Ocean, Google Cloud Provider, Linode, etc. Most folks provide user-data in bash script format, but there are many different modules to integrate with <code>cloud-init</code>. As an example, our own docs for Dreamhost support provide installation instructions in <code>yaml</code> format.</p>
 <p>Here is  the simplest user-data for installing Dokku:</p>
@@ -1075,7 +1075,7 @@
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
 </code></pre></div>
 <p>Cloud providers generally have a way to specify user data for either a single server or a set of servers being launched, though the method is different depending on the provider. If your provider does not support user data, our recommendation is to switch to one that does.</p>
-<h3 id="creating-provisioning-an-app-automatically">~~Creating~~ Provisioning an app automatically</h3>
+<h3 id="creating-provisioning-an-app-automatically">~~Creating~~ Provisioning an app automatically<a class="headerlink" href="#creating-provisioning-an-app-automatically" title="Permanent link">&para;</a></h3>
 <p>Taking this further, lets automatically create an app and configure it for deployment when a server starts</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/dokku/dokku/master/bootstrap.sh
@@ -1096,7 +1096,7 @@
 <blockquote>
 <p>For folks using Dokku plugins for datastores, restoring service when all your data was stored on a non-existent server is a longer conversation with no easy solutions. At this time, none of the datastore plugins directly support running in HA mode, though this is something worth investigating. At this time, using managed datastore providers such as AWS RDS, CloudAMQP, etc. are the suggested methods for having HA datastore solutions.</p>
 </blockquote>
-<h3 id="a-brief-introduction-to-configuration-management">A brief introduction to Configuration Management</h3>
+<h3 id="a-brief-introduction-to-configuration-management">A brief introduction to Configuration Management<a class="headerlink" href="#a-brief-introduction-to-configuration-management" title="Permanent link">&para;</a></h3>
 <p>Some of our users may be provisioning quite a few apps to a server, or the same server many times, or even managing a dozen servers for various clients. How do you handle that without a ton of bespoke bash scripts? How do you provision new applications without a tangle of <code>if</code> statements, in a DRY way? There are a few answers, but one common answer is to use a configuration management tool</p>
 <p>Configuration management tools provide common libraries and patterns for organizing server automation code. There are quite a few different tools in the config management space, but the one we're going show off is Ansible.</p>
 <p>Ansible requires python to run on a server. Assuming we're on an Ubuntu-based server, the following are roughly the installation instructions:</p>
@@ -1132,7 +1132,7 @@
 <p>Now that everything is setup, we can just run the following to execute our provisioning code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>hosts<span class="w"> </span>-s<span class="w"> </span>dokku.yml
 </code></pre></div>
-<h3 id="provisioning-many-dokku-appsservers-with-ansible">Provisioning many Dokku apps/servers with Ansible</h3>
+<h3 id="provisioning-many-dokku-appsservers-with-ansible">Provisioning many Dokku apps/servers with Ansible<a class="headerlink" href="#provisioning-many-dokku-appsservers-with-ansible" title="Permanent link">&para;</a></h3>
 <p>Now that we have a bare minimum ansible setup, we can iterate on this to provision actual Dokku applications. The following will create an app if it does not exist</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nn">---</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dokku</span>
@@ -1158,7 +1158,7 @@
 <blockquote>
 <p>For our patreon followers, the code for the <code>dokku_app</code> library will be made available, as well as future plans around Ansible integration.</p>
 </blockquote>
-<h3 id="combining-the-methods-into-one">Combining the methods into one</h3>
+<h3 id="combining-the-methods-into-one">Combining the methods into one<a class="headerlink" href="#combining-the-methods-into-one" title="Permanent link">&para;</a></h3>
 <p>Assuming we have a repository with our server provisioning code - the yaml and hosts files - we can use the following user-data for automatically setting up a dokku server on boot.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
@@ -1174,7 +1174,7 @@
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nb">pushd</span><span class="w"> </span>/tmp/infra<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>hosts<span class="w"> </span>-s<span class="w"> </span>dokku.yml
 </code></pre></div>
-<h3 id="going-further">Going Further</h3>
+<h3 id="going-further">Going Further<a class="headerlink" href="#going-further" title="Permanent link">&para;</a></h3>
 <p>Once you have an <code>infra</code> repository containing the provisioning scripts for your servers, the next step is to do all Dokku configuration from this repository. This helps ensure migrating to a new server is as painless as possible, making service restoration a breeze.</p>
 <hr />
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>

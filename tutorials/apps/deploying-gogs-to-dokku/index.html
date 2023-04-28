@@ -1043,14 +1043,14 @@
 <blockquote>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </blockquote>
-<h3 id="what-is-gogs">What is Gogs?</h3>
+<h3 id="what-is-gogs">What is Gogs?<a class="headerlink" href="#what-is-gogs" title="Permanent link">&para;</a></h3>
 <p><a href="/tutorials/assets/images/gogs-tutorial/favicon.ico"><img alt="dokku" src="/tutorials/assets/images/gogs-tutorial/favicon.ico" /></a></p>
 <blockquote>
 <p><a href="https://gogs.io">Gogs</a> (Go Git Service) is a painless self-hosted Git service.</p>
 </blockquote>
 <p>But what does that mean? Gogs is a self-hosted git management tool that can be used to host git repositories, issues, and releases on your own server.</p>
 <p>For this tutorial, we will be deploying gogs to a single Dokku server running at least Dokku 0.6.3. You may upgrade your Dokku instance to this version or install it from scratch. Please setup any ssh keys necessary for pushing applications, as we will not go over initial installation.</p>
-<h3 id="application-preparation">Application Preparation</h3>
+<h3 id="application-preparation">Application Preparation<a class="headerlink" href="#application-preparation" title="Permanent link">&para;</a></h3>
 <p>Let's start by creating an application! While Dokku automatically creates an application on push, we will need to initialize some settings before the application will work, so it's best to do this manually.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>gogs
 </code></pre></div>
@@ -1081,7 +1081,7 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>dokku<span class="w"> </span>mysql:link<span class="w"> </span>gogs<span class="w"> </span>gogs
 </code></pre></div>
 <p><a href="/tutorials/assets/images/gogs-tutorial/mysql.png"><img alt="dokku" src="/tutorials/assets/images/gogs-tutorial/mysql.png" /></a></p>
-<h3 id="pushing-our-code">Pushing our Code</h3>
+<h3 id="pushing-our-code">Pushing our Code<a class="headerlink" href="#pushing-our-code" title="Permanent link">&para;</a></h3>
 <p>Lets clone gogs locally. I have a ~/src directory in which I place all the applications I am currently working on and deploying, though any such directory should be fine.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:gogits/gogs.git<span class="w"> </span>~/src/gogs
 </code></pre></div>
@@ -1096,7 +1096,7 @@
 <p>Not to worry though! Everything from this point on is cake :)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
 </code></pre></div>
-<h3 id="configuring-gogs">Configuring Gogs</h3>
+<h3 id="configuring-gogs">Configuring Gogs<a class="headerlink" href="#configuring-gogs" title="Permanent link">&para;</a></h3>
 <p>Here is where it gets slightly tricky. You will want to use the following settings to configure Gogs:</p>
 <ul>
 <li>MySQL connection information can be retrieved from <code>dokku mysql:info gogs</code></li>
@@ -1108,7 +1108,7 @@
 </ul>
 <p>Once you submit the form, you should have a working Gogs Installation!</p>
 <p><a href="/tutorials/assets/images/gogs-tutorial/screenshot.png"><img alt="dokku" src="/tutorials/assets/images/gogs-tutorial/screenshot.png" /></a></p>
-<h3 id="wrap-up">Wrap-up</h3>
+<h3 id="wrap-up">Wrap-up<a class="headerlink" href="#wrap-up" title="Permanent link">&para;</a></h3>
 <p>As we displayed above, Dokku's rich featureset allows developers to quickly and easily setup applications as complex as a git management tool. With it's ability to deploy Dockerfile applications, proxy ports on the fly, and mount persistent storage, Dokku is a great tool to have in your deployment arsenal. Here's hoping it only gets better!</p>
 <hr />
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
