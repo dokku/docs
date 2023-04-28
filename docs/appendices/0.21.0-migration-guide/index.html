@@ -2539,17 +2539,17 @@
   
 
 
-<h1 id="0210-migration-guide">0.21.0 Migration Guide</h1>
-<h2 id="changes">Changes</h2>
+<h1 id="0210-migration-guide">0.21.0 Migration Guide<a class="headerlink" href="#0210-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <p>The <code>tls</code> name is no longer a reserved app name, and can be used by applications. This was previously a reserved app name due to it's use as a place for global SSL certificate files; Dokku has not supported global SSL certificates for many releases, and thus there is no need to reserve the name.</p>
-<h2 id="deprecations">Deprecations</h2>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>git#git_deploy_branch()</code> is deprecated in favor of <code>plugn trigger git-deploy-branch</code>.</li>
 <li>The <code>config</code> command is deprecated in favor of <code>config:show</code>.</li>
 <li>Usage of this command in conjunction with either the <code>--export</code> or <code>--shell</code> flag is deprecated in favor of <code>config:export --format</code> with the correct format value (<code>exports</code> or <code>shell</code>, respectively).</li>
 <li>The <code>nginx:build-config</code> command is deprecated in favor of <code>proxy:build-config</code>.</li>
 </ul>
-<h2 id="removals">Removals</h2>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <p>The <code>apps:destroy</code> command no longer takes a second argument <code>force</code>. Instead, this can be passed as the <code>--force</code> flag, either globally or as a flag to the command itself.</p>
 <p>The <code>proxy:enable</code> and <code>proxy:disable</code> no longer restart apps when setting the <code>DOKKU_DISABLE_PROXY</code> environment variable. A future release will disable usage of <code>DOKKU_DISABLE_PROXY</code> altogether.</p>
 

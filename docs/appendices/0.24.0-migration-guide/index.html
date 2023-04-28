@@ -2525,13 +2525,13 @@
   
 
 
-<h1 id="0240-migration-guide">0.24.0 Migration Guide</h1>
-<h2 id="changes">Changes</h2>
+<h1 id="0240-migration-guide">0.24.0 Migration Guide<a class="headerlink" href="#0240-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The commands <code>proxy:enable</code>, <code>proxy:disable</code> and <code>proxy:build-config</code> now support the <code>--all</code> flag in addition to general parallelism.</li>
 <li>The <code>builder-cnb</code> plugin has been renamed <code>builder-pack</code>, and all related plugin triggers have had the suffix <code>-cnb</code> changed to <code>-pack</code>.</li>
 </ul>
-<h2 id="deprecations">Deprecations</h2>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The 1.0.0 release of Dokku will no longer select buildpack builders over dockerfile builders if both builders match. Instead, Dokku will choose the first builder that responds to the <code>builder-detect</code> trigger. Users that wish to use a specific builder may set a builder using the <code>builder:set</code> command, which will force Dokku to use the specified builder regardless of what might be auto-detected.</li>
 <li>The <code>tags</code> plugin is deprecated in favor of the <a href="../../deployment/methods/git/#initializing-an-app-repository-from-a-docker-image"><code>git:from-image</code></a> command. It will be removed in the next minor release, and is considered unmaintained. Users are highly encouraged to switch their workflows to <code>git:from-image</code>.</li>

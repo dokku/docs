@@ -2551,7 +2551,7 @@
   
 
 
-<h1 id="domain-configuration">Domain Configuration</h1>
+<h1 id="domain-configuration">Domain Configuration<a class="headerlink" href="#domain-configuration" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.3.10</p>
@@ -2572,14 +2572,14 @@
 <p class="admonition-title">Info</p>
 <p>Adding a domain before deploying an application will result in port mappings being set. This may cause issues for applications that use non-standard ports, as those will not be automatically detected. Please refer to the <a href="../../networking/proxy-management/">proxy documentation</a> for information as to how to reconfigure the mappings.</p>
 </div>
-<h2 id="customizing-hostnames">Customizing hostnames</h2>
+<h2 id="customizing-hostnames">Customizing hostnames<a class="headerlink" href="#customizing-hostnames" title="Permanent link">&para;</a></h2>
 <p>Applications typically have the following structure for their hostname:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scheme://subdomain.domain.tld
 </code></pre></div>
 <p>The <code>subdomain</code> is inferred from the pushed application name, while the <code>domain.tld</code> is set during initial dokku configuration. It can then be modified with <code>dokku domains:add-global</code> and <code>dokku domains:remove-global</code>. This value is used as a default TLD for all applications on a host.</p>
 <p>If an FQDN such as <code>dokku.org</code> is used as the application name, the global virtualhost will be ignored and the resulting vhost URL for that application will be <code>dokku.org</code>.</p>
 <p>You can optionally override this in a plugin by implementing the <code>nginx-hostname</code> plugin trigger. If the <code>nginx-hostname</code> plugin has no output, the normal hostname algorithm will be executed. See the <a href="../../development/plugin-triggers/#nginx-hostname">plugin trigger documentation</a> for more information.</p>
-<h2 id="disabling-vhosts">Disabling VHOSTS</h2>
+<h2 id="disabling-vhosts">Disabling VHOSTS<a class="headerlink" href="#disabling-vhosts" title="Permanent link">&para;</a></h2>
 <p>If desired, it is possible to disable vhosts with the domains plugin.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>domains:disable<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -2602,7 +2602,7 @@
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># set all custom domains for app</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me<span class="w"> </span>dokku.org
 </code></pre></div>
-<h2 id="displaying-domains-reports-for-an-app">Displaying domains reports for an app</h2>
+<h2 id="displaying-domains-reports-for-an-app">Displaying domains reports for an app<a class="headerlink" href="#displaying-domains-reports-for-an-app" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>
@@ -2654,7 +2654,7 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app<span class="w"> </span>--domains-app-enabled
 </code></pre></div>
-<h2 id="default-site">Default site</h2>
+<h2 id="default-site">Default site<a class="headerlink" href="#default-site" title="Permanent link">&para;</a></h2>
 <p>This is specific to your proxy plugin of choice. See the <a href="../../networking/proxies/nginx/#default-site">nginx documentation</a> for more information on how to configure this for the default nginx proxy implementation.</p>
 
 

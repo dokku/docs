@@ -2701,7 +2701,7 @@
   
 
 
-<h1 id="persistent-storage">Persistent Storage</h1>
+<h1 id="persistent-storage">Persistent Storage<a class="headerlink" href="#persistent-storage" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
@@ -2722,8 +2722,8 @@
 <li>explicit paths that exist on the host</li>
 <li>docker volumes</li>
 </ul>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-persistent-storage">Listing persistent storage</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="listing-persistent-storage">Listing persistent storage<a class="headerlink" href="#listing-persistent-storage" title="Permanent link">&para;</a></h3>
 <p>Persistent storage bind mounts are specified on a per-app basis, and can be listed with the <code>storage:list</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2757,7 +2757,7 @@
 </div>
 </div>
 </div>
-<h3 id="creating-storage-directories">Creating storage directories</h3>
+<h3 id="creating-storage-directories">Creating storage directories<a class="headerlink" href="#creating-storage-directories" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.5</p>
@@ -2792,7 +2792,7 @@
 <p class="admonition-title">Warning</p>
 <p>Failing to set the correct directory ownership may result in issues in persisting files written to the mounted storage directory.</p>
 </div>
-<h3 id="mounting-storage-into-apps">Mounting storage into apps</h3>
+<h3 id="mounting-storage-into-apps">Mounting storage into apps<a class="headerlink" href="#mounting-storage-into-apps" title="Permanent link">&para;</a></h3>
 <p>Dokku supports mounting both explicit host paths as well as docker volumes via the <code>storage:mount</code> command. This takes two arguments, an app name and a <code>host-path:container-path</code> or <code>docker-volume:container-path</code> combination.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># mount the directory into your container&#39;s /app/storage directory, relative to the container root (/)</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># explicit host paths _must_ exist prior to usage.</span>
@@ -2810,7 +2810,7 @@
 <p>Once persistent storage is mounted, the app requires a restart. See the <a href="../../processes/process-management/">process scaling documentation</a> for more information.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>app-name
 </code></pre></div>
-<h3 id="unmounting-storage">Unmounting storage</h3>
+<h3 id="unmounting-storage">Unmounting storage<a class="headerlink" href="#unmounting-storage" title="Permanent link">&para;</a></h3>
 <p>If an app no longer requires a mounted volume or directory, the <code>storage:unmount</code> command can be called. This takes the same arguments as the <code>storage:mount</code> command, an app name and a <code>host-path:container-path</code> or <code>docker-volume:container-path</code> combination.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># unmount the directory from your container&#39;s /app/storage directory, relative to the container root (/)</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>/var/lib/dokku/data/storage/node-js-app:/app/storage
@@ -2821,7 +2821,7 @@
 <p>Once persistent storage is unmounted, the app requires a restart. See the <a href="../../processes/process-management/">process scaling documentation</a> for more information.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>app-name
 </code></pre></div>
-<h3 id="displaying-storage-reports-for-an-app">Displaying storage reports for an app</h3>
+<h3 id="displaying-storage-reports-for-an-app">Displaying storage reports for an app<a class="headerlink" href="#displaying-storage-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>
@@ -2869,16 +2869,16 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-deploy-mounts
 </code></pre></div>
-<h2 id="use-cases">Use Cases</h2>
-<h3 id="sharing-storage-across-deploys">Sharing storage across deploys</h3>
+<h2 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="sharing-storage-across-deploys">Sharing storage across deploys<a class="headerlink" href="#sharing-storage-across-deploys" title="Permanent link">&para;</a></h3>
 <p>Dokku is powered by Docker containers, which recommends in their <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#containers-should-be-ephemeral">best practices</a> that containers be treated as ephemeral. In order to manage persistent storage for web apps, like user uploads or large binary assets like images, a directory outside the container should be mounted.</p>
-<h3 id="shared-storage-between-containers">Shared storage between containers</h3>
+<h3 id="shared-storage-between-containers">Shared storage between containers<a class="headerlink" href="#shared-storage-between-containers" title="Permanent link">&para;</a></h3>
 <p>When scaling your app, you may require a common location to access shared assets between containers, a storage mount can be used in this situation.</p>
-<h3 id="shared-storage-across-environments">Shared storage across environments</h3>
+<h3 id="shared-storage-across-environments">Shared storage across environments<a class="headerlink" href="#shared-storage-across-environments" title="Permanent link">&para;</a></h3>
 <p>Your app may be used in a cluster that requires containers or resources not running on the same host access your data. Mounting a shared file service (like S3FS or EFS) inside your container will give you great flexibility.</p>
-<h3 id="backing-up">Backing up</h3>
+<h3 id="backing-up">Backing up<a class="headerlink" href="#backing-up" title="Permanent link">&para;</a></h3>
 <p>Your app may have services that are running in memory and need to be backed up locally (like a key store). Mount a non ephemeral storage mount will allow backups that are not lost when the app is shut down.</p>
-<h3 id="build-phase">Build phase</h3>
+<h3 id="build-phase">Build phase<a class="headerlink" href="#build-phase" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku will only bind storage mounts during the deploy and run phases. Under certain conditions, one might want to bind a storage mount during the build phase. This can be accomplished by using the <code>docker-options</code> plugin directly.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;-v /tmp/python-test:/opt/test&quot;</span>
 </code></pre></div>
@@ -2887,7 +2887,7 @@
 <p class="admonition-title">Warning</p>
 <p><strong>This can cause data loss</strong> if you bind a mount under <code>/app</code> in buildpack apps as herokuish will attempt to remove the original app path during the build phase.</p>
 </div>
-<h2 id="app-user-and-persistent-storage-file-ownership-buildpack-apps-only">App User and Persistent Storage file ownership (buildpack apps only)</h2>
+<h2 id="app-user-and-persistent-storage-file-ownership-buildpack-apps-only">App User and Persistent Storage file ownership (buildpack apps only)<a class="headerlink" href="#app-user-and-persistent-storage-file-ownership-buildpack-apps-only" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.7.1</p>

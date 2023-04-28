@@ -2697,7 +2697,7 @@
   
 
 
-<h1 id="log-management">Log Management</h1>
+<h1 id="log-management">Log Management<a class="headerlink" href="#log-management" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>logs &lt;app&gt; [-h|--help] [-t|--tail] [-n|--num num] [-q|--quiet] [-p|--ps process]  # Display recent log output
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>logs:failed --all|&lt;app&gt;                                                    # Shows the last failed deploy logs
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>logs:report [&lt;app&gt;] [&lt;flag&gt;]                                               # Displays a logs report for one or more apps
@@ -2706,13 +2706,13 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>logs:vector-start                                                          # Start the vector logging container
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>logs:vector-stop                                                           # Stop the vector logging container
 </code></pre></div>
-<h2 id="usage">Usage</h2>
-<h3 id="application-logs">Application logs</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="application-logs">Application logs<a class="headerlink" href="#application-logs" title="Permanent link">&para;</a></h3>
 <p>You can easily get logs of an app using the <code>logs</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Logs are pulled via integration with the scheduler for the specified application via "live tailing". As such, logs from previously running deployments are usually not available. Users that desire to see logs from previous deployments for debugging purposes should persist those logs to external services. Please see Dokku's <a href="./#vector-logging-shipping">vector integration</a> for more information on how to persist logs across deployments to ship logs to another service or a third-party platform.</p>
-<h4 id="behavioral-modifiers">Behavioral modifiers</h4>
+<h4 id="behavioral-modifiers">Behavioral modifiers<a class="headerlink" href="#behavioral-modifiers" title="Permanent link">&para;</a></h4>
 <p>Dokku also supports certain command-line arguments that augment the <code>log</code> command's behavior.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>-n, --num NUM        # the number of lines to display
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>-p, --ps PS          # only display logs from the given process
@@ -2723,7 +2723,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>logs<span class="w"> </span>node-js-app<span class="w"> </span>-t<span class="w"> </span>-p<span class="w"> </span>web
 </code></pre></div>
 <p>The above command will show logs continually from the web process.</p>
-<h3 id="failed-deploy-logs">Failed deploy logs</h3>
+<h3 id="failed-deploy-logs">Failed deploy logs<a class="headerlink" href="#failed-deploy-logs" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The default <a href="../schedulers/docker-local/">docker-local scheduler</a> will "store" these until the next deploy or until the old containers are garbage collected - whichever runs first. If you require the logs beyond this point in time, please ship the logs to a centralized log server.</p>
@@ -2735,7 +2735,7 @@
 <p>You may also fetch all failed app logs by using the <code>--all</code> flag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>logs:failed<span class="w"> </span>--all
 </code></pre></div>
-<h3 id="docker-log-retention">Docker Log Retention</h3>
+<h3 id="docker-log-retention">Docker Log Retention<a class="headerlink" href="#docker-log-retention" title="Permanent link">&para;</a></h3>
 <p>Docker log retention can be specified via the <code>logs:set</code> command by specifying a value for <code>max-size</code>. Log retention is set via injected docker options for all applications, but is also available via the <code>logs-get-property</code> trigger for alternative schedulers.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>max-size<span class="w"> </span>20m
 </code></pre></div>
@@ -2749,13 +2749,13 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>max-size
 </code></pre></div>
-<h3 id="vector-logging-shipping">Vector Logging Shipping</h3>
+<h3 id="vector-logging-shipping">Vector Logging Shipping<a class="headerlink" href="#vector-logging-shipping" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.22.6</p>
 </div>
 <p>Vector is an open-source, lightweight and ultra-fast tool for building observability pipelines. Dokku integrates with it for shipping container logs for the <code>docker-local</code> scheduler. Users may configure log-shipping on a per-app or global basis, neither of which interfere with the <code>dokku logs</code> commands.</p>
-<h4 id="starting-the-vector-container">Starting the Vector container</h4>
+<h4 id="starting-the-vector-container">Starting the Vector container<a class="headerlink" href="#starting-the-vector-container" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>While the default vector image may be updated over time, this will not impact running vector containers. Users are encouraged to view any Dokku and Vector changelogs to ensure their system will continue running as expected.</p>
@@ -2774,12 +2774,12 @@
 <li><code>/var/log/dokku/apps:/var/log/dokku/apps</code></li>
 </ul>
 <p>The final volume mount - <code>/var/log/dokku/apps</code> - may be used for users that wish to ship logs to a file on disk that may be later logrotated. This directory is owned by the <code>dokku</code> user and group, with permissions set to <code>0755</code>. At this time, log-rotation is not configured for this directory.</p>
-<h4 id="stopping-the-vector-container">Stopping the Vector container</h4>
+<h4 id="stopping-the-vector-container">Stopping the Vector container<a class="headerlink" href="#stopping-the-vector-container" title="Permanent link">&para;</a></h4>
 <p>Vector may be stopped via the <code>logs:vector-stop</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>logs:vector-stop
 </code></pre></div>
 <p>The <code>vector</code> container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
-<h4 id="checking-vectors-logs">Checking Vector's Logs</h4>
+<h4 id="checking-vectors-logs">Checking Vector's Logs<a class="headerlink" href="#checking-vectors-logs" title="Permanent link">&para;</a></h4>
 <p>It may be necessary to check the vector container's logs to ensure that vector is operating as expected. This can be performed with the <code>logs:vector-logs</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>logs:vector-logs
 </code></pre></div>
@@ -2791,7 +2791,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>logs:vector-logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the vector container, with an initial history of 10 log lines</p>
-<h4 id="configuring-a-log-sink">Configuring a log sink</h4>
+<h4 id="configuring-a-log-sink">Configuring a log sink<a class="headerlink" href="#configuring-a-log-sink" title="Permanent link">&para;</a></h4>
 <p>Vector uses the concept of log "sinks" to send logs to a given endpoint. Log sinks may be configured globally or on a per-app basis by specifying a <code>vector-sink</code> in DSN form with the <code>logs:set</code> command. Specifying a sink value will reload any running vector container.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
@@ -2807,7 +2807,7 @@
 <p>As with app-specific sink settings, the global value may also be cleared by setting no value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink
 </code></pre></div>
-<h5 id="log-sink-dsn-format">Log Sink DSN Format</h5>
+<h5 id="log-sink-dsn-format">Log Sink DSN Format<a class="headerlink" href="#log-sink-dsn-format" title="Permanent link">&para;</a></h5>
 <p>The DSN form of a sink is as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>SINK_TYPE://?SINK_OPTIONS
 </code></pre></div>

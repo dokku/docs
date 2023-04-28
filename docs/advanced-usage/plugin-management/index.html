@@ -2647,7 +2647,7 @@
   
 
 
-<h1 id="plugin-management">Plugin Management</h1>
+<h1 id="plugin-management">Plugin Management<a class="headerlink" href="#plugin-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.4.0</p>
@@ -2671,8 +2671,8 @@
 <p class="admonition-title">Info</p>
 <p>These commands require <code>root</code> permissions as the <code>install</code> and <code>install-dependencies</code> plugin triggers may utilize commands such as <code>apt-get</code>. For non-core plugins, please inspect those plugins before running the following command as <code>root</code> user.</p>
 </div>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-plugins">Listing Plugins</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="listing-plugins">Listing Plugins<a class="headerlink" href="#listing-plugins" title="Permanent link">&para;</a></h3>
 <p>Installed plugins can be listed via the <code>plugin:list</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2719,11 +2719,11 @@
 <p class="admonition-title">Warning</p>
 <p>All plugin commands other than <code>plugin:list</code> and <code>plugin:help</code> require sudo access and must be run directly from the Dokku server.</p>
 </div>
-<h3 id="checking-if-a-plugin-is-installed">Checking if a plugin is installed</h3>
+<h3 id="checking-if-a-plugin-is-installed">Checking if a plugin is installed<a class="headerlink" href="#checking-if-a-plugin-is-installed" title="Permanent link">&para;</a></h3>
 <p>You can check if a plugin has been installed via the <code>plugin:installed</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>plugin:installed<span class="w"> </span>postgres
 </code></pre></div>
-<h3 id="installing-a-plugin">Installing a plugin</h3>
+<h3 id="installing-a-plugin">Installing a plugin<a class="headerlink" href="#installing-a-plugin" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Plugins installed in this method within a <a href="../../getting-started/install/docker/">docker-based installation</a> of Dokku do not persist across installs. Please see the <a href="../../getting-started/install/docker/#plugin-installation">plugin installation section</a> of the docker-based installation docs for further details.</p>
@@ -2769,14 +2769,14 @@
 <p>Finally, all flags may be omitted to trigger the <code>install</code> procedures for both core and third-party plugins:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>plugin:install
 </code></pre></div>
-<h3 id="installing-plugin-dependencies">Installing plugin dependencies</h3>
+<h3 id="installing-plugin-dependencies">Installing plugin dependencies<a class="headerlink" href="#installing-plugin-dependencies" title="Permanent link">&para;</a></h3>
 <p>In some cases, plugins will have system-level dependencies. These are not automatically installed via <code>plugin:install</code>, and must be separately via the <code>plugin:install-dependencies</code> command. This will run through all the <code>dependencies</code> trigger for all plugins.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>plugin:install-dependencies
 </code></pre></div>
 <p>This command may also target <em>just</em> core plugins via the <code>--core</code> flag. This is usually only useful for source-based installs of Dokku.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>plugin:install-dependencies<span class="w"> </span>--core
 </code></pre></div>
-<h3 id="updating-a-plugin">Updating a plugin</h3>
+<h3 id="updating-a-plugin">Updating a plugin<a class="headerlink" href="#updating-a-plugin" title="Permanent link">&para;</a></h3>
 <p>An installed, third-party plugin can be updated can updated via the <code>plugin:update</code> command. This should be done after any upgrades of Dokku as there may be changes in the internal api that require an update of how the plugin interfaces with Dokku.</p>
 <p>Please note that this command is only valid for plugin installs that were backed by a git-repository.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
@@ -2794,7 +2794,7 @@
 <p>An optional commit SHA-like object may be specified.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span><span class="m">2</span>.0.0
 </code></pre></div>
-<h3 id="uninstalling-a-plugin">Uninstalling a plugin</h3>
+<h3 id="uninstalling-a-plugin">Uninstalling a plugin<a class="headerlink" href="#uninstalling-a-plugin" title="Permanent link">&para;</a></h3>
 <p>Third party plugins can be uninstalled using the <code>plugin:uninstall</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
@@ -2808,7 +2808,7 @@
 </div>
 </div>
 </div>
-<h3 id="disabling-a-plugin">Disabling a plugin</h3>
+<h3 id="disabling-a-plugin">Disabling a plugin<a class="headerlink" href="#disabling-a-plugin" title="Permanent link">&para;</a></h3>
 <p>Disabling a plugin can also be useful for debugging whether a third-party plugin is causing issues in a Dokku installation. Another common use case is for disabling core functionality for replacement with a third-party plugin.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
@@ -2822,7 +2822,7 @@
 </div>
 </div>
 </div>
-<h3 id="enabling-a-plugin">Enabling a plugin</h3>
+<h3 id="enabling-a-plugin">Enabling a plugin<a class="headerlink" href="#enabling-a-plugin" title="Permanent link">&para;</a></h3>
 <p>Disabled plugins can be re-enabled via the <code>plugin:enable</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
@@ -2836,7 +2836,7 @@
 </div>
 </div>
 </div>
-<h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger</h3>
+<h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger<a class="headerlink" href="#triggering-a-plugin-trigger" title="Permanent link">&para;</a></h3>
 <p>The <code>plugin:trigger</code> can be used to call any internal plugin trigger. This may have unintended consequences, and thus should only be called for development or debugging purposes.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>plugin:trigger<span class="w"> </span>some-internal-trigger<span class="w"> </span>args-go-here
 </code></pre></div>

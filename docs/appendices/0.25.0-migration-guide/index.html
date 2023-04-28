@@ -2579,8 +2579,8 @@
   
 
 
-<h1 id="0250-migration-guide">0.25.0 Migration Guide</h1>
-<h2 id="registry-plugin">Registry Plugin</h2>
+<h1 id="0250-migration-guide">0.25.0 Migration Guide<a class="headerlink" href="#0250-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="registry-plugin">Registry Plugin<a class="headerlink" href="#registry-plugin" title="Permanent link">&para;</a></h2>
 <p>The <a href="https://github.com/dokku/dokku-registry">dokku-registry</a> plugin is now built-in. This comes with a few changes:</p>
 <ul>
 <li>Builder plugins should call <code>post-release-builder</code> at the end of the build.</li>
@@ -2589,8 +2589,8 @@
 <li>Docker images are only pushed when configured to do so. See the <a href="../../advanced-usage/registry-management/">registry management documentation</a> for more details.</li>
 </ul>
 <p>Before upgrading, uninstall the registry plugin via <code>dokku plugin:uninstall registry</code>. Not doing so will cause issues with Dokku.</p>
-<h2 id="other">Other</h2>
-<h3 id="changes">Changes</h3>
+<h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h2>
+<h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The network plugin can now set an <code>initial-network</code> for all containers on creation. This is a replacement for specifying the <code>--network</code> flag via the <code>docker-options</code> plugin. Please see the <a href="../../networking/network/#attaching-an-app-to-a-network">network documentation</a> for more information.</li>
 <li>The <code>dokku run</code> command now always removes the ephemeral container on exit. Users that need a persistent container should instead specify a <code>console</code> process type in their <code>Procfile</code> specifying an available shell (usually either <code>bash</code> or <code>sh</code>) and scale that container appropriately.</li>
@@ -2599,7 +2599,7 @@
 <li>This change does not impact any users of Cloud Native Buildpacks.</li>
 <li>We fixed an issue that required extracting Procfiles at the beginning of a deploy. Due to this change, a <code>Dockerfile</code> app contains a <code>Procfile</code> that does not specify a <code>web</code> process will fail to start. Usage of a <code>Procfile</code> with <em>only</em> a <code>release</code> command should be replaced with a <code>scripts.dokku.postdeploy</code> deployment task in the <code>app.json</code> file. The alternative is to define the <code>web</code> process in the <code>Procfile</code>. See the <a href="../../advanced-usage/deployment-tasks/">deployment task documentation</a> for more information.</li>
 </ul>
-<h3 id="deprecations">Deprecations</h3>
+<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
 <ul>
 <li>In previous versions of Dokku, the only way to specify a custom <code>Dockerfile</code> was to use the <code>docker-options</code> plugin to set the <code>--file</code> flag for a docker build. As of 0.25.0, the <code>builder-dockerfile:set</code> command should be used instead, as outlined in the <a href="../../deployment/builders/dockerfiles/#changingthe-dockerfile-location">docs here</a>. Usage of the old method should be migrated to the new method.</li>
 <li>The <code>--rm</code> and <code>--rm-container</code> flags may be specified but no longer have any effect on <code>dokku run</code>.</li>
@@ -2607,7 +2607,7 @@
 <li>The <code>DOKKU_SCALE</code> file is deprecated. Please see the <a href="../../processes/process-management/#manually-managing-process-scaling">process management documentation</a> for more information on it's replacement with the <code>formation</code> key of the <code>app.json</code> file.</li>
 <li>The hooks <code>post-release-buildpack</code>, <code>post-release-dockerfile</code>, and <code>post-release-pack</code> are deprecated in favor of <code>post-release-builder</code>. See the <a href="https://dokku.com/docs/development/plugin-triggers/#post-release-builder">plugin triggers documentation</a> for more details.</li>
 </ul>
-<h2 id="removals">Removals</h2>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>As of April 2021, Ubuntu 16.04 is no longer an LTS release, and support has been removed. Packages may still install on older versions of Ubuntu, but are no longer tested, and therefore no support will be provided.</li>
 <li>The web installer has been removed. Users are now required to setup Dokku via cli commands. This change was made to combat potential security issues where users ignored the web installer, allowing unauthorized users to add their keys to the host.</li>

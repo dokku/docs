@@ -2605,30 +2605,30 @@
   
 
 
-<h1 id="dns-configuration">DNS Configuration</h1>
+<h1 id="dns-configuration">DNS Configuration<a class="headerlink" href="#dns-configuration" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is a work in progress.</p>
 </div>
-<h2 id="dns-versions">DNS Versions</h2>
+<h2 id="dns-versions">DNS Versions<a class="headerlink" href="#dns-versions" title="Permanent link">&para;</a></h2>
 <p>There are many different DNS servers 'in the wild'.  Some of the popular ones on Linux are BIND, dnsmasq, and pdns.  Windows has its own built-in DNS server as well as Unbound, Posadis, and more.  A full list of DNS packages can be found on Wikipedia under <a href="http://en.wikipedia.org/wiki/Comparison_of_DNS_server_software">Comparison of DNS Server Software</a>.  In addition to the various DNS packages, there are tens of thousands of <a href="http://en.wikipedia.org/wiki/List_of_managed_DNS_providers">Managed DNS Providers</a> out that all have different DNS interfaces.</p>
-<h2 id="focus">Focus</h2>
+<h2 id="focus">Focus<a class="headerlink" href="#focus" title="Permanent link">&para;</a></h2>
 <p>Because there are so many different DNS server packages out there as well as a tremendous number of Managed DNS Providers, we will focus on the concepts of DNS as well as providing examples in the 'BIND' format so you can adapt the information to your own server package or managed DNS provider.</p>
-<h2 id="assumptions">Assumptions</h2>
+<h2 id="assumptions">Assumptions<a class="headerlink" href="#assumptions" title="Permanent link">&para;</a></h2>
 <ul>
 <li>We assume you have a passing familiarity with DNS.  If not, you can read an <a href="http://www.diaryofaninja.com/blog/2012/03/03/devops-dns-for-developers-ndash-now-therersquos-no-excuse-not-to-know">in-depth article</a> on DNS.  But basically you need to know that DNS changes names (like example.tld) into addresses (like 127.0.0.1)</li>
 <li>We assume you already have a domain name registered and pointed to your favorite Managed DNS Provider or have your own BIND DNS server running.</li>
 <li>You have a server on the internet and are about to follow the instructions in the <a href="https://github.com/dokku/dokku/blob/master/README.md">README</a> to get Dokku installed.  Don't do the install just yet though.</li>
 </ul>
-<h2 id="caching">Caching</h2>
+<h2 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h2>
 <p>Please remember that DNS relies heavily on <em>caching</em>.  Changes you make to DNS could take anywhere from a few seconds to a few <em>days</em> to propagate.  If you tried surfing to example.tld, then changed the IP address in DNS, it could be a while before your computer picks up on the changes.</p>
-<h2 id="getting-started">Getting started</h2>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>For the examples, we will use the domain name <code>example.tld</code> and the IP address <code>127.0.0.1</code>.</p>
 <p>Dokku uses DNS to differentiate between apps on your dokku-powered server.  If you are using the domain <code>example.tld</code>, and you have two apps <code>node-js-app1</code> and <code>node-js-app2</code>, Dokku will make them available at <code>node-js-app1.example.tld</code> and <code>node-js-app2.example.tld</code>.</p>
 <p>To get started, you need to know the IP address of your Dokku server.  Connect to it and run <code>ifconfig</code> or <code>ip addr</code> to see the IP address.</p>
 <p>Now you have to make a decision about your domain.  Do you want everything and anything at <code>example.tld</code> to go to your Dokku server, or would you rather use a 'sub domain' for your Dokku server?</p>
 <p>In other words, do you want your applications on your Dokku server accessible via <code>node-js-app.example.tld</code> or via <code>node-js-app.myserver.example.tld</code>?</p>
-<h3 id="using-a-sub-domain-node-js-appmyserverexampletld">Using a sub-domain (node-js-app.myserver.example.tld)</h3>
+<h3 id="using-a-sub-domain-node-js-appmyserverexampletld">Using a sub-domain (node-js-app.myserver.example.tld)<a class="headerlink" href="#using-a-sub-domain-node-js-appmyserverexampletld" title="Permanent link">&para;</a></h3>
 <p>Using a sub-domain is easy.  When you set up your server, you probably gave it a name like <code>myserver.example.tld</code>.</p>
 <p>Go in to your Managed DNS provider and create an <code>A</code> record named <code>myserver</code> and put in the IP address you got from your server a few moments ago.</p>
 <p>Hopefully your managed DNS provider also supports wildcards.  Create a second <code>A</code> record named <code>*.myserver</code> along with the IP address you got from your server a few moments ago.</p>
@@ -2653,7 +2653,7 @@
 </ul>
 <p>If they all return your IP address, you have set DNS up properly for dokku.  You should also be able to <code>ssh root@myserver.example.tld</code> and access your server.</p>
 <p>Proceed with the setup instructions in the <a href="../../getting-started/installation/">installation documentation</a></p>
-<h3 id="using-the-root-of-your-domain-node-js-appexampletld">Using the root of your domain (node-js-app.example.tld)</h3>
+<h3 id="using-the-root-of-your-domain-node-js-appexampletld">Using the root of your domain (node-js-app.example.tld)<a class="headerlink" href="#using-the-root-of-your-domain-node-js-appexampletld" title="Permanent link">&para;</a></h3>
 <p>This section is a work in progress.  It is incomplete.</p>
 <p>Using the 'root' of your domain is nearly identical to the previous example.</p>
 <ul>

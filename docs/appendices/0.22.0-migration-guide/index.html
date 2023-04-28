@@ -2539,12 +2539,12 @@
   
 
 
-<h1 id="0220-migration-guide">0.22.0 Migration Guide</h1>
-<h2 id="deprecations">Deprecations</h2>
+<h1 id="0220-migration-guide">0.22.0 Migration Guide<a class="headerlink" href="#0220-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Calling <code>logs:failed</code> without either a <code>&lt;name&gt;</code> or the <code>--all</code> flag is deprecated.</li>
 </ul>
-<h2 id="changes">Changes</h2>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Underscores are no longer valid characters in app names. Please rename applications before upgrading.</li>
 <li>Process type names specified in Procfile may no longer use characters not valid in DNS Label Names (<a href="https://tools.ietf.org/html/rfc1123">RFC 1123</a>).</li>
@@ -2552,7 +2552,7 @@
 <li>The <code>common.GetDeployingAppImageName()</code> function now returns an <code>error</code> as the second return argument instead of calling <code>common.LogFail()</code> internally.</li>
 <li>Setting <code>DOKKU_DISABLE_ANSI_PREFIX_REMOVAL</code> is deprecated; Dokku 0.23.0 will avoid removing the <code>remote:</code> ansi prefix entirely. No warning will be added in this release.</li>
 </ul>
-<h2 id="removals">Removals</h2>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <p>The <code>ps</code> command has had a few removals as a result of a rewrite to Golang:</p>
 <ul>
 <li>The <code>ps:set-restart-policy</code> command has been removed in favor the <code>ps:set</code> command.</li>

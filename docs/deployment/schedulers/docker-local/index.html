@@ -2697,7 +2697,7 @@
   
 
 
-<h1 id="docker-local-scheduler">Docker Local Scheduler</h1>
+<h1 id="docker-local-scheduler">Docker Local Scheduler<a class="headerlink" href="#docker-local-scheduler" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Subcommands introduced in 0.12.12</p>
@@ -2715,15 +2715,15 @@
 <p>As it is the default, unsetting the <code>DOCKER_SCHEDULER</code> config variable is also a valid way to reset the scheduler.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:unset<span class="w"> </span>node-js-app<span class="w"> </span>DOCKER_SCHEDULER
 </code></pre></div>
-<h2 id="usage">Usage</h2>
-<h3 id="disabling-chown-of-persistent-storage">Disabling chown of persistent storage</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="disabling-chown-of-persistent-storage">Disabling chown of persistent storage<a class="headerlink" href="#disabling-chown-of-persistent-storage" title="Permanent link">&para;</a></h3>
 <p>The <code>scheduler-docker-local</code> plugin will ensure your storage mounts are owned by either <code>herokuishuser</code> or the overridden value you have set in <code>DOKKU_APP_USER</code>. You may disable this by running the following <code>scheduler-docker-local:set</code> command for your application:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-chown<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>Once set, you may re-enable it by setting a blank value for <code>disable-chown</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-chown
 </code></pre></div>
-<h3 id="disabling-the-init-process">Disabling the init process</h3>
+<h3 id="disabling-the-init-process">Disabling the init process<a class="headerlink" href="#disabling-the-init-process" title="Permanent link">&para;</a></h3>
 <p>The <code>scheduler-docker-local</code> injects an init process by default via the <code>--init</code>. For some apps - such as those where the built docker image uses S6 as the init - this may be undesirable and cause issues with process starts. You may disable this by running the following <code>scheduler-docker-local:set</code> command for your application:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
@@ -2731,7 +2731,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process
 </code></pre></div>
 <p>All image containers with the label <code>org.opencontainers.image.vendor=linuxserver.io</code> will have the automatic init process injection force-disabled without further intervention.</p>
-<h3 id="deploying-process-types-in-parallel">Deploying Process Types in Parallel</h3>
+<h3 id="deploying-process-types-in-parallel">Deploying Process Types in Parallel<a class="headerlink" href="#deploying-process-types-in-parallel" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.5</p>
@@ -2746,7 +2746,7 @@
 <p>If the value of <code>parallel-schedule-count</code> is increased and a given process type fails to schedule successfully, then any in-flight process types will continue to be processed, while all process types that have not been scheduled will be skipped before the deployment finally fails.</p>
 <p>Container scheduling output is shown in the order it is received, and thus may be out of order in case of output to stderr.</p>
 <p>Note that increasing the value of <code>parallel-schedule-count</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
-<h4 id="increasing-parallelism-within-a-process-deploy">Increasing parallelism within a process deploy</h4>
+<h4 id="increasing-parallelism-within-a-process-deploy">Increasing parallelism within a process deploy<a class="headerlink" href="#increasing-parallelism-within-a-process-deploy" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.26.0</p>
@@ -2772,9 +2772,9 @@
 </code></pre></div>
 <p>Omitting or removing the entry will result in parallelism for that process type to return to 1 entry at a time. This can be combined with the  <code>parallel-schedule-count</code> property to speed up deployments.</p>
 <p>Note that increasing the value of <code>max_parallel</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
-<h2 id="scheduler-interface">Scheduler Interface</h2>
+<h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented scheduler functionality for the <code>docker-local</code> scheduler.</p>
-<h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers</h3>
+<h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
 <p>This plugin implements various functionality through <code>plugn</code> triggers to integrate with Docker for running apps on a single server. The following functionality is supported by the <code>scheduler-docker-local</code> plugin.</p>
 <ul>
 <li><code>apps:clone</code></li>
@@ -2787,11 +2787,11 @@
 <li><code>ps:stop</code></li>
 <li><code>run</code></li>
 </ul>
-<h3 id="logging-support">Logging support</h3>
+<h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
 <p>App logs for the <code>logs</code> command are fetched from running containers via the <code>docker</code> cli. To persist logs across deployments, consider using Dokku's <a href="../../logs/#vector-logging-shipping">vector integration</a> to ship logs to another service or a third-party platform.</p>
-<h3 id="supported-resource-management-properties">Supported Resource Management Properties</h3>
+<h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
 <p>The <code>docker-local</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>. The following properties are supported:</p>
-<h4 id="resource-limits">Resource Limits</h4>
+<h4 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h4>
 <ul>
 <li>cpu: (docker option: <code>--cpus</code>), is specified in number of CPUs a process can access.</li>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#cpu">"CPU" section</a> of the Docker Runtime Options documentation for more information.</li>
@@ -2802,7 +2802,7 @@
 <li>nvidia-gpus: (docker option: <code>--gpus</code>), is specified in number of Nvidia GPUs a process can access.</li>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#gpu">"GPU" section</a> of the Docker Runtime Options documentation for more information.</li>
 </ul>
-<h4 id="resource-reservations">Resource Reservations</h4>
+<h4 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h4>
 <ul>
 <li>memory: (docker option: <code>--memory-reservation</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>

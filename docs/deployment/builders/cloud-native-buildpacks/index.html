@@ -2605,7 +2605,7 @@
   
 
 
-<h1 id="cloud-native-buildpacks">Cloud Native Buildpacks</h1>
+<h1 id="cloud-native-buildpacks">Cloud Native Buildpacks<a class="headerlink" href="#cloud-native-buildpacks" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.22.0</p>
@@ -2620,11 +2620,11 @@
 <p class="admonition-title">Warning</p>
 <p>This functionality uses the <code>pack</code> cli from the <a href="https://buildpacks.io">Cloud Native Buildpacks</a> project to build apps. As the integration is experimental in Dokku, it is likely to change over time.</p>
 </div>
-<h2 id="usage">Usage</h2>
-<h3 id="requirements">Requirements</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
 <p>The <code>pack</code> cli tool is not included by default with Dokku or as a dependency. It must also be installed as shown on <a href="https://buildpacks.io/docs/tools/pack/">this page</a>.</p>
 <p>Builds will proceed with the <code>pack</code> cli for the app from then on.</p>
-<h3 id="caveats">Caveats</h3>
+<h3 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h3>
 <p>As this functionality is highly experimental, there are a number of caveats. Please note that not all issuesare listed below.</p>
 <ul>
 <li>Specifying specific buildpacks is not currently possible.</li>
@@ -2637,7 +2637,7 @@
 <li><code>pack</code> is not currently included with Dokku, nor is it added as a package dependency.</li>
 <li>A future version will include it as a package dependency.</li>
 </ul>
-<h3 id="detection">Detection</h3>
+<h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
 <p>This builder will be auto-detected in either the following cases:</p>
 <ul>
 <li>The <code>DOKKU_CNB_EXPERIMENTAL</code> app environment variable is set to <code>1</code>.
@@ -2653,7 +2653,7 @@
 <p class="admonition-title">Info</p>
 <p>Dokku will only select the <code>dockerfile</code> builder if both the <code>herokuish</code> and <code>pack</code> builders are not detected and a Dockerfile exists. See the <a href="../dockerfiles/">dockerfile builder documentation</a> for more information on how that builder functions.</p>
 </div>
-<h3 id="changing-the-projecttoml-location">Changing the <code>project.toml</code> location</h3>
+<h3 id="changing-the-projecttoml-location">Changing the <code>project.toml</code> location<a class="headerlink" href="#changing-the-projecttoml-location" title="Permanent link">&para;</a></h3>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>project.toml</code> file to use for a given app. This can be done via the <code>builder-pack:set</code> command. If a value other than <code>project.toml</code> is specified and that file does not exist in the app's build directory, Dokku will continue the build process as if the repository has no <code>project.toml</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path<span class="w"> </span>project2.toml
 </code></pre></div>
@@ -2666,7 +2666,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path
 </code></pre></div>
-<h3 id="displaying-builder-pack-reports-for-an-app">Displaying builder-pack reports for an app</h3>
+<h3 id="displaying-builder-pack-reports-for-an-app">Displaying builder-pack reports for an app<a class="headerlink" href="#displaying-builder-pack-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
@@ -2724,7 +2724,7 @@
 </div>
 </div>
 </div>
-<h3 id="customizing-the-buildpack-stack-builder">Customizing the Buildpack stack builder</h3>
+<h3 id="customizing-the-buildpack-stack-builder">Customizing the Buildpack stack builder<a class="headerlink" href="#customizing-the-buildpack-stack-builder" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.23.0</p>

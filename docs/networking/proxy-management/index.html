@@ -2631,7 +2631,7 @@
   
 
 
-<h1 id="proxy-management">Proxy Management</h1>
+<h1 id="proxy-management">Proxy Management<a class="headerlink" href="#proxy-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0, Enhanced in 0.6.0</p>
@@ -2644,8 +2644,8 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>proxy:set &lt;app&gt; &lt;proxy-type&gt;                        # Set proxy type for app
 </code></pre></div>
 <p>In Dokku 0.5.0, port proxying was decoupled from the <code>nginx-vhosts</code> plugin into the proxy plugin. Dokku 0.6.0 introduced the ability to map host ports to specific container ports. In the future this will allow other proxy software - such as HAProxy or Caddy - to be used in place of nginx.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="regenerating-proxy-config">Regenerating proxy config</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="regenerating-proxy-config">Regenerating proxy config<a class="headerlink" href="#regenerating-proxy-config" title="Permanent link">&para;</a></h3>
 <p>In certain cases, your app proxy configs may drift from the correct config for your app. You may regenerate the config at any point via the <code>proxy:build-config</code> command. This command will trigger a rebuild for the configured proxy implementation (default: nginx) for a given app. The command may fail if there are no current web listeners for your app.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -2658,7 +2658,7 @@
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
-<h3 id="clearing-the-generated-proxy-config">Clearing the generated proxy config</h3>
+<h3 id="clearing-the-generated-proxy-config">Clearing the generated proxy config<a class="headerlink" href="#clearing-the-generated-proxy-config" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.27.0</p>
@@ -2670,7 +2670,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>proxy:clear-config<span class="w"> </span>--all
 </code></pre></div>
 <p>Clearing a proxy configuration has different effects depending on the proxy plugin in use. Consul the documentation for your proxy implementation for further details.</p>
-<h3 id="displaying-proxy-reports-for-an-app">Displaying proxy reports for an app</h3>
+<h3 id="displaying-proxy-reports-for-an-app">Displaying proxy reports for an app<a class="headerlink" href="#displaying-proxy-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>
@@ -2718,7 +2718,7 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--proxy-type
 </code></pre></div>
-<h4 id="proxy-port-scheme">Proxy Port Scheme</h4>
+<h4 id="proxy-port-scheme">Proxy Port Scheme<a class="headerlink" href="#proxy-port-scheme" title="Permanent link">&para;</a></h4>
 <p>The proxy port scheme is as follows:</p>
 <ul>
 <li><code>SCHEME:HOST_PORT:CONTAINER_PORT</code></li>
@@ -2731,15 +2731,15 @@ For the <code>grpc</code> and <code>grpcs</code> see <a href="https://www.nginx.
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># the specified proxy implementation</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>nginx
 </code></pre></div>
-<h3 id="proxy-port-mapping">Proxy port mapping</h3>
+<h3 id="proxy-port-mapping">Proxy port mapping<a class="headerlink" href="#proxy-port-mapping" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../port-management/">port management documentation</a> for more information on how port mappings are managed for an application.</p>
-<h3 id="container-network-interface-binding">Container network interface binding</h3>
+<h3 id="container-network-interface-binding">Container network interface binding<a class="headerlink" href="#container-network-interface-binding" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Changed as of 0.11.0</p>
 </div>
 <p>From Dokku versions <code>0.5.0</code> until <code>0.11.0</code>, enabling or disabling an application's proxy would <strong>also</strong> control whether or not the application was bound to all interfaces - e.g. <code>0.0.0.0</code>. As of <code>0.11.0</code>, this is now controlled by the network plugin. Please see the <a href="../network/#container-network-interface-binding">network documentation</a> for more information.</p>
-<h2 id="implementing-a-proxy">Implementing a Proxy</h2>
+<h2 id="implementing-a-proxy">Implementing a Proxy<a class="headerlink" href="#implementing-a-proxy" title="Permanent link">&para;</a></h2>
 <p>Custom plugins names <em>must</em> have the suffix <code>-vhosts</code> or scheduler overriding via <code>proxy:set</code> may not function as expected.</p>
 <p>At this time, the following dokku commands are used to implement a complete proxy implementation.</p>
 <ul>

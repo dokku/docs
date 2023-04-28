@@ -2549,15 +2549,15 @@
   
 
 
-<h1 id="kubernetes-scheduler">Kubernetes Scheduler</h1>
+<h1 id="kubernetes-scheduler">Kubernetes Scheduler<a class="headerlink" href="#kubernetes-scheduler" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>Warning: This scheduler is not in Dokku core and thus functionality may change over time as the API stabilizes.</p>
 </blockquote>
 <p>The <a href="https://github.com/dokku/dokku-scheduler-kubernetes">Kubernetes Scheduler Plugin</a> is available free as an external plugin. Please see the plugin's <a href="https://github.com/dokku/dokku-scheduler-kubernetes/issues">issue tracker</a> for more information on the status of the plugin.</p>
 <p>For users that require additional functionality, please refer to the <a href="https://github.com/dokku/.github/blob/master/SPONSORING.md">Sponsoring Documentation</a>.</p>
-<h2 id="scheduler-interface">Scheduler Interface</h2>
+<h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented scheduler functionality for the <code>kubernetes</code> scheduler.</p>
-<h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers</h3>
+<h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
 <p>This plugin implements various functionality through <code>plugn</code> triggers to integrate with <code>kubectl</code> for running apps on a Kubernetes cluster. The following functionality is supported by the <code>scheduler-kubernetes</code> plugin.</p>
 <ul>
 <li><code>apps:destroy</code></li>
@@ -2565,7 +2565,7 @@
 <li><code>logs</code>: partial, does not implement failure logs</li>
 <li><code>ps:stop</code></li>
 </ul>
-<h3 id="logging-support">Logging support</h3>
+<h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
 <p>App logs for the <code>logs</code> command are fetched from running pods via the <code>kubectl</code> cli. To persist logs across deployments, consider using <a href="https://vector.dev/docs/setup/installation/platforms/kubernetes/">Vector</a> or a similar tool to ship logs to another service or a third-party platform.</p>
 
 

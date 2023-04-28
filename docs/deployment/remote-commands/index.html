@@ -2617,29 +2617,29 @@
   
 
 
-<h1 id="remote-commands">Remote Commands</h1>
+<h1 id="remote-commands">Remote Commands<a class="headerlink" href="#remote-commands" title="Permanent link">&para;</a></h1>
 <p>Dokku commands can be run over SSH. Anywhere you would run <code>dokku &lt;command&gt;</code>, just run <code>ssh -t dokku@dokku.me &lt;command&gt;</code>
 The <code>-t</code> is used to request a pty. It is highly recommended to do so.
 To avoid the need to type the <code>-t</code> option each time, create/modify a section in the <code>.ssh/config</code> on the client side, as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">Host dokku.me</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="na">RequestTTY yes</span>
 </code></pre></div>
-<h2 id="behavioral-modifiers">Behavioral modifiers</h2>
+<h2 id="behavioral-modifiers">Behavioral modifiers<a class="headerlink" href="#behavioral-modifiers" title="Permanent link">&para;</a></h2>
 <p>Dokku also supports certain command line arguments that augment its behavior. If using these over SSH, you must use the form <code>ssh -t dokku@dokku.me -- &lt;command&gt;</code>
 to avoid SSH interpreting Dokku arguments for itself.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>--quiet                suppress output headers
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--trace                enable DOKKU_TRACE for current execution only
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>--force                force flag. currently used in apps:destroy and other &quot;:destroy&quot; commands
 </code></pre></div>
-<h2 id="official-client">Official Client</h2>
+<h2 id="official-client">Official Client<a class="headerlink" href="#official-client" title="Permanent link">&para;</a></h2>
 <p>You may optionally use the official client when connecting to the Dokku server.</p>
 <p>Of all methods, this is the <em>most</em> official method of interacting with your Dokku installation. It is a bash script that interacts with a remote Dokku installation via <code>ssh</code>. It is available in <code>contrib/dokku_client.sh</code> in the root of the Dokku repository.</p>
 <p>It can be installed either via the <a href="https://brew.sh">Homebrew</a> package manager (macOS only), or manually.</p>
-<h3 id="installation-via-homebrew">Installation via Homebrew</h3>
+<h3 id="installation-via-homebrew">Installation via Homebrew<a class="headerlink" href="#installation-via-homebrew" title="Permanent link">&para;</a></h3>
 <p>To install, simply run the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>dokku/repo/dokku
 </code></pre></div>
-<h3 id="manual-installation">Manual installation</h3>
+<h3 id="manual-installation">Manual installation<a class="headerlink" href="#manual-installation" title="Permanent link">&para;</a></h3>
 <p>To install manually, simply clone the Dokku repository down and add the <code>dokku</code> alias pointing at the script:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:dokku/dokku.git<span class="w"> </span>~/.dokku
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
@@ -2661,7 +2661,7 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># csh: add the following to .cshrc</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">alias</span><span class="w"> </span>dokku<span class="w"> </span><span class="s1">&#39;bash $HOME/.dokku/contrib/dokku_client.sh&#39;</span>
 </code></pre></div>
-<h3 id="usage">Usage</h3>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <p>All commands have the application name automatically set via the <code>--app</code> flag on the remote server, and thus the app name does not need to be specified manually for core plugins.</p>
 <p>The client supports several environment variables:</p>
 <ul>
@@ -2687,7 +2687,7 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 </ul>
 </li>
 </ul>
-<h4 id="specifying-a-remote">Specifying a remote</h4>
+<h4 id="specifying-a-remote">Specifying a remote<a class="headerlink" href="#specifying-a-remote" title="Permanent link">&para;</a></h4>
 <p>While many users will only ever push to a single dokku remote from a given repository, it may be useful to point the same repository at multiple remotes, especially in the case of pre-production environments. This can be done via the <code>remote</code> commands. These commands are <em>only</em> available within the official remote client, and are not server-side commands.</p>
 <p>To see your currently configured remote, run <code>dokku remote</code>. This will respect the <code>--remote</code> flag.</p>
 <p>To list all available remotes, run <code>dokku remote:list</code>. This is equivalent to running <code>git remote</code>.</p>
@@ -2695,7 +2695,7 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 <p>To remove a remote, run <code>dokku remote:remove $REMOTE_NAME</code>. This is equivalent to running <code>git remote remove $REMOTE_NAME</code>.</p>
 <p>By default, the remote in use is <code>dokku</code>. To change the remote the client uses by default, run <code>dokku remote:set $REMOTE_NAME</code>, where <code>$REMOTE_NAME</code> is the name of your desired remote. This will not check the value specified, so that remote <em>must</em> be available or errors will occur when running normal client commands. Note that specifying <code>--remote</code> when running dokku commands will override this configuration value.</p>
 <p>To clear the configured remote, run <code>dokku remote:unset</code>. The client will unset the configured remote, and will default back to <code>dokku</code>, or the value of <code>--remote</code> if specified.</p>
-<h2 id="unofficial-clients">Unofficial Clients</h2>
+<h2 id="unofficial-clients">Unofficial Clients<a class="headerlink" href="#unofficial-clients" title="Permanent link">&para;</a></h2>
 <p>Please refer to the <a href="../../community/clients/">community clients</a> list for more details.</p>
 
 

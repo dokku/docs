@@ -2509,7 +2509,7 @@
   
 
 
-<h1 id="environment-variables">Environment Variables</h1>
+<h1 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h1>
 <p>Typically an application will require some configuration to run properly. Dokku supports application configuration via environment variables. Environment variables may contain private data, such as passwords or API keys, so it is not recommended to store them in your application's repository.</p>
 <p>The <code>config</code> plugin provides the following commands to manage your variables:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>config:show (&lt;app&gt;|--global)                                                          Pretty-print an app or global environment
@@ -2564,7 +2564,7 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">#</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1">#   ENV=&#39;prod&#39; COMPILE_ASSETS=&#39;1&#39;</span>
 </code></pre></div>
-<h2 id="special-config-variables">Special Config Variables</h2>
+<h2 id="special-config-variables">Special Config Variables<a class="headerlink" href="#special-config-variables" title="Permanent link">&para;</a></h2>
 <p>The following config variables have special meanings and can be set in a variety of ways. Unless specified via global app config, the values may not be passed into applications. Usage of these values within applications should be considered unsafe, as they are an internal configuration values that may be moved to the internal properties system in the future.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

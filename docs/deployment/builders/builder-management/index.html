@@ -2603,7 +2603,7 @@
   
 
 
-<h1 id="builder-management">Builder Management</h1>
+<h1 id="builder-management">Builder Management<a class="headerlink" href="#builder-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.24.0</p>
@@ -2612,8 +2612,8 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>builder:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;) # Set or clear a builder property for an app
 </code></pre></div>
 <p>Builders are a way of customizing how an app is built from a source, allowing users flexibility in how artifacts are created for later scheduling.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="builder-selection">Builder selection</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="builder-selection">Builder selection<a class="headerlink" href="#builder-selection" title="Permanent link">&para;</a></h3>
 <p>Dokku supports the following built-in builders:</p>
 <ul>
 <li><code>builder-dockerfile</code>: Builds apps using a <code>Dockerfile</code> via <code>docker build</code>. See the <a href="../dockerfiles/">dockerfile builder documentation</a> for more information on how this builder functions.</li>
@@ -2623,7 +2623,7 @@
 <li><code>builder-pack</code>: Builds apps with Cloud Native Buildpacks via the <code>pack-cli</code>  tool. See the <a href="../cloud-native-buildpacks/">cloud native buildpacks builder documentation</a> for more information on how this builder functions.</li>
 </ul>
 <p>Builders run a detection script against a source code repository, and the first detected builder will be used to build the app artifact. The exception to this is when a <code>Dockerfile</code> is detected and the app is also able to use either <code>herokuish</code> or <code>pack-cli</code> for building, in which case one of the latter will be chosen.</p>
-<h3 id="overriding-the-auto-selected-builder">Overriding the auto-selected builder</h3>
+<h3 id="overriding-the-auto-selected-builder">Overriding the auto-selected builder<a class="headerlink" href="#overriding-the-auto-selected-builder" title="Permanent link">&para;</a></h3>
 <p>If desired, the builder can be specified via the <code>builder:set</code> command by speifying a value for <code>selected</code>. The selected builder will always be used.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>dockerfile
 </code></pre></div>
@@ -2636,7 +2636,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>selected
 </code></pre></div>
-<h4 id="changing-the-build-directory">Changing the build directory</h4>
+<h4 id="changing-the-build-directory">Changing the build directory<a class="headerlink" href="#changing-the-build-directory" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Please keep in mind that setting a custom build directory will result in loss of any changes to the top-level directory, such as the <code>git.keep-git-dir</code> property.</p>
@@ -2653,7 +2653,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>build-dir
 </code></pre></div>
-<h3 id="displaying-builder-reports-for-an-app">Displaying builder reports for an app</h3>
+<h3 id="displaying-builder-reports-for-an-app">Displaying builder reports for an app<a class="headerlink" href="#displaying-builder-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's builder status using the <code>builder:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2704,7 +2704,7 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-selected
 </code></pre></div>
-<h3 id="custom-builders">Custom builders</h3>
+<h3 id="custom-builders">Custom builders<a class="headerlink" href="#custom-builders" title="Permanent link">&para;</a></h3>
 <p>To create a custom builder, the following triggers must be implemented:</p>
 <ul>
 <li><code>builder-build</code>:</li>

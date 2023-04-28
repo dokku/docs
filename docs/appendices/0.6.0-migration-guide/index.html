@@ -2539,8 +2539,8 @@
   
 
 
-<h1 id="060-migration-guide">0.6.0 Migration Guide</h1>
-<h2 id="zero-downtime-deployment">Zero-downtime deployment</h2>
+<h1 id="060-migration-guide">0.6.0 Migration Guide<a class="headerlink" href="#060-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="zero-downtime-deployment">Zero-downtime deployment<a class="headerlink" href="#zero-downtime-deployment" title="Permanent link">&para;</a></h2>
 <ul>
 <li>You can now <strong>actually</strong> disable zero-downtime deployments per-app and per-process-type</li>
 <li>Some config variables have been moved around<ul>
@@ -2551,7 +2551,7 @@
 </li>
 <li>See the <a href="../../deployment/zero-downtime-deploys/">updated <code>checks</code></a> docs for more info</li>
 </ul>
-<h2 id="proxy-port-mapping">Proxy port mapping</h2>
+<h2 id="proxy-port-mapping">Proxy port mapping<a class="headerlink" href="#proxy-port-mapping" title="Permanent link">&para;</a></h2>
 <ul>
 <li>You can now configure host -&gt; container proxy port mappings</li>
 <li>The UI is handled by the <a href="../../networking/proxy-management/">proxy</a> interface plugin by setting the <code>DOKKU_PROXY_PORT_MAP</code> config variable in the format of <code>scheme:host-port:container-port</code>. The default <code>nginx-vhosts</code> proxy plugin supports both the <code>http</code> and <code>https</code> schemes.</li>
@@ -2564,7 +2564,7 @@
 </li>
 <li>NOTE: These defaults <strong>are not</strong> automatically changed on subsequent pushes and must be manipulated with the aforementioned commands</li>
 </ul>
-<h2 id="calling-the-dokku-binary">Calling the <code>dokku</code> binary</h2>
+<h2 id="calling-the-dokku-binary">Calling the <code>dokku</code> binary<a class="headerlink" href="#calling-the-dokku-binary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Plugins should <em>not</em> call the <code>dokku</code> binary directly. Clients using the <code>--app</code> argument are potentially broken, amongst others, when doing so. Instead, please source the <code>functions</code> file for a given plugin when attempting to call Dokku internal functions. As a result, the following Dokku commands are no longer publicly exposed:</li>
 <li><code>dokku build</code></li>

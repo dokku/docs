@@ -2577,7 +2577,7 @@
   
 
 
-<h1 id="registry-management">Registry Management</h1>
+<h1 id="registry-management">Registry Management<a class="headerlink" href="#registry-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
@@ -2587,8 +2587,8 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>registry:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)                                 # Set or clear a registry property for an app
 </code></pre></div>
 <p>The registry plugin enables interacting with remote registries, which is useful when either deploying images via <code>git:from-image</code> or when interacting with custom schedulers to deploy built image artifacts.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="logging-into-a-registry">Logging into a registry</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="logging-into-a-registry">Logging into a registry<a class="headerlink" href="#logging-into-a-registry" title="Permanent link">&para;</a></h3>
 <p>The <code>registry:login</code> command can be used to log into a docker registry. The following are examples for logging into various common registries:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># hub.docker.com</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>docker.io<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$PASSWORD</span>
@@ -2610,7 +2610,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>registry:login<span class="w"> </span>--password-stdin<span class="w"> </span>docker.io<span class="w"> </span><span class="nv">$USERNAME</span>
 </code></pre></div>
 <p>For certain Docker registries - such as Amazon ECR or Google's GCR registries - users may instead wish to use a docker credential helper to automatically authenticate against a server; please see the documentation regarding the credential helper in question for further setup instructions.</p>
-<h3 id="setting-a-remote-server">Setting a remote server</h3>
+<h3 id="setting-a-remote-server">Setting a remote server<a class="headerlink" href="#setting-a-remote-server" title="Permanent link">&para;</a></h3>
 <p>To specify a remote server registry for pushes, set the <code>server</code> property via the <code>registry:set</code> command. The default value for this property is empty string. Setting the value to <code>docker.io</code> or <code>hub.docker.com</code> will result in the computed value being empty string (as that is the default, implicit registry), while any non-zero length value will have a <code>/</code> appended to it if there is not one already.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>server<span class="w"> </span>docker.io
 </code></pre></div>
@@ -2656,7 +2656,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="specifying-an-image-repository-name">Specifying an image repository name</h3>
+<h3 id="specifying-an-image-repository-name">Specifying an image repository name<a class="headerlink" href="#specifying-an-image-repository-name" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku uses the value <code>dokku/$APP_NAME</code> as the image repository that is pushed and deployed. For certain registries, the <code>dokku</code> namespace may not be available to your user. In these cases, the value can be set by changing the value of the <code>image-repo</code> property via the <code>registry:set</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>image-repo<span class="w"> </span>my-awesome-prefix/node-js-app
 </code></pre></div>
@@ -2664,7 +2664,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># per-app</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
 </code></pre></div>
-<h3 id="pushing-images-on-build">Pushing images on build</h3>
+<h3 id="pushing-images-on-build">Pushing images on build<a class="headerlink" href="#pushing-images-on-build" title="Permanent link">&para;</a></h3>
 <p>To push the image on release, set the <code>push-on-release</code> property to <code>true</code> via the <code>registry:set</code> command. The default value for this property is <code>false</code>. Setting the property to <code>true</code> will result in the image being tagged with an ID that is incremented with every release. This tag will be what is used for running app code.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>

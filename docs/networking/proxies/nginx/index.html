@@ -2963,7 +2963,7 @@
   
 
 
-<h1 id="nginx-proxy">Nginx Proxy</h1>
+<h1 id="nginx-proxy">Nginx Proxy<a class="headerlink" href="#nginx-proxy" title="Permanent link">&para;</a></h1>
 <p>Dokku uses nginx as its server for routing requests to specific applications. By default, access and error logs are written for each app to <code>/var/log/nginx/${APP}-access.log</code> and <code>/var/log/nginx/${APP}-error.log</code> respectively</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nginx:access-logs &lt;app&gt; [-t]             # Show the nginx access logs for an application (-t follows)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>nginx:error-logs &lt;app&gt; [-t]              # Show the nginx error logs for an application (-t follows)
@@ -2974,19 +2974,19 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>nginx:stop                               # Stops the nginx server
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>nginx:validate-config [&lt;app&gt;] [--clean]  # Validates and optionally cleans up invalid nginx configurations
 </code></pre></div>
-<h2 id="usage">Usage</h2>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>As using multiple proxy plugins on a single Dokku installation can lead to issues routing requests to apps, doing so should be avoided.</p>
 </div>
-<h3 id="request-proxying">Request Proxying</h3>
+<h3 id="request-proxying">Request Proxying<a class="headerlink" href="#request-proxying" title="Permanent link">&para;</a></h3>
 <p>By default, the <code>web</code> process is the only process proxied by the nginx proxy implementation. Proxying to other process types may be handled by a custom <code>nginx.conf.sigil</code> file, as generally described <a href="./#customizing-the-nginx-configuration">below</a></p>
 <p>Nginx will proxy the requests in a <a href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">round-robin balancing fashion</a> to the different deployed (scaled) containers running the <code>web</code> proctype. This way, the host's resources can be fully leveraged for single-threaded applications (e.g. <code>dokku ps:scale node-js-app web=4</code> on a 4-core machine).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Due to how the plugin is implemented, if an app successfully starts up <code>web</code> containers but fails to deploy some other containers, nginx may eventually stop routing requests. Users should revert their code in these cases, or manually trigger <code>dokku proxy:build-config $APP</code> in order to ensure requests route to the new web containers.</p>
 </div>
-<h3 id="starting-nginx">Starting nginx</h3>
+<h3 id="starting-nginx">Starting nginx<a class="headerlink" href="#starting-nginx" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.28.0</p>
@@ -2994,7 +2994,7 @@
 <p>The nginx server can be started via <code>nginx:start</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>nginx:start
 </code></pre></div>
-<h3 id="stopping-nginx">Stopping nginx</h3>
+<h3 id="stopping-nginx">Stopping nginx<a class="headerlink" href="#stopping-nginx" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.28.0</p>
@@ -3002,7 +3002,7 @@
 <p>The nginx server can be stopped via <code>nginx:stop</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>nginx:stop
 </code></pre></div>
-<h3 id="binding-to-specific-addresses">Binding to specific addresses</h3>
+<h3 id="binding-to-specific-addresses">Binding to specific addresses<a class="headerlink" href="#binding-to-specific-addresses" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.19.2</p>
@@ -3024,7 +3024,7 @@
 <p>Validation is not performed on either value.</p>
 </div>
 <p>Users with apps that contain a custom <code>nginx.conf.sigil</code> file will need to modify the files to respect the new <code>NGINX_BIND_ADDRESS_IPV4</code> and <code>NGINX_BIND_ADDRESS_IPV6</code> variables.</p>
-<h3 id="hsts-header">HSTS Header</h3>
+<h3 id="hsts-header">HSTS Header<a class="headerlink" href="#hsts-header" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0</p>
@@ -3045,7 +3045,7 @@
 <li><code>hsts-preload</code> (type: boolean, default: <code>false</code>): Tells most major web browsers to include the domain in their HSTS preload lists.</li>
 </ul>
 <p>Beware that if you enable the header and a subsequent deploy of your application results in an HTTP deploy (for whatever reason), the way the header works means that a browser will not attempt to request the HTTP version of your site if the HTTPS version fails until the max-age is reached.</p>
-<h4 id="globally-disabling-the-hsts-header">Globally disabling the HSTS Header</h4>
+<h4 id="globally-disabling-the-hsts-header">Globally disabling the HSTS Header<a class="headerlink" href="#globally-disabling-the-hsts-header" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
@@ -3056,7 +3056,7 @@
 <p>Once the HSTS setting is disabled globally, it can be re-enabled on a per-app basis by setting the <code>hsts</code> property as normal.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>hsts<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<h3 id="checking-access-logs">Checking access logs</h3>
+<h3 id="checking-access-logs">Checking access logs<a class="headerlink" href="#checking-access-logs" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
@@ -3067,14 +3067,14 @@
 <p>You may also follow the logs by specifying the <code>-t</code> flag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>nginx:access-logs<span class="w"> </span>node-js-app<span class="w"> </span>-t
 </code></pre></div>
-<h3 id="checking-error-logs">Checking error logs</h3>
+<h3 id="checking-error-logs">Checking error logs<a class="headerlink" href="#checking-error-logs" title="Permanent link">&para;</a></h3>
 <p>You may check nginx error logs via the <code>nginx:error-logs</code> command. This assumes that app error logs are being stored in <code>/var/log/nginx/$APP-error.log</code>, as is the default in the generated <code>nginx.conf</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>nginx:error-logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>You may also follow the logs by specifying the <code>-t</code> flag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>nginx:error-logs<span class="w"> </span>node-js-app<span class="w"> </span>-t
 </code></pre></div>
-<h3 id="changing-log-path">Changing log path</h3>
+<h3 id="changing-log-path">Changing log path<a class="headerlink" href="#changing-log-path" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.1</p>
@@ -3097,7 +3097,7 @@
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>error-log-path
 </code></pre></div>
 <p>In all cases, the nginx config must be regenerated after setting the above values.</p>
-<h3 id="changing-log-format">Changing log format</h3>
+<h3 id="changing-log-format">Changing log format<a class="headerlink" href="#changing-log-format" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.22.0</p>
@@ -3131,7 +3131,7 @@
 <p>Finally, a proxy rebuild will change the format as desired.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>node-js-app
 </code></pre></div>
-<h3 id="specifying-a-read-timeout">Specifying a read timeout</h3>
+<h3 id="specifying-a-read-timeout">Specifying a read timeout<a class="headerlink" href="#specifying-a-read-timeout" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.21.0</p>
@@ -3148,7 +3148,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>proxy-read-timeout
 </code></pre></div>
 <p>In all cases, the nginx config must be regenerated after setting the above value.</p>
-<h3 id="specifying-a-custom-client_max_body_size">Specifying a custom client_max_body_size</h3>
+<h3 id="specifying-a-custom-client_max_body_size">Specifying a custom client_max_body_size<a class="headerlink" href="#specifying-a-custom-client_max_body_size" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.23.0</p>
@@ -3166,11 +3166,11 @@
 </code></pre></div>
 <p>In all cases, the nginx config must be regenerated after setting the above value.</p>
 <p>Changing this value when using the PHP buildpack (or any other buildpack that uses an intermediary server) will require changing the value in the server config shipped with that buildpack. Consult your buildpack documentation for further details.</p>
-<h3 id="showing-the-nginx-config">Showing the nginx config</h3>
+<h3 id="showing-the-nginx-config">Showing the nginx config<a class="headerlink" href="#showing-the-nginx-config" title="Permanent link">&para;</a></h3>
 <p>For debugging purposes, it may be useful to show the nginx config. This can be achieved via the <code>nginx:show-config</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>nginx:show-config<span class="w"> </span>node-js-app
 </code></pre></div>
-<h3 id="validating-nginx-configs">Validating nginx configs</h3>
+<h3 id="validating-nginx-configs">Validating nginx configs<a class="headerlink" href="#validating-nginx-configs" title="Permanent link">&para;</a></h3>
 <p>It may be desired to validate an nginx config outside of the deployment process. To do so, run the <code>nginx:validate-config</code> command. With no arguments, this will validate all app nginx configs, one at a time. A minimal wrapper nginx config is generated for each app's nginx config, upon which <code>nginx -t</code> will be run.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>nginx:validate-config
 </code></pre></div>
@@ -3185,7 +3185,7 @@
 <p>The <code>--clean</code> flag may also be specified for a given app:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>nginx:validate-config<span class="w"> </span>node-js-app<span class="w"> </span>--clean
 </code></pre></div>
-<h3 id="customizing-the-nginx-configuration">Customizing the nginx configuration</h3>
+<h3 id="customizing-the-nginx-configuration">Customizing the nginx configuration<a class="headerlink" href="#customizing-the-nginx-configuration" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
@@ -3205,7 +3205,7 @@
 <p class="admonition-title">Info</p>
 <p>The <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default template</a> may change with new releases of Dokku. Please refer to the appropriate template file version for your Dokku version, and make sure to look out for changes when you upgrade.</p>
 </div>
-<h4 id="disabling-custom-nginx-config">Disabling custom nginx config</h4>
+<h4 id="disabling-custom-nginx-config">Disabling custom nginx config<a class="headerlink" href="#disabling-custom-nginx-config" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Changing this value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
@@ -3218,7 +3218,7 @@
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-custom-config<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>Unsetting this value is the same as enabling custom nginx config usage.</p>
-<h4 id="available-template-variables">Available template variables</h4>
+<h4 id="available-template-variables">Available template variables<a class="headerlink" href="#available-template-variables" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>{{ .APP }}                          Application name
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>{{ .APP_SSL_PATH }}                 Path to SSL certificate and key
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>{{ .DOKKU_ROOT }}                   Global Dokku root directory (ex: app dir would be `{{ .DOKKU_ROOT }}/{{ .APP }}`)
@@ -3236,7 +3236,7 @@
 <p class="admonition-title">Note</p>
 <p>Application environment variables are available for use in custom templates. To do so, use the form of <code>{{ var "FOO" }}</code> to access a variable named <code>FOO</code>.</p>
 </div>
-<h4 id="customizing-via-configuration-files-included-by-the-default-templates">Customizing via configuration files included by the default templates</h4>
+<h4 id="customizing-via-configuration-files-included-by-the-default-templates">Customizing via configuration files included by the default templates<a class="headerlink" href="#customizing-via-configuration-files-included-by-the-default-templates" title="Permanent link">&para;</a></h4>
 <p>The default nginx.conf template will include everything from your apps <code>nginx.conf.d/</code> subdirectory in the main <code>server {}</code> block (see above):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>include {{ .DOKKU_ROOT }}/{{ .APP }}/nginx.conf.d/*.conf;
 </code></pre></div>
@@ -3258,7 +3258,7 @@
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>}
 </code></pre></div>
 <p>Please adjust the <code>Procfile</code> and <code>nginx.conf</code> file as appropriate.</p>
-<h3 id="custom-error-pages">Custom Error Pages</h3>
+<h3 id="custom-error-pages">Custom Error Pages<a class="headerlink" href="#custom-error-pages" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku provides custom error pages for the following three categories of errors:</p>
 <ul>
 <li>4xx: For all non-404 errors with a 4xx response code.</li>
@@ -3266,7 +3266,7 @@
 <li>5xx: For all 5xx error responses</li>
 </ul>
 <p>These are provided as an alternative to the generic Nginx error page, are shared for <em>all</em> applications, and their contents are located on disk at <code>/var/lib/dokku/data/nginx-vhosts/dokku-errors</code>. To customize them for a specific app, create a custom <code>nginx.conf.sigil</code> as described above and change the paths to point elsewhere.</p>
-<h3 id="default-site">Default site</h3>
+<h3 id="default-site">Default site<a class="headerlink" href="#default-site" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku will route any received request with an unknown HOST header value to the lexicographically first site in the nginx config stack. This means that accessing the dokku server via its IP address or a bogus domain name may return a seemingly random website.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3304,22 +3304,22 @@
 <p>This will catch all unknown HOST header values and close the connection without responding. You can replace the <code>return 444;</code> with <code>return 410;</code> which will cause nginx to respond with an error page.</p>
 <p>The configuration file must be loaded before <code>/etc/nginx/conf.d/dokku.conf</code>, so it can not be arranged as a vhost in <code>/etc/nginx/sites-enabled</code> that is only processed afterwards.</p>
 <p>Alternatively, you may push an app to your Dokku host with a name like "00-default". As long as it lists first in <code>ls /home/dokku/*/nginx.conf | head</code>, it will be used as the default nginx vhost.</p>
-<h2 id="other">Other</h2>
-<h3 id="domains-plugin">Domains plugin</h3>
+<h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h2>
+<h3 id="domains-plugin">Domains plugin<a class="headerlink" href="#domains-plugin" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../configuration/domains/">domain configuration documentation</a> for more information on how to configure domains for your app.</p>
-<h3 id="customizing-hostnames">Customizing hostnames</h3>
+<h3 id="customizing-hostnames">Customizing hostnames<a class="headerlink" href="#customizing-hostnames" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../configuration/domains/#customizing-hostnames">customizing hostnames documentation</a> for more information on how to configure domains for your app.</p>
-<h3 id="disabling-vhosts">Disabling VHOSTS</h3>
+<h3 id="disabling-vhosts">Disabling VHOSTS<a class="headerlink" href="#disabling-vhosts" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../configuration/domains/#disabling-vhosts">disabling vhosts documentation</a> for more information on how to disable domain usage for your app.</p>
-<h3 id="running-behind-a-load-balancer">Running behind a load balancer</h3>
+<h3 id="running-behind-a-load-balancer">Running behind a load balancer<a class="headerlink" href="#running-behind-a-load-balancer" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../configuration/ssl/#running-behind-a-load-balancer">load balancer documentation</a> for more information on how to configure your nginx config for running behind a network load balancer.</p>
-<h3 id="ssl-configuration">SSL Configuration</h3>
+<h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../configuration/ssl/">ssl documentation</a> for more information on how to configure SSL certificates for your application.</p>
-<h3 id="disabling-nginx">Disabling Nginx</h3>
+<h3 id="disabling-nginx">Disabling Nginx<a class="headerlink" href="#disabling-nginx" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../proxy-management/">proxy documentation</a> for more information on how to disable nginx as the proxy implementation for your app.</p>
-<h3 id="managing-proxy-port-mappings">Managing Proxy Port mappings</h3>
+<h3 id="managing-proxy-port-mappings">Managing Proxy Port mappings<a class="headerlink" href="#managing-proxy-port-mappings" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../proxy-management/#proxy-port-mapping">proxy documentation</a> for more information on how to manage ports proxied for your app.</p>
-<h3 id="regenerating-nginx-config">Regenerating nginx config</h3>
+<h3 id="regenerating-nginx-config">Regenerating nginx config<a class="headerlink" href="#regenerating-nginx-config" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../proxy-management/#regenerating-proxy-config">proxy documentation</a> for more information on how to rebuild the nginx proxy configuration for your app.</p>
 
 

@@ -2729,7 +2729,7 @@
   
 
 
-<h1 id="network-management">Network Management</h1>
+<h1 id="network-management">Network Management<a class="headerlink" href="#network-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.11.0, Enhanced in 0.20.0</p>
@@ -2745,8 +2745,8 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>network:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)        # Set or clear a network property for an app
 </code></pre></div>
 <p>The Network plugin allows developers to abstract the concept of container network management, allowing developers to both change what networks a given container is attached to as well as rebuild the configuration on the fly.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-networks">Listing networks</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="listing-networks">Listing networks<a class="headerlink" href="#listing-networks" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
@@ -2784,7 +2784,7 @@
 </div>
 </div>
 </div>
-<h3 id="creating-a-network">Creating a network</h3>
+<h3 id="creating-a-network">Creating a network<a class="headerlink" href="#creating-a-network" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
@@ -2803,7 +2803,7 @@
 </div>
 </div>
 <p>Specifying other additional flags or other types of networks can be created directly via the <code>docker</code> command.</p>
-<h3 id="destroying-a-network">Destroying a network</h3>
+<h3 id="destroying-a-network">Destroying a network<a class="headerlink" href="#destroying-a-network" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
@@ -2825,7 +2825,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt;<span class="w"> </span>Destroying<span class="w"> </span>network<span class="w"> </span><span class="nb">test</span>
 </code></pre></div></p>
-<h3 id="checking-if-a-network-exists">Checking if a network exists</h3>
+<h3 id="checking-if-a-network-exists">Checking if a network exists<a class="headerlink" href="#checking-if-a-network-exists" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
@@ -2844,7 +2844,7 @@
 </div>
 </div>
 <p>The <code>network:exists</code> command will return non-zero if the network does not exist, and zero if it does.</p>
-<h3 id="checking-network-info">Checking network info</h3>
+<h3 id="checking-network-info">Checking network info<a class="headerlink" href="#checking-network-info" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
@@ -2862,7 +2862,7 @@
 </div>
 </div>
 </div>
-<h3 id="routing-an-app-to-a-known-ipport-combination">Routing an app to a known ip:port combination</h3>
+<h3 id="routing-an-app-to-a-known-ipport-combination">Routing an app to a known ip:port combination<a class="headerlink" href="#routing-an-app-to-a-known-ipport-combination" title="Permanent link">&para;</a></h3>
 <p>In some cases, it may be necessary to route an app to an existing <code>$IP:$PORT</code> combination. This is particularly the case for internal admin tools or services that aren't run by Dokku but have a web ui that would benefit from being exposed by Dokku. This can be done by using a proxy application and routing requests through that.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># for a service listening on:</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># - ip address: 127.0.0.1</span>
@@ -2887,7 +2887,7 @@
 <a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>dokku<span class="w"> </span>git:from-image<span class="w"> </span>local-app<span class="w"> </span>dokku/service-proxy:latest
 </code></pre></div>
 <p>Only a single <code>$IP:$PORT</code> combination can be routed to for a given app, and that <code>$IP:$PORT</code> combination <em>must</em> be accessible to the service proxy on initial deploy, or the service proxy won't start.</p>
-<h3 id="attaching-an-app-to-a-network">Attaching an app to a network</h3>
+<h3 id="attaching-an-app-to-a-network">Attaching an app to a network<a class="headerlink" href="#attaching-an-app-to-a-network" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
@@ -2917,7 +2917,7 @@
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network
 </code></pre></div>
-<h4 id="network-aliases">Network Aliases</h4>
+<h4 id="network-aliases">Network Aliases<a class="headerlink" href="#network-aliases" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This feature is only available when an app has been attached to a network other than the default <code>bridge</code> network.</p>
@@ -2929,7 +2929,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>http://node-js-app.web:5000
 </code></pre></div>
 <p>Dockerfile-based applications may listen on other ports. For more information on how ports are specified for applications, please refer to the <a href="../port-management/">port management documentation</a>.</p>
-<h4 id="specifying-a-custom-tld">Specifying a custom TLD</h4>
+<h4 id="specifying-a-custom-tld">Specifying a custom TLD<a class="headerlink" href="#specifying-a-custom-tld" title="Permanent link">&para;</a></h4>
 <p>When attaching applications to networks, a custom TLD can be specified via the <code>network:set</code> command. This TLD is suffixed to the network alias for the application/process-type combination for <em>all</em> networks to which the application is attached, and cannot be customized per network. The default value is an empty string.</p>
 <p>To specify a TLD of <code>svc.cluster.local</code> for your application, run the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># replace node-js-app with your application name</span>
@@ -2948,7 +2948,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld
 </code></pre></div>
-<h4 id="when-to-attach-containers-to-a-network">When to attach containers to a network</h4>
+<h4 id="when-to-attach-containers-to-a-network">When to attach containers to a network<a class="headerlink" href="#when-to-attach-containers-to-a-network" title="Permanent link">&para;</a></h4>
 <p>Containers can be attached to a network for a variety of reasons:</p>
 <ul>
 <li>A background process in one app needs to communicate to a webservice in another app</li>
@@ -2996,7 +2996,7 @@
 <p class="admonition-title">Warning</p>
 <p>If the attachment fails during the <code>running</code> container state, this may result in your application failing to respond to proxied requests once older containers are removed.</p>
 </div>
-<h3 id="rebuilding-network-settings">Rebuilding network settings</h3>
+<h3 id="rebuilding-network-settings">Rebuilding network settings<a class="headerlink" href="#rebuilding-network-settings" title="Permanent link">&para;</a></h3>
 <p>There are cases where you may need to rebuild the network configuration for an app, such as on app boot or container restart. In these cases, you can use the <code>network:rebuild</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>network:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -3004,7 +3004,7 @@
 <p class="admonition-title">Info</p>
 <p>This command will exit a non-zero number that depends on the number of containers for which configuration could not be built</p>
 </div>
-<h3 id="rebuilding-all-network-settings">Rebuilding all network settings</h3>
+<h3 id="rebuilding-all-network-settings">Rebuilding all network settings<a class="headerlink" href="#rebuilding-all-network-settings" title="Permanent link">&para;</a></h3>
 <p>In some cases, a docker upgrade may reset container IPs or Ports. In both cases, you can quickly rewrite those files by using the <code>network:rebuildall</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>network:rebuildall
 </code></pre></div>
@@ -3012,7 +3012,7 @@
 <p class="admonition-title">Info</p>
 <p>This command will exit a non-zero number that depends on the number of containers for which configuration could not be built</p>
 </div>
-<h3 id="container-network-interface-binding">Container network interface binding</h3>
+<h3 id="container-network-interface-binding">Container network interface binding<a class="headerlink" href="#container-network-interface-binding" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>This functionality does not control the <code>--network</code> docker flag. Please use the <a href="../../advanced-usage/docker-options/">docker-options plugin</a> to manage this flag.</p>
@@ -3069,7 +3069,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces
 </code></pre></div>
-<h3 id="displaying-network-reports-for-an-app">Displaying network reports for an app</h3>
+<h3 id="displaying-network-reports-for-an-app">Displaying network reports for an app<a class="headerlink" href="#displaying-network-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's network status using the <code>network:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">

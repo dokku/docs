@@ -2643,7 +2643,7 @@
   
 
 
-<h1 id="resource-management">Resource Management</h1>
+<h1 id="resource-management">Resource Management<a class="headerlink" href="#resource-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.15.0</p>
@@ -2655,7 +2655,7 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>resource:reserve-clear [--process-type &lt;process-type&gt;] &lt;app&gt;               # Reserve resources for a given app/process-type combination
 </code></pre></div>
 <p>The resource plugin is meant to allow users to limit or reserve resources for a given app/process-type combination.</p>
-<h2 id="usage">Usage</h2>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>By default, Dokku allows unlimited resource access to apps deployed on a server. In some cases, it may be desirable to limit this on a per-app or per-process-type basis. The <code>resource</code> plugin allows management of both resource "limits" and resource "reservations", where each resource request type has specific meaning to the scheduler in use for a given app.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2673,7 +2673,7 @@
 </ul>
 <p>See the <a href="../../deployment/schedulers/docker-local/#supported-resource-management-properties">Supported Resource Management Properties</a> section of the docker local scheduler documentation for more information on how each resource limit maps to Docker.</p>
 <p>Resource limits and reservations are applied only during the <code>run</code> and <code>deploy</code> phases of an application, and will not impact the <code>build</code> phase of an application.</p>
-<h3 id="resource-limits">Resource Limits</h3>
+<h3 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h3>
 <p>When specified and supported, a resource limit will ensure that your app does not go <em>over</em> the specified value. If this occurs, the underlying scheduler may either cap resource utilization, or it may decide to terminate and reschedule your process.</p>
 <p>Resource limits may be set via the <code>resource:limit</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
@@ -2733,7 +2733,7 @@
 </div>
 </div>
 </div>
-<h4 id="displaying-resource-limits">Displaying Resource Limits</h4>
+<h4 id="displaying-resource-limits">Displaying Resource Limits<a class="headerlink" href="#displaying-resource-limits" title="Permanent link">&para;</a></h4>
 <p>Running the <code>resource:limit</code> command without any flags will display the currently configured default app limits.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
@@ -2774,7 +2774,7 @@
 </div>
 </div>
 </div>
-<h4 id="clearing-resource-limits">Clearing Resource Limits</h4>
+<h4 id="clearing-resource-limits">Clearing Resource Limits<a class="headerlink" href="#clearing-resource-limits" title="Permanent link">&para;</a></h4>
 <p>In cases where the values are incorrect - or there is no desire to limit resources - resource limits may be cleared using the <code>resource:limit-clear</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
@@ -2801,7 +2801,7 @@
 </div>
 </div>
 </div>
-<h3 id="resource-reservations">Resource Reservations</h3>
+<h3 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h3>
 <p>When specified and supported, a resource reservation will ensure that your server has <em>at least</em> the specified resources before placing a given app's process. If there a resource exhaustion, future rebuilds and deploys may fail.</p>
 <p>Resource reservations may be set via the <code>resource:reserve</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
@@ -2861,7 +2861,7 @@
 </div>
 </div>
 </div>
-<h4 id="displaying-resource-reservations">Displaying Resource Reservations</h4>
+<h4 id="displaying-resource-reservations">Displaying Resource Reservations<a class="headerlink" href="#displaying-resource-reservations" title="Permanent link">&para;</a></h4>
 <p>Running the <code>resource:reserve</code> command without any flags will display the currently configured default app reservations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Shell</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
@@ -2902,7 +2902,7 @@
 </div>
 </div>
 </div>
-<h4 id="clearing-resource-reservations">Clearing Resource Reservations</h4>
+<h4 id="clearing-resource-reservations">Clearing Resource Reservations<a class="headerlink" href="#clearing-resource-reservations" title="Permanent link">&para;</a></h4>
 <p>In cases where the values are incorrect - or there is no desire to reserve resources - resource reservations may be cleared using the <code>resource:reserve-clear</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Shell</label><label for="__tabbed_15_2">Output</label></div>
 <div class="tabbed-content">
@@ -2929,7 +2929,7 @@
 </div>
 </div>
 </div>
-<h3 id="displaying-resource-reports-for-an-app">Displaying resource reports for an app</h3>
+<h3 id="displaying-resource-reports-for-an-app">Displaying resource reports for an app<a class="headerlink" href="#displaying-resource-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's resource status using the <code>resource:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Shell</label><label for="__tabbed_17_2">Output</label></div>
 <div class="tabbed-content">

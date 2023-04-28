@@ -2512,9 +2512,9 @@
   
 
 
-<h1 id="upgrading">Upgrading</h1>
+<h1 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h1>
 <p>If your version of Dokku is pre 0.3.0 (check with <code>dokku version</code>), we recommend <a href="../installation/">a fresh install</a> on a new server.</p>
-<h2 id="security-updates">Security Updates</h2>
+<h2 id="security-updates">Security Updates<a class="headerlink" href="#security-updates" title="Permanent link">&para;</a></h2>
 <p>For any security related updates, please follow our <a href="https://twitter.com/dokku">Twitter account</a>. As Dokku does not run any daemons, the security risk introduced by our software is minimal.</p>
 <p>Your operating system may occasionally provide security updates. We recommend setting unattended upgrades for your operating system. Here are some helpful links:</p>
 <ul>
@@ -2523,7 +2523,7 @@
 <li><a href="https://help.ubuntu.com/community/AutomaticSecurityUpdates">Ubuntu Unattended Upgrades</a></li>
 </ul>
 <p>Docker releases updates periodically to their engine. We recommend reading their release notes and upgrading accordingly. Please see the <a href="https://docs.docker.com/">Docker documentation</a> for more details.</p>
-<h2 id="migration-guides">Migration Guides</h2>
+<h2 id="migration-guides">Migration Guides<a class="headerlink" href="#migration-guides" title="Permanent link">&para;</a></h2>
 <p>Before upgrading, check the migration guides to get comfortable with new features and prepare your deployment to be upgraded.</p>
 <ul>
 <li><a href="../../appendices/0.30.0-migration-guide/">Upgrading to 0.30</a></li>
@@ -2544,7 +2544,7 @@
 <li><a href="../../appendices/0.6.0-migration-guide/">Upgrading to 0.6</a></li>
 <li><a href="../../appendices/0.5.0-migration-guide/">Upgrading to 0.5</a></li>
 </ul>
-<h2 id="before-upgrading">Before upgrading</h2>
+<h2 id="before-upgrading">Before upgrading<a class="headerlink" href="#before-upgrading" title="Permanent link">&para;</a></h2>
 <p>If you'll be updating docker or the herokuish package simultaneously, it's recommended
 that you stop all applications before upgrading and rebuild afterwards. This is not
 required if the upgrade only impacts the <code>dokku</code> package.</p>
@@ -2569,12 +2569,12 @@ required if the upgrade only impacts the <code>dokku</code> package.</p>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># for versions versions older than 0.8.1, use</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>dokku<span class="w"> </span>--quiet<span class="w"> </span>apps<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-L1<span class="w"> </span>dokku<span class="w"> </span>ps:stop
 </code></pre></div>
-<h2 id="after-upgrading">After upgrading</h2>
+<h2 id="after-upgrading">After upgrading<a class="headerlink" href="#after-upgrading" title="Permanent link">&para;</a></h2>
 <p>After upgrading, you should rebuild the applications to take advantage of any
 new buildpacks that were released:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all
 </code></pre></div>
-<h2 id="upgrading-using-dokku-update">Upgrading using <code>dokku-update</code></h2>
+<h2 id="upgrading-using-dokku-update">Upgrading using <code>dokku-update</code><a class="headerlink" href="#upgrading-using-dokku-update" title="Permanent link">&para;</a></h2>
 <p>We provide a helpful binary called <code>dokku-update</code>. This is a recommended package that:</p>
 <ul>
 <li>Can be installed separately, so upgrading Dokku will not affect the running of this package.</li>
@@ -2583,7 +2583,7 @@ new buildpacks that were released:</p>
 </ul>
 <p>This binary is available on Debian and RPM-based systems from our package repositories under the name <code>dokku-update</code>. When installing from source,
 this is available from a separate Github repository at <a href="https://github.com/dokku/dokku-update">dokku/dokku-update</a>.</p>
-<h2 id="upgrading-using-apt">Upgrading using <code>apt</code></h2>
+<h2 id="upgrading-using-apt">Upgrading using <code>apt</code><a class="headerlink" href="#upgrading-using-apt" title="Permanent link">&para;</a></h2>
 <p>If Dokku was installed in a Debian or Ubuntu system, via <code>apt-get install dokku</code> or <code>bootstrap.sh</code>, you can upgrade with <code>apt-get</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># update your local apt cache</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-qq
@@ -2594,7 +2594,7 @@ this is available from a separate Github repository at <a href="https://github.c
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># or just upgrade every package:</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade
 </code></pre></div>
-<h2 id="upgrading-from-source">Upgrading from source</h2>
+<h2 id="upgrading-from-source">Upgrading from source<a class="headerlink" href="#upgrading-from-source" title="Permanent link">&para;</a></h2>
 <p>If you installed Dokku from source (less common), upgrade with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/dokku
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>pull<span class="w"> </span>--tags<span class="w"> </span>origin<span class="w"> </span>master

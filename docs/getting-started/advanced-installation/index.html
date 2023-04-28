@@ -2609,8 +2609,8 @@
   
 
 
-<h1 id="advanced-installation">Advanced installation</h1>
-<h2 id="installing-via-other-methods">Installing via other methods</h2>
+<h1 id="advanced-installation">Advanced installation<a class="headerlink" href="#advanced-installation" title="Permanent link">&para;</a></h1>
+<h2 id="installing-via-other-methods">Installing via other methods<a class="headerlink" href="#installing-via-other-methods" title="Permanent link">&para;</a></h2>
 <p>For various reasons, certain hosting providers may have other steps that should be preferred to the above. If hosted on any of the following popular hosts, please follow the linked to instructions:</p>
 <ul>
 <li><a href="../install/digitalocean/">DigitalOcean Installation Notes</a></li>
@@ -2625,13 +2625,13 @@
 <li><a href="./">Advanced Install Customization</a></li>
 <li><a href="https://github.com/dokku/ansible-dokku">Automated deployment via ansible</a></li>
 </ul>
-<h2 id="installing-from-source">Installing from Source</h2>
+<h2 id="installing-from-source">Installing from Source<a class="headerlink" href="#installing-from-source" title="Permanent link">&para;</a></h2>
 <p>You can always install Dokku straight from the latest - potentially unstable - <code>master</code> branch via the following Bash command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># using a branch results in installing from source</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>https://dokku.com/install/master/bootstrap.sh<span class="p">;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
 </code></pre></div>
-<h2 id="development">Development</h2>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
 <p>If you plan on developing Dokku, the easiest way to install from your own repository is cloning the repository and calling the install script. Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/dokku.git
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
@@ -2640,26 +2640,26 @@
 <p>The <code>Makefile</code> allows source URLs to be overridden to include customizations from your own repositories. The <code>DOCKER_URL</code>, <code>PLUGN_URL</code>, <code>SSHCOMMAND_URL</code> and <code>STACK_URL</code> environment variables may be set to override the defaults (see the <code>Makefile</code> for how these apply). Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span><span class="nv">SSHCOMMAND_URL</span><span class="o">=</span>https://raw.githubusercontent.com/yourusername/sshcommand/master/sshcommand<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
-<h2 id="bootstrap-a-server-from-your-own-repository">Bootstrap a server from your own repository</h2>
+<h2 id="bootstrap-a-server-from-your-own-repository">Bootstrap a server from your own repository<a class="headerlink" href="#bootstrap-a-server-from-your-own-repository" title="Permanent link">&para;</a></h2>
 <p>The bootstrap script allows the Dokku repository URL to be overridden to bootstrap a host from your own clone of Dokku using the <code>DOKKU_REPO</code> environment variable. Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>wget<span class="w"> </span>https://dokku.com/install/master/bootstrap.sh<span class="p">;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>bootstrap.sh
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_REPO</span><span class="o">=</span>https://github.com/yourusername/dokku.git<span class="w"> </span><span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master<span class="w"> </span>./bootstrap.sh
 </code></pre></div>
-<h2 id="custom-herokuish-build">Custom Herokuish build</h2>
+<h2 id="custom-herokuish-build">Custom Herokuish build<a class="headerlink" href="#custom-herokuish-build" title="Permanent link">&para;</a></h2>
 <p>Dokku ships with a pre-built version of version of the <a href="https://github.com/gliderlabs/herokuish">Herokuish</a> component by default. If you want to build your own version you can specify that with an environment variable.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku.git
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">STACK_URL</span><span class="o">=</span>https://github.com/gliderlabs/herokuish.git<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
-<h2 id="skipping-herokuish-installation">Skipping Herokuish installation</h2>
+<h2 id="skipping-herokuish-installation">Skipping Herokuish installation<a class="headerlink" href="#skipping-herokuish-installation" title="Permanent link">&para;</a></h2>
 <p>The Herokuish package is recommended but not required if not using Heroku buildpacks for deployment. Debian-based OS users can run the bootstrap installer via <code>sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " bash bootstrap.sh</code> to skip the dependency. Please note that this will <em>also</em> skip installation of other recommended dependencies.</p>
-<h2 id="configuring-an-unattended-installation">Configuring an unattended installation</h2>
+<h2 id="configuring-an-unattended-installation">Configuring an unattended installation<a class="headerlink" href="#configuring-an-unattended-installation" title="Permanent link">&para;</a></h2>
 <p>Once Dokku is installed, you'll want to configure the virtualhost setup as well as the push user. If you do not, your installation will be considered incomplete and you will not be able to deploy applications.</p>
 <p>For Debian, unattended installation is described <a href="../install/debian/">Debian installation guide</a>.</p>
 <p>Set up a domain using your preferred vendor and a wildcard domain pointing to the host running Dokku. You can manage this global domain using the <a href="../../configuration/domains/">domains plugin</a>.</p>
 <p>Follow the <a href="../../deployment/user-management/">user management documentation</a> in order to add SSH keys for users to Dokku, or to give other Unix accounts access to Dokku.</p>
-<h2 id="vms-with-less-than-1-gb-of-memory">VMs with less than 1 GB of memory</h2>
+<h2 id="vms-with-less-than-1-gb-of-memory">VMs with less than 1 GB of memory<a class="headerlink" href="#vms-with-less-than-1-gb-of-memory" title="Permanent link">&para;</a></h2>
 <p>Having less than 1 GB of system memory available for Dokku and its containers may result in unexpected errors, such as <code>! [remote rejected] master -&gt; master (pre-receive hook declined)</code> during installation of NPM dependencies (https://github.com/npm/npm/issues/3867).</p>
 <p>To work around this issue, it might suffice to augment the Linux swap file size to a maximum of twice the physical memory size.</p>
 <p>To resize the swap file of a 512 MB machine to 1 GB, follow these steps while in SSH within your machine:</p>

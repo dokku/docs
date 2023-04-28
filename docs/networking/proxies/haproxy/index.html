@@ -2713,7 +2713,7 @@
   
 
 
-<h1 id="haproxy-proxy">Haproxy Proxy</h1>
+<h1 id="haproxy-proxy">Haproxy Proxy<a class="headerlink" href="#haproxy-proxy" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.28.0</p>
@@ -2726,9 +2726,9 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>haproxy:start                              # Starts the haproxy server
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>haproxy:stop                               # Stops the haproxy server
 </code></pre></div>
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <p>Using the <code>caddy</code> plugin integration requires the <code>docker-compose-plugin</code> for Docker. See <a href="https://docs.docker.com/compose/install/">this document</a> from the Docker documentation for more information on the installation process for the <code>docker-compose-plugin</code>.</p>
-<h2 id="usage">Usage</h2>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>As using multiple proxy plugins on a single Dokku installation can lead to issues routing requests to apps, doing so should be avoided. As the default proxy implementation is nginx, users are encouraged to stop the nginx service before switching to Haproxy.</p>
@@ -2740,7 +2740,7 @@
 <li>Only <code>http:80</code> and <code>https:443</code> port mappings are supported at this time.</li>
 <li>Requests are routed as soon as the container is running and passing healthchecks.</li>
 </ul>
-<h3 id="switching-to-haproxy">Switching to Haproxy</h3>
+<h3 id="switching-to-haproxy">Switching to Haproxy<a class="headerlink" href="#switching-to-haproxy" title="Permanent link">&para;</a></h3>
 <p>To use the Haproxy plugin, use the <code>proxy:set</code> command for the app in question:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>haproxy
 </code></pre></div>
@@ -2748,24 +2748,24 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Any changes to domains or port mappings will also require either a deploy or rebuild.</p>
-<h3 id="starting-haproxy-container">Starting Haproxy container</h3>
+<h3 id="starting-haproxy-container">Starting Haproxy container<a class="headerlink" href="#starting-haproxy-container" title="Permanent link">&para;</a></h3>
 <p>Haproxy can be started via the <code>haproxy:start</code> command. This will start a Haproxy container via the <code>docker compose up</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>haproxy:start
 </code></pre></div>
-<h3 id="stopping-the-haproxy-container">Stopping the Haproxy container</h3>
+<h3 id="stopping-the-haproxy-container">Stopping the Haproxy container<a class="headerlink" href="#stopping-the-haproxy-container" title="Permanent link">&para;</a></h3>
 <p>Haproxy may be stopped via the <code>haproxy:stop</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>haproxy:stop
 </code></pre></div>
 <p>The Haproxy container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
-<h3 id="showing-the-haproxy-compose-config">Showing the Haproxy compose config</h3>
+<h3 id="showing-the-haproxy-compose-config">Showing the Haproxy compose config<a class="headerlink" href="#showing-the-haproxy-compose-config" title="Permanent link">&para;</a></h3>
 <p>For debugging purposes, it may be useful to show the Haproxy compose config. This can be achieved via the <code>haproxy:show-config</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>haproxy:show-config
 </code></pre></div>
-<h3 id="customizing-the-haproxy-container-image">Customizing the Haproxy container image</h3>
+<h3 id="customizing-the-haproxy-container-image">Customizing the Haproxy container image<a class="headerlink" href="#customizing-the-haproxy-container-image" title="Permanent link">&para;</a></h3>
 <p>While the default Haproxy image is hardcoded, users may specify an alternative by setting the <code>image</code> property with the <code>--global</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>byjg/easy-haproxy:4.0.0
 </code></pre></div>
-<h4 id="checking-the-haproxy-containers-logs">Checking the Haproxy container's logs</h4>
+<h4 id="checking-the-haproxy-containers-logs">Checking the Haproxy container's logs<a class="headerlink" href="#checking-the-haproxy-containers-logs" title="Permanent link">&para;</a></h4>
 <p>It may be necessary to check the Haproxy container's logs to ensure that Haproxy is operating as expected. This can be performed with the <code>haproxy:logs</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>haproxy:logs
 </code></pre></div>
@@ -2777,24 +2777,24 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>haproxy:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the vector container, with an initial history of 10 log lines</p>
-<h3 id="changing-the-haproxy-log-level">Changing the Haproxy log level</h3>
+<h3 id="changing-the-haproxy-log-level">Changing the Haproxy log level<a class="headerlink" href="#changing-the-haproxy-log-level" title="Permanent link">&para;</a></h3>
 <p>Haproxy log output is set to <code>ERROR</code> by default. It may be changed by setting the <code>log-level</code> property with the <code>--global</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying,  the Haproxy container will need to be restarted.</p>
-<h3 id="ssl-configuration">SSL Configuration</h3>
+<h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>The haproxy plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
-<h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration</h4>
+<h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling, the Haproxy container will need to be restarted and apps will need to be rebuilt. All http requests will then be redirected to https.</p>
-<h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server</h4>
+<h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>After enabling, the Haproxy container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
-<h2 id="displaying-haproxy-reports-for-an-app">Displaying Haproxy reports for an app</h2>
+<h2 id="displaying-haproxy-reports-for-an-app">Displaying Haproxy reports for an app<a class="headerlink" href="#displaying-haproxy-reports-for-an-app" title="Permanent link">&para;</a></h2>
 <p>You can get a report about the app's Haproxy config using the <code>haproxy:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">

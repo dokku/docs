@@ -2525,8 +2525,8 @@
   
 
 
-<h1 id="0290-migration-guide">0.29.0 Migration Guide</h1>
-<h2 id="changes">Changes</h2>
+<h1 id="0290-migration-guide">0.29.0 Migration Guide<a class="headerlink" href="#0290-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The output of <code>run:detached</code> now uses the container name - eg. <code>node-js-app.run.1</code> - vs the container id.</li>
 <li>The ID of <code>cron</code> tasks is now base36-encoded instead of base64-encoded.</li>
@@ -2541,7 +2541,7 @@
 <li>The existing <code>pre-restore</code> hook has been renamed to <code>scheduler-pre-restore</code>. There is a new <code>pre-restore</code> hook that is triggered within the <code>ps:restore</code> command prior to restoring any apps.</li>
 <li>Nginx init commands are now performed via systemctl on Ubuntu systems when <code>/usr/bin/systemctl</code> is available.</li>
 </ul>
-<h2 id="removals">Removals</h2>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The <code>DOKKU_WAIT_TO_RETIRE</code> environment variable has been migrated to a <code>checks</code> property named <code>wait-to-retire</code> and will be ignored if set as an environment variable.</li>
 <li>The <code>domains-setup</code> trigger has been removed. Initial app domains will now be automatically setup during app creation.</li>

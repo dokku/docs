@@ -2549,7 +2549,7 @@
   
 
 
-<h1 id="release-process">Release Process</h1>
+<h1 id="release-process">Release Process<a class="headerlink" href="#release-process" title="Permanent link">&para;</a></h1>
 <p>Dokku is released in intervals <em>at most</em> three weeks apart, though may be released much quicker.</p>
 <p>To propose a release, the following tasks need to be performed:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PACKAGECLOUD_TOKEN</span><span class="o">=</span>SOME_TOKEN
@@ -2561,10 +2561,10 @@
 <p>If you are a maintainer and need the PACKAGECLOUD_TOKEN in order to make a release, please contact @josegonzalez to get this information.</p>
 </div>
 <p>As well, the Arch Linux package description <em>must</em> be updated via <code>vagrant up build-arch</code> (needs to be done after the tag is pushed to GitHub, because it is based on that)</p>
-<h2 id="versioning">Versioning</h2>
+<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
 <p>Dokku follows semver standards. As we are not yet at a stable release, breaking changes will require <em>only</em> a minor release, while all other changes only require a patch release. Once we hit stable, breaking changes will require a major release.</p>
 <p>At the moment, tags need not be signed, though that may change in the future.</p>
-<h2 id="arch-linux-packages">Arch Linux Packages</h2>
+<h2 id="arch-linux-packages">Arch Linux Packages<a class="headerlink" href="#arch-linux-packages" title="Permanent link">&para;</a></h2>
 <p>Arch Linux packages are not really build, because all that is needed for an Arch User Repo (AUR) package is the description of how to build the package. To make this process as easy as possible there is a vagrant box called <code>build-arch</code> that updates the version of this build description (a file called <code>PKGBUILD</code>), then runs some helper scripts to fill all additional information and does test if the package could be build. Then only those changes need to be pushed to the AUR repo and an updated version of the package is ready for usage for our Arch Linux users. For detailed information see the section below.</p>
 <p>The workflow looks like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># having dokku-arch in ../dokku-arch</span>
@@ -2579,7 +2579,7 @@
 <p class="admonition-title">Info</p>
 <p>If you are a maintainer and need access to the AUR repositories in order to make a release, please contact @morrisjobke or @josegonzalez to get this co-maintainership.</p>
 </div>
-<h3 id="detailed-information-for-arch-linux-packages">Detailed information for Arch Linux packages</h3>
+<h3 id="detailed-information-for-arch-linux-packages">Detailed information for Arch Linux packages<a class="headerlink" href="#detailed-information-for-arch-linux-packages" title="Permanent link">&para;</a></h3>
 <p>All of the information to build the Arch Linux package is in the AUR git repository (see <a href="https://aur.archlinux.org/packages/dokku/">dokku AUR page</a>). The release of a AUR package only consists of pushing the package information into the AUR git repo. Then users could use that information to build the package on their machines.</p>
 <p>To update the package clone the repository and adjust the files in the repository. Then a helper script - <code>updpkgsums</code> - to update the SHA sum could  be called (check against the original SHA sum). Another helper script - <code>mksrcinfo</code> - needs to be called to update the meta information of the package in a file called <code>.SRCINFO</code>. The next step builds the package locally for verification - <code>makepkg</code>. As last step commit your changes and push the commit.</p>
 <ul>

@@ -2671,7 +2671,7 @@
   
 
 
-<h1 id="one-off-tasks">One-off Tasks</h1>
+<h1 id="one-off-tasks">One-off Tasks<a class="headerlink" href="#one-off-tasks" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>run [-e|--env KEY=VALUE] [--no-tty] &lt;app&gt; &lt;cmd&gt;              # Run a command in a new container using the current app image
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>run:detached [-e|-env KEY=VALUE] [--no-tty] &lt;app&gt; &lt;cmd&gt;      # Run a command in a new detached container using the current app image
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>run:list [--format json|stdout] [&lt;app&gt;]                      # List all run containers for an app
@@ -2679,8 +2679,8 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>run:stop &lt;app|--container CONTAINER&gt;                         # Stops all run containers for an app or a specified run container
 </code></pre></div>
 <p>Sometimes it is necessary to run a one-off command under an app. Dokku makes it easy to run a fresh container via the <code>run</code> command.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="running-a-one-off-command">Running a one-off command</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="running-a-one-off-command">Running a one-off command<a class="headerlink" href="#running-a-one-off-command" title="Permanent link">&para;</a></h3>
 <p>The <code>run</code> command can be used to run a one-off process for a specific command. This will start a new container and run the desired command within that container.  The container image will be the same container image as was used to start the currently deployed app.</p>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
@@ -2693,18 +2693,18 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>dokku<span class="w"> </span>run<span class="w"> </span>--env<span class="w"> </span><span class="s2">&quot;NODE_ENV=development&quot;</span><span class="w"> </span>--env<span class="w"> </span><span class="s2">&quot;PATH=/custom/path&quot;</span><span class="w"> </span>node-js-app<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>mytask
 </code></pre></div>
 <p>One off containers are removed at the end of process execution.</p>
-<h4 id="running-procfile-commands">Running Procfile commands</h4>
+<h4 id="running-procfile-commands">Running Procfile commands<a class="headerlink" href="#running-procfile-commands" title="Permanent link">&para;</a></h4>
 <p>The <code>run</code> command can also be used to run a command defined in the app <code>Procfile</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>console: bundle exec racksh
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># runs `bundle exec racksh` in the `/app` directory of the app `my-app`</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>run<span class="w"> </span>my-app<span class="w"> </span>console
 </code></pre></div>
-<h4 id="specifying-container-labels">Specifying container labels</h4>
+<h4 id="specifying-container-labels">Specifying container labels<a class="headerlink" href="#specifying-container-labels" title="Permanent link">&para;</a></h4>
 <p>Containers may have specific labels attached. In order to avoid issues with dokku internals, do not use any labels beginning with either <code>com.dokku</code> or <code>org.label-schema</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>--label<span class="o">=</span>com.example.test-label<span class="o">=</span>value<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 </code></pre></div>
-<h4 id="disabling-tty">Disabling TTY</h4>
+<h4 id="disabling-tty">Disabling TTY<a class="headerlink" href="#disabling-tty" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
@@ -2712,7 +2712,7 @@
 <p>One-off containers default to interactive mode where possible. To disable this behavior, specify the <code>--no-tty</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>run<span class="w"> </span>--no-tty<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 </code></pre></div>
-<h3 id="running-a-detached-container">Running a detached container</h3>
+<h3 id="running-a-detached-container">Running a detached container<a class="headerlink" href="#running-a-detached-container" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
@@ -2721,12 +2721,12 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>run:detached<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># returns the ID of the new container</span>
 </code></pre></div>
-<h3 id="displaying-one-off-container-logs">Displaying one-off container logs</h3>
+<h3 id="displaying-one-off-container-logs">Displaying one-off container logs<a class="headerlink" href="#displaying-one-off-container-logs" title="Permanent link">&para;</a></h3>
 <p>You can easily get logs of all one-off containers for an app using the <code>logs</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Logs are pulled via integration with the scheduler for the specified application via "live tailing". As such, logs from previously running deployments are usually not available. Users that desire to see logs from previous deployments for debugging purposes should persist those logs to external services. Please see Dokku's <a href="../../deployment/logs/#vector-logging-shipping">vector integration</a> for more information on how to persist logs across deployments to ship logs to another service or a third-party platform.</p>
-<h4 id="behavioral-modifiers">Behavioral modifiers</h4>
+<h4 id="behavioral-modifiers">Behavioral modifiers<a class="headerlink" href="#behavioral-modifiers" title="Permanent link">&para;</a></h4>
 <p>Dokku also supports certain command-line arguments that augment the <code>run:log</code> command's behavior.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--container NAME     # the name of a specific container to show logs for
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>-n, --num NUM        # the number of lines to display
@@ -2737,7 +2737,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>-t<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.1234
 </code></pre></div>
 <p>The above command will show logs continually from the <code>node-js-app.run.1234</code> one-off run process.</p>
-<h3 id="listing-one-off-containers">Listing one-off containers</h3>
+<h3 id="listing-one-off-containers">Listing one-off containers<a class="headerlink" href="#listing-one-off-containers" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
@@ -2781,7 +2781,7 @@
 </div>
 </div>
 </div>
-<h3 id="stopping-a-one-off-container">Stopping a one-off container</h3>
+<h3 id="stopping-a-one-off-container">Stopping a one-off container<a class="headerlink" href="#stopping-a-one-off-container" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.29.0</p>

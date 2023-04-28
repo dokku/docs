@@ -2703,7 +2703,7 @@
   
 
 
-<h1 id="troubleshooting">Troubleshooting</h1>
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.17.0</p>
@@ -2711,7 +2711,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>trace:on                                       # Enables trace mode
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>trace:off                                      # Disables trace mode
 </code></pre></div>
-<h2 id="trace-mode">Trace Mode</h2>
+<h2 id="trace-mode">Trace Mode<a class="headerlink" href="#trace-mode" title="Permanent link">&para;</a></h2>
 <p>By default, Dokku will constrain the amount of output displayed for any given command run. The verbosity of output can be increased by enabling trace mode. Trace mode will turn on the <code>set -x</code> flag for bash plugins, while other plugins are free to respect the environment variable <code>DOKKU_TRACE</code> and log differently as approprate. Trace mode can be useful to see <em>where</em> plugins are running commands that would otherwise be unexpected.</p>
 <p>To enable trace mode, run <code>trace:on</code></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
@@ -2739,8 +2739,8 @@
 </div>
 </div>
 </div>
-<h2 id="common-problems">Common Problems</h2>
-<h3 id="i-deployed-my-app-but-i-am-getting-the-default-nginx-page">I deployed my app but I am getting the default nginx page.</h3>
+<h2 id="common-problems">Common Problems<a class="headerlink" href="#common-problems" title="Permanent link">&para;</a></h2>
+<h3 id="i-deployed-my-app-but-i-am-getting-the-default-nginx-page">I deployed my app but I am getting the default nginx page.<a class="headerlink" href="#i-deployed-my-app-but-i-am-getting-the-default-nginx-page" title="Permanent link">&para;</a></h3>
 <p>Most of the time it's caused by some defaults newer versions of nginx set. To make sure that's the issue you're having run the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nginx<span class="w"> </span>-t
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">## nginx: [emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size: 32</span>
@@ -2772,13 +2772,13 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <li>Update the port mapping: Updating the port mapping to redirect port <code>80</code> to your app's exposed port via <code>dokku proxy:ports-set $APP http:80:$EXPOSED_PORT</code> can also fix the issue. This will also allow certificate management and the letsencrypt plugin to work correctly.</li>
 </ul>
 <p>See the <a href="../../networking/port-management/">port management documentation</a> for more information on how Dokku exposes ports for applications and how you can configure these for your app.</p>
-<h3 id="i-want-to-deploy-my-app-but-while-pushing-i-get-the-following-error">I want to deploy my app, but while pushing I get the following error</h3>
+<h3 id="i-want-to-deploy-my-app-but-while-pushing-i-get-the-following-error">I want to deploy my app, but while pushing I get the following error<a class="headerlink" href="#i-want-to-deploy-my-app-but-while-pushing-i-get-the-following-error" title="Permanent link">&para;</a></h3>
 <p>The following error may be emitted from a deploy:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>! [remote rejected] master -&gt; master (pre-receive hook declined)
 </code></pre></div>
 <p>The <code>remote rejected</code> error does not give enough information. Anything could have failed. Enable trace mode and begin debugging. If this does not help you, create a <a href="https://gist.github.com">gist</a> containing the full log, and create an issue.</p>
 <p>One the reasons why you may get this error is because the command that is run in the container exited (without errors). For example, (in Procfile) when you define a new worker container to run Delayed Job and use the bin/delayed_job start command. This command deamonizes the process and exists. The container thinks it's done so it closes itself. The error you get is the one above. To fix the above problem for Delayed Job, you must define the worker to user rake jobs:work, which doesn't deamonize the process.</p>
-<h3 id="i-get-the-aforementioned-error-in-the-build-phase-after-turning-on-dokku-tracing">I get the aforementioned error in the build phase (after turning on Dokku tracing)</h3>
+<h3 id="i-get-the-aforementioned-error-in-the-build-phase-after-turning-on-dokku-tracing">I get the aforementioned error in the build phase (after turning on Dokku tracing)<a class="headerlink" href="#i-get-the-aforementioned-error-in-the-build-phase-after-turning-on-dokku-tracing" title="Permanent link">&para;</a></h3>
 <p>Most errors that happen in this phase are due to transient network issues (either locally or remotely) buildpack bugs.</p>
 <p>Find the failed phase's container image (<code>077581956a92</code> in this example).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>build
@@ -2796,7 +2796,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>resolvconf<span class="w"> </span>-u
 </code></pre></div>
 <p>Please see https://github.com/dokku/dokku/issues/841 and https://github.com/dokku/dokku/issues/649.</p>
-<h3 id="after-adding-an-ssh-key-i-am-told-i-cannot-read-from-the-remote-repository-on-push">After adding an SSH key, I am told I cannot read from the remote repository on push</h3>
+<h3 id="after-adding-an-ssh-key-i-am-told-i-cannot-read-from-the-remote-repository-on-push">After adding an SSH key, I am told I cannot read from the remote repository on push<a class="headerlink" href="#after-adding-an-ssh-key-i-am-told-i-cannot-read-from-the-remote-repository-on-push" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Connection closed by &lt;host&gt; port 22
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>fatal: Could not read from remote repository.
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
@@ -2804,7 +2804,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>and the repository exists.
 </code></pre></div>
 <p>Certain systems may have access to the <code>dokku</code> user via SSH disabled. Please check that the <code>dokku</code> user is allowed access to the system in the file <code>/etc/security/access.conf</code>. As Dokku does not manage this file, please consult your Operating System's documentation for more information.</p>
-<h3 id="i-want-to-deploy-my-app-but-i-am-getting-asked-for-the-password-of-the-git-user">I want to deploy my app but I am getting asked for the password of the Git user</h3>
+<h3 id="i-want-to-deploy-my-app-but-i-am-getting-asked-for-the-password-of-the-git-user">I want to deploy my app but I am getting asked for the password of the Git user<a class="headerlink" href="#i-want-to-deploy-my-app-but-i-am-getting-asked-for-the-password-of-the-git-user" title="Permanent link">&para;</a></h3>
 <p>Sometimes the following error message may be shown on push</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>fatal: &#39;NAME&#39; does not appear to be a git repository
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>fatal: Could not read from remote repository.
@@ -2815,13 +2815,13 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">IdentityFile &quot;~/.ssh/KEYNAME&quot;</span>
 </code></pre></div>
 <p>Also see <a href="https://github.com/dokku/dokku/issues/116">issue #116</a>.</p>
-<h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-and-receiving-bad-gateway-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors and receiving <strong>Bad Gateway</strong> when attempting to access the application.</h3>
+<h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-and-receiving-bad-gateway-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors and receiving <strong>Bad Gateway</strong> when attempting to access the application.<a class="headerlink" href="#i-successfully-deployed-my-application-with-no-deployment-errors-and-receiving-bad-gateway-when-attempting-to-access-the-application" title="Permanent link">&para;</a></h3>
 <p>In many cases the application will require the a <code>process.env.PORT</code> port opposed to a specified port.</p>
 <p>When specifying your port you may want to use something similar to:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span>
 </code></pre></div>
 <p>Please see https://github.com/dokku/dokku/issues/282.</p>
-<h3 id="deployment-fails-because-of-slow-internet-connection-messages-shows-gzip-stdin-unexpected-end-of-file">Deployment fails because of slow internet connection, messages shows <code>gzip: stdin: unexpected end of file</code>.</h3>
+<h3 id="deployment-fails-because-of-slow-internet-connection-messages-shows-gzip-stdin-unexpected-end-of-file">Deployment fails because of slow internet connection, messages shows <code>gzip: stdin: unexpected end of file</code>.<a class="headerlink" href="#deployment-fails-because-of-slow-internet-connection-messages-shows-gzip-stdin-unexpected-end-of-file" title="Permanent link">&para;</a></h3>
 <p>If you see output similar this when deploying:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a> Command: &#39;set -o pipefail; curl --fail --retry 3 --retry-delay 1 --connect-timeout 3 --max-time 30 https://s3-external-1.amazonaws.com/heroku-buildpack-ruby/ruby-2.0.0-p451-default-cache.tgz -s -o - | tar zxf -&#39; failed unexpectedly:
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a> !
@@ -2836,7 +2836,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 </code></pre></div>
 <p>Please see https://github.com/dokku/dokku/issues/509.</p>
 <p>Another reason for this error (although it may respond immediately ruling out a timeout issue) may be because you've set the config setting <code>SSL_CERT_FILE</code>. Using a config setting with this key interferes with the buildpack's ability to download its dependencies, so you must rename the config setting to something else, e.g. <code>MY_APP_SSL_CERT_FILE</code>.</p>
-<h3 id="build-fails-with-killed-message">Build fails with <code>Killed</code> message.</h3>
+<h3 id="build-fails-with-killed-message">Build fails with <code>Killed</code> message.<a class="headerlink" href="#build-fails-with-killed-message" title="Permanent link">&para;</a></h3>
 <p>This generally occurs when the server runs out of memory. You can either add more RAM to your server or setup swap space. The follow script will create 2 GB of swap space.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0600</span><span class="w"> </span>/dev/null<span class="w"> </span>/swapfile
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/swapfile<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1k<span class="w"> </span><span class="nv">count</span><span class="o">=</span>2048k
@@ -2846,18 +2846,18 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">10</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nb">echo</span><span class="w"> </span>vm.swappiness<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf
 </code></pre></div>
-<h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-but-im-receiving-connection-timeout-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors but I'm receiving Connection Timeout when attempting to access the application.</h3>
+<h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-but-im-receiving-connection-timeout-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors but I'm receiving Connection Timeout when attempting to access the application.<a class="headerlink" href="#i-successfully-deployed-my-application-with-no-deployment-errors-but-im-receiving-connection-timeout-when-attempting-to-access-the-application" title="Permanent link">&para;</a></h3>
 <p>This can occur if Dokku is running on a system with a firewall like UFW enabled (some OS versions like Ubuntu have this enabled by default). You can check if this is your case by running the following script:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>status
 </code></pre></div>
 <p>If the previous script returned <code>Status: active</code> and a list of ports, UFW is enabled and is probably the cause of the symptom described above. To disable it, run:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>disable
 </code></pre></div>
-<h3 id="i-cant-connect-to-my-application-because-the-server-is-sending-an-invalid-response-or-cant-provide-a-secure-connection">I can't connect to my application because the server is sending an invalid response, or can't provide a secure connection.</h3>
+<h3 id="i-cant-connect-to-my-application-because-the-server-is-sending-an-invalid-response-or-cant-provide-a-secure-connection">I can't connect to my application because the server is sending an invalid response, or can't provide a secure connection.<a class="headerlink" href="#i-cant-connect-to-my-application-because-the-server-is-sending-an-invalid-response-or-cant-provide-a-secure-connection" title="Permanent link">&para;</a></h3>
 <p>This isn't usually an issue with Dokku, but rather an app config problem. This can happen when your application is configured to enforce secure connections/HSTS, but you don't have SSL set up for the app.</p>
 <p>In Rails at least, if your <code>application.rb</code> or <code>environmnents/production.rb</code> include the line <code>configure.force_ssl = true</code> which includes HSTS, try commenting that out and redeploying.</p>
 <p>If this solves the issue temporarily, longer term you should consider <a href="../../configuration/ssl/">configuring SSL</a>.</p>
-<h3 id="my-application-deploys-properly-but-wont-load-in-browser-connection-refused">My application deploys properly, but won't load in browser "connection refused"</h3>
+<h3 id="my-application-deploys-properly-but-wont-load-in-browser-connection-refused">My application deploys properly, but won't load in browser "connection refused"<a class="headerlink" href="#my-application-deploys-properly-but-wont-load-in-browser-connection-refused" title="Permanent link">&para;</a></h3>
 <p>This could be a result of a bad proxy configuration (<code>http:5000:5000</code> may be incorrect). Run <code>dokku proxy:report myapp</code> to check if your app has the correct proxy configuration. It should show something like the following.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=====&gt; myapp proxy information
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>       Proxy enabled:                 true
@@ -2865,7 +2865,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>       Proxy type:                    nginx
 </code></pre></div>
 <p>Set <code>dokku proxy:ports-set front http:80:5000</code> to get proxy correctly configured for http endpoint.</p>
-<h3 id="i-deployed-a-new-app-but-now-subdomains-are-miss-routed">I deployed a new app but now subdomains are miss-routed</h3>
+<h3 id="i-deployed-a-new-app-but-now-subdomains-are-miss-routed">I deployed a new app but now subdomains are miss-routed<a class="headerlink" href="#i-deployed-a-new-app-but-now-subdomains-are-miss-routed" title="Permanent link">&para;</a></h3>
 <p>Sometimes nginx does something funky and cant actually reload for whatever reason.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Validate the configuration</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>nginx<span class="w"> </span>-t

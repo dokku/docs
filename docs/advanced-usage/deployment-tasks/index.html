@@ -2617,13 +2617,13 @@
   
 
 
-<h1 id="deployment-tasks">Deployment Tasks</h1>
+<h1 id="deployment-tasks">Deployment Tasks<a class="headerlink" href="#deployment-tasks" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
 </div>
-<h2 id="usage">Usage</h2>
-<h3 id="overview">Overview</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
 <p>Sometimes you need to run a command on deployment time, but before an app is completely deployed. Common use cases include:</p>
 <ul>
 <li>Checking a database is initialized</li>
@@ -2687,7 +2687,7 @@
 <p class="admonition-title">Info</p>
 <p>To execute commands on the host during a release phase, see the <a href="../../development/plugin-creation/">plugin creation documentation</a> docs for more information on building your own custom plugin.</p>
 </div>
-<h3 id="changing-the-appjson-location">Changing the <code>app.json</code> location</h3>
+<h3 id="changing-the-appjson-location">Changing the <code>app.json</code> location<a class="headerlink" href="#changing-the-appjson-location" title="Permanent link">&para;</a></h3>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>app.json</code> file to use for a given app. This can be done via the <code>app-json:set</code> command. If a value is specified and that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>app.json</code> file.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>app-json:set<span class="w"> </span>node-js-app<span class="w"> </span>appjson-path<span class="w"> </span>second-app.json
 </code></pre></div>
@@ -2700,7 +2700,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>app-json:set<span class="w"> </span>--global<span class="w"> </span>appjson-path
 </code></pre></div>
-<h3 id="displaying-app-json-reports-for-an-app">Displaying app-json reports for an app</h3>
+<h3 id="displaying-app-json-reports-for-an-app">Displaying app-json reports for an app<a class="headerlink" href="#displaying-app-json-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
@@ -2758,8 +2758,8 @@
 </div>
 </div>
 </div>
-<h3 id="deployment-tasks_1">Deployment tasks</h3>
-<h4 id="appjson-deployment-tasks"><code>app.json</code> deployment tasks</h4>
+<h3 id="deployment-tasks_1">Deployment tasks<a class="headerlink" href="#deployment-tasks_1" title="Permanent link">&para;</a></h3>
+<h4 id="appjson-deployment-tasks"><code>app.json</code> deployment tasks<a class="headerlink" href="#appjson-deployment-tasks" title="Permanent link">&para;</a></h4>
 <p>Dokku provides limited support for the <code>app.json</code> manifest from Heroku (documentation available <a href="https://devcenter.heroku.com/articles/app-json-schema">here</a>). The keys available for use with Deployment Tasks are:</p>
 <ul>
 <li><code>scripts.dokku.predeploy</code>: This is run <em>after</em> an app's docker image is built, but <em>before</em> any containers are scheduled. Changes made to your image are committed at this phase.</li>
@@ -2782,7 +2782,7 @@
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">}</span>
 </code></pre></div>
-<h4 id="procfile-release-command">Procfile Release command</h4>
+<h4 id="procfile-release-command">Procfile Release command<a class="headerlink" href="#procfile-release-command" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.14.0</p>

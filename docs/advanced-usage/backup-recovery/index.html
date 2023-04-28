@@ -2687,18 +2687,18 @@
   
 
 
-<h1 id="backup-and-recovery">Backup and Recovery</h1>
+<h1 id="backup-and-recovery">Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The backup plugin was deprecated in 0.4.x, below are backup recommendations for 0.5.x and later.</p>
 </div>
 <p>The best plan for disaster recovery is to always keep multiple (remote) copies of your local repo, static assets and periodic database dumps. Backups should be regularly tested for data integrity and completeness.</p>
-<h2 id="tldr">TLDR</h2>
+<h2 id="tldr">TLDR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This method has many caveats. Please read this entire document before assuming these backups work as expected, and test your backups on a regular basis.</p>
 </div>
-<h3 id="creating-a-backup">Creating a backup</h3>
+<h3 id="creating-a-backup">Creating a backup<a class="headerlink" href="#creating-a-backup" title="Permanent link">&para;</a></h3>
 <p>To create a backup, run the following command at a time when not executing any Dokku commands or app deployments:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">BACKUP_TIME</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d-%H-%M<span class="k">)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/lib/dokku/services
@@ -2708,13 +2708,13 @@
 </code></pre></div>
 <p>This will create a point-in-time backup of your entire Dokku installation in the <code>/tmp/dokku-backups</code> directory. This backup may be moved offsite to another location via rsync, sftp, or some other protocol.</p>
 <p>It is recommended that backups are regularly cleaned from the originating server and tested as necessary.</p>
-<h3 id="restoring-a-backup">Restoring a backup</h3>
+<h3 id="restoring-a-backup">Restoring a backup<a class="headerlink" href="#restoring-a-backup" title="Permanent link">&para;</a></h3>
 <p>To extract the backup onto another server, copy the backup to the server and extract it using the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-xzvf<span class="w"> </span>path/to/dokku/backup.tar.gz<span class="w"> </span>-C<span class="w"> </span>/
 </code></pre></div>
 <p>At this point, all datastores should be individually started and checked for data integrity. Once this is complete, individual apps can be rebuilt. Please consult the <a href="../../processes/process-management/#rebuilding-apps">process management documentation</a> for more information on how to rebuild apps.</p>
-<h2 id="caveats">Caveats</h2>
-<h3 id="app-config">App config</h3>
+<h2 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h2>
+<h3 id="app-config">App config<a class="headerlink" href="#app-config" title="Permanent link">&para;</a></h3>
 <p>Application config is largely held in a small number of places:</p>
 <ul>
 <li><code>/var/lib/dokku/config</code>: Properties set and managed by plugins</li>
@@ -2722,18 +2722,18 @@
 <li><code>/home/dokku</code>: Certain parts of Dokku core store data in this location</li>
 </ul>
 <p>Compressing these directories when no Dokku commands are running is enough to ensure a complete backup of the system.</p>
-<h3 id="code-repositories">Code Repositories</h3>
+<h3 id="code-repositories">Code Repositories<a class="headerlink" href="#code-repositories" title="Permanent link">&para;</a></h3>
 <p>Because Dokku is git based, rebuilding a deployed app is as easy as pushing from git. You can push to a new server by updating the <code>dokku</code> remote in you local app's repo.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>remote<span class="w"> </span>rm<span class="w"> </span>dokku
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@<span class="o">[</span>dokku.me:dokku.me<span class="o">]</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span><span class="o">[</span>master<span class="o">]</span>
 </code></pre></div>
-<h3 id="docker-networks">Docker Networks</h3>
+<h3 id="docker-networks">Docker Networks<a class="headerlink" href="#docker-networks" title="Permanent link">&para;</a></h3>
 <p>Docker networks generated by Dokku should be recreated. Running <code>dokku network:report</code> will output all networks in use by various apps, which can then be used to recreate them via <code>dokku network:create $NETWORK</code>.</p>
 <p>Networks created by tools other than Dokku may be created as they initially were.</p>
-<h3 id="docker-image-and-tar-based-apps">Docker Image and Tar-based Apps</h3>
+<h3 id="docker-image-and-tar-based-apps">Docker Image and Tar-based Apps<a class="headerlink" href="#docker-image-and-tar-based-apps" title="Permanent link">&para;</a></h3>
 <p>These apps may fail to rebuild via the normal <code>ps:rebuild</code> method. Redeploy these apps by running the original commands used to deploy them</p>
-<h3 id="datastores">Datastores</h3>
+<h3 id="datastores">Datastores<a class="headerlink" href="#datastores" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Please note that point-in-time backups of the <code>/var/lib/dokku/services</code> directory may contain partially written data due to how various datastores work. Consult the official datastore documentation for the best documentation surrounding proper backup and restore procedures.</p>
@@ -2744,14 +2744,14 @@
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>postgres:import<span class="w"> </span><span class="o">[</span>db_name<span class="o">]</span><span class="w"> </span>&lt;<span class="w"> </span><span class="o">[</span>db_name<span class="o">]</span>.dump
 </code></pre></div>
 <p>Additionally, data for official datastores is located in the <code>/var/lib/dokku/services</code> directory. If the directory is restored and the plugin is available, a <code>dokku $SERVICE:start</code> may be enough to restart the service with the underlying data, so long as the datastore version does not change and the underlying data is not corrupt. If this is the case, it may be necessary to re-import all the data onto a fresh version of the datastore service.</p>
-<h3 id="plugins">Plugins</h3>
+<h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h3>
 <p>The plugin directory is contained at the <code>/var/lib/dokku/plugins</code> directory. Core plugins will automatically be included in new installs, but custom plugins may not. The aforementioned <code>tar</code> creation command will back all plugins up, and the <code>tar</code> extract command will restore the plugins.</p>
 <p>Note that restoring a plugin will not trigger any <code>install</code> or <code>dependencies</code> triggers. You will need to run these manually. See the <a href="../plugin-management/#installing-a-plugin">plugin management documentation</a> for more information on how to trigger these two hooks.</p>
-<h3 id="volumes-and-static-assets">Volumes and Static Assets</h3>
+<h3 id="volumes-and-static-assets">Volumes and Static Assets<a class="headerlink" href="#volumes-and-static-assets" title="Permanent link">&para;</a></h3>
 <p>Dokku doesn't enforce a <a href="https://devcenter.heroku.com/articles/slug-compiler#slug-size">300mb</a> limit on apps, but it's best practice to keep binary assets outside of git. Since containers are considered volatile in Dokku, external stores like s3 or storage mounts should be used for non-volatile items like user uploads. The Dokku storage core plugin can be used to mount local directories / volumes inside the docker container.</p>
 <p>System administrators are highly encouraged to store persistent data in app-specific subdirectories of the path <code>/var/lib/dokku/data/storage</code>. This will help ensure restores of the aforementioned primary Dokku directories will restore service to all apps.</p>
 <p>See the <a href="../persistent-storage/">persistent storage documentation</a> for more information on how to attach persistent storage to your app.</p>
-<h2 id="recovering-app-code">Recovering app code</h2>
+<h2 id="recovering-app-code">Recovering app code<a class="headerlink" href="#recovering-app-code" title="Permanent link">&para;</a></h2>
 <p>In case of an emergency when your git repo and backups are completely lost, you can recover the last pushed copy from your remote Dokku server (assuming you still have the ssh key).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span><span class="o">[</span>app-name<span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>!$
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@<span class="o">[</span>dokku.me:app-name<span class="o">]</span>

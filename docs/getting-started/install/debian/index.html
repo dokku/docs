@@ -2537,7 +2537,7 @@
   
 
 
-<h1 id="debian-package-installation-notes">Debian Package Installation Notes</h1>
+<h1 id="debian-package-installation-notes">Debian Package Installation Notes<a class="headerlink" href="#debian-package-installation-notes" title="Permanent link">&para;</a></h1>
 <p>As of 0.3.18, Dokku defaults to being installed via Debian package. While certain hosts may require extra work to get running, you may optionally wish to automate the installation of Dokku without the use of our <code>bootstrap.sh</code> Bash script. The following are the steps run by said script:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># install prerequisites</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-qq<span class="w"> </span>&gt;/dev/null
@@ -2556,13 +2556,13 @@
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>-qq<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>dokku
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>sudo<span class="w"> </span>dokku<span class="w"> </span>plugin:install-dependencies<span class="w"> </span>--core
 </code></pre></div>
-<h2 id="unattended-installation">Unattended installation</h2>
+<h2 id="unattended-installation">Unattended installation<a class="headerlink" href="#unattended-installation" title="Permanent link">&para;</a></h2>
 <p>In case you want to perform an unattended installation of Dokku, this is made possible through <a href="https://en.wikipedia.org/wiki/Debconf_%28software_package%29">debconf</a>, which allows you to configure a package before installing it.</p>
 <p>You can set any of the below options through the <code>debconf-set-selections</code> command, for example to enable vhost-based deployments:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;dokku dokku/vhost_enable boolean true&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
 </code></pre></div>
 <p>After setting the desired options, proceed with the installation as described above.</p>
-<h3 id="debconf-options">debconf options</h3>
+<h3 id="debconf-options">debconf options<a class="headerlink" href="#debconf-options" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>

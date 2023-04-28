@@ -2755,7 +2755,7 @@
   
 
 
-<h1 id="process-management">Process Management</h1>
+<h1 id="process-management">Process Management<a class="headerlink" href="#process-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.3.14, Enhanced in 0.7.0</p>
@@ -2770,8 +2770,8 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>ps:start [--parallel count] [--all|&lt;app&gt;]                         # Start an app
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>ps:stop [--parallel count] [--all|&lt;app&gt;]                          # Stop an app
 </code></pre></div>
-<h2 id="usage">Usage</h2>
-<h3 id="inspecting-app-containers">Inspecting app containers</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="inspecting-app-containers">Inspecting app containers<a class="headerlink" href="#inspecting-app-containers" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.13.0</p>
@@ -2780,7 +2780,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ps:inspect<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>This command will gather all the running container IDs for your app and call <code>docker inspect</code>, sanitizing the output data so it can be copy-pasted elsewhere safely.</p>
-<h3 id="rebuilding-apps">Rebuilding apps</h3>
+<h3 id="rebuilding-apps">Rebuilding apps<a class="headerlink" href="#rebuilding-apps" title="Permanent link">&para;</a></h3>
 <p>It may be useful to rebuild an app at will, such as for commands that do not rebuild an app or when skipping a rebuild after setting multiple config values. For these use cases, the <code>ps:rebuild</code> function can be used.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -2794,7 +2794,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <p>A missing linked container will result in failure to boot apps. Services should all be started for apps being rebuilt.</p>
-<h3 id="restarting-apps">Restarting apps</h3>
+<h3 id="restarting-apps">Restarting apps<a class="headerlink" href="#restarting-apps" title="Permanent link">&para;</a></h3>
 <p>An app may be restarted using the <code>ps:restart</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -2811,7 +2811,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <p>A missing linked container will result in failure to boot apps. Services should all be started for apps being rebuilt.</p>
-<h3 id="displaying-existing-scale-properties">Displaying existing scale properties</h3>
+<h3 id="displaying-existing-scale-properties">Displaying existing scale properties<a class="headerlink" href="#displaying-existing-scale-properties" title="Permanent link">&para;</a></h3>
 <p>Issuing the <code>ps:scale</code> command with no arguments will output the current scaling properties for an app.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2828,8 +2828,8 @@
 </div>
 </div>
 </div>
-<h3 id="scaling-apps">Scaling apps</h3>
-<h4 id="via-cli">Via CLI</h4>
+<h3 id="scaling-apps">Scaling apps<a class="headerlink" href="#scaling-apps" title="Permanent link">&para;</a></h3>
+<h4 id="via-cli">Via CLI<a class="headerlink" href="#via-cli" title="Permanent link">&para;</a></h4>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>This functionality is disabled if the formation is managed via the <code>formation</code> key of <code>app.json</code>.</p>
@@ -2843,7 +2843,7 @@
 <p>If desired, the corresponding deploy will be skipped by using the <code>--skip-deploy</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
-<h4 id="manually-managing-process-scaling">Manually managing process scaling</h4>
+<h4 id="manually-managing-process-scaling">Manually managing process scaling<a class="headerlink" href="#manually-managing-process-scaling" title="Permanent link">&para;</a></h4>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Using a <code>formation</code> key in an <code>app.json</code> file with <em>any</em> <code>quantity</code> specified disables the ability to use <code>ps:scale</code> for scaling. All processes not specified in the <code>app.json</code> will have their process count set to zero.</p>
@@ -2867,7 +2867,7 @@
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="err">}</span>
 </code></pre></div>
 <p>Removing the file will result in Dokku respecting the <code>ps:scale</code> command for setting scale values. The values set via the <code>app.json</code> file from a previous deploy will be respected.</p>
-<h4 id="the-web-process">The <code>web</code> process</h4>
+<h4 id="the-web-process">The <code>web</code> process<a class="headerlink" href="#the-web-process" title="Permanent link">&para;</a></h4>
 <p>For initial app deploys, Dokku will default to starting a single <code>web</code> process for each app. This process may be defined within the <code>Procfile</code> or as the <code>CMD</code> (for Dockerfile or Docker image deploys). Scaling of the <code>web</code> process - and all other processes - may be managed via <code>ps:scale</code> or the <code>formation</code> key in the <code>app.json</code> file either before or after the initial deploy.</p>
 <p>There are also a few other exceptions for the <code>web</code> process.</p>
 <ul>
@@ -2876,7 +2876,7 @@
 <li>See the <a href="../../networking/proxies/nginx/#request-proxying">nginx request proxying documentation</a> for more information on how nginx handles proxied requests.</li>
 <li>Only the <code>web</code> process may be bound to an external port.</li>
 </ul>
-<h4 id="changing-the-procfile-location">Changing the <code>Procfile</code> location</h4>
+<h4 id="changing-the-procfile-location">Changing the <code>Procfile</code> location<a class="headerlink" href="#changing-the-procfile-location" title="Permanent link">&para;</a></h4>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>Procfile</code> file to use for a given app. This can be done via the <code>ps:set</code> command. If a value is specified and that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>Procfile</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path<span class="w"> </span>Procfile2
 </code></pre></div>
@@ -2889,7 +2889,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>procfile-path
 </code></pre></div>
-<h3 id="stopping-apps">Stopping apps</h3>
+<h3 id="stopping-apps">Stopping apps<a class="headerlink" href="#stopping-apps" title="Permanent link">&para;</a></h3>
 <p>Deployed apps can be stopped using the <code>ps:stop</code> command. This turns off all running containers for an app, and will result in a <strong>502 Bad Gateway</strong> response for the default nginx proxy implementation.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -2902,7 +2902,7 @@
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
-<h3 id="starting-apps">Starting apps</h3>
+<h3 id="starting-apps">Starting apps<a class="headerlink" href="#starting-apps" title="Permanent link">&para;</a></h3>
 <p>All stopped containers can be started using the <code>ps:start</code> command. This is similar to running <code>ps:restart</code>, except no action will be taken if the app containers are running.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>node-js-app
 </code></pre></div>
@@ -2915,13 +2915,13 @@
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
-<h3 id="restart-policies">Restart policies</h3>
+<h3 id="restart-policies">Restart policies<a class="headerlink" href="#restart-policies" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.7.0, Command Changed in 0.22.0</p>
 </div>
 <p>By default, Dokku will automatically restart containers that exit with a non-zero status up to 10 times via the <a href="https://docs.docker.com/engine/reference/run/#restart-policies---restart">on-failure Docker restart policy</a>.</p>
-<h4 id="setting-the-restart-policy">Setting the restart policy</h4>
+<h4 id="setting-the-restart-policy">Setting the restart policy<a class="headerlink" href="#setting-the-restart-policy" title="Permanent link">&para;</a></h4>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>A change in the restart policy must be followed by a <code>ps:rebuild</code> call.</p>
@@ -2948,7 +2948,7 @@
 <li>If a web process restarts and it's container IP address changes, the app's proxy configuration will be rebuilt.</li>
 <li>If a process within an app exceeds the restart count, the app will be rebuilt.</li>
 </ul>
-<h3 id="displaying-reports-for-an-app">Displaying reports for an app</h3>
+<h3 id="displaying-reports-for-an-app">Displaying reports for an app<a class="headerlink" href="#displaying-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.12.0</p>
@@ -3017,7 +3017,7 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app<span class="w"> </span>--deployed
 </code></pre></div>
-<h3 id="restoring-apps-after-a-server-reboot">Restoring apps after a server reboot</h3>
+<h3 id="restoring-apps-after-a-server-reboot">Restoring apps after a server reboot<a class="headerlink" href="#restoring-apps-after-a-server-reboot" title="Permanent link">&para;</a></h3>
 <p>When a server reboots or Docker is restarted/upgraded, Docker may or may not start old app containers automatically, and may in some cases re-assign container IP addresses. To combat this issue, Dokku uses an init process that triggers <code>dokku ps:restore</code> after the Docker daemon is detected as starting. When triggered, the <code>dokku ps:restore</code> command will serially (one by one) run the following for each:</p>
 <ul>
 <li>Start all linked services.</li>

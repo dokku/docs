@@ -2779,7 +2779,7 @@
   
 
 
-<h1 id="zero-downtime-deploy-checks">Zero Downtime Deploy Checks</h1>
+<h1 id="zero-downtime-deploy-checks">Zero Downtime Deploy Checks<a class="headerlink" href="#zero-downtime-deploy-checks" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
@@ -2804,13 +2804,13 @@ checks will fail. To avoid this:</p>
 <li>Specify the domain within the check: See below for further documentation.</li>
 </ul>
 </div>
-<h2 id="configuring-checks-settings">Configuring checks settings</h2>
-<h3 id="wait-to-retire">wait-to-retire</h3>
+<h2 id="configuring-checks-settings">Configuring checks settings<a class="headerlink" href="#configuring-checks-settings" title="Permanent link">&para;</a></h2>
+<h3 id="wait-to-retire">wait-to-retire<a class="headerlink" href="#wait-to-retire" title="Permanent link">&para;</a></h3>
 <p>After a successful deploy, the grace period given to old containers before they are stopped/terminated is determined by the value of <code>wait-to-retire</code>. This is useful for ensuring completion of long-running HTTP connections.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>checks:set<span class="w"> </span>node-js-app<span class="w"> </span>wait-to-retire<span class="w"> </span><span class="m">30</span>
 </code></pre></div>
 <p>Defaults to <code>60</code>.</p>
-<h2 id="configuring-check-settings-using-the-config-plugin">Configuring check settings using the <code>config</code> plugin</h2>
+<h2 id="configuring-check-settings-using-the-config-plugin">Configuring check settings using the <code>config</code> plugin<a class="headerlink" href="#configuring-check-settings-using-the-config-plugin" title="Permanent link">&para;</a></h2>
 <p>There are certain settings that can be configured via environment variables:</p>
 <ul>
 <li><code>DOKKU_DEFAULT_CHECKS_WAIT</code>: (default: <code>10</code>) If no user-defined checks are specified - or if the process being checked is not a <code>web</code> process - this is the period of time Dokku will wait before checking that a container is still running.</li>
@@ -2822,7 +2822,7 @@ checks will fail. To avoid this:</p>
 <li><code>DOKKU_CHECKS_TIMEOUT</code>: (default: <code>30</code>) Wait this many seconds for each response before marking it as a failure.</li>
 <li><code>DOKKU_CHECKS_ATTEMPTS</code>: (default: <code>5</code>) Number of retries for to run for a specific check before marking it as a failure</li>
 </ul>
-<h2 id="skipping-and-disabling-checks">Skipping and Disabling Checks</h2>
+<h2 id="skipping-and-disabling-checks">Skipping and Disabling Checks<a class="headerlink" href="#skipping-and-disabling-checks" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Note that <code>checks:disable</code> will now (as of 0.6.0) cause downtime for that process-type during deployments. Previously, it acted as <code>checks:skip</code> currently does.</p>
@@ -2862,7 +2862,7 @@ checks will fail. To avoid this:</p>
 </div>
 </div>
 </div>
-<h3 id="displaying-checks-reports-for-an-app">Displaying checks reports for an app</h3>
+<h3 id="displaying-checks-reports-for-an-app">Displaying checks reports for an app<a class="headerlink" href="#displaying-checks-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>
@@ -2918,7 +2918,7 @@ checks will fail. To avoid this:</p>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>checks:report<span class="w"> </span>node-js-app<span class="w"> </span>--checks-disabled-list
 </code></pre></div>
-<h2 id="customizing-checks">Customizing checks</h2>
+<h2 id="customizing-checks">Customizing checks<a class="headerlink" href="#customizing-checks" title="Permanent link">&para;</a></h2>
 <p>If your application needs a longer period to boot up - perhaps to load data into memory, or because of slow boot time - you may also use Dokku's <code>checks</code> functionality to more precisely check whether an application can serve traffic or not.</p>
 <p>Checks are run against the detected <code>web</code> process from your application's <code>Procfile</code>. For non-web processes, Dokku will fallback to the aforementioned process uptime check.</p>
 <p>To specify checks, add a <code>CHECKS</code> file to the root of your project directory. The <code>CHECKS</code> file should be plain text and may contain:</p>
@@ -2932,7 +2932,7 @@ checks will fail. To avoid this:</p>
 <p class="admonition-title">Info</p>
 <p>For Dockerfile and Docker Image based deploys, the file <em>must</em> be in the <code>WORKDIR</code> directory of the built image. <code>/app</code> is used by default as the root container directory for buildpack-based deploys.</p>
 </div>
-<h3 id="check-instructions">Check instructions</h3>
+<h3 id="check-instructions">Check instructions<a class="headerlink" href="#check-instructions" title="Permanent link">&para;</a></h3>
 <p>The format of a check instruction is a path or relative URL, optionally followed by the expected content:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/about  Our Amazing Team
 </code></pre></div>
@@ -2970,7 +2970,7 @@ checks will fail. To avoid this:</p>
 <a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a># using raw string constants
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>{{`}`}}
 </code></pre></div>
-<h3 id="templating-checks-files">Templating Checks Files</h3>
+<h3 id="templating-checks-files">Templating Checks Files<a class="headerlink" href="#templating-checks-files" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.22.5</p>
@@ -2979,7 +2979,7 @@ checks will fail. To avoid this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>{{ var &quot;SOME_ENV_VAR&quot; }}
 </code></pre></div>
 <p>This may be useful if certain zero-downtime checks require access to an app-specific value, such as a domain name.</p>
-<h3 id="check-settings">Check settings</h3>
+<h3 id="check-settings">Check settings<a class="headerlink" href="#check-settings" title="Permanent link">&para;</a></h3>
 <p>The default behavior is to wait for <code>5</code> seconds before running the checks, to timeout the checks after <code>30</code> seconds, and to attempt the checks <code>5</code> times. If the checks fail <code>5</code> times, the deployment is considered failed and the old container will continue serving traffic.</p>
 <p>You can change the default behavior by setting <code>WAIT</code>, <code>TIMEOUT</code>, and <code>ATTEMPTS</code> to different values in the <code>CHECKS</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>WAIT=30     # Wait 1/2 minute
@@ -2988,7 +2988,7 @@ checks will fail. To avoid this:</p>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>/  My Amazing App
 </code></pre></div>
-<h2 id="manually-invoking-checks">Manually invoking checks</h2>
+<h2 id="manually-invoking-checks">Manually invoking checks<a class="headerlink" href="#manually-invoking-checks" title="Permanent link">&para;</a></h2>
 <p>Checks can also be manually invoked via the <code>checks:run</code> command. This can be used to check the status of an application via cron to provide integration with external healthchecking software.</p>
 <p>Checks are run against a specific application:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
@@ -3087,9 +3087,9 @@ checks will fail. To avoid this:</p>
 </div>
 </div>
 </div>
-<h2 id="example-successful-rails-deployment">Example: Successful Rails deployment</h2>
+<h2 id="example-successful-rails-deployment">Example: Successful Rails deployment<a class="headerlink" href="#example-successful-rails-deployment" title="Permanent link">&para;</a></h2>
 <p>In this example, a Rails application is successfully deployed to Dokku. The initial round of checks fails while the server is starting, but once it starts they succeed and the deployment is successful. <code>WAIT</code> is set to <code>10</code> because our application takes a while to boot up. <code>ATTEMPTS</code> is set to <code>6</code>, but the third attempt succeeds.</p>
-<h3 id="successful-checks-file">Successful <code>CHECKS</code> file</h3>
+<h3 id="successful-checks-file">Successful <code>CHECKS</code> file<a class="headerlink" href="#successful-checks-file" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>WAIT=10
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>ATTEMPTS=6
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>/check.txt  simple_check
@@ -3097,7 +3097,7 @@ checks will fail. To avoid this:</p>
 <p>For this check to work, we've added a line to <code>config/routes.rb</code> that simply returns a string:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>get &#39;/check.txt&#39;, to: proc {[200, {}, [&#39;simple_check&#39;]]}
 </code></pre></div>
-<h3 id="successful-deploy-output">Successful deploy output</h3>
+<h3 id="successful-deploy-output">Successful deploy output<a class="headerlink" href="#successful-deploy-output" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The output has been trimmed for brevity.</p>
@@ -3159,10 +3159,10 @@ checks will fail. To avoid this:</p>
 </div>
 </div>
 </div>
-<h2 id="example-failing-rails-deployment">Example: Failing Rails deployment</h2>
+<h2 id="example-failing-rails-deployment">Example: Failing Rails deployment<a class="headerlink" href="#example-failing-rails-deployment" title="Permanent link">&para;</a></h2>
 <p>In this example, a Rails application fails to deploy. The reason for the failure is that the PostgreSQL database connection fails. The initial checks will fail while we wait for the server to start up, just like in the above example. However, once the server does start accepting connections, we will see an error 500 due to the PostgreSQL database connection failure.</p>
 <p>Once the attempts have been exceeded, the deployment fails and we see the container output, which shows the PostgreSQL connection errors.</p>
-<h3 id="failing-checks-file">Failing <code>CHECKS</code> file</h3>
+<h3 id="failing-checks-file">Failing <code>CHECKS</code> file<a class="headerlink" href="#failing-checks-file" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>WAIT=10
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>ATTEMPTS=6
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>/
@@ -3171,7 +3171,7 @@ checks will fail. To avoid this:</p>
 <p class="admonition-title">Info</p>
 <p>The check to the root url <code>/</code> would normally access the database.</p>
 </div>
-<h3 id="failing-deploy-output">Failing deploy output</h3>
+<h3 id="failing-deploy-output">Failing deploy output<a class="headerlink" href="#failing-deploy-output" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The output has been trimmed for brevity.</p>

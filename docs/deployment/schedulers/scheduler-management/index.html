@@ -2577,7 +2577,7 @@
   
 
 
-<h1 id="scheduler-management">Scheduler Management</h1>
+<h1 id="scheduler-management">Scheduler Management<a class="headerlink" href="#scheduler-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.26.0</p>
@@ -2586,14 +2586,14 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;) # Set or clear a scheduler property for an app
 </code></pre></div>
 <p>Schedulers are a way of customizing how an app image is deployed, and can be used to interact with non-local systems such as Kubernetes and Nomad.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="scheduler-selection">Scheduler selection</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="scheduler-selection">Scheduler selection<a class="headerlink" href="#scheduler-selection" title="Permanent link">&para;</a></h3>
 <p>Dokku supports the following built-in schedulers:</p>
 <ul>
 <li><code>scheduler-docker-local</code>: Schedules apps against the local docker socket and runs containers directly on the Dokku host. See the <a href="../docker-local/">docker-local scheduler documentation</a> for more information on how this scheduler functions.</li>
 <li><code>scheduler-null</code>: Does nothing during the scheduler phase. See the <a href="../null/">null scheduler documentation</a> for more information on how this scheduler functions.</li>
 </ul>
-<h3 id="overriding-the-auto-selected-scheduler">Overriding the auto-selected scheduler</h3>
+<h3 id="overriding-the-auto-selected-scheduler">Overriding the auto-selected scheduler<a class="headerlink" href="#overriding-the-auto-selected-scheduler" title="Permanent link">&para;</a></h3>
 <p>If desired, the scheduler can be specified via the <code>scheduler:set</code> command by speifying a value for <code>selected</code>. The selected scheduler will always be used.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>docker-local
 </code></pre></div>
@@ -2606,7 +2606,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>--global<span class="w"> </span>selected
 </code></pre></div>
-<h3 id="displaying-scheduler-reports-for-an-app">Displaying scheduler reports for an app</h3>
+<h3 id="displaying-scheduler-reports-for-an-app">Displaying scheduler reports for an app<a class="headerlink" href="#displaying-scheduler-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's scheduler status using the <code>scheduler:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2648,7 +2648,7 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-selected
 </code></pre></div>
-<h2 id="implementing-a-scheduler">Implementing a Scheduler</h2>
+<h2 id="implementing-a-scheduler">Implementing a Scheduler<a class="headerlink" href="#implementing-a-scheduler" title="Permanent link">&para;</a></h2>
 <p>Custom plugins names <em>must</em> have the prefix <code>scheduler-</code> or scheduler overriding via <code>scheduler:set</code> may not function as expected.</p>
 <p>At this time, the following dokku commands are used to implement a complete scheduler.</p>
 <ul>

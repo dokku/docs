@@ -2661,7 +2661,7 @@
   
 
 
-<h1 id="application-management">Application Management</h1>
+<h1 id="application-management">Application Management<a class="headerlink" href="#application-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.3.1</p>
@@ -2677,8 +2677,8 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>apps:report [&lt;app&gt;] [&lt;flag&gt;]                   # Display report about an app
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>apps:unlock &lt;app&gt;                              # Unlocks an app for deployment
 </code></pre></div>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-applications">Listing applications</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="listing-applications">Listing applications<a class="headerlink" href="#listing-applications" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1. Use the <code>apps</code> command for older versions.</p>
@@ -2712,7 +2712,7 @@
 </div>
 </div>
 </div>
-<h3 id="checking-if-an-application-exists">Checking if an application exists</h3>
+<h3 id="checking-if-an-application-exists">Checking if an application exists<a class="headerlink" href="#checking-if-an-application-exists" title="Permanent link">&para;</a></h3>
 <p>For CI/CD pipelines, it may be useful to see if an application exists before creating a "review" application for a specific branch. You can do so via the <code>apps:exists</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
@@ -2727,7 +2727,7 @@
 </div>
 </div>
 <p>The <code>apps:exists</code> command will return non-zero if the application does not exist, and zero if it does.</p>
-<h3 id="manually-creating-an-application">Manually creating an application</h3>
+<h3 id="manually-creating-an-application">Manually creating an application<a class="headerlink" href="#manually-creating-an-application" title="Permanent link">&para;</a></h3>
 <p>A common pattern for deploying applications to Dokku is to configure an application before deploying it. You can do so via the <code>apps:create</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
@@ -2747,7 +2747,7 @@
 <li>Create and link datastores.</li>
 <li>Set environment variables.</li>
 </ul>
-<h3 id="removing-a-deployed-app">Removing a deployed app</h3>
+<h3 id="removing-a-deployed-app">Removing a deployed app<a class="headerlink" href="#removing-a-deployed-app" title="Permanent link">&para;</a></h3>
 <p>In some cases, you may need to destroy an application, whether it is because the application is temporary or because it was misconfigured. In these cases, you can use the <code>apps:destroy</code> command. Performing any destructive actions in Dokku requires confirmation, and this command will ask for the name of the application being deleted before doing so.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
@@ -2796,7 +2796,7 @@
 </div>
 </div>
 <p>Destroying an application will unlink all linked services and destroy any config related to the application. Note that linked services will retain their data for later use (or removal).</p>
-<h3 id="renaming-a-deployed-app">Renaming a deployed app</h3>
+<h3 id="renaming-a-deployed-app">Renaming a deployed app<a class="headerlink" href="#renaming-a-deployed-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.4.7</p>
@@ -2834,7 +2834,7 @@
 <p>Remember to also change your git remote on your local machine in order to make <code>git push dokku main:master</code> work again. For this you can use <code>git remote set-url</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:io-js-app
 </code></pre></div>
-<h3 id="cloning-an-existing-app">Cloning an existing app</h3>
+<h3 id="cloning-an-existing-app">Cloning an existing app<a class="headerlink" href="#cloning-an-existing-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.11.5</p>
@@ -2869,7 +2869,7 @@
 <p>Finally, if the application already exists, you may wish to ignore errors resulting from attempting to clone over it. To do so, you can use the <code>--ignore-existing</code> flag. A warning will be emitted, but the command will return <code>0</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--ignore-existing<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
-<h3 id="locking-app-deploys">Locking app deploys</h3>
+<h3 id="locking-app-deploys">Locking app deploys<a class="headerlink" href="#locking-app-deploys" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.11.6</p>
@@ -2887,7 +2887,7 @@
 </div>
 </div>
 </div>
-<h3 id="unlocking-app-deploys">Unlocking app deploys</h3>
+<h3 id="unlocking-app-deploys">Unlocking app deploys<a class="headerlink" href="#unlocking-app-deploys" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.11.6</p>
@@ -2911,7 +2911,7 @@
 </div>
 </div>
 </div>
-<h3 id="checking-lock-status">Checking lock status</h3>
+<h3 id="checking-lock-status">Checking lock status<a class="headerlink" href="#checking-lock-status" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.13.0</p>
@@ -2929,7 +2929,7 @@
 </div>
 </div>
 </div>
-<h3 id="displaying-reports-for-an-app">Displaying reports for an app</h3>
+<h3 id="displaying-reports-for-an-app">Displaying reports for an app<a class="headerlink" href="#displaying-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>

@@ -2675,9 +2675,9 @@
   
 
 
-<h1 id="0200-migration-guide">0.20.0 Migration Guide</h1>
-<h2 id="removals">Removals</h2>
-<h3 id="command-removals">Command removals</h3>
+<h1 id="0200-migration-guide">0.20.0 Migration Guide<a class="headerlink" href="#0200-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
+<h3 id="command-removals">Command removals<a class="headerlink" href="#command-removals" title="Permanent link">&para;</a></h3>
 <p>The following commands were previously deprecated and were removed in this release.</p>
 <ul>
 <li><code>apps</code>: Use <code>apps:list</code> instead.</li>
@@ -2701,12 +2701,12 @@
 <li><code>proxy#set_proxy_ports()</code></li>
 </ul>
 <p>The informal policy is to allow removal of functions within a <code>functions</code> file if they are not used in OSS plugins. Should you be affected by any such removals, please file an issue to expose the functionality via a plugin trigger.</p>
-<h3 id="function-renames">Function renames</h3>
+<h3 id="function-renames">Function renames<a class="headerlink" href="#function-renames" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>tar#tar_in_cmd</code> was renamed to <code>tar#cmd-tar-in</code>. Users should avoid using <code>cmd-*</code> commands directly, and instead file an issue to have them exposed via a plugin trigger.</li>
 <li><code>tar#tar_from_cmd</code> was renamed to <code>tar#cmd-tar-from</code>. Users should avoid using <code>cmd-*</code> commands directly, and instead file an issue to have them exposed via a plugin trigger.</li>
 </ul>
-<h3 id="remove-support-for-unsupported-operating-systems">Remove support for Unsupported Operating Systems</h3>
+<h3 id="remove-support-for-unsupported-operating-systems">Remove support for Unsupported Operating Systems<a class="headerlink" href="#remove-support-for-unsupported-operating-systems" title="Permanent link">&para;</a></h3>
 <p>Dokku will no longer distribute packages for Ubuntu versions that have reached either End of Life or End of Standard Support (for LTS releases). This currently includes the following releases:</p>
 <ul>
 <li>Ubuntu 14.04 (trusty)</li>
@@ -2722,28 +2722,28 @@
 <li>Debian 7 (wheezy)</li>
 <li>Debian 8 (jessie)</li>
 </ul>
-<h3 id="removed-app-report-flags">Removed App report flags</h3>
+<h3 id="removed-app-report-flags">Removed App report flags<a class="headerlink" href="#removed-app-report-flags" title="Permanent link">&para;</a></h3>
 <p>The <code>--git-sha</code> flag was moved from the <code>apps:report</code> command to the <code>git:report</code> command.</p>
-<h2 id="app-report-output">App report output</h2>
+<h2 id="app-report-output">App report output<a class="headerlink" href="#app-report-output" title="Permanent link">&para;</a></h2>
 <p>When an app is not deployed, the <code>apps:report</code> command no longer shows the message <code>not deployed</code>. Please use the <code>--deployed</code> flag on <code>ps:report</code> instead to see if the app has been deployed.</p>
-<h2 id="changes">Changes</h2>
-<h3 id="app-report-flags">App report flags</h3>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<h3 id="app-report-flags">App report flags<a class="headerlink" href="#app-report-flags" title="Permanent link">&para;</a></h3>
 <p>The following changes on the <code>apps:report</code> command were made in this release:</p>
 <ul>
 <li>The <code>--deploy-source</code> flag was renamed to <code>--app-deploy-source</code>.</li>
 <li>The <code>--locked</code> flag was renamed to <code>--app-locked</code>.</li>
 </ul>
-<h3 id="network-report-flags">Network report flags</h3>
+<h3 id="network-report-flags">Network report flags<a class="headerlink" href="#network-report-flags" title="Permanent link">&para;</a></h3>
 <p>The following changes on the <code>network:report</code> command were made in this release:</p>
 <ul>
 <li>The <code>--network-listeners</code> flag was renamed to <code>--network-web-listeners</code>.</li>
 </ul>
-<h3 id="plugin-triggers">Plugin Triggers</h3>
+<h3 id="plugin-triggers">Plugin Triggers<a class="headerlink" href="#plugin-triggers" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The <code>network-get-port</code> trigger was incorrectly documented to have the <code>isHerokuishContainer</code> argument as the third argument. The code has been fixed to respect the documentation.</li>
 <li>The <code>network-get-listeners</code> trigger now takes an additional <code>processType</code> argument. If not specified, it defaults to <code>web</code>. This default will be removed in an upcoming release.</li>
 </ul>
-<h2 id="deprecations">Deprecations</h2>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>nginx:show-conf</code> has been deprecated in favor of <code>nginx:show-config</code>.</li>
 <li><code>proxy#is_app_proxy_enabled()</code> is deprecated in favor of <code>plugn trigger proxy-is-enabled</code>.</li>

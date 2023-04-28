@@ -2539,20 +2539,20 @@
   
 
 
-<h1 id="0300-migration-guide">0.30.0 Migration Guide</h1>
+<h1 id="0300-migration-guide">0.30.0 Migration Guide<a class="headerlink" href="#0300-migration-guide" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p><strong>Important</strong>: Due to the removal of <code>DOKKU_SCALE</code> support, users with a version older than 0.25.x are heavily encouraged to upgrade to 0.29.x prior to 0.30.x. Not doing so will result in all app containers stopping on rebuild due to having no scale settings.</p>
 </div>
-<h2 id="deprecations">Deprecations</h2>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Support for Ubuntu 18.04 has been deprecated. Please upgrade your host OS in advance of the <a href="https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes">End Of Life in April 2023</a>.</li>
 </ul>
-<h2 id="changes">Changes</h2>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The <code>app.json</code> file is now extracted from the source code instead of the built image. For deploys via <code>git:from-image</code>, the file is extracted from the built image.</li>
 </ul>
-<h2 id="removals">Removals</h2>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Support for <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a> has been removed. No major browser supports it as of 2021. Custom <code>nginx.conf.sigil</code> templates referencing spdy-related variables will continue to build until the 1.0.0 release.</li>
 <li>Support for the <code>DOKKU_SCALE</code> file - deprecated in 0.25.0 - has been removed in favor of the <code>formation</code> key in the <code>app.json</code> file. Please see the <a href="../../processes/process-management/#manually-managing-process-scaling">process management documentation</a> for more information on how to use the <code>formation</code> key of the <code>app.json</code> file.</li>

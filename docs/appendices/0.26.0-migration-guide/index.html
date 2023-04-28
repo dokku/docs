@@ -2525,13 +2525,13 @@
   
 
 
-<h1 id="0260-migration-guide">0.26.0 Migration Guide</h1>
-<h2 id="removals">Removals</h2>
+<h1 id="0260-migration-guide">0.26.0 Migration Guide<a class="headerlink" href="#0260-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The <code>tags</code> plugin - deprecated in <a href="../0.24.0-migration-guide/">0.24.0</a> - was removed. Users are highly encouraged to switch their workflows to <code>git:from-image</code>.</li>
 <li>The <code>tar</code> plugin - deprecated in <a href="../0.24.0-migration-guide/">0.24.0</a> - was removed. Users are highly encouraged to switch their workflows to <code>git:from-archive</code>.</li>
 </ul>
-<h2 id="changes">Changes</h2>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The <code>scheduler</code> plugin now controls the scheduler in use for deploys. Apps will have their <code>DOKKU_SCHEDULER</code> environment variables migrated to the scheduler plugin, after which that value will be removed from said app. Please see the <a href="../../deployment/schedulers/scheduler-management/">scheduler documentation</a> for more information.</li>
 <li>The <code>deploy-source</code> metadata from <code>apps:report</code> is now no longer computed on the fly, but hydrated at deploy time via the <code>deploy-source-set</code> trigger. This value may be empty until your next deploy.</li>

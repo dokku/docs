@@ -2591,7 +2591,7 @@
   
 
 
-<h1 id="docker-container-options">Docker Container Options</h1>
+<h1 id="docker-container-options">Docker Container Options<a class="headerlink" href="#docker-container-options" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.3.17</p>
@@ -2608,7 +2608,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy,run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
 </code></pre></div>
 </div>
-<h2 id="about-dokku-phases">About Dokku phases</h2>
+<h2 id="about-dokku-phases">About Dokku phases<a class="headerlink" href="#about-dokku-phases" title="Permanent link">&para;</a></h2>
 <p>Dokku deploys your application in multiple "phases" and the <code>docker-options</code> plugin allows you to pass arguments to their underlying docker container:</p>
 <ul>
 <li><code>build</code>: the container that executes the appropriate buildpack</li>
@@ -2618,8 +2618,8 @@
 <p>Manipulation of docker options will not restart running containers. This enables multiple options to be set/unset before final application. As such, changing an app's docker options must be followed by a <code>dokku ps:rebuild</code> in order to take effect.</p>
 <p>More information on supported Docker options can be found here: https://docs.docker.com/engine/reference/commandline/run/.</p>
 <p>Container options configured via the <code>docker-options</code> plugin are not used to modify the process a container runs. Container options are the <code>[OPTIONS]</code> portion of the following, where <code>[CONTAINER_COMMAND]</code> and <code>[ARG]</code> are the process and the arguments passed to it that are launched in the created container: <code>docker run [OPTIONS] [CONTAINER_COMMAND] [ARG...]</code>. Please see the documentation for <a href="../../deployment/builders/dockerfiles/#customizing-the-run-command">customizing the run command</a> or use a <a href="../../deployment/builders/dockerfiles/#procfiles-and-multiple-processes">Procfile</a> to modify the command used by a Dockerfile-based container.</p>
-<h2 id="examples">Examples</h2>
-<h3 id="add-docker-options">Add Docker options</h3>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="add-docker-options">Add Docker options<a class="headerlink" href="#add-docker-options" title="Permanent link">&para;</a></h3>
 <p>Add some options for the deployed/running app and when executing <a href="../../processes/one-off-tasks/"><code>dokku run</code></a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Mount a host volume in a Docker container: &quot;-v /host/path:/container/path&quot;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
@@ -2629,10 +2629,10 @@
 <p class="admonition-title">Note</p>
 <p>When <a href="https://docs.docker.com/engine/reference/run/#volume-shared-filesystems">mounting a host directory</a> in a Dokku app you should first create that directory as user <code>dokku</code> and then mount the directory under <code>/app</code> in the container using <code>docker-options</code> as above. Otherwise the app will lack write permission in the directory.</p>
 </div>
-<h3 id="remove-a-docker-option">Remove a Docker option</h3>
+<h3 id="remove-a-docker-option">Remove a Docker option<a class="headerlink" href="#remove-a-docker-option" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
 </code></pre></div>
-<h3 id="clear-all-docker-options-for-an-app">Clear all Docker options for an app</h3>
+<h3 id="clear-all-docker-options-for-an-app">Clear all Docker options for an app<a class="headerlink" href="#clear-all-docker-options-for-an-app" title="Permanent link">&para;</a></h3>
 <p>Docker options can be removed for a specific app using the <code>docker-options:clear</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2668,7 +2668,7 @@
 </div>
 </div>
 </div>
-<h3 id="displaying-docker-options-reports-for-an-app">Displaying docker-options reports for an app</h3>
+<h3 id="displaying-docker-options-reports-for-an-app">Displaying docker-options reports for an app<a class="headerlink" href="#displaying-docker-options-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>

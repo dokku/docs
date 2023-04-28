@@ -2699,7 +2699,7 @@
   
 
 
-<h1 id="port-management">Port Management</h1>
+<h1 id="port-management">Port Management<a class="headerlink" href="#port-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0, Enhanced in 0.6.0</p>
@@ -2711,7 +2711,7 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>proxy:ports-set &lt;app&gt; &lt;scheme&gt;:&lt;host-port&gt;:&lt;container-port&gt; [&lt;scheme&gt;:&lt;host-port&gt;:&lt;container-port&gt;...]           # Set proxy port mappings for an app
 </code></pre></div>
 <p>In Dokku 0.5.0, port proxying was decoupled from the <code>nginx-vhosts</code> plugin into the proxy plugin. Dokku 0.6.0 introduced the ability to map host ports to specific container ports. In the future this will allow other proxy software - such as HAProxy or Caddy - to be used in place of nginx.</p>
-<h2 id="usage">Usage</h2>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Mapping alternative ports may conflict with the active firewall installed on your server or hosting provider. Such software includes - but is not limited to - AWS Security Groups, iptables, and UFW. Please consult the documentation for those softwares as applicable.</p>
@@ -2727,7 +2727,7 @@
 <p class="admonition-title">Note</p>
 <p>This default behavior <strong>will not</strong> be automatically changed on subsequent pushes and must be manipulated with the <code>proxy:ports-*</code> commands detailed below.</p>
 </div>
-<h3 id="listing-port-mappings">Listing port mappings</h3>
+<h3 id="listing-port-mappings">Listing port mappings<a class="headerlink" href="#listing-port-mappings" title="Permanent link">&para;</a></h3>
 <p>To inspect the port mapping for a given application, use the <code>proxy:ports</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2756,7 +2756,7 @@
 </div>
 </div>
 </div>
-<h3 id="adding-a-custom-port-mapping">Adding a custom port mapping</h3>
+<h3 id="adding-a-custom-port-mapping">Adding a custom port mapping<a class="headerlink" href="#adding-a-custom-port-mapping" title="Permanent link">&para;</a></h3>
 <p>There are cases where we may wish for the service to be listening on more than one port, such as port 8080. Normally, this would not be possible:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
@@ -2813,7 +2813,7 @@
 </div>
 </div>
 </div>
-<h3 id="setting-all-port-mappings-at-once">Setting all port mappings at once</h3>
+<h3 id="setting-all-port-mappings-at-once">Setting all port mappings at once<a class="headerlink" href="#setting-all-port-mappings-at-once" title="Permanent link">&para;</a></h3>
 <p>Port mappings can also be force set using the <code>proxy:ports-set</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
@@ -2831,27 +2831,27 @@
 </div>
 </div>
 </div>
-<h3 id="removing-a-port-mapping">Removing a port mapping</h3>
+<h3 id="removing-a-port-mapping">Removing a port mapping<a class="headerlink" href="#removing-a-port-mapping" title="Permanent link">&para;</a></h3>
 <p>A port mapping can be removed using the <code>proxy:ports-remove</code> command if it no longer necessary:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>proxy:ports-remove<span class="w"> </span>node-js-app<span class="w"> </span>http:80:5000
 </code></pre></div>
 <p>Ports may also be removed by specifying only the <code>host-port</code> value. This effectively acts as a wildcard and removes all mappings for that particular host port.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>proxy:ports-remove<span class="w"> </span>node-js-app<span class="w"> </span>http:80
 </code></pre></div>
-<h2 id="port-management-by-deployment-method">Port management by Deployment Method</h2>
+<h2 id="port-management-by-deployment-method">Port management by Deployment Method<a class="headerlink" href="#port-management-by-deployment-method" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you set a proxy port map but <em>do not have a global domain set</em>, Dokku will reset that map upon first deployment.</p>
 </div>
-<h3 id="buildpacks">Buildpacks</h3>
+<h3 id="buildpacks">Buildpacks<a class="headerlink" href="#buildpacks" title="Permanent link">&para;</a></h3>
 <p>For buildpack deployments, your application <em>must</em> respect the <code>PORT</code> environment variable. We will typically set this to port <code>5000</code>, but this is not guaranteed. If you do not respect the <code>PORT</code> environment variable, your containers may start but your services will not be accessible outside of that container.</p>
-<h3 id="dockerfile">Dockerfile</h3>
+<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Changed as of 0.5.0</p>
 </div>
 <p>Dokku's default proxy implementation - nginx - supports HTTP and GRPC request proxying. At this time, we do not support proxying plain TCP or UDP ports. UDP ports can be exposed by disabling the nginx proxy with <code>dokku proxy:disable myapp</code> and manually exposing the ports via the <code>docker-options</code> plugin. For example, <code>dokku docker-options:add myapp deploy "-p 2456:2456/udp'</code>. If you would like to investigate alternative proxy methods, please refer to our <a href="../proxy-management/">proxy management documentation</a>.</p>
-<h4 id="applications-using-expose">Applications using EXPOSE</h4>
+<h4 id="applications-using-expose">Applications using EXPOSE<a class="headerlink" href="#applications-using-expose" title="Permanent link">&para;</a></h4>
 <p>Dokku will extract all tcp ports exposed using the <code>EXPOSE</code> directive (one port per line) and setup nginx to proxy the same port numbers to listen publicly. If you would like to change the exposed port, you should do so within your <code>Dockerfile</code>.</p>
 <p>For example, if the Dokku installation is configured with the domain <code>dokku.me</code> and an application named <code>node-js-app</code> is deployed with following Dockerfile:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>FROM ubuntu:20.04
@@ -2865,19 +2865,19 @@
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># remove the incorrect port mapping</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>dokku<span class="w"> </span>proxy:ports-remove<span class="w"> </span>node-js-app<span class="w"> </span>http:1234:1234
 </code></pre></div>
-<h4 id="applications-not-using-expose">Applications not using EXPOSE</h4>
+<h4 id="applications-not-using-expose">Applications not using EXPOSE<a class="headerlink" href="#applications-not-using-expose" title="Permanent link">&para;</a></h4>
 <p>Any application that does not use an <code>EXPOSE</code> directive will result in Dokku defaulting to port <code>5000</code>. This behavior mimics the behavior of a Buildpack deploy. If your application <em>does not</em> support the <code>PORT</code> environment variable, then you will either need to:</p>
 <ul>
 <li>modify your application to support the <code>PORT</code> environment variable.</li>
 <li>switch to using an <code>EXPOSE</code> directive in your Dockerfile.</li>
 </ul>
-<h4 id="switching-between-expose-usage-modes">Switching between <code>EXPOSE</code> usage modes</h4>
+<h4 id="switching-between-expose-usage-modes">Switching between <code>EXPOSE</code> usage modes<a class="headerlink" href="#switching-between-expose-usage-modes" title="Permanent link">&para;</a></h4>
 <p>When switching between <code>EXPOSE</code> usage modes, it is important to reset your port management. The following two commands can be used to reset your state and redeploy your application.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># assuming your application is called `node-js-app`</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>config:unset<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span>DOKKU_DOCKERFILE_PORTS<span class="w"> </span>PORT
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku<span class="w"> </span>proxy:ports-clear<span class="w"> </span>node-js-app
 </code></pre></div>
-<h3 id="docker-image">Docker Image</h3>
+<h3 id="docker-image">Docker Image<a class="headerlink" href="#docker-image" title="Permanent link">&para;</a></h3>
 <p>When deploying an image, we will use <code>docker inspect</code> to extract the <code>ExposedPorts</code> configuration and if defined, use that to populate port mapping. If this behavior is not desired, you can override that configuration variable with the following commands.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># assuming your application is called `node-js-app`</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_DOCKERFILE_PORTS</span><span class="o">=</span><span class="s2">&quot;1234/tcp 80/tcp&quot;</span>

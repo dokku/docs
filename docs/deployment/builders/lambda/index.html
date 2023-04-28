@@ -2591,7 +2591,7 @@
   
 
 
-<h1 id="lambda-builder">Lambda Builder</h1>
+<h1 id="lambda-builder">Lambda Builder<a class="headerlink" href="#lambda-builder" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.28.0</p>
@@ -2600,8 +2600,8 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>builder-lambda:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;) # Set or clear a builder-lambda property for an app
 </code></pre></div>
 <p>The <code>lambda</code> builder builds AWS Lambda functions in an environment simulating AWS Lambda runtimes via <a href="https://github.com/dokku/lambda-builder">lambda-builder</a>. Apps built via this builder can run natively in Dokku and may also have their artifacts scheduled to Lambda via an appropriate scheduler.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="detection">Detection</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
 <p>This builder will be auto-detected in the following case:</p>
 <ul>
 <li>A <code>lambda.yml</code> exists in the root of the app repository.</li>
@@ -2609,7 +2609,7 @@
 <p>The builder may also be selected via the <code>builder:set</code> command</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>lambda
 </code></pre></div>
-<h3 id="supported-languages">Supported languages</h3>
+<h3 id="supported-languages">Supported languages<a class="headerlink" href="#supported-languages" title="Permanent link">&para;</a></h3>
 <p>The <code>lambda</code> builder plugin supports the following AWS runtime languages on Amazon Linux 2:</p>
 <ul>
 <li>dotnet</li>
@@ -2619,9 +2619,9 @@
 <li>ruby</li>
 </ul>
 <p>See the <a href="https://github.com/dokku/lambda-builder#how-does-it-work">lambda-builder</a> documentation for more information on how specific languages are detected.</p>
-<h3 id="customizing-the-build-environment">Customizing the build environment</h3>
+<h3 id="customizing-the-build-environment">Customizing the build environment<a class="headerlink" href="#customizing-the-build-environment" title="Permanent link">&para;</a></h3>
 <p>The <code>lambda</code> builder plugin delegates all build logic to <a href="https://github.com/dokku/lambda-builder">lambda-builder</a>, including language detection and build/runtime environment specification. The lambda-builder tool supports a <code>lambda.yml</code> file format for customizing how apps are built. Please see the readme for lambda-builder for more information on different options.</p>
-<h3 id="changing-the-lambdayml-location">Changing the <code>lambda.yml</code> location</h3>
+<h3 id="changing-the-lambdayml-location">Changing the <code>lambda.yml</code> location<a class="headerlink" href="#changing-the-lambdayml-location" title="Permanent link">&para;</a></h3>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>lambda.yml</code> file to use for a given app. This can be done via the <code>builder-lambda:set</code> command. If a value is specified and that file does not exist in the app's build directory, then the build will fail.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder-lambda:set<span class="w"> </span>node-js-app<span class="w"> </span>lambdayml-path<span class="w"> </span>lambda2.yml
 </code></pre></div>
@@ -2634,7 +2634,7 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-lambda:set<span class="w"> </span>--global<span class="w"> </span>lambdayml-path
 </code></pre></div>
-<h3 id="displaying-builder-lambda-reports-for-an-app">Displaying builder-lambda reports for an app</h3>
+<h3 id="displaying-builder-lambda-reports-for-an-app">Displaying builder-lambda reports for an app<a class="headerlink" href="#displaying-builder-lambda-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's storage status using the <code>builder-lambda:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">

@@ -2591,7 +2591,7 @@
   
 
 
-<h1 id="user-management">User Management</h1>
+<h1 id="user-management">User Management<a class="headerlink" href="#user-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.7.0</p>
@@ -2606,8 +2606,8 @@
 <p class="admonition-title">Info</p>
 <p>Users of older versions of Dokku may use the <code>sshcommand</code> binary to manage keys instead of the <code>ssh-keys</code> plugin. Please refer to the Dokku documentation for your version for more details.</p>
 </div>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-ssh-keys">Listing SSH keys</h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="listing-ssh-keys">Listing SSH keys<a class="headerlink" href="#listing-ssh-keys" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>ssh-keys:list</code> command to show all configured SSH keys.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
@@ -2644,7 +2644,7 @@
 <p>This can additionally be used to filter to keys for a particular user:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>ssh-keys:list<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>admin
 </code></pre></div>
-<h3 id="adding-ssh-keys">Adding SSH keys</h3>
+<h3 id="adding-ssh-keys">Adding SSH keys<a class="headerlink" href="#adding-ssh-keys" title="Permanent link">&para;</a></h3>
 <p>You can add your public key to Dokku with the <code>ssh-keys:add</code> command. The output will be the fingerprint of the SSH key:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
@@ -2669,17 +2669,17 @@
 <p>If you are using the Vagrant installation, you can also use the <code>make vagrant-acl-add</code> target to add your public key to Dokku (it will use your host username as the <code>USER</code>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>make<span class="w"> </span>vagrant-acl-add
 </code></pre></div>
-<h3 id="removing-ssh-keys">Removing SSH keys</h3>
+<h3 id="removing-ssh-keys">Removing SSH keys<a class="headerlink" href="#removing-ssh-keys" title="Permanent link">&para;</a></h3>
 <p>As key names are unique, they can be used to remove a public SSH key.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>ssh-keys:remove<span class="w"> </span>KEY_NAME
 </code></pre></div>
 <p>An SSH Key can also be removed by fingerprint.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ssh-keys:remove<span class="w"> </span>--fingerprint<span class="w"> </span>FINGERPRINT
 </code></pre></div>
-<h2 id="scoping-commands-to-specific-users">Scoping commands to specific users</h2>
+<h2 id="scoping-commands-to-specific-users">Scoping commands to specific users<a class="headerlink" href="#scoping-commands-to-specific-users" title="Permanent link">&para;</a></h2>
 <p>Support for scoping commands to specific users can be added through plugins that take advantage of the <a href="../../development/plugin-triggers/#user-auth">user-auth</a> plugin trigger to handle command authorization.
 See also the list of <a href="../../community/plugins/">community-provided plugins</a>.</p>
-<h2 id="granting-other-unix-user-accounts-dokku-access">Granting other Unix user accounts Dokku access</h2>
+<h2 id="granting-other-unix-user-accounts-dokku-access">Granting other Unix user accounts Dokku access<a class="headerlink" href="#granting-other-unix-user-accounts-dokku-access" title="Permanent link">&para;</a></h2>
 <p>Any Unix user account which belongs to the <code>sudo</code> Unix group can run Dokku.  However, you may want to give them Dokku access but not full sudo privileges.</p>
 <p>To allow other Unix user accounts to be able to run Dokku commands, without giving them full sudo access, modify your sudoers configuration.</p>
 <p>Use <code>visudo /etc/sudoers.d/dokku-users</code>, or <code>visudo /etc/sudoers</code> to add the following line:</p>
