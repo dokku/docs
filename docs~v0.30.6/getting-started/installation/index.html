@@ -27,27 +27,25 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/getting-started/install/docker/">
+        <link rel="canonical" href="https://dokku.com/docs/getting-started/installation/">
       
       
-        <link rel="prev" href="../digitalocean/">
       
+        <link rel="next" href="../advanced-installation/">
       
-        <link rel="next" href="../dreamhost/">
-      
-      <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
+      <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
     
     
       
-        <title>Docker Installation Notes - Dokku Documentation</title>
+        <title>Getting Started with Dokku - Dokku Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
       
       
   
@@ -71,9 +69,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +82,7 @@
   <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
   <link
     rel="stylesheet"
-    href="../../../overrides/assets/stylesheets/main.css"
+    href="../../overrides/assets/stylesheets/main.css"
   />
 
   </head>
@@ -109,7 +107,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-installation-notes" class="md-skip">
+        <a href="#getting-started-with-dokku" class="md-skip">
           Skip to content
         </a>
       
@@ -140,7 +138,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/getting-started/install/docker/">
+  <a href="/docs/getting-started/installation/">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -155,9 +153,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -173,7 +171,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker Installation Notes
+              Getting Started with Dokku
             
           </span>
         </div>
@@ -289,7 +287,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../installation/" class="md-tabs__link md-tabs__link--active">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Docs
       </a>
     </li>
@@ -369,9 +367,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     Dokku Documentation
@@ -534,8 +532,8 @@
       
         
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../../installation/">Getting Started with Dokku</a>
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">Getting Started with Dokku</a>
           
             <label for="__nav_1_1_1">
               <span class="md-nav__icon md-icon"></span>
@@ -558,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-installation/" class="md-nav__link">
+      <a href="../advanced-installation/" class="md-nav__link">
         Advanced installation
       </a>
     </li>
@@ -572,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../azure/" class="md-nav__link">
+      <a href="../install/azure/" class="md-nav__link">
         Microsoft Azure Installation Notes
       </a>
     </li>
@@ -586,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../debian/" class="md-nav__link">
+      <a href="../install/debian/" class="md-nav__link">
         Debian Package Installation Notes
       </a>
     </li>
@@ -600,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../digitalocean/" class="md-nav__link">
+      <a href="../install/digitalocean/" class="md-nav__link">
         DigitalOcean Droplet Installation Notes
       </a>
     </li>
@@ -612,86 +610,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Docker Installation Notes
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../install/docker/" class="md-nav__link">
         Docker Installation Notes
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#plugin-installation" class="md-nav__link">
-    Plugin Installation
-  </a>
-  
-    <nav class="md-nav" aria-label="Plugin Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#on-dokku-start" class="md-nav__link">
-    On Dokku start
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prior-to-dokku-start" class="md-nav__link">
-    Prior to Dokku start
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-key-management" class="md-nav__link">
-    SSH Key Management
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pushing-applications" class="md-nav__link">
-    Pushing Applications
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -703,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dreamhost/" class="md-nav__link">
+      <a href="../install/dreamhost/" class="md-nav__link">
         DreamHost Cloud Server Installation Notes
       </a>
     </li>
@@ -717,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vagrant/" class="md-nav__link">
+      <a href="../install/vagrant/" class="md-nav__link">
         Vagrant Installation Notes
       </a>
     </li>
@@ -790,7 +713,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../upgrading/">Upgrading</a>
+          <a href="../upgrading/">Upgrading</a>
           
             <label for="__nav_1_1_2">
               <span class="md-nav__icon md-icon"></span>
@@ -813,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.30.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.30.0-migration-guide/" class="md-nav__link">
         0.30.0 Migration Guide
       </a>
     </li>
@@ -827,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.29.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.29.0-migration-guide/" class="md-nav__link">
         0.29.0 Migration Guide
       </a>
     </li>
@@ -841,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.28.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.28.0-migration-guide/" class="md-nav__link">
         0.28.0 Migration Guide
       </a>
     </li>
@@ -855,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.27.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.27.0-migration-guide/" class="md-nav__link">
         0.27.0 Migration Guide
       </a>
     </li>
@@ -869,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.26.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.26.0-migration-guide/" class="md-nav__link">
         0.26.0 Migration Guide
       </a>
     </li>
@@ -883,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.25.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.25.0-migration-guide/" class="md-nav__link">
         0.25.0 Migration Guide
       </a>
     </li>
@@ -897,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.24.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.24.0-migration-guide/" class="md-nav__link">
         0.24.0 Migration Guide
       </a>
     </li>
@@ -911,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.23.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.23.0-migration-guide/" class="md-nav__link">
         0.23.0 Migration Guide
       </a>
     </li>
@@ -925,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.22.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.22.0-migration-guide/" class="md-nav__link">
         0.22.0 Migration Guide
       </a>
     </li>
@@ -939,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.21.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.21.0-migration-guide/" class="md-nav__link">
         0.21.0 Migration Guide
       </a>
     </li>
@@ -953,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.20.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.20.0-migration-guide/" class="md-nav__link">
         0.20.0 Migration Guide
       </a>
     </li>
@@ -967,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.10.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.10.0-migration-guide/" class="md-nav__link">
         0.10.0 Migration Guide
       </a>
     </li>
@@ -981,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.9.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.9.0-migration-guide/" class="md-nav__link">
         0.9.0 Migration Guide
       </a>
     </li>
@@ -995,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.8.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.8.0-migration-guide/" class="md-nav__link">
         0.8.0 Migration Guide
       </a>
     </li>
@@ -1009,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.7.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.7.0-migration-guide/" class="md-nav__link">
         0.7.0 Migration Guide
       </a>
     </li>
@@ -1023,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.6.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.6.0-migration-guide/" class="md-nav__link">
         0.6.0 Migration Guide
       </a>
     </li>
@@ -1037,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.5.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.5.0-migration-guide/" class="md-nav__link">
         0.5.0 Migration Guide
       </a>
     </li>
@@ -1058,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../uninstalling/" class="md-nav__link">
+      <a href="../uninstalling/" class="md-nav__link">
         Uninstalling
       </a>
     </li>
@@ -1072,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -1086,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../where-to-get-help/" class="md-nav__link">
+      <a href="../where-to-get-help/" class="md-nav__link">
         Where to Get Help
       </a>
     </li>
@@ -1140,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../enterprise/pro/" class="md-nav__link">
+      <a href="../../enterprise/pro/" class="md-nav__link">
         Dokku Pro
       </a>
     </li>
@@ -1204,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/application-deployment/" class="md-nav__link">
+      <a href="../../deployment/application-deployment/" class="md-nav__link">
         Deploying an Application
       </a>
     </li>
@@ -1218,7 +1141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/application-management/" class="md-nav__link">
+      <a href="../../deployment/application-management/" class="md-nav__link">
         Application Management
       </a>
     </li>
@@ -1232,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/logs/" class="md-nav__link">
+      <a href="../../deployment/logs/" class="md-nav__link">
         Log Management
       </a>
     </li>
@@ -1246,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/remote-commands/" class="md-nav__link">
+      <a href="../../deployment/remote-commands/" class="md-nav__link">
         Remote Commands
       </a>
     </li>
@@ -1260,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/user-management/" class="md-nav__link">
+      <a href="../../deployment/user-management/" class="md-nav__link">
         User Management
       </a>
     </li>
@@ -1274,7 +1197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/zero-downtime-deploys/" class="md-nav__link">
+      <a href="../../deployment/zero-downtime-deploys/" class="md-nav__link">
         Zero Downtime Deploy Checks
       </a>
     </li>
@@ -1338,7 +1261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/builders/builder-management/" class="md-nav__link">
+      <a href="../../deployment/builders/builder-management/" class="md-nav__link">
         Builder Management
       </a>
     </li>
@@ -1352,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
         Cloud Native Buildpacks
       </a>
     </li>
@@ -1366,7 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
         Herokuish Buildpacks
       </a>
     </li>
@@ -1380,7 +1303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/builders/dockerfiles/" class="md-nav__link">
+      <a href="../../deployment/builders/dockerfiles/" class="md-nav__link">
         Dockerfile Deployment
       </a>
     </li>
@@ -1394,7 +1317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/builders/lambda/" class="md-nav__link">
+      <a href="../../deployment/builders/lambda/" class="md-nav__link">
         Lambda Builder
       </a>
     </li>
@@ -1408,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/builders/null/" class="md-nav__link">
+      <a href="../../deployment/builders/null/" class="md-nav__link">
         Null Builder
       </a>
     </li>
@@ -1462,7 +1385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/methods/git/" class="md-nav__link">
+      <a href="../../deployment/methods/git/" class="md-nav__link">
         Git Deployment
       </a>
     </li>
@@ -1520,7 +1443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/environment-variables/" class="md-nav__link">
+      <a href="../../configuration/environment-variables/" class="md-nav__link">
         Environment Variables
       </a>
     </li>
@@ -1534,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/domains/" class="md-nav__link">
+      <a href="../../configuration/domains/" class="md-nav__link">
         Domain Configuration
       </a>
     </li>
@@ -1548,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/ssl/" class="md-nav__link">
+      <a href="../../configuration/ssl/" class="md-nav__link">
         SSL Configuration
       </a>
     </li>
@@ -1608,7 +1531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/entering-containers/" class="md-nav__link">
+      <a href="../../processes/entering-containers/" class="md-nav__link">
         Entering containers
       </a>
     </li>
@@ -1622,7 +1545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/one-off-tasks/" class="md-nav__link">
+      <a href="../../processes/one-off-tasks/" class="md-nav__link">
         One-off Tasks
       </a>
     </li>
@@ -1636,7 +1559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/process-management/" class="md-nav__link">
+      <a href="../../processes/process-management/" class="md-nav__link">
         Process Management
       </a>
     </li>
@@ -1650,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/scheduled-cron-tasks/" class="md-nav__link">
+      <a href="../../processes/scheduled-cron-tasks/" class="md-nav__link">
         Scheduled Cron Tasks
       </a>
     </li>
@@ -1708,7 +1631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/dns/" class="md-nav__link">
+      <a href="../../networking/dns/" class="md-nav__link">
         DNS Configuration
       </a>
     </li>
@@ -1722,7 +1645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/network/" class="md-nav__link">
+      <a href="../../networking/network/" class="md-nav__link">
         Network Management
       </a>
     </li>
@@ -1736,7 +1659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/port-management/" class="md-nav__link">
+      <a href="../../networking/port-management/" class="md-nav__link">
         Port Management
       </a>
     </li>
@@ -1798,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxy-management/" class="md-nav__link">
+      <a href="../../networking/proxy-management/" class="md-nav__link">
         Proxy Management
       </a>
     </li>
@@ -1812,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/caddy/" class="md-nav__link">
+      <a href="../../networking/proxies/caddy/" class="md-nav__link">
         Caddy Proxy
       </a>
     </li>
@@ -1826,7 +1749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/haproxy/" class="md-nav__link">
+      <a href="../../networking/proxies/haproxy/" class="md-nav__link">
         Haproxy Proxy
       </a>
     </li>
@@ -1840,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/nginx/" class="md-nav__link">
+      <a href="../../networking/proxies/nginx/" class="md-nav__link">
         Nginx Proxy
       </a>
     </li>
@@ -1854,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/traefik/" class="md-nav__link">
+      <a href="../../networking/proxies/traefik/" class="md-nav__link">
         Traefik Proxy
       </a>
     </li>
@@ -1924,7 +1847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/backup-recovery/" class="md-nav__link">
+      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
         Backup and Recovery
       </a>
     </li>
@@ -1938,7 +1861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/deployment-tasks/" class="md-nav__link">
+      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
         Deployment Tasks
       </a>
     </li>
@@ -1952,7 +1875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/docker-options/" class="md-nav__link">
+      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
         Docker Container Options
       </a>
     </li>
@@ -1966,7 +1889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/registry-management/" class="md-nav__link">
+      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
         Registry Management
       </a>
     </li>
@@ -1980,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/event-logs/" class="md-nav__link">
+      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
         Dokku Event Logs
       </a>
     </li>
@@ -1994,7 +1917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/persistent-storage/" class="md-nav__link">
+      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
         Persistent Storage
       </a>
     </li>
@@ -2008,7 +1931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/plugin-management/" class="md-nav__link">
+      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
         Plugin Management
       </a>
     </li>
@@ -2022,7 +1945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/repository-management/" class="md-nav__link">
+      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
         Repository Management
       </a>
     </li>
@@ -2036,7 +1959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/resource-management/" class="md-nav__link">
+      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
         Resource Management
       </a>
     </li>
@@ -2098,7 +2021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/schedulers/scheduler-management/" class="md-nav__link">
+      <a href="../../deployment/schedulers/scheduler-management/" class="md-nav__link">
         Scheduler Management
       </a>
     </li>
@@ -2112,7 +2035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/schedulers/docker-local/" class="md-nav__link">
+      <a href="../../deployment/schedulers/docker-local/" class="md-nav__link">
         Docker Local Scheduler
       </a>
     </li>
@@ -2126,7 +2049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/schedulers/kubernetes/" class="md-nav__link">
+      <a href="../../deployment/schedulers/kubernetes/" class="md-nav__link">
         Kubernetes Scheduler
       </a>
     </li>
@@ -2140,7 +2063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/schedulers/nomad/" class="md-nav__link">
+      <a href="../../deployment/schedulers/nomad/" class="md-nav__link">
         Nomad Scheduler
       </a>
     </li>
@@ -2154,7 +2077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/schedulers/null/" class="md-nav__link">
+      <a href="../../deployment/schedulers/null/" class="md-nav__link">
         Null Scheduler
       </a>
     </li>
@@ -2214,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/plugin-creation/" class="md-nav__link">
+      <a href="../../development/plugin-creation/" class="md-nav__link">
         Plugin creation
       </a>
     </li>
@@ -2228,7 +2151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/plugin-triggers/" class="md-nav__link">
+      <a href="../../development/plugin-triggers/" class="md-nav__link">
         Plugin triggers
       </a>
     </li>
@@ -2242,7 +2165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/testing/" class="md-nav__link">
+      <a href="../../development/testing/" class="md-nav__link">
         Running Tests
       </a>
     </li>
@@ -2256,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/release-process/" class="md-nav__link">
+      <a href="../../development/release-process/" class="md-nav__link">
         Release Process
       </a>
     </li>
@@ -2314,7 +2237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/continuous-integration/github-actions/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/github-actions/" class="md-nav__link">
         GitHub Actions
       </a>
     </li>
@@ -2328,7 +2251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
         GitLab CI
       </a>
     </li>
@@ -2342,7 +2265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deployment/continuous-integration/generic/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/generic/" class="md-nav__link">
         Generic CI/CD Integration
       </a>
     </li>
@@ -2398,7 +2321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/clients/" class="md-nav__link">
+      <a href="../../community/clients/" class="md-nav__link">
         Clients
       </a>
     </li>
@@ -2412,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/plugins/" class="md-nav__link">
+      <a href="../../community/plugins/" class="md-nav__link">
         Plugins
       </a>
     </li>
@@ -2520,43 +2443,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#plugin-installation" class="md-nav__link">
-    Plugin Installation
+  <a href="#what-is-dokku" class="md-nav__link">
+    What is Dokku?
   </a>
   
-    <nav class="md-nav" aria-label="Plugin Installation">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    System Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-latest-stable-version" class="md-nav__link">
+    Installing the latest stable version
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing the latest stable version">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#on-dokku-start" class="md-nav__link">
-    On Dokku start
+  <a href="#1-install-dokku" class="md-nav__link">
+    1. Install Dokku
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prior-to-dokku-start" class="md-nav__link">
-    Prior to Dokku start
+  <a href="#2-setup-ssh-key-and-virtualhost-settings" class="md-nav__link">
+    2. Setup SSH key and Virtualhost Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deploy-your-first-application" class="md-nav__link">
+    3. Deploy your first application
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-key-management" class="md-nav__link">
-    SSH Key Management
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pushing-applications" class="md-nav__link">
-    Pushing Applications
-  </a>
   
 </li>
       
@@ -2575,7 +2505,7 @@
                   
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/getting-started/install/docker.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/getting-started/installation/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -2584,71 +2514,73 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/getting-started/install/docker.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/getting-started/installation/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="docker-installation-notes">Docker Installation Notes<a class="headerlink" href="#docker-installation-notes" title="Permanent link">&para;</a></h1>
-<p>Pull the dokku/dokku image:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>dokku/dokku:0.30.5
-</code></pre></div>
-<p>Next, run the image.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--env<span class="w"> </span><span class="nv">DOKKU_HOSTNAME</span><span class="o">=</span>dokku.me<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--env<span class="w"> </span><span class="nv">DOKKU_HOST_ROOT</span><span class="o">=</span>/var/lib/dokku/home/dokku<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--env<span class="w"> </span><span class="nv">DOKKU_LIB_HOST_ROOT</span><span class="o">=</span>/var/lib/dokku/var/lib/dokku<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--name<span class="w"> </span>dokku<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--publish<span class="w"> </span><span class="m">3022</span>:22<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--publish<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--publish<span class="w"> </span><span class="m">8443</span>:443<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--volume<span class="w"> </span>/var/lib/dokku:/mnt/dokku<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>dokku/dokku:0.30.5
-</code></pre></div>
-<p>The above command will start a new docker container that is ready when a message similar to <code>Runit started as PID 12345</code> appears.</p>
-<p>Dokku is run in the following configuration:</p>
+<h1 id="getting-started-with-dokku">Getting Started with Dokku<a class="headerlink" href="#getting-started-with-dokku" title="Permanent link">&para;</a></h1>
+<h3 id="what-is-dokku">What is Dokku?<a class="headerlink" href="#what-is-dokku" title="Permanent link">&para;</a></h3>
+<p>Dokku is an extensible, open source Platform as a Service that runs on a single server of your choice. Dokku supports building apps on the fly from a <code>git push</code> via either Dockerfile or by auto-detecting the language with Buildpacks, and then starts containers based on your built image. Using technologies such as nginx and cron, Web processes are automatically routed to, while background processes and automated cron tasks are also managed by Dokku.</p>
+<h3 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h3>
+<p>To start using Dokku, you'll need a system that meets the following minimum requirements:</p>
 <ul>
-<li>The global hostname is set to <code>dokku.me</code> on boot.</li>
-<li>The container name is dokku.</li>
-<li>Container SSH port 22 is exposed on the host as 3022.</li>
-<li>Container HTTP port 80 is exposed on the host as 8080.</li>
-<li>Container HTTPS port 443 is exposed on the host as 8443.</li>
-<li>Data within the container is stored on the host within the <code>/var/lib/dokku</code> directory.</li>
-<li>Image build cache is set to the data dir + <code>/home/dokku</code>.</li>
-<li>The docker socket is mounted into container.</li>
+<li>A fresh installation of any of the following operating systems:<ul>
+<li><a href="https://www.ubuntu.com/download">Ubuntu 20.04/22.04</a></li>
+<li><a href="https://www.debian.org/distrib/">Debian 10+ x64</a></li>
 </ul>
-<p>Application repositories, plugin config, as well as plugin data are persisted to disk within the specified host directory for <code>/var/lib/dokku</code>.</p>
-<p>Other docker container options can also be used when running Dokku, though the specific outcome will depend upon the specified options. For example, the Dokku container's nginx port can be bound to a specific host ip by specifying <code>--publish $HOST_IP:8080:80</code>, where <code>$HOST_IP</code> is the IP desired. Please see the <a href="https://docs.docker.com/engine/reference/commandline/run/">docker container run documentation</a> for further explanation for various docker arguments.</p>
-<h2 id="plugin-installation">Plugin Installation<a class="headerlink" href="#plugin-installation" title="Permanent link">&para;</a></h2>
-<h3 id="on-dokku-start">On Dokku start<a class="headerlink" href="#on-dokku-start" title="Permanent link">&para;</a></h3>
-<p>To install custom plugins, create a <code>plugin-list</code> file in the host's <code>/var/lib/dokku</code> directory. The plugins listed herein will be automatically installed by Dokku on container boot. This file should be the following format:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">plugin_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repository_url</span>
+</li>
+<li>A server with one of the following architectures<ul>
+<li>AMD64 (alternatively known as <code>x86_64</code>), commonly used for Intel cloud servers</li>
+<li>ARMV7 (alternatively known as <code>armhf</code>), commonly used for Raspberry PI</li>
+<li>ARMV8 (alternatively known as <code>arm64</code>), commonly used for Raspberry PI and AWS Graviton</li>
+</ul>
+</li>
+</ul>
+<p>To avoid memory pressure during builds or runtime of your applications, we suggest the following:</p>
+<ul>
+<li>At least 1 GB of system memory<ul>
+<li>If your system has less than 1GB of memory, you can use <a href="../advanced-installation/#vms-with-less-than-1-gb-of-memory">this workaround</a>.</li>
+</ul>
+</li>
+</ul>
+<p>Finally, we recommend attaching at least one domain name to your server. This is not required, but using a domain name will make app access easier. When connecting a domain, either a single domain or a wildcard may be associated to the server's IP.</p>
+<ul>
+<li>Wildcard domain (<code>*.domain.tld</code> A Record): will allow access to apps via <code>$APP.domain.tld</code>.</li>
+<li>Single domain (<code>domain.tld</code> A or CNAME Record): will result in apps being accessed via <code>domain.tld:$RANDOM_PORT</code>.</li>
+</ul>
+<p>Please see the <a href="../../networking/dns/">dns documentation</a> and <a href="../../configuration/domains/">domains documentation</a> for more details.</p>
+<h3 id="installing-the-latest-stable-version">Installing the latest stable version<a class="headerlink" href="#installing-the-latest-stable-version" title="Permanent link">&para;</a></h3>
+<p>This is the simple method of installing Dokku. For alternative methods of installation, see the <a href="../advanced-installation/#configuring">advanced install guide</a>.</p>
+<h4 id="1-install-dokku">1. Install Dokku<a class="headerlink" href="#1-install-dokku" title="Permanent link">&para;</a></h4>
+<p>To install the latest stable version of Dokku, you can run the following shell commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># for debian systems, installs Dokku via apt-get</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>-NP<span class="w"> </span>.<span class="w"> </span>https://dokku.com/install/v0.30.6/bootstrap.sh
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_TAG</span><span class="o">=</span>v0.30.6<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
 </code></pre></div>
-<p>An example for installing the postgres and redis plugins follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">postgres</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-postgres.git</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">redis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-redis.git</span>
+<p>The installation process takes about 5-10 minutes, depending upon internet connection speed.</p>
+<h4 id="2-setup-ssh-key-and-virtualhost-settings">2. Setup SSH key and Virtualhost Settings<a class="headerlink" href="#2-setup-ssh-key-and-virtualhost-settings" title="Permanent link">&para;</a></h4>
+<p>Once the installation is complete, you should configure an ssh key and set your global domain.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># usually your key is already available under the current user&#39;s `~/.ssh/authorized_keys` file</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span>~/.ssh/authorized_keys<span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>admin
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># you can use any domain you already have access to</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># this domain should have an A record or CNAME pointing at your server&#39;s IP</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span>dokku.me
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># you can also use the ip of your server</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span><span class="m">10</span>.0.0.2
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># finally, you can use sslip.io to get subdomain support</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># as you would with a regular domain name</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># this would be done by appending `.sslip.io` to your ip address</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span><span class="m">10</span>.0.0.2.sslip.io
 </code></pre></div>
-<h3 id="prior-to-dokku-start">Prior to Dokku start<a class="headerlink" href="#prior-to-dokku-start" title="Permanent link">&para;</a></h3>
-<p>The alternative is to build a custom docker image via a custom Dockerfile. This Dockerfile can run any <code>plugin:install</code> command. Note that the version installed at that time will be the one that persists. Below is an example Dockerfile showing this method.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">dokku/dokku:0.30.5</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>postgres
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-redis.git<span class="w"> </span>redis
-</code></pre></div>
-<h2 id="ssh-key-management">SSH Key Management<a class="headerlink" href="#ssh-key-management" title="Permanent link">&para;</a></h2>
-<p>To initialize ssh-keys within the container, use <code>docker exec</code> to enter the container and run the appropriate ssh-keys commands.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dokku<span class="w"> </span>bash
-</code></pre></div>
-<p>Please see the <a href="../../../deployment/user-management/">user management documentation</a> for more information.</p>
-<h2 id="pushing-applications">Pushing Applications<a class="headerlink" href="#pushing-applications" title="Permanent link">&para;</a></h2>
-<p>When exposing the Dokku container's SSH port (22) on 3022, something similar to the following will need to be setup within the user's <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Host dokku.docker
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  HostName 127.0.0.1
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  Port 3022
-</code></pre></div>
-<p>In the above example, the hostname <code>127.0.0.1</code> is being aliased to <code>dokku.docker</code>, while the port is being overriden to <code>3022</code>. All SSH commands - including git pushes - for the hostname <code>dokku.docker</code> will be transparently sent to <code>127.0.0.1:3022</code>.</p>
+<p>See the <a href="../../deployment/user-management/#adding-ssh-keys">user management</a> and <a href="../../configuration/domains/#customizing-hostnames">domains documentation</a> for more information.</p>
+<h4 id="3-deploy-your-first-application">3. Deploy your first application<a class="headerlink" href="#3-deploy-your-first-application" title="Permanent link">&para;</a></h4>
+<p>At this point, you should be able to <a href="../../deployment/application-deployment/">deploy to the Dokku installation</a>.</p>
 
 
 
@@ -2674,30 +2606,15 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../digitalocean/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DigitalOcean Droplet Installation Notes" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                DigitalOcean Droplet Installation Notes
-              </div>
-            </div>
-          </a>
-        
         
           
-          <a href="../dreamhost/" class="md-footer__link md-footer__link--next" aria-label="Next: DreamHost Cloud Server Installation Notes" rel="next">
+          <a href="../advanced-installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Advanced installation" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                DreamHost Cloud Server Installation Notes
+                Advanced installation
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2821,16 +2738,16 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
 
   <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
-  <script src="../../../overrides/assets/javascripts/bundle.js"></script>
+  <script src="../../overrides/assets/javascripts/bundle.js"></script>
 
   </body>
 </html>
