@@ -2831,7 +2831,7 @@
 <p>By default, Dokku will deploy the renamed app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
-<p>Remember to also change your git remote on your local machine in order to make <code>git push dokku main:master</code> work again. For this you can use <code>git remote set-url</code>.</p>
+<p>Remember to also change your git remote on your local machine in order to make <code>git push dokku main</code> work again. For this you can use <code>git remote set-url</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:io-js-app
 </code></pre></div>
 <h3 id="cloning-an-existing-app">Cloning an existing app<a class="headerlink" href="#cloning-an-existing-app" title="Permanent link">&para;</a></h3>
