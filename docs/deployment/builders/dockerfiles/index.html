@@ -1369,15 +1369,15 @@
         
           <li class="md-nav__item">
   <a href="#building-images-with-docker-buildkit" class="md-nav__link">
-    Building images with Docker Buildkit
+    Building images with Docker BuildKit
   </a>
   
-    <nav class="md-nav" aria-label="Building images with Docker Buildkit">
+    <nav class="md-nav" aria-label="Building images with Docker BuildKit">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#buildkit-directory-caching" class="md-nav__link">
-    Buildkit directory caching
+    BuildKit directory caching
   </a>
   
 </li>
@@ -2598,15 +2598,15 @@
         
           <li class="md-nav__item">
   <a href="#building-images-with-docker-buildkit" class="md-nav__link">
-    Building images with Docker Buildkit
+    Building images with Docker BuildKit
   </a>
   
-    <nav class="md-nav" aria-label="Building images with Docker Buildkit">
+    <nav class="md-nav" aria-label="Building images with Docker BuildKit">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#buildkit-directory-caching" class="md-nav__link">
-    Buildkit directory caching
+    BuildKit directory caching
   </a>
   
 </li>
@@ -2805,13 +2805,13 @@
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="c"># use the argument</span>
 <a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$NODE_ENV</span>
 </code></pre></div>
-<h3 id="building-images-with-docker-buildkit">Building images with Docker Buildkit<a class="headerlink" href="#building-images-with-docker-buildkit" title="Permanent link">&para;</a></h3>
-<p>If your Dockerfile is using Docker engine's <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">buildkit</a> (not to be confused with buildpacks), then the <code>DOCKER_BUILDKIT=1</code> environment variable needs to be set. Additionally, complete build log output can be forced via <code>BUILDKIT_PROGRESS=plain</code>. Both of these environment variables can be set as follows:</p>
+<h3 id="building-images-with-docker-buildkit">Building images with Docker BuildKit<a class="headerlink" href="#building-images-with-docker-buildkit" title="Permanent link">&para;</a></h3>
+<p>If your Dockerfile is using Docker Engine's <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">BuildKit</a> (not to be confused with buildpacks), then the <code>DOCKER_BUILDKIT=1</code> environment variable needs to be set (unless you're using Docker Engine v24 or higher, which <a href="https://docs.docker.com/build/buildkit/#getting-started">uses BuildKit by default</a>). Additionally, complete build log output can be forced via <code>BUILDKIT_PROGRESS=plain</code>. Both of these environment variables can be set as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export DOCKER_BUILDKIT=1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export BUILDKIT_PROGRESS=plain&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
 </code></pre></div>
-<h4 id="buildkit-directory-caching">Buildkit directory caching<a class="headerlink" href="#buildkit-directory-caching" title="Permanent link">&para;</a></h4>
-<p>Buildkit implements the <code>RUN --mount</code> option, enabling mount directory caches for <code>RUN</code> directives. The following is an example that mounts debian packaging related directories, which can speed up fetching of remote package data.</p>
+<h4 id="buildkit-directory-caching">BuildKit directory caching<a class="headerlink" href="#buildkit-directory-caching" title="Permanent link">&para;</a></h4>
+<p>BuildKit implements the <code>RUN --mount</code> option, enabling mount directory caches for <code>RUN</code> directives. The following is an example that mounts debian packaging related directories, which can speed up fetching of remote package data.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">debian:latest</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/lib/apt/lists,type<span class="o">=</span>cache<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/cache/apt,type<span class="o">=</span>cache<span class="w"> </span><span class="se">\</span>
