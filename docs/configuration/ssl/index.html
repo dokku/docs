@@ -1565,19 +1565,32 @@
     HTTP/2 support
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-behind-a-load-balancer" class="md-nav__link">
-    Running behind a load balancer
-  </a>
-  
-    <nav class="md-nav" aria-label="Running behind a load balancer">
+    <nav class="md-nav" aria-label="HTTP/2 support">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ssl-port-exposure" class="md-nav__link">
     SSL Port Exposure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+    <nav class="md-nav" aria-label="Other">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-behind-a-proxy-x-forwarded-ssl-etc" class="md-nav__link">
+    Running behind a proxy (X-Forwarded-Ssl, etc.)
   </a>
   
 </li>
@@ -2632,19 +2645,32 @@
     HTTP/2 support
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-behind-a-load-balancer" class="md-nav__link">
-    Running behind a load balancer
-  </a>
-  
-    <nav class="md-nav" aria-label="Running behind a load balancer">
+    <nav class="md-nav" aria-label="HTTP/2 support">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ssl-port-exposure" class="md-nav__link">
     SSL Port Exposure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+    <nav class="md-nav" aria-label="Other">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-behind-a-proxy-x-forwarded-ssl-etc" class="md-nav__link">
+    Running behind a proxy (X-Forwarded-Ssl, etc.)
   </a>
   
 </li>
@@ -2800,29 +2826,11 @@ after they've been generated. You can export it as follows:</p>
 <p>See the <a href="../../networking/proxies/nginx/#hsts-header">NGINX HSTS documentation</a> for more information on how the HSTS configuration can be managed for your application.</p>
 <h2 id="http2-support">HTTP/2 support<a class="headerlink" href="#http2-support" title="Permanent link">&para;</a></h2>
 <p>Certain versions of nginx have bugs that prevent <a href="https://nginx.org/en/docs/http/ngx_http_v2_module.html">HTTP/2</a> from properly responding to all clients, thus causing applications to be unavailable. For HTTP/2 to be enabled in your applications' nginx configs, you need to have installed nginx 1.11.5 or higher. See <a href="https://github.com/dokku/dokku/issues/2435">issue 2435</a> for more details.</p>
-<h2 id="running-behind-a-load-balancer">Running behind a load balancer<a class="headerlink" href="#running-behind-a-load-balancer" title="Permanent link">&para;</a></h2>
-<p>Your application has access to the HTTP headers <code>X-Forwarded-Proto</code>, <code>X-Forwarded-Port</code> and <code>X-Forwarded-For</code>. These headers indicate the protocol of the original request (HTTP or HTTPS), the port number, and the IP address of the client making the request, respectively. The default configuration is for Nginx to set these headers.</p>
-<p>If your server runs behind an HTTP(S) load balancer, then Nginx will see all requests as coming from the load balancer. If your load balancer sets the <code>X-Forwarded-</code> headers, you can tell Nginx to pass these headers from load balancer to your application via <code>nginx:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-for-value<span class="w"> </span><span class="s2">&quot;\$http_x_forwarded_for&quot;</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-port-value<span class="w"> </span><span class="s2">&quot;\$http_x_forwarded_port&quot;</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-proto-value<span class="w"> </span><span class="s2">&quot;\$http_x_forwarded_proto&quot;</span>
-</code></pre></div>
-<p>Only use this option if:
-1. All requests are terminated at the load balancer, and forwarded to Nginx
-2. The load balancer is configured to send the <code>X-Forwarded-</code> headers (this may be off by default)</p>
-<p>If it's possible to make HTTP(S) requests directly to Nginx, bypassing the load balancer, or if the load balancer is not configured to set these headers, then it becomes possible for a client to set these headers to arbitrary values.</p>
-<p>The <code>x-forwarded-ssl</code> property may also be set for application frameworks that require this value. Note that this is a non-standard version of setting <code>x-forwarded-proto</code> to <code>https</code>, and should only be done as a last resort.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># force-setting value to `on`</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-ssl<span class="w"> </span>on
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># force-setting value to `off`</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-ssl<span class="w"> </span>on
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># removing the value from nginx.conf (default)</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-ssl
-</code></pre></div>
 <h3 id="ssl-port-exposure">SSL Port Exposure<a class="headerlink" href="#ssl-port-exposure" title="Permanent link">&para;</a></h3>
-<p>When your app is served from port <code>80</code> then the <code>/home/dokku/APP/nginx.conf</code> file will automatically be updated to instruct nginx to respond to ssl on port 443 as a new cert is added.  If your app uses a non-standard port (perhaps you have a dockerfile deploy exposing port <code>99999</code>) you may need to manually expose an ssl port via <code>dokku proxy:ports-add &lt;APP&gt; https:443:99999</code>.</p>
+<p>When your app is served from port <code>80</code> then the <code>/home/dokku/APP/nginx.conf</code> file will automatically be updated to instruct nginx to respond to ssl on port 443 as a new cert is added. If your app uses a non-standard port (perhaps you have a dockerfile deploy exposing port <code>99999</code>) you may need to manually expose an ssl port via <code>dokku proxy:ports-add &lt;APP&gt; https:443:99999</code>.</p>
+<h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h2>
+<h3 id="running-behind-a-proxy-x-forwarded-ssl-etc">Running behind a proxy (<code>X-Forwarded-Ssl</code>, etc.)<a class="headerlink" href="#running-behind-a-proxy-x-forwarded-ssl-etc" title="Permanent link">&para;</a></h3>
+<p>See the <a href="../../networking/proxies/nginx/#running-behind-another-proxy--configuring-x-forwarded--headers">running behind another proxy documentation</a> for more information on how to configure your Nginx config when your server is running behind a proxy (e.g. load balancer, etc.).</p>
 
 
 
