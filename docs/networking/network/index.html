@@ -2894,13 +2894,16 @@
 </div>
 <p>Apps will default to being associated with the default <code>bridge</code> network or a network specified by the <code>initial-network</code> network property. Additionally, an app can be attached to <code>attachable</code> networks by changing the <code>attach-post-create</code> or <code>attach-post-deploy</code> network properties when using the <a href="../../deployment/schedulers/docker-local/">docker-local scheduler</a>. A change in these values will require an app deploy or rebuild.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># associates the network after a container is created but before it is started</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># associates the network after the deploy is successful but before the proxy is updated</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy<span class="w"> </span>other-test-network
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># associates the network at container creation</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network<span class="w"> </span>global-network
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># commonly used for cross-app networking</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># associates the network after the deploy is successful but before the proxy is updated</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># used for cross-app networking when healthchecks must be invoked first</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy<span class="w"> </span>other-test-network
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1"># associates the network at container creation</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="c1"># typically blocks access to services and external routing</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network<span class="w"> </span>global-network
 </code></pre></div>
 <p>Setting the <code>attach</code> network property to an empty value will de-associate the container with the network.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create
