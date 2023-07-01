@@ -2699,6 +2699,7 @@
 <li><code>schedule</code>: A <a href="https://en.wikipedia.org/wiki/Cron#Overview">cron-compatible</a> scheduling definition upon which to run the command. Seconds are generally not supported.</li>
 </ul>
 <p>Zero or more cron commands can be specified per app. Cron entries are validated after the build artifact is created but before the app is deployed, and the cron schedule is updated during the post-deploy phase.</p>
+<p>See the <a href="../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
 <h4 id="task-environment">Task Environment<a class="headerlink" href="#task-environment" title="Permanent link">&para;</a></h4>
 <p>When running scheduled cron tasks, there are a few items to be aware of:</p>
 <ul>

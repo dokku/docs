@@ -2848,13 +2848,7 @@
 <p class="admonition-title">Info</p>
 <p>Using a <code>formation</code> key in an <code>app.json</code> file with <em>any</em> <code>quantity</code> specified disables the ability to use <code>ps:scale</code> for scaling. All processes not specified in the <code>app.json</code> will have their process count set to zero.</p>
 </div>
-<p>An <code>app.json</code> file can be committed to the root of the pushed app repository, and must be within the built image artifact in the image's working directory as shown below.</p>
-<ul>
-<li>Buildpacks: <code>/app/app.json</code></li>
-<li>Dockerfile: <code>WORKDIR/app.json</code> or <code>/app.json</code> (if no working directory specified)</li>
-<li>Docker Image: <code>WORKDIR/app.json</code> or <code>/app.json</code> (if no working directory specified)</li>
-</ul>
-<p>The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
+<p>Users can also configure scaling within the codebase itself to manage process scaling. The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="err">{</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="s">&quot;formation&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="s">&quot;web&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
@@ -2866,7 +2860,8 @@
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">  </span><span class="err">}</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="err">}</span>
 </code></pre></div>
-<p>Removing the file will result in Dokku respecting the <code>ps:scale</code> command for setting scale values. The values set via the <code>app.json</code> file from a previous deploy will be respected.</p>
+<p>Removing the <code>formation</code> key or removing the <code>app.json</code> file from your repository will result in Dokku respecting the <code>ps:scale</code> command for setting scale values. The values set via the <code>app.json</code> file from a previous deploy will be respected.</p>
+<p>See the <a href="../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
 <h4 id="the-web-process">The <code>web</code> process<a class="headerlink" href="#the-web-process" title="Permanent link">&para;</a></h4>
 <p>For initial app deploys, Dokku will default to starting a single <code>web</code> process for each app. This process may be defined within the <code>Procfile</code> or as the <code>CMD</code> (for Dockerfile or Docker image deploys). Scaling of the <code>web</code> process - and all other processes - may be managed via <code>ps:scale</code> or the <code>formation</code> key in the <code>app.json</code> file either before or after the initial deploy.</p>
 <p>There are also a few other exceptions for the <code>web</code> process.</p>
@@ -2878,7 +2873,8 @@
 </ul>
 <h4 id="changing-the-procfile-location">Changing the <code>Procfile</code> location<a class="headerlink" href="#changing-the-procfile-location" title="Permanent link">&para;</a></h4>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>Procfile</code> file to use for a given app. This can be done via the <code>ps:set</code> command. If a value is specified and that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>Procfile</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path<span class="w"> </span>Procfile2
+<p>For deploys via the <code>git:from-image</code> and <code>git:load-image</code> commands, the <code>Procfile</code> is extracted from the configured <code>WORKDIR</code> property of the image. For all other deploys - git push, <code>git:from-archive</code>, <code>git:sync</code> - will have the <code>Procfile</code> extracted directly from the source code. Both cases will respect the configured <code>procfile-path</code> property value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path<span class="w"> </span>.dokku/Procfile
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path
