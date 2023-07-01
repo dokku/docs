@@ -1416,13 +1416,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#specifying-commands-via-procfile" class="md-nav__link">
-    Specifying commands via Procfile
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#curl-build-timeouts" class="md-nav__link">
     curl build timeouts
   </a>
@@ -1432,6 +1425,13 @@
           <li class="md-nav__item">
   <a href="#clearing-buildpack-cache" class="md-nav__link">
     Clearing buildpack cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-commands-via-procfile" class="md-nav__link">
+    Specifying commands via Procfile
   </a>
   
 </li>
@@ -2701,13 +2701,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#specifying-commands-via-procfile" class="md-nav__link">
-    Specifying commands via Procfile
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#curl-build-timeouts" class="md-nav__link">
     curl build timeouts
   </a>
@@ -2717,6 +2710,13 @@
           <li class="md-nav__item">
   <a href="#clearing-buildpack-cache" class="md-nav__link">
     Clearing buildpack cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-commands-via-procfile" class="md-nav__link">
+    Specifying commands via Procfile
   </a>
   
 </li>
@@ -3033,27 +3033,16 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># using v87 of the nodejs buildpack</span>
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs#v87
 </code></pre></div>
-<h3 id="specifying-commands-via-procfile">Specifying commands via Procfile<a class="headerlink" href="#specifying-commands-via-procfile" title="Permanent link">&para;</a></h3>
-<p>While many buildpacks have a default command that is run when a detected repository is pushed, it is possible to override this command via a Procfile. A Procfile can also be used to specify multiple commands, each of which is subject to process scaling. See the <a href="../../../processes/process-management/">process scaling documentation</a> for more details around scaling individual processes.</p>
-<p>A Procfile is a file named <code>Procfile</code>. It should be named <code>Procfile</code> exactly, and not anything else. For example, <code>Procfile.txt</code> is not valid. The file should be a simple text file.</p>
-<p>The file must be placed in the root directory of your application. It will not function if placed in a subdirectory.</p>
-<p>If the file exists, it should not be empty, as doing so may result in a failed deploy.</p>
-<p>The syntax for declaring a <code>Procfile</code> is as follows. Note that the format is one process type per line, with no duplicate process types.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>&lt;process type&gt;: &lt;command&gt;
-</code></pre></div>
-<p>If, for example, you have multiple queue workers and wish to scale them separately, the following would be a valid way to work around the requirement of not duplicating process types:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nl">worker</span><span class="p">:</span><span class="w">           </span>env<span class="w"> </span>QUEUE<span class="err">=*</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nl">importantworker</span><span class="p">:</span><span class="w">  </span>env<span class="w"> </span><span class="nv">QUEUE</span><span class="p">=</span><span class="s">important</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
-</code></pre></div>
-<p>The <code>web</code> process type holds some significance in that it is the only process type that is automatically scaled to <code>1</code> on the initial application deploy. See the <a href="../../../processes/process-management/">process scaling documentation</a> for more details around scaling individual processes.</p>
 <h3 id="curl-build-timeouts"><code>curl</code> build timeouts<a class="headerlink" href="#curl-build-timeouts" title="Permanent link">&para;</a></h3>
 <p>Certain buildpacks may time out in retrieving dependencies via <code>curl</code>. This can happen when your network connection is poor or if there is significant network congestion. You may see a message similar to <code>gzip: stdin: unexpected end of file</code> after a <code>curl</code> command.</p>
 <p>If you see output similar this when deploying , you may need to override the <code>curl</code> timeouts to increase the length of time allotted to those tasks. You can do so via the <code>config</code> plugin:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_TIMEOUT</span><span class="o">=</span><span class="m">1200</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_TIMEOUT</span><span class="o">=</span><span class="m">1200</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
 </code></pre></div>
 <h3 id="clearing-buildpack-cache">Clearing buildpack cache<a class="headerlink" href="#clearing-buildpack-cache" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../advanced-usage/repository-management/#clearing-app-cache">repository management documentation</a> for more information on how to clear buildpack build cache for an application.</p>
+<h3 id="specifying-commands-via-procfile">Specifying commands via Procfile<a class="headerlink" href="#specifying-commands-via-procfile" title="Permanent link">&para;</a></h3>
+<p>See the <a href="../../../processes/process-management/#procfile">Procfile documentation</a> for more information on how to specify different processes for your app.</p>
 
 
 

@@ -2836,20 +2836,7 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
 </div>
-<p>You can also customize the run command using a <code>Procfile</code>, much like you would on Heroku or
-with a buildpack deployed app. The <code>Procfile</code> should contain one or more lines defining <a href="https://devcenter.heroku.com/articles/procfile#declaring-process-types">process types and associated commands</a>. The commands in your app's Procfile will be passed to <code>docker run</code> to start your process(es). Here's an example <code>Procfile</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nl">web</span><span class="p">:</span><span class="w"> </span>bin/run-prod.sh
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nl">worker</span><span class="p">:</span><span class="w"> </span>bin/run-worker.sh
-</code></pre></div>
-<p>And <code>Dockerfile</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>./
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;bin/run-dev.sh&quot;</span><span class="p">]</span>
-</code></pre></div>
-<p>When the above example is deployed, the <code>web</code> process is started, with the command <code>bin/run-prod.sh</code> executed in the container. All other processes must be scaled up separately. If the app's <code>Dockerfile</code> contains an <code>ENTRYPOINT</code> directive, the command specified in the <code>Procfile</code> will be passed to that entrypoint script as an argument.</p>
-<p>See the <a href="../../../processes/process-management/#scaling-apps">scaling apps documentation</a> for more information on how process scaling is performed.</p>
-<p>See the <a href="../../../processes/process-management/#changing-the-procfile-location">app.json location documentation</a> for more information on where to place your <code>Procfile</code> file.</p>
+<p>See the <a href="../../../processes/process-management/#procfile">Procfile documentation</a> for more information on how to specify different processes for your app.</p>
 <h3 id="exposed-ports">Exposed ports<a class="headerlink" href="#exposed-ports" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../networking/port-management/">port management documentation</a> for more information on how Dokku exposes ports for applications and how you can configure these for your app.</p>
 
