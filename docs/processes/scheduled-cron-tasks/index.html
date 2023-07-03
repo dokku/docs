@@ -2706,7 +2706,7 @@
 <li>Scheduled cron tasks are performed within the app environment available at runtime. If the app image does not exist, the command may fail to execute.</li>
 <li>Schedules are performed on the hosting server's timezone, which is typically UTC.</li>
 <li>At this time, only the <code>PATH</code> and <code>SHELL</code> environment variables are specified in the cron template.</li>
-<li>Each scheduled task is executed within a one-off <code>run</code> container, and thus inherit any docker-options specified for <code>run</code> containers.Resources are never shared between scheduled tasks.</li>
+<li>Each scheduled task is executed within a one-off <code>run</code> container, and thus inherit any docker-options specified for <code>run</code> containers. Resources are never shared between scheduled tasks.</li>
 <li>Scheduled cron tasks are supported on a per-scheduler basis, and are currently only implemented by the <code>docker-local</code> scheduler.</li>
 <li>Tasks for <em>all</em> apps managed by the <code>docker-local</code> scheduler are written to a single crontab file owned by the <code>dokku</code> user. The <code>dokku</code> user's crontab should be considered reserved for this purpose.</li>
 </ul>
