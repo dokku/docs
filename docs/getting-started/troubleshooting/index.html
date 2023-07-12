@@ -2755,10 +2755,8 @@
 <p>Note that the <code>server_names_hash_bucket_size</code> setting defines the maximum domain name length.
 A value of 64 would allow domains with up to 64 characters. Set it to 128 if you need longer ones.</p>
 <p>Save the file and try stopping nginx and starting it again:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/etc/init.d/nginx<span class="w"> </span>stop
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">## * Stopping nginx nginx                                        [ OK ]</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>/etc/init.d/nginx<span class="w"> </span>start
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">## * Starting nginx nginx                                        [ OK ]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>nginx:stop
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>nginx:start
 </code></pre></div>
 <hr />
 <p>Using the <code>EXPOSE</code> directive in a Dockerfile may be another reason why you might see the default site. When the <code>EXPOSE</code> directive is in use and a proxy plugin is enabled (the default), the proxy plugin will listen to requests on the ports specified in the <code>EXPOSE</code> stanza.</p>
