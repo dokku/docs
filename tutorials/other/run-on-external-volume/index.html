@@ -948,7 +948,8 @@ the following is an easy tutorial to achieve Dokku runs on them.</p>
 <p>The following is intended to be executed on the dokku host machine as <code>root</code>.
 Say, <em>for instance</em>, that our volume is mapped into the systems as <code>/dev/vdb1</code>.</p>
 <p>Stop docker daemon</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>systemctl<span class="w"> </span>stop<span class="w"> </span>docker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>systemctl<span class="w"> </span>stop<span class="w"> </span>docker.socket
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>systemctl<span class="w"> </span>stop<span class="w"> </span>docker
 </code></pre></div>
 <p>Prepare the filesystem:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkfs<span class="w"> </span>-t<span class="w"> </span>ext4<span class="w"> </span>/dev/vdb1
@@ -980,7 +981,8 @@ Say, <em>for instance</em>, that our volume is mapped into the systems as <code>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>mount<span class="w"> </span>-o<span class="w"> </span><span class="nb">bind</span><span class="w"> </span>/mnt/volume/var/lib/docker<span class="w"> </span>/var/lib/docker
 </code></pre></div>
 <p>Start docker daemon</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>start<span class="w"> </span>docker.socket
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 </code></pre></div>
 <p>At this point all should be working fine, please check it out.</p>
 <p>Then, let the changes be reboot-persistent</p>
