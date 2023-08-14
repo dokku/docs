@@ -694,6 +694,8 @@
         
           
         
+          
+        
       
       
         
@@ -714,6 +716,20 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+        0.31.0 Migration Guide
+      </a>
+    </li>
+  
+
             
           
             
@@ -1689,6 +1705,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
@@ -1903,6 +1921,20 @@
     <li class="md-nav__item">
       <a href="../nginx/" class="md-nav__link">
         Nginx Proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openresty/" class="md-nav__link">
+        OpenResty Proxy
       </a>
     </li>
   
@@ -2794,7 +2826,7 @@
 <p>You can use these modifiers as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>caddy:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
-<p>The above command will show logs continually from the vector container, with an initial history of 10 log lines</p>
+<p>The above command will show logs continually from the caddy container, with an initial history of 10 log lines</p>
 <h3 id="changing-the-caddy-log-level">Changing the Caddy log level<a class="headerlink" href="#changing-the-caddy-log-level" title="Permanent link">&para;</a></h3>
 <p>Caddy log output is set to <code>ERROR</code> by default. It may be changed by setting the <code>log-level</code> property with the <code>--global</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG

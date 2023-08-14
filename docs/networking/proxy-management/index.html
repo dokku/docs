@@ -694,6 +694,8 @@
         
           
         
+          
+        
       
       
         
@@ -714,6 +716,20 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+        0.31.0 Migration Guide
+      </a>
+    </li>
+  
+
             
           
             
@@ -1689,6 +1705,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
@@ -1855,6 +1873,20 @@
     <li class="md-nav__item">
       <a href="../proxies/nginx/" class="md-nav__link">
         Nginx Proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxies/openresty/" class="md-nav__link">
+        OpenResty Proxy
       </a>
     </li>
   
@@ -2686,15 +2718,12 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app proxy information
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Proxy enabled:       true
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Proxy type:          nginx
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Proxy port map:      http:80:5000 https:443:5000
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>=====&gt; python-sample proxy information
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Proxy enabled:       true
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Proxy type:          nginx
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Proxy port map:      http:80:5000
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>=====&gt; ruby-sample proxy information
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Proxy enabled:       true
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       Proxy type:          nginx
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       Proxy port map:      http:80:5000
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>=====&gt; python-sample proxy information
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>       Proxy enabled:       true
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Proxy type:          nginx
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>=====&gt; ruby-sample proxy information
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Proxy enabled:       true
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       Proxy type:          nginx
 </code></pre></div>
 </div>
 </div>
@@ -2710,7 +2739,6 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app proxy information
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Proxy enabled:       true
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Proxy type:          nginx
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>       Proxy port map:      http:80:5000 https:443:5000
 </code></pre></div>
 </div>
 </div>
@@ -2719,18 +2747,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--proxy-type
 </code></pre></div>
 <h4 id="proxy-port-scheme">Proxy Port Scheme<a class="headerlink" href="#proxy-port-scheme" title="Permanent link">&para;</a></h4>
-<p>The proxy port scheme is as follows:</p>
-<ul>
-<li><code>SCHEME:HOST_PORT:CONTAINER_PORT</code></li>
-</ul>
-<p>The scheme metadata can be used by proxy implementations in order to properly handle proxying of requests. For example, the built-in <code>nginx-vhosts</code> proxy implementation supports the <code>http</code>, <code>https</code>, <code>grpc</code> and <code>grpcs</code> schemes.
-For the <code>grpc</code> and <code>grpcs</code> see <a href="https://www.nginx.com/blog/nginx-1-13-10-grpc/">nginx blog post on grpc</a>.</p>
-<p>Developers of proxy implementations are encouraged to use whatever schemes make the most sense, and ignore configurations which they do not support. For instance, a <code>udp</code> proxy implementation can safely ignore <code>http</code> and <code>https</code> port mappings.</p>
-<p>To change the proxy implementation in use for an application, use the <code>proxy:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># no validation will be performed against</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># the specified proxy implementation</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>nginx
-</code></pre></div>
+<p>See the <a href="../port-management/#port-scheme">port scheme documentation</a> for more information on the port mapping scheme used by dokku.</p>
 <h3 id="proxy-port-mapping">Proxy port mapping<a class="headerlink" href="#proxy-port-mapping" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../port-management/">port management documentation</a> for more information on how port mappings are managed for an application.</p>
 <h3 id="container-network-interface-binding">Container network interface binding<a class="headerlink" href="#container-network-interface-binding" title="Permanent link">&para;</a></h3>
@@ -2741,7 +2758,7 @@ For the <code>grpc</code> and <code>grpcs</code> see <a href="https://www.nginx.
 <p>From Dokku versions <code>0.5.0</code> until <code>0.11.0</code>, enabling or disabling an application's proxy would <strong>also</strong> control whether or not the application was bound to all interfaces - e.g. <code>0.0.0.0</code>. As of <code>0.11.0</code>, this is now controlled by the network plugin. Please see the <a href="../network/#container-network-interface-binding">network documentation</a> for more information.</p>
 <h2 id="implementing-a-proxy">Implementing a Proxy<a class="headerlink" href="#implementing-a-proxy" title="Permanent link">&para;</a></h2>
 <p>Custom plugins names <em>must</em> have the suffix <code>-vhosts</code> or scheduler overriding via <code>proxy:set</code> may not function as expected.</p>
-<p>At this time, the following dokku commands are used to implement a complete proxy implementation.</p>
+<p>At this time, the following dokku commands are used to interact with a complete proxy implementation.</p>
 <ul>
 <li><code>domains:add</code>: Adds a given domain to an app.</li>
 <li>triggers: <code>post-domains-update</code></li>
@@ -2763,13 +2780,13 @@ For the <code>grpc</code> and <code>grpcs</code> see <a href="https://www.nginx.
 <li>triggers: <code>proxy-disable</code></li>
 <li><code>proxy:enable</code>: Enables the proxy configuration for an app.</li>
 <li>triggers: <code>proxy-enable</code></li>
-<li><code>proxy:ports-add</code>: Adds one or more port mappings to an app</li>
+<li><code>ports:add</code>: Adds one or more port mappings to an app</li>
 <li>triggers: <code>post-proxy-ports-update</code></li>
-<li><code>proxy:ports-clear</code>: Clears out all port mappings for an app.</li>
+<li><code>ports:clear</code>: Clears out all port mappings for an app.</li>
 <li>triggers: <code>post-proxy-ports-update</code></li>
-<li><code>proxy:ports-remove</code>: Removes one or more port mappings from an app.</li>
+<li><code>ports:remove</code>: Removes one or more port mappings from an app.</li>
 <li>triggers: <code>post-proxy-ports-update</code></li>
-<li><code>proxy:ports-set</code>: Sets all port mappings for an app.</li>
+<li><code>ports:set</code>: Sets all port mappings for an app.</li>
 <li>triggers: <code>post-proxy-ports-update</code></li>
 </ul>
 <p>Proxy implementations may decide to omit some functionality here, or use plugin triggers to supplement config with information from other plugins.</p>

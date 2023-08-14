@@ -33,7 +33,7 @@
         <link rel="prev" href="../haproxy/">
       
       
-        <link rel="next" href="../traefik/">
+        <link rel="next" href="../openresty/">
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
@@ -694,6 +694,8 @@
         
           
         
+          
+        
       
       
         
@@ -714,6 +716,20 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+        0.31.0 Migration Guide
+      </a>
+    </li>
+  
+
             
           
             
@@ -1689,6 +1705,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
@@ -2022,6 +2040,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openresty/" class="md-nav__link">
+        OpenResty Proxy
+      </a>
     </li>
   
 
@@ -3252,11 +3284,10 @@ But you can tell Nginx to send this header as well, if necessary.</p>
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as `DOKKU_PROXY_PORT` config var)
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as `DOKKU_PROXY_SSL_PORT` config var)
 <a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as `DOKKU_PROXY_PORT_MAP` config var)
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from `DOKKU_PROXY_PORT_MAP` config var)
-<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>{{ .RAW_TCP_PORTS }}                List of exposed tcp ports as defined by Dockerfile `EXPOSE` directive (**Dockerfile apps only**)
-<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
-<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as the `map` ports property)
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from the `map` ports property)
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
 </code></pre></div>
 <p>Finally, each process type has it's network listeners - a list of IP:PORT pairs for the respective app containers - exposed via an <code>.DOKKU_APP_${PROCESS_TYPE}_LISTENERS</code> variable - the <code>PROCESS_TYPE</code> will be upper-cased with hyphens transformed into underscores. Users can use the new variables to expose non-web processes via the nginx proxy.</p>
 <div class="admonition note">
@@ -3343,7 +3374,7 @@ But you can tell Nginx to send this header as well, if necessary.</p>
 <h3 id="disabling-nginx">Disabling Nginx<a class="headerlink" href="#disabling-nginx" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../proxy-management/">proxy documentation</a> for more information on how to disable nginx as the proxy implementation for your app.</p>
 <h3 id="managing-proxy-port-mappings">Managing Proxy Port mappings<a class="headerlink" href="#managing-proxy-port-mappings" title="Permanent link">&para;</a></h3>
-<p>See the <a href="../../proxy-management/#proxy-port-mapping">proxy documentation</a> for more information on how to manage ports proxied for your app.</p>
+<p>See the <a href="../../port-management/">ports documentation</a> for more information on how to manage ports proxied for your app.</p>
 <h3 id="regenerating-nginx-config">Regenerating nginx config<a class="headerlink" href="#regenerating-nginx-config" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../proxy-management/#regenerating-proxy-config">proxy documentation</a> for more information on how to rebuild the nginx proxy configuration for your app.</p>
 
@@ -3388,13 +3419,13 @@ But you can tell Nginx to send this header as well, if necessary.</p>
         
         
           
-          <a href="../traefik/" class="md-footer__link md-footer__link--next" aria-label="Next: Traefik Proxy" rel="next">
+          <a href="../openresty/" class="md-footer__link md-footer__link--next" aria-label="Next: OpenResty Proxy" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Traefik Proxy
+                OpenResty Proxy
               </div>
             </div>
             <div class="md-footer__button md-icon">

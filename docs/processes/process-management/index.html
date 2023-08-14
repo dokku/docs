@@ -694,6 +694,8 @@
         
           
         
+          
+        
       
       
         
@@ -714,6 +716,20 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+        0.31.0 Migration Guide
+      </a>
+    </li>
+  
+
             
           
             
@@ -1880,6 +1896,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
@@ -1944,6 +1962,20 @@
     <li class="md-nav__item">
       <a href="../../networking/proxies/nginx/" class="md-nav__link">
         Nginx Proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/proxies/openresty/" class="md-nav__link">
+        OpenResty Proxy
       </a>
     </li>
   
@@ -2904,7 +2936,6 @@
 <p>For initial app deploys, Dokku will default to starting a single <code>web</code> process for each app. This process may be defined within the <code>Procfile</code> or as the <code>CMD</code> (for Dockerfile or Docker image deploys). Scaling of the <code>web</code> process - and all other processes - may be managed via <code>ps:scale</code> or the <code>formation</code> key in the <code>app.json</code> file either before or after the initial deploy.</p>
 <p>There are also a few other exceptions for the <code>web</code> process.</p>
 <ul>
-<li>Custom checks defined by a <code>CHECKS</code> file only apply to the <code>web</code> process type.</li>
 <li>By default, the built-in nginx proxy implementation only proxies the <code>web</code> process (others may be handled via a custom <code>nginx.conf.sigil</code>).</li>
 <li>See the <a href="../../networking/proxies/nginx/#request-proxying">nginx request proxying documentation</a> for more information on how nginx handles proxied requests.</li>
 <li>Only the <code>web</code> process may be bound to an external port.</li>
