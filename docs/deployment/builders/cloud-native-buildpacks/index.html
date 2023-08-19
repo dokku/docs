@@ -2673,24 +2673,38 @@
 <h3 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h3>
 <p>As this functionality is highly experimental, there are a number of caveats. Please note that not all issuesare listed below.</p>
 <ul>
-<li>Specifying specific buildpacks is not currently possible.</li>
+<li>Specifying specific buildpacks is not currently possible.<ul>
 <li>A future release will add support for specifying buildpacks via the <code>buildpacks</code> plugin.</li>
-<li>There is currently no way to specify extra arguments for <code>pack</code> cli invocations.</li>
+</ul>
+</li>
+<li>There is currently no way to specify extra arguments for <code>pack</code> cli invocations.<ul>
 <li>A future release will add support for injecting extra arguments during the build process.</li>
+</ul>
+</li>
 <li>The default process type is <code>web</code>.</li>
-<li>Build cache is stored in Docker volumes instead of on disk. As such, <code>repo:purge-cache</code> currently has no effect.</li>
+<li>Build cache is stored in Docker volumes instead of on disk. As such, <code>repo:purge-cache</code> currently has no effect.<ul>
 <li>A future version will add integration with the <code>repo</code> plugin.</li>
-<li><code>pack</code> is not currently included with Dokku, nor is it added as a package dependency.</li>
+</ul>
+</li>
+<li><code>pack</code> is not currently included with Dokku, nor is it added as a package dependency.<ul>
 <li>A future version will include it as a package dependency.</li>
+</ul>
+</li>
 </ul>
 <h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
 <p>This builder will be auto-detected in either the following cases:</p>
 <ul>
-<li>The <code>DOKKU_CNB_EXPERIMENTAL</code> app environment variable is set to <code>1</code>.
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_CNB_EXPERIMENTAL</span><span class="o">=</span><span class="m">1</span>
-</code></pre></div></li>
-<li>A <code>project.toml</code> file exists in the root of the app repository.</li>
+<li>
+<p>The <code>DOKKU_CNB_EXPERIMENTAL</code> app environment variable is set to <code>1</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_CNB_EXPERIMENTAL</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+</li>
+<li>
+<p>A <code>project.toml</code> file exists in the root of the app repository.</p>
+<ul>
 <li>This file is consumed by <code>pack-cli</code> and used to describe how the app is built.</li>
+</ul>
+</li>
 </ul>
 <p>The builder can also be specified via the <code>builder:set</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>pack

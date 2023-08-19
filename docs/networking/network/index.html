@@ -2841,29 +2841,45 @@
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>A Docker network without any associated containers may be destroyed via the <code>network:destroy</code> command. Docker will refuse to destroy networks that have containers attached.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>network:destroy<span class="w"> </span>test-network
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> !     This command will destroy network test.
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a> !     To proceed, type &quot;test&quot;
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-----&gt; Destroying network test
+</code></pre></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>test</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>network:destroy<span class="w"> </span>test-network
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w"> </span>!<span class="w">     </span>WARNING:<span class="w"> </span>Potentially<span class="w"> </span>Destructive<span class="w"> </span>Action
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w"> </span>!<span class="w">     </span>This<span class="w"> </span><span class="nb">command</span><span class="w"> </span>will<span class="w"> </span>destroy<span class="w"> </span>network<span class="w"> </span>test.
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span>!<span class="w">     </span>To<span class="w"> </span>proceed,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s2">&quot;test&quot;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-----&gt;<span class="w"> </span>Destroying<span class="w"> </span>network<span class="w"> </span><span class="nb">test</span>
-</code></pre></div></p>
 <p>As the command is destructive, it will default to asking for confirmation before executing the removal of the network. This may be avoided by providing the <code>--force</code> flag:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>network:destroy<span class="w"> </span>test-network
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>network:destroy<span class="w"> </span>test-network
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt;<span class="w"> </span>Destroying<span class="w"> </span>network<span class="w"> </span><span class="nb">test</span>
-</code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt; Destroying network test
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="checking-if-a-network-exists">Checking if a network exists<a class="headerlink" href="#checking-if-a-network-exists" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>For CI/CD pipelines, it may be useful to see if an network exists before creating a new network. You can do so via the <code>network:exists</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>network:exists<span class="w"> </span>nonexistent-network
@@ -2882,7 +2898,7 @@
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>Network information can be retrieved via the <code>network:info</code> command. This is a slightly different version of the <code>docker network</code> command.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>network:info<span class="w"> </span>test-network
@@ -3067,7 +3083,7 @@
 <a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>By way of example, in the default case, each container is bound to the docker interface:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>docker<span class="w"> </span>ps
@@ -3081,12 +3097,20 @@
 </div>
 </div>
 <p>As such, the container's IP address will be an internal IP, and thus it is only accessible on the host itself:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>docker inspect --format &#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; node-js-app.web.1
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39;</span><span class="w"> </span>node-js-app.web.1
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>172.17.0.6
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>However, you can disable the internal proxying via the <code>network:set</code> command so that it will listen on the host's IP address:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
@@ -3110,7 +3134,7 @@
 </code></pre></div>
 <h3 id="displaying-network-reports-for-an-app">Displaying network reports for an app<a class="headerlink" href="#displaying-network-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's network status using the <code>network:report</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>network:report
@@ -3173,7 +3197,7 @@
 </div>
 </div>
 <p>You can run the command for a specific app also.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Shell</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app

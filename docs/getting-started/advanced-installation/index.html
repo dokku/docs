@@ -2692,7 +2692,7 @@
 <p>Set up a domain using your preferred vendor and a wildcard domain pointing to the host running Dokku. You can manage this global domain using the <a href="../../configuration/domains/">domains plugin</a>.</p>
 <p>Follow the <a href="../../deployment/user-management/">user management documentation</a> in order to add SSH keys for users to Dokku, or to give other Unix accounts access to Dokku.</p>
 <h2 id="vms-with-less-than-1-gb-of-memory">VMs with less than 1 GB of memory<a class="headerlink" href="#vms-with-less-than-1-gb-of-memory" title="Permanent link">&para;</a></h2>
-<p>Having less than 1 GB of system memory available for Dokku and its containers may result in unexpected errors, such as <code>! [remote rejected] master -&gt; master (pre-receive hook declined)</code> during installation of NPM dependencies (https://github.com/npm/npm/issues/3867).</p>
+<p>Having less than 1 GB of system memory available for Dokku and its containers may result in unexpected errors, such as <code>! [remote rejected] master -&gt; master (pre-receive hook declined)</code> <a href="https://github.com/npm/npm/issues/3867">during installation of NPM dependencies</a>.</p>
 <p>To work around this issue, it might suffice to augment the Linux swap file size to a maximum of twice the physical memory size.</p>
 <p>To resize the swap file of a 512 MB machine to 1 GB, follow these steps while in SSH within your machine:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>/var

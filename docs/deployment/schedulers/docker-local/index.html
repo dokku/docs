@@ -2820,19 +2820,29 @@
 <p>The <code>docker-local</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>. The following properties are supported:</p>
 <h4 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h4>
 <ul>
-<li>cpu: (docker option: <code>--cpus</code>), is specified in number of CPUs a process can access.</li>
+<li>cpu: (docker option: <code>--cpus</code>), is specified in number of CPUs a process can access.<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#cpu">"CPU" section</a> of the Docker Runtime Options documentation for more information.</li>
-<li>memory: (docker option: <code>--memory</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
+</ul>
+</li>
+<li>memory: (docker option: <code>--memory</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
-<li>memory-swap: (docker option: <code>--memory-swap</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes)</li>
+</ul>
+</li>
+<li>memory-swap: (docker option: <code>--memory-swap</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes)<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
-<li>nvidia-gpus: (docker option: <code>--gpus</code>), is specified in number of Nvidia GPUs a process can access.</li>
+</ul>
+</li>
+<li>nvidia-gpus: (docker option: <code>--gpus</code>), is specified in number of Nvidia GPUs a process can access.<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#gpu">"GPU" section</a> of the Docker Runtime Options documentation for more information.</li>
+</ul>
+</li>
 </ul>
 <h4 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h4>
 <ul>
-<li>memory: (docker option: <code>--memory-reservation</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
+<li>memory: (docker option: <code>--memory-reservation</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
+</ul>
+</li>
 </ul>
 
 

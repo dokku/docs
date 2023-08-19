@@ -2811,12 +2811,18 @@
 </div>
 <p>By default, permissions are set for usage with Herokuish buildpacks. These permissions can be changed via the <code>--chown</code> option according to the following table:</p>
 <ul>
-<li><code>--chown herokuish</code> (default): Use <code>32767:32767</code> as the folder permissions.</li>
+<li><code>--chown herokuish</code> (default): Use <code>32767:32767</code> as the folder permissions.<ul>
 <li>This is used for apps deployed with Buildpacks via Herokuish.</li>
-<li><code>--chown heroku</code>: Use <code>1000:1000</code> as the folder permissions.</li>
+</ul>
+</li>
+<li><code>--chown heroku</code>: Use <code>1000:1000</code> as the folder permissions.<ul>
 <li>This is used for apps deployed with Cloud Native Buildpacks using the <code>heroku/buildpacks</code> builder.</li>
-<li><code>--chown packeto</code>: Use <code>2000:2000</code> as the folder permissions.</li>
+</ul>
+</li>
+<li><code>--chown packeto</code>: Use <code>2000:2000</code> as the folder permissions.<ul>
 <li>This is used for apps deployed with Cloud Native Buildpacks using the <code>cloudfoundry/cnb</code> or <code>packeto</code> builders.</li>
+</ul>
+</li>
 <li><code>--chown false</code>: Skips the <code>chown</code> call.</li>
 </ul>
 <p>Users deploying via Dockerfile will want to specify <code>--chown false</code> and manually <code>chown</code> the created directory if the user and/or group id  of the runnning process in the deployed container do not correspond to any of the above options.</p>
@@ -2925,9 +2931,9 @@
 <p>Introduced in 0.7.1</p>
 </div>
 <p>By default, Dokku will execute your buildpack app processes as the <code>herokuishuser</code> user. You may override this by setting the <code>DOKKU_APP_USER</code> config variable.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>NOTE: this user must exist in your herokuish image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this user must exist in your herokuish image.</p>
 </div>
 <p>Additionally, the default <code>docker-local</code> scheduler that comes with Dokku will ensure your storage mounts are owned by either <code>herokuishuser</code> or the overridden value you have set in <code>DOKKU_APP_USER</code>. See the <a href="../../deployment/schedulers/docker-local/#disabling-chown-of-persistent-storage">docker-local scheduler documentation</a> docs for more information.</p>
 

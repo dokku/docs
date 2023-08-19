@@ -2811,20 +2811,28 @@
 </div>
 <p>Dokku normally defaults to using <a href="https://devcenter.heroku.com/articles/buildpacks">Heroku buildpacks</a> for deployment, though this may be overridden by committing a valid <code>Dockerfile</code> to the root of your repository and pushing the repository to your Dokku installation. To avoid this automatic <code>Dockerfile</code> deployment detection, you may do one of the following:</p>
 <ul>
-<li>Set a <code>BUILDPACK_URL</code> environment variable</li>
+<li>Set a <code>BUILDPACK_URL</code> environment variable<ul>
 <li>This can be done via <code>dokku config:set</code> or via a committed <code>.env</code> file in the root of the repository. See the <a href="../../../configuration/environment-variables/">environment variable documentation</a> for more details.</li>
-<li>Create a <code>.buildpacks</code> file in the root of your repository.</li>
+</ul>
+</li>
+<li>Create a <code>.buildpacks</code> file in the root of your repository.<ul>
 <li>This can be via a committed <code>.buildpacks</code> file or managed via the <code>buildpacks</code> plugin commands.</li>
+</ul>
+</li>
 </ul>
 <p>This page will cover usage of the <code>buildpacks</code> plugin.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
 <p>This builder will be auto-detected in either the following cases:</p>
 <ul>
-<li>The <code>BUILDPACK_URL</code> app environment variable is set.</li>
+<li>The <code>BUILDPACK_URL</code> app environment variable is set.<ul>
 <li>This can be done via <code>dokku config:set</code> or via a committed <code>.env</code> file in the root of the repository. See the <a href="../../../configuration/environment-variables/">environment variable documentation</a> for more details.</li>
-<li>A <code>.buildpacks</code> file exists in the root of the app repository.</li>
+</ul>
+</li>
+<li>A <code>.buildpacks</code> file exists in the root of the app repository.<ul>
 <li>This can be via a committed <code>.buildpacks</code> file or managed via the <code>buildpacks</code> plugin commands.</li>
+</ul>
+</li>
 </ul>
 <p>The builder can also be specified via the <code>builder:set</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>herokuish

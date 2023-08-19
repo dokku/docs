@@ -5892,8 +5892,10 @@
 <ul>
 <li>Description: Return the path to a <code>sigil</code> template that should be used to generate a given nginx configuration file.</li>
 <li>Invoked by: <code>nginx-vhosts#build-config</code></li>
-<li>Arguments: <code>$APP $TEMPLATE_TYPE</code></li>
+<li>Arguments: <code>$APP $TEMPLATE_TYPE</code><ul>
 <li>The <code>TEMPLATE_TYPE</code> argument can be one of: <code>[app-config, hsts-config, validate-config]</code></li>
+</ul>
+</li>
 <li>Example:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="ch">#!/usr/bin/env bash</span>

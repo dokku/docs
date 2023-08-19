@@ -1860,7 +1860,7 @@
         
           <li class="md-nav__item">
   <a href="#running-behind-another-proxy-configuring-x-forwarded-headers" class="md-nav__link">
-    Running behind another proxy — configuring X-Forwarded-* headers:
+    Running behind another proxy — configuring X-Forwarded-* headers
   </a>
   
 </li>
@@ -2788,7 +2788,7 @@
         
           <li class="md-nav__item">
   <a href="#running-behind-another-proxy-configuring-x-forwarded-headers" class="md-nav__link">
-    Running behind another proxy — configuring X-Forwarded-* headers:
+    Running behind another proxy — configuring X-Forwarded-* headers
   </a>
   
 </li>
@@ -3088,7 +3088,7 @@
 <p>Once the HSTS setting is disabled globally, it can be re-enabled on a per-app basis by setting the <code>hsts</code> property as normal.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>hsts<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<h3 id="running-behind-another-proxy-configuring-x-forwarded-headers">Running behind another proxy — configuring <code>X-Forwarded-*</code> headers:<a class="headerlink" href="#running-behind-another-proxy-configuring-x-forwarded-headers" title="Permanent link">&para;</a></h3>
+<h3 id="running-behind-another-proxy-configuring-x-forwarded-headers">Running behind another proxy — configuring <code>X-Forwarded-*</code> headers<a class="headerlink" href="#running-behind-another-proxy-configuring-x-forwarded-headers" title="Permanent link">&para;</a></h3>
 <p>Dokku's default Nginx configuration passes the de-facto standard HTTP headers <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For"><code>X-Forwarded-For</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto"><code>X-Forwarded-Proto</code></a>, and <code>X-Forwarded-Port</code> to your application.
 These headers indicate the IP address of the original client making the request, the protocol of the original request (HTTP or HTTPS), and the port number of the original request, respectively.</p>
 <p>If you have another HTTP proxy sitting in between the end user and your server (for example, a load balancer, or a CDN), then the values of these headers will contain information about (e.g. the IP address of) the the closest proxy, and not the end user.</p>

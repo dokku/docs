@@ -2739,15 +2739,21 @@
 <h3 id="custom-builders">Custom builders<a class="headerlink" href="#custom-builders" title="Permanent link">&para;</a></h3>
 <p>To create a custom builder, the following triggers must be implemented:</p>
 <ul>
-<li><code>builder-build</code>:</li>
+<li><code>builder-build</code>:<ul>
 <li>arguments: <code>BUILDER_TYPE</code> <code>APP</code> <code>SOURCECODE_WORK_DIR</code></li>
 <li>description: Creates a docker image named with the output of <code>common#get_app_image_name $APP</code>.</li>
-<li><code>builder-detect</code>:</li>
+</ul>
+</li>
+<li><code>builder-detect</code>:<ul>
 <li>arguments: <code>APP</code> <code>SOURCECODE_WORK_DIR</code></li>
 <li>description: Outputs the name of the builder (without the <code>builder-</code> prefix) to use to build the app.</li>
-<li><code>builder-release</code>:</li>
+</ul>
+</li>
+<li><code>builder-release</code>:<ul>
 <li>arguments: <code>BUILDER_TYPE</code> <code>APP</code> <code>IMAGE_AG</code></li>
 <li>description: A post-build, pre-release trigger that can be used to post-process the image. Usually simply tags and labels the image appropriately.</li>
+</ul>
+</li>
 </ul>
 <p>Custom plugins names <em>must</em> have the prefix <code>builder-</code> or builder overriding via <code>builder:set</code> may not function as expected.</p>
 <p>Builders can use any tools available on the system to build the docker image, and may even be used to schedule building off-server. The only current requirement is that the image must exist on the server at the end of the <code>builder-build</code> command, though this requirement may be relaxed in a future release.</p>

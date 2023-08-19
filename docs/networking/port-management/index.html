@@ -2759,8 +2759,7 @@
 <ul>
 <li><code>SCHEME:HOST_PORT:CONTAINER_PORT</code></li>
 </ul>
-<p>The scheme metadata can be used by proxy implementations in order to properly handle proxying of requests. For example, the built-in <code>nginx-vhosts</code> proxy implementation supports the <code>http</code>, <code>https</code>, <code>grpc</code> and <code>grpcs</code> schemes.
-For the <code>grpc</code> and <code>grpcs</code> see <a href="https://www.nginx.com/blog/nginx-1-13-10-grpc/">nginx blog post on grpc</a>.</p>
+<p>The scheme metadata can be used by proxy implementations in order to properly handle proxying of requests. For example, the built-in <code>nginx-vhosts</code> proxy implementation supports the <code>http</code>, <code>https</code>, <code>grpc</code> and <code>grpcs</code> schemes. For the <code>grpc</code> and <code>grpcs</code> see <a href="https://www.nginx.com/blog/nginx-1-13-10-grpc/">nginx blog post on grpc</a>.</p>
 <p>Developers of proxy implementations are encouraged to use whatever schemes make the most sense, and ignore configurations which they do not support. For instance, a <code>udp</code> proxy implementation can safely ignore <code>http</code> and <code>https</code> port mappings.</p>
 <p>To change the proxy implementation in use for an application, use the <code>proxy:set</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># no validation will be performed against</span>

@@ -2760,34 +2760,62 @@
 <p>Custom plugins names <em>must</em> have the suffix <code>-vhosts</code> or scheduler overriding via <code>proxy:set</code> may not function as expected.</p>
 <p>At this time, the following dokku commands are used to interact with a complete proxy implementation.</p>
 <ul>
-<li><code>domains:add</code>: Adds a given domain to an app.</li>
+<li><code>domains:add</code>: Adds a given domain to an app.<ul>
 <li>triggers: <code>post-domains-update</code></li>
-<li><code>domains:clear</code>: Clears out an app's associated domains.</li>
+</ul>
+</li>
+<li><code>domains:clear</code>: Clears out an app's associated domains.<ul>
 <li>triggers: <code>post-domains-update</code></li>
-<li><code>domains:disable</code>: Disables domains for an app.</li>
+</ul>
+</li>
+<li><code>domains:disable</code>: Disables domains for an app.<ul>
 <li>triggers: <code>pre-disable-vhost</code></li>
-<li><code>domains:enable</code>: Enables domains for an app.</li>
+</ul>
+</li>
+<li><code>domains:enable</code>: Enables domains for an app.<ul>
 <li>triggers: <code>pre-enable-vhost</code></li>
-<li><code>domains:remove</code>: Removes a domain from an app.</li>
+</ul>
+</li>
+<li><code>domains:remove</code>: Removes a domain from an app.<ul>
 <li>triggers: <code>post-domains-update</code></li>
-<li><code>domains:set</code>: Sets all domains for a given app.</li>
+</ul>
+</li>
+<li><code>domains:set</code>: Sets all domains for a given app.<ul>
 <li>triggers: <code>post-domains-update</code></li>
-<li><code>proxy:build-config</code>: Builds - or rebuilds - external proxy configuration.</li>
+</ul>
+</li>
+<li><code>proxy:build-config</code>: Builds - or rebuilds - external proxy configuration.<ul>
 <li>triggers: <code>proxy-build-config</code></li>
-<li><code>proxy:clear-config</code>: Clears out external proxy configuration.</li>
+</ul>
+</li>
+<li><code>proxy:clear-config</code>: Clears out external proxy configuration.<ul>
 <li>triggers: <code>proxy-clear-config</code></li>
-<li><code>proxy:disable</code>: Disables the proxy configuration for an app.</li>
+</ul>
+</li>
+<li><code>proxy:disable</code>: Disables the proxy configuration for an app.<ul>
 <li>triggers: <code>proxy-disable</code></li>
-<li><code>proxy:enable</code>: Enables the proxy configuration for an app.</li>
+</ul>
+</li>
+<li><code>proxy:enable</code>: Enables the proxy configuration for an app.<ul>
 <li>triggers: <code>proxy-enable</code></li>
-<li><code>ports:add</code>: Adds one or more port mappings to an app</li>
+</ul>
+</li>
+<li><code>ports:add</code>: Adds one or more port mappings to an app<ul>
 <li>triggers: <code>post-proxy-ports-update</code></li>
-<li><code>ports:clear</code>: Clears out all port mappings for an app.</li>
+</ul>
+</li>
+<li><code>ports:clear</code>: Clears out all port mappings for an app.<ul>
 <li>triggers: <code>post-proxy-ports-update</code></li>
-<li><code>ports:remove</code>: Removes one or more port mappings from an app.</li>
+</ul>
+</li>
+<li><code>ports:remove</code>: Removes one or more port mappings from an app.<ul>
 <li>triggers: <code>post-proxy-ports-update</code></li>
-<li><code>ports:set</code>: Sets all port mappings for an app.</li>
+</ul>
+</li>
+<li><code>ports:set</code>: Sets all port mappings for an app.<ul>
 <li>triggers: <code>post-proxy-ports-update</code></li>
+</ul>
+</li>
 </ul>
 <p>Proxy implementations may decide to omit some functionality here, or use plugin triggers to supplement config with information from other plugins.</p>
 <p>Individual proxy implementations <em>may</em> trigger app rebuilds, depending on how proxy metadata is exposed for the proxy implementation.</p>

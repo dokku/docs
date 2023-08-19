@@ -2731,14 +2731,14 @@
 <p>Dokku automates scheduled <code>dokku run</code> commands via it's <code>app.json</code> cron integration.</p>
 <h4 id="specifying-commands">Specifying commands<a class="headerlink" href="#specifying-commands" title="Permanent link">&para;</a></h4>
 <p>The <code>app.json</code> file for a given app can define a special <code>cron</code> key that contains a list of commands to run on given schedules. The following is a simple example <code>app.json</code> that effectively runs the command <code>dokku run $APP npm run send-email</code> once a day:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>{
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  &quot;cron&quot;: [
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    {
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      &quot;command&quot;: &quot;npm run send-email&quot;,
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>      &quot;schedule&quot;: &quot;@daily&quot;
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    }
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  ]
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;cron&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npm run send-email&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">&quot;schedule&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@daily&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span>
 </code></pre></div>
 <p>A cron entry takes the following properties:</p>
 <ul>
@@ -2856,13 +2856,11 @@
 <h4 id="general-cron-recommendations">General cron recommendations<a class="headerlink" href="#general-cron-recommendations" title="Permanent link">&para;</a></h4>
 <p>Regularly scheduled tasks can be a bit of a pain with Dokku. The following are general recommendations to follow to help ensure successful task runs.</p>
 <ul>
-<li>Use the <code>dokku</code> user in your cron entry.</li>
-<li>
-<p>If you do not, the <code>dokku</code> binary will attempt to execute with <code>sudo</code>, and your cron run with fail with <code>sudo: no tty present and no askpass program specified</code>.</p>
+<li>Use the <code>dokku</code> user in your cron entry.<ul>
+<li>If you do not, the <code>dokku</code> binary will attempt to execute with <code>sudo</code>, and your cron run with fail with <code>sudo: no tty present and no askpass program specified</code>.</li>
+</ul>
 </li>
-<li>
-<p>Add a <code>MAILTO</code> environment variable to ship cron emails to yourself.</p>
-</li>
+<li>Add a <code>MAILTO</code> environment variable to ship cron emails to yourself.</li>
 <li>Add a <code>PATH</code> environment variable or specify the full path to binaries on the host.</li>
 <li>Add a <code>SHELL</code> environment variable to specify Bash when running commands.</li>
 <li>Keep your cron tasks in time-sorted order.</li>

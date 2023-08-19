@@ -2560,27 +2560,39 @@
 <h1 id="050-migration-guide">0.5.0 Migration Guide<a class="headerlink" href="#050-migration-guide" title="Permanent link">&para;</a></h1>
 <h2 id="nginx-vhosts-plugin"><code>nginx-vhosts</code> plugin<a class="headerlink" href="#nginx-vhosts-plugin" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The nginx-vhosts template language is now <a href="https://github.com/gliderlabs/sigil">sigil</a></li>
+<li>The nginx-vhosts template language is now <a href="https://github.com/gliderlabs/sigil">sigil</a><ul>
 <li>No need to escape literal <code>$</code> characters (or other "bash-isms")</li>
 <li>Template variables are represented as {{ .VARIABLE_NAME }}</li>
 <li>A detailed list of template variables can be found <a href="../../networking/proxies/nginx/#available-template-variables">here</a></li>
-<li>A custom nginx-vhosts template must be named <code>nginx.conf.sigil</code></li>
+</ul>
+</li>
+<li>A custom nginx-vhosts template must be named <code>nginx.conf.sigil</code><ul>
 <li>The default path for this custom template is the root of your repo (i.e. <code>/app</code> in the container or <code>WORKDIR</code> if defined in a dockerfile app)</li>
 <li>Dokku no longer looks for this file in <code>/home/dokku/node-js-app</code> on the Dokku server</li>
 <li>Check out an example template <a href="../../networking/proxies/nginx/">here</a></li>
-<li>Support for server-wide SSL certs have been dropped in favor of using the <code>certs</code> plugin</li>
+</ul>
+</li>
+<li>Support for server-wide SSL certs have been dropped in favor of using the <code>certs</code> plugin<ul>
 <li><code>dokku certs:add node-js-app &lt; certs.tar</code></li>
-<li>All domains for an SSL-enabled app will be redirected to https by default</li>
+</ul>
+</li>
+<li>All domains for an SSL-enabled app will be redirected to https by default<ul>
 <li>This can be overridden with a custom template</li>
+</ul>
+</li>
 <li>Replaced "magic" <code>NO_VHOST</code> variable with <code>domains:enable/disable</code></li>
-<li>Simplified zero downtime control</li>
+<li>Simplified zero downtime control<ul>
 <li><code>checks:enable/disable</code></li>
+</ul>
+</li>
 </ul>
 <h2 id="dockerfile-apps-with-exposed-ports">Dockerfile apps with exposed ports<a class="headerlink" href="#dockerfile-apps-with-exposed-ports" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Dockerfiles with <code>EXPOSE</code> clauses will get <a href="../../deployment/builders/dockerfiles/#exposed-ports">all <strong>tcp</strong> ports proxied by default</a></li>
+<li>Dockerfiles with <code>EXPOSE</code> clauses will get <a href="../../deployment/builders/dockerfiles/#exposed-ports">all <strong>tcp</strong> ports proxied by default</a><ul>
 <li>Note that nginx will proxy the same port numbers to listen publicly</li>
 <li>UDP ports can be exposed by disabling the <a href="../../networking/proxy-management/">nginx proxy</a> with <code>dokku proxy:disable node-js-app</code></li>
+</ul>
+</li>
 </ul>
 
 

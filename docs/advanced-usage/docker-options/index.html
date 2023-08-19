@@ -2648,7 +2648,7 @@
 <li><code>run</code>: the container that executes any arbitrary command via <code>dokku run</code></li>
 </ul>
 <p>Manipulation of docker options will not restart running containers. This enables multiple options to be set/unset before final application. As such, changing an app's docker options must be followed by a <code>dokku ps:rebuild</code> in order to take effect.</p>
-<p>More information on supported Docker options can be found here: https://docs.docker.com/engine/reference/commandline/run/.</p>
+<p>More information on supported Docker options can be found <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a>.</p>
 <p>Container options configured via the <code>docker-options</code> plugin are not used to modify the process a container runs. Container options are the <code>[OPTIONS]</code> portion of the following, where <code>[CONTAINER_COMMAND]</code> and <code>[ARG]</code> are the process and the arguments passed to it that are launched in the created container: <code>docker run [OPTIONS] [CONTAINER_COMMAND] [ARG...]</code>. Please see the documentation for <a href="../../deployment/builders/dockerfiles/#customizing-the-run-command">customizing the run command</a> or use a <a href="../../deployment/builders/dockerfiles/#procfiles-and-multiple-processes">Procfile</a> to modify the command used by a Dockerfile-based container.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <h3 id="add-docker-options">Add Docker options<a class="headerlink" href="#add-docker-options" title="Permanent link">&para;</a></h3>

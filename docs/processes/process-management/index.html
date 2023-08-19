@@ -2923,7 +2923,7 @@
 <p>Apps can define processes to run by using a <code>Procfile</code>. A <code>Procfile</code> is a simple text file that can be used to specify multiple commands, each of which is subject to process scaling. In the case where the built image sets a default command to run - either through usage of <code>CMD</code> for Dockerfile-based builds, a default process for buildpack-based builds, or any other method for the builder in use - the <code>Procfile</code> will take precedence.</p>
 <p>If the file exists, it should not be empty, as doing so may result in a failed deploy.</p>
 <p>The syntax for declaring a <code>Procfile</code> is as follows. Note that the format is one process type per line, with no duplicate process types.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;process type&gt;: &lt;command&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">&lt;</span>process<span class="w"> </span>type<span class="err">&gt;:</span><span class="w"> </span><span class="err">&lt;</span>command<span class="err">&gt;</span>
 </code></pre></div>
 <p>If, for example, you have multiple queue workers and wish to scale them separately, the following would be a valid way to work around the requirement of not duplicating process types:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nl">worker</span><span class="p">:</span><span class="w">           </span>env<span class="w"> </span>QUEUE<span class="err">=*</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
@@ -2936,8 +2936,10 @@
 <p>For initial app deploys, Dokku will default to starting a single <code>web</code> process for each app. This process may be defined within the <code>Procfile</code> or as the <code>CMD</code> (for Dockerfile or Docker image deploys). Scaling of the <code>web</code> process - and all other processes - may be managed via <code>ps:scale</code> or the <code>formation</code> key in the <code>app.json</code> file either before or after the initial deploy.</p>
 <p>There are also a few other exceptions for the <code>web</code> process.</p>
 <ul>
-<li>By default, the built-in nginx proxy implementation only proxies the <code>web</code> process (others may be handled via a custom <code>nginx.conf.sigil</code>).</li>
+<li>By default, the built-in nginx proxy implementation only proxies the <code>web</code> process (others may be handled via a custom <code>nginx.conf.sigil</code>).<ul>
 <li>See the <a href="../../networking/proxies/nginx/#request-proxying">nginx request proxying documentation</a> for more information on how nginx handles proxied requests.</li>
+</ul>
+</li>
 <li>Only the <code>web</code> process may be bound to an external port.</li>
 </ul>
 <h4 id="the-release-process">The <code>release</code> process<a class="headerlink" href="#the-release-process" title="Permanent link">&para;</a></h4>
@@ -2977,16 +2979,16 @@
 <p>Using a <code>formation</code> key in an <code>app.json</code> file with <em>any</em> <code>quantity</code> specified disables the ability to use <code>ps:scale</code> for scaling. All processes not specified in the <code>app.json</code> will have their process count set to zero.</p>
 </div>
 <p>Users can also configure scaling within the codebase itself to manage process scaling. The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="err">{</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span><span class="s">&quot;formation&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="s">&quot;web&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">      </span><span class="s">&quot;quantity&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="err">},</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="s">&quot;worker&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">      </span><span class="s">&quot;quantity&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">4</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="err">}</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">  </span><span class="err">}</span>
-<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="err">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">{</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="p">}</span>
 </code></pre></div>
 <p>Removing the <code>formation</code> key or removing the <code>app.json</code> file from your repository will result in Dokku respecting the <code>ps:scale</code> command for setting scale values. The values set via the <code>app.json</code> file from a previous deploy will be respected.</p>
 <p>See the <a href="../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
@@ -3123,9 +3125,11 @@
 <ul>
 <li>Start all linked services.</li>
 <li>Clear generated proxy configuration files.</li>
-<li>Start the app if it has not been manually stopped.</li>
+<li>Start the app if it has not been manually stopped.<ul>
 <li>If the app containers still exist, they will be started and the generated proxy configuration files will be rebuilt.</li>
 <li>If any of the app containers are missing, the entire app will be rebuilt.</li>
+</ul>
+</li>
 </ul>
 <p>During this time, requests may route to the incorrect app if the assigned IPs correspond to those for other apps. While dokku makes all efforts to avoid this, there may be a few minutes where urls may route to the wrong app. To avoid this, either use a custom proxy plugin or wait a few minutes until the restoration process is complete.</p>
 

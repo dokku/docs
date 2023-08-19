@@ -2542,9 +2542,9 @@
 
 
 <h1 id="getting-started-with-dokku">Getting Started with Dokku<a class="headerlink" href="#getting-started-with-dokku" title="Permanent link">&para;</a></h1>
-<h3 id="what-is-dokku">What is Dokku?<a class="headerlink" href="#what-is-dokku" title="Permanent link">&para;</a></h3>
+<h2 id="what-is-dokku">What is Dokku?<a class="headerlink" href="#what-is-dokku" title="Permanent link">&para;</a></h2>
 <p>Dokku is an extensible, open source Platform as a Service that runs on a single server of your choice. Dokku supports building apps on the fly from a <code>git push</code> via either Dockerfile or by auto-detecting the language with Buildpacks, and then starts containers based on your built image. Using technologies such as nginx and cron, Web processes are automatically routed to, while background processes and automated cron tasks are also managed by Dokku.</p>
-<h3 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h3>
+<h2 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h2>
 <p>To start using Dokku, you'll need a system that meets the following minimum requirements:</p>
 <ul>
 <li>A fresh installation of any of the following operating systems:<ul>
@@ -2572,16 +2572,16 @@
 <li>Single domain (<code>domain.tld</code> A or CNAME Record): will result in apps being accessed via <code>domain.tld:$RANDOM_PORT</code>.</li>
 </ul>
 <p>Please see the <a href="../../networking/dns/">dns documentation</a> and <a href="../../configuration/domains/">domains documentation</a> for more details.</p>
-<h3 id="installing-the-latest-stable-version">Installing the latest stable version<a class="headerlink" href="#installing-the-latest-stable-version" title="Permanent link">&para;</a></h3>
+<h2 id="installing-the-latest-stable-version">Installing the latest stable version<a class="headerlink" href="#installing-the-latest-stable-version" title="Permanent link">&para;</a></h2>
 <p>This is the simple method of installing Dokku. For alternative methods of installation, see the <a href="../advanced-installation/#configuring">advanced install guide</a>.</p>
-<h4 id="1-install-dokku">1. Install Dokku<a class="headerlink" href="#1-install-dokku" title="Permanent link">&para;</a></h4>
+<h3 id="1-install-dokku">1. Install Dokku<a class="headerlink" href="#1-install-dokku" title="Permanent link">&para;</a></h3>
 <p>To install the latest stable version of Dokku, you can run the following shell commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># for debian systems, installs Dokku via apt-get</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>-NP<span class="w"> </span>.<span class="w"> </span>https://dokku.com/install/v0.31.0/bootstrap.sh
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_TAG</span><span class="o">=</span>v0.31.0<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
 </code></pre></div>
 <p>The installation process takes about 5-10 minutes, depending upon internet connection speed.</p>
-<h4 id="2-setup-ssh-key-and-virtualhost-settings">2. Setup SSH key and Virtualhost Settings<a class="headerlink" href="#2-setup-ssh-key-and-virtualhost-settings" title="Permanent link">&para;</a></h4>
+<h3 id="2-setup-ssh-key-and-virtualhost-settings">2. Setup SSH key and Virtualhost Settings<a class="headerlink" href="#2-setup-ssh-key-and-virtualhost-settings" title="Permanent link">&para;</a></h3>
 <p>Once the installation is complete, you should configure an ssh key and set your global domain.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># usually your key is already available under the current user&#39;s `~/.ssh/authorized_keys` file</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span>~/.ssh/authorized_keys<span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>admin
@@ -2599,7 +2599,7 @@
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span><span class="m">10</span>.0.0.2.sslip.io
 </code></pre></div>
 <p>See the <a href="../../deployment/user-management/#adding-ssh-keys">user management</a> and <a href="../../configuration/domains/#customizing-hostnames">domains documentation</a> for more information.</p>
-<h4 id="3-deploy-your-first-application">3. Deploy your first application<a class="headerlink" href="#3-deploy-your-first-application" title="Permanent link">&para;</a></h4>
+<h3 id="3-deploy-your-first-application">3. Deploy your first application<a class="headerlink" href="#3-deploy-your-first-application" title="Permanent link">&para;</a></h3>
 <p>At this point, you should be able to <a href="../../deployment/application-deployment/">deploy to the Dokku installation</a>.</p>
 
 

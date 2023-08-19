@@ -2564,14 +2564,11 @@
 <p>Global <code>ENV</code> files are sourced before app-specific <code>ENV</code> files. This means that app-specific variables will take precedence over global variables. Configuring your global <code>ENV</code> file is manual, and should be considered potentially dangerous as configuration applies to all applications.</p>
 </div>
 <p>You can set multiple environment variables at once:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Whitespace and special characters get tricky. If you are using dokku locally you don't need to do any special escaping. If you are using dokku over ssh you will need to backslash-escape spaces:</p>
-</div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">ENV</span><span class="o">=</span>prod<span class="w"> </span><span class="nv">COMPILE_ASSETS</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">ENV</span><span class="o">=</span>prod<span class="w"> </span><span class="nv">COMPILE_ASSETS</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
+<p>Whitespace and special characters get tricky. If you are using dokku locally you don't need to do any special escaping. If you are using dokku over ssh you will need to backslash-escape spaces:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">KEY</span><span class="o">=</span><span class="s2">&quot;VAL\ WITH\ SPACES&quot;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Dokku can also read base64 encoded values. That's the easiest way to set a value with newlines or spaces. To set a value with newlines you need to base64 encode it first and pass the <code>--encoded</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--encoded<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">KEY</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>base64<span class="w"> </span>~/.ssh/id_rsa<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
@@ -2588,8 +2585,7 @@
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># source in all the node-js-app app environment variables</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>dokku<span class="w"> </span>config:export<span class="w"> </span>node-js-app<span class="k">)</span>
 </code></pre></div>
-<p>You can control the format of the exported variables with the <code>--format</code> flag.
-<code>--format=shell</code> will output the variables in a single-line for usage in command-line utilities:</p>
+<p>You can control the format of the exported variables with the <code>--format</code> flag. <code>--format=shell</code> will output the variables in a single-line for usage in command-line utilities:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>config:export<span class="w"> </span>--format<span class="w"> </span>shell<span class="w"> </span>node-js-app
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># outputs variables in the form:</span>
