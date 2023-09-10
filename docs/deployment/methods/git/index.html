@@ -3504,7 +3504,12 @@
 </code></pre></div>
 <p>If the specified image already exists on the Dokku host, it will not be pulled again, though this behavior may be changed using <a href="../../../advanced-usage/docker-options/">build phase docker-options</a>.</p>
 <p>Triggering a build with the same arguments multiple times will result in Dokku exiting <code>0</code> early as there will be no changes detected. If the image tag is reused but the underlying image is different, it is recommended to use the image digest instead of the tag. This can be retrieved via the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;{{index .RepoDigests 0}}&#39;</span><span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># for images pushed to a remote registry</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;{{index .RepoDigests 0}}&#39;</span><span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># for images built locally and not pushed to a registry</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># use when the previous command output is empty</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>docker<span class="w"> </span>images<span class="w"> </span>--no-trunc<span class="w"> </span>--quiet<span class="w"> </span><span class="nv">$IMAGE_NAME</span>
 </code></pre></div>
 <p>The resulting <code>git:from-image</code> call would then be:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># where the image sha is: sha256:9d187c3025d03c033dcc71e3a284fee53be88cc4c0356a19242758bc80cab673</span>
@@ -3549,7 +3554,12 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">dokku/node-js-getting-started:latest</span>
 </code></pre></div>
 <p>When deploying an app via <code>git:load-image</code>, it is highly recommended to use a unique image tag when building the image. Not doing so will result in Dokku exiting <code>0</code> early as there will be no changes detected. If the image tag is reused but the underlying image is different, it is recommended to use the image digest instead of the tag. This can be retrieved via the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;{{index .RepoDigests 0}}&#39;</span><span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># for images pushed to a remote registry</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;{{index .RepoDigests 0}}&#39;</span><span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># for images built locally and not pushed to a registry</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># use when the previous command output is empty</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>docker<span class="w"> </span>images<span class="w"> </span>--no-trunc<span class="w"> </span>--quiet<span class="w"> </span><span class="nv">$IMAGE_NAME</span>
 </code></pre></div>
 <p>The resulting <code>git:load-image</code> call would then be:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># where the image sha is: sha256:9d187c3025d03c033dcc71e3a284fee53be88cc4c0356a19242758bc80cab673</span>
