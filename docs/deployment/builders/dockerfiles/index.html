@@ -3418,8 +3418,8 @@
 <li><a href="../herokuish-buildpacks/#detection">Herokuish documentation</a></li>
 </ul>
 <h3 id="switching-from-buildpack-deployments">Switching from buildpack deployments<a class="headerlink" href="#switching-from-buildpack-deployments" title="Permanent link">&para;</a></h3>
-<p>If an application was previously deployed via buildpacks, the following commands should be run before a Dockerfile deploy will succeed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:clear<span class="w"> </span>node-js-app
+<p>If an application was previously deployed via buildpacks and ports were customized, the following commands should be run prior to a deploy to ensure the Dockerfile ports are respected:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ports:clear<span class="w"> </span>node-js-app
 </code></pre></div>
 <h3 id="changing-the-dockerfile-location">Changing the <code>Dockerfile</code> location<a class="headerlink" href="#changing-the-dockerfile-location" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
