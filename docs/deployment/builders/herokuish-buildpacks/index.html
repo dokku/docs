@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.5">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6a10b989.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
@@ -805,6 +805,8 @@
       
         
       
+        
+      
     
     
     
@@ -843,6 +845,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.32.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.32.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3678,7 +3700,7 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.29.0</p>
 </div>
-<p>By default, the builder-herokuish plugin is not enabled for non-amd64 platforms, and attempting to use it is blocked. This is because the majority of buildpacks are not cross-platform compatible, and thus building apps will either be considerably slower - due to emulating the amd64 platform - or won't work - due to building amd64 packages on arm/arm64 platforms.</p>
+<p>By default, the builder-herokuish plugin is not enabled for non-amd64 platforms, and attempting to use it is blocked. This is because the majority of buildpacks are not cross-platform compatible, and thus building apps will either be considerably slower - due to emulating the amd64 platform - or won't work - due to building amd64 packages on arm64 platforms.</p>
 <p>To force-enable herokuish on non-amd64 platforms, the <code>allowed</code> property can be set via <code>builder-herokuish:set</code>. The default value depends on the host platform architecture (<code>true</code> on amd64, <code>false</code> otherwise).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>builder-herokuish:set<span class="w"> </span>node-js-app<span class="w"> </span>allowed<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
