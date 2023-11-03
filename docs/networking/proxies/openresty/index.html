@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
@@ -2430,12 +2430,40 @@
     Customizing the OpenResty container image
   </a>
   
-    <nav class="md-nav" aria-label="Customizing the OpenResty container image">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#checking-the-openresty-containers-logs" class="md-nav__link">
     Checking the OpenResty container's logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-openresty-settings-for-an-app" class="md-nav__link">
+    Customizing Openresty Settings for an app
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Openresty Settings for an app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openresty-properties" class="md-nav__link">
+    OpenResty Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-openresty-templates" class="md-nav__link">
+    Custom OpenResty Templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injecting-custom-snippets-into-the-openresty-config" class="md-nav__link">
+    Injecting custom snippets into the OpenResty config
   </a>
   
 </li>
@@ -3429,12 +3457,40 @@
     Customizing the OpenResty container image
   </a>
   
-    <nav class="md-nav" aria-label="Customizing the OpenResty container image">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#checking-the-openresty-containers-logs" class="md-nav__link">
     Checking the OpenResty container's logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-openresty-settings-for-an-app" class="md-nav__link">
+    Customizing Openresty Settings for an app
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Openresty Settings for an app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openresty-properties" class="md-nav__link">
+    OpenResty Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-openresty-templates" class="md-nav__link">
+    Custom OpenResty Templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injecting-custom-snippets-into-the-openresty-config" class="md-nav__link">
+    Injecting custom snippets into the OpenResty config
   </a>
   
 </li>
@@ -3566,7 +3622,7 @@
 <p>While the default OpenResty image is hardcoded, users may specify an alternative by setting the <code>image</code> property with the <code>--global</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>dokku/openresty-docker-proxy:0.5.6
 </code></pre></div>
-<h4 id="checking-the-openresty-containers-logs">Checking the OpenResty container's logs<a class="headerlink" href="#checking-the-openresty-containers-logs" title="Permanent link">&para;</a></h4>
+<h3 id="checking-the-openresty-containers-logs">Checking the OpenResty container's logs<a class="headerlink" href="#checking-the-openresty-containers-logs" title="Permanent link">&para;</a></h3>
 <p>It may be necessary to check the OpenResty container's logs to ensure that OpenResty is operating as expected. This can be performed with the <code>openresty:logs</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>openresty:logs
 </code></pre></div>
@@ -3578,6 +3634,19 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>openresty:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the openresty container, with an initial history of 10 log lines</p>
+<h3 id="customizing-openresty-settings-for-an-app">Customizing Openresty Settings for an app<a class="headerlink" href="#customizing-openresty-settings-for-an-app" title="Permanent link">&para;</a></h3>
+<h4 id="openresty-properties">OpenResty Properties<a class="headerlink" href="#openresty-properties" title="Permanent link">&para;</a></h4>
+<p>The OpenResty plugin supports all properties supported by the <code>nginx:set</code> command via <code>openresty:set</code>. At this time, please consult the nginx documentation for more information on what properties are available.</p>
+<p>Please note that the oldest running container will be used for OpenResty configuration, and thus newer config may not apply until older app containers are retired during/after a deploy, depending on your zero-downtime settings.</p>
+<h4 id="custom-openresty-templates">Custom OpenResty Templates<a class="headerlink" href="#custom-openresty-templates" title="Permanent link">&para;</a></h4>
+<p>At this time, the OpenResty plugin does not allow complete customization of the template used to manage an app's vhost. Apps will use a template provided by the OpenResty container to proxy requests. See the next section for documentation on how to configure portions of the template.</p>
+<h4 id="injecting-custom-snippets-into-the-openresty-config">Injecting custom snippets into the OpenResty config<a class="headerlink" href="#injecting-custom-snippets-into-the-openresty-config" title="Permanent link">&para;</a></h4>
+<p>The OpenResty plugin allows users to specify templates in their repository for auto-injection into the OpenResty config. Please note that this configuration should be validated prior to deployment or may cause outages in your OpenResty proxy layer.</p>
+<p>The following folders within an app repository may have <code>*.conf</code> files that will be automatically injected into the OpenResty config.</p>
+<ul>
+<li><code>openresty/http-includes/</code>: Injected in the <code>server</code> block serving http(s) requests for the app.</li>
+<li><code>openresty/http-location-includes/</code>: Injected in the <code>location</code> block that proxies to the app in the app's respective <code>server</code> block.</li>
+</ul>
 <h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>The OpenResty plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>

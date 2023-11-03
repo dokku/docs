@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
@@ -3525,10 +3525,10 @@
 <p>Introduced in 0.12.0</p>
 </div>
 <p>Dokku natively includes functionality to manage application lifecycles for a single server using the <code>scheduler-docker-local</code> plugin. It is the default scheduler, but as with all schedulers, it is set on a per-application basis. The scheduler can currently be overridden by running the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOCKER_SCHEDULER</span><span class="o">=</span>docker-local
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>docker-local
 </code></pre></div>
-<p>As it is the default, unsetting the <code>DOCKER_SCHEDULER</code> config variable is also a valid way to reset the scheduler.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:unset<span class="w"> </span>node-js-app<span class="w"> </span>DOCKER_SCHEDULER
+<p>As it is the default, unsetting the <code>selected</code> scheduler property is also a valid way to reset the scheduler.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected
 </code></pre></div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="disabling-chown-of-persistent-storage">Disabling chown of persistent storage<a class="headerlink" href="#disabling-chown-of-persistent-storage" title="Permanent link">&para;</a></h3>
