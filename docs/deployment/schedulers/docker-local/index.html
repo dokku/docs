@@ -3773,7 +3773,7 @@
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">}</span>
 </code></pre></div>
-<p>Omitting or removing the entry will result in parallelism for that process type to return to 1 entry at a time. This can be combined with the  <code>parallel-schedule-count</code> property to speed up deployments.</p>
+<p>Omitting or removing the entry will result in parallelism for that process type to return to 1 entry at a time. This can be combined with the <code>parallel-schedule-count</code> property to speed up deployments.</p>
 <p>Note that increasing the value of <code>max_parallel</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
 <p>See the <a href="../../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
