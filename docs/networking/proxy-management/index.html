@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
     
     
       
@@ -2426,6 +2426,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#changing-the-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the proxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#regenerating-proxy-config" class="md-nav__link">
     <span class="md-ellipsis">
       Regenerating proxy config
@@ -3524,6 +3533,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#changing-the-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the proxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#regenerating-proxy-config" class="md-nav__link">
     <span class="md-ellipsis">
       Regenerating proxy config
@@ -3638,22 +3656,52 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>proxy:disable [--parallel count] [--all|&lt;app&gt;]      # Disable proxy for app
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>proxy:enable [--parallel count] [--all|&lt;app&gt;]       # Enable proxy for app
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>proxy:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a proxy report for one or more apps
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>proxy:set &lt;app&gt; &lt;proxy-type&gt;                        # Set proxy type for app
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>proxy:set [&lt;app&gt;|--global] &lt;proxy-type&gt;                        # Set proxy type for app
 </code></pre></div>
 <p>In Dokku 0.5.0, port proxying was decoupled from the <code>nginx-vhosts</code> plugin into the proxy plugin. Dokku 0.6.0 introduced the ability to map host ports to specific container ports. In the future this will allow other proxy software - such as HAProxy or Caddy - to be used in place of nginx.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="changing-the-proxy">Changing the proxy<a class="headerlink" href="#changing-the-proxy" title="Permanent link">&para;</a></h3>
+<p>The default proxy shipped with Dokku is <code>nginx</code>. It can be changed via the <code>proxy:set</code> command.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>caddy
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>-----&gt; Setting config vars
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>       DOKKU_APP_PROXY_TYPE:  caddy
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The proxy may also be set on a global basis. This is usually preferred as running multiple proxy implementations may cause port collision issues.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>--global<span class="w"> </span>caddy
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>-----&gt; Setting config vars
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>       DOKKU_PROXY_TYPE:  caddy
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Changing the proxy does not stop or start any given proxy implementation. Please see the documentation for your proxy implementation for details on how to perform a change.</p>
 <h3 id="regenerating-proxy-config">Regenerating proxy config<a class="headerlink" href="#regenerating-proxy-config" title="Permanent link">&para;</a></h3>
 <p>In certain cases, your app proxy configs may drift from the correct config for your app. You may regenerate the config at any point via the <code>proxy:build-config</code> command. This command will trigger a rebuild for the configured proxy implementation (default: nginx) for a given app. The command may fail if there are no current web listeners for your app.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>All apps may have their proxy config rebuilt by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all
 </code></pre></div>
 <p>By default, rebuilding proxy configs for all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
 <h3 id="clearing-the-generated-proxy-config">Clearing the generated proxy config<a class="headerlink" href="#clearing-the-generated-proxy-config" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
@@ -3661,10 +3709,10 @@
 <p>Introduced in 0.27.0</p>
 </div>
 <p>Generated proxy configurations can also be cleared using the <code>proxy:clear-config</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>proxy:clear-config<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>proxy:clear-config<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>All apps may have their proxy config cleared by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>proxy:clear-config<span class="w"> </span>--all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>proxy:clear-config<span class="w"> </span>--all
 </code></pre></div>
 <p>Clearing a proxy configuration has different effects depending on the proxy plugin in use. Consul the documentation for your proxy implementation for further details.</p>
 <h3 id="displaying-proxy-reports-for-an-app">Displaying proxy reports for an app<a class="headerlink" href="#displaying-proxy-reports-for-an-app" title="Permanent link">&para;</a></h3>
@@ -3673,43 +3721,43 @@
 <p>Introduced in 0.8.1</p>
 </div>
 <p>You can get a report about the app's proxy status using the <code>proxy:report</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>proxy:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>proxy:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app proxy information
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Proxy enabled:       true
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Proxy type:          nginx
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>=====&gt; python-sample proxy information
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>       Proxy enabled:       true
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Proxy type:          nginx
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>=====&gt; ruby-sample proxy information
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Proxy enabled:       true
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       Proxy type:          nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>=====&gt; node-js-app proxy information
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       Proxy enabled:       true
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>       Proxy type:          nginx
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>=====&gt; python-sample proxy information
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>       Proxy enabled:       true
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>       Proxy type:          nginx
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>=====&gt; ruby-sample proxy information
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>       Proxy enabled:       true
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>       Proxy type:          nginx
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can run the command for a specific app also.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app proxy information
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Proxy enabled:       true
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Proxy type:          nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>=====&gt; node-js-app proxy information
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>       Proxy enabled:       true
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>       Proxy type:          nginx
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--proxy-type
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--proxy-type
 </code></pre></div>
 <h4 id="proxy-port-scheme">Proxy Port Scheme<a class="headerlink" href="#proxy-port-scheme" title="Permanent link">&para;</a></h4>
 <p>See the <a href="../port-management/#port-scheme">port scheme documentation</a> for more information on the port mapping scheme used by dokku.</p>
@@ -3969,11 +4017,11 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
       
     
 

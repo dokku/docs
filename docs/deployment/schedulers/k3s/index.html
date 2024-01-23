@@ -27,13 +27,9 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/deployment/schedulers/null/">
+        <link rel="canonical" href="https://dokku.com/docs/deployment/schedulers/k3s/">
       
       
-        <link rel="prev" href="../nomad/">
-      
-      
-        <link rel="next" href="../../../development/plugin-creation/">
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
@@ -41,7 +37,7 @@
     
     
       
-        <title>Null Scheduler - Dokku Documentation</title>
+        <title>K3s Scheduler - Dokku Documentation</title>
       
     
     
@@ -110,7 +106,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#null-scheduler" class="md-skip">
+        <a href="#k3s-scheduler" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +159,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Null Scheduler
+              K3s Scheduler
             
           </span>
         </div>
@@ -268,7 +264,11 @@
         
   
   
+  
     
+    
+      
+  
   
   
     
@@ -276,20 +276,10 @@
       
   
   
-    
-  
   
     
     
-      
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../../getting-started/installation/" class="md-tabs__link">
           
   
@@ -425,10 +415,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -467,12 +455,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
@@ -486,7 +474,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Docs
@@ -2756,10 +2744,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2780,12 +2766,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
         
           
           <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="">
@@ -2799,7 +2785,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             Schedulers
@@ -2894,30 +2880,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Null Scheduler
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../null/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2926,50 +2892,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detection
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3464,11 +3386,230 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#detection" class="md-nav__link">
+  <a href="#initializing-a-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      Detection
+      Initializing a cluster
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-nodes-to-the-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding nodes to the cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding nodes to the cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a worker node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-server-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a server node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-network-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the network interface
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-deploy-timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing deploy timeouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-rollback-on-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling rollback on failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-image-pull-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using image pull secrets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using image pull secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-letsencrypt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling letsencrypt integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-letsencrypt-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the letsencrypt server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-kubectl-remotely" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using kubectl remotely
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-node-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-node cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-multi-cluster-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a multi-cluster node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduler-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheduler Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduler Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implemented-commands-and-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implemented Commands and Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unimplemented-command-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unimplemented command functionality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-resource-management-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Resource Management Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Resource Management Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-reservations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Reservations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3492,7 +3633,7 @@
                   
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/schedulers/null.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/schedulers/k3s.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -3501,24 +3642,309 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/deployment/schedulers/null.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/deployment/schedulers/k3s.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="null-scheduler">Null Scheduler<a class="headerlink" href="#null-scheduler" title="Permanent link">&para;</a></h1>
+<h1 id="k3s-scheduler">K3s Scheduler<a class="headerlink" href="#k3s-scheduler" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-k3s:initialize                           # initializes a cluster
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-k3s:add-server [user:password@host:port] # adds a server node to a Dokku-managed cluster
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>scheduler-k3s:add-client [user:password@host:port] # adds a client node to a Dokku-managed cluster
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;) # Set or clear a scheduler-k3s property for an app or the scheduler
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
-<p>Introduced in 0.25.0</p>
+<p>Introduced in 0.33.0</p>
 </div>
-<p>The <code>null</code> scheduler does nothing, and is useful for routing to services not managed by Dokku. It should not be used in normal operation. Please see the <a href="../../../networking/network/#routing-an-app-to-a-known-ip:port-combination">network documentation</a> for more information on the aforementioned use case.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
-<p>This scheduler is <em>never</em> auto-detected. The scheduler <em>must</em>  be specified via the <code>scheduler:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>null
+<p>For multi-server support, Dokku provides the ability for users to setup a K3s cluster. As with all schedulers, it is set on a per-app basis. The scheduler can currently be overridden by running the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>k3s
 </code></pre></div>
+<p>As it is the default, unsetting the <code>selected</code> scheduler property is also a valid way to reset the scheduler.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>k3s
+</code></pre></div>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="initializing-a-cluster">Initializing a cluster<a class="headerlink" href="#initializing-a-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This command must be run as root</p>
+</div>
+<p>Clusters can be initialized via the <code>scheduler-k3s:initialize</code> command. This will start a k3s cluster on the Dokku node itself.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize
+</code></pre></div>
+<p>By default, the k3s installation can run both app and system workloads. For clusters where app workloads are run on distinct worker nodes, initialize the cluster with the <code>--taint-scheduling</code> flag, which will allow <em>only</em> Critical cluster components on the k3s control-plane nodes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--taint-scheduling
+</code></pre></div>
+<p>By default, Dokku will attempt to auto-detect the IP address of the server. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15
+</code></pre></div>
+<h3 id="adding-nodes-to-the-cluster">Adding nodes to the cluster<a class="headerlink" href="#adding-nodes-to-the-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>dokku</code> user <em>must</em> be able to ssh onto the server in order to connect nodes to the cluster. The remote user must be root or have sudo enabled, or the install will fail.</p>
+</div>
+<h4 id="adding-a-worker-node">Adding a worker node<a class="headerlink" href="#adding-a-worker-node" title="Permanent link">&para;</a></h4>
+<p>Nodes that run app workloads can be added via the <code>scheduler-k3s:cluster-add</code> command. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in worker mode. Workers are typically used to run app workloads.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>ssh://root@worker-1.example.com
+</code></pre></div>
+<p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
+</code></pre></div>
+<p>By default, Dokku will attempt to auto-detect the IP address of the Dokku server for the remote server to connect to. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@worker-1.example.com
+</code></pre></div>
+<h4 id="adding-a-server-node">Adding a server node<a class="headerlink" href="#adding-a-server-node" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the initial Dokku server will be properly configured for push deployment, and should be considered your git remote. Additional server nodes are for ensuring high-availability of the K3s etcd state. Ensure this server is properly backed up and restorable or deployments will not work.</p>
+</div>
+<p>Server nodes are typically used to replicate the cluster state, and it is recommended to have an odd number of nodes spread across several availability zones (datacenters in close proximity within a region). This allows for higher availability in the event of a cluster failure. Server nodes run control-plane services such as the traefik load balancer and the etcd backing store.</p>
+<p>Server nodes can also be added with the <code>scheduler-k3s:cluster-add</code> command by specifying <code>--role server</code>. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in server mode.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
+</code></pre></div>
+<p>Server nodes allow any workloads to be scheduled on them by default, in addition to the control-plane, etcd, and the scheduler itself. To avoid app workloads being scheduled on your control-plane, use the <code>--taint-scheduling</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
+</code></pre></div>
+<p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@server-1.example.com
+</code></pre></div>
+<p>By default, Dokku will attempt to auto-detect the IP address of the Dokku server for the remote server to connect to. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@server-1.example.com
+</code></pre></div>
+<h4 id="changing-the-network-interface">Changing the network interface<a class="headerlink" href="#changing-the-network-interface" title="Permanent link">&para;</a></h4>
+<p>When attaching an worker or server node, the K3s plugin will look at the IP associated with the <code>eth0</code> interface and use that to connect the new node to the cluster. To change this, set the <code>network-interface</code> property to the appropriate value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
+</code></pre></div>
+<h3 id="changing-deploy-timeouts">Changing deploy timeouts<a class="headerlink" href="#changing-deploy-timeouts" title="Permanent link">&para;</a></h3>
+<p>By default, app deploys will timeout after 300s. To customize this value, set the <code>deploy-timeout</code> property via <code>scheduler-k3s:set</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout
+</code></pre></div>
+<p>The <code>deploy-timeout</code> property can also be set globally. The global default is <code>300s</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout
+</code></pre></div>
+<h3 id="customizing-the-namespace">Customizing the namespace<a class="headerlink" href="#customizing-the-namespace" title="Permanent link">&para;</a></h3>
+<p>By default, app deploys will run against the <code>default</code> Kubernetes namespace. To customize this value, set the <code>namespace</code> property via <code>scheduler-k3s:set</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>namespace<span class="w"> </span>lollipop
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>namespace
+</code></pre></div>
+<p>The <code>namespace</code> property can also be set globally. The global default is <code>default</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>namespace<span class="w"> </span>60s
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>namespace
+</code></pre></div>
+<h3 id="enabling-rollback-on-failure">Enabling rollback on failure<a class="headerlink" href="#enabling-rollback-on-failure" title="Permanent link">&para;</a></h3>
+<p>By default, app deploys do not rollback on failure. To enable this functionality, set the <code>rollback-on-failure</code> property via <code>scheduler-k3s:set</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>rollback-on-failure<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>rollback-on-failure
+</code></pre></div>
+<p>The <code>rollback-on-failure</code> property can also be set globally. The global default is <code>false</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>rollback-on-failure<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>rollback-on-failure
+</code></pre></div>
+<h3 id="using-image-pull-secrets">Using image pull secrets<a class="headerlink" href="#using-image-pull-secrets" title="Permanent link">&para;</a></h3>
+<p>When authenticating against a registry via <code>registry:login</code>, the scheduler-k3s plugin will authenticate all servers in the cluster against the registry specified. If desired, an image pull secret can be used instead. To customize this value, set the <code>image-pull-secrets</code> property via <code>scheduler-k3s:set</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets<span class="w"> </span>lollipop
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets
+</code></pre></div>
+<p>The <code>image-pull-secrets</code> property can also be set globally. The global default is empty string, and k3s will use the local <code>registries.yaml</code> for any private registry pulls.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets<span class="w"> </span>60s
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets
+</code></pre></div>
+<h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
+<p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email-prod</code> or <code>letsencrypt-email-stag</code> property with the <code>--global</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># set the value for prod</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>automated@dokku.sh
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># set the value for stag</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-stag<span class="w"> </span>automated@dokku.sh
+</code></pre></div>
+<p>After enabling, all apps with an <code>https</code> port mapping that utilize the related letsencrypt server will be automatically updated to enable ssl. All http requests will then be redirected to https.</p>
+<h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
+<p>The letsencrypt integration is set to the production letsencrypt server by default. This can be changed on an app-level by setting the <code>letsencrypt-server</code> property with the <code>scheduler-k3s:set</code> command</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server
+</code></pre></div>
+<p>The <code>image-pull-secrets</code> property can also be set globally. The global default is <code>production</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+</code></pre></div>
+<p>The default value may be set by passing an empty value for the option.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+</code></pre></div>
+<p>After changing, all apps with an</p>
+<h3 id="using-kubectl-remotely">Using kubectl remotely<a class="headerlink" href="#using-kubectl-remotely" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Certain ports must be open for interacting with the remote kubernets api. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
+</div>
+<p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
+</code></pre></div>
+<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permanent link">&para;</a></h2>
+<h3 id="single-node-cluster">Single-node cluster<a class="headerlink" href="#single-node-cluster" title="Permanent link">&para;</a></h3>
+<p>Initialize the cluster in single-node mode. This will start k3s on the Dokku node itself.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># must be run as root</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku<span class="w"> </span>scheduler-k3s:initialize
+</code></pre></div>
+<p>The above command will initialize a cluster with the following configuration:</p>
+<ul>
+<li>etcd distributed backing store</li>
+<li>Wireguard as the networking flannel</li>
+<li>K3s automatic upgrader</li>
+<li>Longhorn distributed block storage</li>
+<li>Traefik configured to run on all nodes in the cluster</li>
+</ul>
+<p>Additionally, an internal token for authentication will be automatically generated. This token should be stored securely for later recovery, and can be displayed with via the <code>scheduler-k3s:report</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:report<span class="w"> </span>--global
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>=====&gt; --global scheduler-k3s information
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>       scheduler k3s token: topsecret:server:token
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Setup registry authentication. The K3s scheduler plugin will automatically pick up any newly configured registry backends and ensure nodes in the cluster have the credentials in place for pulling images from the cluster.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># hub.docker.com</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>hub.docker.com<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$PASSWORD</span>
+</code></pre></div>
+<p>To ensure images are pushed and pulled from the correct registry, set the correct <code>server</code> registry property. This can be set on a per-app basis, but we will set it globally here for this tutorial.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>server<span class="w"> </span>hub.docker.com
+</code></pre></div>
+<p>If using docker hub, you'll need to use a custom repository name. This can be set via a global template, allowing users access to the app name as the variable <code>AppName</code> as shown below.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}&quot;</span>
+</code></pre></div>
+<p>Additionally, apps should be configured to push images on the release phase via the <code>push-on-release</code> registry property.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<p>As routing is handled by traefik managed on the k3s plugin, set the proxy plugin to <code>k3s</code> as well.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>--global<span class="w"> </span>k3s
+</code></pre></div>
+<p>Ensure any other proxy implementations are disabled. Typically at least nginx will be running on the Dokku host and should be stopped if the host is used as load balancer.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>nginx:stop
+</code></pre></div>
+<p>Finally, set the scheduler to <code>k3s</code> so that app deploys will work on k3s.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>--global<span class="w"> </span>selected<span class="w"> </span>k3s
+</code></pre></div>
+<p>At this point, all app deploys will be performed against the k3s cluster.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HTTP requests for apps can be performed against any node in the cluster. Without extra configuration, many other ports may also be available on the host. For security reasons, it may be desirable to place the k3s cluster behind one or more TCP load balancers while shutting off traffic to all cluster ports. Please consult your hosting provider for more information on how to provision a TCP load balancer and shut off all ports other than 22/80/443 access to the outside world.</p>
+</div>
+<h3 id="running-a-multi-cluster-node">Running a multi-cluster node<a class="headerlink" href="#running-a-multi-cluster-node" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Certain ports must be open for cross-server communication. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
+</div>
+<p>For high-availability, it is recommended to add both worker and server nodes to the cluster. Dokku will default to starting the cluster with an embedded Etcd database backend, and is ready to add new worker or server nodes immediately.</p>
+<p>When attaching an worker or server node, the K3s plugin will look at the IP associated with the <code>eth0</code> interface and use that to connect the new node to the cluster. To change this, set the <code>network-interface</code> property to the appropriate value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
+</code></pre></div>
+<p>Dokku will connect to remote servers via the <code>root</code> user with the <code>dokku</code> user's SSH key pair. Dokku servers may not have an ssh key pair by default, but they can be generated as needed via the <code>git:generate-deploy-key</code> command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>git:generate-deploy-key
+</code></pre></div>
+<p>This key can then be displayed with the <code>git:public-key</code> command, and copied to the remote server's <code>/root/.ssh/authorized_keys</code> file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>git:public-key
+</code></pre></div>
+<p>Multiple server nodes can be added with the <code>scheduler-k3s:cluster-add</code> command. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in server mode.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
+</code></pre></div>
+<p>Server nodes allow any workloads to be scheduled on them by default, in addition to the control-plane, etcd, and the scheduler itself. To avoid app workloads being scheduled on your control-plane, use the <code>--taint-scheduling</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
+</code></pre></div>
+<p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
+</code></pre></div>
+<p>Server nodes are typically used to replicate the cluster state, and it is recommended to have an odd number of nodes spread across several availability zones (datacenters in close proximity within a region). This allows for higher availability in the event of a cluster failure. Server nodes run control-plane services such as the traefik load balancer and the etcd backing store.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the initial Dokku server will be properly configured for push deployment, and should be considered your git remote. Additional server nodes are for ensuring high-availability of the K3s etcd state. Ensure this server is properly backed up and restorable or deployments will not work.</p>
+</div>
+<p>Worker nodes are used to run. To add an worker, run the <code>scheduler-k3s:cluster-add</code> with the <code>--role worker</code> flag. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in worker mode. Workers are typically used to run app workloads.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>worker<span class="w"> </span>ssh://root@worker-1.example.com
+</code></pre></div>
+<h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
+<p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
+<h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
+<p>This plugin implements various functionality through <code>plugn</code> triggers to integrate with Docker for running apps on a single server. The following functionality is supported by the <code>scheduler-k3s</code> plugin.</p>
+<ul>
+<li><code>apps:clone</code></li>
+<li><code>apps:destroy</code></li>
+<li><code>apps:rename</code></li>
+<li><code>cron</code></li>
+<li><code>enter</code></li>
+<li><code>deploy</code></li>
+<li>healthchecks<ul>
+<li>Due to Kubernetes limitations, only a single healthcheck is supported for each of the <code>liveness</code>, <code>readiness</code>, and <code>startup</code> healthchecks</li>
+<li>Due to Kubernetes limitations, content checks are not supported</li>
+<li>Ports specified in the <code>app.json</code> are ignored in favor of the container port on the port mapping detected</li>
+</ul>
+</li>
+<li><code>logs</code></li>
+<li><code>ps:stop</code></li>
+<li><code>run</code><ul>
+<li>The <code>scheduler-post-run</code> trigger is not always triggered</li>
+</ul>
+</li>
+<li><code>run:detached</code></li>
+<li><code>run:list</code></li>
+</ul>
+<h3 id="unimplemented-command-functionality">Unimplemented command functionality<a class="headerlink" href="#unimplemented-command-functionality" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>run:logs</code></li>
+<li><code>ps:inspect</code></li>
+</ul>
+<p>The following Dokku functionality is not implemented at this time.</p>
+<ul>
+<li><code>vector</code> log integration</li>
+<li>persistent storage</li>
+</ul>
+<h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
+<p>App logs for the <code>logs</code> command are fetched by Dokku from running containers via the <code>kubectl</code> cli. Persisting logs via Vector is not implemented at this time. Users may choose to configure the Vector Kubernetes integration directly by following <a href="https://vector.dev/docs/setup/installation/platforms/kubernetes/">this guide</a>.</p>
+<h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
+<p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>. The following properties are supported:</p>
+<h4 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cron tasks retrieve resource limits based on the computed cron task ID. If unspecified, the default will be 1 CPU and 512m RAM.</p>
+</div>
+<ul>
+<li>cpu: is specified in number of CPUs a process can access.</li>
+<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
+</ul>
+<h4 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cron tasks retrieve resource reservations based on the computed cron task ID. If unspecified, the default will be 1 CPU and 512m RAM.</p>
+</div>
+<ul>
+<li>cpu: is specified in number of CPUs a process can access.</li>
+<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
+</ul>
 
 
 
@@ -3549,44 +3975,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../nomad/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nomad Scheduler">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Nomad Scheduler
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../../../development/plugin-creation/" class="md-footer__link md-footer__link--next" aria-label="Next: Plugin creation">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Plugin creation
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">

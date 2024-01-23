@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
     
     
       
@@ -2710,6 +2710,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#templating-the-image-repository-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Templating the image repository name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pushing-images-on-build" class="md-nav__link">
     <span class="md-ellipsis">
       Pushing images on build
@@ -3518,6 +3527,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#templating-the-image-repository-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Templating the image repository name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pushing-images-on-build" class="md-nav__link">
     <span class="md-ellipsis">
       Pushing images on build
@@ -3649,19 +3667,24 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># per-app</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>image-repo
 </code></pre></div>
+<h3 id="templating-the-image-repository-name">Templating the image repository name<a class="headerlink" href="#templating-the-image-repository-name" title="Permanent link">&para;</a></h3>
+<p>Instead of setting the image repository name on a per-app basis, it can be set via a template globally with the <code>image-repo-template</code> property:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}&quot;</span>
+</code></pre></div>
+<p>Dokku uses a Golang template and has access to the <code>AppName</code> variable as shown above.</p>
 <h3 id="pushing-images-on-build">Pushing images on build<a class="headerlink" href="#pushing-images-on-build" title="Permanent link">&para;</a></h3>
 <p>To push the image on release, set the <code>push-on-release</code> property to <code>true</code> via the <code>registry:set</code> command. The default value for this property is <code>false</code>. Setting the property to <code>true</code> will result in the image being tagged with an ID that is incremented with every release. This tag will be what is used for running app code.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>This property can be set for a single app or globally via the <code>--global</code> flag. When set globally, the app-specific value will always overide the global value. The default global value for this property is <code>false</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># per-app</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># globally</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># per-app</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># globally</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
 </code></pre></div>
 
 
@@ -3847,11 +3870,11 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
       
     
 
