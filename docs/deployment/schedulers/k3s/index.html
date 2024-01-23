@@ -30,6 +30,10 @@
         <link rel="canonical" href="https://dokku.com/docs/deployment/schedulers/k3s/">
       
       
+        <link rel="prev" href="../docker-local/">
+      
+      
+        <link rel="next" href="../nomad/">
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
@@ -264,22 +268,28 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../getting-started/installation/" class="md-tabs__link">
           
   
@@ -415,8 +425,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -455,12 +467,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
@@ -474,7 +486,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Docs
@@ -2744,8 +2756,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2766,12 +2780,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
         
           
           <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="">
@@ -2785,7 +2799,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             Schedulers
@@ -2838,18 +2852,301 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../kubernetes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    K3s Scheduler
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Kubernetes Scheduler
+    K3s Scheduler
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing a cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-nodes-to-the-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding nodes to the cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding nodes to the cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a worker node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-server-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a server node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-network-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the network interface
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-deploy-timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing deploy timeouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-rollback-on-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling rollback on failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-image-pull-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using image pull secrets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using image pull secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-letsencrypt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling letsencrypt integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-letsencrypt-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the letsencrypt server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-kubectl-remotely" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using kubectl remotely
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-node-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-node cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-multi-cluster-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a multi-cluster node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduler-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheduler Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduler Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implemented-commands-and-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implemented Commands and Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unimplemented-command-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unimplemented command functionality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-resource-management-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Resource Management Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Resource Management Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-reservations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Reservations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3650,14 +3947,22 @@
 
 
 <h1 id="k3s-scheduler">K3s Scheduler<a class="headerlink" href="#k3s-scheduler" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-k3s:initialize                           # initializes a cluster
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-k3s:add-server [user:password@host:port] # adds a server node to a Dokku-managed cluster
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>scheduler-k3s:add-client [user:password@host:port] # adds a client node to a Dokku-managed cluster
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;) # Set or clear a scheduler-k3s property for an app or the scheduler
-</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.33.0</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-k3s:cluster-add [ssh://user@host:port]    # Adds a server node to a Dokku-managed cluster
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-k3s:cluster-list                          # Lists all nodes in a Dokku-managed cluster
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>scheduler-k3s:cluster-remove [node-id]              # Removes client node to a Dokku-managed cluster
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>scheduler-k3s:initialize                            # Initializes a cluster
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>scheduler-k3s:report [&lt;app&gt;] [&lt;flag&gt;]               # Displays a scheduler-k3s report for one or more apps
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)  # Set or clear a scheduler-k3s property for an app or the scheduler
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>scheduler-k3s:show-kubeconfig                       # Displays the kubeconfig for remote usage
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>scheduler-k3s:uninstall                             # Uninstalls k3s from the Dokku server
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The k3s plugin replaces the external <a href="https://github.com/dokku/dokku-scheduler-kubernetes">scheduler-kubernetes</a> plugin. Users can continue to use the external plugin as necessary, but all future development will occur on the official core k3s plugin.</p>
 </div>
 <p>For multi-server support, Dokku provides the ability for users to setup a K3s cluster. As with all schedulers, it is set on a per-app basis. The scheduler can currently be overridden by running the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>k3s
@@ -3975,6 +4280,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../docker-local/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker Local Scheduler">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Docker Local Scheduler
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../nomad/" class="md-footer__link md-footer__link--next" aria-label="Next: Nomad Scheduler">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Nomad Scheduler
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
