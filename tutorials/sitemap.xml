@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dokku.com/tutorials/other/deploying-to-k3s/</loc>
+         <lastmod>2024-01-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dokku.com/tutorials/other/run-on-external-volume/</loc>
          <lastmod>2024-01-23</lastmod>
          <changefreq>daily</changefreq>
