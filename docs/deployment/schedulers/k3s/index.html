@@ -3036,39 +3036,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tutorial" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tutorial
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tutorial">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#single-node-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Single-node cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-a-multi-cluster-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running a multi-cluster node
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#scheduler-interface" class="md-nav__link">
     <span class="md-ellipsis">
       Scheduler Interface
@@ -3808,39 +3775,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tutorial" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tutorial
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tutorial">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#single-node-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Single-node cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-a-multi-cluster-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running a multi-cluster node
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#scheduler-interface" class="md-nav__link">
     <span class="md-ellipsis">
       Scheduler Interface
@@ -4104,93 +4038,6 @@
 </div>
 <p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
-</code></pre></div>
-<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permanent link">&para;</a></h2>
-<h3 id="single-node-cluster">Single-node cluster<a class="headerlink" href="#single-node-cluster" title="Permanent link">&para;</a></h3>
-<p>Initialize the cluster in single-node mode. This will start k3s on the Dokku node itself.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># must be run as root</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku<span class="w"> </span>scheduler-k3s:initialize
-</code></pre></div>
-<p>The above command will initialize a cluster with the following configuration:</p>
-<ul>
-<li>etcd distributed backing store</li>
-<li>Wireguard as the networking flannel</li>
-<li>K3s automatic upgrader</li>
-<li>Longhorn distributed block storage</li>
-<li>Traefik configured to run on all nodes in the cluster</li>
-</ul>
-<p>Additionally, an internal token for authentication will be automatically generated. This token should be stored securely for later recovery, and can be displayed with via the <code>scheduler-k3s:report</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:report<span class="w"> </span>--global
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>=====&gt; --global scheduler-k3s information
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>       scheduler k3s token: topsecret:server:token
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Setup registry authentication. The K3s scheduler plugin will automatically pick up any newly configured registry backends and ensure nodes in the cluster have the credentials in place for pulling images from the cluster.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># hub.docker.com</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dokku<span class="w"> </span>registry:login<span class="w"> </span>hub.docker.com<span class="w"> </span><span class="nv">$USERNAME</span><span class="w"> </span><span class="nv">$PASSWORD</span>
-</code></pre></div>
-<p>To ensure images are pushed and pulled from the correct registry, set the correct <code>server</code> registry property. This can be set on a per-app basis, but we will set it globally here for this tutorial.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>server<span class="w"> </span>hub.docker.com
-</code></pre></div>
-<p>If using docker hub, you'll need to use a custom repository name. This can be set via a global template, allowing users access to the app name as the variable <code>AppName</code> as shown below.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}&quot;</span>
-</code></pre></div>
-<p>Additionally, apps should be configured to push images on the release phase via the <code>push-on-release</code> registry property.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
-</code></pre></div>
-<p>As routing is handled by traefik managed on the k3s plugin, set the proxy plugin to <code>k3s</code> as well.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>--global<span class="w"> </span>k3s
-</code></pre></div>
-<p>Ensure any other proxy implementations are disabled. Typically at least nginx will be running on the Dokku host and should be stopped if the host is used as load balancer.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>nginx:stop
-</code></pre></div>
-<p>Finally, set the scheduler to <code>k3s</code> so that app deploys will work on k3s.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>--global<span class="w"> </span>selected<span class="w"> </span>k3s
-</code></pre></div>
-<p>At this point, all app deploys will be performed against the k3s cluster.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>HTTP requests for apps can be performed against any node in the cluster. Without extra configuration, many other ports may also be available on the host. For security reasons, it may be desirable to place the k3s cluster behind one or more TCP load balancers while shutting off traffic to all cluster ports. Please consult your hosting provider for more information on how to provision a TCP load balancer and shut off all ports other than 22/80/443 access to the outside world.</p>
-</div>
-<h3 id="running-a-multi-cluster-node">Running a multi-cluster node<a class="headerlink" href="#running-a-multi-cluster-node" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Certain ports must be open for cross-server communication. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
-</div>
-<p>For high-availability, it is recommended to add both worker and server nodes to the cluster. Dokku will default to starting the cluster with an embedded Etcd database backend, and is ready to add new worker or server nodes immediately.</p>
-<p>When attaching an worker or server node, the K3s plugin will look at the IP associated with the <code>eth0</code> interface and use that to connect the new node to the cluster. To change this, set the <code>network-interface</code> property to the appropriate value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
-</code></pre></div>
-<p>Dokku will connect to remote servers via the <code>root</code> user with the <code>dokku</code> user's SSH key pair. Dokku servers may not have an ssh key pair by default, but they can be generated as needed via the <code>git:generate-deploy-key</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>git:generate-deploy-key
-</code></pre></div>
-<p>This key can then be displayed with the <code>git:public-key</code> command, and copied to the remote server's <code>/root/.ssh/authorized_keys</code> file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>git:public-key
-</code></pre></div>
-<p>Multiple server nodes can be added with the <code>scheduler-k3s:cluster-add</code> command. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in server mode.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
-</code></pre></div>
-<p>Server nodes allow any workloads to be scheduled on them by default, in addition to the control-plane, etcd, and the scheduler itself. To avoid app workloads being scheduled on your control-plane, use the <code>--taint-scheduling</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
-</code></pre></div>
-<p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
-</code></pre></div>
-<p>Server nodes are typically used to replicate the cluster state, and it is recommended to have an odd number of nodes spread across several availability zones (datacenters in close proximity within a region). This allows for higher availability in the event of a cluster failure. Server nodes run control-plane services such as the traefik load balancer and the etcd backing store.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Only the initial Dokku server will be properly configured for push deployment, and should be considered your git remote. Additional server nodes are for ensuring high-availability of the K3s etcd state. Ensure this server is properly backed up and restorable or deployments will not work.</p>
-</div>
-<p>Worker nodes are used to run. To add an worker, run the <code>scheduler-k3s:cluster-add</code> with the <code>--role worker</code> flag. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in worker mode. Workers are typically used to run app workloads.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>worker<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
