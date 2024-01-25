@@ -1649,6 +1649,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changing-the-vector-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the vector image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configuring-a-log-sink" class="md-nav__link">
     <span class="md-ellipsis">
       Configuring a log sink
@@ -3642,6 +3651,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changing-the-vector-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the vector image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configuring-a-log-sink" class="md-nav__link">
     <span class="md-ellipsis">
       Configuring a log sink
@@ -3800,25 +3818,36 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>logs:vector-logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the vector container, with an initial history of 10 log lines</p>
+<h4 id="changing-the-vector-image">Changing the vector image<a class="headerlink" href="#changing-the-vector-image" title="Permanent link">&para;</a></h4>
+<p>Dokku integrates with a Vector docker image version that is known to be compatible with the documentation. In some cases, it may be useful to specify an alternative image version. To do so, set the global <code>vector-image</code> property.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-image<span class="w"> </span>timberio/vector:0.35.X-debian
+</code></pre></div>
+<p>Once set, the vector container will need to be stopped and then started. Note that specifying the <code>--vector-image</code> flag on the <code>logs:vector-start</code> will override the setting.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>logs:vector-stop
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>logs:vector-start
+</code></pre></div>
+<p>Setting this to an empty string will reset the version to the version currently compatible with the Dokku installation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-image
+</code></pre></div>
 <h4 id="configuring-a-log-sink">Configuring a log sink<a class="headerlink" href="#configuring-a-log-sink" title="Permanent link">&para;</a></h4>
 <p>Vector uses the concept of log "sinks" to send logs to a given endpoint. Log sinks may be configured globally or on a per-app basis by specifying a <code>vector-sink</code> in DSN form with the <code>logs:set</code> command. Specifying a sink value will reload any running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>A sink may be removed by setting an empty value, which will also reload the running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink
 </code></pre></div>
 <p>Only one sink may be specified on a per-app basis at a given time.</p>
 <p>Log sinks can also be specified globally by specifying the <code>--global</code> flag to <code>logs:set</code> with no app name specified:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>As with app-specific sink settings, the global value may also be cleared by setting no value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink
 </code></pre></div>
 <h5 id="log-sink-dsn-format">Log Sink DSN Format<a class="headerlink" href="#log-sink-dsn-format" title="Permanent link">&para;</a></h5>
 <p>The DSN form of a sink is as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>SINK_TYPE://?SINK_OPTIONS
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>SINK_TYPE://?SINK_OPTIONS
 </code></pre></div>
 <p>Valid values for <code>SINK_TYPE</code> include all log vector log sinks, while <code>SINK_OPTIONS</code> is a query-string form for the sink's options. The following is a short description on how to set various values:</p>
 <ul>
@@ -3830,10 +3859,10 @@
 <li><code>table</code>: form: <code>option[key]=value</code></li>
 </ul>
 <p>For some sinks - such as the <code>http</code> sink - it may be useful to use special characters such as <code>&amp;</code>. These characters must be url escaped as per <a href="https://datatracker.ietf.org/doc/html/rfc3986.html">RFC 3986</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># the following command will set the `http` sink with a uri config value</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># for a uri config value: https://loggerservice.com:1234/?token=abc1234&amp;type=vector</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># the url quoted version: https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?uri=https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># the following command will set the `http` sink with a uri config value</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># for a uri config value: https://loggerservice.com:1234/?token=abc1234&amp;type=vector</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># the url quoted version: https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?uri=https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector&quot;</span>
 </code></pre></div>
 <p>Please read the <a href="https://vector.dev/docs/reference/configuration/sinks/">sink documentation</a> for your sink of choice to configure the sink as desired.</p>
 
