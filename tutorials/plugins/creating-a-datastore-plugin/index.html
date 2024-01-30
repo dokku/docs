@@ -1341,9 +1341,10 @@
   <h1>Creating a Datastore plugin</h1>
 
 <p>Ever wanted to write a datastore plugin? This tutorial shows how we create official datastore plugins.</p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h3 id="initializing-the-plugin">Initializing the plugin<a class="headerlink" href="#initializing-the-plugin" title="Permanent link">&para;</a></h3>
 <p>First, we'll start by cloning an existing datastore plugin. I'll choose the <code>postgres</code> plugin.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku-postgres<span class="w"> </span>dokku-meillisearch
@@ -1359,7 +1360,7 @@
 <h3 id="reconfiguring-the-plugin">Reconfiguring the plugin<a class="headerlink" href="#reconfiguring-the-plugin" title="Permanent link">&para;</a></h3>
 <p>Now begins the great find/replace. We'll do the following case-sensitive replacements:</p>
 <ul>
-<li><code>postgres</code> <code>meillisearch</code> </li>
+<li><code>postgres</code> <code>meillisearch</code></li>
 <li><code>Postgres</code> <code>Meillisearch</code></li>
 <li><code>POSTGRES</code> <code>MEILLISEARCH</code></li>
 </ul>

@@ -1332,9 +1332,10 @@
 <li>You need to replicate your deployment process on multiple servers/for multiple services.</li>
 </ul>
 <p>We'll evaluate two patterns to solve these problems, both of which are enabled by Dokku's porcelain interfaces.</p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h3 id="running-code-on-server-boot">Running Code on Server Boot<a class="headerlink" href="#running-code-on-server-boot" title="Permanent link">&para;</a></h3>
 <p>Regardless of whether this is for a single replacement server, or if it is for a series of servers, running code to <em>provision</em> Dokku and necessary applications at boot time is ideal. Doing so will allow us to reduce the amount of time it takes to recover from service failure, as well as make it easier to do this on a fleet of servers. To this end, we can utilize <strong>User Data</strong>.</p>
 <p>"User Data" is a bit of configuration that can be run by a process called <code>cloud-init</code>. You should consider <code>cloud-init</code> to be the defacto server initialization tool for cloud servers; many popular server providers support it, such as Amazon Web Services, Azure, Digital Ocean, Google Cloud Provider, Linode, etc. Most folks provide user-data in bash script format, but there are many different modules to integrate with <code>cloud-init</code>. As an example, our own docs for Dreamhost support provide installation instructions in <code>yaml</code> format.</p>
@@ -1358,13 +1359,15 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/crisward/dokku-clone.git<span class="w"> </span>clone
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$APP_NAME</span><span class="s2">&quot;</span><span class="w"> </span>git@github.com:heroku/node-js-sample.git
 </code></pre></div>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>We'll be offering something even fancier soon, but props to Cris Ward for maintaining such a useful plugin!</p>
-</blockquote>
+</div>
 <p>You now have a fully provisioned app on a new server on server boot. Your application downtime with this methodology decreases signficantly, and in many cases, this is enough to keep your business running.</p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>For folks using Dokku plugins for datastores, restoring service when all your data was stored on a non-existent server is a longer conversation with no easy solutions. At this time, none of the datastore plugins directly support running in HA mode, though this is something worth investigating. At this time, using managed datastore providers such as AWS RDS, CloudAMQP, etc. are the suggested methods for having HA datastore solutions.</p>
-</blockquote>
+</div>
 <h3 id="a-brief-introduction-to-configuration-management">A brief introduction to Configuration Management<a class="headerlink" href="#a-brief-introduction-to-configuration-management" title="Permanent link">&para;</a></h3>
 <p>Some of our users may be provisioning quite a few apps to a server, or the same server many times, or even managing a dozen servers for various clients. How do you handle that without a ton of bespoke bash scripts? How do you provision new applications without a tangle of <code>if</code> statements, in a DRY way? There are a few answers, but one common answer is to use a configuration management tool</p>
 <p>Configuration management tools provide common libraries and patterns for organizing server automation code. There are quite a few different tools in the config management space, but the one we're going show off is Ansible.</p>
@@ -1424,9 +1427,10 @@
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-js-app</span>
 </code></pre></div>
 <p>The above would use a custom <code>dokku_app</code> Ansible library for provisioning applications, building upon the porcelain we covered previously. While not in the scope of this blog post, I suggest anyone interested in doing so follow along the <a href="https://blog.toast38coza.me/custom-ansible-module-hello-world/">following tutorial</a>.</p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>For our patreon followers, the code for the <code>dokku_app</code> library will be made available, as well as future plans around Ansible integration.</p>
-</blockquote>
+</div>
 <h3 id="combining-the-methods-into-one">Combining the methods into one<a class="headerlink" href="#combining-the-methods-into-one" title="Permanent link">&para;</a></h3>
 <p>Assuming we have a repository with our server provisioning code - the yaml and hosts files - we can use the following user-data for automatically setting up a dokku server on boot.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>

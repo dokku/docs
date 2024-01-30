@@ -1307,15 +1307,15 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>--global<span class="w"> </span>selected<span class="w"> </span>k3s
 </code></pre></div>
 <p>At this point, all app deploys will be performed against the k3s cluster.</p>
-<blockquote>
-<p>[!NOTE]
-HTTP requests for apps can be performed against any node in the cluster. Without extra configuration, many other ports may also be available on the host. For security reasons, it may be desirable to place the k3s cluster behind one or more TCP load balancers while shutting off traffic to all cluster ports. Please consult your hosting provider for more information on how to provision a TCP load balancer and shut off all ports other than 22/80/443 access to the outside world.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HTTP requests for apps can be performed against any node in the cluster. Without extra configuration, many other ports may also be available on the host. For security reasons, it may be desirable to place the k3s cluster behind one or more TCP load balancers while shutting off traffic to all cluster ports. Please consult your hosting provider for more information on how to provision a TCP load balancer and shut off all ports other than 22/80/443 access to the outside world.</p>
+</div>
 <h3 id="running-a-multi-node-cluster">Running a multi-node cluster<a class="headerlink" href="#running-a-multi-node-cluster" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>[!WARNING]
-Certain ports must be open for cross-server communication. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Certain ports must be open for cross-server communication. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
+</div>
 <p>For high-availability, it is recommended to add both worker and server nodes to the cluster. Dokku will default to starting the cluster with an embedded Etcd database backend, and is ready to add new worker or server nodes immediately.</p>
 <p>When running a multi-node cluster, initialize k3s with the <code>--taint-scheduling</code> flag. This will start the k3s on the Dokku node in server mode. Server nodes only allow critical addons to be run, such as the control plane, etcd, the load balancer, etc.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># must be run as root</span>
@@ -1336,10 +1336,10 @@ Certain ports must be open for cross-server communication. Refer to the <a href=
 <p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>
-<blockquote>
-<p>[!NOTE]
-Only the initial Dokku server will be properly configured for push deployment, and should be considered your git remote. Additional server nodes are for ensuring high-availability of the K3s etcd state. Ensure this server is properly backed up and restorable or deployments will not work.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the initial Dokku server will be properly configured for push deployment, and should be considered your git remote. Additional server nodes are for ensuring high-availability of the K3s etcd state. Ensure this server is properly backed up and restorable or deployments will not work.</p>
+</div>
 <p>Worker nodes are used to run. To add an worker, run the <code>scheduler-k3s:cluster-add</code> with the <code>--role worker</code> flag. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in worker mode. Workers are typically used to run app workloads.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>worker<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>

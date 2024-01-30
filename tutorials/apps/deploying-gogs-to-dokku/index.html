@@ -1305,14 +1305,16 @@
   <h1>Deploying Gogs to Dokku</h1>
 
 <p>Hot off the release of Dokku 0.6.3, here is a sweet tutorial made possible by the new port handling feature of Dokku.</p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</blockquote>
+</div>
 <h3 id="what-is-gogs">What is Gogs?<a class="headerlink" href="#what-is-gogs" title="Permanent link">&para;</a></h3>
 <p><a href="/tutorials/assets/images/gogs-tutorial/favicon.ico"><img alt="dokku" src="/tutorials/assets/images/gogs-tutorial/favicon.ico" /></a></p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p><a href="https://gogs.io">Gogs</a> (Go Git Service) is a painless self-hosted Git service.</p>
-</blockquote>
+</div>
 <p>But what does that mean? Gogs is a self-hosted git management tool that can be used to host git repositories, issues, and releases on your own server.</p>
 <p>For this tutorial, we will be deploying gogs to a single Dokku server running at least Dokku 0.6.3. You may upgrade your Dokku instance to this version or install it from scratch. Please setup any ssh keys necessary for pushing applications, as we will not go over initial installation.</p>
 <h3 id="application-preparation">Application Preparation<a class="headerlink" href="#application-preparation" title="Permanent link">&para;</a></h3>
@@ -1328,9 +1330,10 @@
 </code></pre></div>
 <p><a href="/tutorials/assets/images/gogs-tutorial/ports.png"><img alt="dokku" src="/tutorials/assets/images/gogs-tutorial/ports.png" /></a></p>
 <p>Next, we need to ensure there is persistent storage for Gogs. The Gogs docker image uses a directory mounted in <code>/data</code>, and we'll need either a docker volume or host directory to contain this data. For our purposes, we'll use a directory on the host.</p>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>The official recommendation is to place persistent storage in the <code>/var/lib/dokku/data/storage</code> directory for cases where a user is not using a docker volume. As such, we'll create a subdirectory there for our application.</p>
-</blockquote>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># create the directory</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/lib/dokku/data/storage/gogs
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
