@@ -3785,6 +3785,10 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nl">release</span><span class="p">:</span><span class="w"> </span>curl<span class="w"> </span>https<span class="err">:</span>//some.external.api.service.com/deployment<span class="err">?</span><span class="nv">state</span><span class="p">=</span><span class="s">built</span>
 </code></pre></div>
 <p>Unlike the <code>scripts.dokku.predeploy</code> command, changes made during by the <code>release</code> command are <em>not</em> persisted to disk.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>scaling the release command up will likely result in unspecified issues within your deployment, and is highly discouraged.</p>
+</div>
 
 
 
