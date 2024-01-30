@@ -2019,7 +2019,7 @@
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># cleanup</span>
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>docker<span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>/tmp/cid<span class="k">)</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/tmp/cid<span class="w"> </span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/tmp/cid
 </code></pre></div>
 <h3 id="running-an-app">Running an app<a class="headerlink" href="#running-an-app" title="Permanent link">&para;</a></h3>
 <p>This part is likely the most similar thing across all platforms. Both the CNB images utilize a special <code>launcher</code> process to run your process type for you, so all you really need to do is specify that process type.</p>
@@ -2027,55 +2027,97 @@
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">5000</span><span class="w"> </span>--name<span class="w"> </span>app.nodejs.cloudfoundry<span class="w"> </span>app/nodejs-cloudfoundry:latest<span class="w"> </span>web
 </code></pre></div>
 <p>Docker log output on that container looks something like the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&gt; node-js-getting-started@0.3.0 start /workspace
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&gt; node index.js
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Listening on 5000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>!!! info &quot;Info&quot;
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    node-js-getting-started@0.3.0 start /workspace
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    node index.js
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>Listening on 5000
 </code></pre></div>
 <p>Heroku is pretty similar</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># heroku</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">5000</span><span class="w"> </span>--name<span class="w"> </span>app.nodejs.heroku<span class="w"> </span>app/nodejs-heroku:latest<span class="w"> </span>web
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Listening on 5000
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>With herokuish, you need to execute the process type with the <code>/start</code> prefix. We also need to specify the <code>USER</code>, as this will be used by herokuish to properly set file permissions on the <code>/app</code> directory.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">5000</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">USER</span><span class="o">=</span>herokuishuser<span class="w"> </span>--name<span class="w"> </span>app.nodejs.herokuish<span class="w"> </span>app/nodejs-herokuish:latest<span class="w"> </span>/start<span class="w"> </span>web
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Listening on 5000
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>Startup time is a bit longer with <code>herokuish</code> as it will change ownership on files within the <code>/app</code> directory.</p>
 <p>Another difference between the two is the environment within which both images run in, which we'll get into next.</p>
 <h3 id="inspecting-the-built-image">Inspecting the built image<a class="headerlink" href="#inspecting-the-built-image" title="Permanent link">&para;</a></h3>
 <p>Once we have a running app, lets inspect our artifact.</p>
 <h4 id="with-cnb_1">With CNB<a class="headerlink" href="#with-cnb_1" title="Permanent link">&para;</a></h4>
 <p>Executing a command on the CNB-backed containers is the same as executing a command with any other docker image. Processes are automatically invoked within the correct app environment, which is great for one-off commands.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label><label for="__tabbed_3_3">Shell</label><label for="__tabbed_3_4">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># cloudfoundry</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.cloudfoundry<span class="w"> </span>id
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>uid=2000(vcap) gid=2000(vcap) groups=2000(vcap)
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># heroku</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.heroku<span class="w"> </span>id
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>uid=1000(heroku) gid=1000(heroku) groups=1000(heroku)
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>Ditto for process inspection:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label><label for="__tabbed_4_3">Shell</label><label for="__tabbed_4_4">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># cloudfoundry</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.cloudfoundry<span class="w"> </span>ps<span class="w"> </span>auxf
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>vcap        35  0.0  0.1  34404  2856 ?        Rs   02:43   0:00 ps auxf
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>vcap         1  1.2  2.2 739020 45136 ?        Ssl  02:43   0:00 npm
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>vcap        22  0.0  0.0   4632   828 ?        S    02:43   0:00 sh -c node index.js
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>vcap        23  0.6  2.0 573156 41896 ?        Sl   02:43   0:00  \_ node index.js
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># heroku</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.heroku<span class="w"> </span>ps<span class="w"> </span>auxf
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>heroku      22  0.0  0.1  34404  2856 ?        Rs   02:47   0:00 ps auxf
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>heroku       1  0.9  1.7 566792 36728 ?        Ssl  02:46   0:00 node index.js
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>Please bear in mind that PID 1 in the container will depend upon what the buildpack launches. Aside from that note, there is nothing new with CNB and pack in regards to running commands when compared to normal docker operations, so anyone familiar with Docker will feel right at home.</p>
 <h4 id="with-herokuish_1">With Herokuish<a class="headerlink" href="#with-herokuish_1" title="Permanent link">&para;</a></h4>
 <p>On the herokuish platform, a process must be executed with the <code>/exec</code> command as a prefix. This will give you an environment that simulates running a command in the heroku stack.</p>
@@ -2085,14 +2127,22 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>uid=32767(herokuishuser) gid=32767(herokuishuser) groups=32767(herokuishuser)
 </code></pre></div>
 <p>Inspecting processes is pretty similar:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app.nodejs.herokuish<span class="w"> </span>/exec<span class="w"> </span>ps<span class="w"> </span>auxf
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>root       287  0.0  0.1   5628  2448 ?        Ssl  02:57   0:00 /exec ps auxf
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>herokui+   298  0.0  0.1  34404  2844 ?        R    02:57   0:00  \_ ps auxf
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>root         1  0.2  0.1   5628  2448 ?        Ssl  02:57   0:00 /start web
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>herokui+    13  2.7  1.9 566160 40020 ?        Sl   02:57   0:00 node index.js
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>You'll notice that, in addition to your app, there is also the <code>/start web</code> process. This spawns your app with the correct environment, so just a bit different from CNB containers.</p>
 <h3 id="cleaning-up">Cleaning up<a class="headerlink" href="#cleaning-up" title="Permanent link">&para;</a></h3>
 <p>Removing the containers and images is relatively straightforward, as we use traditional docker commands.</p>

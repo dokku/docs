@@ -2032,7 +2032,7 @@
 <p>Ubuntu 18.04 is now a deprecated installation target. The operating system will be considered EOL by Canonical in April 2023. Users are encouraged to upgrade to Ubuntu 22.04 or consider switching their installation method to the Docker-based installation method to avoid any disruption in usage.</p>
 <h2 id="additions">Additions<a class="headerlink" href="#additions" title="Permanent link">&para;</a></h2>
 <h3 id="the-automatic-init-process-can-now-be-disabled">The automatic init process can now be disabled<a class="headerlink" href="#the-automatic-init-process-can-now-be-disabled" title="Permanent link">&para;</a></h3>
-<p>This change allows projects using s6 overlay - in particular <a href="https://linuxserver.io/">linxserver</a> images - the ability to disable --init flag injection. </p>
+<p>This change allows projects using s6 overlay - in particular <a href="https://linuxserver.io/">linxserver</a> images - the ability to disable --init flag injection.</p>
 <p>Additionally, force-disable --init flag usage for all linuxserver images. <a href="https://linuxserver.io/">Linuxserver</a> images uses S6, and there are enough of them that this makes sense to autodetect on behalf of users.</p>
 <p>Users should be able to more easily deploy s6-based images, whether they are official Linuxserver ones or images they've built on their own :)</p>
 <h3 id="new-proxy-implementations">New Proxy Implementations<a class="headerlink" href="#new-proxy-implementations" title="Permanent link">&para;</a></h3>
@@ -2061,7 +2061,7 @@
 <h3 id="ignore-https-mappings-when-no-ssl-certificate-exists">Ignore https mappings when no ssl certificate exists<a class="headerlink" href="#ignore-https-mappings-when-no-ssl-certificate-exists" title="Permanent link">&para;</a></h3>
 <p>This fixes issues where users may somehow add an https mapping but are missing an ssl certificate, causing nginx to not load properly. We now ignore the mapping and warn users of the misconfiguration.</p>
 <h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
-<p>As with every upgrade, please see the <a href="/docs/appendices/0.28.0-migration-guide/">0.28.0 migration guide</a> for more information on upgrading to 0.28.0.</p>
+<p>As with every upgrade, please see the <a href="../appendices/0.28.0-migration-guide/">0.28.0 migration guide</a> for more information on upgrading to 0.28.0.</p>
 <h2 id="its-a-wrap">It's a wrap<a class="headerlink" href="#its-a-wrap" title="Permanent link">&para;</a></h2>
 <p>Those were the major changes in 0.28.x. Our next post will cover 0.29.0!</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>

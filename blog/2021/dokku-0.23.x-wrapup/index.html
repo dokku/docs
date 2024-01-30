@@ -1946,11 +1946,19 @@
 <p>The change in <a href="https://github.com/dokku/dokku/pull/4384">#4384</a> allows alternative plugins - such as dokku-letsencrypt - to inject scheduled cron tasks into the cron system used by Dokku. Cron systems can choose to include or not include a cron task based on the specified scheduler, and can also optionally use a third parameter to store arbitrary information.</p>
 <h3 id="ability-to-clear-an-individual-resource-value">Ability to clear an individual resource value<a class="headerlink" href="#ability-to-clear-an-individual-resource-value" title="Permanent link">&para;</a></h3>
 <p>As of (#4372)[https://github.com/dokku/dokku/pull/4372], a resource value can be individually cleared by setting the value to the special value <code>clear</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>resource:limit<span class="w"> </span>--cpu<span class="w"> </span>clear<span class="w"> </span>node-js-app
 </code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>=====&gt; Setting resource limits for node-js-app
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>       cpu: cleared
 </code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="a-new-null-buildpack-was-added">A new 'null' buildpack was added<a class="headerlink" href="#a-new-null-buildpack-was-added" title="Permanent link">&para;</a></h3>
 <p>Herokuish 0.5.25 introduces a new <code>null</code> buildpack. This buildpack does nothing, which is useful if your app vendors all it's dependencies and does not need to be built.</p>
 <p>To use it, include a <code>.null</code> file in your app repository. No other changes are necessary.</p>
@@ -1964,7 +1972,7 @@
 <h3 id="better-procfile-extraction">Better Procfile extraction<a class="headerlink" href="#better-procfile-extraction" title="Permanent link">&para;</a></h3>
 <p>As of <a href="https://github.com/dokku/dokku/pull/4373">#4373</a>, the Procfile is now extracted in the pre-deploy step for every deploy and otherwise not removed. Thus, it should always exist when necessary - web will be scale to 1 automatically and it won't need to be present on future ps:scale calls since we'll have the scale file - and the command can execute faster.</p>
 <h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
-<p>As with every upgrade, please see the <a href="/docs/appendices/0.23.0-migration-guide/">0.23.0 migration guide</a> for more information on upgrading to 0.23.0.</p>
+<p>As with every upgrade, please see the <a href="../appendices/0.23.0-migration-guide/">0.23.0 migration guide</a> for more information on upgrading to 0.23.0.</p>
 <h2 id="its-a-wrap">It's a wrap<a class="headerlink" href="#its-a-wrap" title="Permanent link">&para;</a></h2>
 <p>And that's it for 0.23.x. Our next post will cover 0.24.0, as well as plans for future releases.</p>
 <p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
