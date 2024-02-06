@@ -3016,6 +3016,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#customizing-resource-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Resource Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#using-kubectl-remotely" class="md-nav__link">
     <span class="md-ellipsis">
       Using kubectl remotely
@@ -3749,6 +3758,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#customizing-resource-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Resource Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#using-kubectl-remotely" class="md-nav__link">
     <span class="md-ellipsis">
       Using kubectl remotely
@@ -3873,14 +3891,15 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.33.0</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-k3s:cluster-add [ssh://user@host:port]    # Adds a server node to a Dokku-managed cluster
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-k3s:cluster-list                          # Lists all nodes in a Dokku-managed cluster
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>scheduler-k3s:cluster-remove [node-id]              # Removes client node to a Dokku-managed cluster
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>scheduler-k3s:initialize                            # Initializes a cluster
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>scheduler-k3s:report [&lt;app&gt;] [&lt;flag&gt;]               # Displays a scheduler-k3s report for one or more apps
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)  # Set or clear a scheduler-k3s property for an app or the scheduler
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>scheduler-k3s:show-kubeconfig                       # Displays the kubeconfig for remote usage
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>scheduler-k3s:uninstall                             # Uninstalls k3s from the Dokku server
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-k3s:annotations:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt;, Set or clear an annotation for a given app/process-type/resource-type combination
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-k3s:cluster-add [ssh://user@host:port]    # Adds a server node to a Dokku-managed cluster
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>scheduler-k3s:cluster-list                          # Lists all nodes in a Dokku-managed cluster
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>scheduler-k3s:cluster-remove [node-id]              # Removes client node to a Dokku-managed cluster
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>scheduler-k3s:initialize                            # Initializes a cluster
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>scheduler-k3s:report [&lt;app&gt;] [&lt;flag&gt;]               # Displays a scheduler-k3s report for one or more apps
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)  # Set or clear a scheduler-k3s property for an app or the scheduler
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>scheduler-k3s:show-kubeconfig                       # Displays the kubeconfig for remote usage
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>scheduler-k3s:uninstall                             # Uninstalls k3s from the Dokku server
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4018,13 +4037,42 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
+<h3 id="customizing-resource-annotations">Customizing Resource Annotations<a class="headerlink" href="#customizing-resource-annotations" title="Permanent link">&para;</a></h3>
+<p>Dokku injects certain resources into each created resource by default, but it may be necessary to inject others for tighter integration with third-party tools. The <code>scheduler-k3s:annotations:set</code> command can be used to perform this task. The command takes an app name and a required <code>--resource-type</code> flag.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+</code></pre></div>
+<p>If not specified, the annotation will be applied to all processes within an app, though it may be further scoped to a specific process type via the <code>--process-type</code> flag.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cron ID is used as the process type if your app deploys any cron tasks</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+</code></pre></div>
+<p>To unset an annotation, pass an empty value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+</code></pre></div>
+<p>The following resource types are supported:</p>
+<ul>
+<li><code>certificate</code></li>
+<li><code>cronjob</code></li>
+<li><code>deployment</code></li>
+<li><code>ingress</code></li>
+<li><code>job</code></li>
+<li><code>pod</code></li>
+<li><code>secret</code></li>
+<li><code>service</code></li>
+<li><code>serviceaccount</code></li>
+<li><code>traefik_ingressroute</code></li>
+<li><code>traefik_middleware</code></li>
+</ul>
 <h3 id="using-kubectl-remotely">Using kubectl remotely<a class="headerlink" href="#using-kubectl-remotely" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Certain ports must be open for interacting with the remote kubernets api. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
 </div>
 <p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
 </code></pre></div>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
