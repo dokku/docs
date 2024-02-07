@@ -3926,6 +3926,10 @@
 <p>By default, Dokku will attempt to auto-detect the IP address of the server. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15
 </code></pre></div>
+<p>Dokku's k3s integration natively uses <code>Traefik</code> as it's ingress load balancer via <a href="https://doc.traefik.io/traefik/providers/kubernetes-crd/">Traefik's CRDs</a>, but a cluster can be set to use <code>nginx</code> via the <a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a> project. Switching to nginx will result in any <code>nginx</code> plugin settings being respected, either by turning them into annotations or creating a custom server snippet.</p>
+<p>To change the ingress, set the <code>--ingress-class</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--ingress-class<span class="w"> </span>nginx
+</code></pre></div>
 <h3 id="adding-nodes-to-the-cluster">Adding nodes to the cluster<a class="headerlink" href="#adding-nodes-to-the-cluster" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3933,13 +3937,13 @@
 </div>
 <h4 id="adding-a-worker-node">Adding a worker node<a class="headerlink" href="#adding-a-worker-node" title="Permanent link">&para;</a></h4>
 <p>Nodes that run app workloads can be added via the <code>scheduler-k3s:cluster-add</code> command. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in worker mode. Workers are typically used to run app workloads.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <p>By default, Dokku will attempt to auto-detect the IP address of the Dokku server for the remote server to connect to. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <h4 id="adding-a-server-node">Adding a server node<a class="headerlink" href="#adding-a-server-node" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
@@ -3948,109 +3952,109 @@
 </div>
 <p>Server nodes are typically used to replicate the cluster state, and it is recommended to have an odd number of nodes spread across several availability zones (datacenters in close proximity within a region). This allows for higher availability in the event of a cluster failure. Server nodes run control-plane services such as the traefik load balancer and the etcd backing store.</p>
 <p>Server nodes can also be added with the <code>scheduler-k3s:cluster-add</code> command by specifying <code>--role server</code>. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in server mode.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <p>Server nodes allow any workloads to be scheduled on them by default, in addition to the control-plane, etcd, and the scheduler itself. To avoid app workloads being scheduled on your control-plane, use the <code>--taint-scheduling</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <p>By default, Dokku will attempt to auto-detect the IP address of the Dokku server for the remote server to connect to. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <h4 id="changing-the-network-interface">Changing the network interface<a class="headerlink" href="#changing-the-network-interface" title="Permanent link">&para;</a></h4>
 <p>When attaching an worker or server node, the K3s plugin will look at the IP associated with the <code>eth0</code> interface and use that to connect the new node to the cluster. To change this, set the <code>network-interface</code> property to the appropriate value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
 </code></pre></div>
 <h3 id="changing-deploy-timeouts">Changing deploy timeouts<a class="headerlink" href="#changing-deploy-timeouts" title="Permanent link">&para;</a></h3>
 <p>By default, app deploys will timeout after 300s. To customize this value, set the <code>deploy-timeout</code> property via <code>scheduler-k3s:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout
 </code></pre></div>
 <p>The <code>deploy-timeout</code> property can also be set globally. The global default is <code>300s</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout
 </code></pre></div>
 <h3 id="customizing-the-namespace">Customizing the namespace<a class="headerlink" href="#customizing-the-namespace" title="Permanent link">&para;</a></h3>
 <p>By default, app deploys will run against the <code>default</code> Kubernetes namespace. To customize this value, set the <code>namespace</code> property via <code>scheduler-k3s:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>namespace<span class="w"> </span>lollipop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>namespace<span class="w"> </span>lollipop
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>namespace
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>namespace
 </code></pre></div>
 <p>The <code>namespace</code> property can also be set globally. The global default is <code>default</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>namespace<span class="w"> </span>60s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>namespace<span class="w"> </span>60s
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>namespace
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>namespace
 </code></pre></div>
 <h3 id="enabling-rollback-on-failure">Enabling rollback on failure<a class="headerlink" href="#enabling-rollback-on-failure" title="Permanent link">&para;</a></h3>
 <p>By default, app deploys do not rollback on failure. To enable this functionality, set the <code>rollback-on-failure</code> property via <code>scheduler-k3s:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>rollback-on-failure<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>rollback-on-failure<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>rollback-on-failure
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>rollback-on-failure
 </code></pre></div>
 <p>The <code>rollback-on-failure</code> property can also be set globally. The global default is <code>false</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>rollback-on-failure<span class="w"> </span><span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>rollback-on-failure<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>rollback-on-failure
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>rollback-on-failure
 </code></pre></div>
 <h3 id="using-image-pull-secrets">Using image pull secrets<a class="headerlink" href="#using-image-pull-secrets" title="Permanent link">&para;</a></h3>
 <p>When authenticating against a registry via <code>registry:login</code>, the scheduler-k3s plugin will authenticate all servers in the cluster against the registry specified. If desired, an image pull secret can be used instead. To customize this value, set the <code>image-pull-secrets</code> property via <code>scheduler-k3s:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets<span class="w"> </span>lollipop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets<span class="w"> </span>lollipop
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets
 </code></pre></div>
 <p>The <code>image-pull-secrets</code> property can also be set globally. The global default is empty string, and k3s will use the local <code>registries.yaml</code> for any private registry pulls.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets<span class="w"> </span>60s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets<span class="w"> </span>60s
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets
 </code></pre></div>
 <h3 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h3>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email-prod</code> or <code>letsencrypt-email-stag</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># set the value for prod</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>automated@dokku.sh
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># set the value for stag</span>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-stag<span class="w"> </span>automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># set the value for prod</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>automated@dokku.sh
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1"># set the value for stag</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-stag<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling and rebuilding, all apps with an <code>https</code> port mapping that utilize the related letsencrypt server will be automatically updated to enable ssl. All http requests will then be redirected to https.</p>
 <h3 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h3>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. This can be changed on an app-level by setting the <code>letsencrypt-server</code> property with the <code>scheduler-k3s:set</code> command</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server
 </code></pre></div>
 <p>The <code>image-pull-secrets</code> property can also be set globally. The global default is <code>production</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
 <h3 id="customizing-resource-annotations">Customizing Resource Annotations<a class="headerlink" href="#customizing-resource-annotations" title="Permanent link">&para;</a></h3>
 <p>Dokku injects certain resources into each created resource by default, but it may be necessary to inject others for tighter integration with third-party tools. The <code>scheduler-k3s:annotations:set</code> command can be used to perform this task. The command takes an app name and a required <code>--resource-type</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
 </code></pre></div>
 <p>If not specified, the annotation will be applied to all processes within an app, though it may be further scoped to a specific process type via the <code>--process-type</code> flag.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The cron ID is used as the process type if your app deploys any cron tasks</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>To unset an annotation, pass an empty value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>The following resource types are supported:</p>
 <ul>
@@ -4072,7 +4076,7 @@
 <p>Certain ports must be open for interacting with the remote kubernets api. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
 </div>
 <p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
 </code></pre></div>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
