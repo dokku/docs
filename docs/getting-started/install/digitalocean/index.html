@@ -3449,8 +3449,22 @@
 </li>
 <li>Under <strong>Finalize and create</strong>, give your Droplet a hostname <em>(not required)</em> and click <strong>Create</strong>.</li>
 <li>Once created, copy the IP address to your clipboard.</li>
-<li>In a browser, go to the IP address you copied above and fill out the presented form to complete configuration. <em>Failure to do so may allow others to reconfigure SSH access on your server.</em></li>
-<li>Once the web UI has been submitted, you will be redirected to our <a href="../../../deployment/application-deployment/">application deployment tutorial</a>, which will guide you through deploying a sample application to your Dokku server.</li>
+<li>In a terminal, ssh onto the server by running <code>ssh root@$SERVER_IP</code>, where <code>$SERVER_IP</code> is your server's IP address.</li>
+<li>Remove the default nginx site via <code>rm /etc/nginx/sites-enabled/default</code></li>
+<li>
+<p>If you added more than one key, use the <code>dokku ssh-keys:add</code> to add an ssh key to the dokku user:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONTENTS_OF_YOUR_PUBLIC_SSH_KEY_HERE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>KEY_NAME
+</code></pre></div>
+</li>
+<li>
+<p>Ensure your server has a correct global hostname via <code>dokku domains:set-global</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># replace dokku.me with a hostname pointed at your server</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span>dokku.me
+</code></pre></div>
+</li>
+<li>
+<p>Once the web UI has been submitted, you will be redirected to our <a href="../../../deployment/application-deployment/">application deployment tutorial</a>, which will guide you through deploying a sample application to your Dokku server.</p>
+</li>
 </ol>
 
 
