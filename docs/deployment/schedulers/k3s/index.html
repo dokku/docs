@@ -4064,7 +4064,7 @@
 <p>The default value may be set by passing an empty value for the option:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>image-pull-secrets
 </code></pre></div>
-<p>The <code>image-pull-secrets</code> property can also be set globally. The global default is empty string, and k3s will use the local <code>registries.yaml</code> for any private registry pulls.</p>
+<p>The <code>image-pull-secrets</code> property can also be set globally. The global default is empty string, and k3s will use Dokku's locally configured <code>~/.docker/config.json</code> for any private registry pulls.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>image-pull-secrets<span class="w"> </span>60s
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
