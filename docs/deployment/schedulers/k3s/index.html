@@ -3075,6 +3075,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interacting-with-an-external-kubernetes-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacting with an external Kubernetes cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-kubernetes-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the Kubernetes context
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3802,6 +3820,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interacting-with-an-external-kubernetes-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacting with an external Kubernetes cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-kubernetes-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the Kubernetes context
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4081,6 +4117,22 @@
 <p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
 </code></pre></div>
+<h3 id="interacting-with-an-external-kubernetes-cluster">Interacting with an external Kubernetes cluster<a class="headerlink" href="#interacting-with-an-external-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<p>While the k3s scheduler plugin is designed to work with a Dokku-managed k3s cluster, Dokku can be configured to interact with any Kubernetes cluster by setting the global <code>kubeconfig-path</code> to a path to a custom kubeconfig on the Dokku server. This property is only available at a global level.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path<span class="w"> </span>/path/to/custom/kubeconfig
+</code></pre></div>
+<p>To set the default value, omit the value from the <code>scheduler-k3s:set</code> call:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path
+</code></pre></div>
+<p>The default value for the <code>kubeconfig-path</code> is the k3s kubeconfig located at <code>/etc/rancher/k3s/k3s.yaml</code>.</p>
+<h3 id="customizing-the-kubernetes-context">Customizing the Kubernetes context<a class="headerlink" href="#customizing-the-kubernetes-context" title="Permanent link">&para;</a></h3>
+<p>When interacting with a custom Kubeconfig, the <code>kube-context</code> property can be set to specify a specific context within the kubeconfig to use. This property is available only at the global leve.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context<span class="w"> </span>lollipop
+</code></pre></div>
+<p>To set the default value, omit the value from the <code>scheduler-k3s:set</code> call:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context
+</code></pre></div>
+<p>The default value for the <code>kube-context</code> is an empty string, and will result in Dokku using the current context within the kubeconfig.</p>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
 <h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
