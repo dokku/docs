@@ -3124,30 +3124,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported Resource Management Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-limits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Limits
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Reservations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -3875,30 +3851,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported Resource Management Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-limits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Limits
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Reservations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -4168,25 +4120,16 @@
 <h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
 <p>App logs for the <code>logs</code> command are fetched by Dokku from running containers via the <code>kubectl</code> cli. Persisting logs via Vector is not implemented at this time. Users may choose to configure the Vector Kubernetes integration directly by following <a href="https://vector.dev/docs/setup/installation/platforms/kubernetes/">this guide</a>.</p>
 <h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
-<p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>. The following properties are supported:</p>
-<h4 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h4>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Cron tasks retrieve resource limits based on the computed cron task ID. If unspecified, the default will be 1 CPU and 512m RAM.</p>
-</div>
+<p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>:</p>
 <ul>
 <li>cpu: is specified in number of CPUs a process can access.</li>
-<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
+<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>Ki</code> (kilobytes), <code>Mi</code> (megabytes), <code>Gi</code> (gigabytes). Default unit is <code>Mi</code> (megabytes).</li>
 </ul>
-<h4 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h4>
+<p>If unspecified for any task, the default reservation will be <code>.1</code> CPU and <code>128Mi</code> RAM, with no limit set for either CPU or RAM. This is to avoid issues with overscheduling pods on a cluster. To avoid issues, set more specific values for at least resource reservations. If unbounded utilization is desired, set CPU and Memory to <code>0m</code> and <code>0Mi</code>, respectively.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Cron tasks retrieve resource reservations based on the computed cron task ID. If unspecified, the default will be 1 CPU and 512m RAM.</p>
+<p>Cron tasks retrieve resource limits based on the computed cron task ID.</p>
 </div>
-<ul>
-<li>cpu: is specified in number of CPUs a process can access.</li>
-<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).</li>
-</ul>
 
 
 
