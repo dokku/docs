@@ -3729,7 +3729,7 @@
 
 <h1 id="one-off-tasks">One-off Tasks<a class="headerlink" href="#one-off-tasks" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>run [-e|--env KEY=VALUE] [--no-tty] &lt;app&gt; &lt;cmd&gt;              # Run a command in a new container using the current app image
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>run:detached [-e|-env KEY=VALUE] [--no-tty] &lt;app&gt; &lt;cmd&gt;      # Run a command in a new detached container using the current app image
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>run:detached [-e|-env KEY=VALUE] [--force-tty] &lt;app&gt; &lt;cmd&gt;         # Run a command in a new detached container using the current app image
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>run:list [--format json|stdout] [&lt;app&gt;]                      # List all run containers for an app
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>run:logs &lt;app|--container CONTAINER&gt; [-h] [-t] [-n num] [-q] # Display recent log output for run containers
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>run:stop &lt;app|--container CONTAINER&gt;                         # Stops all run containers for an app or a specified run container
@@ -3777,20 +3777,23 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>run:detached<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># returns the ID of the new container</span>
 </code></pre></div>
+<p>To start a detached container with a tty, specify the <code>--force-tty</code> flag. Containers will still exit upon command termination, but can be attached to as long as they are running.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>run:detached<span class="w"> </span>--force-tty<span class="w"> </span>node-js-app<span class="w"> </span>bash
+</code></pre></div>
 <h3 id="displaying-one-off-container-logs">Displaying one-off container logs<a class="headerlink" href="#displaying-one-off-container-logs" title="Permanent link">&para;</a></h3>
 <p>You can easily get logs of all one-off containers for an app using the <code>logs</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Logs are pulled via integration with the scheduler for the specified application via "live tailing". As such, logs from previously running deployments are usually not available. Users that desire to see logs from previous deployments for debugging purposes should persist those logs to external services. Please see Dokku's <a href="../../deployment/logs/#vector-logging-shipping">vector integration</a> for more information on how to persist logs across deployments to ship logs to another service or a third-party platform.</p>
 <h4 id="behavioral-modifiers">Behavioral modifiers<a class="headerlink" href="#behavioral-modifiers" title="Permanent link">&para;</a></h4>
 <p>Dokku also supports certain command-line arguments that augment the <code>run:log</code> command's behavior.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--container NAME     # the name of a specific container to show logs for
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>-n, --num NUM        # the number of lines to display
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>-t, --tail           # continually stream logs
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-q, --quiet          # display raw logs without colors, time and names
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>--container NAME     # the name of a specific container to show logs for
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>-n, --num NUM        # the number of lines to display
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>-t, --tail           # continually stream logs
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>-q, --quiet          # display raw logs without colors, time and names
 </code></pre></div>
 <p>You can use these modifiers as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>-t<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.1234
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>run:logs<span class="w"> </span>-t<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.1234
 </code></pre></div>
 <p>The above command will show logs continually from the <code>node-js-app.run.1234</code> one-off run process.</p>
 <h3 id="listing-one-off-containers">Listing one-off containers<a class="headerlink" href="#listing-one-off-containers" title="Permanent link">&para;</a></h3>
@@ -3802,13 +3805,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>run:list<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>run:list<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=====&gt; node-js-app run containers
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>NAMES                   COMMAND            CREATED
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>node-js-app.run.28689   &quot;/exec sleep 15&quot;   2 seconds ago
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>=====&gt; node-js-app run containers
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>NAMES                   COMMAND            CREATED
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>node-js-app.run.28689   &quot;/exec sleep 15&quot;   2 seconds ago
 </code></pre></div>
 </div>
 </div>
@@ -3821,18 +3824,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>run:list<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>run:list<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  {
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    &quot;name&quot;: &quot;node-js-app.run.28689&quot;,
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    &quot;state&quot;: &quot;running&quot;,
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    &quot;command&quot;: &quot;\&quot;/exec &#39;sleep 15&#39;\&quot;&quot;,
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    &quot;created_at&quot;: &quot;2022-08-03 05:47:44 +0000 UTC&quot;
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  }
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>[
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  {
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    &quot;name&quot;: &quot;node-js-app.run.28689&quot;,
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    &quot;state&quot;: &quot;running&quot;,
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    &quot;command&quot;: &quot;\&quot;/exec &#39;sleep 15&#39;\&quot;&quot;,
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    &quot;created_at&quot;: &quot;2022-08-03 05:47:44 +0000 UTC&quot;
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  }
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>]
 </code></pre></div>
 </div>
 </div>
@@ -3846,16 +3849,16 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># start a container</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># the output will be something like: node-js-app.run.2313</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># stop the container</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>dokku<span class="w"> </span>run:stop<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.2313
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># start a container</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># the output will be something like: node-js-app.run.2313</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># stop the container</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>dokku<span class="w"> </span>run:stop<span class="w"> </span>--container<span class="w"> </span>node-js-app.run.2313
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>node-js-app.run.2313
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>node-js-app.run.2313
 </code></pre></div>
 </div>
 </div>
@@ -3864,12 +3867,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>run:stop<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>run:stop<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>node-js-app.run.2313
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>node-js-app.run.574
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>node-js-app.run.2313
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>node-js-app.run.574
 </code></pre></div>
 </div>
 </div>
