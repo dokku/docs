@@ -3664,7 +3664,7 @@
 </ul>
 <p>Builders run a detection script against a source code repository, and the first detected builder will be used to build the app artifact. The exception to this is when a <code>Dockerfile</code> is detected and the app is also able to use either <code>herokuish</code> or <code>pack-cli</code> for building, in which case one of the latter will be chosen.</p>
 <h3 id="overriding-the-auto-selected-builder">Overriding the auto-selected builder<a class="headerlink" href="#overriding-the-auto-selected-builder" title="Permanent link">&para;</a></h3>
-<p>If desired, the builder can be specified via the <code>builder:set</code> command by speifying a value for <code>selected</code>. The selected builder will always be used.</p>
+<p>If desired, the builder can be specified via the <code>builder:set</code> command by specifying a value for <code>selected</code>. The selected builder will always be used.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>dockerfile
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
