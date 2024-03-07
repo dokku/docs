@@ -4395,7 +4395,7 @@
 Users with older installations will need to manually install Keda.</p>
 </div>
 <p>Autoscaling in k3s is managed by <a href="https://keda.sh/">Keda</a>, which integrates with a variety of external metric providers to allow for autoscaling application workloads.</p>
-<p>To enable autoscaling, use the <code>app.json</code> <code>formations.$PROCESS_TYPE.autoscaling</code> key to manage rules. In addition to the existing configuration used for process management, each process type in the <code>formations.$PROCESS_TYPE.autoscaling</code> key can have the following keys:</p>
+<p>To enable autoscaling, use the <code>app.json</code> <code>formation.$PROCESS_TYPE.autoscaling</code> key to manage rules. In addition to the existing configuration used for process management, each process type in the <code>formation.$PROCESS_TYPE.autoscaling</code> key can have the following keys:</p>
 <ul>
 <li><code>min_quantity</code>: The minimum number of instances the application can run. If not specified, the <code>quantity</code> specified for the app is used.</li>
 <li><code>max_quantity</code>: The maximum number of instances the application can run. If not specified, the higher value of <code>quantity</code> and the <code>min_quantity</code> is used.</li>
@@ -4405,7 +4405,7 @@ Users with older installations will need to manually install Keda.</p>
 </ul>
 <p>Autoscaling triggers are passed as is to Keda, and should match the configuration keda uses for a given <a href="https://keda.sh/docs/2.13/scalers/">scaler</a>. Below is an example for <a href="https://keda.sh/docs/2.13/scalers/datadog/#example-2---driving-scale-directly">datadog</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="p">{</span>
-<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">    </span><span class="nt">&quot;formations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">    </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="w">        </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="w">            </span><span class="nt">&quot;autoscaling&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="w">                </span><span class="nt">&quot;min_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
