@@ -2766,6 +2766,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#push-extra-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push extra tags
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3595,6 +3604,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#push-extra-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push extra tags
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3736,6 +3754,25 @@
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># globally</span>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
+</code></pre></div>
+<h3 id="push-extra-tags">Push extra tags<a class="headerlink" href="#push-extra-tags" title="Permanent link">&para;</a></h3>
+<p>To push the image on release with extra tags, set the <code>push-extra-tags</code> to a comma-separated list of tags via the <code>registry:set</code> command. The default value for this property is empty. Setting the property will result in the image being tagged with extra tags every release.</p>
+<p>The <code>push-extra-tags</code> can be set to a single tag too.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># multiple-tags</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags<span class="w"> </span>foo,bar
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># single tag</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags<span class="w"> </span>foo
+</code></pre></div></p>
+<p>This property can be set for a single app or globally via the <code>--global</code> flag. When set globally, the app-specific value will always overide the global value. The default global value for this property is <code>false</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags<span class="w"> </span>foo,bar
+</code></pre></div>
+<p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># per-app</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># globally</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags
 </code></pre></div>
 
 
