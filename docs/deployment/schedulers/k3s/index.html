@@ -829,8 +829,6 @@
       
         
       
-        
-      
     
     
       
@@ -872,27 +870,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../appendices/0.34.0-migration-guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    0.34.0 Migration Guide
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -4260,9 +4237,9 @@
 <p>By default, Dokku will attempt to auto-detect the IP address of the server. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15
 </code></pre></div>
-<p>Dokku's k3s integration natively uses <code>nginx</code> as it's ingress load balancer via <a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a>. Properties set by the <code>nginx</code> plugin will be respected, either by turning them into annotations or creating a custom server/location snippet that the <code>ingress-nginx</code> project can use.</p>
-<p>Dokku can also use Traefik on cluster initialization via the <a href="https://doc.traefik.io/traefik/providers/kubernetes-crd/">Traefik's CRDs</a>. To change the ingress, set the <code>--ingress-class</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--ingress-class<span class="w"> </span>traefik
+<p>Dokku's k3s integration natively uses <code>Traefik</code> as it's ingress load balancer via <a href="https://doc.traefik.io/traefik/providers/kubernetes-crd/">Traefik's CRDs</a>, but a cluster can be set to use <code>nginx</code> via the <a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a> project. Switching to nginx will result in any <code>nginx</code> plugin settings being respected, either by turning them into annotations or creating a custom server snippet.</p>
+<p>To change the ingress, set the <code>--ingress-class</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--ingress-class<span class="w"> </span>nginx
 </code></pre></div>
 <h3 id="adding-nodes-to-the-cluster">Adding nodes to the cluster<a class="headerlink" href="#adding-nodes-to-the-cluster" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
