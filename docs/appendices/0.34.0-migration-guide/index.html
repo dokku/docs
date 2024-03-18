@@ -3600,9 +3600,14 @@
 <ul>
 <li>The <code>disable-chown</code> property of the <code>scheduler-docker-local</code> plugin has been removed. Mounted paths will no longer have file permissions changed during the pre-deploy phase. Files baked into the container image for herokuish builds will always be owned by the correct user.</li>
 <li>The <code>git:unlock</code> command has been removed. It was previously used to "unlock" a temporary directory that already existed. The directory the <code>git:unlock</code> command used to cleanup is now properly removed on exit of the <code>git:from-image</code> command.</li>
+<li>The k3s plugin no longer supports port mappings other than <code>https:443</code> and <code>http:80</code>. If no matching port map is specified, Dokku will use expose the app on the first port mapping, with priority given to <code>https</code> mappings over <code>http</code>.</li>
+<li>Golang functions to invoke plugin triggers named <code>PlugnTrigger*</code> have been removed in favor of <code>CallPlugnTrigger</code>.</li>
 </ul>
 <h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
 <ul>
+<li>The k3s scheduler now creates an Ingress object per domain instead of one per port mapping. This will cause a short amount of downtime during the next app deploy after upgrading to 0.34.0</li>
+<li>App lock files have been removed from the <code>/home/dokku</code> directory and moved into the <code>data/apps</code> directory.</li>
+<li>Logs are now rotated via <code>copytruncate</code> instead of <code>create</code> in logrotate.</li>
 <li>
 <p>The k3s scheduler now defaults to nginx as it's default proxy implementation. The traefik proxy implementation is still available, though users will need to set the global <code>ingress-class</code> k3s property to <code>traefik</code> via the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>ingress-class<span class="w"> </span>traefik
