@@ -829,6 +829,8 @@
       
         
       
+        
+      
     
     
       
@@ -870,6 +872,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.34.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.34.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3732,7 +3755,7 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>proxy:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a proxy report for one or more apps
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>proxy:set [&lt;app&gt;|--global] &lt;proxy-type&gt;                        # Set proxy type for app
 </code></pre></div>
-<p>In Dokku 0.5.0, port proxying was decoupled from the <code>nginx-vhosts</code> plugin into the proxy plugin. Dokku 0.6.0 introduced the ability to map host ports to specific container ports. In the future this will allow other proxy software - such as HAProxy or Caddy - to be used in place of nginx.</p>
+<p>In Dokku 0.5.0, port proxying was decoupled from the <code>nginx-vhosts</code> plugin into the proxy plugin. Dokku 0.6.0 introduced the ability to map host ports to specific container ports. This allows other proxy software - such as HAProxy or Caddy - to be used in place of nginx.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="changing-the-proxy">Changing the proxy<a class="headerlink" href="#changing-the-proxy" title="Permanent link">&para;</a></h3>
 <p>The default proxy shipped with Dokku is <code>nginx</code>. It can be changed via the <code>proxy:set</code> command.</p>

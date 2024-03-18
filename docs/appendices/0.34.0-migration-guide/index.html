@@ -27,13 +27,13 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/appendices/0.25.0-migration-guide/">
+        <link rel="canonical" href="https://dokku.com/docs/appendices/0.34.0-migration-guide/">
       
       
-        <link rel="prev" href="../0.26.0-migration-guide/">
+        <link rel="prev" href="../../getting-started/upgrading/">
       
       
-        <link rel="next" href="../0.24.0-migration-guide/">
+        <link rel="next" href="../0.33.0-migration-guide/">
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
@@ -41,7 +41,7 @@
     
     
       
-        <title>0.25.0 Migration Guide - Dokku Documentation</title>
+        <title>0.34.0 Migration Guide - Dokku Documentation</title>
       
     
     
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#0250-migration-guide" class="md-skip">
+        <a href="#0340-migration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              0.25.0 Migration Guide
+              0.34.0 Migration Guide
             
           </span>
         </div>
@@ -882,10 +882,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../0.34.0-migration-guide/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    0.34.0 Migration Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -894,6 +914,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#removals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1071,30 +1129,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    0.25.0 Migration Guide
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../0.25.0-migration-guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1103,77 +1141,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#registry-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      Registry Plugin
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#other" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Other">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#changes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deprecations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deprecations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#removals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Removals
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3580,51 +3547,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#registry-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      Registry Plugin
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#other" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Other">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#changes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deprecations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deprecations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#removals" class="md-nav__link">
     <span class="md-ellipsis">
       Removals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes
     </span>
   </a>
   
@@ -3645,7 +3579,7 @@
                   
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/appendices/0.25.0-migration-guide.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/appendices/0.34.0-migration-guide.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -3654,48 +3588,26 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/appendices/0.25.0-migration-guide.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/appendices/0.34.0-migration-guide.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="0250-migration-guide">0.25.0 Migration Guide<a class="headerlink" href="#0250-migration-guide" title="Permanent link">&para;</a></h1>
-<h2 id="registry-plugin">Registry Plugin<a class="headerlink" href="#registry-plugin" title="Permanent link">&para;</a></h2>
-<p>The <a href="https://github.com/dokku/dokku-registry">dokku-registry</a> plugin is now built-in. This comes with a few changes:</p>
-<ul>
-<li>Builder plugins should call <code>post-release-builder</code> at the end of the build.</li>
-<li>The <code>push</code> and <code>pull</code> command are not implemented. Users wishing to deploy a remote image should use <code>git:from-image</code>. Image pushing is not available at this time.</li>
-<li>At this time, remote docker repositories are not automatically created for AWS, and users must create those repositories for their applications as necessary. This may be implemented in the future.</li>
-<li>Docker images are only pushed when configured to do so. See the <a href="../../advanced-usage/registry-management/">registry management documentation</a> for more details.</li>
-</ul>
-<p>Before upgrading, uninstall the registry plugin via <code>dokku plugin:uninstall registry</code>. Not doing so will cause issues with Dokku.</p>
-<h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h2>
-<h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
-<ul>
-<li>The network plugin can now set an <code>initial-network</code> for all containers on creation. This is a replacement for specifying the <code>--network</code> flag via the <code>docker-options</code> plugin. Please see the <a href="../../networking/network/#attaching-an-app-to-a-network">network documentation</a> for more information.</li>
-<li>The <code>dokku run</code> command now always removes the ephemeral container on exit. Users that need a persistent container should instead specify a <code>console</code> process type in their <code>Procfile</code> specifying an available shell (usually either <code>bash</code> or <code>sh</code>) and scale that container appropriately.</li>
-<li>The <code>pre-deploy</code> plugin trigger is now called internally by Dokku. Scheduler plugins should avoid calling this trigger, as any image changes introduced by subsequent trigger calls will be ignored.</li>
-<li>The default image used for Herokuish Buildpack builds is now <code>gliderlabs/herokuish:latest-20</code>, and is based on both the <code>heroku-20</code> stack as well as Ubuntu 20.04. Users that wish to stick with the old, <code>heroku-18</code>/Ubuntu 18.04 builder may specify <code>gliderlabs/herokuish:latest-18</code> as their builder image. Please see the <a href="../../deployment/builders/herokuish-buildpacks/#customizing-the-buildpack-stack-builder">herokuish buildpack deployment documentation</a> for more information on how to specify a custom buildpack stack builder.<ul>
-<li>This change does not impact any users of Cloud Native Buildpacks.</li>
-</ul>
-</li>
-<li>We fixed an issue that required extracting Procfiles at the beginning of a deploy. Due to this change, a <code>Dockerfile</code> app contains a <code>Procfile</code> that does not specify a <code>web</code> process will fail to start. Usage of a <code>Procfile</code> with <em>only</em> a <code>release</code> command should be replaced with a <code>scripts.dokku.postdeploy</code> deployment task in the <code>app.json</code> file. The alternative is to define the <code>web</code> process in the <code>Procfile</code>. See the <a href="../../advanced-usage/deployment-tasks/">deployment task documentation</a> for more information.</li>
-</ul>
-<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
-<ul>
-<li>In previous versions of Dokku, the only way to specify a custom <code>Dockerfile</code> was to use the <code>docker-options</code> plugin to set the <code>--file</code> flag for a docker build. As of 0.25.0, the <code>builder-dockerfile:set</code> command should be used instead, as outlined in the <a href="../../deployment/builders/dockerfiles/#changingthe-dockerfile-location">docs here</a>. Usage of the old method should be migrated to the new method.</li>
-<li>The <code>--rm</code> and <code>--rm-container</code> flags may be specified but no longer have any effect on <code>dokku run</code>.</li>
-<li>The <code>--detach</code> flag is deprecated in favor of the <code>run:detached</code> command.</li>
-<li>The <code>DOKKU_SCALE</code> file is deprecated. Please see the <a href="../../processes/process-management/#manually-managing-process-scaling">process management documentation</a> for more information on it's replacement with the <code>formation</code> key of the <code>app.json</code> file.</li>
-<li>The hooks <code>post-release-buildpack</code>, <code>post-release-dockerfile</code>, and <code>post-release-pack</code> are deprecated in favor of <code>post-release-builder</code>. See the <a href="https://dokku.com/docs/development/plugin-triggers/#post-release-builder">plugin triggers documentation</a> for more details.</li>
-</ul>
+<h1 id="0340-migration-guide">0.34.0 Migration Guide<a class="headerlink" href="#0340-migration-guide" title="Permanent link">&para;</a></h1>
 <h2 id="removals">Removals<a class="headerlink" href="#removals" title="Permanent link">&para;</a></h2>
 <ul>
-<li>As of April 2021, Ubuntu 16.04 is no longer an LTS release, and support has been removed. Packages may still install on older versions of Ubuntu, but are no longer tested, and therefore no support will be provided.</li>
-<li>The web installer has been removed. Users are now required to setup Dokku via cli commands. This change was made to combat potential security issues where users ignored the web installer, allowing unauthorized users to add their keys to the host.</li>
-<li>The <code>scheduler-docker-cleanup</code> plugin trigger has been removed from the scheduler interface, and is no longer invoked.</li>
+<li>The <code>disable-chown</code> property of the <code>scheduler-docker-local</code> plugin has been removed. Mounted paths will no longer have file permissions changed during the pre-deploy phase. Files baked into the container image for herokuish builds will always be owned by the correct user.</li>
+<li>The <code>git:unlock</code> command has been removed. It was previously used to "unlock" a temporary directory that already existed. The directory the <code>git:unlock</code> command used to cleanup is now properly removed on exit of the <code>git:from-image</code> command.</li>
+</ul>
+<h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>The k3s scheduler now defaults to nginx as it's default proxy implementation. The traefik proxy implementation is still available, though users will need to set the global <code>ingress-class</code> k3s property to <code>traefik</code> via the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>ingress-class<span class="w"> </span>traefik
+</code></pre></div>
+</li>
 </ul>
 
 
@@ -3732,7 +3644,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../0.26.0-migration-guide/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 0.26.0 Migration Guide">
+          <a href="../../getting-started/upgrading/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Upgrading">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -3742,20 +3654,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                0.26.0 Migration Guide
+                Upgrading
               </div>
             </div>
           </a>
         
         
           
-          <a href="../0.24.0-migration-guide/" class="md-footer__link md-footer__link--next" aria-label="Next: 0.24.0 Migration Guide">
+          <a href="../0.33.0-migration-guide/" class="md-footer__link md-footer__link--next" aria-label="Next: 0.33.0 Migration Guide">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                0.24.0 Migration Guide
+                0.33.0 Migration Guide
               </div>
             </div>
             <div class="md-footer__button md-icon">

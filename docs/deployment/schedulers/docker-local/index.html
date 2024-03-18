@@ -829,6 +829,8 @@
       
         
       
+        
+      
     
     
       
@@ -870,6 +872,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.34.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.34.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -2964,15 +2987,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#disabling-chown-of-persistent-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Disabling chown of persistent storage
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#disabling-the-init-process" class="md-nav__link">
     <span class="md-ellipsis">
       Disabling the init process
@@ -3655,15 +3669,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#disabling-chown-of-persistent-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Disabling chown of persistent storage
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#disabling-the-init-process" class="md-nav__link">
     <span class="md-ellipsis">
       Disabling the init process
@@ -3823,19 +3828,12 @@
 <p>Introduced in 0.33.0</p>
 </div>
 <p>Many builders only produce amd64-compatible images. The docker-local scheduler will automatically detect these and run them via the <code>--platform=linux/amd64</code> on arm64 deploy targets.</p>
-<h3 id="disabling-chown-of-persistent-storage">Disabling chown of persistent storage<a class="headerlink" href="#disabling-chown-of-persistent-storage" title="Permanent link">&para;</a></h3>
-<p>The <code>scheduler-docker-local</code> plugin will ensure your storage mounts are owned by either <code>herokuishuser</code> or the overridden value you have set in <code>DOKKU_APP_USER</code>. You may disable this by running the following <code>scheduler-docker-local:set</code> command for your application:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-chown<span class="w"> </span><span class="nb">true</span>
-</code></pre></div>
-<p>Once set, you may re-enable it by setting a blank value for <code>disable-chown</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>disable-chown
-</code></pre></div>
 <h3 id="disabling-the-init-process">Disabling the init process<a class="headerlink" href="#disabling-the-init-process" title="Permanent link">&para;</a></h3>
 <p>The <code>scheduler-docker-local</code> injects an init process by default via the <code>--init</code>. For some apps - such as those where the built docker image uses S6 as the init - this may be undesirable and cause issues with process starts. You may disable this by running the following <code>scheduler-docker-local:set</code> command for your application:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process<span class="w"> </span><span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <p>Once set, you may re-enable it by setting a blank value for <code>init-process</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process
 </code></pre></div>
 <p>All image containers with the label <code>org.opencontainers.image.vendor=linuxserver.io</code> will have the automatic init process injection force-disabled without further intervention.</p>
 <h3 id="deploying-process-types-in-parallel">Deploying Process Types in Parallel<a class="headerlink" href="#deploying-process-types-in-parallel" title="Permanent link">&para;</a></h3>
@@ -3844,11 +3842,11 @@
 <p>Introduced in 0.25.5</p>
 </div>
 <p>By default, Dokku deploys an app's processes one-by-one in order, with the <code>web</code> process being deployed first. Deployment parallelism may be achieved by setting the <code>parallel-schedule-count</code> property, which defaults to <code>1</code>. Increasing this number increases the number of process types that may be deployed in parallel (with the web process being the exception).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Increase parallelism from 1 process type at a time to 4 process types at a time.</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count<span class="w"> </span><span class="m">4</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Increase parallelism from 1 process type at a time to 4 process types at a time.</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count<span class="w"> </span><span class="m">4</span>
 </code></pre></div>
 <p>Once set, you may reset it by setting a blank value for <code>parallel-schedule-count</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count
 </code></pre></div>
 <p>If the value of <code>parallel-schedule-count</code> is increased and a given process type fails to schedule successfully, then any in-flight process types will continue to be processed, while all process types that have not been scheduled will be skipped before the deployment finally fails.</p>
 <p>Container scheduling output is shown in the order it is received, and thus may be out of order in case of output to stderr.</p>
@@ -3860,16 +3858,16 @@
 </div>
 <p>By default, Dokku will deploy one instance of a given process type at a time. This can be increased by customizing the <code>app.json</code> <code>formation</code> key to include a <code>max_parallel</code> key for the given process type.</p>
 <p>The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span>
 </code></pre></div>
 <p>Omitting or removing the entry will result in parallelism for that process type to return to 1 entry at a time. This can be combined with the <code>parallel-schedule-count</code> property to speed up deployments.</p>
 <p>Note that increasing the value of <code>max_parallel</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
