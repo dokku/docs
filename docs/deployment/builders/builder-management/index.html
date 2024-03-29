@@ -3719,6 +3719,10 @@
 <p>The <code>selected</code> property can also be set globally. The global default is an empty string, and auto-detection will be performed when no value is set per-app or globally.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>selected<span class="w"> </span>herokuish
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Selecting a global builder will result in <em>all</em> applications using that builder unless a manual override is selected.</p>
+</div>
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>selected
 </code></pre></div>
