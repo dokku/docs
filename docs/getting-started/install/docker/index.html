@@ -3728,15 +3728,18 @@
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-redis.git<span class="w"> </span>redis
 </code></pre></div>
 <h2 id="ssh-key-management">SSH Key Management<a class="headerlink" href="#ssh-key-management" title="Permanent link">&para;</a></h2>
-<p>To initialize ssh-keys within the container, use <code>docker exec</code> to enter the container and run the appropriate ssh-keys commands.</p>
+<p>To initialize ssh-keys within the container, use <code>docker exec</code> to enter the container:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dokku<span class="w"> </span>bash
+</code></pre></div>
+<p>Next, run the appropriate ssh-keys commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONTENTS_OF_YOUR_PUBLIC_SSH_KEY_HERE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>KEY_NAME
 </code></pre></div>
 <p>Please see the <a href="../../../deployment/user-management/">user management documentation</a> for more information.</p>
 <h2 id="pushing-applications">Pushing Applications<a class="headerlink" href="#pushing-applications" title="Permanent link">&para;</a></h2>
 <p>When exposing the Dokku container's SSH port (22) on 3022, something similar to the following will need to be setup within the user's <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Host dokku.docker
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  HostName 127.0.0.1
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  Port 3022
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Host dokku.docker
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  HostName 127.0.0.1
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  Port 3022
 </code></pre></div>
 <p>In the above example, the hostname <code>127.0.0.1</code> is being aliased to <code>dokku.docker</code>, while the port is being overriden to <code>3022</code>. All SSH commands - including git pushes - for the hostname <code>dokku.docker</code> will be transparently sent to <code>127.0.0.1:3022</code>.</p>
 
