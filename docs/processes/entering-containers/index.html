@@ -3598,7 +3598,7 @@
 <li>If your app has a <code>Procfile</code>, the name of a process type in your <code>Procfile</code>.</li>
 <li>If your app has no <code>Procfile</code>, the word <code>web</code>.</li>
 </ul>
-<p>If the specified process type is scaled up to more than one container, then the first container will be automatically selected. this can be overriden by specifying an integer index denoting the desired container, where the first container's index is <code>1</code>.</p>
+<p>If the specified process type is scaled up to more than one container, then the first container will be automatically selected. this can be overridden by specifying an integer index denoting the desired container, where the first container's index is <code>1</code>.</p>
 <p>Additionally, the <code>enter</code> command can be executed with no <code>&lt;container-type&gt;</code>. If only a single <code>&lt;container-type&gt;</code> is defined in the app's Procfile, executing <code>enter</code> will drop the terminal into the only running container. This behavior is not supported when specifying a custom command; as described below.</p>
 <p>By default, <code>dokku enter</code> will run a <code>/bin/bash</code>, but can also be used to run custom commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># just echo hi</span>

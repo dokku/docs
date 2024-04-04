@@ -4095,7 +4095,7 @@
 <p>Commas - <code>,</code> - are used in the help output for columnizing output. Verify that the plugin conforms to the spec by running <code>dokku help --all</code> and manually verifying the output.</p>
 <p>See the sample plugin below for an example.</p>
 <h3 id="namespace-commands">Namespace commands<a class="headerlink" href="#namespace-commands" title="Permanent link">&para;</a></h3>
-<p>All commands <em>should</em> be namespaced. In cases where a core plugin is overriden, the plugin <em>may</em> utilize the a namespace in use by the core, but generally this should be avoided to reduce confusion as to where the command is implemented.</p>
+<p>All commands <em>should</em> be namespaced. In cases where a core plugin is overridden, the plugin <em>may</em> utilize the a namespace in use by the core, but generally this should be avoided to reduce confusion as to where the command is implemented.</p>
 <h3 id="implement-a-proper-catch-all-command">Implement a proper catch-all command<a class="headerlink" href="#implement-a-proper-catch-all-command" title="Permanent link">&para;</a></h3>
 <p>As of 0.3.3, a catch-all should be implemented that exits with a <code>DOKKU_NOT_IMPLEMENTED_EXIT</code> code. This allows Dokku to output a <code>command not found</code> message.</p>
 <p>See the sample plugin below for an example.</p>

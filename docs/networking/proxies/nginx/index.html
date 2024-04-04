@@ -4272,7 +4272,7 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.5.0</p>
 </div>
-<p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. This may be overriden by committing the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> in the root of the app repository.</p>
+<p>Dokku uses a templating library by the name of <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate nginx configuration for each app. This may be overridden by committing the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default configuration template</a> to a file named <code>nginx.conf.sigil</code> in the root of the app repository.</p>
 <p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>nginx.conf.sigil</code> file to use for a given app. This can be done via the <code>nginx:set</code> command. If a value is specified and that file does not exist in the app's build directory, Dokku will continue the build process as if the repository has no <code>nginx.conf.sigil</code>.</p>
 <p>For deploys via the <code>git:from-image</code> and <code>git:load-image</code> commands, the <code>nginx.conf.sigil</code> is extracted from the configured <code>WORKDIR</code> property of the image. For all other deploys - git push, <code>git:from-archive</code>, <code>git:sync</code> - will have the <code>nginx.conf.sigil</code> extracted directly from the source code. Both cases will respect the configured <code>nginx-conf-sigil-path</code> property value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>nginx-conf-sigil-path<span class="w"> </span>.dokku/nginx.conf.sigil
@@ -4477,19 +4477,19 @@
 <td>x-forwarded-for-value</td>
 <td><code>$remote_addr</code></td>
 <td>string</td>
-<td>Used for specifying the header value to set for the <code>X-Forwared-For</code> header</td>
+<td>Used for specifying the header value to set for the <code>X-Forwarded-For</code> header</td>
 </tr>
 <tr>
 <td>x-forwarded-port-value</td>
 <td><code>$server_port</code></td>
 <td>string</td>
-<td>Used for specifying the header value to set for the <code>X-Forwared-Port</code> header</td>
+<td>Used for specifying the header value to set for the <code>X-Forwarded-Port</code> header</td>
 </tr>
 <tr>
 <td>x-forwarded-proto-value</td>
 <td><code>$scheme</code></td>
 <td>string</td>
-<td>Used for specifying the header value to set for the <code>X-Forwared-Proto</code> header</td>
+<td>Used for specifying the header value to set for the <code>X-Forwarded-Proto</code> header</td>
 </tr>
 <tr>
 <td>x-forwarded-ssl</td>
@@ -4537,7 +4537,7 @@
 </ul>
 <p>Dokku's default Nginx configuration passes the de-facto standard HTTP headers <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For"><code>X-Forwarded-For</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto"><code>X-Forwarded-Proto</code></a>, and <code>X-Forwarded-Port</code> to your application.
 These headers indicate the IP address of the original client making the request, the protocol of the original request (HTTP or HTTPS), and the port number of the original request, respectively.</p>
-<p>If you have another HTTP proxy sitting in between the end user and your server (for example, a load balancer, or a CDN), then the values of these headers will contain information about (e.g. the IP address of) the the closest proxy, and not the end user.</p>
+<p>If you have another HTTP proxy sitting in between the end user and your server (for example, a load balancer, or a CDN), then the values of these headers will contain information about (e.g. the IP address of) the closest proxy, and not the end user.</p>
 <p>To fix this, assuming that the other proxy also passes <code>X-Forwarded-*</code> headers, which in turn contain information about the end user, you can tell Nginx include those values in the <code>X-Forwarded-*</code> headers that it sends to your application. You can do this via <code>nginx:set</code>, like so:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-for-value<span class="w"> </span><span class="s1">&#39;$http_x_forwarded_for&#39;</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-port-value<span class="w"> </span><span class="s1">&#39;$http_x_forwarded_port&#39;</span>
