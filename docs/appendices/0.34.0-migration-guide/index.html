@@ -948,6 +948,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#deprecations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecations
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3564,6 +3573,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#deprecations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecations
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3614,6 +3632,8 @@
 </code></pre></div>
 </li>
 </ul>
+<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
+<p>The <code>pre-deploy</code> plugin trigger is deprecated as of <code>0.34.4</code>. It is currently invoked during the <code>post-release-builder</code> plugin trigger, where image mutation is heavily discouraged. Users should instead move any trigger usage to the <code>pre-release-builder</code> plugin trigger. The <code>pre-deploy</code> plugin trigger will be removed in a future release.</p>
 
 
 
