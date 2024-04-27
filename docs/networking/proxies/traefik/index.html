@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
     
     
       
@@ -2649,6 +2649,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changing-the-traefik-entrypoint-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the Traefik entrypoint names
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#showing-the-traefik-compose-config" class="md-nav__link">
     <span class="md-ellipsis">
       Showing the Traefik compose config
@@ -3759,6 +3768,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changing-the-traefik-entrypoint-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the Traefik entrypoint names
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#showing-the-traefik-compose-config" class="md-nav__link">
     <span class="md-ellipsis">
       Showing the Traefik compose config
@@ -3976,41 +3994,47 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>traefik:stop
 </code></pre></div>
 <p>The Traefik container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
+<h3 id="changing-the-traefik-entrypoint-names">Changing the Traefik entrypoint names<a class="headerlink" href="#changing-the-traefik-entrypoint-names" title="Permanent link">&para;</a></h3>
+<p>When you use a self-hosted Traefik instance, your entrypoint names might be different from the default <code>http</code> and <code>https</code></p>
+<p>Use <code>traefik:set</code> to set both <code>http-entry-point</code> and <code>https-entry-point</code> to custom values</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>http-entry-point<span class="w"> </span>web
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>https-entry-point<span class="w"> </span>websecure
+</code></pre></div>
 <h3 id="showing-the-traefik-compose-config">Showing the Traefik compose config<a class="headerlink" href="#showing-the-traefik-compose-config" title="Permanent link">&para;</a></h3>
 <p>For debugging purposes, it may be useful to show the Traefik compose config. This can be achieved via the <code>traefik:show-config</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>traefik:show-config
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>traefik:show-config
 </code></pre></div>
 <h3 id="customizing-the-traefik-container-image">Customizing the Traefik container image<a class="headerlink" href="#customizing-the-traefik-container-image" title="Permanent link">&para;</a></h3>
 <p>While the default Traefik image is hardcoded, users may specify an alternative by setting the <code>image</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>traefik:v2.8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>traefik:v2.8
 </code></pre></div>
 <h4 id="checking-the-traefik-containers-logs">Checking the Traefik container's logs<a class="headerlink" href="#checking-the-traefik-containers-logs" title="Permanent link">&para;</a></h4>
 <p>It may be necessary to check the Traefik container's logs to ensure that Traefik is operating as expected. This can be performed with the <code>traefik:logs</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>traefik:logs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>traefik:logs
 </code></pre></div>
 <p>This command also supports the following modifiers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
 </code></pre></div>
 <p>You can use these modifiers as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>traefik:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>traefik:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the traefik container, with an initial history of 10 log lines</p>
 <h3 id="changing-the-traefik-log-level">Changing the Traefik log level<a class="headerlink" href="#changing-the-traefik-log-level" title="Permanent link">&para;</a></h3>
 <p>Traefik log output is set to <code>ERROR</code> by default. It may be changed by setting the <code>log-level</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying, the Traefik container will need to be restarted.</p>
 <h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>The traefik plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling, apps will need to be rebuilt and the Traefik container will need to be restarted. All http requests will then be redirected to https.</p>
 <h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
 <h3 id="api-access">API Access<a class="headerlink" href="#api-access" title="Permanent link">&para;</a></h3>
@@ -4021,7 +4045,7 @@
 <p>Users enabling the dashboard should also enable api basic auth.</p>
 </div>
 <p>By default, the api is disabled. To enable, set the <code>api</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="enabling-the-dashboard">Enabling the dashboard<a class="headerlink" href="#enabling-the-dashboard" title="Permanent link">&para;</a></h4>
@@ -4030,18 +4054,18 @@
 <p>Users enabling the dashboard should also enable api basic auth.</p>
 </div>
 <p>By default, the dashboard is disabled. To enable, set the <code>dashboard</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dashboard<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dashboard<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="enabling-api-basic-auth">Enabling api basic auth<a class="headerlink" href="#enabling-api-basic-auth" title="Permanent link">&para;</a></h4>
 <p>Users enabling either the api or dashboard are encouraged to enable basic auth. This will apply <em>only</em> to the api/dashboard, and not to apps. To enable, set the <code>basic-auth-username</code> and <code>basic-auth-password</code> properties with the <code>--global</code> flag:. Both must be set or basic auth will not be enabled.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-username<span class="w"> </span>username
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-password<span class="w"> </span>password
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-username<span class="w"> </span>username
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-password<span class="w"> </span>password
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="customizing-the-api-hostname">Customizing the api hostname<a class="headerlink" href="#customizing-the-api-hostname" title="Permanent link">&para;</a></h4>
 <p>The hostname used for the api and dashboard is set to <code>traefik.dokku.me</code> by default. It can be customized by setting the <code>api-vhost</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-vhost<span class="w"> </span>lb.dokku.me
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-vhost<span class="w"> </span>lb.dokku.me
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h2 id="displaying-traefik-reports-for-an-app">Displaying Traefik reports for an app<a class="headerlink" href="#displaying-traefik-reports-for-an-app" title="Permanent link">&para;</a></h2>
@@ -4049,40 +4073,40 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>traefik:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>traefik:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>=====&gt; node-js-app traefik information
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>       Traefik api enabled:           false
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>       Traefik api vhost:             traefik.dokku.me
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>       Traefik basic auth password:   password
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>       Traefik basic auth username:   user
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>       Traefik dashboard enabled:     false
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>       Traefik image:                 traefik:v2.8
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>       Traefik letsencrypt email:
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>       Traefik letsencrypt server:
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>       Traefik log level:             ERROR
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>=====&gt; python-app traefik information
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>       Traefik api enabled:           false
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>       Traefik api vhost:             traefik.dokku.me
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>       Traefik basic auth password:   password
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>       Traefik basic auth username:   user
-<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>       Traefik dashboard enabled:     false
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>       Traefik image:                 traefik:v2.8
-<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>       Traefik letsencrypt email:
-<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>       Traefik letsencrypt server:
-<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>       Traefik log level:             ERROR
-<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>=====&gt; ruby-app traefik information
-<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>       Traefik api enabled:           false
-<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>       Traefik api vhost:             traefik.dokku.me
-<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>       Traefik basic auth password:   password
-<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>       Traefik basic auth username:   user
-<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>       Traefik dashboard enabled:     false
-<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>       Traefik image:                 traefik:v2.8
-<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>       Traefik letsencrypt email:
-<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>       Traefik letsencrypt server:
-<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>       Traefik log level:             ERROR
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>=====&gt; node-js-app traefik information
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>       Traefik api enabled:           false
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>       Traefik api vhost:             traefik.dokku.me
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>       Traefik basic auth password:   password
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>       Traefik basic auth username:   user
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>       Traefik dashboard enabled:     false
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>       Traefik image:                 traefik:v2.8
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>       Traefik letsencrypt email:
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>       Traefik letsencrypt server:
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>       Traefik log level:             ERROR
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>=====&gt; python-app traefik information
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>       Traefik api enabled:           false
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>       Traefik api vhost:             traefik.dokku.me
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>       Traefik basic auth password:   password
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>       Traefik basic auth username:   user
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>       Traefik dashboard enabled:     false
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>       Traefik image:                 traefik:v2.8
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>       Traefik letsencrypt email:
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>       Traefik letsencrypt server:
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>       Traefik log level:             ERROR
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>=====&gt; ruby-app traefik information
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>       Traefik api enabled:           false
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>       Traefik api vhost:             traefik.dokku.me
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>       Traefik basic auth password:   password
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>       Traefik basic auth username:   user
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>       Traefik dashboard enabled:     false
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>       Traefik image:                 traefik:v2.8
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>       Traefik letsencrypt email:
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a>       Traefik letsencrypt server:
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>       Traefik log level:             ERROR
 </code></pre></div>
 </div>
 </div>
@@ -4091,26 +4115,26 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>=====&gt; node-js-app traefik information
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>       Traefik api enabled:           false
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>       Traefik api vhost:             traefik.dokku.me
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>       Traefik basic auth password:   password
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>       Traefik basic auth username:   user
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>       Traefik dashboard enabled:     false
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>       Traefik image:                 traefik:v2.8
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>       Traefik letsencrypt email:
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>       Traefik letsencrypt server:
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>       Traefik log level:             ERROR
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>=====&gt; node-js-app traefik information
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       Traefik api enabled:           false
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>       Traefik api vhost:             traefik.dokku.me
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>       Traefik basic auth password:   password
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>       Traefik basic auth username:   user
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>       Traefik dashboard enabled:     false
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>       Traefik image:                 traefik:v2.8
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>       Traefik letsencrypt email:
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>       Traefik letsencrypt server:
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>       Traefik log level:             ERROR
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app<span class="w"> </span>--traefik-api-enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app<span class="w"> </span>--traefik-api-enabled
 </code></pre></div>
 
 
@@ -4300,7 +4324,7 @@
     
     
   
-      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
 
