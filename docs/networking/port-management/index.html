@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
@@ -3969,7 +3969,7 @@
 <p>For example, if the Dokku installation is configured with the domain <code>dokku.me</code> and an application named <code>node-js-app</code> is deployed with following Dockerfile:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>FROM ubuntu:20.04
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>EXPOSE 1234
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>RUN python -m SimpleHTTPServer 1234
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>CMD python -m SimpleHTTPServer 1234
 </code></pre></div>
 <p>The application would be exposed to the user at <code>node-js-app.dokku.me:1234</code>. If this is not desired, the following application configuration may be applied:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># add a port mapping to port 80</span>
