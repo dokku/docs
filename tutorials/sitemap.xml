@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dokku.com/tutorials/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/apps/deploying-gogs-to-dokku/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/automation/automating-dokku-setup/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/other/deploying-an-image-without-a-registry/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/other/deploying-to-k3s/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/other/run-on-external-volume/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/other/using-websockets-in-dokku/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://dokku.com/tutorials/plugins/creating-a-datastore-plugin/</loc>
-         <lastmod>2024-05-01</lastmod>
+         <lastmod>2024-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
