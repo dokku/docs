@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dokku.com/tutorials/network/inter-app-communication/</loc>
+         <lastmod>2024-06-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dokku.com/tutorials/other/deploying-an-image-without-a-registry/</loc>
          <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
