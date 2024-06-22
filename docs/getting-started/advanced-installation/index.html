@@ -3741,7 +3741,7 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_REPO</span><span class="o">=</span>https://github.com/yourusername/dokku.git<span class="w"> </span><span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master<span class="w"> </span>./bootstrap.sh
 </code></pre></div>
 <h2 id="custom-herokuish-build">Custom Herokuish build<a class="headerlink" href="#custom-herokuish-build" title="Permanent link">&para;</a></h2>
-<p>Dokku ships with a pre-built version of version of the <a href="https://github.com/gliderlabs/herokuish">Herokuish</a> component by default. If you want to build your own version you can specify that with an environment variable.</p>
+<p>Dokku ships with a pre-built version of the <a href="https://github.com/gliderlabs/herokuish">Herokuish</a> component by default. If you want to build your own version you can specify that with an environment variable.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku.git
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">STACK_URL</span><span class="o">=</span>https://github.com/gliderlabs/herokuish.git<span class="w"> </span>make<span class="w"> </span>install
