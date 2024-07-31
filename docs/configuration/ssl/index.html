@@ -3932,7 +3932,7 @@ after they've been generated. You can export it as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>certs:report<span class="w"> </span>node-js-app<span class="w"> </span>--ssl-enabled
 </code></pre></div>
 <h2 id="hsts-header">HSTS Header<a class="headerlink" href="#hsts-header" title="Permanent link">&para;</a></h2>
-<p>The <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS header</a> is an HTTP header that can inform browsers that all requests to a given site should be made via HTTPS. Dokku does enables this header by default for HTTPS requests.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS header</a> is an HTTP header that can inform browsers that all requests to a given site should be made via HTTPS. Dokku enables this header by default for HTTPS requests.</p>
 <p>See the <a href="../../networking/proxies/nginx/#hsts-header">NGINX HSTS documentation</a> for more information on how the HSTS configuration can be managed for your application.</p>
 <h2 id="http2-support">HTTP/2 support<a class="headerlink" href="#http2-support" title="Permanent link">&para;</a></h2>
 <p>Certain versions of nginx have bugs that prevent <a href="https://nginx.org/en/docs/http/ngx_http_v2_module.html">HTTP/2</a> from properly responding to all clients, thus causing applications to be unavailable. For HTTP/2 to be enabled in your applications' nginx configs, you need to have installed nginx 1.11.5 or higher. See <a href="https://github.com/dokku/dokku/issues/2435">issue 2435</a> for more details.</p>
