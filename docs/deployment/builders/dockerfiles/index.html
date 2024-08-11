@@ -3812,10 +3812,15 @@
 <p class="admonition-title">Info</p>
 <p>The previous method to perform this - via <code>docker-options:add</code> - should be removed in favor of the <code>builder-dockerfile:set</code> command outlined here.</p>
 </div>
-<p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>Dockerfile</code> file to use for a given app. This can be done via the <code>builder-dockerfile:set</code> command. If a value is specified and that file does not exist in the app's build directory, then the build will fail.</p>
-<p>For git push, <code>git:from-archive</code>, and <code>git:sync</code> workflows, the <code>Dockerfile</code> is extracted directly from the source code, respecting the configured <code>dockerfile-path</code> property value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path<span class="w"> </span>Dockerfile2
+<p>The <code>Dockerfile</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
+<ul>
+<li>The <code>WORKDIR</code> of the Docker image for deploys resulting from <code>git:from-image</code> and <code>git:load-image</code> commands.</li>
+<li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
+</ul>
+<p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>dockerfile-path</code> property:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path<span class="w"> </span>.dokku/Dockerfile
 </code></pre></div>
+<p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, the build will fail.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path
 </code></pre></div>

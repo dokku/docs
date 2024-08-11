@@ -4051,10 +4051,15 @@
 <h4 id="the-release-process">The <code>release</code> process<a class="headerlink" href="#the-release-process" title="Permanent link">&para;</a></h4>
 <p>The <code>Procfile</code> also supports a special <code>release</code> command which acts in a similar way to the <a href="https://devcenter.heroku.com/articles/release-phase">Heroku Release Phase</a>. See the <a href="../../advanced-usage/deployment-tasks/#procfile-release-command">Release deployment task documentation</a> for more information on how Dokku handles this process type.</p>
 <h4 id="changing-the-procfile-location">Changing the <code>Procfile</code> location<a class="headerlink" href="#changing-the-procfile-location" title="Permanent link">&para;</a></h4>
-<p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>Procfile</code> file to use for a given app. This can be done via the <code>ps:set</code> command. If a value is specified and that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>Procfile</code>.</p>
-<p>For deploys via the <code>git:from-image</code> and <code>git:load-image</code> commands, the <code>Procfile</code> is extracted from the configured <code>WORKDIR</code> property of the image. For all other deploys - git push, <code>git:from-archive</code>, <code>git:sync</code> - will have the <code>Procfile</code> extracted directly from the source code. Both cases will respect the configured <code>procfile-path</code> property value.</p>
+<p>The <code>Procfile</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
+<ul>
+<li>The <code>WORKDIR</code> of the Docker image for deploys resulting from <code>git:from-image</code> and <code>git:load-image</code> commands.</li>
+<li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
+</ul>
+<p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>procfile-path</code> property:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path<span class="w"> </span>.dokku/Procfile
 </code></pre></div>
+<p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>Procfile</code>.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path
 </code></pre></div>

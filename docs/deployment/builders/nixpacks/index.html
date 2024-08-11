@@ -3742,9 +3742,15 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV=production&#39;</span>
 </code></pre></div>
 <h3 id="changing-the-nixpackstoml-location">Changing the <code>nixpacks.toml</code> location<a class="headerlink" href="#changing-the-nixpackstoml-location" title="Permanent link">&para;</a></h3>
-<p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>nixpacks.toml</code> file to use for a given app. This can be done via the <code>builder-nixpacks:set</code> command. If a value is specified and that file does not exist in the app's build directory, then the build will fail.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>nixpackstoml-path<span class="w"> </span>nixpacks2.toml
+<p>The <code>nixpacks.toml</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
+<ul>
+<li>The <code>WORKDIR</code> of the Docker image for deploys resulting from <code>git:from-image</code> and <code>git:load-image</code> commands.</li>
+<li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
+</ul>
+<p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>nixpackstoml-path</code> property:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>nixpackstoml-path<span class="w"> </span>.dokku/nixpacks.toml
 </code></pre></div>
+<p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, the build will fail.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>nixpackstoml-path
 </code></pre></div>

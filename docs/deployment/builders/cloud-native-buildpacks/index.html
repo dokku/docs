@@ -3776,10 +3776,15 @@
 <p>Dokku will only select the <code>dockerfile</code> builder if both the <code>herokuish</code> and <code>pack</code> builders are not detected and a Dockerfile exists. See the <a href="../dockerfiles/">dockerfile builder documentation</a> for more information on how that builder functions.</p>
 </div>
 <h3 id="changing-the-projecttoml-location">Changing the <code>project.toml</code> location<a class="headerlink" href="#changing-the-projecttoml-location" title="Permanent link">&para;</a></h3>
-<p>When deploying a monorepo, it may be desirable to specify the specific path of the <code>project.toml</code> file to use for a given app. This can be done via the <code>builder-pack:set</code> command. If a value other than <code>project.toml</code> is specified and that file does not exist in the app's build directory, Dokku will continue the build process as if the repository has no <code>project.toml</code>.</p>
-<p>For deploys via the <code>git:from-image</code> and <code>git:load-image</code> commands, the <code>project.toml</code> is extracted from the configured <code>WORKDIR</code> property of the image. For all other deploys - git push, <code>git:from-archive</code>, <code>git:sync</code> - will have the <code>project.toml</code> extracted directly from the source code. Both cases will respect the configured <code>projecttoml-path</code> property value.</p>
+<p>The <code>project.toml</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
+<ul>
+<li>The <code>WORKDIR</code> of the Docker image for deploys resulting from <code>git:from-image</code> and <code>git:load-image</code> commands.</li>
+<li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
+</ul>
+<p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>projecttoml-path</code> property:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path<span class="w"> </span>.dokku/project.toml
 </code></pre></div>
+<p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>project.toml</code>.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path
 </code></pre></div>
