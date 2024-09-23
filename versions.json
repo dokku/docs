@@ -8,6 +8,11 @@
     },
     {
         "aliases": [],
+        "title": "v0.35.0",
+        "version": "docs~v0.35.0"
+    },
+    {
+        "aliases": [],
         "title": "v0.34.9",
         "version": "docs~v0.34.9"
     },
