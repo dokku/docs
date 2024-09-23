@@ -831,6 +831,8 @@
       
         
       
+        
+      
     
     
       
@@ -872,6 +874,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.35.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -4025,7 +4048,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
 </code></pre></div>
 <p>A change in the stack builder value will execute the <code>post-stack-set</code> trigger.</p>
-<p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_IMAGE</code> environment variable (<code>gliderlabs/herokuish:latest-22</code> by default).</p>
+<p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_IMAGE</code> environment variable (<code>gliderlabs/herokuish:latest-24</code> by default).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># set globally</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>gliderlabs/herokuish:latest
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
@@ -4061,17 +4084,17 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>=====&gt; node-js-app buildpacks information
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>       Buildpacks computed stack:  gliderlabs/herokuish:v0.7.0-22
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-22
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>       Buildpacks list:            https://github.com/heroku/heroku-buildpack-nodejs.git
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>       Buildpacks stack:           gliderlabs/herokuish:v0.7.0-20
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>=====&gt; python-sample buildpacks information
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-22
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-22
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-24
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
 <a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>       Buildpacks list:            https://github.com/heroku/heroku-buildpack-nodejs.git,https://github.com/heroku/heroku-buildpack-python.git
 <a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>       Buildpacks stack:
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>=====&gt; ruby-sample buildpacks information
-<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-22
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-22
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-24
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
 <a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>       Buildpacks list:
 <a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>       Buildpacks stack:
 </code></pre></div>

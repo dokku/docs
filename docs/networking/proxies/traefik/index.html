@@ -831,6 +831,8 @@
       
         
       
+        
+      
     
     
       
@@ -872,6 +874,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.35.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -4044,8 +4067,8 @@
 <p class="admonition-title">Warning</p>
 <p>Users enabling the dashboard should also enable api basic auth.</p>
 </div>
-<p>By default, the api is disabled. To enable, set the <code>api</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api<span class="w"> </span><span class="nb">true</span>
+<p>By default, the api is disabled. To enable, set the <code>api-enabled</code> property with the <code>--global</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-enabled<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="enabling-the-dashboard">Enabling the dashboard<a class="headerlink" href="#enabling-the-dashboard" title="Permanent link">&para;</a></h4>
@@ -4053,8 +4076,8 @@
 <p class="admonition-title">Warning</p>
 <p>Users enabling the dashboard should also enable api basic auth.</p>
 </div>
-<p>By default, the dashboard is disabled. To enable, set the <code>dashboard</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dashboard<span class="w"> </span><span class="nb">true</span>
+<p>By default, the dashboard is disabled. To enable, set the <code>dashboard-enabled</code> property with the <code>--global</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dashboard-enabled<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="enabling-api-basic-auth">Enabling api basic auth<a class="headerlink" href="#enabling-api-basic-auth" title="Permanent link">&para;</a></h4>

@@ -831,6 +831,8 @@
       
         
       
+        
+      
     
     
       
@@ -872,6 +874,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.35.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3857,14 +3880,14 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.23.0</p>
 </div>
-<p>The default stack builder in use by CNB buildpacks in Dokku is based on <code>heroku/builder:22</code>. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>buildpacks:set-property</code> command.</p>
+<p>The default stack builder in use by CNB buildpacks in Dokku is based on <code>heroku/builder:24</code>. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>buildpacks:set-property</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 </code></pre></div>
 <p>The specified stack builder can also be unset by omitting the name of the stack builder when calling <code>buildpacks:set-property</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
 </code></pre></div>
 <p>A change in the stack builder value will execute the <code>post-stack-set</code> trigger.</p>
-<p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_CNB_BUILDER</code> environment variable (<code>heroku/builder:22</code> by default).</p>
+<p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_CNB_BUILDER</code> environment variable (<code>heroku/builder:24</code> by default).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># set globally</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>

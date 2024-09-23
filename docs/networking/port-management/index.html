@@ -831,6 +831,8 @@
       
         
       
+        
+      
     
     
       
@@ -872,6 +874,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0.35.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3967,9 +3990,9 @@
 <h4 id="applications-using-expose">Applications using EXPOSE<a class="headerlink" href="#applications-using-expose" title="Permanent link">&para;</a></h4>
 <p>Dokku will extract all tcp ports exposed using the <code>EXPOSE</code> directive (one port per line) and setup nginx to proxy the same port numbers to listen publicly. If you would like to change the exposed port, you should do so within your <code>Dockerfile</code>.</p>
 <p>For example, if the Dokku installation is configured with the domain <code>dokku.me</code> and an application named <code>node-js-app</code> is deployed with following Dockerfile:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>FROM ubuntu:20.04
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>FROM ubuntu:24.04
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>EXPOSE 1234
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>CMD python -m SimpleHTTPServer 1234
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>CMD python3 -m SimpleHTTPServer 1234
 </code></pre></div>
 <p>The application would be exposed to the user at <code>node-js-app.dokku.me:1234</code>. If this is not desired, the following application configuration may be applied:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># add a port mapping to port 80</span>
