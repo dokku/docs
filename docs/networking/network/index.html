@@ -3879,15 +3879,15 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.11.0, Enhanced in 0.20.0</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>network:create &lt;network&gt;                 # Creates an attachable docker network
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>network:destroy &lt;network&gt;                # Destroys a docker network
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>network:exists &lt;network&gt;                 # Checks if a docker network exists
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>network:info &lt;network&gt;                   # Outputs information about a docker network
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>network:list                             # Lists all docker networks
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>network:report [&lt;app&gt;] [&lt;flag&gt;]          # Displays a network report for one or more apps
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>network:rebuild &lt;app&gt;                    # Rebuilds network settings for an app
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>network:rebuildall                       # Rebuild network settings for all apps
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>network:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)        # Set or clear a network property for an app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>network:create &lt;network&gt;                    # Creates an attachable docker network
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>network:destroy &lt;network&gt;                   # Destroys a docker network
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>network:exists &lt;network&gt;                    # Checks if a docker network exists
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>network:info &lt;network&gt; [--format text|json] # Outputs information about a docker network
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>network:list [--format text|json]           # Lists all docker networks
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>network:report [&lt;app&gt;] [&lt;flag&gt;]             # Displays a network report for one or more apps
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>network:rebuild &lt;app&gt;                       # Rebuilds network settings for an app
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>network:rebuildall                          # Rebuild network settings for all apps
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>network:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)           # Set or clear a network property for an app
 </code></pre></div>
 <p>The Network plugin allows developers to abstract the concept of container network management, allowing developers to both change what networks a given container is attached to as well as rebuild the configuration on the fly.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
@@ -3929,20 +3929,38 @@
 </div>
 </div>
 </div>
+<p>The <code>network:list</code> command also takes a <code>--format</code> flag, with the valid options including <code>text</code> (default) and <code>json</code>. The <code>json</code> output format can be used for automation purposes:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>network:list<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    {&quot;CreatedAt&quot;:&quot;2024-02-25T01:55:24.275184461Z&quot;,&quot;Driver&quot;:&quot;bridge&quot;,&quot;ID&quot;:&quot;d18df2d21433&quot;,&quot;Internal&quot;:false,&quot;IPv6&quot;:false,&quot;Labels&quot;:{},&quot;Name&quot;:&quot;bridge&quot;,&quot;Scope&quot;:&quot;local&quot;},
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    {&quot;CreatedAt&quot;:&quot;2024-02-25T01:55:24.275184461Z&quot;,&quot;Driver&quot;:&quot;bridge&quot;,&quot;ID&quot;:&quot;f50fa882e7de&quot;,&quot;Internal&quot;:false,&quot;IPv6&quot;:false,&quot;Labels&quot;:{},&quot;Name&quot;:&quot;test-network&quot;,&quot;Scope&quot;:&quot;local&quot;},
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    {&quot;CreatedAt&quot;:&quot;2024-02-25T01:55:24.275184461Z&quot;,&quot;Driver&quot;:&quot;host&quot;,&quot;ID&quot;:&quot;ab6a59291443&quot;,&quot;Internal&quot;:false,&quot;IPv6&quot;:false,&quot;Labels&quot;:{},&quot;Name&quot;:&quot;host&quot;,&quot;Scope&quot;:&quot;local&quot;},
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    {&quot;CreatedAt&quot;:&quot;2024-02-25T01:55:24.275184461Z&quot;,&quot;Driver&quot;:&quot;null&quot;,&quot;ID&quot;:&quot;e2506bc8b7d7&quot;,&quot;Internal&quot;:false,&quot;IPv6&quot;:false,&quot;Labels&quot;:{},&quot;Name&quot;:&quot;none&quot;,&quot;Scope&quot;:&quot;local&quot;}
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>]
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="creating-a-network">Creating a network<a class="headerlink" href="#creating-a-network" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>Docker networks can be created via the <code>network:create</code> command. Executing this command will create an attachable <code>bridge</code> network. This can be used to route requests between containers without going through any public network.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>network:create<span class="w"> </span>test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>network:create<span class="w"> </span>test-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----&gt; Creating network test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-----&gt; Creating network test-network
 </code></pre></div>
 </div>
 </div>
@@ -3954,17 +3972,17 @@
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>A Docker network without any associated containers may be destroyed via the <code>network:destroy</code> command. Docker will refuse to destroy networks that have containers attached.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>network:destroy<span class="w"> </span>test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>network:destroy<span class="w"> </span>test-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a> !     WARNING: Potentially Destructive Action
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> !     This command will destroy network test.
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a> !     To proceed, type &quot;test&quot;
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>-----&gt; Destroying network test
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a> !     This command will destroy network test.
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a> !     To proceed, type &quot;test&quot;
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>-----&gt; Destroying network test
 </code></pre></div>
 </div>
 </div>
@@ -3974,14 +3992,14 @@
 <p>test</p>
 </div>
 <p>As the command is destructive, it will default to asking for confirmation before executing the removal of the network. This may be avoided by providing the <code>--force</code> flag:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>network:destroy<span class="w"> </span>test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>network:destroy<span class="w"> </span>test-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt; Destroying network test
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>-----&gt; Destroying network test
 </code></pre></div>
 </div>
 </div>
@@ -3992,14 +4010,14 @@
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>For CI/CD pipelines, it may be useful to see if an network exists before creating a new network. You can do so via the <code>network:exists</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>network:exists<span class="w"> </span>nonexistent-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>network:exists<span class="w"> </span>nonexistent-network
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Network does not exist
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Network does not exist
 </code></pre></div>
 </div>
 </div>
@@ -4008,44 +4026,61 @@
 <h3 id="checking-network-info">Checking network info<a class="headerlink" href="#checking-network-info" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
-<p>Introduced in 0.20.0, Requires Docker 1.21+</p>
+<p>Introduced in 0.35.3</p>
 </div>
 <p>Network information can be retrieved via the <code>network:info</code> command. This is a slightly different version of the <code>docker network</code> command.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>network:info<span class="w"> </span>test-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>network:info<span class="w"> </span>bridge
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>// TODO
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>=====&gt; bridge network information
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>       ID:       d18df2d21433
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>       Name:     bridge
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>       Driver:   bridge
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>       Scope:    local
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <code>network:info</code> command also takes a <code>--format</code> flag, with the valid options including <code>text</code> (default) and <code>json</code>. The <code>json</code> output format can be used for automation purposes:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>network:info<span class="w"> </span>bridge<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>{&quot;CreatedAt&quot;:&quot;2024-02-25T01:55:24.275184461Z&quot;,&quot;Driver&quot;:&quot;bridge&quot;,&quot;ID&quot;:&quot;d18df2d21433&quot;,&quot;Internal&quot;:false,&quot;IPv6&quot;:false,&quot;Labels&quot;:{},&quot;Name&quot;:&quot;bridge&quot;,&quot;Scope&quot;:&quot;local&quot;}
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="routing-an-app-to-a-known-ipport-combination">Routing an app to a known ip:port combination<a class="headerlink" href="#routing-an-app-to-a-known-ipport-combination" title="Permanent link">&para;</a></h3>
 <p>In some cases, it may be necessary to route an app to an existing <code>$IP:$PORT</code> combination. This is particularly the case for internal admin tools or services that aren't run by Dokku but have a web ui that would benefit from being exposed by Dokku. This can be done by using a proxy application and routing requests through that.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># for a service listening on:</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># - ip address: 127.0.0.1</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># - port: 8080</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># create the app</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>local-app
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># add an extra host that maps host.docker.internal to the docker gateway</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>local-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--add-host=host.docker.internal:host-gateway&quot;</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># set the SERVICE_HOST to the mapped hostname</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>local-app<span class="w"> </span><span class="nv">SERVICE_HOST</span><span class="o">=</span>host.docker.internal
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1"># set the SERVICE_PORT to the port combination for your app</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>local-app<span class="w"> </span><span class="nv">SERVICE_PORT</span><span class="o">=</span><span class="m">8080</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1"># set the domains desired</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>local-app<span class="w"> </span>local-app.dokku.me
-<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
-<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># deploy the service-proxy image</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>dokku<span class="w"> </span>git:from-image<span class="w"> </span>local-app<span class="w"> </span>dokku/service-proxy:latest
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># for a service listening on:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># - ip address: 127.0.0.1</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># - port: 8080</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1"># create the app</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>local-app
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="c1"># add an extra host that maps host.docker.internal to the docker gateway</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>local-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--add-host=host.docker.internal:host-gateway&quot;</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="c1"># set the SERVICE_HOST to the mapped hostname</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>local-app<span class="w"> </span><span class="nv">SERVICE_HOST</span><span class="o">=</span>host.docker.internal
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="c1"># set the SERVICE_PORT to the port combination for your app</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>local-app<span class="w"> </span><span class="nv">SERVICE_PORT</span><span class="o">=</span><span class="m">8080</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="c1"># set the domains desired</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>local-app<span class="w"> </span>local-app.dokku.me
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="c1"># deploy the service-proxy image</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>dokku<span class="w"> </span>git:from-image<span class="w"> </span>local-app<span class="w"> </span>dokku/service-proxy:latest
 </code></pre></div>
 <p>Only a single <code>$IP:$PORT</code> combination can be routed to for a given app, and that <code>$IP:$PORT</code> combination <em>must</em> be accessible to the service proxy on initial deploy, or the service proxy won't start.</p>
 <h3 id="attaching-an-app-to-a-network">Attaching an app to a network<a class="headerlink" href="#attaching-an-app-to-a-network" title="Permanent link">&para;</a></h3>
@@ -4054,36 +4089,36 @@
 <p>Introduced in 0.20.0, Requires Docker 1.21+</p>
 </div>
 <p>Apps will default to being associated with the default <code>bridge</code> network or a network specified by the <code>initial-network</code> network property. Additionally, an app can be attached to <code>attachable</code> networks by changing the <code>attach-post-create</code> or <code>attach-post-deploy</code> network properties when using the <a href="../../deployment/schedulers/docker-local/">docker-local scheduler</a>. A change in these values will require an app deploy or rebuild.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># associates the network after a container is created but before it is started</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># commonly used for cross-app networking</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># associates the network after the deploy is successful but before the proxy is updated</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># used for cross-app networking when healthchecks must be invoked first</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy<span class="w"> </span>other-test-network
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1"># associates the network at container creation</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="c1"># typically blocks access to services and external routing</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network<span class="w"> </span>global-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># associates the network after a container is created but before it is started</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># commonly used for cross-app networking</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># associates the network after the deploy is successful but before the proxy is updated</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># used for cross-app networking when healthchecks must be invoked first</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy<span class="w"> </span>other-test-network
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="c1"># associates the network at container creation</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1"># typically blocks access to services and external routing</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network<span class="w"> </span>global-network
 </code></pre></div>
 <p>Multiple networks can also be specified for the <code>attach-post-create</code> and <code>attach-post-deploy</code> phases.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># one or more networks can be specified</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network<span class="w"> </span>test-network-2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># one or more networks can be specified</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create<span class="w"> </span>test-network<span class="w"> </span>test-network-2
 </code></pre></div>
 <p>Setting the <code>attach</code> network property to an empty value will de-associate the container with the network.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-create
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>attach-post-deploy
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>initial-network
 </code></pre></div>
 <p>The network properties can also be set globally. The global default value is an empty string, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-create<span class="w"> </span>global-create-network
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy<span class="w"> </span>global-deploy-network
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network<span class="w"> </span>global-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-create<span class="w"> </span>global-create-network
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy<span class="w"> </span>global-deploy-network
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network<span class="w"> </span>global-network
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-create
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-create
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>attach-post-deploy
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>initial-network
 </code></pre></div>
 <h4 id="network-aliases">Network Aliases<a class="headerlink" href="#network-aliases" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
@@ -4091,30 +4126,30 @@
 <p>This feature is only available when an app has been attached to a network other than the default <code>bridge</code> network.</p>
 </div>
 <p>When a container created for a deployment is being attached to a network - regardless of which network property was used - a network alias of the pattern <code>APP.PROC_TYPE</code> will be added to all containers. This can be used to load-balance requests between containers. For an application named <code>node-js-app</code> with a process type of web, the network alias - or resolvable DNS record within the network - will be:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>node-js-app.web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>node-js-app.web
 </code></pre></div>
 <p>The fully-qualified URL for the resource will depend upon the <code>PORT</code> being listened to by the application. Applications built via buildpacks will have their <code>PORT</code> environment variable set to <code>5000</code>, and as such internal network requests for the above example should point to the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>http://node-js-app.web:5000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>http://node-js-app.web:5000
 </code></pre></div>
 <p>Dockerfile-based applications may listen on other ports. For more information on how ports are specified for applications, please refer to the <a href="../port-management/">port management documentation</a>.</p>
 <h4 id="specifying-a-custom-tld">Specifying a custom TLD<a class="headerlink" href="#specifying-a-custom-tld" title="Permanent link">&para;</a></h4>
 <p>When attaching applications to networks, a custom TLD can be specified via the <code>network:set</code> command. This TLD is suffixed to the network alias for the application/process-type combination for <em>all</em> networks to which the application is attached, and cannot be customized per network. The default value is an empty string.</p>
 <p>To specify a TLD of <code>svc.cluster.local</code> for your application, run the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># replace node-js-app with your application name</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>tld<span class="w"> </span>svc.cluster.local
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># replace node-js-app with your application name</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>tld<span class="w"> </span>svc.cluster.local
 </code></pre></div>
 <p>With an application named <code>node-js-app</code> and a process-type named <code>web</code>, the above command will turn the network alias into:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>node-js-app.web.svc.cluster.local
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>node-js-app.web.svc.cluster.local
 </code></pre></div>
 <p>Note that this has no impact on container port handling, and users must still specify the container port when making internal network requests.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>tld
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>tld
 </code></pre></div>
 <p>The <code>tld</code> property can also be set globally. The global default is emty string, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld<span class="w"> </span>svc.cluster.local
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld<span class="w"> </span>svc.cluster.local
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>tld
 </code></pre></div>
 <h4 id="when-to-attach-containers-to-a-network">When to attach containers to a network<a class="headerlink" href="#when-to-attach-containers-to-a-network" title="Permanent link">&para;</a></h4>
 <p>Containers can be attached to a network for a variety of reasons:</p>
@@ -4166,7 +4201,7 @@
 </div>
 <h3 id="rebuilding-network-settings">Rebuilding network settings<a class="headerlink" href="#rebuilding-network-settings" title="Permanent link">&para;</a></h3>
 <p>There are cases where you may need to rebuild the network configuration for an app, such as on app boot or container restart. In these cases, you can use the <code>network:rebuild</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>network:rebuild<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>network:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4174,7 +4209,7 @@
 </div>
 <h3 id="rebuilding-all-network-settings">Rebuilding all network settings<a class="headerlink" href="#rebuilding-all-network-settings" title="Permanent link">&para;</a></h3>
 <p>In some cases, a docker upgrade may reset container IPs or Ports. In both cases, you can quickly rewrite those files by using the <code>network:rebuildall</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>network:rebuildall
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>network:rebuildall
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4186,160 +4221,160 @@
 <p>This functionality does not control the <code>--network</code> docker flag. Please use the <a href="../../advanced-usage/docker-options/">docker-options plugin</a> to manage this flag.</p>
 </div>
 <p>By default, an app will only bind to the internal interface. This behavior can be modified per app by changing the <code>bind-all-interfaces</code> network property.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># bind to the default docker interface (`docker0`) with a random internal ip</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># this is the default behavior</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">false</span>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1"># bind to all interfaces (`0.0.0.0`) on a random port for each upstream port</span>
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="c1"># this will make the app container directly accessible by other hosts on your network</span>
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># ports are randomized for every deploy, e.g. `0.0.0.0:32771-&gt;5000/tcp`.</span>
-<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># bind to the default docker interface (`docker0`) with a random internal ip</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="c1"># this is the default behavior</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">false</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1"># bind to all interfaces (`0.0.0.0`) on a random port for each upstream port</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="c1"># this will make the app container directly accessible by other hosts on your network</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="c1"># ports are randomized for every deploy, e.g. `0.0.0.0:32771-&gt;5000/tcp`.</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>By way of example, in the default case, each container is bound to the docker interface:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>docker<span class="w"> </span>ps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>docker<span class="w"> </span>ps
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>CONTAINER ID        IMAGE                      COMMAND                CREATED              STATUS              PORTS               NAMES
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>1b88d8aec3d1        dokku/node-js-app:latest   &quot;/bin/bash -c &#39;/star   About a minute ago   Up About a minute                       node-js-app.web.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>CONTAINER ID        IMAGE                      COMMAND                CREATED              STATUS              PORTS               NAMES
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>1b88d8aec3d1        dokku/node-js-app:latest   &quot;/bin/bash -c &#39;/star   About a minute ago   Up About a minute                       node-js-app.web.1
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>As such, the container's IP address will be an internal IP, and thus it is only accessible on the host itself:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39;</span><span class="w"> </span>node-js-app.web.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39;</span><span class="w"> </span>node-js-app.web.1
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>172.17.0.6
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>172.17.0.6
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>However, you can disable the internal proxying via the <code>network:set</code> command so that it will listen on the host's IP address:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Shell</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1"># container bound to all interfaces</span>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>docker<span class="w"> </span>ps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>node-js-app<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="c1"># container bound to all interfaces</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>docker<span class="w"> </span>ps
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>CONTAINER ID        IMAGE                      COMMAND                CREATED              STATUS              PORTS                     NAMES
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>d6499edb0edb        dokku/node-js-app:latest   &quot;/bin/bash -c &#39;/star   About a minute ago   Up About a minute   0.0.0.0:49153-&gt;5000/tcp   node-js-app.web.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>CONTAINER ID        IMAGE                      COMMAND                CREATED              STATUS              PORTS                     NAMES
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>d6499edb0edb        dokku/node-js-app:latest   &quot;/bin/bash -c &#39;/star   About a minute ago   Up About a minute   0.0.0.0:49153-&gt;5000/tcp   node-js-app.web.1
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>The <code>bind-all-interfaces</code> property can also be set globally. The global default is <code>false</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>network:set<span class="w"> </span>--global<span class="w"> </span>bind-all-interfaces
 </code></pre></div>
 <h3 id="displaying-network-reports-for-an-app">Displaying network reports for an app<a class="headerlink" href="#displaying-network-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's network status using the <code>network:report</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Shell</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>network:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>network:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>=====&gt; node-js-app network information
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>       Network attach post create:
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>       Network attach post deploy:
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>       Network bind all interfaces:   false
-<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>       Network computed attach post create:
-<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>       Network computed attach post deploy:
-<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>       Network computed bind all interfaces:false
-<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>       Network computed initial network:
-<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>       Network computed tld:
-<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>       Network global attach post create:
-<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>       Network global attach post deploy:
-<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>       Network global bind all interfaces:false
-<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>       Network global initial network:
-<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>       Network global tld:
-<a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>       Network initial network:
-<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>       Network tld:
-<a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a>       Network web listeners: 172.17.0.1:5000
-<a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a>=====&gt; python-sample network information
-<a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a>       Network attach post create:
-<a id="__codelineno-40-20" name="__codelineno-40-20" href="#__codelineno-40-20"></a>       Network attach post deploy:
-<a id="__codelineno-40-21" name="__codelineno-40-21" href="#__codelineno-40-21"></a>       Network bind all interfaces:   false
-<a id="__codelineno-40-22" name="__codelineno-40-22" href="#__codelineno-40-22"></a>       Network computed attach post create:
-<a id="__codelineno-40-23" name="__codelineno-40-23" href="#__codelineno-40-23"></a>       Network computed attach post deploy:
-<a id="__codelineno-40-24" name="__codelineno-40-24" href="#__codelineno-40-24"></a>       Network computed bind all interfaces:false
-<a id="__codelineno-40-25" name="__codelineno-40-25" href="#__codelineno-40-25"></a>       Network computed initial network:
-<a id="__codelineno-40-26" name="__codelineno-40-26" href="#__codelineno-40-26"></a>       Network computed tld:
-<a id="__codelineno-40-27" name="__codelineno-40-27" href="#__codelineno-40-27"></a>       Network global attach post create:
-<a id="__codelineno-40-28" name="__codelineno-40-28" href="#__codelineno-40-28"></a>       Network global attach post deploy:
-<a id="__codelineno-40-29" name="__codelineno-40-29" href="#__codelineno-40-29"></a>       Network global bind all interfaces:false
-<a id="__codelineno-40-30" name="__codelineno-40-30" href="#__codelineno-40-30"></a>       Network global initial network:
-<a id="__codelineno-40-31" name="__codelineno-40-31" href="#__codelineno-40-31"></a>       Network global tld:
-<a id="__codelineno-40-32" name="__codelineno-40-32" href="#__codelineno-40-32"></a>       Network initial network:
-<a id="__codelineno-40-33" name="__codelineno-40-33" href="#__codelineno-40-33"></a>       Network tld:
-<a id="__codelineno-40-34" name="__codelineno-40-34" href="#__codelineno-40-34"></a>       Network web listeners:          172.17.0.2:5000
-<a id="__codelineno-40-35" name="__codelineno-40-35" href="#__codelineno-40-35"></a>=====&gt; ruby-sample network information
-<a id="__codelineno-40-36" name="__codelineno-40-36" href="#__codelineno-40-36"></a>       Network attach post create:
-<a id="__codelineno-40-37" name="__codelineno-40-37" href="#__codelineno-40-37"></a>       Network attach post deploy:
-<a id="__codelineno-40-38" name="__codelineno-40-38" href="#__codelineno-40-38"></a>       Network bind all interfaces:   false
-<a id="__codelineno-40-39" name="__codelineno-40-39" href="#__codelineno-40-39"></a>       Network computed attach post create:
-<a id="__codelineno-40-40" name="__codelineno-40-40" href="#__codelineno-40-40"></a>       Network computed attach post deploy:
-<a id="__codelineno-40-41" name="__codelineno-40-41" href="#__codelineno-40-41"></a>       Network computed bind all interfaces:false
-<a id="__codelineno-40-42" name="__codelineno-40-42" href="#__codelineno-40-42"></a>       Network computed initial network:
-<a id="__codelineno-40-43" name="__codelineno-40-43" href="#__codelineno-40-43"></a>       Network computed tld:
-<a id="__codelineno-40-44" name="__codelineno-40-44" href="#__codelineno-40-44"></a>       Network global attach post create:
-<a id="__codelineno-40-45" name="__codelineno-40-45" href="#__codelineno-40-45"></a>       Network global attach post deploy:
-<a id="__codelineno-40-46" name="__codelineno-40-46" href="#__codelineno-40-46"></a>       Network global bind all interfaces:false
-<a id="__codelineno-40-47" name="__codelineno-40-47" href="#__codelineno-40-47"></a>       Network global initial network:
-<a id="__codelineno-40-48" name="__codelineno-40-48" href="#__codelineno-40-48"></a>       Network global tld:
-<a id="__codelineno-40-49" name="__codelineno-40-49" href="#__codelineno-40-49"></a>       Network initial network:
-<a id="__codelineno-40-50" name="__codelineno-40-50" href="#__codelineno-40-50"></a>       Network tld:
-<a id="__codelineno-40-51" name="__codelineno-40-51" href="#__codelineno-40-51"></a>       Network web listeners:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>=====&gt; node-js-app network information
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>       Network attach post create:
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>       Network attach post deploy:
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>       Network bind all interfaces:   false
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>       Network computed attach post create:
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>       Network computed attach post deploy:
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a>       Network computed bind all interfaces:false
+<a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>       Network computed initial network:
+<a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a>       Network computed tld:
+<a id="__codelineno-44-10" name="__codelineno-44-10" href="#__codelineno-44-10"></a>       Network global attach post create:
+<a id="__codelineno-44-11" name="__codelineno-44-11" href="#__codelineno-44-11"></a>       Network global attach post deploy:
+<a id="__codelineno-44-12" name="__codelineno-44-12" href="#__codelineno-44-12"></a>       Network global bind all interfaces:false
+<a id="__codelineno-44-13" name="__codelineno-44-13" href="#__codelineno-44-13"></a>       Network global initial network:
+<a id="__codelineno-44-14" name="__codelineno-44-14" href="#__codelineno-44-14"></a>       Network global tld:
+<a id="__codelineno-44-15" name="__codelineno-44-15" href="#__codelineno-44-15"></a>       Network initial network:
+<a id="__codelineno-44-16" name="__codelineno-44-16" href="#__codelineno-44-16"></a>       Network tld:
+<a id="__codelineno-44-17" name="__codelineno-44-17" href="#__codelineno-44-17"></a>       Network web listeners: 172.17.0.1:5000
+<a id="__codelineno-44-18" name="__codelineno-44-18" href="#__codelineno-44-18"></a>=====&gt; python-sample network information
+<a id="__codelineno-44-19" name="__codelineno-44-19" href="#__codelineno-44-19"></a>       Network attach post create:
+<a id="__codelineno-44-20" name="__codelineno-44-20" href="#__codelineno-44-20"></a>       Network attach post deploy:
+<a id="__codelineno-44-21" name="__codelineno-44-21" href="#__codelineno-44-21"></a>       Network bind all interfaces:   false
+<a id="__codelineno-44-22" name="__codelineno-44-22" href="#__codelineno-44-22"></a>       Network computed attach post create:
+<a id="__codelineno-44-23" name="__codelineno-44-23" href="#__codelineno-44-23"></a>       Network computed attach post deploy:
+<a id="__codelineno-44-24" name="__codelineno-44-24" href="#__codelineno-44-24"></a>       Network computed bind all interfaces:false
+<a id="__codelineno-44-25" name="__codelineno-44-25" href="#__codelineno-44-25"></a>       Network computed initial network:
+<a id="__codelineno-44-26" name="__codelineno-44-26" href="#__codelineno-44-26"></a>       Network computed tld:
+<a id="__codelineno-44-27" name="__codelineno-44-27" href="#__codelineno-44-27"></a>       Network global attach post create:
+<a id="__codelineno-44-28" name="__codelineno-44-28" href="#__codelineno-44-28"></a>       Network global attach post deploy:
+<a id="__codelineno-44-29" name="__codelineno-44-29" href="#__codelineno-44-29"></a>       Network global bind all interfaces:false
+<a id="__codelineno-44-30" name="__codelineno-44-30" href="#__codelineno-44-30"></a>       Network global initial network:
+<a id="__codelineno-44-31" name="__codelineno-44-31" href="#__codelineno-44-31"></a>       Network global tld:
+<a id="__codelineno-44-32" name="__codelineno-44-32" href="#__codelineno-44-32"></a>       Network initial network:
+<a id="__codelineno-44-33" name="__codelineno-44-33" href="#__codelineno-44-33"></a>       Network tld:
+<a id="__codelineno-44-34" name="__codelineno-44-34" href="#__codelineno-44-34"></a>       Network web listeners:          172.17.0.2:5000
+<a id="__codelineno-44-35" name="__codelineno-44-35" href="#__codelineno-44-35"></a>=====&gt; ruby-sample network information
+<a id="__codelineno-44-36" name="__codelineno-44-36" href="#__codelineno-44-36"></a>       Network attach post create:
+<a id="__codelineno-44-37" name="__codelineno-44-37" href="#__codelineno-44-37"></a>       Network attach post deploy:
+<a id="__codelineno-44-38" name="__codelineno-44-38" href="#__codelineno-44-38"></a>       Network bind all interfaces:   false
+<a id="__codelineno-44-39" name="__codelineno-44-39" href="#__codelineno-44-39"></a>       Network computed attach post create:
+<a id="__codelineno-44-40" name="__codelineno-44-40" href="#__codelineno-44-40"></a>       Network computed attach post deploy:
+<a id="__codelineno-44-41" name="__codelineno-44-41" href="#__codelineno-44-41"></a>       Network computed bind all interfaces:false
+<a id="__codelineno-44-42" name="__codelineno-44-42" href="#__codelineno-44-42"></a>       Network computed initial network:
+<a id="__codelineno-44-43" name="__codelineno-44-43" href="#__codelineno-44-43"></a>       Network computed tld:
+<a id="__codelineno-44-44" name="__codelineno-44-44" href="#__codelineno-44-44"></a>       Network global attach post create:
+<a id="__codelineno-44-45" name="__codelineno-44-45" href="#__codelineno-44-45"></a>       Network global attach post deploy:
+<a id="__codelineno-44-46" name="__codelineno-44-46" href="#__codelineno-44-46"></a>       Network global bind all interfaces:false
+<a id="__codelineno-44-47" name="__codelineno-44-47" href="#__codelineno-44-47"></a>       Network global initial network:
+<a id="__codelineno-44-48" name="__codelineno-44-48" href="#__codelineno-44-48"></a>       Network global tld:
+<a id="__codelineno-44-49" name="__codelineno-44-49" href="#__codelineno-44-49"></a>       Network initial network:
+<a id="__codelineno-44-50" name="__codelineno-44-50" href="#__codelineno-44-50"></a>       Network tld:
+<a id="__codelineno-44-51" name="__codelineno-44-51" href="#__codelineno-44-51"></a>       Network web listeners:
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can run the command for a specific app also.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Shell</label><label for="__tabbed_12_2">Output</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Shell</label><label for="__tabbed_14_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>=====&gt; node-js-app network information
-<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>       Network attach post create:
-<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>       Network attach post deploy:
-<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>       Network bind all interfaces:   false
-<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>       Network computed attach post create:
-<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>       Network computed attach post deploy:
-<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>       Network computed bind all interfaces:false
-<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>       Network computed initial network:
-<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>       Network computed tld:
-<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>       Network global attach post create:
-<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>       Network global attach post deploy:
-<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>       Network global bind all interfaces:false
-<a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>       Network global initial network:
-<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>       Network global tld:
-<a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a>       Network initial network:
-<a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a>       Network tld:
-<a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a>       Network web listeners: 172.17.0.1:5000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>=====&gt; node-js-app network information
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>       Network attach post create:
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>       Network attach post deploy:
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>       Network bind all interfaces:   false
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>       Network computed attach post create:
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>       Network computed attach post deploy:
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a>       Network computed bind all interfaces:false
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a>       Network computed initial network:
+<a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a>       Network computed tld:
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a>       Network global attach post create:
+<a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a>       Network global attach post deploy:
+<a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a>       Network global bind all interfaces:false
+<a id="__codelineno-46-13" name="__codelineno-46-13" href="#__codelineno-46-13"></a>       Network global initial network:
+<a id="__codelineno-46-14" name="__codelineno-46-14" href="#__codelineno-46-14"></a>       Network global tld:
+<a id="__codelineno-46-15" name="__codelineno-46-15" href="#__codelineno-46-15"></a>       Network initial network:
+<a id="__codelineno-46-16" name="__codelineno-46-16" href="#__codelineno-46-16"></a>       Network tld:
+<a id="__codelineno-46-17" name="__codelineno-46-17" href="#__codelineno-46-17"></a>       Network web listeners: 172.17.0.1:5000
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app<span class="w"> </span>--network-bind-all-interfaces
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>network:report<span class="w"> </span>node-js-app<span class="w"> </span>--network-bind-all-interfaces
 </code></pre></div>
 
 
