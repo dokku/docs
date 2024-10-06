@@ -2760,22 +2760,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-dokku-phases" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      About Dokku phases
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phases
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#supported-docker-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Supported Docker Options
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Examples">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounting-volumes-and-host-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting volumes and host directories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2811,6 +2854,11 @@
       Displaying docker-options reports for an app
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3610,22 +3658,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-dokku-phases" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      About Dokku phases
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phases
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#supported-docker-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Supported Docker Options
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Examples">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounting-volumes-and-host-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting volumes and host directories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3661,6 +3752,11 @@
       Displaying docker-options reports for an app
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3705,52 +3801,71 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.3.17</p>
 </div>
-<p>Pass <a href="https://docs.docker.com/engine/reference/run/">container options</a> to the <code>docker run</code> command  during Dokku's <code>build</code>, <code>deploy</code> and <code>run</code> phases</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker-options:add &lt;app&gt; &lt;phase(s)&gt; OPTION    # Add Docker option to app for phase (comma-separated phase list)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker-options:clear &lt;app&gt; [&lt;phase(s)&gt;...]    # Clear a docker options from application
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker-options:clear &lt;app&gt; [&lt;phase(s)&gt;...]    # Clear a docker options from app
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker-options:remove &lt;app&gt; &lt;phase(s)&gt; OPTION # Remove Docker option from app for phase (comma-separated phase list)
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker-options:report [&lt;app&gt;] [&lt;flag&gt;]        # Displays a docker options report for one or more apps
 </code></pre></div>
+<p>The <code>docker-options</code> plugin allows users to specify custom <a href="https://docs.docker.com/engine/reference/run/">container options</a> for containers created by Dokku at various phases.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h3>
+<h4 id="phases">Phases<a class="headerlink" href="#phases" title="Permanent link">&para;</a></h4>
+<p>Dokku deploys your app in multiple "phases" and the <code>docker-options</code> plugin allows you to pass arguments to their underlying docker container:</p>
+<ul>
+<li><code>build</code>: The <code>build</code> phase is used to provide container options that are available during the build process for use by the various builders.<ul>
+<li>A given builder may strip out or ignore options that are unsupported by the builder in question - as an example, the <code>dockerfile</code> builder does not support mounted volumes.</li>
+</ul>
+</li>
+<li><code>deploy</code>: The <code>deploy</code> phase is used to provide container options that are set on <em>deployed</em> process types. This covers every process type specified in an app <code>Procfile</code> as well as any default processes your app may deploy.<ul>
+<li>The <code>deploy</code> phase is usually the correct phase to add options for</li>
+</ul>
+</li>
+<li><code>run</code>: The <code>run</code> phase is used to provide container options to one-off containers created by <code>dokku run</code>, <code>dokku run:detached</code>, and any cron tasks specified in your <code>app.json</code>.</li>
+</ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>When specifying multiple phases, they <strong>must</strong> be comma-separated <em>without</em> spaces in between each phase, like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy,run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
-</code></pre></div>
+<p>[!IMPORTANT]
+The <code>run</code> phase does <em>not</em> correspond 1-to-1 to <code>docker run</code> or <code>docker container run</code> commands. Specifying a container option at the <code>run</code> phase will only be invoked on containers created by the <code>run</code> plugin and cron tasks. Please be sure to specify options at the correct phase for your use-case.</p>
 </div>
-<h2 id="about-dokku-phases">About Dokku phases<a class="headerlink" href="#about-dokku-phases" title="Permanent link">&para;</a></h2>
-<p>Dokku deploys your application in multiple "phases" and the <code>docker-options</code> plugin allows you to pass arguments to their underlying docker container:</p>
-<ul>
-<li><code>build</code>: the container that executes the appropriate buildpack</li>
-<li><code>deploy</code>: the container that executes your running/deployed application</li>
-<li><code>run</code>: the container that executes any arbitrary command via <code>dokku run</code></li>
-</ul>
-<p>Manipulation of docker options will not restart running containers. This enables multiple options to be set/unset before final application. As such, changing an app's docker options must be followed by a <code>dokku ps:rebuild</code> in order to take effect.</p>
+<p>Adding or removing docker-options will not apply to any running containers, and only applies to containers created <em>after</em> the options have been modified. As such, changing an app's docker options must be followed by a <code>dokku ps:rebuild</code> or a deploy in order to take effect.</p>
+<h4 id="supported-docker-options">Supported Docker Options<a class="headerlink" href="#supported-docker-options" title="Permanent link">&para;</a></h4>
 <p>More information on supported Docker options can be found <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a>.</p>
 <p>Container options configured via the <code>docker-options</code> plugin are not used to modify the process a container runs. Container options are the <code>[OPTIONS]</code> portion of the following, where <code>[CONTAINER_COMMAND]</code> and <code>[ARG]</code> are the process and the arguments passed to it that are launched in the created container: <code>docker run [OPTIONS] [CONTAINER_COMMAND] [ARG...]</code>. Please see the documentation for <a href="../../deployment/builders/dockerfiles/#customizing-the-run-command">customizing the run command</a> or use a <a href="../../deployment/builders/dockerfiles/#procfiles-and-multiple-processes">Procfile</a> to modify the command used by a Dockerfile-based container.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<h3 id="add-docker-options">Add Docker options<a class="headerlink" href="#add-docker-options" title="Permanent link">&para;</a></h3>
-<p>Add some options for the deployed/running app and when executing <a href="../../processes/one-off-tasks/"><code>dokku run</code></a>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Mount a host volume in a Docker container: &quot;-v /host/path:/container/path&quot;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
+<h4 id="mounting-volumes-and-host-directories">Mounting volumes and host directories<a class="headerlink" href="#mounting-volumes-and-host-directories" title="Permanent link">&para;</a></h4>
+<p>Docker supports volume and host directory mounting via the <code>-v</code> or <code>--volume</code> flags. In order to simplify usage, Dokku provides a <code>storage</code> plugin as an abstraction to interact with persistent storage. In most cases, the Dokku project recommends using the persistent storage plugin over directly manipulating docker options at different phases. See the <a href="../persistent-storage/">persistent storage documentation</a> for more information on how to attach persistent storage to your app.</p>
+<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
+<h4 id="add-docker-options">Add Docker options<a class="headerlink" href="#add-docker-options" title="Permanent link">&para;</a></h4>
+<p>To add a docker option to an app, use the <code>docker-options:add</code> command. This takes an app name, a comma-separated list of phases, and the docker-option to add.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When <a href="https://docs.docker.com/engine/reference/run/#volume-shared-filesystems">mounting a host directory</a> in a Dokku app you should first create that directory as user <code>dokku</code> and then mount the directory under <code>/app</code> in the container using <code>docker-options</code> as above. Otherwise the app will lack write permission in the directory.</p>
-</div>
-<h3 id="remove-a-docker-option">Remove a Docker option<a class="headerlink" href="#remove-a-docker-option" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;-v /var/log/node-js-app:/app/logs&quot;</span>
+<p>Multiple phases can be specified by using a comma when specifying phases:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy,run<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
 </code></pre></div>
-<h3 id="clear-all-docker-options-for-an-app">Clear all Docker options for an app<a class="headerlink" href="#clear-all-docker-options-for-an-app" title="Permanent link">&para;</a></h3>
+<p>The <code>docker-options:add</code> does not support setting multiple options in a single call. To specify multiple options, call <code>docker-options:add</code> multiple times.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--shm-size 256m&quot;</span>
+</code></pre></div>
+<h4 id="remove-a-docker-option">Remove a Docker option<a class="headerlink" href="#remove-a-docker-option" title="Permanent link">&para;</a></h4>
+<p>To remove docker options from an app, use the <code>docker-options:remove</code> command. This takes an app name, a comma-separated list of phases, and the docker-option to remove.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;&quot;</span>--ulimit<span class="w"> </span><span class="nv">nofile</span><span class="o">=</span><span class="m">12</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Multiple phases can be specified by using a comma when specifying phases:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>deploy,run<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
+</code></pre></div>
+<p>The <code>docker-options:remove</code> does not support setting multiple options in a single call. To specify multiple options, call <code>docker-options:remove</code> multiple times.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--shm-size 256m&quot;</span>
+</code></pre></div>
+<h4 id="clear-all-docker-options-for-an-app">Clear all Docker options for an app<a class="headerlink" href="#clear-all-docker-options-for-an-app" title="Permanent link">&para;</a></h4>
 <p>Docker options can be removed for a specific app using the <code>docker-options:clear</code> command.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>-----&gt; Clearing docker-options for node-js-app on all phases
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-----&gt; Clearing docker-options for node-js-app on all phases
 </code></pre></div>
 </div>
 </div>
@@ -3759,25 +3874,25 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label><label for="__tabbed_2_3">Shell</label><label for="__tabbed_2_4">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app<span class="w"> </span>run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app<span class="w"> </span>run
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-----&gt; Clearing docker-options for node-js-app on phase run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-----&gt; Clearing docker-options for node-js-app on phase run
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app<span class="w"> </span>build,run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>docker-options:clear<span class="w"> </span>node-js-app<span class="w"> </span>build,run
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>-----&gt; Clearing docker-options for node-js-app on phase build
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>-----&gt; Clearing docker-options for node-js-app on phase run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>-----&gt; Clearing docker-options for node-js-app on phase build
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>-----&gt; Clearing docker-options for node-js-app on phase run
 </code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="displaying-docker-options-reports-for-an-app">Displaying docker-options reports for an app<a class="headerlink" href="#displaying-docker-options-reports-for-an-app" title="Permanent link">&para;</a></h3>
+<h4 id="displaying-docker-options-reports-for-an-app">Displaying docker-options reports for an app<a class="headerlink" href="#displaying-docker-options-reports-for-an-app" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.8.1</p>
@@ -3786,22 +3901,22 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>docker-options:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>docker-options:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=====&gt; node-js-app docker options information
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>       Docker options build:
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>       Docker options deploy: -v /var/log/node-js-app:/app/logs
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>       Docker options run:  -v /var/log/node-js-app:/app/logs
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>=====&gt; python-sample docker options information
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>       Docker options build:
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>       Docker options deploy:
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>       Docker options run:
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>=====&gt; ruby-sample docker options information
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>       Docker options build:
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>       Docker options deploy:
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>       Docker options run:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>=====&gt; node-js-app docker options information
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>       Docker options build:
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>       Docker options deploy: --ulimit nofile=12 --shm-size 256m
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>       Docker options run:  --ulimit nofile=12 --shm-size 256m
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>=====&gt; python-sample docker options information
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>       Docker options build:
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>       Docker options deploy:
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>       Docker options run:
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>=====&gt; ruby-sample docker options information
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>       Docker options build:
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>       Docker options deploy:
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>       Docker options run:
 </code></pre></div>
 </div>
 </div>
@@ -3810,20 +3925,20 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>docker-options:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>docker-options:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>=====&gt; node-js-app docker options information
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>       Docker options build:
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>       Docker options deploy: -v /var/log/node-js-app:/app/logs
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>       Docker options run:  -v /var/log/node-js-app:/app/logs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>=====&gt; node-js-app docker options information
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>       Docker options build:
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>       Docker options deploy: -v /var/log/node-js-app:/app/logs
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>       Docker options run:  -v /var/log/node-js-app:/app/logs
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>docker-options:report<span class="w"> </span>node-js-app<span class="w"> </span>--docker-options-build
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>docker-options:report<span class="w"> </span>node-js-app<span class="w"> </span>--docker-options-build
 </code></pre></div>
 
 
