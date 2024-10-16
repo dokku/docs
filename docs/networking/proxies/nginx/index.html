@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4432,6 +4432,18 @@
 <td>Size (with units) of client request body (usually modified for file uploads)</td>
 </tr>
 <tr>
+<td>client-body-timeout</td>
+<td><code>60s</code></td>
+<td>string</td>
+<td>Timeout (with units) for reading the client request body</td>
+</tr>
+<tr>
+<td>client-header-timeout</td>
+<td><code>60s</code></td>
+<td>string</td>
+<td>Timeout (with units) for reading the client request headers</td>
+</tr>
+<tr>
 <td>error-log-path</td>
 <td><code>${NGINX_LOG_ROOT}/${APP}-error.log</code></td>
 <td>string</td>
@@ -4460,6 +4472,18 @@
 <td><code>false</code></td>
 <td>boolean</td>
 <td>Tells the browser to include the domain in their HSTS preload lists</td>
+</tr>
+<tr>
+<td>keepalive-timeout</td>
+<td><code>75s</code></td>
+<td>string</td>
+<td>Timeout (with units) during which a keep-alive client connection will stay open on the server side</td>
+</tr>
+<tr>
+<td>lingering-timeout</td>
+<td><code>5s</code></td>
+<td>string</td>
+<td>Timeout (with units) is the maximum waiting time for more client data to arrive</td>
 </tr>
 <tr>
 <td>nginx-conf-sigil-path</td>
@@ -4492,10 +4516,28 @@
 <td>Limits the total size of buffers that can be busy sending a response to the client while the response is not yet fully read.</td>
 </tr>
 <tr>
+<td>proxy-connect-timeout</td>
+<td><code>60s</code></td>
+<td>string</td>
+<td>Timeout (with units) for establishing a connection to your backend server</td>
+</tr>
+<tr>
 <td>proxy-read-timeout</td>
 <td><code>60s</code></td>
 <td>string</td>
 <td>Timeout (with units) for reading response from your backend server</td>
+</tr>
+<tr>
+<td>proxy-send-timeout</td>
+<td><code>60s</code></td>
+<td>string</td>
+<td>Timeout (with units) for transmitting a request to your backend server</td>
+</tr>
+<tr>
+<td>send-timeout</td>
+<td><code>60s</code></td>
+<td>string</td>
+<td>Timeout (with units) for transmitting a response to your the client</td>
 </tr>
 <tr>
 <td>underscore-in-headers</td>
@@ -4841,7 +4883,7 @@ These headers indicate the IP address of the original client making the request,
     
     
   
-      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
 
