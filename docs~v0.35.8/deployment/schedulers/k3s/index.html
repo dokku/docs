@@ -4300,7 +4300,7 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <p>By default, Dokku will attempt to auto-detect the IP address of the server. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15
 </code></pre></div>
-<p>Dokku's k3s integration natively uses <code>nginx</code> as it's ingress load balancer via <a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a>. Properties set by the <code>nginx</code> plugin will be respected, either by turning them into annotations or creating a custom server/location snippet that the <code>ingress-nginx</code> project can use.</p>
+<p>Dokku's k3s integration natively uses <code>nginx</code> as it's ingress load balancer via <a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a>. Properties set by the <code>nginx</code> plugin will be respected, either by turning them into annotations or creating a custom server/location snippet that the <code>ingress-nginx</code> project can use. A <code>ps:restart</code> is required after changing nginx properties in order to have them apply to running resources.</p>
 <p>Dokku can also use Traefik on cluster initialization via the <a href="https://doc.traefik.io/traefik/providers/kubernetes-crd/">Traefik's CRDs</a>. To change the ingress, set the <code>--ingress-class</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--ingress-class<span class="w"> </span>traefik
 </code></pre></div>
@@ -4442,11 +4442,13 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <li><code>traefik_ingressroute</code></li>
 <li><code>traefik_middleware</code></li>
 </ul>
+<p>A <code>ps:restart</code> is required after setting annotations in order to have them apply to running resources.</p>
 <h4 id="removing-an-annotation">Removing an annotation<a class="headerlink" href="#removing-an-annotation" title="Permanent link">&para;</a></h4>
 <p>To unset an annotation, pass an empty value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
 <a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
+<p>A <code>ps:restart</code> is required after removing annotations in order to remove them from running resources.</p>
 <h4 id="setting-labels">Setting Labels<a class="headerlink" href="#setting-labels" title="Permanent link">&para;</a></h4>
 <p>Dokku injects certain labels into each created resource by default, but it may be necessary to inject others for tighter integration with third-party tools. The <code>scheduler-k3s:labels:set</code> command can be used to perform this task. The command takes an app name and a required <code>--resource-type</code> flag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>label.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
@@ -4468,11 +4470,13 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <li><code>traefik_ingressroute</code></li>
 <li><code>traefik_middleware</code></li>
 </ul>
+<p>A <code>ps:restart</code> is required after setting labels in order to have them apply to running resources.</p>
 <h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
 <p>To unset an label, pass an empty value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
 <a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
+<p>A <code>ps:restart</code> is required after removing labels in order to remove them from running resources.</p>
 <h3 id="autoscaling">Autoscaling<a class="headerlink" href="#autoscaling" title="Permanent link">&para;</a></h3>
 <h4 id="workload-autoscaling">Workload Autoscaling<a class="headerlink" href="#workload-autoscaling" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
@@ -4612,6 +4616,12 @@ Users with older installations will need to manually install Keda.</p>
 </ul>
 </li>
 <li><code>logs</code></li>
+<li><code>nginx</code><ul>
+<li>Properties set by the <code>nginx</code> plugin will be respected, either by turning them into annotations or creating a custom server/location snippet that the <code>ingress-nginx</code> project can use. A <code>ps:restart</code> after changing any nginx properties is required in order to have them apply.</li>
+<li>The <code>nginx:access-logs</code> and <code>nginx:error-logs</code> commands will fetch logs from one running <code>ingress-nginx</code> pod.</li>
+<li>The <code>nginx:show-config</code> command will retrieve any <code>server</code> blocks associated with a domain attached to the app from one running <code>ingress-nginx</code> pod.</li>
+</ul>
+</li>
 <li><code>ps:stop</code></li>
 <li><code>run</code><ul>
 <li>The <code>scheduler-post-run</code> trigger is not always triggered</li>
