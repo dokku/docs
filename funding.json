@@ -83,8 +83,8 @@
                 "guid": "developer-time",
                 "status": "active",
                 "name": "Developer compensation",
-                "description": "This will cover the cost of one developer working part-time on the projects.",
-                "amount": 10000,
+                "description": "This will cover the cost of one developer working full-time on the projects.",
+                "amount": 12000,
                 "currency": "USD",
                 "frequency": "monthly",
                 "channels": ["opencollective"]
