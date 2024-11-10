@@ -1,0 +1,159 @@
+{
+    "version": "v1.0.0",
+    "entity": {
+        "type": "individual",
+        "role": "owner",
+        "name": "Jose Diaz-Gonzalez",
+        "email": "dokku@josediazgonzalez.com",
+        "description": "I am a developer keenly interested in making it easier for developers to build and deploy their applications to their own servers. I believe Dokku allows developers to have a great local development experience, giving them back time they would otherwise spend dealing with infrastructure so they can create better products for their users.",
+        "webpageUrl": {
+            "url": "https://josediazgonzalez.com",
+            "wellKnown": "https://josediazgonzalez.com/.well-known/funding-manifest-urls"
+        }
+    },
+    "projects": [
+        {
+            "guid": "dokku",
+            "name": "Dokku",
+            "description": "The core repository of the Dokku project, providing the main functionality and features.",
+            "webpageUrl": {
+                "url": "https://dokku.com"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/dokku/dokku",
+                "wellKnown": "https://github.com/dokku/dokku/blob/master/.well-known/funding-manifest-urls"
+            },
+            "licenses": [
+                "spdx:MIT"
+            ],
+            "tags": [
+                "paas",
+                "docker",
+                "deployment",
+                "open-source"
+            ]
+        },
+        {
+            "guid": "herokuish",
+            "name": "Herokuish",
+            "description": "Herokuish is used by Dokku and other PaaS implementations to support Heroku buildpacks in Docker environments.",
+            "webpageUrl": {
+                "url": "https://github.com/gliderlabs/herokuish",
+                "wellKnown": "https://github.com/gliderlabs/herokuish/blob/master/.well-known/funding-manifest-urls"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/gliderlabs/herokuish",
+                "wellKnown": "https://github.com/gliderlabs/herokuish/blob/master/.well-known/funding-manifest-urls"
+            },
+            "licenses": [
+                "spdx:MIT"
+            ],
+            "tags": [
+                "heroku",
+                "buildpacks",
+                "docker",
+                "paas",
+                "open-source"
+            ]
+        }
+    ],
+    "funding": {
+        "channels": [
+            {
+                "guid": "opencollective",
+                "type": "payment-provider",
+                "address": "https://opencollective.com/dokku",
+                "description": "Support Dokku through Open Collective."
+            },
+            {
+                "guid": "patreon",
+                "type": "payment-provider",
+                "address": "https://www.patreon.com/dokku",
+                "description": "Support Dokku on Patreon."
+            },
+            {
+                "guid": "github-sponsors",
+                "type": "payment-provider",
+                "address": "https://github.com/sponsors/dokku",
+                "description": "Support Dokku through GitHub Sponsors."
+            }
+        ],
+        "plans": [
+            {
+                "guid": "developer-time",
+                "status": "active",
+                "name": "Developer compensation",
+                "description": "This will cover the cost of one developer working part-time on the projects.",
+                "amount": 10000,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": ["opencollective"]
+            }
+        ],
+        "history": [
+            {
+                "year": 2016,
+                "income": 570.00,
+                "expenses": 0.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2016 through OpenCollective."
+            },
+            {
+                "year": 2017,
+                "income": 2198.00,
+                "expenses": 0.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2017 through OpenCollective."
+            },
+            {
+                "year": 2018,
+                "income": 10933.00,
+                "expenses": 0.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2018 through OpenCollective."
+            },
+            {
+                "year": 2019,
+                "income": 8385.00,
+                "expenses": 15200.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2019 through OpenCollective."
+            },
+            {
+                "year": 2020,
+                "income": 16060.00,
+                "expenses": 17300.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2020 through OpenCollective."
+            },
+            {
+                "year": 2021,
+                "income": 6219.83,
+                "expenses": 2500.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2021 through OpenCollective."
+            },
+            {
+                "year": 2022,
+                "income": 9463.32,
+                "expenses": 8800.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2022 through OpenCollective."
+            },
+            {
+                "year": 2023,
+                "income": 10472.90,
+                "expenses": 10000.00,
+                "currency": "USD",
+                "description": "Financial summary for the year 2023 through OpenCollective."
+            },
+            {
+                "year": 2024,
+                "income": 11169.73,
+                "expenses": 11521.52,
+                "currency": "USD",
+                "description": "Financial summary for the year 2024 through OpenCollective."
+            }
+        ]
+    }
+}
