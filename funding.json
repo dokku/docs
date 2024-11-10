@@ -28,6 +28,7 @@
             ],
             "tags": [
                 "paas",
+                "devops",
                 "docker",
                 "deployment",
                 "open-source"
@@ -51,6 +52,7 @@
             "tags": [
                 "heroku",
                 "buildpacks",
+                "devops",
                 "docker",
                 "paas",
                 "open-source"
@@ -79,6 +81,16 @@
             }
         ],
         "plans": [
+            {
+                "guid": "hosting-monthly",
+                "status": "active",
+                "name": "Hosting support",
+                "description": "This roughly covers hosting costs every month for both the main/supporting sites as well as testing Dokku functionality",
+                "amount": 50,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": ["opencollective"]
+            },
             {
                 "guid": "developer-time",
                 "status": "active",
