@@ -3300,6 +3300,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#customizing-helm-chart-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Helm Chart Properties
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4183,6 +4192,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#customizing-helm-chart-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Helm Chart Properties
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4660,6 +4678,23 @@ Users with older installations will need to manually install Keda.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context
 </code></pre></div>
 <p>The default value for the <code>kube-context</code> is an empty string, and will result in Dokku using the current context within the kubeconfig.</p>
+<h3 id="customizing-helm-chart-properties">Customizing Helm Chart Properties<a class="headerlink" href="#customizing-helm-chart-properties" title="Permanent link">&para;</a></h3>
+<p>Dokku includes a number of helm charts by default with settings that are optimized for Dokku. That said, it may be useful to further customize the charts for a given environment. Users can customize which charts are installed by setting properties prefixed with <code>chart.$CHART_NAME.</code> with the <code>--global</code> flag.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>chart.cert-manager.version<span class="w"> </span><span class="m">1</span>.13.3
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Properties follow dot-notation, and are expanded according to Helm's internal logic. See the <a href="https://helm.sh/docs/helm/helm_install/#helm-install">Helm documentation</a> for <code>helm install</code> for further details.</p>
+</div>
+<p>To unset a chart property, omit the value from the <code>scheduler-k3s:set</code> call:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>chart.cert-manager.version
+</code></pre></div>
+<p>A <code>scheduler-k3s:ensure-charts</code> command with the <code>--force</code> flag is required after changing any chart properties in order to have them apply. This will install all charts, not just the ones that have changed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--force
+</code></pre></div>
+<p>Alternatively, a comma separated list of chart names can be specified to only force install the specified charts:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--force<span class="w"> </span>--chart-names<span class="w"> </span>cert-manager
+</code></pre></div>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
 <h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
