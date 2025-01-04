@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -833,6 +833,8 @@
       
         
       
+        
+      
     
     
       
@@ -1329,6 +1331,27 @@
   
   <span class="md-ellipsis">
     0.5.0 Migration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/file-formats" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
   </span>
   
 
@@ -3842,7 +3865,7 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.0</p>
 </div>
-<p>Finally, a container can be run in "detached" mode via the <code>run:detached</code> Dokku command. Running a process in detached mode will immediately return a <code>CONTAINER_ID</code>. Detached containers are run without a tty and are also removed at the end of process execution.</p>
+<p>Finally, a container can be run in "detached" mode via the <code>run:detached</code> Dokku command. Running a process in detached mode will immediately return the container name (or pod name when using the k3s scheduler). Detached containers run without a tty by default and are also removed at the end of process execution.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>run:detached<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># returns the ID of the new container</span>
 </code></pre></div>
@@ -4134,7 +4157,7 @@
     
     
   
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
 
