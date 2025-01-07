@@ -1786,6 +1786,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#configuring-the-app-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring the app label
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3821,6 +3830,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#configuring-the-app-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring the app label
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4008,6 +4026,22 @@
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?uri=https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector&quot;</span>
 </code></pre></div>
 <p>Please read the <a href="https://vector.dev/docs/reference/configuration/sinks/">sink documentation</a> for your sink of choice to configure the sink as desired.</p>
+<h5 id="configuring-the-app-label">Configuring the app label<a class="headerlink" href="#configuring-the-app-label" title="Permanent link">&para;</a></h5>
+<p>Logs shipped by vector include the label <code>com.dokku.app-name</code>, which is an alias for the app name. This can be changed via the <code>app-label-alias</code> logs property with the <code>logs:set</code> command. Specifying a new alias will reload any running vector container.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+</code></pre></div>
+<p>An alias may be removed by setting an empty value, which will also reload the running vector container.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias
+</code></pre></div>
+<p>Only one alias may be specified on a per-app basis at a given time.</p>
+<p>App label aliases can also be specified globally by specifying the <code>--global</code> flag to <code>logs:set</code> with no app name specified:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+</code></pre></div>
+<p>As with app-specific label alias settings, the global value may also be cleared by setting no value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
+</code></pre></div>
 
 
 
