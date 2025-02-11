@@ -4069,10 +4069,11 @@
 </code></pre></div>
 <p>The <code>vector</code> container will be started with the following volume mounts:</p>
 <ul>
-<li><code>/var/lib/dokku/data/logs/vector.json:/etc/vector/vector.json</code></li>
+<li><code>/var/lib/dokku/data/logs:/etc/vector</code></li>
 <li><code>/var/run/docker.sock:/var/run/docker.sock</code></li>
 <li><code>/var/log/dokku/apps:/var/log/dokku/apps</code></li>
 </ul>
+<p>The <code>/etc/vector</code> mount includes the <code>vector.json</code> configuration file, but also may be used to provide extra files to the vector container.</p>
 <p>The final volume mount - <code>/var/log/dokku/apps</code> - may be used for users that wish to ship logs to a file on disk that may be later logrotated. This directory is owned by the <code>dokku</code> user and group, with permissions set to <code>0755</code>. At this time, log-rotation is not configured for this directory.</p>
 <h4 id="stopping-the-vector-container">Stopping the Vector container<a class="headerlink" href="#stopping-the-vector-container" title="Permanent link">&para;</a></h4>
 <p>Vector may be stopped via the <code>logs:vector-stop</code> command.</p>
