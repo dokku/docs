@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -3915,18 +3915,21 @@
 <p>Having less than 1 GB of system memory available for Dokku and its containers may result in unexpected errors, such as <code>! [remote rejected] master -&gt; master (pre-receive hook declined)</code> <a href="https://github.com/npm/npm/issues/3867">during installation of NPM dependencies</a>.</p>
 <p>To work around this issue, it might suffice to augment the Linux swap file size to a maximum of twice the physical memory size.</p>
 <p>To resize the swap file of a 512 MB machine to 1 GB, follow these steps while in SSH within your machine:</p>
+<p>Note: it may be necessary to call swapoff, mkswap and swapon explicitly: <code>sudo /sbin/swapoff /var/swap.img</code>, etc.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>/var
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>touch<span class="w"> </span>swap.img
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>swap.img
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/var/swap.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1024k<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1000</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>mkswap<span class="w"> </span>/var/swap.img
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>swapon<span class="w"> </span>/var/swap.img
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>free
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/var/swap.img    none    swap    sw    0    0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
-</code></pre></div>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>swapoff<span class="w"> </span>/var/swap.img
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/var/swap.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1024k<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1000</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>mkswap<span class="w"> </span>/var/swap.img
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>swapon<span class="w"> </span>/var/swap.img
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>free
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/var/swap.img    none    swap    sw    0    0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
+</code></pre></div></p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-virtual-memory-swap-file-on-a-vps">Reference</a></p>
+<p><a href="https://serverfault.com/questions/994297/increase-swap-file-size-that-already-exists-ec-2-linux">Add'l Reference</a></p>
 
 
 
@@ -4115,7 +4118,7 @@
     
     
   
-      <script src="../../assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
 
