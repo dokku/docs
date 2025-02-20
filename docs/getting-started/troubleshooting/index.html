@@ -1591,6 +1591,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#i-deployed-a-new-application-but-an-existing-application-is-being-served-when-i-visit-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      I deployed a new application, but an existing application is being served when I visit it
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#my-application-deploys-properly-but-wont-load-in-browser-connection-refused" class="md-nav__link">
     <span class="md-ellipsis">
       My application deploys properly, but won't load in browser "connection refused"
@@ -3925,6 +3934,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#i-deployed-a-new-application-but-an-existing-application-is-being-served-when-i-visit-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      I deployed a new application, but an existing application is being served when I visit it
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#my-application-deploys-properly-but-wont-load-in-browser-connection-refused" class="md-nav__link">
     <span class="md-ellipsis">
       My application deploys properly, but won't load in browser "connection refused"
@@ -4130,9 +4148,14 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>disable
 </code></pre></div>
 <h3 id="i-cant-connect-to-my-application-because-the-server-is-sending-an-invalid-response-or-cant-provide-a-secure-connection">I can't connect to my application because the server is sending an invalid response, or can't provide a secure connection<a class="headerlink" href="#i-cant-connect-to-my-application-because-the-server-is-sending-an-invalid-response-or-cant-provide-a-secure-connection" title="Permanent link">&para;</a></h3>
-<p>This isn't usually an issue with Dokku, but rather an app config problem. This can happen when your application is configured to enforce secure connections/HSTS, but you don't have SSL set up for the app.</p>
-<p>In Rails at least, if your <code>application.rb</code> or <code>environmnents/production.rb</code> include the line <code>configure.force_ssl = true</code> which includes HSTS, try commenting that out and redeploying.</p>
-<p>If this solves the issue temporarily, longer term you should consider <a href="../../configuration/ssl/">configuring SSL</a>.</p>
+<p>This is normally a config problem with your app, rather than an issue with Dokku.</p>
+<p>One common cause is an application configured to enforce secure connections/HSTS, but SSL is not set up. In Ruby on Rails, if your <code>application.rb</code> or <code>config/environments/production.rb</code> include the line <code>configure.force_ssl = true</code>, try commenting that line out and redeploying. If this solves the issue temporarily, longer-term you should consider <a href="../../configuration/ssl/">configuring SSL</a>.</p>
+<h3 id="i-deployed-a-new-application-but-an-existing-application-is-being-served-when-i-visit-it">I deployed a new application, but an existing application is being served when I visit it<a class="headerlink" href="#i-deployed-a-new-application-but-an-existing-application-is-being-served-when-i-visit-it" title="Permanent link">&para;</a></h3>
+<p>This problem has the same cause as the previous issue: your application is attempting to enforce SSL, but SSL is not configured. Disabling SSL enforcement should solve the problem.</p>
+<p>The underlying cause is best understood with an example. Let's say you already have <code>https://apples.example.com/</code> working, and you're trying to deploy <code>bananas.example.com/</code>. But whenever you visit <code>bananas.example.com</code> you see <code>apples.example.com</code> instead. This is caused by <code>bananas.example.com</code> forcing SSL:
+1. Your browser sends a request to <code>http://bananas.example.com</code>.
+1. <code>bananas.example.com</code> issues a redirect to <code>https://bananas.example.com</code>.
+1. Your browser sends a request to <code>https://bananas.example.com</code>. But you haven't configured SSL for <code>bananas.example.com</code> yet! So this request ends up routed to <code>https://apples.example.com</code>, which <em>does</em> have an SSL config.</p>
 <h3 id="my-application-deploys-properly-but-wont-load-in-browser-connection-refused">My application deploys properly, but won't load in browser "connection refused"<a class="headerlink" href="#my-application-deploys-properly-but-wont-load-in-browser-connection-refused" title="Permanent link">&para;</a></h3>
 <p>This could be a result of a bad proxy configuration (<code>http:5000:5000</code> may be incorrect). Run <code>dokku ports:report node-js-app</code> to check if your app has the correct proxy configuration. It should show something like the following.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=====&gt; node-js-app ports information
