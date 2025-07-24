@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3967,8 +3992,9 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>domains:remove &lt;app&gt; &lt;domain&gt; [&lt;domain&gt; ...]   # Remove domains from app
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>domains:remove-global &lt;domain&gt; [&lt;domain&gt; ...]  # Remove global domain names
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>domains:report [&lt;app&gt;|--global] [&lt;flag&gt;]       # Displays a domains report for one or more apps
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>domains:set &lt;app&gt; &lt;domain&gt; [&lt;domain&gt; ...]      # Set domains for app
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>domains:set-global &lt;domain&gt; [&lt;domain&gt; ...]     # Set global domain names
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>domains:reset &lt;app&gt;                            # Reset app domains to global-configured domains
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>domains:set &lt;app&gt; &lt;domain&gt; [&lt;domain&gt; ...]      # Set domains for app
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>domains:set-global &lt;domain&gt; [&lt;domain&gt; ...]     # Set global domain names
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4010,6 +4036,9 @@
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># set all custom domains for app</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me<span class="w"> </span>dokku.org
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="c1"># delete all app domains and configure available global domains on it</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>dokku<span class="w"> </span>domains:reset<span class="w"> </span>node-js-app
 </code></pre></div>
 <h2 id="displaying-domains-reports-for-an-app">Displaying domains reports for an app<a class="headerlink" href="#displaying-domains-reports-for-an-app" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">

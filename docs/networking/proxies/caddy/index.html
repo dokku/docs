@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -2828,6 +2853,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changing-the-label-key-for-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the label key for the app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssl-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       SSL Configuration
@@ -4082,6 +4116,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changing-the-label-key-for-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the label key for the app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssl-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       SSL Configuration
@@ -4242,52 +4285,57 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying,  the Caddy container will need to be restarted.</p>
+<h3 id="changing-the-label-key-for-the-app">Changing the label key for the app<a class="headerlink" href="#changing-the-label-key-for-the-app" title="Permanent link">&para;</a></h3>
+<p>The default label key for the app is <code>caddy</code>. This can be changed by setting the <code>label-key</code> property:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>node-js-app<span class="w"> </span>label-key<span class="w"> </span>caddy_0
+</code></pre></div>
+<p>This will update the app's label key to <code>caddy_0</code>. The label key is used to identify the app in the Caddy configuration. If you change the label key, you will need to restart or rebuild the app to apply the updates.</p>
 <h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>The caddy plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling, the Caddy container will need to be restarted and apps will need to be rebuilt. All http requests will then be redirected to https.</p>
 <h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>After enabling, the Caddy container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
 <h3 id="using-caddys-internal-tls-server">Using Caddy's Internal TLS server<a class="headerlink" href="#using-caddys-internal-tls-server" title="Permanent link">&para;</a></h3>
 <p>To switch to Caddy's internal TLS server for certificate provisioning, set the <code>tls-internal</code> property. This can only be set on a per-app basis.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>node-js-app<span class="w"> </span>tls-internal<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>node-js-app<span class="w"> </span>tls-internal<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <h2 id="displaying-caddy-reports-for-an-app">Displaying Caddy reports for an app<a class="headerlink" href="#displaying-caddy-reports-for-an-app" title="Permanent link">&para;</a></h2>
 <p>You can get a report about the app's Caddy config using the <code>caddy:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>caddy:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>caddy:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>=====&gt; node-js-app caddy information
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>       Caddy letsencrypt email:
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>       Caddy letsencrypt server:
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>       Caddy log level:               ERROR
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>       Caddy polling interval:        5s
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>       Caddy tls internal:            false
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>=====&gt; python-app caddy information
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>       Caddy letsencrypt email:
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>       Caddy letsencrypt server:
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>       Caddy log level:               ERROR
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>       Caddy polling interval:        5s
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>       Caddy tls internal:            false
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>=====&gt; ruby-app caddy information
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>       Caddy letsencrypt email:
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>       Caddy letsencrypt server:
-<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>       Caddy log level:               ERROR
-<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>       Caddy polling interval:        5s
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>       Caddy tls internal:            false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>=====&gt; node-js-app caddy information
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>       Caddy letsencrypt email:
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>       Caddy letsencrypt server:
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>       Caddy log level:               ERROR
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>       Caddy polling interval:        5s
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>       Caddy tls internal:            false
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>=====&gt; python-app caddy information
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>       Caddy letsencrypt email:
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>       Caddy letsencrypt server:
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>       Caddy log level:               ERROR
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>       Caddy polling interval:        5s
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>       Caddy tls internal:            false
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>=====&gt; ruby-app caddy information
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>       Caddy letsencrypt email:
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>       Caddy letsencrypt server:
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>       Caddy log level:               ERROR
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>       Caddy polling interval:        5s
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>       Caddy tls internal:            false
 </code></pre></div>
 </div>
 </div>
@@ -4296,23 +4344,23 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>caddy:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>caddy:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>=====&gt; node-js-app caddy information
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>       Caddy letsencrypt email:
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>       Caddy letsencrypt server:
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>       Caddy log level:               ERROR
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>       Caddy polling interval:        5s
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>       Caddy tls internal:            false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>=====&gt; node-js-app caddy information
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>       Caddy image:                   lucaslorentz/caddy-docker-proxy:2.7
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>       Caddy letsencrypt email:
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>       Caddy letsencrypt server:
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>       Caddy log level:               ERROR
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>       Caddy polling interval:        5s
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>       Caddy tls internal:            false
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>caddy:report<span class="w"> </span>node-js-app<span class="w"> </span>--caddy-image
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>caddy:report<span class="w"> </span>node-js-app<span class="w"> </span>--caddy-image
 </code></pre></div>
 
 

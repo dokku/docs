@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -4147,22 +4172,10 @@
 <td>Disables the proxy in front of your application, resulting in publicly routing the docker container.</td>
 </tr>
 <tr>
-<td><code>DOKKU_DISABLE_ANSI_PREFIX_REMOVAL</code></td>
-<td>none</td>
-<td><code>dokku config:set</code> <br /> <code>/etc/environment</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code></td>
-<td>Disables removal of the ANSI prefix during deploys. Can be used in cases where the client deployer does not understand ansi escape  codes.</td>
-</tr>
-<tr>
 <td><code>DOKKU_DISABLE_APP_AUTOCREATION</code></td>
 <td>none</td>
 <td><code>dokku config:set</code></td>
 <td>Disables automatic creation of a non-existent app on deploy.</td>
-</tr>
-<tr>
-<td><code>DOKKU_DOCKER_STOP_TIMEOUT</code></td>
-<td><code>10</code></td>
-<td><code>dokku config:set</code></td>
-<td>Configurable grace period given to the <code>docker stop</code> command. If a container has not stopped by this time, a <code>kill -9</code> signal or equivalent is sent in order to force-terminate the container. Both the <code>ps:stop</code> and <code>apps:destroy</code> commands <em>also</em> respect this value. If not specified, the docker defaults for the <a href="https://docs.docker.com/engine/reference/commandline/stop/">docker stop command</a> will be used.</td>
 </tr>
 <tr>
 <td><code>DOKKU_DOCKERFILE_CACHE_BUILD</code></td>

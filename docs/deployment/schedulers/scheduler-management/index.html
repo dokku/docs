@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -4071,7 +4096,7 @@
 </ul>
 </li>
 <li><code>cron</code>: generates cron tasks for the app<ul>
-<li>triggers: cron-write</li>
+<li>triggers: scheduler-cron-write</li>
 </ul>
 </li>
 <li><code>deploy</code>: deploys app proceses and checks the status of a deploy<ul>
@@ -4099,7 +4124,11 @@
 </ul>
 </li>
 <li><code>ps:stop</code>: stops app processes<ul>
-<li>triggers: scheduler-stop</li>
+<li>triggers: scheduler-stop, scheduler-cron-write</li>
+</ul>
+</li>
+<li><code>ps:start</code>: starts app processes<ul>
+<li>triggers: scheduler-deploy, scheduler-cron-write</li>
 </ul>
 </li>
 <li><code>ps:inspect</code>: outputs inspect output for processes in an app<ul>

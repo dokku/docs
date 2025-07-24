@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3468,6 +3493,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#app-json-is-valid" class="md-nav__link">
+    <span class="md-ellipsis">
+      app-json-is-valid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#app-maybe-create" class="md-nav__link">
     <span class="md-ellipsis">
       app-maybe-create
@@ -3696,15 +3730,6 @@
   <a href="#cron-entries" class="md-nav__link">
     <span class="md-ellipsis">
       cron-entries
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cron-write" class="md-nav__link">
-    <span class="md-ellipsis">
-      cron-write
     </span>
   </a>
   
@@ -4677,6 +4702,15 @@
   <a href="#scheduler-app-status" class="md-nav__link">
     <span class="md-ellipsis">
       scheduler-app-status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduler-cron-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      scheduler-cron-write
     </span>
   </a>
   
@@ -5432,6 +5466,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#app-json-is-valid" class="md-nav__link">
+    <span class="md-ellipsis">
+      app-json-is-valid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#app-maybe-create" class="md-nav__link">
     <span class="md-ellipsis">
       app-maybe-create
@@ -5660,15 +5703,6 @@
   <a href="#cron-entries" class="md-nav__link">
     <span class="md-ellipsis">
       cron-entries
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cron-write" class="md-nav__link">
-    <span class="md-ellipsis">
-      cron-write
     </span>
   </a>
   
@@ -6647,6 +6681,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#scheduler-cron-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      scheduler-cron-write
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#scheduler-deploy" class="md-nav__link">
     <span class="md-ellipsis">
       scheduler-deploy
@@ -7019,11 +7062,11 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="app-maybe-create"><code>app-maybe-create</code><a class="headerlink" href="#app-maybe-create" title="Permanent link">&para;</a></h3>
+<h3 id="app-json-is-valid"><code>app-json-is-valid</code><a class="headerlink" href="#app-json-is-valid" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Creates an app (gated by whether this is globally enabled or not)</li>
-<li>Invoked by:</li>
-<li>Arguments: <code>$APP</code></li>
+<li>Description: Checks to see if the provided app.json file is valid</li>
+<li>Invoked by: Appjson extraction during deployment</li>
+<li>Arguments: <code>$APP $APP_JSON_PATH</code></li>
 <li>Example:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/usr/bin/env bash</span>
@@ -7032,10 +7075,10 @@
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="app-restart"><code>app-restart</code><a class="headerlink" href="#app-restart" title="Permanent link">&para;</a></h3>
+<h3 id="app-maybe-create"><code>app-maybe-create</code><a class="headerlink" href="#app-maybe-create" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Triggers an app restart</li>
-<li>Invoked by: <code>dokku config:clear</code>, <code>dokku config:set</code>, <code>dokku config:unset</code></li>
+<li>Description: Creates an app (gated by whether this is globally enabled or not)</li>
+<li>Invoked by:</li>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
@@ -7045,6 +7088,19 @@
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
+<h3 id="app-restart"><code>app-restart</code><a class="headerlink" href="#app-restart" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Description: Triggers an app restart</li>
+<li>Invoked by: <code>dokku config:clear</code>, <code>dokku config:set</code>, <code>dokku config:unset</code></li>
+<li>Arguments: <code>$APP</code></li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># TODO</span>
+</code></pre></div>
 <h3 id="app-urls"><code>app-urls</code><a class="headerlink" href="#app-urls" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Description: Allows you to change the urls Dokku reports for an application. Will override any auto-detected urls.</li>
@@ -7052,20 +7108,20 @@
 <li>Arguments: <code>$APP $URL_TYPE</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># Sets the domain to `internal.tld`</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">URL_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL_TYPE</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span>url<span class="o">)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://internal.tld/</span><span class="si">${</span><span class="nv">APP</span><span class="si">}</span><span class="s2">/&quot;</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="p">;;</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span>urls<span class="o">)</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://internal.tld/</span><span class="si">${</span><span class="nv">APP</span><span class="si">}</span><span class="s2">/&quot;</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;http://internal.tld/</span><span class="si">${</span><span class="nv">APP</span><span class="si">}</span><span class="s2">/&quot;</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="p">;;</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="k">esac</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Sets the domain to `internal.tld`</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">URL_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL_TYPE</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span>url<span class="o">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://internal.tld/</span><span class="si">${</span><span class="nv">APP</span><span class="si">}</span><span class="s2">/&quot;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span>urls<span class="o">)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://internal.tld/</span><span class="si">${</span><span class="nv">APP</span><span class="si">}</span><span class="s2">/&quot;</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;http://internal.tld/</span><span class="si">${</span><span class="nv">APP</span><span class="si">}</span><span class="s2">/&quot;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">esac</span>
 </code></pre></div>
 <h3 id="builder-build"><code>builder-build</code><a class="headerlink" href="#builder-build" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7074,11 +7130,11 @@
 <li>Arguments: <code>$BUILDER_TYPE</code> <code>$APP</code> <code>$SOURCECODE_WORK_DIR</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="builder-create-dokku-image"><code>builder-create-dokku-image</code><a class="headerlink" href="#builder-create-dokku-image" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7087,11 +7143,11 @@
 <li>Arguments: <code>$BUILDER_TYPE</code> <code>$APP</code> <code>$SOURCECODE_WORK_DIR</code> <code>$DOKKU_IMAGE</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="builder-detect"><code>builder-detect</code><a class="headerlink" href="#builder-detect" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7100,14 +7156,14 @@
 <li>Arguments: <code>$APP</code> <code>$SOURCECODE_WORK_DIR</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">SOURCECODE_WORK_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SOURCECODE_WORK_DIR</span><span class="s2">/project.toml&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;pack&quot;</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">fi</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">SOURCECODE_WORK_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SOURCECODE_WORK_DIR</span><span class="s2">/project.toml&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;pack&quot;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">fi</span>
 </code></pre></div>
 <h3 id="builder-dokku-image"><code>builder-dokku-image</code><a class="headerlink" href="#builder-dokku-image" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7116,11 +7172,11 @@
 <li>Arguments: <code>$BUILDER_TYPE</code> <code>$APP</code> <code>$SOURCECODE_WORK_DIR</code> <code>$DOKKU_IMAGE</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="builder-get-property"><code>builder-get-property</code><a class="headerlink" href="#builder-get-property" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7129,12 +7185,12 @@
 <li>Arguments: <code>$APP $KEY</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROPERTY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROPERTY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="builder-herokuish-allowed"><code>builder-herokuish-allowed</code><a class="headerlink" href="#builder-herokuish-allowed" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7143,28 +7199,15 @@
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># TODO</span>
-</code></pre></div>
-<h3 id="builder-image-is-cnb"><code>builder-image-is-cnb</code><a class="headerlink" href="#builder-image-is-cnb" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Description: Checks if an image is cnb-based</li>
-<li>Invoked by: unit tests</li>
-<li>Arguments: <code>$APP</code> <code>$IMAGE_TAG</code></li>
-<li>Example:</li>
-</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="ch">#!/usr/bin/env bash</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="builder-image-is-herokuish"><code>builder-image-is-herokuish</code><a class="headerlink" href="#builder-image-is-herokuish" title="Permanent link">&para;</a></h3>
+<h3 id="builder-image-is-cnb"><code>builder-image-is-cnb</code><a class="headerlink" href="#builder-image-is-cnb" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Checks if an image is herokuish-based</li>
+<li>Description: Checks if an image is cnb-based</li>
 <li>Invoked by: unit tests</li>
 <li>Arguments: <code>$APP</code> <code>$IMAGE_TAG</code></li>
 <li>Example:</li>
@@ -7175,11 +7218,11 @@
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="builder-release"><code>builder-release</code><a class="headerlink" href="#builder-release" title="Permanent link">&para;</a></h3>
+<h3 id="builder-image-is-herokuish"><code>builder-image-is-herokuish</code><a class="headerlink" href="#builder-image-is-herokuish" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Triggers the artifact release process</li>
-<li>Invoked by: <code>dokku deploy</code></li>
-<li>Arguments: <code>$BUILDER_TYPE</code> <code>$APP</code> <code>$IMAGE_TAG</code></li>
+<li>Description: Checks if an image is herokuish-based</li>
+<li>Invoked by: unit tests</li>
+<li>Arguments: <code>$APP</code> <code>$IMAGE_TAG</code></li>
 <li>Example:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="ch">#!/usr/bin/env bash</span>
@@ -7188,11 +7231,11 @@
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="buildpack-stack-name"><code>buildpack-stack-name</code><a class="headerlink" href="#buildpack-stack-name" title="Permanent link">&para;</a></h3>
+<h3 id="builder-release"><code>builder-release</code><a class="headerlink" href="#builder-release" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Retrieves the configured buildpack stack for the pack and herokuish builders</li>
-<li>Invoked by: builder-herokuish and builder-pack</li>
-<li>Arguments: <code>$APP</code></li>
+<li>Description: Triggers the artifact release process</li>
+<li>Invoked by: <code>dokku deploy</code></li>
+<li>Arguments: <code>$BUILDER_TYPE</code> <code>$APP</code> <code>$IMAGE_TAG</code></li>
 <li>Example:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="ch">#!/usr/bin/env bash</span>
@@ -7201,10 +7244,10 @@
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="caddy-template-source"><code>caddy-template-source</code><a class="headerlink" href="#caddy-template-source" title="Permanent link">&para;</a></h3>
+<h3 id="buildpack-stack-name"><code>buildpack-stack-name</code><a class="headerlink" href="#buildpack-stack-name" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Retrieves an alternative template for the caddy compose config</li>
-<li>Invoked by: caddy-vhosts</li>
+<li>Description: Retrieves the configured buildpack stack for the pack and herokuish builders</li>
+<li>Invoked by: builder-herokuish and builder-pack</li>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
@@ -7214,10 +7257,10 @@
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="certs-exists"><code>certs-exists</code><a class="headerlink" href="#certs-exists" title="Permanent link">&para;</a></h3>
+<h3 id="caddy-template-source"><code>caddy-template-source</code><a class="headerlink" href="#caddy-template-source" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Echos <code>true</code> if certs exists for the app, <code>false</code> otherwise</li>
-<li>Invoked by:</li>
+<li>Description: Retrieves an alternative template for the caddy compose config</li>
+<li>Invoked by: caddy-vhosts</li>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
@@ -7227,9 +7270,9 @@
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
-<h3 id="certs-force"><code>certs-force</code><a class="headerlink" href="#certs-force" title="Permanent link">&para;</a></h3>
+<h3 id="certs-exists"><code>certs-exists</code><a class="headerlink" href="#certs-exists" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Echos <code>true</code> if a cert should be simulated for the app, no output otherwise</li>
+<li>Description: Echos <code>true</code> if certs exists for the app, <code>false</code> otherwise</li>
 <li>Invoked by:</li>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
@@ -7240,6 +7283,19 @@
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
 <a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
+<h3 id="certs-force"><code>certs-force</code><a class="headerlink" href="#certs-force" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Description: Echos <code>true</code> if a cert should be simulated for the app, no output otherwise</li>
+<li>Invoked by:</li>
+<li>Arguments: <code>$APP</code></li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># TODO</span>
+</code></pre></div>
 <h3 id="check-deploy"><code>check-deploy</code><a class="headerlink" href="#check-deploy" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Description: Allows you to run checks on a deploy before Dokku allows the container to handle requests.</li>
@@ -7247,22 +7303,22 @@
 <li>Arguments: <code>$APP $CONTAINER_ID $PROC_TYPE $PORT $IP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1"># Disables deploys of containers based on whether the</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1"># `DOKKU_DISABLE_DEPLOY` env var is set to `true` for an app</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_AVAILABLE_PATH</span><span class="s2">/config/functions&quot;</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROC_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>config_export<span class="w"> </span>app<span class="w"> </span><span class="nv">$APP</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="nv">DOKKU_DISABLE_DEPLOY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOKKU_DISABLE_DEPLOY</span><span class="k">:-</span><span class="nv">false</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DOKKU_DISABLE_DEPLOY</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\033[31m\033[1mDeploys disabled, sorry.\033[0m&quot;</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="k">fi</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># Disables deploys of containers based on whether the</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># `DOKKU_DISABLE_DEPLOY` env var is set to `true` for an app</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_AVAILABLE_PATH</span><span class="s2">/config/functions&quot;</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROC_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>config_export<span class="w"> </span>app<span class="w"> </span><span class="nv">$APP</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="nv">DOKKU_DISABLE_DEPLOY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOKKU_DISABLE_DEPLOY</span><span class="k">:-</span><span class="nv">false</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DOKKU_DISABLE_DEPLOY</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\033[31m\033[1mDeploys disabled, sorry.\033[0m&quot;</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="k">fi</span>
 </code></pre></div>
 <h3 id="checks-get-property"><code>checks-get-property</code><a class="headerlink" href="#checks-get-property" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7271,12 +7327,12 @@
 <li>Arguments: <code>$APP $KEY</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROPERTY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROPERTY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="commands-help-and-commands-plugin_namehelp"><code>commands help</code> and <code>commands &lt;PLUGIN_NAME&gt;:help</code><a class="headerlink" href="#commands-help-and-commands-plugin_namehelp" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7285,43 +7341,43 @@
 <li>Arguments: None</li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># Outputs help for the derp plugin</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">  </span><span class="nb">help</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>hello:help<span class="o">)</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span>help_content_func<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">      </span><span class="nb">declare</span><span class="w"> </span><span class="nv">desc</span><span class="o">=</span><span class="s2">&quot;return help_content string&quot;</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">      </span>cat<span class="s">&lt;&lt;help_content</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="s">    hello &lt;app&gt;, Says &quot;Hello &lt;app&gt;&quot;</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="s">    hello:world, Says &quot;Hello world&quot;</span>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="s">help_content</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">    </span><span class="o">}</span>
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>
-<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello:help&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;Usage: dokku hello[:world] [&lt;app&gt;]&#39;</span>
-<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Say Hello World.&#39;</span>
-<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Example:&#39;</span>
-<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;$ dokku hello:world&#39;</span>
-<a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello world&#39;</span>
-<a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Additional commands:&#39;</span>
-<a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a><span class="w">        </span>help_content_func<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-c2<span class="w"> </span>-t<span class="w"> </span>-s,
-<a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a><span class="w">        </span>help_content_func
-<a id="__codelineno-25-30" name="__codelineno-25-30" href="#__codelineno-25-30"></a><span class="w">    </span><span class="k">fi</span>
-<a id="__codelineno-25-31" name="__codelineno-25-31" href="#__codelineno-25-31"></a><span class="w">    </span><span class="p">;;</span>
-<a id="__codelineno-25-32" name="__codelineno-25-32" href="#__codelineno-25-32"></a>
-<a id="__codelineno-25-33" name="__codelineno-25-33" href="#__codelineno-25-33"></a><span class="w">  </span>*<span class="o">)</span>
-<a id="__codelineno-25-34" name="__codelineno-25-34" href="#__codelineno-25-34"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="nv">$DOKKU_NOT_IMPLEMENTED_EXIT</span>
-<a id="__codelineno-25-35" name="__codelineno-25-35" href="#__codelineno-25-35"></a><span class="w">    </span><span class="p">;;</span>
-<a id="__codelineno-25-36" name="__codelineno-25-36" href="#__codelineno-25-36"></a>
-<a id="__codelineno-25-37" name="__codelineno-25-37" href="#__codelineno-25-37"></a><span class="k">esac</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1"># Outputs help for the derp plugin</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span><span class="nb">help</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>hello:help<span class="o">)</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">    </span>help_content_func<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">      </span><span class="nb">declare</span><span class="w"> </span><span class="nv">desc</span><span class="o">=</span><span class="s2">&quot;return help_content string&quot;</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">      </span>cat<span class="s">&lt;&lt;help_content</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="s">    hello &lt;app&gt;, Says &quot;Hello &lt;app&gt;&quot;</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="s">    hello:world, Says &quot;Hello world&quot;</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="s">help_content</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello:help&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;Usage: dokku hello[:world] [&lt;app&gt;]&#39;</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Say Hello World.&#39;</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Example:&#39;</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;$ dokku hello:world&#39;</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello world&#39;</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Additional commands:&#39;</span>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a><span class="w">        </span>help_content_func<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-c2<span class="w"> </span>-t<span class="w"> </span>-s,
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a><span class="w">        </span>help_content_func
+<a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a>
+<a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a><span class="w">  </span>*<span class="o">)</span>
+<a id="__codelineno-26-34" name="__codelineno-26-34" href="#__codelineno-26-34"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="nv">$DOKKU_NOT_IMPLEMENTED_EXIT</span>
+<a id="__codelineno-26-35" name="__codelineno-26-35" href="#__codelineno-26-35"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-26-36" name="__codelineno-26-36" href="#__codelineno-26-36"></a>
+<a id="__codelineno-26-37" name="__codelineno-26-37" href="#__codelineno-26-37"></a><span class="k">esac</span>
 </code></pre></div>
 <h3 id="config-export"><code>config-export</code><a class="headerlink" href="#config-export" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7330,11 +7386,11 @@
 <li>Arguments: <code>$APP $GLOBAL $MERGED $FORMAT</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="config-get"><code>config-get</code><a class="headerlink" href="#config-get" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7343,11 +7399,11 @@
 <li>Arguments: <code>$APP $KEY</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="config-get-global"><code>config-get-global</code><a class="headerlink" href="#config-get-global" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7356,11 +7412,11 @@
 <li>Arguments: <code>$KEY</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="core-post-deploy"><code>core-post-deploy</code><a class="headerlink" href="#core-post-deploy" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -7373,12 +7429,12 @@
 <li>Arguments: <code>$APP $INTERNAL_PORT $INTERNAL_IP_ADDRESS $IMAGE_TAG</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1"># Notify an external service that a successful deploy has occurred.</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>curl<span class="w"> </span><span class="s2">&quot;http://httpstat.us/200&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># Notify an external service that a successful deploy has occurred.</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>curl<span class="w"> </span><span class="s2">&quot;http://httpstat.us/200&quot;</span>
 </code></pre></div>
 <h3 id="core-post-extract"><code>core-post-extract</code><a class="headerlink" href="#core-post-extract" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -7391,19 +7447,19 @@
 <li>Arguments: <code>$APP</code> <code>$TMP_WORK_DIR</code> <code>$REV</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># Adds a clock process to an app&#39;s Procfile</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_CORE_AVAILABLE_PATH</span><span class="s2">/common/functions&quot;</span>
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="nv">TMP_WORK_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="nv">REV</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># optional, may not be sent for tar-based builds</span>
-<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
-<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="nb">pushd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP_WORK_DIR</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null
-<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>touch<span class="w"> </span>Procfile
-<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;clock: some-command&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>Procfile
-<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="nb">popd</span><span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># Adds a clock process to an app&#39;s Procfile</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_CORE_AVAILABLE_PATH</span><span class="s2">/common/functions&quot;</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="nv">TMP_WORK_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="nv">REV</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># optional, may not be sent for tar-based builds</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="nb">pushd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP_WORK_DIR</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>touch<span class="w"> </span>Procfile
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;clock: some-command&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>Procfile
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="nb">popd</span><span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null
 </code></pre></div>
 <h3 id="cron-get-property"><code>cron-get-property</code><a class="headerlink" href="#cron-get-property" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7412,12 +7468,12 @@
 <li>Arguments: <code>$APP $KEY</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROPERTY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROPERTY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="cron-entries"><code>cron-entries</code><a class="headerlink" href="#cron-entries" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7426,28 +7482,14 @@
 <li>Arguments: <code>$DOKKU_SCHEDULER</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_CORE_AVAILABLE_PATH</span><span class="s2">/common/functions&quot;</span>
-<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
-<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="c1"># TODO</span>
-</code></pre></div>
-<h3 id="cron-write"><code>cron-write</code><a class="headerlink" href="#cron-write" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Description: Force triggers writing out cron entries</li>
-<li>Invoked by:</li>
-<li>Arguments:</li>
-<li>Example:</li>
-</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="ch">#!/usr/bin/env bash</span>
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
 <a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
 <a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_CORE_AVAILABLE_PATH</span><span class="s2">/common/functions&quot;</span>
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="c1"># TODO</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="dependencies"><code>dependencies</code><a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
 <ul>
@@ -8428,7 +8470,7 @@
 <h3 id="post-domains-update"><code>post-domains-update</code><a class="headerlink" href="#post-domains-update" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Description: Allows you to run commands once the domain for an app has been updated. It also sends in the command that has been used. This can be "add", "clear" or "remove". The third argument will be the optional list of domains</li>
-<li>Invoked by: <code>dokku domains:add</code>, <code>dokku domains:clear</code>, <code>dokku domains:remove</code>, <code>dokku domains:set</code></li>
+<li>Invoked by: <code>dokku domains:add</code>, <code>dokku domains:clear</code>, <code>dokku domains:remove</code>, <code>dokku domains:reset</code>, <code>dokku domains:set</code></li>
 <li>Arguments: <code>$APP</code> <code>action name</code> <code>domains</code></li>
 <li>Example:</li>
 </ul>
@@ -9100,6 +9142,25 @@ between minor releases until the 1.0 release.</p>
 <a id="__codelineno-141-5" name="__codelineno-141-5" href="#__codelineno-141-5"></a>
 <a id="__codelineno-141-6" name="__codelineno-141-6" href="#__codelineno-141-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
+<h3 id="scheduler-cron-write"><code>scheduler-cron-write</code><a class="headerlink" href="#scheduler-cron-write" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The scheduler plugin trigger apis are under development and may change
+between minor releases until the 1.0 release.</p>
+</div>
+<ul>
+<li>Description: Force triggers writing out cron entries. Arguments are optional.</li>
+<li>Invoked by: <code>ps:start</code>, <code>ps:stop</code>, <code>cron:set</code></li>
+<li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-142-2" name="__codelineno-142-2" href="#__codelineno-142-2"></a>
+<a id="__codelineno-142-3" name="__codelineno-142-3" href="#__codelineno-142-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-142-4" name="__codelineno-142-4" href="#__codelineno-142-4"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN_CORE_AVAILABLE_PATH</span><span class="s2">/common/functions&quot;</span>
+<a id="__codelineno-142-5" name="__codelineno-142-5" href="#__codelineno-142-5"></a>
+<a id="__codelineno-142-6" name="__codelineno-142-6" href="#__codelineno-142-6"></a><span class="c1"># TODO</span>
+</code></pre></div>
 <h3 id="scheduler-deploy"><code>scheduler-deploy</code><a class="headerlink" href="#scheduler-deploy" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -9112,12 +9173,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $IMAGE_TAG</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-142-2" name="__codelineno-142-2" href="#__codelineno-142-2"></a>
-<a id="__codelineno-142-3" name="__codelineno-142-3" href="#__codelineno-142-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-142-4" name="__codelineno-142-4" href="#__codelineno-142-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-142-5" name="__codelineno-142-5" href="#__codelineno-142-5"></a>
-<a id="__codelineno-142-6" name="__codelineno-142-6" href="#__codelineno-142-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-143-2" name="__codelineno-143-2" href="#__codelineno-143-2"></a>
+<a id="__codelineno-143-3" name="__codelineno-143-3" href="#__codelineno-143-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-143-4" name="__codelineno-143-4" href="#__codelineno-143-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-143-5" name="__codelineno-143-5" href="#__codelineno-143-5"></a>
+<a id="__codelineno-143-6" name="__codelineno-143-6" href="#__codelineno-143-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-detect"><code>scheduler-detect</code><a class="headerlink" href="#scheduler-detect" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9131,12 +9192,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-143-2" name="__codelineno-143-2" href="#__codelineno-143-2"></a>
-<a id="__codelineno-143-3" name="__codelineno-143-3" href="#__codelineno-143-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-143-4" name="__codelineno-143-4" href="#__codelineno-143-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-143-5" name="__codelineno-143-5" href="#__codelineno-143-5"></a>
-<a id="__codelineno-143-6" name="__codelineno-143-6" href="#__codelineno-143-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-144-2" name="__codelineno-144-2" href="#__codelineno-144-2"></a>
+<a id="__codelineno-144-3" name="__codelineno-144-3" href="#__codelineno-144-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-144-4" name="__codelineno-144-4" href="#__codelineno-144-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-144-5" name="__codelineno-144-5" href="#__codelineno-144-5"></a>
+<a id="__codelineno-144-6" name="__codelineno-144-6" href="#__codelineno-144-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-enter"><code>scheduler-enter</code><a class="headerlink" href="#scheduler-enter" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9150,12 +9211,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $@</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-144-2" name="__codelineno-144-2" href="#__codelineno-144-2"></a>
-<a id="__codelineno-144-3" name="__codelineno-144-3" href="#__codelineno-144-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-144-4" name="__codelineno-144-4" href="#__codelineno-144-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-<a id="__codelineno-144-5" name="__codelineno-144-5" href="#__codelineno-144-5"></a>
-<a id="__codelineno-144-6" name="__codelineno-144-6" href="#__codelineno-144-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-145-2" name="__codelineno-145-2" href="#__codelineno-145-2"></a>
+<a id="__codelineno-145-3" name="__codelineno-145-3" href="#__codelineno-145-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-145-4" name="__codelineno-145-4" href="#__codelineno-145-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<a id="__codelineno-145-5" name="__codelineno-145-5" href="#__codelineno-145-5"></a>
+<a id="__codelineno-145-6" name="__codelineno-145-6" href="#__codelineno-145-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-inspect"><code>scheduler-inspect</code><a class="headerlink" href="#scheduler-inspect" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9169,12 +9230,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-145-2" name="__codelineno-145-2" href="#__codelineno-145-2"></a>
-<a id="__codelineno-145-3" name="__codelineno-145-3" href="#__codelineno-145-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-145-4" name="__codelineno-145-4" href="#__codelineno-145-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-145-5" name="__codelineno-145-5" href="#__codelineno-145-5"></a>
-<a id="__codelineno-145-6" name="__codelineno-145-6" href="#__codelineno-145-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-146-2" name="__codelineno-146-2" href="#__codelineno-146-2"></a>
+<a id="__codelineno-146-3" name="__codelineno-146-3" href="#__codelineno-146-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-146-4" name="__codelineno-146-4" href="#__codelineno-146-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-146-5" name="__codelineno-146-5" href="#__codelineno-146-5"></a>
+<a id="__codelineno-146-6" name="__codelineno-146-6" href="#__codelineno-146-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-is-deployed"><code>scheduler-is-deployed</code><a class="headerlink" href="#scheduler-is-deployed" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9188,12 +9249,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-146-2" name="__codelineno-146-2" href="#__codelineno-146-2"></a>
-<a id="__codelineno-146-3" name="__codelineno-146-3" href="#__codelineno-146-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-146-4" name="__codelineno-146-4" href="#__codelineno-146-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-146-5" name="__codelineno-146-5" href="#__codelineno-146-5"></a>
-<a id="__codelineno-146-6" name="__codelineno-146-6" href="#__codelineno-146-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-147-2" name="__codelineno-147-2" href="#__codelineno-147-2"></a>
+<a id="__codelineno-147-3" name="__codelineno-147-3" href="#__codelineno-147-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-147-4" name="__codelineno-147-4" href="#__codelineno-147-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-147-5" name="__codelineno-147-5" href="#__codelineno-147-5"></a>
+<a id="__codelineno-147-6" name="__codelineno-147-6" href="#__codelineno-147-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-logs"><code>scheduler-logs</code><a class="headerlink" href="#scheduler-logs" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9207,12 +9268,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $PROCESS_TYPE $TAIL $PRETTY_PRINT $NUM</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-147-2" name="__codelineno-147-2" href="#__codelineno-147-2"></a>
-<a id="__codelineno-147-3" name="__codelineno-147-3" href="#__codelineno-147-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-147-4" name="__codelineno-147-4" href="#__codelineno-147-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROCESS_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">TAIL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PRETTY_PRINT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">NUM</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$6</span><span class="s2">&quot;</span>
-<a id="__codelineno-147-5" name="__codelineno-147-5" href="#__codelineno-147-5"></a>
-<a id="__codelineno-147-6" name="__codelineno-147-6" href="#__codelineno-147-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>
+<a id="__codelineno-148-3" name="__codelineno-148-3" href="#__codelineno-148-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROCESS_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">TAIL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PRETTY_PRINT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">NUM</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$6</span><span class="s2">&quot;</span>
+<a id="__codelineno-148-5" name="__codelineno-148-5" href="#__codelineno-148-5"></a>
+<a id="__codelineno-148-6" name="__codelineno-148-6" href="#__codelineno-148-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-logs-failed"><code>scheduler-logs-failed</code><a class="headerlink" href="#scheduler-logs-failed" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9226,12 +9287,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>
-<a id="__codelineno-148-3" name="__codelineno-148-3" href="#__codelineno-148-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-148-5" name="__codelineno-148-5" href="#__codelineno-148-5"></a>
-<a id="__codelineno-148-6" name="__codelineno-148-6" href="#__codelineno-148-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-149-2" name="__codelineno-149-2" href="#__codelineno-149-2"></a>
+<a id="__codelineno-149-3" name="__codelineno-149-3" href="#__codelineno-149-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-149-4" name="__codelineno-149-4" href="#__codelineno-149-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-149-5" name="__codelineno-149-5" href="#__codelineno-149-5"></a>
+<a id="__codelineno-149-6" name="__codelineno-149-6" href="#__codelineno-149-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-proxy-logs"><code>scheduler-proxy-logs</code><a class="headerlink" href="#scheduler-proxy-logs" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9245,12 +9306,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $PROXY_TYPE $LOG_TYPE $TAIL $NUM_LINES</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-149-2" name="__codelineno-149-2" href="#__codelineno-149-2"></a>
-<a id="__codelineno-149-3" name="__codelineno-149-3" href="#__codelineno-149-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-149-4" name="__codelineno-149-4" href="#__codelineno-149-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">$PROXY_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">LOG_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">TAIL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">NUM_LINES</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$6</span><span class="s2">&quot;</span>
-<a id="__codelineno-149-5" name="__codelineno-149-5" href="#__codelineno-149-5"></a>
-<a id="__codelineno-149-6" name="__codelineno-149-6" href="#__codelineno-149-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-150-2" name="__codelineno-150-2" href="#__codelineno-150-2"></a>
+<a id="__codelineno-150-3" name="__codelineno-150-3" href="#__codelineno-150-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-150-4" name="__codelineno-150-4" href="#__codelineno-150-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">$PROXY_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">LOG_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">TAIL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">NUM_LINES</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$6</span><span class="s2">&quot;</span>
+<a id="__codelineno-150-5" name="__codelineno-150-5" href="#__codelineno-150-5"></a>
+<a id="__codelineno-150-6" name="__codelineno-150-6" href="#__codelineno-150-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-pre-restore"><code>scheduler-pre-restore</code><a class="headerlink" href="#scheduler-pre-restore" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9264,12 +9325,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-150-2" name="__codelineno-150-2" href="#__codelineno-150-2"></a>
-<a id="__codelineno-150-3" name="__codelineno-150-3" href="#__codelineno-150-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-150-4" name="__codelineno-150-4" href="#__codelineno-150-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-150-5" name="__codelineno-150-5" href="#__codelineno-150-5"></a>
-<a id="__codelineno-150-6" name="__codelineno-150-6" href="#__codelineno-150-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-151-2" name="__codelineno-151-2" href="#__codelineno-151-2"></a>
+<a id="__codelineno-151-3" name="__codelineno-151-3" href="#__codelineno-151-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-151-4" name="__codelineno-151-4" href="#__codelineno-151-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-151-5" name="__codelineno-151-5" href="#__codelineno-151-5"></a>
+<a id="__codelineno-151-6" name="__codelineno-151-6" href="#__codelineno-151-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-post-delete"><code>scheduler-post-delete</code><a class="headerlink" href="#scheduler-post-delete" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9283,12 +9344,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $IMAGE_TAG</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-151-2" name="__codelineno-151-2" href="#__codelineno-151-2"></a>
-<a id="__codelineno-151-3" name="__codelineno-151-3" href="#__codelineno-151-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-151-4" name="__codelineno-151-4" href="#__codelineno-151-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-151-5" name="__codelineno-151-5" href="#__codelineno-151-5"></a>
-<a id="__codelineno-151-6" name="__codelineno-151-6" href="#__codelineno-151-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-152-2" name="__codelineno-152-2" href="#__codelineno-152-2"></a>
+<a id="__codelineno-152-3" name="__codelineno-152-3" href="#__codelineno-152-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a>
+<a id="__codelineno-152-6" name="__codelineno-152-6" href="#__codelineno-152-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-post-deploy-process"><code>scheduler-post-deploy-process</code><a class="headerlink" href="#scheduler-post-deploy-process" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9302,12 +9363,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP $PROCESS_TYPE</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-152-2" name="__codelineno-152-2" href="#__codelineno-152-2"></a>
-<a id="__codelineno-152-3" name="__codelineno-152-3" href="#__codelineno-152-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROCESS_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a>
-<a id="__codelineno-152-6" name="__codelineno-152-6" href="#__codelineno-152-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-153-2" name="__codelineno-153-2" href="#__codelineno-153-2"></a>
+<a id="__codelineno-153-3" name="__codelineno-153-3" href="#__codelineno-153-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-153-4" name="__codelineno-153-4" href="#__codelineno-153-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROCESS_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-153-5" name="__codelineno-153-5" href="#__codelineno-153-5"></a>
+<a id="__codelineno-153-6" name="__codelineno-153-6" href="#__codelineno-153-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-post-run"><code>scheduler-post-run</code><a class="headerlink" href="#scheduler-post-run" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9321,12 +9382,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $CONTAINER_ID</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-153-2" name="__codelineno-153-2" href="#__codelineno-153-2"></a>
-<a id="__codelineno-153-3" name="__codelineno-153-3" href="#__codelineno-153-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-153-4" name="__codelineno-153-4" href="#__codelineno-153-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-153-5" name="__codelineno-153-5" href="#__codelineno-153-5"></a>
-<a id="__codelineno-153-6" name="__codelineno-153-6" href="#__codelineno-153-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>
+<a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>
+<a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-register-retired"><code>scheduler-register-retired</code><a class="headerlink" href="#scheduler-register-retired" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9340,13 +9401,13 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP $CONTAINER_ID</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>
-<a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a>
-<a id="__codelineno-154-7" name="__codelineno-154-7" href="#__codelineno-154-7"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a>
+<a id="__codelineno-155-3" name="__codelineno-155-3" href="#__codelineno-155-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-155-5" name="__codelineno-155-5" href="#__codelineno-155-5"></a><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-155-6" name="__codelineno-155-6" href="#__codelineno-155-6"></a>
+<a id="__codelineno-155-7" name="__codelineno-155-7" href="#__codelineno-155-7"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-retire"><code>scheduler-retire</code><a class="headerlink" href="#scheduler-retire" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9360,12 +9421,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a>
-<a id="__codelineno-155-3" name="__codelineno-155-3" href="#__codelineno-155-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-155-5" name="__codelineno-155-5" href="#__codelineno-155-5"></a>
-<a id="__codelineno-155-6" name="__codelineno-155-6" href="#__codelineno-155-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-156-2" name="__codelineno-156-2" href="#__codelineno-156-2"></a>
+<a id="__codelineno-156-3" name="__codelineno-156-3" href="#__codelineno-156-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-156-4" name="__codelineno-156-4" href="#__codelineno-156-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-156-5" name="__codelineno-156-5" href="#__codelineno-156-5"></a>
+<a id="__codelineno-156-6" name="__codelineno-156-6" href="#__codelineno-156-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-run"><code>scheduler-run</code><a class="headerlink" href="#scheduler-run" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9379,12 +9440,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP ...ARGS</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-156-2" name="__codelineno-156-2" href="#__codelineno-156-2"></a>
-<a id="__codelineno-156-3" name="__codelineno-156-3" href="#__codelineno-156-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-156-4" name="__codelineno-156-4" href="#__codelineno-156-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-156-5" name="__codelineno-156-5" href="#__codelineno-156-5"></a>
-<a id="__codelineno-156-6" name="__codelineno-156-6" href="#__codelineno-156-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-157-2" name="__codelineno-157-2" href="#__codelineno-157-2"></a>
+<a id="__codelineno-157-3" name="__codelineno-157-3" href="#__codelineno-157-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-157-4" name="__codelineno-157-4" href="#__codelineno-157-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-157-5" name="__codelineno-157-5" href="#__codelineno-157-5"></a>
+<a id="__codelineno-157-6" name="__codelineno-157-6" href="#__codelineno-157-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-run-list"><code>scheduler-run-list</code><a class="headerlink" href="#scheduler-run-list" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9398,12 +9459,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $FORMAT</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-157-2" name="__codelineno-157-2" href="#__codelineno-157-2"></a>
-<a id="__codelineno-157-3" name="__codelineno-157-3" href="#__codelineno-157-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-157-4" name="__codelineno-157-4" href="#__codelineno-157-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">FORMAT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-157-5" name="__codelineno-157-5" href="#__codelineno-157-5"></a>
-<a id="__codelineno-157-6" name="__codelineno-157-6" href="#__codelineno-157-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-158-2" name="__codelineno-158-2" href="#__codelineno-158-2"></a>
+<a id="__codelineno-158-3" name="__codelineno-158-3" href="#__codelineno-158-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-158-4" name="__codelineno-158-4" href="#__codelineno-158-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">FORMAT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-158-5" name="__codelineno-158-5" href="#__codelineno-158-5"></a>
+<a id="__codelineno-158-6" name="__codelineno-158-6" href="#__codelineno-158-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-run-logs"><code>scheduler-run-logs</code><a class="headerlink" href="#scheduler-run-logs" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9417,12 +9478,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $CONTAINER $TAIL $PRETTY_PRINT $NUM</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-158-2" name="__codelineno-158-2" href="#__codelineno-158-2"></a>
-<a id="__codelineno-158-3" name="__codelineno-158-3" href="#__codelineno-158-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-158-4" name="__codelineno-158-4" href="#__codelineno-158-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">TAIL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PRETTY_PRINT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">NUM</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$6</span><span class="s2">&quot;</span>
-<a id="__codelineno-158-5" name="__codelineno-158-5" href="#__codelineno-158-5"></a>
-<a id="__codelineno-158-6" name="__codelineno-158-6" href="#__codelineno-158-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-159-2" name="__codelineno-159-2" href="#__codelineno-159-2"></a>
+<a id="__codelineno-159-3" name="__codelineno-159-3" href="#__codelineno-159-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-159-4" name="__codelineno-159-4" href="#__codelineno-159-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">TAIL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PRETTY_PRINT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">NUM</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$6</span><span class="s2">&quot;</span>
+<a id="__codelineno-159-5" name="__codelineno-159-5" href="#__codelineno-159-5"></a>
+<a id="__codelineno-159-6" name="__codelineno-159-6" href="#__codelineno-159-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-run-stop"><code>scheduler-run-stop</code><a class="headerlink" href="#scheduler-run-stop" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9436,12 +9497,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $CONTAINER_NAME</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-159-2" name="__codelineno-159-2" href="#__codelineno-159-2"></a>
-<a id="__codelineno-159-3" name="__codelineno-159-3" href="#__codelineno-159-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-159-4" name="__codelineno-159-4" href="#__codelineno-159-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-159-5" name="__codelineno-159-5" href="#__codelineno-159-5"></a>
-<a id="__codelineno-159-6" name="__codelineno-159-6" href="#__codelineno-159-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-160-2" name="__codelineno-160-2" href="#__codelineno-160-2"></a>
+<a id="__codelineno-160-3" name="__codelineno-160-3" href="#__codelineno-160-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-160-4" name="__codelineno-160-4" href="#__codelineno-160-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-160-5" name="__codelineno-160-5" href="#__codelineno-160-5"></a>
+<a id="__codelineno-160-6" name="__codelineno-160-6" href="#__codelineno-160-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-stop"><code>scheduler-stop</code><a class="headerlink" href="#scheduler-stop" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9455,12 +9516,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $REMOVE_CONTAINERS</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-160-2" name="__codelineno-160-2" href="#__codelineno-160-2"></a>
-<a id="__codelineno-160-3" name="__codelineno-160-3" href="#__codelineno-160-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-160-4" name="__codelineno-160-4" href="#__codelineno-160-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">REMOVE_CONTAINERS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-160-5" name="__codelineno-160-5" href="#__codelineno-160-5"></a>
-<a id="__codelineno-160-6" name="__codelineno-160-6" href="#__codelineno-160-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-161-2" name="__codelineno-161-2" href="#__codelineno-161-2"></a>
+<a id="__codelineno-161-3" name="__codelineno-161-3" href="#__codelineno-161-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-161-4" name="__codelineno-161-4" href="#__codelineno-161-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">REMOVE_CONTAINERS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-161-5" name="__codelineno-161-5" href="#__codelineno-161-5"></a>
+<a id="__codelineno-161-6" name="__codelineno-161-6" href="#__codelineno-161-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="storage-list"><code>storage-list</code><a class="headerlink" href="#storage-list" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9469,12 +9530,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP $PHASE $FORMAT</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-161-2" name="__codelineno-161-2" href="#__codelineno-161-2"></a>
-<a id="__codelineno-161-3" name="__codelineno-161-3" href="#__codelineno-161-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-161-4" name="__codelineno-161-4" href="#__codelineno-161-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-161-5" name="__codelineno-161-5" href="#__codelineno-161-5"></a>
-<a id="__codelineno-161-6" name="__codelineno-161-6" href="#__codelineno-161-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-162-2" name="__codelineno-162-2" href="#__codelineno-162-2"></a>
+<a id="__codelineno-162-3" name="__codelineno-162-3" href="#__codelineno-162-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-162-5" name="__codelineno-162-5" href="#__codelineno-162-5"></a>
+<a id="__codelineno-162-6" name="__codelineno-162-6" href="#__codelineno-162-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="traefik-template-source"><code>traefik-template-source</code><a class="headerlink" href="#traefik-template-source" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9483,11 +9544,11 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-162-2" name="__codelineno-162-2" href="#__codelineno-162-2"></a>
-<a id="__codelineno-162-3" name="__codelineno-162-3" href="#__codelineno-162-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a>
-<a id="__codelineno-162-5" name="__codelineno-162-5" href="#__codelineno-162-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-163-2" name="__codelineno-163-2" href="#__codelineno-163-2"></a>
+<a id="__codelineno-163-3" name="__codelineno-163-3" href="#__codelineno-163-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a>
+<a id="__codelineno-163-5" name="__codelineno-163-5" href="#__codelineno-163-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="uninstall"><code>uninstall</code><a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9496,14 +9557,14 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$PLUGIN</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-163-2" name="__codelineno-163-2" href="#__codelineno-163-2"></a><span class="c1"># Cleanup up extra containers created</span>
-<a id="__codelineno-163-3" name="__codelineno-163-3" href="#__codelineno-163-3"></a>
-<a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-163-5" name="__codelineno-163-5" href="#__codelineno-163-5"></a>
-<a id="__codelineno-163-6" name="__codelineno-163-6" href="#__codelineno-163-6"></a><span class="nv">PLUGIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-163-7" name="__codelineno-163-7" href="#__codelineno-163-7"></a>
-<a id="__codelineno-163-8" name="__codelineno-163-8" href="#__codelineno-163-8"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my-plugin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PLUGIN_IMAGE_DEPENDENCY</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-164-2" name="__codelineno-164-2" href="#__codelineno-164-2"></a><span class="c1"># Cleanup up extra containers created</span>
+<a id="__codelineno-164-3" name="__codelineno-164-3" href="#__codelineno-164-3"></a>
+<a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-164-5" name="__codelineno-164-5" href="#__codelineno-164-5"></a>
+<a id="__codelineno-164-6" name="__codelineno-164-6" href="#__codelineno-164-6"></a><span class="nv">PLUGIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-164-7" name="__codelineno-164-7" href="#__codelineno-164-7"></a>
+<a id="__codelineno-164-8" name="__codelineno-164-8" href="#__codelineno-164-8"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my-plugin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PLUGIN_IMAGE_DEPENDENCY</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>To avoid uninstalling other plugins make sure to check the plugin name like shown in the example.</p>
@@ -9515,13 +9576,13 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: None</li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-164-2" name="__codelineno-164-2" href="#__codelineno-164-2"></a><span class="c1"># Update the herokuish image from git source</span>
-<a id="__codelineno-164-3" name="__codelineno-164-3" href="#__codelineno-164-3"></a>
-<a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-164-5" name="__codelineno-164-5" href="#__codelineno-164-5"></a>
-<a id="__codelineno-164-6" name="__codelineno-164-6" href="#__codelineno-164-6"></a><span class="nb">cd</span><span class="w"> </span>/root/dokku
-<a id="__codelineno-164-7" name="__codelineno-164-7" href="#__codelineno-164-7"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-165-2" name="__codelineno-165-2" href="#__codelineno-165-2"></a><span class="c1"># Update the herokuish image from git source</span>
+<a id="__codelineno-165-3" name="__codelineno-165-3" href="#__codelineno-165-3"></a>
+<a id="__codelineno-165-4" name="__codelineno-165-4" href="#__codelineno-165-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-165-5" name="__codelineno-165-5" href="#__codelineno-165-5"></a>
+<a id="__codelineno-165-6" name="__codelineno-165-6" href="#__codelineno-165-6"></a><span class="nb">cd</span><span class="w"> </span>/root/dokku
+<a id="__codelineno-165-7" name="__codelineno-165-7" href="#__codelineno-165-7"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <h3 id="user-auth"><code>user-auth</code><a class="headerlink" href="#user-auth" title="Permanent link">&para;</a></h3>
 <p>This is a special plugin trigger that is executed on <em>every</em> command run. As Dokku sometimes internally invokes the <code>dokku</code> command, special care should be taken to properly handle internal command redirects.</p>
@@ -9532,7 +9593,7 @@ between minor releases until the 1.0 release.</p>
 </ul>
 <p>The <code>SSH_USER</code> is the original ssh user. If you are running remote commands, this user will typically be <code>dokku</code>, and as such should not be trusted when checking permissions. If you are connected via ssh as a different user who then invokes <code>dokku</code>, the value of this variable will be that user's name (<code>root</code>, <code>myuser</code>, etc.).</p>
 <p>The <code>SSH_NAME</code> is the <code>NAME</code> variable set via the <code>sshcommand acl-add</code> command. For reference, the following command can be run as the root user to specify a specific <code>NAME</code> for a given ssh key:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
 </code></pre></div>
 <p>Note that the <code>NAME</code> value is set at the first ssh key match. If an ssh key is set in the <code>/home/dokku/.ssh/authorized_keys</code> multiple times, the first match will decide the value.</p>
 <ul>
@@ -9541,27 +9602,27 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$SSH_USER $SSH_NAME $DOKKU_COMMAND</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a><span class="c1"># Allow root/admin users to do everything</span>
-<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a><span class="c1"># Deny plugin access to default users</span>
-<a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="c1"># Allow access to all other commands</span>
-<a id="__codelineno-166-5" name="__codelineno-166-5" href="#__codelineno-166-5"></a>
-<a id="__codelineno-166-6" name="__codelineno-166-6" href="#__codelineno-166-6"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-166-7" name="__codelineno-166-7" href="#__codelineno-166-7"></a>
-<a id="__codelineno-166-8" name="__codelineno-166-8" href="#__codelineno-166-8"></a><span class="nv">SSH_USER</span><span class="o">=</span><span class="nv">$1</span>
-<a id="__codelineno-166-9" name="__codelineno-166-9" href="#__codelineno-166-9"></a><span class="nv">SSH_NAME</span><span class="o">=</span><span class="nv">$2</span>
-<a id="__codelineno-166-10" name="__codelineno-166-10" href="#__codelineno-166-10"></a><span class="nb">shift</span><span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-166-11" name="__codelineno-166-11" href="#__codelineno-166-11"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-166-12" name="__codelineno-166-12" href="#__codelineno-166-12"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-166-13" name="__codelineno-166-13" href="#__codelineno-166-13"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>plugin:*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-166-14" name="__codelineno-166-14" href="#__codelineno-166-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-167-2" name="__codelineno-167-2" href="#__codelineno-167-2"></a><span class="c1"># Allow root/admin users to do everything</span>
+<a id="__codelineno-167-3" name="__codelineno-167-3" href="#__codelineno-167-3"></a><span class="c1"># Deny plugin access to default users</span>
+<a id="__codelineno-167-4" name="__codelineno-167-4" href="#__codelineno-167-4"></a><span class="c1"># Allow access to all other commands</span>
+<a id="__codelineno-167-5" name="__codelineno-167-5" href="#__codelineno-167-5"></a>
+<a id="__codelineno-167-6" name="__codelineno-167-6" href="#__codelineno-167-6"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-167-7" name="__codelineno-167-7" href="#__codelineno-167-7"></a>
+<a id="__codelineno-167-8" name="__codelineno-167-8" href="#__codelineno-167-8"></a><span class="nv">SSH_USER</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-167-9" name="__codelineno-167-9" href="#__codelineno-167-9"></a><span class="nv">SSH_NAME</span><span class="o">=</span><span class="nv">$2</span>
+<a id="__codelineno-167-10" name="__codelineno-167-10" href="#__codelineno-167-10"></a><span class="nb">shift</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-167-11" name="__codelineno-167-11" href="#__codelineno-167-11"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-167-12" name="__codelineno-167-12" href="#__codelineno-167-12"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-167-13" name="__codelineno-167-13" href="#__codelineno-167-13"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>plugin:*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-167-14" name="__codelineno-167-14" href="#__codelineno-167-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 <h3 id="user-auth-app"><code>user-auth-app</code><a class="headerlink" href="#user-auth-app" title="Permanent link">&para;</a></h3>
 <p>This is a special plugin trigger that is executed when listing apps or checking if an app exists. All Dokku commands should check if an app exists at least once before interacting with them so as not to circumvent the check.</p>
 <p>Note that the trigger should exit <code>0</code>, and each non-empty line on stdout is captured as a valid app name.</p>
 <p>The <code>SSH_USER</code> is the original ssh user. If you are running remote commands, this user will typically be <code>dokku</code>, and as such should not be trusted when checking permissions. If you are connected via ssh as a different user who then invokes <code>dokku</code>, the value of this variable will be that user's name (<code>root</code>, <code>myuser</code>, etc.).</p>
 <p>The <code>SSH_NAME</code> is the <code>NAME</code> variable set via the <code>sshcommand acl-add</code> command. For reference, the following command can be run as the root user to specify a specific <code>NAME</code> for a given ssh key:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
 </code></pre></div>
 <p>Note that the <code>NAME</code> value is set at the first ssh key match. If an ssh key is set in the <code>/home/dokku/.ssh/authorized_keys</code> multiple times, the first match will decide the value.</p>
 <ul>
@@ -9570,23 +9631,23 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$SSH_USER $SSH_NAME $DOKKU_COMMAND</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-168-2" name="__codelineno-168-2" href="#__codelineno-168-2"></a><span class="c1"># hide any apps with the prefix &quot;admin&quot;</span>
-<a id="__codelineno-168-3" name="__codelineno-168-3" href="#__codelineno-168-3"></a><span class="c1"># if the logged in user (SSH_USER) or SSH_NAME is not `root`</span>
-<a id="__codelineno-168-4" name="__codelineno-168-4" href="#__codelineno-168-4"></a>
-<a id="__codelineno-168-5" name="__codelineno-168-5" href="#__codelineno-168-5"></a>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-168-6" name="__codelineno-168-6" href="#__codelineno-168-6"></a><span class="w">  </span><span class="nb">declare</span><span class="w"> </span><span class="nv">SSH_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">SSH_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span>
-<a id="__codelineno-168-7" name="__codelineno-168-7" href="#__codelineno-168-7"></a>
-<a id="__codelineno-168-8" name="__codelineno-168-8" href="#__codelineno-168-8"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span>arg<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-168-9" name="__codelineno-168-9" href="#__codelineno-168-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>admin-*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-168-10" name="__codelineno-168-10" href="#__codelineno-168-10"></a><span class="w">      </span><span class="k">continue</span>
-<a id="__codelineno-168-11" name="__codelineno-168-11" href="#__codelineno-168-11"></a><span class="w">    </span><span class="k">fi</span>
-<a id="__codelineno-168-12" name="__codelineno-168-12" href="#__codelineno-168-12"></a>
-<a id="__codelineno-168-13" name="__codelineno-168-13" href="#__codelineno-168-13"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">arg</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-168-14" name="__codelineno-168-14" href="#__codelineno-168-14"></a><span class="w">  </span><span class="k">done</span>
-<a id="__codelineno-168-15" name="__codelineno-168-15" href="#__codelineno-168-15"></a><span class="o">}</span>
-<a id="__codelineno-168-16" name="__codelineno-168-16" href="#__codelineno-168-16"></a>
-<a id="__codelineno-168-17" name="__codelineno-168-17" href="#__codelineno-168-17"></a>main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a><span class="c1"># hide any apps with the prefix &quot;admin&quot;</span>
+<a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a><span class="c1"># if the logged in user (SSH_USER) or SSH_NAME is not `root`</span>
+<a id="__codelineno-169-4" name="__codelineno-169-4" href="#__codelineno-169-4"></a>
+<a id="__codelineno-169-5" name="__codelineno-169-5" href="#__codelineno-169-5"></a>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-169-6" name="__codelineno-169-6" href="#__codelineno-169-6"></a><span class="w">  </span><span class="nb">declare</span><span class="w"> </span><span class="nv">SSH_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">SSH_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span>
+<a id="__codelineno-169-7" name="__codelineno-169-7" href="#__codelineno-169-7"></a>
+<a id="__codelineno-169-8" name="__codelineno-169-8" href="#__codelineno-169-8"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span>arg<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-169-9" name="__codelineno-169-9" href="#__codelineno-169-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>admin-*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-169-10" name="__codelineno-169-10" href="#__codelineno-169-10"></a><span class="w">      </span><span class="k">continue</span>
+<a id="__codelineno-169-11" name="__codelineno-169-11" href="#__codelineno-169-11"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-169-12" name="__codelineno-169-12" href="#__codelineno-169-12"></a>
+<a id="__codelineno-169-13" name="__codelineno-169-13" href="#__codelineno-169-13"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">arg</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-169-14" name="__codelineno-169-14" href="#__codelineno-169-14"></a><span class="w">  </span><span class="k">done</span>
+<a id="__codelineno-169-15" name="__codelineno-169-15" href="#__codelineno-169-15"></a><span class="o">}</span>
+<a id="__codelineno-169-16" name="__codelineno-169-16" href="#__codelineno-169-16"></a>
+<a id="__codelineno-169-17" name="__codelineno-169-17" href="#__codelineno-169-17"></a>main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h3 id="vector-template-source"><code>vector-template-source</code><a class="headerlink" href="#vector-template-source" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9595,11 +9656,11 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments:</li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a>
-<a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-169-4" name="__codelineno-169-4" href="#__codelineno-169-4"></a>
-<a id="__codelineno-169-5" name="__codelineno-169-5" href="#__codelineno-169-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-170-2" name="__codelineno-170-2" href="#__codelineno-170-2"></a>
+<a id="__codelineno-170-3" name="__codelineno-170-3" href="#__codelineno-170-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-170-4" name="__codelineno-170-4" href="#__codelineno-170-4"></a>
+<a id="__codelineno-170-5" name="__codelineno-170-5" href="#__codelineno-170-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 
 

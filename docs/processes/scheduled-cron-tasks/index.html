@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -2532,23 +2557,20 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#specifying-a-mailfrom-value" class="md-nav__link">
-    <span class="md-ellipsis">
-      Specifying a MAILFROM value
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#specifying-a-mailto-value" class="md-nav__link">
+  <a href="#changing-cron-management-settings" class="md-nav__link">
     <span class="md-ellipsis">
-      Specifying a MAILTO value
+      Changing cron management settings
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Changing cron management settings">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#listing-cron-tasks" class="md-nav__link">
@@ -4022,23 +4044,20 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#specifying-a-mailfrom-value" class="md-nav__link">
-    <span class="md-ellipsis">
-      Specifying a MAILFROM value
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#specifying-a-mailto-value" class="md-nav__link">
+  <a href="#changing-cron-management-settings" class="md-nav__link">
     <span class="md-ellipsis">
-      Specifying a MAILTO value
+      Changing cron management settings
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Changing cron management settings">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#listing-cron-tasks" class="md-nav__link">
@@ -4196,25 +4215,49 @@
 <li>Scheduled cron tasks are supported on a per-scheduler basis, and are currently only implemented by the <code>docker-local</code> scheduler.</li>
 <li>Tasks for <em>all</em> apps managed by the <code>docker-local</code> scheduler are written to a single crontab file owned by the <code>dokku</code> user. The <code>dokku</code> user's crontab should be considered reserved for this purpose.</li>
 </ul>
-<h4 id="specifying-a-mailfrom-value">Specifying a MAILFROM value<a class="headerlink" href="#specifying-a-mailfrom-value" title="Permanent link">&para;</a></h4>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.35.14</p>
-</div>
-<p>Users can specify a value for <code>MAILFROM</code> via the global <code>mailfrom</code> cron property by using the <code>cron:set</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>--global<span class="w"> </span>mailfrom<span class="w"> </span>example@example.com
+<h3 id="changing-cron-management-settings">Changing cron management settings<a class="headerlink" href="#changing-cron-management-settings" title="Permanent link">&para;</a></h3>
+<p>The <code>cron</code> plugin provides a number of settings that can be used to managed deployments on a per-app basis. The following table outlines ones not covered elsewhere:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Level</th>
+<th>Global Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mailfrom</code></td>
+<td>Sets the <code>MAILFROM</code> variable in a cron file for cron reporting</td>
+<td>Global-only</td>
+<td>empty string</td>
+</tr>
+<tr>
+<td><code>maintenance</code></td>
+<td>Whether to have cron running for the app or not.</td>
+<td>App-only</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>mailto</code></td>
+<td>Sets the <code>MAILTO</code> variable in a cron file for cron reporting</td>
+<td>Global-only</td>
+<td>empty string</td>
+</tr>
+</tbody>
+</table>
+<p>All settings can be set via the <code>cron:set</code> command. Using <code>maintenance</code> as an example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>node-js-app<span class="w"> </span>maintenance<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<p>All output for individual cron runs will be sent from the specified email.</p>
-<p>Cron emails can be reset to use the system email by running the <code>cron:set</code> command for the global <code>mailfrom</code> property with no value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>--global<span class="w"> </span>mailfrom
+<p>The default value may be set by passing an empty value for the option in question:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>node-js-app<span class="w"> </span>maintenance
 </code></pre></div>
-<h4 id="specifying-a-mailto-value">Specifying a MAILTO value<a class="headerlink" href="#specifying-a-mailto-value" title="Permanent link">&para;</a></h4>
-<p>By default, cron tasks complete and do not perform any reporting. Users can specify a value for <code>MAILTO</code> via the global <code>mailto</code> cron property by using the <code>cron:set</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>--global<span class="w"> </span>mailto<span class="w"> </span>example@example.com
+<p>If a property can be set globally - such as <code>mailto</code>, use the <code>--global</code> flag. If not set for an app, the global value will apply if it exists.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>--global<span class="w"> </span>maintenance<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<p>All output for individual cron runs will be sent to the specified email.</p>
-<p>Cron emails can be disabled by running the <code>cron:set</code> command for the global <code>mailto</code> property with no value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>--global<span class="w"> </span>mailto
+<p>The global default value may be set by passing an empty value for the option.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>cron:set<span class="w"> </span>--global<span class="w"> </span>maintenance
 </code></pre></div>
 <h4 id="listing-cron-tasks">Listing Cron tasks<a class="headerlink" href="#listing-cron-tasks" title="Permanent link">&para;</a></h4>
 <p>Cron tasks for an app can be listed via the <code>cron:list</code> command. This command takes an <code>app</code> argument.</p>

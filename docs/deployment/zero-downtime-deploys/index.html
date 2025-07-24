@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1866,6 +1891,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-stop-grace-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting stop grace period
+    </span>
+  </a>
   
 </li>
       
@@ -3949,6 +3983,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#setting-stop-grace-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting stop grace period
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuring-check-settings-using-the-config-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       Configuring check settings using the config plugin
@@ -4062,11 +4105,12 @@ checks will fail. To avoid this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>checks:set<span class="w"> </span>node-js-app<span class="w"> </span>wait-to-retire<span class="w"> </span><span class="m">30</span>
 </code></pre></div>
 <p>Defaults to <code>60</code>.</p>
+<h2 id="setting-stop-grace-period">Setting stop grace period<a class="headerlink" href="#setting-stop-grace-period" title="Permanent link">&para;</a></h2>
+<p>You can set the <code>stop-timeout-seconds</code> property on the <code>ps</code> plugin to change this value (default: <code>30</code>). See the <a href="../../processes/process-management/#changing-process-management-settings">process management documentation</a> for more information.</p>
 <h2 id="configuring-check-settings-using-the-config-plugin">Configuring check settings using the <code>config</code> plugin<a class="headerlink" href="#configuring-check-settings-using-the-config-plugin" title="Permanent link">&para;</a></h2>
 <p>There are certain settings that can be configured via environment variables:</p>
 <ul>
 <li><code>DOKKU_DEFAULT_CHECKS_WAIT</code>: (default: <code>10</code>) If no user-defined checks are specified - or if the process being checked is not a <code>web</code> process - this is the period of time Dokku will wait before checking that a container is still running.</li>
-<li><code>DOKKU_DOCKER_STOP_TIMEOUT</code>: (default: <code>10</code>) Configurable grace period given to the <code>docker stop</code> command. If a container has not stopped by this time, a <code>kill -9</code> signal or equivalent is sent in order to force-terminate the container. Both the <code>ps:stop</code> and <code>apps:destroy</code> commands <em>also</em> respect this value. If not specified, the Docker defaults for the <a href="https://docs.docker.com/engine/reference/commandline/stop/"><code>docker stop</code> command</a> will be used.</li>
 </ul>
 <p>The following settings may also be specified in the <code>app.json</code> file, though are available as environment variables in order to ease application reuse.</p>
 <ul>

@@ -872,6 +872,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,6 +917,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -3483,6 +3508,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#integrating-kustomize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrating Kustomize
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#using-kubectl-remotely" class="md-nav__link">
     <span class="md-ellipsis">
       Using kubectl remotely
@@ -4412,6 +4446,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#integrating-kustomize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrating Kustomize
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#using-kubectl-remotely" class="md-nav__link">
     <span class="md-ellipsis">
       Using kubectl remotely
@@ -4640,6 +4683,11 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <td><code>deploy-timeout</code></td>
 <td>Controls when app deploys will timeout in seconds</td>
 <td><code>300s</code></td>
+</tr>
+<tr>
+<td><code>kustomize-root-path</code></td>
+<td>Controls the folder context from the deployed repository used for Kustomize</td>
+<td><code>config/kustomize</code></td>
 </tr>
 <tr>
 <td><code>image-pull-secrets</code></td>
@@ -4899,46 +4947,64 @@ Users with older installations will need to manually install Keda.</p>
 </div>
 </div>
 </div>
+<h3 id="integrating-kustomize">Integrating Kustomize<a class="headerlink" href="#integrating-kustomize" title="Permanent link">&para;</a></h3>
+<p>Dokku supports integration with <a href="https://kustomize.io/">Kustomize</a> to further customize the generated helm charts for app deployments. For example, a <code>config/kustomize/kustomization.yaml</code> file with the following contents will override the scale for each process deployed to <code>3</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize.config.k8s.io/v1beta1</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kustomization</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rendered.yaml</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="nt">patches</span><span class="p">:</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">    </span><span class="no">- op: replace</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="w">      </span><span class="no">path: /spec/replicas</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="w">      </span><span class="no">value: 3</span>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="w">  </span><span class="nt">target</span><span class="p">:</span>
+<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span>
+<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a><span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a><span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+</code></pre></div>
+<p>When using Kustomize with Dokku, all Kustomize-files <em>must</em> be placed in the <code>config/kustomize</code> folder, with a <code>kustomization.yaml</code> file being the entrypoint to Kustomize. Dokku will render the helm chart to a <code>rendered.yaml</code> file, and then execute Kustomize with the <code>config/kustomize</code> folder as the context.</p>
+<p>See the <a href="https://kustomize.io/">Kustomize</a> website for more details on how to use Kustomize.</p>
 <h3 id="using-kubectl-remotely">Using kubectl remotely<a class="headerlink" href="#using-kubectl-remotely" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Certain ports must be open for interacting with the remote kubernets api. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
 </div>
 <p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
 </code></pre></div>
 <h3 id="interacting-with-an-external-kubernetes-cluster">Interacting with an external Kubernetes cluster<a class="headerlink" href="#interacting-with-an-external-kubernetes-cluster" title="Permanent link">&para;</a></h3>
 <p>While the k3s scheduler plugin is designed to work with a Dokku-managed k3s cluster, Dokku can be configured to interact with any Kubernetes cluster by setting the global <code>kubeconfig-path</code> to a path to a custom kubeconfig on the Dokku server. This property is only available at a global level.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path<span class="w"> </span>/path/to/custom/kubeconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path<span class="w"> </span>/path/to/custom/kubeconfig
 </code></pre></div>
 <p>To set the default value, omit the value from the <code>scheduler-k3s:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path
 </code></pre></div>
 <p>The default value for the <code>kubeconfig-path</code> is the k3s kubeconfig located at <code>/etc/rancher/k3s/k3s.yaml</code>.</p>
 <h3 id="customizing-the-kubernetes-context">Customizing the Kubernetes context<a class="headerlink" href="#customizing-the-kubernetes-context" title="Permanent link">&para;</a></h3>
 <p>When interacting with a custom Kubeconfig, the <code>kube-context</code> property can be set to specify a specific context within the kubeconfig to use. This property is available only at the global leve.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context<span class="w"> </span>lollipop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context<span class="w"> </span>lollipop
 </code></pre></div>
 <p>To set the default value, omit the value from the <code>scheduler-k3s:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context
 </code></pre></div>
 <p>The default value for the <code>kube-context</code> is an empty string, and will result in Dokku using the current context within the kubeconfig.</p>
 <h3 id="customizing-helm-chart-properties">Customizing Helm Chart Properties<a class="headerlink" href="#customizing-helm-chart-properties" title="Permanent link">&para;</a></h3>
 <p>Dokku includes a number of helm charts by default with settings that are optimized for Dokku. That said, it may be useful to further customize the charts for a given environment. Users can customize which charts are installed by setting properties prefixed with <code>chart.$CHART_NAME.</code> with the <code>--global</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>chart.cert-manager.version<span class="w"> </span><span class="m">1</span>.13.3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>chart.cert-manager.version<span class="w"> </span><span class="m">1</span>.13.3
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Properties follow dot-notation, and are expanded according to Helm's internal logic. See the <a href="https://helm.sh/docs/helm/helm_install/#helm-install">Helm documentation</a> for <code>helm install</code> for further details.</p>
 </div>
 <p>To unset a chart property, omit the value from the <code>scheduler-k3s:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>chart.cert-manager.version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>chart.cert-manager.version
 </code></pre></div>
 <p>A <code>scheduler-k3s:ensure-charts</code> command with the <code>--force</code> flag is required after changing any chart properties in order to have them apply. This will install all charts, not just the ones that have changed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--force
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--force
 </code></pre></div>
 <p>Alternatively, a comma separated list of chart names can be specified to only force install the specified charts:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>cert-manager
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>cert-manager
 </code></pre></div>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented and unimplemented scheduler functionality for the <code>k3s</code> scheduler.</p>
@@ -4985,10 +5051,10 @@ Users with older installations will need to manually install Keda.</p>
 <h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
 <p>App logs for the <code>logs</code> command are fetched by Dokku from running containers via the Kubernetes api. While the <code>k3s</code> scheduler does not integrate with the <code>logs:vector-*</code> subcommands, it does respect the global <code>vector-sink</code> logs property. When that property is set, the <code>scheduler-k3s:ensure-charts</code> command can be utilized to reconfigure vector to ship kubernetes logs to the provided sink.</p>
 <p>To setup log shipping, configure the global <code>vector-sink</code> property for the <code>logs</code> plugin.. Note that this can be run before <em>or</em> after the <code>scheduler-k3s:ensure-charts</code> command - if run before, the <code>scheduler-k3s:ensure-charts</code> subcommand will pick up the value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>Next, run the <code>scheduler-k3s:ensure-charts</code> command with the <code>vector</code> chart to force the <code>k3s</code> scheduler to reconfigure vector with the specified sink:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
 </code></pre></div>
 <h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
 <p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>:</p>
