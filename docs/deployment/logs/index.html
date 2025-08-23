@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
@@ -54,6 +54,8 @@
   
   
     
+      
+      
     
   
   
@@ -4329,22 +4331,31 @@
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># the url quoted version: https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector</span>
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?uri=https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector&quot;</span>
 </code></pre></div>
+<p>For kubernetes, it may be necessary to use template syntax - <code>{{ .parent.child }}</code> - in the sink configuration. Naively using brackets will fail due to the Helm chart install process assuming that the template should be interpreted at Helm install time vs by Vector itself. To avoid this, use <code>base64enc:</code> values (available only for top-level properties at this time). The following example shows how to use <code>{{ pod }}</code> as a value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># encode the value with a Helm `print` statement wrapper</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nv">encoded</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{{ print &quot;{{ pod }}&quot; }}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="c1"># the value of encoded should be: e3sgcHJpbnQgInt7IHBvZCB9fSIgfX0K</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="c1"># set the value</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?process=base64enc%3A</span><span class="si">${</span><span class="nv">encoded</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>This will transform the value to it's encoded form when configuring Vector sinks for Kubernetes.</p>
 <p>Please read the <a href="https://vector.dev/docs/reference/configuration/sinks/">sink documentation</a> for your sink of choice to configure the sink as desired.</p>
 <h5 id="configuring-the-app-label">Configuring the app label<a class="headerlink" href="#configuring-the-app-label" title="Permanent link">&para;</a></h5>
 <p>Logs shipped by vector include the label <code>com.dokku.app-name</code>, which is an alias for the app name. This can be changed via the <code>app-label-alias</code> logs property with the <code>logs:set</code> command. Specifying a new alias will reload any running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
 </code></pre></div>
 <p>An alias may be removed by setting an empty value, which will also reload the running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias
 </code></pre></div>
 <p>Only one alias may be specified on a per-app basis at a given time.</p>
 <p>App label aliases can also be specified globally by specifying the <code>--global</code> flag to <code>logs:set</code> with no app name specified:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
 </code></pre></div>
 <p>As with app-specific label alias settings, the global value may also be cleared by setting no value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
 </code></pre></div>
 
 
@@ -4428,7 +4439,8 @@
   
 </div>
       
-        <div class="md-social">
+        
+<div class="md-social">
   
     
     

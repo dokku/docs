@@ -37,7 +37,7 @@
       
       
       <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
@@ -54,6 +54,8 @@
   
   
     
+      
+      
     
   
   
@@ -5054,8 +5056,9 @@ Users with older installations will need to manually install Keda.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>Next, run the <code>scheduler-k3s:ensure-charts</code> command with the <code>vector</code> chart to force the <code>k3s</code> scheduler to reconfigure vector with the specified sink:</p>
+<p>Please see the <a href="../../logs/#configuring-a-log-sink">vector logs documentation</a> for more information on specifying vector sinks.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
 <p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>:</p>
 <ul>
@@ -5149,7 +5152,8 @@ Users with older installations will need to manually install Keda.</p>
   
 </div>
       
-        <div class="md-social">
+        
+<div class="md-social">
   
     
     
