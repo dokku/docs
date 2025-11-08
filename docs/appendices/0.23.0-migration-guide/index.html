@@ -3933,7 +3933,7 @@
 <ul>
 <li>The <code>plugin:list</code> command no longer outputs the version for the <code>plugn</code> binary.</li>
 <li>Users building docker images that run Dokku will need to use a new sudoer wrapper for the <code>docker-image-labeler</code> binary to work correctly. A reference version has been placed in the <code>docker</code> skeleton directory. This should only impact platform developers, and users of our Docker image will already have the file available.</li>
-<li>The <code>dokku</code> user's cron is now in use by Dokku itself. Customizations will be overwritten. Users are encouraged to use a cron entry in <code>/etc/cron.d/dokku</code> to avoid this issue.</li>
+<li>The <code>dokku</code> user's cron is now in use by Dokku itself. Customizations will be overwritten. Users are encouraged to use a cron file at <code>/etc/cron.d/dokku</code> to avoid this issue.</li>
 <li>As of 0.23.0, Dokku will now inject the <code>max-size</code> log driver option for applications. This is restricted to app-configured log driver values empty, <code>local</code> or <code>json-file</code> in 0.23.1 to increase setup compatibility. Users who configure alternative log drivers at the system level will need to either set the global <code>max-size</code> property to <code>unlimited</code> or switch to the built-in <code>vector</code> logging support.</li>
 </ul>
 

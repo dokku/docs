@@ -7479,7 +7479,7 @@
 </code></pre></div>
 <h3 id="cron-entries"><code>cron-entries</code><a class="headerlink" href="#cron-entries" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Allows injecting cron entries into the written out scheduled cron task list. Each entry is newline delimited, and individual entries come in the form <code>$SCHEDULE;$FULL_COMMAND;$ARBITRARY_DATA</code>. Individual implementations of cron writing can decide whether and how to include these cron entries. The <code>ARBITRARY_DATA</code> includes the log file path for the basic <code>docker-local</code> cron implementation.</li>
+<li>Description: Allows injecting cron tasks into the written out scheduled cron task list. Each entry is newline delimited, and individual tasks come in the form <code>$SCHEDULE;$FULL_COMMAND;$ARBITRARY_DATA</code>. Individual implementations of cron writing can decide whether and how to include these cron tasks. The <code>ARBITRARY_DATA</code> includes the log file path for the basic <code>docker-local</code> cron implementation.</li>
 <li>Invoked by:</li>
 <li>Arguments: <code>$DOKKU_SCHEDULER</code></li>
 <li>Example:</li>
@@ -9151,7 +9151,7 @@ between minor releases until the 1.0 release.</p>
 between minor releases until the 1.0 release.</p>
 </div>
 <ul>
-<li>Description: Force triggers writing out cron entries. Arguments are optional.</li>
+<li>Description: Force triggers writing out cron tasks. Arguments are optional.</li>
 <li>Invoked by: <code>ps:start</code>, <code>ps:stop</code>, <code>cron:set</code></li>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
