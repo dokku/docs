@@ -876,6 +876,8 @@
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1868,6 +1893,8 @@
       
         
       
+        
+      
     
     
     
@@ -2058,6 +2085,29 @@
   
   <span class="md-ellipsis">
     Null Builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/builders/railpack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Railpack
     
   </span>
   
@@ -4872,6 +4922,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#scheduler-run-retire" class="md-nav__link">
+    <span class="md-ellipsis">
+      scheduler-run-retire
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#scheduler-run-stop" class="md-nav__link">
     <span class="md-ellipsis">
       scheduler-run-stop
@@ -6839,6 +6898,15 @@
   <a href="#scheduler-run-logs" class="md-nav__link">
     <span class="md-ellipsis">
       scheduler-run-logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduler-run-retire" class="md-nav__link">
+    <span class="md-ellipsis">
+      scheduler-run-retire
     </span>
   </a>
   
@@ -9487,6 +9555,25 @@ between minor releases until the 1.0 release.</p>
 <a id="__codelineno-159-5" name="__codelineno-159-5" href="#__codelineno-159-5"></a>
 <a id="__codelineno-159-6" name="__codelineno-159-6" href="#__codelineno-159-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
+<h3 id="scheduler-run-retire"><code>scheduler-run-retire</code><a class="headerlink" href="#scheduler-run-retire" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The scheduler plugin trigger apis are under development and may change
+between minor releases until the 1.0 release.</p>
+</div>
+<ul>
+<li>Description: Allows you to retire containers started by the <code>run</code> command</li>
+<li>Invoked by: <code>dokku run:retire</code></li>
+<li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-160-2" name="__codelineno-160-2" href="#__codelineno-160-2"></a>
+<a id="__codelineno-160-3" name="__codelineno-160-3" href="#__codelineno-160-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-160-4" name="__codelineno-160-4" href="#__codelineno-160-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-160-5" name="__codelineno-160-5" href="#__codelineno-160-5"></a>
+<a id="__codelineno-160-6" name="__codelineno-160-6" href="#__codelineno-160-6"></a><span class="c1"># TODO</span>
+</code></pre></div>
 <h3 id="scheduler-run-stop"><code>scheduler-run-stop</code><a class="headerlink" href="#scheduler-run-stop" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -9499,12 +9586,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $CONTAINER_NAME</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-160-2" name="__codelineno-160-2" href="#__codelineno-160-2"></a>
-<a id="__codelineno-160-3" name="__codelineno-160-3" href="#__codelineno-160-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-160-4" name="__codelineno-160-4" href="#__codelineno-160-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-160-5" name="__codelineno-160-5" href="#__codelineno-160-5"></a>
-<a id="__codelineno-160-6" name="__codelineno-160-6" href="#__codelineno-160-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-161-2" name="__codelineno-161-2" href="#__codelineno-161-2"></a>
+<a id="__codelineno-161-3" name="__codelineno-161-3" href="#__codelineno-161-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-161-4" name="__codelineno-161-4" href="#__codelineno-161-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-161-5" name="__codelineno-161-5" href="#__codelineno-161-5"></a>
+<a id="__codelineno-161-6" name="__codelineno-161-6" href="#__codelineno-161-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="scheduler-stop"><code>scheduler-stop</code><a class="headerlink" href="#scheduler-stop" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -9518,12 +9605,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP $REMOVE_CONTAINERS</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-161-2" name="__codelineno-161-2" href="#__codelineno-161-2"></a>
-<a id="__codelineno-161-3" name="__codelineno-161-3" href="#__codelineno-161-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-161-4" name="__codelineno-161-4" href="#__codelineno-161-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">REMOVE_CONTAINERS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-161-5" name="__codelineno-161-5" href="#__codelineno-161-5"></a>
-<a id="__codelineno-161-6" name="__codelineno-161-6" href="#__codelineno-161-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-162-2" name="__codelineno-162-2" href="#__codelineno-162-2"></a>
+<a id="__codelineno-162-3" name="__codelineno-162-3" href="#__codelineno-162-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">REMOVE_CONTAINERS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-162-5" name="__codelineno-162-5" href="#__codelineno-162-5"></a>
+<a id="__codelineno-162-6" name="__codelineno-162-6" href="#__codelineno-162-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="storage-list"><code>storage-list</code><a class="headerlink" href="#storage-list" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9532,12 +9619,12 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP $PHASE $FORMAT</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-162-2" name="__codelineno-162-2" href="#__codelineno-162-2"></a>
-<a id="__codelineno-162-3" name="__codelineno-162-3" href="#__codelineno-162-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-162-5" name="__codelineno-162-5" href="#__codelineno-162-5"></a>
-<a id="__codelineno-162-6" name="__codelineno-162-6" href="#__codelineno-162-6"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-163-2" name="__codelineno-163-2" href="#__codelineno-163-2"></a>
+<a id="__codelineno-163-3" name="__codelineno-163-3" href="#__codelineno-163-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-163-5" name="__codelineno-163-5" href="#__codelineno-163-5"></a>
+<a id="__codelineno-163-6" name="__codelineno-163-6" href="#__codelineno-163-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="traefik-template-source"><code>traefik-template-source</code><a class="headerlink" href="#traefik-template-source" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9546,11 +9633,11 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$APP</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-163-2" name="__codelineno-163-2" href="#__codelineno-163-2"></a>
-<a id="__codelineno-163-3" name="__codelineno-163-3" href="#__codelineno-163-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a>
-<a id="__codelineno-163-5" name="__codelineno-163-5" href="#__codelineno-163-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-164-2" name="__codelineno-164-2" href="#__codelineno-164-2"></a>
+<a id="__codelineno-164-3" name="__codelineno-164-3" href="#__codelineno-164-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a>
+<a id="__codelineno-164-5" name="__codelineno-164-5" href="#__codelineno-164-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 <h3 id="uninstall"><code>uninstall</code><a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9559,14 +9646,14 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$PLUGIN</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-164-2" name="__codelineno-164-2" href="#__codelineno-164-2"></a><span class="c1"># Cleanup up extra containers created</span>
-<a id="__codelineno-164-3" name="__codelineno-164-3" href="#__codelineno-164-3"></a>
-<a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-164-5" name="__codelineno-164-5" href="#__codelineno-164-5"></a>
-<a id="__codelineno-164-6" name="__codelineno-164-6" href="#__codelineno-164-6"></a><span class="nv">PLUGIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<a id="__codelineno-164-7" name="__codelineno-164-7" href="#__codelineno-164-7"></a>
-<a id="__codelineno-164-8" name="__codelineno-164-8" href="#__codelineno-164-8"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my-plugin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PLUGIN_IMAGE_DEPENDENCY</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-165-2" name="__codelineno-165-2" href="#__codelineno-165-2"></a><span class="c1"># Cleanup up extra containers created</span>
+<a id="__codelineno-165-3" name="__codelineno-165-3" href="#__codelineno-165-3"></a>
+<a id="__codelineno-165-4" name="__codelineno-165-4" href="#__codelineno-165-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-165-5" name="__codelineno-165-5" href="#__codelineno-165-5"></a>
+<a id="__codelineno-165-6" name="__codelineno-165-6" href="#__codelineno-165-6"></a><span class="nv">PLUGIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-165-7" name="__codelineno-165-7" href="#__codelineno-165-7"></a>
+<a id="__codelineno-165-8" name="__codelineno-165-8" href="#__codelineno-165-8"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PLUGIN</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my-plugin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PLUGIN_IMAGE_DEPENDENCY</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>To avoid uninstalling other plugins make sure to check the plugin name like shown in the example.</p>
@@ -9578,13 +9665,13 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: None</li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-165-2" name="__codelineno-165-2" href="#__codelineno-165-2"></a><span class="c1"># Update the herokuish image from git source</span>
-<a id="__codelineno-165-3" name="__codelineno-165-3" href="#__codelineno-165-3"></a>
-<a id="__codelineno-165-4" name="__codelineno-165-4" href="#__codelineno-165-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-165-5" name="__codelineno-165-5" href="#__codelineno-165-5"></a>
-<a id="__codelineno-165-6" name="__codelineno-165-6" href="#__codelineno-165-6"></a><span class="nb">cd</span><span class="w"> </span>/root/dokku
-<a id="__codelineno-165-7" name="__codelineno-165-7" href="#__codelineno-165-7"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a><span class="c1"># Update the herokuish image from git source</span>
+<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>
+<a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-166-5" name="__codelineno-166-5" href="#__codelineno-166-5"></a>
+<a id="__codelineno-166-6" name="__codelineno-166-6" href="#__codelineno-166-6"></a><span class="nb">cd</span><span class="w"> </span>/root/dokku
+<a id="__codelineno-166-7" name="__codelineno-166-7" href="#__codelineno-166-7"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <h3 id="user-auth"><code>user-auth</code><a class="headerlink" href="#user-auth" title="Permanent link">&para;</a></h3>
 <p>This is a special plugin trigger that is executed on <em>every</em> command run. As Dokku sometimes internally invokes the <code>dokku</code> command, special care should be taken to properly handle internal command redirects.</p>
@@ -9595,7 +9682,7 @@ between minor releases until the 1.0 release.</p>
 </ul>
 <p>The <code>SSH_USER</code> is the original ssh user. If you are running remote commands, this user will typically be <code>dokku</code>, and as such should not be trusted when checking permissions. If you are connected via ssh as a different user who then invokes <code>dokku</code>, the value of this variable will be that user's name (<code>root</code>, <code>myuser</code>, etc.).</p>
 <p>The <code>SSH_NAME</code> is the <code>NAME</code> variable set via the <code>sshcommand acl-add</code> command. For reference, the following command can be run as the root user to specify a specific <code>NAME</code> for a given ssh key:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
 </code></pre></div>
 <p>Note that the <code>NAME</code> value is set at the first ssh key match. If an ssh key is set in the <code>/home/dokku/.ssh/authorized_keys</code> multiple times, the first match will decide the value.</p>
 <ul>
@@ -9604,27 +9691,27 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$SSH_USER $SSH_NAME $DOKKU_COMMAND</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-167-2" name="__codelineno-167-2" href="#__codelineno-167-2"></a><span class="c1"># Allow root/admin users to do everything</span>
-<a id="__codelineno-167-3" name="__codelineno-167-3" href="#__codelineno-167-3"></a><span class="c1"># Deny plugin access to default users</span>
-<a id="__codelineno-167-4" name="__codelineno-167-4" href="#__codelineno-167-4"></a><span class="c1"># Allow access to all other commands</span>
-<a id="__codelineno-167-5" name="__codelineno-167-5" href="#__codelineno-167-5"></a>
-<a id="__codelineno-167-6" name="__codelineno-167-6" href="#__codelineno-167-6"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-167-7" name="__codelineno-167-7" href="#__codelineno-167-7"></a>
-<a id="__codelineno-167-8" name="__codelineno-167-8" href="#__codelineno-167-8"></a><span class="nv">SSH_USER</span><span class="o">=</span><span class="nv">$1</span>
-<a id="__codelineno-167-9" name="__codelineno-167-9" href="#__codelineno-167-9"></a><span class="nv">SSH_NAME</span><span class="o">=</span><span class="nv">$2</span>
-<a id="__codelineno-167-10" name="__codelineno-167-10" href="#__codelineno-167-10"></a><span class="nb">shift</span><span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-167-11" name="__codelineno-167-11" href="#__codelineno-167-11"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-167-12" name="__codelineno-167-12" href="#__codelineno-167-12"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-167-13" name="__codelineno-167-13" href="#__codelineno-167-13"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>plugin:*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-167-14" name="__codelineno-167-14" href="#__codelineno-167-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-168-2" name="__codelineno-168-2" href="#__codelineno-168-2"></a><span class="c1"># Allow root/admin users to do everything</span>
+<a id="__codelineno-168-3" name="__codelineno-168-3" href="#__codelineno-168-3"></a><span class="c1"># Deny plugin access to default users</span>
+<a id="__codelineno-168-4" name="__codelineno-168-4" href="#__codelineno-168-4"></a><span class="c1"># Allow access to all other commands</span>
+<a id="__codelineno-168-5" name="__codelineno-168-5" href="#__codelineno-168-5"></a>
+<a id="__codelineno-168-6" name="__codelineno-168-6" href="#__codelineno-168-6"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-168-7" name="__codelineno-168-7" href="#__codelineno-168-7"></a>
+<a id="__codelineno-168-8" name="__codelineno-168-8" href="#__codelineno-168-8"></a><span class="nv">SSH_USER</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-168-9" name="__codelineno-168-9" href="#__codelineno-168-9"></a><span class="nv">SSH_NAME</span><span class="o">=</span><span class="nv">$2</span>
+<a id="__codelineno-168-10" name="__codelineno-168-10" href="#__codelineno-168-10"></a><span class="nb">shift</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-168-11" name="__codelineno-168-11" href="#__codelineno-168-11"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-168-12" name="__codelineno-168-12" href="#__codelineno-168-12"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-168-13" name="__codelineno-168-13" href="#__codelineno-168-13"></a><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>plugin:*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-168-14" name="__codelineno-168-14" href="#__codelineno-168-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 <h3 id="user-auth-app"><code>user-auth-app</code><a class="headerlink" href="#user-auth-app" title="Permanent link">&para;</a></h3>
 <p>This is a special plugin trigger that is executed when listing apps or checking if an app exists. All Dokku commands should check if an app exists at least once before interacting with them so as not to circumvent the check.</p>
 <p>Note that the trigger should exit <code>0</code>, and each non-empty line on stdout is captured as a valid app name.</p>
 <p>The <code>SSH_USER</code> is the original ssh user. If you are running remote commands, this user will typically be <code>dokku</code>, and as such should not be trusted when checking permissions. If you are connected via ssh as a different user who then invokes <code>dokku</code>, the value of this variable will be that user's name (<code>root</code>, <code>myuser</code>, etc.).</p>
 <p>The <code>SSH_NAME</code> is the <code>NAME</code> variable set via the <code>sshcommand acl-add</code> command. For reference, the following command can be run as the root user to specify a specific <code>NAME</code> for a given ssh key:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a>sshcommand<span class="w"> </span>acl-add<span class="w"> </span>dokku<span class="w"> </span>NAME<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PATH_TO_SSH_KEY</span>
 </code></pre></div>
 <p>Note that the <code>NAME</code> value is set at the first ssh key match. If an ssh key is set in the <code>/home/dokku/.ssh/authorized_keys</code> multiple times, the first match will decide the value.</p>
 <ul>
@@ -9633,23 +9720,23 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments: <code>$SSH_USER $SSH_NAME $DOKKU_COMMAND</code></li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a><span class="c1"># hide any apps with the prefix &quot;admin&quot;</span>
-<a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a><span class="c1"># if the logged in user (SSH_USER) or SSH_NAME is not `root`</span>
-<a id="__codelineno-169-4" name="__codelineno-169-4" href="#__codelineno-169-4"></a>
-<a id="__codelineno-169-5" name="__codelineno-169-5" href="#__codelineno-169-5"></a>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-169-6" name="__codelineno-169-6" href="#__codelineno-169-6"></a><span class="w">  </span><span class="nb">declare</span><span class="w"> </span><span class="nv">SSH_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">SSH_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span>
-<a id="__codelineno-169-7" name="__codelineno-169-7" href="#__codelineno-169-7"></a>
-<a id="__codelineno-169-8" name="__codelineno-169-8" href="#__codelineno-169-8"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span>arg<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-169-9" name="__codelineno-169-9" href="#__codelineno-169-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>admin-*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-169-10" name="__codelineno-169-10" href="#__codelineno-169-10"></a><span class="w">      </span><span class="k">continue</span>
-<a id="__codelineno-169-11" name="__codelineno-169-11" href="#__codelineno-169-11"></a><span class="w">    </span><span class="k">fi</span>
-<a id="__codelineno-169-12" name="__codelineno-169-12" href="#__codelineno-169-12"></a>
-<a id="__codelineno-169-13" name="__codelineno-169-13" href="#__codelineno-169-13"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">arg</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-169-14" name="__codelineno-169-14" href="#__codelineno-169-14"></a><span class="w">  </span><span class="k">done</span>
-<a id="__codelineno-169-15" name="__codelineno-169-15" href="#__codelineno-169-15"></a><span class="o">}</span>
-<a id="__codelineno-169-16" name="__codelineno-169-16" href="#__codelineno-169-16"></a>
-<a id="__codelineno-169-17" name="__codelineno-169-17" href="#__codelineno-169-17"></a>main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-170-2" name="__codelineno-170-2" href="#__codelineno-170-2"></a><span class="c1"># hide any apps with the prefix &quot;admin&quot;</span>
+<a id="__codelineno-170-3" name="__codelineno-170-3" href="#__codelineno-170-3"></a><span class="c1"># if the logged in user (SSH_USER) or SSH_NAME is not `root`</span>
+<a id="__codelineno-170-4" name="__codelineno-170-4" href="#__codelineno-170-4"></a>
+<a id="__codelineno-170-5" name="__codelineno-170-5" href="#__codelineno-170-5"></a>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-170-6" name="__codelineno-170-6" href="#__codelineno-170-6"></a><span class="w">  </span><span class="nb">declare</span><span class="w"> </span><span class="nv">SSH_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">SSH_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span>
+<a id="__codelineno-170-7" name="__codelineno-170-7" href="#__codelineno-170-7"></a>
+<a id="__codelineno-170-8" name="__codelineno-170-8" href="#__codelineno-170-8"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span>arg<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-170-9" name="__codelineno-170-9" href="#__codelineno-170-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>admin-*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_USER</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_NAME</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-170-10" name="__codelineno-170-10" href="#__codelineno-170-10"></a><span class="w">      </span><span class="k">continue</span>
+<a id="__codelineno-170-11" name="__codelineno-170-11" href="#__codelineno-170-11"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-170-12" name="__codelineno-170-12" href="#__codelineno-170-12"></a>
+<a id="__codelineno-170-13" name="__codelineno-170-13" href="#__codelineno-170-13"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">arg</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-170-14" name="__codelineno-170-14" href="#__codelineno-170-14"></a><span class="w">  </span><span class="k">done</span>
+<a id="__codelineno-170-15" name="__codelineno-170-15" href="#__codelineno-170-15"></a><span class="o">}</span>
+<a id="__codelineno-170-16" name="__codelineno-170-16" href="#__codelineno-170-16"></a>
+<a id="__codelineno-170-17" name="__codelineno-170-17" href="#__codelineno-170-17"></a>main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h3 id="vector-template-source"><code>vector-template-source</code><a class="headerlink" href="#vector-template-source" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9658,11 +9745,11 @@ between minor releases until the 1.0 release.</p>
 <li>Arguments:</li>
 <li>Example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="ch">#!/usr/bin/env bash</span>
-<a id="__codelineno-170-2" name="__codelineno-170-2" href="#__codelineno-170-2"></a>
-<a id="__codelineno-170-3" name="__codelineno-170-3" href="#__codelineno-170-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-170-4" name="__codelineno-170-4" href="#__codelineno-170-4"></a>
-<a id="__codelineno-170-5" name="__codelineno-170-5" href="#__codelineno-170-5"></a><span class="c1"># TODO</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-171-2" name="__codelineno-171-2" href="#__codelineno-171-2"></a>
+<a id="__codelineno-171-3" name="__codelineno-171-3" href="#__codelineno-171-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-171-4" name="__codelineno-171-4" href="#__codelineno-171-4"></a>
+<a id="__codelineno-171-5" name="__codelineno-171-5" href="#__codelineno-171-5"></a><span class="c1"># TODO</span>
 </code></pre></div>
 
 

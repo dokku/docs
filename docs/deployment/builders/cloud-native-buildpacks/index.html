@@ -876,6 +876,8 @@
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1870,6 +1895,8 @@
       
         
       
+        
+      
     
     
     
@@ -2180,6 +2207,29 @@
   
   <span class="md-ellipsis">
     Null Builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../railpack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Railpack
     
   </span>
   
@@ -4075,16 +4125,16 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>buildpacks:set-property [--global|&lt;app&gt;] &lt;key&gt; &lt;value&gt;  # Set or clear a buildpacks property for an app
 </code></pre></div>
 <p>Cloud Native Buildpacks are an evolution over the Buildpacks technology provided by the Herokuish builder. See the <a href="../herokuish-buildpacks/">herokuish buildpacks documentation</a> for more information on how to clear buildpack build cache for an application.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This functionality uses the <code>pack</code> cli from the <a href="https://buildpacks.io">Cloud Native Buildpacks</a> project to build apps. As the integration is experimental in Dokku, it is likely to change over time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This functionality uses the <code>pack</code> cli from the <a href="https://buildpacks.io">Cloud Native Buildpacks</a> project to build apps.</p>
 </div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
 <p>The <code>pack</code> cli tool is not included by default with Dokku or as a dependency. It must also be installed as shown on <a href="https://buildpacks.io/docs/tools/pack/">this page</a>.</p>
 <p>Builds will proceed with the <code>pack</code> cli for the app from then on.</p>
 <h3 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h3>
-<p>As this functionality is highly experimental, there are a number of caveats. Please note that not all issues are listed below.</p>
+<p>While pack is well-supported in Dokku, there are a number of caveats. Please note that not all issues are listed below.</p>
 <ul>
 <li>Specifying specific buildpacks is not currently possible.<ul>
 <li>A future release will add support for specifying buildpacks via the <code>buildpacks</code> plugin.</li>
@@ -4105,22 +4155,9 @@
 </li>
 </ul>
 <h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
-<p>This builder will be auto-detected in either the following cases:</p>
-<ul>
-<li>
-<p>The <code>DOKKU_CNB_EXPERIMENTAL</code> app environment variable is set to <code>1</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--no-restart<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_CNB_EXPERIMENTAL</span><span class="o">=</span><span class="m">1</span>
-</code></pre></div>
-</li>
-<li>
-<p>A <code>project.toml</code> file exists in the root of the app repository.</p>
-<ul>
-<li>This file is consumed by <code>pack-cli</code> and used to describe how the app is built.</li>
-</ul>
-</li>
-</ul>
+<p>This builder will be auto-detected if a <code>project.toml</code> file exists in the root of the app repository.  This file is consumed by <code>pack-cli</code> and used to describe how the app is built.</p>
 <p>The builder can also be specified via the <code>builder:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>pack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>pack
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4133,17 +4170,17 @@
 <li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
 </ul>
 <p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>projecttoml-path</code> property:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path<span class="w"> </span>.dokku/project.toml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path<span class="w"> </span>.dokku/project.toml
 </code></pre></div>
 <p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>project.toml</code>.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>projecttoml-path
 </code></pre></div>
 <p>The <code>projecttoml-path</code> property can also be set globally. The global default is <code>project.toml</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path<span class="w"> </span>project2.toml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path<span class="w"> </span>project2.toml
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>projecttoml-path
 </code></pre></div>
 <h3 id="displaying-builder-pack-reports-for-an-app">Displaying builder-pack reports for an app<a class="headerlink" href="#displaying-builder-pack-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
@@ -4154,22 +4191,22 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-pack:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-pack:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>=====&gt; node-js-app builder-pack information
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       Builder pack computed projecttoml path: project2.toml
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Builder pack global projecttoml path:   project.toml
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Builder pack projecttoml path:          project2.toml
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>=====&gt; python-sample builder-pack information
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>       Builder pack computed projecttoml path: project.toml
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>       Builder pack global projecttoml path:   project.toml
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>       Builder pack projecttoml path:
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>=====&gt; ruby-sample builder-pack information
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>       Builder pack computed projecttoml path: project.toml
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>       Builder pack global projecttoml path:   project.json
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>       Builder pack projecttoml path:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app builder-pack information
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Builder pack computed projecttoml path: project2.toml
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Builder pack global projecttoml path:   project.toml
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Builder pack projecttoml path:          project2.toml
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>=====&gt; python-sample builder-pack information
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Builder pack computed projecttoml path: project.toml
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Builder pack global projecttoml path:   project.toml
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Builder pack projecttoml path:
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>=====&gt; ruby-sample builder-pack information
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Builder pack computed projecttoml path: project.toml
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       Builder pack global projecttoml path:   project.json
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       Builder pack projecttoml path:
 </code></pre></div>
 </div>
 </div>
@@ -4178,14 +4215,14 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-pack:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>builder-pack:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=====&gt; node-js-app builder-pack information
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>       Builder pack computed projecttoml path: project2.toml
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>       Builder pack global projecttoml path:   project.toml
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>       Builder pack projecttoml path:          project2.toml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app builder-pack information
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Builder pack computed projecttoml path: project2.toml
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Builder pack global projecttoml path:   project.toml
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>       Builder pack projecttoml path:          project2.toml
 </code></pre></div>
 </div>
 </div>
@@ -4194,11 +4231,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>builder-pack:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-pack-projecttoml-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>builder-pack:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-pack-projecttoml-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>project2.toml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>project2.toml
 </code></pre></div>
 </div>
 </div>
@@ -4209,18 +4246,18 @@
 <p>Introduced in 0.23.0</p>
 </div>
 <p>The default stack builder in use by CNB buildpacks in Dokku is based on <code>heroku/builder:24</code>. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>buildpacks:set-property</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 </code></pre></div>
 <p>The specified stack builder can also be unset by omitting the name of the stack builder when calling <code>buildpacks:set-property</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
 </code></pre></div>
 <p>A change in the stack builder value will execute the <code>post-stack-set</code> trigger.</p>
 <p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_CNB_BUILDER</code> environment variable (<code>heroku/builder:24</code> by default).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># set globally</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># unset globally</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># set globally</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># unset globally</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack
 </code></pre></div>
 <h3 id="specifying-commands-via-procfile">Specifying commands via Procfile<a class="headerlink" href="#specifying-commands-via-procfile" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../processes/process-management/#procfile">Procfile documentation</a> for more information on how to specify different processes for your app.</p>

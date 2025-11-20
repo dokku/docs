@@ -876,6 +876,8 @@
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1868,6 +1893,8 @@
       
         
       
+        
+      
     
     
     
@@ -2058,6 +2085,29 @@
   
   <span class="md-ellipsis">
     Null Builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/builders/railpack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Railpack
     
   </span>
   
@@ -2874,6 +2924,48 @@
       Changing the Haproxy log level
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Label Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Label Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing a label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#showing-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Showing labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4100,6 +4192,48 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#label-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Label Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Label Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing a label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#showing-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Showing labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssl-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       SSL Configuration
@@ -4247,16 +4381,40 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying,  the Haproxy container will need to be restarted.</p>
+<h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
+<p>The Haproxy plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure Haproxy behavior beyond what the plugin provides by default.</p>
+<p>Refer to the upstream <a href="https://github.com/byjg/docker-easy-haproxy">EasyHaproxy</a> documentation for more information on what labels are available.</p>
+<h4 id="adding-a-label">Adding a label<a class="headerlink" href="#adding-a-label" title="Permanent link">&para;</a></h4>
+<p>To add a custom container label to an app, use the <code>haproxy:labels:add</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>haproxy:labels:add<span class="w"> </span>node-js-app<span class="w"> </span>haproxy.directive<span class="w"> </span>value
+</code></pre></div>
+<p>This will add the label <code>haproxy.directive=value</code> to the app's containers. After adding a label, you will need to rebuild or redeploy the app for the label to be applied to running containers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+</code></pre></div>
+<h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
+<p>To remove a custom container label from an app, use the <code>haproxy:labels:remove</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>haproxy:labels:remove<span class="w"> </span>node-js-app<span class="w"> </span>haproxy.directive
+</code></pre></div>
+<p>This will remove the specified label from the app. After removing a label, you will need to rebuild or redeploy the app for the change to be applied to running containers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+</code></pre></div>
+<h4 id="showing-labels">Showing labels<a class="headerlink" href="#showing-labels" title="Permanent link">&para;</a></h4>
+<p>To view all custom container labels for an app, use the <code>haproxy:labels:show</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>haproxy:labels:show<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>To view a specific label value, provide the label name:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>haproxy:labels:show<span class="w"> </span>node-js-app<span class="w"> </span>haproxy.directive
+</code></pre></div>
 <h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>The haproxy plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling, the Haproxy container will need to be restarted and apps will need to be rebuilt. All http requests will then be redirected to https.</p>
 <h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>After enabling, the Haproxy container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
 <h2 id="displaying-haproxy-reports-for-an-app">Displaying Haproxy reports for an app<a class="headerlink" href="#displaying-haproxy-reports-for-an-app" title="Permanent link">&para;</a></h2>
@@ -4264,16 +4422,16 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>haproxy:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>haproxy:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>=====&gt; node-js-app haproxy information
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>=====&gt; python-app haproxy information
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>=====&gt; ruby-app haproxy information
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>=====&gt; node-js-app haproxy information
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>=====&gt; python-app haproxy information
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>=====&gt; ruby-app haproxy information
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
 </code></pre></div>
 </div>
 </div>
@@ -4282,18 +4440,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>haproxy:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>haproxy:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>=====&gt; node-js-app haproxy information
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=====&gt; node-js-app haproxy information
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>haproxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--haproxy-image
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>haproxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--haproxy-image
 </code></pre></div>
 
 

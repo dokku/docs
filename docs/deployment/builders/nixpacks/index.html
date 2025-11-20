@@ -876,6 +876,8 @@
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1870,6 +1895,8 @@
       
         
       
+        
+      
     
     
     
@@ -2180,6 +2207,29 @@
   
   <span class="md-ellipsis">
     Null Builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../railpack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Railpack
     
   </span>
   
@@ -4112,48 +4162,30 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>--global<span class="w"> </span>nixpackstoml-path
 </code></pre></div>
 <h3 id="disabling-cache">Disabling cache<a class="headerlink" href="#disabling-cache" title="Permanent link">&para;</a></h3>
-<p>Cache is enabled by default, but can be disabled by setting the <code>no-cache</code> property to <code>true</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>no-cache<span class="w"> </span><span class="nb">true</span>
-</code></pre></div>
-<p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>no-cache
-</code></pre></div>
-<p>The <code>no-cache</code> property can also be set globally. The global default is <code>false</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>--global<span class="w"> </span>no-cache<span class="w"> </span><span class="nb">true</span>
-</code></pre></div>
-<p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-nixpacks:set<span class="w"> </span>--global<span class="w"> </span>no-cache
+<p>Disable cache using the [docker-options] plugin:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;--no-cache&quot;</span>
 </code></pre></div>
 <h3 id="displaying-builder-nixpacks-reports-for-an-app">Displaying builder-nixpacks reports for an app<a class="headerlink" href="#displaying-builder-nixpacks-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's storage status using the <code>builder-nixpacks:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>builder-nixpacks:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-nixpacks:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>=====&gt; node-js-app builder-nixpacks information
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks2.toml
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>       Builder-nixpacks nixpackstoml path:          nixpacks2.toml
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>       Builder-nixpacks computed no cache:          true
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>       Builder-nixpacks global no cache:            false
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>       Builder-nixpacks no cache:                   true
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>=====&gt; python-sample builder-nixpacks information
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks.toml
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>       Builder-nixpacks nixpackstoml path:
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>       Builder-nixpacks computed no cache:          false
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>       Builder-nixpacks global no cache:            false
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>       Builder-nixpacks no cache:
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>=====&gt; ruby-sample builder-nixpacks information
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks.toml
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>       Builder-nixpacks nixpackstoml path:
-<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>       Builder-nixpacks computed no cache:          false
-<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>       Builder-nixpacks global no cache:            false
-<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>       Builder-nixpacks no cache:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>=====&gt; node-js-app builder-nixpacks information
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks2.toml
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Builder-nixpacks nixpackstoml path:          nixpacks2.toml
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>=====&gt; python-sample builder-nixpacks information
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks.toml
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>       Builder-nixpacks nixpackstoml path:
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>=====&gt; ruby-sample builder-nixpacks information
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks.toml
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>       Builder-nixpacks nixpackstoml path:
 </code></pre></div>
 </div>
 </div>
@@ -4162,17 +4194,14 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>builder-nixpacks:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-nixpacks:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>=====&gt; node-js-app builder-nixpacks information
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks2.toml
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>       Builder-nixpacks nixpackstoml path:          nixpacks2.toml
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>       Builder-nixpacks computed no cache:          true
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>       Builder-nixpacks global no cache:            false
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>       Builder-nixpacks no cache:                   true
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=====&gt; node-js-app builder-nixpacks information
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>       Builder-nixpacks computed nixpackstoml path: nixpacks2.toml
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>       Builder-nixpacks global nixpackstoml path:   nixpacks.toml
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>       Builder-nixpacks nixpackstoml path:          nixpacks2.toml
 </code></pre></div>
 </div>
 </div>
@@ -4181,11 +4210,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>builder-nixpacks:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-nixpacks-no-cache
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>builder-nixpacks:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-nixpacks-nixpackstoml-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>true
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>nixpacks2.toml
 </code></pre></div>
 </div>
 </div>

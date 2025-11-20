@@ -858,6 +858,8 @@
       
         
       
+        
+      
     
     
     
@@ -901,6 +903,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0.37.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1844,6 +1869,8 @@
       
         
       
+        
+      
     
     
     
@@ -2031,6 +2058,29 @@
   
   <span class="md-ellipsis">
     Null Builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment/builders/railpack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Railpack
     
   </span>
   
@@ -3878,7 +3928,9 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <p>(list, optional) A list of cron resources. Keys are the names of the process types. The values are an object containing one or more of the following properties:</p>
 <ul>
 <li><code>command</code>: (string, required)</li>
+<li><code>maintenance</code>: (boolean, optional)</li>
 <li><code>schedule</code>: (string, required)</li>
+<li><code>concurrency_policy</code>: (string, optional, default: <code>allow</code>, options: <code>allow</code>, <code>forbid</code>, <code>replace</code>)</li>
 </ul>
 <h2 id="formation">Formation<a class="headerlink" href="#formation" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>

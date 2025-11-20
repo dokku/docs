@@ -876,6 +876,8 @@
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0.36.0 Migration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1987,6 +2012,8 @@
       
         
       
+        
+      
     
     
     
@@ -2177,6 +2204,29 @@
   
   <span class="md-ellipsis">
     Null Builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builders/railpack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Railpack
     
   </span>
   
@@ -4106,7 +4156,7 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 <p>All commands have the application name automatically set via the <code>--app</code> flag on the remote server, and thus the app name does not need to be specified manually for core plugins.</p>
 <p>The client supports several environment variables:</p>
 <ul>
-<li><code>DOKKU_HOST</code> (default: <code>dokku</code> git remote): Used to interact with a specific remote server. Can be overridden via the <code>--remote</code> flag.</li>
+<li><code>DOKKU_HOST</code> (default: <code>dokku</code> git remote): Used to interact with a specific remote server. Can be overridden via the <code>--remote</code> flag. Must specify the <code>--app</code> flag when specified.</li>
 <li><code>DOKKU_PORT</code> (default: <code>22</code>): Used to specify a port to connect to the Dokku server on.</li>
 </ul>
 <p>It also supports several flags (all flags unspecified here are passed as is to the server):</p>
@@ -4133,6 +4183,12 @@ to avoid SSH interpreting Dokku arguments for itself.</p>
 <p>To see your currently configured remote, run <code>dokku remote</code>. This will respect the <code>--remote</code> flag.</p>
 <p>To list all available remotes, run <code>dokku remote:list</code>. This is equivalent to running <code>git remote</code>.</p>
 <p>To add a remote, run <code>dokku remote:add $REMOTE_NAME dokku@dokku.me:$APP_NAME</code>, replacing <code>$REMOTE_NAME</code> with your desired remote name, the <code>$APP_NAME</code> with your desired app name and the host <code>dokku.me</code> with your Dokku host. This is equivalent to running <code>git remote add $REMOTE_NAME dokku@dokku.me:$APP_NAME</code>.</p>
+<p>The following remote formats are supported:</p>
+<ul>
+<li><code>dokku@HOSTNAME.TLD:APP_NAME</code></li>
+<li><code>ssh://dokku@HOSTNAME.TLD/APP_NAME</code></li>
+<li><code>ssh://dokku@HOSTNAME.TLD:HOST_PORT/APP_NAME</code></li>
+</ul>
 <p>To remove a remote, run <code>dokku remote:remove $REMOTE_NAME</code>. This is equivalent to running <code>git remote remove $REMOTE_NAME</code>.</p>
 <p>By default, the remote in use is <code>dokku</code>. To change the remote the client uses by default, run <code>dokku remote:set $REMOTE_NAME</code>, where <code>$REMOTE_NAME</code> is the name of your desired remote. This will not check the value specified, so that remote <em>must</em> be available or errors will occur when running normal client commands. Note that specifying <code>--remote</code> when running dokku commands will override this configuration value.</p>
 <p>To clear the configured remote, run <code>dokku remote:unset</code>. The client will unset the configured remote, and will default back to <code>dokku</code>, or the value of <code>--remote</code> if specified.</p>
