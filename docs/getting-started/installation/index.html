@@ -4635,21 +4635,11 @@
 <h2 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h2>
 <p>To start using Dokku, you'll need a system that meets the following minimum requirements:</p>
 <ul>
-<li>A fresh installation of any of the following operating systems:<ul>
-<li><a href="https://www.ubuntu.com/download">Ubuntu 22.04/24.04</a></li>
-<li><a href="https://www.debian.org/distrib/">Debian 11+ x64</a></li>
-</ul>
-</li>
-<li>A server with one of the following architectures<ul>
-<li>AMD64 (alternatively known as <code>x86_64</code>), commonly used for Intel cloud servers</li>
-<li>ARMV8 (alternatively known as <code>arm64</code>), commonly used for Raspberry PI and AWS Graviton</li>
-</ul>
-</li>
-</ul>
-<p>To avoid memory pressure during builds or runtime of your applications, we suggest the following:</p>
-<ul>
-<li>At least 1 GB of system memory<ul>
-<li>If your system has less than 1GB of memory, you can use <a href="../advanced-installation/#vms-with-less-than-1-gb-of-memory">this workaround</a>.</li>
+<li>Operating Systems: <a href="https://www.ubuntu.com/download">Ubuntu 22.04/24.04</a> or <a href="https://www.debian.org/distrib/">Debian 11+ x64</a></li>
+<li>Supported Architectures: <code>AMD64</code> (<code>x86_64</code>) and <code>arm64</code> (<code>armv8</code>)</li>
+<li>Minimum Memory:<ul>
+<li>Docker Scheduler: 1GB of system memory, or <a href="../advanced-installation/#vms-with-less-than-1-gb-of-memory">add swap memory</a></li>
+<li>K3s Scheduler: 2GB of system memory on every node in the cluster</li>
 </ul>
 </li>
 </ul>
