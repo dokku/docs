@@ -27,13 +27,13 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/advanced-usage/plugin-management/">
+        <link rel="canonical" href="https://dokku.com/docs/development/release-process/">
       
       
-        <link rel="prev" href="../persistent-storage/">
+        <link rel="prev" href="../testing/">
       
       
-        <link rel="next" href="../repository-management/">
+        <link rel="next" href="../../deployment/continuous-integration/github-actions/">
       
       
         
@@ -44,7 +44,7 @@
     
     
       
-        <title>Plugin Management - Dokku Documentation</title>
+        <title>Release Process - Dokku Documentation</title>
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#plugin-management" class="md-skip">
+        <a href="#release-process" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/advanced-usage/plugin-management/">
+  <a href="/docs/development/release-process/">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -179,7 +179,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Plugin Management
+              Release Process
             
           </span>
         </div>
@@ -3352,8 +3352,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3389,11 +3387,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
         
           
           <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="">
@@ -3414,7 +3412,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3432,7 +3430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup-recovery/" class="md-nav__link">
+      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
         
   
   
@@ -3460,7 +3458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployment-tasks/" class="md-nav__link">
+      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
         
   
   
@@ -3488,7 +3486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-options/" class="md-nav__link">
+      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
         
   
   
@@ -3516,7 +3514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../registry-management/" class="md-nav__link">
+      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
         
   
   
@@ -3544,7 +3542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../event-logs/" class="md-nav__link">
+      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
         
   
   
@@ -3572,7 +3570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../persistent-storage/" class="md-nav__link">
+      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
         
   
   
@@ -3597,37 +3595,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Plugin Management
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
         
   
   
@@ -3643,142 +3614,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#listing-plugins" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Listing Plugins
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checking-if-a-plugin-is-installed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Checking if a plugin is installed
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-plugin-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing plugin dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updating-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Updating a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uninstalling-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstalling a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disabling-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Disabling a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enabling-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Enabling a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triggering-a-plugin-trigger" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Triggering a plugin trigger
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3791,7 +3626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository-management/" class="md-nav__link">
+      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
         
   
   
@@ -3819,7 +3654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resource-management/" class="md-nav__link">
+      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
         
   
   
@@ -4067,6 +3902,8 @@
                 
   
   
+    
+  
   
   
     
@@ -4092,11 +3929,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" checked>
         
           
           <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="">
@@ -4117,7 +3954,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_12">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4135,7 +3972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/plugin-creation/" class="md-nav__link">
+      <a href="../plugin-creation/" class="md-nav__link">
         
   
   
@@ -4163,7 +4000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/plugin-triggers/" class="md-nav__link">
+      <a href="../plugin-triggers/" class="md-nav__link">
         
   
   
@@ -4191,7 +4028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -4216,10 +4053,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../development/release-process/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Process
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4235,6 +4099,65 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arch-linux-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arch Linux Packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arch Linux Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detailed-information-for-arch-linux-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed information for Arch Linux packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4700,110 +4623,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#versioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Versioning
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Usage">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arch-linux-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arch Linux Packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arch Linux Packages">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#listing-plugins" class="md-nav__link">
+  <a href="#detailed-information-for-arch-linux-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Listing Plugins
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checking-if-a-plugin-is-installed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Checking if a plugin is installed
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-plugin-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing plugin dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updating-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Updating a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uninstalling-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstalling a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disabling-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Disabling a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enabling-a-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Enabling a plugin
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triggering-a-plugin-trigger" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Triggering a plugin trigger
+        Detailed information for Arch Linux packages
       
     </span>
   </a>
@@ -4832,7 +4678,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/advanced-usage/plugin-management.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/development/release-process.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -4841,212 +4687,65 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/advanced-usage/plugin-management.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/development/release-process.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="plugin-management">Plugin Management<a class="headerlink" href="#plugin-management" title="Permanent link">&para;</a></h1>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.4.0</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>plugin:disable &lt;name&gt;                    # Disable an installed plugin (third-party only)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>plugin:enable &lt;name&gt;                     # Enable a previously disabled plugin
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>plugin:install [--core|git-url] [--committish branch|commit|tag] [--name custom-plugin-name] [--skip-install-trigger] # Optionally download git-url (and pin to the specified branch/commit/tag) &amp; run install trigger for active plugins (or only core ones)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>plugin:installed &lt;name&gt;                  # Checks if a plugin is installed
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>plugin:install-dependencies [--core]     # Run install-dependencies trigger for active plugins (or only core ones)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>plugin:list                              # Print active plugins
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>plugin:trigger &lt;args...&gt;.                # Trigger an arbitrary plugin hook
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>plugin:uninstall &lt;name&gt;                  # Uninstall a plugin (third-party only)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>plugin:update [name [branch|commit|tag]] # Optionally update named plugin from git (and pin to the specified branch/commit/tag) &amp; run update trigger for active plugins
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># for 0.3.x</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>/var/lib/dokku/plugins
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;git<span class="w"> </span>url&gt;
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>dokku<span class="w"> </span>plugins-install
+<h1 id="release-process">Release Process<a class="headerlink" href="#release-process" title="Permanent link">&para;</a></h1>
+<p>Dokku is released in intervals <em>at most</em> three weeks apart, though may be released much quicker.</p>
+<p>To propose a release, the following tasks need to be performed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PACKAGECLOUD_TOKEN</span><span class="o">=</span>SOME_TOKEN
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># supports major/minor/patch/betafish</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>contrib/release-dokku
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>These commands require <code>root</code> permissions as the <code>install</code> and <code>install-dependencies</code> plugin triggers may utilize commands such as <code>apt-get</code>. For non-core plugins, please inspect those plugins before running the following command as <code>root</code> user.</p>
+<p>If you are a maintainer and need the PACKAGECLOUD_TOKEN in order to make a release, please contact @josegonzalez to get this information.</p>
 </div>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="listing-plugins">Listing Plugins<a class="headerlink" href="#listing-plugins" title="Permanent link">&para;</a></h3>
-<p>Installed plugins can be listed via the <code>plugin:list</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>plugin:list
+<p>As well, the Arch Linux package description <em>must</em> be updated via <code>vagrant up build-arch</code> (needs to be done after the tag is pushed to GitHub, because it is based on that)</p>
+<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
+<p>Dokku follows semver standards. As we are not yet at a stable release, breaking changes will require <em>only</em> a minor release, while all other changes only require a patch release. Once we hit stable, breaking changes will require a major release.</p>
+<p>At the moment, tags need not be signed, though that may change in the future.</p>
+<h2 id="arch-linux-packages">Arch Linux Packages<a class="headerlink" href="#arch-linux-packages" title="Permanent link">&para;</a></h2>
+<p>Arch Linux packages are not really build, because all that is needed for an Arch User Repo (AUR) package is the description of how to build the package. To make this process as easy as possible there is a vagrant box called <code>build-arch</code> that updates the version of this build description (a file called <code>PKGBUILD</code>), then runs some helper scripts to fill all additional information and does test if the package could be build. Then only those changes need to be pushed to the AUR repo and an updated version of the package is ready for usage for our Arch Linux users. For detailed information see the section below.</p>
+<p>The workflow looks like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># having dokku-arch in ../dokku-arch</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>vagrant<span class="w"> </span>up<span class="w"> </span>build-arch
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># wait for &quot;==&gt; build-arch: ==&gt; Finished making: dokku 0.37.2-2 (Mon Feb 22 23:20:37 CET 2016)&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>../dokku-arch
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>git<span class="w"> </span>add<span class="w"> </span>PKGBUILD<span class="w"> </span>.SRCINFO
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Update to dokku 0.9.9&#39;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>git<span class="w"> </span>push<span class="w"> </span>aur<span class="w"> </span>master
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you are a maintainer and need access to the AUR repositories in order to make a release, please contact @morrisjobke or @josegonzalez to get this co-maintainership.</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>plugn: dev
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  00_dokku-standard    0.37.1 enabled    dokku core standard plugin
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  20_events            0.37.1 enabled    dokku core events logging plugin
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  app-json             0.37.1 enabled    dokku core app-json plugin
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  apps                 0.37.1 enabled    dokku core apps plugin
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  build-env            0.37.1 enabled    dokku core build-env plugin
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  buildpacks           0.37.1 enabled    dokku core buildpacks plugin
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  certs                0.37.1 enabled    dokku core certificate management plugin
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  checks               0.37.1 enabled    dokku core checks plugin
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  common               0.37.1 enabled    dokku core common plugin
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  config               0.37.1 enabled    dokku core config plugin
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  docker-options       0.37.1 enabled    dokku core docker-options plugin
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  domains              0.37.1 enabled    dokku core domains plugin
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  enter                0.37.1 enabled    dokku core enter plugin
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  git                  0.37.1 enabled    dokku core git plugin
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  logs                 0.37.1 enabled    dokku core logs plugin
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  network              0.37.1 enabled    dokku core network plugin
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>  nginx-vhosts         0.37.1 enabled    dokku core nginx-vhosts plugin
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>  plugin               0.37.1 enabled    dokku core plugin plugin
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  proxy                0.37.1 enabled    dokku core proxy plugin
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  ps                   0.37.1 enabled    dokku core ps plugin
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  repo                 0.37.1 enabled    dokku core repo plugin
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  resource             0.37.1 enabled    dokku core resource plugin
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  scheduler-docker-local 0.37.1 enabled    dokku core scheduler-docker-local plugin
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  shell                0.37.1 enabled    dokku core shell plugin
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  ssh-keys             0.37.1 enabled    dokku core ssh-keys plugin
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>  storage              0.37.1 enabled    dokku core storage plugin
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>  tags                 0.37.1 enabled    dokku core tags plugin
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  tar                  0.37.1 enabled    dokku core tar plugin
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>  trace                0.37.1 enabled    dokku core trace plugin
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>All plugin commands other than <code>plugin:list</code> and <code>plugin:help</code> require sudo access and must be run directly from the Dokku server.</p>
-</div>
-<h3 id="checking-if-a-plugin-is-installed">Checking if a plugin is installed<a class="headerlink" href="#checking-if-a-plugin-is-installed" title="Permanent link">&para;</a></h3>
-<p>You can check if a plugin has been installed via the <code>plugin:installed</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>plugin:installed<span class="w"> </span>postgres
-</code></pre></div>
-<h3 id="installing-a-plugin">Installing a plugin<a class="headerlink" href="#installing-a-plugin" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Plugins installed in this method within a <a href="../../getting-started/install/docker/">docker-based installation</a> of Dokku do not persist across installs. Please see the <a href="../../getting-started/install/docker/#plugin-installation">plugin installation section</a> of the docker-based installation docs for further details.</p>
-</div>
-<p>Installing a plugin is easy as well using the <code>plugin:install</code> command. This command will also trigger the <code>install</code> pluginhook on all existing plugins.</p>
-<p>The most common usage is to install a plugin from a url. This url may be any of the following:</p>
+<h3 id="detailed-information-for-arch-linux-packages">Detailed information for Arch Linux packages<a class="headerlink" href="#detailed-information-for-arch-linux-packages" title="Permanent link">&para;</a></h3>
+<p>All of the information to build the Arch Linux package is in the AUR git repository (see <a href="https://aur.archlinux.org/packages/dokku/">dokku AUR page</a>). The release of a AUR package only consists of pushing the package information into the AUR git repo. Then users could use that information to build the package on their machines.</p>
+<p>To update the package clone the repository and adjust the files in the repository. Then a helper script - <code>updpkgsums</code> - to update the SHA sum could  be called (check against the original SHA sum). Another helper script - <code>mksrcinfo</code> - needs to be called to update the meta information of the package in a file called <code>.SRCINFO</code>. The next step builds the package locally for verification - <code>makepkg</code>. As last step commit your changes and push the commit.</p>
 <ul>
-<li><code>git</code>: For git+ssh based plugin repository clones.</li>
-<li><code>ssh</code>: For git+ssh based plugin repository clones.</li>
-<li><code>file</code>: For copying plugins from a path on disk.</li>
-<li><code>https</code>: For http based plugin repository clones.</li>
+<li>dependencies are defined in the <code>depends</code> attribute in <code>PKGBUILD</code></li>
+<li>build steps during package build time are defined in the <code>package()</code> method in <code>PKGBUILD</code></li>
+<li>steps that should be executed during install/update/remove time are defined in the file <code>dokku.install</code></li>
+<li>detailed information about all attributes in <code>PKGBUILD</code> could be found in the <a href="https://wiki.archlinux.org/index.php/PKGBUILD">Arch Linux wiki</a></li>
+<li>detailed information about the AUR workflow could be found in the <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR article</a> in the Arch Linux wiki</li>
 </ul>
-<p>Additionally, any urls with the extensions <code>.tar.gz</code> or <code>.tgz</code> are treated as Gzipped Tarballs for installation purposes and will be downloaded and extracted into place.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git
+<p>That is the usual workflow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>updpkgsums<span class="w"> </span><span class="c1"># update sha sums - compare them with the original ones</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mksrcinfo<span class="w"> </span><span class="c1"># update package metadata for AUR</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>makepkg<span class="w"> </span><span class="c1"># test package builds</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>git<span class="w"> </span>add<span class="w"> </span>PKGBUILD<span class="w"> </span>.SRCINFO
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Update to dokku 0.9.9&#39;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>git<span class="w"> </span>push
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If there is something unclear simply ask @morrisjobke for help.</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----&gt; Cloning plugin repo https://github.com/dokku/dokku-postgres.git to /var/lib/dokku/plugins/available/postgres
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Cloning into &#39;postgres&#39;...
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>remote: Counting objects: 646, done.
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>remote: Total 646 (delta 0), reused 0 (delta 0), pack-reused 646
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Receiving objects: 100% (646/646), 134.24 KiB | 0 bytes/s, done.
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Resolving deltas: 100% (406/406), done.
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Checking connectivity... done.
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>-----&gt; Plugin postgres enabled
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>For git-based plugin installation, a commit SHA-like object may be specified (tag/branch/commit sha) via the <code>--committish</code> argument and Dokku will attempt to install the specified commit object.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># where 2.0.0 is a potential git tag</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>--committish<span class="w"> </span><span class="m">2</span>.0.0
-</code></pre></div>
-<p>Plugin names are interpolated based on the repository name minus the <code>dokku-</code> prefix. If the plugin being installed has a name other than what matches the repository name - or another name is desired - the <code>--name</code> flag can be used to override this interpolation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin
-</code></pre></div>
-<p>The <code>--core</code> flag may also be indicated as the sole argument, though it is only for installation of core plugins, and thus not useful for end-user installations.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>--core
-</code></pre></div>
-<p>If installing plugins in a Dockerfile, you will want to skip the <code>install</code> trigger. This will be run on container boot.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin<span class="w"> </span>--skip-install-trigger
-</code></pre></div>
-<p>Finally, all flags may be omitted to trigger the <code>install</code> procedures for both core and third-party plugins:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>plugin:install
-</code></pre></div>
-<h3 id="installing-plugin-dependencies">Installing plugin dependencies<a class="headerlink" href="#installing-plugin-dependencies" title="Permanent link">&para;</a></h3>
-<p>In some cases, plugins will have system-level dependencies. These are not automatically installed via <code>plugin:install</code>, and must be separately via the <code>plugin:install-dependencies</code> command. This will run through all the <code>dependencies</code> trigger for all plugins.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>plugin:install-dependencies
-</code></pre></div>
-<p>This command may also target <em>just</em> core plugins via the <code>--core</code> flag. This is usually only useful for source-based installs of Dokku.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>plugin:install-dependencies<span class="w"> </span>--core
-</code></pre></div>
-<h3 id="updating-a-plugin">Updating a plugin<a class="headerlink" href="#updating-a-plugin" title="Permanent link">&para;</a></h3>
-<p>An installed, third-party plugin can be updated can updated via the <code>plugin:update</code> command. This should be done after any upgrades of Dokku as there may be changes in the internal api that require an update of how the plugin interfaces with Dokku.</p>
-<p>Please note that this command is only valid for plugin installs that were backed by a git-repository.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Plugin (postgres) updated
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>An optional commit SHA-like object may be specified.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span><span class="m">2</span>.0.0
-</code></pre></div>
-<p>Any future invocation of <code>plugin:update</code> will respect the previously specified SHA-like object. To follow a particular branch again, specify that branch:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span>main
-</code></pre></div>
-<h3 id="uninstalling-a-plugin">Uninstalling a plugin<a class="headerlink" href="#uninstalling-a-plugin" title="Permanent link">&para;</a></h3>
-<p>Third party plugins can be uninstalled using the <code>plugin:uninstall</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>plugin:uninstall<span class="w"> </span>postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>-----&gt; Plugin postgres uninstalled
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="disabling-a-plugin">Disabling a plugin<a class="headerlink" href="#disabling-a-plugin" title="Permanent link">&para;</a></h3>
-<p>Disabling a plugin can also be useful for debugging whether a third-party plugin is causing issues in a Dokku installation. Another common use case is for disabling core functionality for replacement with a third-party plugin.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>plugin:disable<span class="w"> </span>postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>-----&gt; Plugin postgres disabled
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="enabling-a-plugin">Enabling a plugin<a class="headerlink" href="#enabling-a-plugin" title="Permanent link">&para;</a></h3>
-<p>Disabled plugins can be re-enabled via the <code>plugin:enable</code> command.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>plugin:enable<span class="w"> </span>postgres
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>-----&gt; Plugin postgres enabled
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger<a class="headerlink" href="#triggering-a-plugin-trigger" title="Permanent link">&para;</a></h3>
-<p>The <code>plugin:trigger</code> can be used to call any internal plugin trigger. This may have unintended consequences, and thus should only be called for development or debugging purposes.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>plugin:trigger<span class="w"> </span>some-internal-trigger<span class="w"> </span>args-go-here
-</code></pre></div>
 
 
 
@@ -5082,7 +4781,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../persistent-storage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Persistent Storage">
+          <a href="../testing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Running Tests">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5092,20 +4791,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Persistent Storage
+                Running Tests
               </div>
             </div>
           </a>
         
         
           
-          <a href="../repository-management/" class="md-footer__link md-footer__link--next" aria-label="Next: Repository Management">
+          <a href="../../deployment/continuous-integration/github-actions/" class="md-footer__link md-footer__link--next" aria-label="Next: GitHub Actions">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Repository Management
+                GitHub Actions
               </div>
             </div>
             <div class="md-footer__button md-icon">
