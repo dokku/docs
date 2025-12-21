@@ -4911,7 +4911,7 @@ The <code>run</code> phase does <em>not</em> correspond 1-to-1 to <code>docker r
 </code></pre></div>
 <h4 id="remove-a-docker-option">Remove a Docker option<a class="headerlink" href="#remove-a-docker-option" title="Permanent link">&para;</a></h4>
 <p>To remove docker options from an app, use the <code>docker-options:remove</code> command. This takes an app name, a comma-separated list of phases, and the docker-option to remove.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;&quot;</span>--ulimit<span class="w"> </span><span class="nv">nofile</span><span class="o">=</span><span class="m">12</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
 </code></pre></div>
 <p>Multiple phases can be specified by using a comma when specifying phases:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>docker-options:remove<span class="w"> </span>node-js-app<span class="w"> </span>deploy,run<span class="w"> </span><span class="s2">&quot;--ulimit nofile=12&quot;</span>
