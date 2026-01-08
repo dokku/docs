@@ -4847,7 +4847,7 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git:from-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a given docker image
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git:generate-deploy-key                           # Generates a deploy ssh key
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git:load-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a docker image loaded from stdin
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git:sync [--build|build-if-changes] &lt;app&gt; &lt;repository&gt; [&lt;git-ref&gt;] # Clone or fetch an app from remote git repo
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git:sync [--build|--build-if-changes] [--skip-deploy-branch] &lt;app&gt; &lt;repository&gt; [&lt;git-ref&gt;] # Clone or fetch an app from remote git repo
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git:initialize &lt;app&gt;                              # Initialize a git repository for an app
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git:public-key                                    # Outputs the dokku public deploy key
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>git:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a git report for one or more apps
@@ -4960,6 +4960,9 @@
 <p>When running <code>git:sync</code> without a reference, it may be useful to only build when there are changes. To do so, specify the <code>--build-if-changes</code> flag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>git:sync<span class="w"> </span>--build-if-changes<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/node-js-getting-started.git
 </code></pre></div>
+<p>By default, when running <code>git:sync</code> with a git branch reference, Dokku will automatically set the <code>deploy-branch</code> property to the specified branch. To skip setting the deploy branch, specify the <code>--skip-deploy-branch</code> flag.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>git:sync<span class="w"> </span>--skip-deploy-branch<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/node-js-getting-started.git<span class="w"> </span>main
+</code></pre></div>
 <h3 id="initializing-from-private-repositories">Initializing from private repositories<a class="headerlink" href="#initializing-from-private-repositories" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
@@ -4971,16 +4974,16 @@
 <li>A configured <a href="https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html"><code>.netrc</code></a> entry.</li>
 </ul>
 <p>Dokku provides the <code>git:auth</code> command which can be used to configure a <code>netrc</code> entry for the remote server. This command can be used to add or remove configuration for any remote server.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># add credentials for github.com</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>dokku<span class="w"> </span>git:auth<span class="w"> </span>github.com<span class="w"> </span>username<span class="w"> </span>personal-access-token
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># remove credentials for github.com</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>dokku<span class="w"> </span>git:auth<span class="w"> </span>github.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># add credentials for github.com</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>dokku<span class="w"> </span>git:auth<span class="w"> </span>github.com<span class="w"> </span>username<span class="w"> </span>personal-access-token
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># remove credentials for github.com</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>dokku<span class="w"> </span>git:auth<span class="w"> </span>github.com
 </code></pre></div>
 <p>For syncing to a private repository stored on a remote Git product such as GitHub or GitLab, Dokku's recommendation is to use a personal access token on a bot user where possible. Please see your service's documentation for information regarding the recommended best practices.</p>
 <h3 id="allowing-remote-repository-hosts">Allowing remote repository hosts<a class="headerlink" href="#allowing-remote-repository-hosts" title="Permanent link">&para;</a></h3>
 <p>By default, the Dokku host may not have access to a server containing the remote repository. This can be initialized via the <code>git:allow-host</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>git:allow-host<span class="w"> </span>github.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>git:allow-host<span class="w"> </span>github.com
 </code></pre></div>
 <p>Note that this command is currently not idempotent and may add duplicate entries to the <code>~dokku/.ssh/known_hosts</code> file.</p>
 <h3 id="creating-a-cloning-ssh-key-pair">Creating a cloning ssh key pair<a class="headerlink" href="#creating-a-cloning-ssh-key-pair" title="Permanent link">&para;</a></h3>
@@ -4992,34 +4995,34 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>git:generate-deploy-key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>git:generate-deploy-key
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Generating public/private ed25519 key pair.
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>Your identification has been saved in /home/dokku/.ssh/id_ed25519
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>Your public key has been saved in /home/dokku/.ssh/id_ed25519.pub
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>The key fingerprint is:
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>SHA256:PvlvVfbpYvkmA87rTfLUq07e3GarRN1BcLqDSjod+p8 dokku@ubuntu
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>The key&#39;s randomart image is:
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>+--[ED25519 256]--+
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>|             ..o |
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>|              +  |
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>|             . . |
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>|            . o =|
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>|        So . + ++|
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>|       .=.o.. +..|
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>|       ++oo..*o. |
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>|        oo o%*oo=|
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>|         .+E=BOOo|
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>+----[SHA256]-----+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Generating public/private ed25519 key pair.
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Your identification has been saved in /home/dokku/.ssh/id_ed25519
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Your public key has been saved in /home/dokku/.ssh/id_ed25519.pub
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>The key fingerprint is:
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>SHA256:PvlvVfbpYvkmA87rTfLUq07e3GarRN1BcLqDSjod+p8 dokku@ubuntu
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>The key&#39;s randomart image is:
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>+--[ED25519 256]--+
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>|             ..o |
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>|              +  |
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>|             . . |
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>|            . o =|
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>|        So . + ++|
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>|       .=.o.. +..|
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>|       ++oo..*o. |
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>|        oo o%*oo=|
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>|         .+E=BOOo|
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>+----[SHA256]-----+
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="verifying-the-cloning-public-key">Verifying the cloning public key<a class="headerlink" href="#verifying-the-cloning-public-key" title="Permanent link">&para;</a></h3>
 <p>In order to clone a remote repository, the remote server should have the Dokku host's public key configured. This plugin does not currently create this key, but if can be shown via the <code>git:public-key</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>git:public-key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>git:public-key
 </code></pre></div>
 <p>If there is no key, an error message is shown that displays the command that can be run on the Dokku server to generate a new public/private ssh key pair.</p>
 
