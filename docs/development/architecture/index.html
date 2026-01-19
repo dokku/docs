@@ -27,13 +27,13 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/advanced-usage/event-logs/">
+        <link rel="canonical" href="https://dokku.com/docs/development/architecture/">
       
       
-        <link rel="prev" href="../registry-management/">
+        <link rel="prev" href="../../deployment/schedulers/null/">
       
       
-        <link rel="next" href="../persistent-storage/">
+        <link rel="next" href="../plugin-creation/">
       
       
         
@@ -44,7 +44,7 @@
     
     
       
-        <title>Dokku Event Logs - Dokku Documentation</title>
+        <title>Dokku Architecture - Dokku Documentation</title>
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dokku-event-logs" class="md-skip">
+        <a href="#dokku-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dokku Event Logs
+              Dokku Architecture
             
           </span>
         </div>
@@ -3340,8 +3340,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3377,11 +3375,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
         
           
           <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="">
@@ -3402,7 +3400,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3420,7 +3418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup-recovery/" class="md-nav__link">
+      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
         
   
   
@@ -3448,7 +3446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployment-tasks/" class="md-nav__link">
+      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
         
   
   
@@ -3476,7 +3474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-options/" class="md-nav__link">
+      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
         
   
   
@@ -3504,7 +3502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../registry-management/" class="md-nav__link">
+      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
         
   
   
@@ -3529,37 +3527,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dokku Event Logs
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
         
   
   
@@ -3575,37 +3546,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3618,7 +3558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../persistent-storage/" class="md-nav__link">
+      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
         
   
   
@@ -3646,7 +3586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugin-management/" class="md-nav__link">
+      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
         
   
   
@@ -3674,7 +3614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository-management/" class="md-nav__link">
+      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
         
   
   
@@ -3702,7 +3642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resource-management/" class="md-nav__link">
+      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
         
   
   
@@ -3950,6 +3890,8 @@
                 
   
   
+    
+  
   
   
     
@@ -3977,11 +3919,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" checked>
         
           
           <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="">
@@ -4002,7 +3944,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_12">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4017,10 +3959,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../development/architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokku Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4036,6 +4005,270 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Level Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Directories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-directory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Directory Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin System Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin System Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-communication-via-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Communication via Triggers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calling-triggers-from-go-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calling Triggers from Go Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-receive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: Receive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-4-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 4: Deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#property-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-app-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-App Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Design Decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4048,7 +4281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/plugin-creation/" class="md-nav__link">
+      <a href="../plugin-creation/" class="md-nav__link">
         
   
   
@@ -4076,7 +4309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/plugin-triggers/" class="md-nav__link">
+      <a href="../plugin-triggers/" class="md-nav__link">
         
   
   
@@ -4104,7 +4337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -4132,7 +4365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/release-process/" class="md-nav__link">
+      <a href="../release-process/" class="md-nav__link">
         
   
   
@@ -4613,10 +4846,243 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#high-level-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        High-Level Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Directories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-directory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Directory Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin System Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin System Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-communication-via-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Communication via Triggers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calling-triggers-from-go-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calling Triggers from Go Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-receive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: Receive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-4-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 4: Deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#property-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-app-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-App Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Design Decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
       
     </span>
   </a>
@@ -4640,7 +5106,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/advanced-usage/event-logs.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/development/architecture.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -4649,98 +5115,324 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/advanced-usage/event-logs.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/development/architecture.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="dokku-event-logs">Dokku Event Logs<a class="headerlink" href="#dokku-event-logs" title="Permanent link">&para;</a></h1>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.3.21</p>
-</div>
-<p>Docker provides an <em>events</em> command to show system's real time events. Likewise, Dokku can record events as syslog entries and also provides a plugin to display the last ones.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>events [-t]                              # Show the last events (-t follows)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>events:list                              # List logged events
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>events:on                                # Enable events logger
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>events:off                               # Disable events logger
+<h1 id="dokku-architecture">Dokku Architecture<a class="headerlink" href="#dokku-architecture" title="Permanent link">&para;</a></h1>
+<p>This document provides a developer-focused overview of Dokku's internal architecture. It is intended for contributors who want to understand how Dokku works under the hood before diving into the codebase.</p>
+<h2 id="high-level-architecture">High-Level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">&para;</a></h2>
+<p>Dokku is a Docker-powered Platform as a Service (PaaS) that provides a Heroku-like deployment experience. The following diagram shows the main components and their interactions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+------------------+
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|     User/Client  |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>+--------+---------+
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>         |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>         | SSH / git push
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>         v
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>+--------+---------+
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>|   dokku binary   |
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>|  (bash script)   |
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>+--------+---------+
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>         |
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>         | parse_args / execute_dokku_cmd
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>         v
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>+--------+---------+
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>|   Plugin System  |
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>|      (plugn)     |
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>+--------+---------+
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>         |
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>         | triggers / subcommands
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>         v
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>+--------+---------+     +------------------+
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>|  Core Plugins    |----&gt;|  Docker / K8s    |
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>|  (apps, git,     |     |    Runtime       |
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>|   config, etc.)  |     +------------------+
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>+------------------+
 </code></pre></div>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Enable the plugin:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>events:on
+<p><strong>Key components:</strong></p>
+<ul>
+<li><strong>dokku binary</strong>: The main entry point (<code>/dokku</code>), a bash script that handles authentication, argument parsing, and routes commands to plugins</li>
+<li><strong>Plugin System</strong>: Uses <a href="https://github.com/dokku/plugn">plugn</a> to execute triggers and discover commands</li>
+<li><strong>Core Plugins</strong>: Implement all Dokku functionality (apps, git, config, builders, schedulers, proxies, etc.)</li>
+<li><strong>Runtime</strong>: Docker (default via <code>scheduler-docker-local</code>) or Kubernetes (via <code>scheduler-k3s</code>)</li>
+</ul>
+<h2 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h2>
+<h3 id="source-tree">Source Tree<a class="headerlink" href="#source-tree" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── dokku                 # Main CLI entry point (bash script)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── plugins/              # All plugin source code
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── apps/            # App management
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── git/             # Git push handling
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── config/          # Environment variables
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── builder-*/       # Build backends (herokuish, pack, dockerfile, etc.)
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── scheduler-*/     # Deployment schedulers (docker-local, k3s)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── *-vhosts/        # Proxy implementations (nginx, traefik, caddy, etc.)
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   └── common/          # Shared functions and utilities
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>├── docs/                 # Documentation (markdown)
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>├── debian/               # Debian packaging files
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>├── contrib/              # Installation scripts and helpers
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└── tests/                # Integration tests (bats)
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Enabling dokku events logger
+<h3 id="runtime-directories">Runtime Directories<a class="headerlink" href="#runtime-directories" title="Permanent link">&para;</a></h3>
+<p>When Dokku is installed, it creates the following directory structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/var/lib/dokku/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── core-plugins/         # Core plugin binaries (installed from source)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── available/       # All available core plugins
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   └── enabled/         # Symlinks to enabled plugins
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── plugins/              # Community plugins
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   ├── available/
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│   └── enabled/
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>└── data/                 # Plugin data storage
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    └── &lt;plugin&gt;/        # Per-plugin data
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        └── &lt;app&gt;/       # Per-app properties
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>$DOKKU_ROOT (~dokku by default)
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>├── &lt;app&gt;/               # Per-app data
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│   ├── refs/           # Git refs
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│   ├── HEAD            # Current git HEAD
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│   ├── tls/            # SSL certificates
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>│   └── ...             # Other app-specific files
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>└── .dokkurc/            # Global configuration overrides
 </code></pre></div>
-</div>
-</div>
-</div>
-<p>Dokku will then write log entries to <code>/var/log/syslog</code> as well as a Dokku-specific logs sub-directory <code>/var/log/dokku/events.log</code>, which can be easily displayed with the command <code>dokku events</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>events
+<h3 id="plugin-directory-layout">Plugin Directory Layout<a class="headerlink" href="#plugin-directory-layout" title="Permanent link">&para;</a></h3>
+<p>Each plugin follows a consistent structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>plugins/&lt;plugin-name&gt;/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── plugin.toml           # Plugin metadata (description, version)
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── commands              # Help output and catch-all command handler
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── subcommands/          # Individual command implementations
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   ├── default          # Default command (e.g., `dokku apps`)
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   └── &lt;command&gt;        # Named commands (e.g., `dokku apps:create`)
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>├── functions             # Public functions for other plugins to source
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>├── internal-functions    # Private functions
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>├── triggers.go           # Go-based trigger implementations
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>├── *.go                  # Additional Go code
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>└── Makefile              # Build configuration
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Jul  3 16:09:48 dokku.me dokku[127630]: INVOKED: pre-release-buildpack( pythonapp )
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Jul  3 16:10:02 dokku.me dokku[128095]: INVOKED: docker-args-run( rubyapp )
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Jul  3 16:10:02 dokku.me dokku[128114]: INVOKED: docker-args-run( nhl )
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Jul  3 16:10:03 dokku.me dokku[128195]: INVOKED: pre-deploy( pythonapp )
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Jul  3 16:10:23 dokku.me dokku[129253]: INVOKED: docker-args-deploy( pythonapp )
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Jul  3 16:10:24 dokku.me dokku[129451]: INVOKED: check-deploy( pythonapp 6274ced0d4be11af4490cd18abaf77cdd593f025133f403d984e80d86a39acec web 5000 10.0.16.80 )
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Jul  3 16:10:35 dokku.me dokku[129561]: INVOKED: docker-args-deploy( pythonapp )
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Jul  3 16:10:36 dokku.me dokku[129760]: INVOKED: check-deploy( pythonapp ac88a56ee4161ff37e4b92d1498c3eadc91f0aa7c8b81b44fc077e2a51d54cc0 worker )
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Jul  3 16:10:46 dokku.me dokku[129851]: INVOKED: post-deploy( pythonapp )
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Jul  3 16:10:46 dokku.me dokku[129945]: INVOKED: nginx-pre-reload( pythonapp )
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>Jul  3 16:15:02 dokku.me dokku[130397]: INVOKED: docker-args-run( goapp )
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>Jul  3 16:21:02 dokku.me dokku[130796]: INVOKED: docker-args-run( rubyapp )
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>Jul  3 16:30:02 dokku.me dokku[131384]: INVOKED: docker-args-run( rubyapp )
+<h2 id="plugin-system-architecture">Plugin System Architecture<a class="headerlink" href="#plugin-system-architecture" title="Permanent link">&para;</a></h2>
+<p>Dokku's functionality is entirely implemented through plugins. This architecture provides:</p>
+<ul>
+<li><strong>Extensibility</strong>: Add new features without modifying core code</li>
+<li><strong>Loose coupling</strong>: Plugins communicate via well-defined triggers</li>
+<li><strong>Composability</strong>: Mix and match builders, schedulers, and proxies</li>
+</ul>
+<h3 id="plugin-communication-via-triggers">Plugin Communication via Triggers<a class="headerlink" href="#plugin-communication-via-triggers" title="Permanent link">&para;</a></h3>
+<p>Plugins communicate through the <strong>trigger system</strong> powered by <a href="https://github.com/dokku/plugn">plugn</a>. When a trigger is fired, plugn executes matching scripts from all enabled plugins:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>+---------------+     plugn trigger     +---------------+
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>|    Plugin A   | -------------------&gt;  |    Plugin B   |
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>| (fires event) |    &quot;post-deploy&quot;      | (listens for  |
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>+---------------+                       |    event)     |
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>                                        +---------------+
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                                              |
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>                                              v
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>                                        +---------------+
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                                        |    Plugin C   |
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                                        | (also listens)|
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>                                        +---------------+
 </code></pre></div>
-</div>
-</div>
-</div>
-<p>You can list all events that are currently being recorded via <code>dokku events:list</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>events:list
+<p><strong>Trigger execution flow:</strong></p>
+<ol>
+<li>A plugin calls <code>plugn trigger &lt;trigger-name&gt; [args...]</code></li>
+<li>plugn searches <code>$PLUGIN_ENABLED_PATH/*/</code> for files named <code>&lt;trigger-name&gt;</code></li>
+<li>Each matching executable is run with the provided arguments</li>
+<li>Triggers can return data via stdout or signal errors via exit codes</li>
+</ol>
+<p><strong>Key trigger categories:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App lifecycle</td>
+<td><code>post-create</code>, <code>pre-delete</code>, <code>post-deploy</code></td>
+<td>React to app events</td>
+</tr>
+<tr>
+<td>Build</td>
+<td><code>builder-detect</code>, <code>pre-build</code>, <code>builder-build</code></td>
+<td>Control build process</td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td><code>scheduler-deploy</code>, <code>check-deploy</code></td>
+<td>Manage deployments</td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td><code>proxy-build-config</code>, <code>nginx-pre-reload</code></td>
+<td>Configure reverse proxy</td>
+</tr>
+<tr>
+<td>Git</td>
+<td><code>git-pre-pull</code>, <code>receive-app</code></td>
+<td>Handle git operations</td>
+</tr>
+</tbody>
+</table>
+<p>For the complete list of triggers, see <a href="../plugin-triggers/">Plugin Triggers</a>.</p>
+<h3 id="calling-triggers-from-go-code">Calling Triggers from Go Code<a class="headerlink" href="#calling-triggers-from-go-code" title="Permanent link">&para;</a></h3>
+<p>Go-based plugins use the <code>common.CallPlugnTrigger</code> function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">common</span><span class="p">.</span><span class="nx">CallPlugnTrigger</span><span class="p">(</span><span class="nx">common</span><span class="p">.</span><span class="nx">PlugnTriggerInput</span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nx">Trigger</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;post-deploy&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nx">Args</span><span class="p">:</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">appName</span><span class="p">,</span><span class="w"> </span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="nx">ip</span><span class="p">,</span><span class="w"> </span><span class="nx">imageTag</span><span class="p">},</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">})</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>=====&gt; Events currently logged
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>check-deploy
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>dependencies
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>docker-args-build
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>docker-args-deploy
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>docker-args-run
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>git-post-pull
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>git-pre-pull
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>nginx-hostname
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>nginx-pre-reload
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>post-build-buildpack
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>post-build-dockerfile
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>post-delete
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>post-deploy
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>post-domains-update
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>pre-build-buildpack
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>pre-build-dockerfile
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>pre-delete
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>pre-deploy
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>pre-release-buildpack
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>pre-release-dockerfile
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>receive-app
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>update
+<h2 id="command-flow">Command Flow<a class="headerlink" href="#command-flow" title="Permanent link">&para;</a></h2>
+<p>When a user runs a command like <code>dokku apps:list</code>, here's what happens:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>User runs: ssh dokku@host apps:list
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                    |
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>                    v
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>+-------------------+-------------------+
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>|           dokku bash script           |
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>|  1. Source /etc/default/dokku         |
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>|  2. Set DOKKU_ROOT, PLUGIN_PATH       |
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>|  3. Source common/functions           |
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>|  4. Call parse_args()                 |
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>|  5. Check user permissions            |
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>+-------------------+-------------------+
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>                    |
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>                    v
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>+-------------------+-------------------+
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>|          execute_dokku_cmd()          |
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>|  1. Handle plugin aliases             |
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>|  2. Check for subcommands/default     |
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>|  3. Check for subcommands/&lt;cmd&gt;       |
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>|  4. Fall back to commands scripts     |
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>+-------------------+-------------------+
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>                    |
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>                    v
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>+-------------------+-------------------+
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>|  plugins/apps/subcommands/list        |
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>|  (executes the actual command)        |
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>+-------------------+-------------------+
 </code></pre></div>
-</div>
-</div>
-</div>
+<p><strong>Command resolution order:</strong></p>
+<ol>
+<li>Check <code>$PLUGIN_ENABLED_PATH/&lt;plugin&gt;/subcommands/default</code> for the default command</li>
+<li>Check <code>$PLUGIN_ENABLED_PATH/&lt;plugin&gt;/subcommands/&lt;command&gt;</code> for named commands</li>
+<li>Iterate through all <code>$PLUGIN_ENABLED_PATH/*/commands</code> scripts as fallback</li>
+</ol>
+<h2 id="deployment-pipeline">Deployment Pipeline<a class="headerlink" href="#deployment-pipeline" title="Permanent link">&para;</a></h2>
+<p>When code is pushed via <code>git push dokku@host:myapp</code>, Dokku executes a multi-stage pipeline:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>+-------------+    +-------------+    +-------------+    +-------------+
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>|   Receive   |---&gt;|    Build    |---&gt;|   Release   |---&gt;|   Deploy    |
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>+-------------+    +-------------+    +-------------+    +-------------+
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>      |                  |                  |                  |
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>      v                  v                  v                  v
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  git-hook          builder-detect    builder-release    scheduler-deploy
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  receive-app       pre-build                            core-post-deploy
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  post-extract      builder-build                        post-deploy
+</code></pre></div>
+<h3 id="stage-1-receive">Stage 1: Receive<a class="headerlink" href="#stage-1-receive" title="Permanent link">&para;</a></h3>
+<p>The git receive stage handles the incoming push and prepares the source code:</p>
+<ol>
+<li><code>git-hook</code> receives the push and validates the branch</li>
+<li><code>receive-app</code> trigger is fired</li>
+<li>Source code is extracted to a temporary directory</li>
+<li><code>post-extract</code> trigger allows modification of source</li>
+</ol>
+<h3 id="stage-2-build">Stage 2: Build<a class="headerlink" href="#stage-2-build" title="Permanent link">&para;</a></h3>
+<p>The build stage creates a Docker image from the source:</p>
+<ol>
+<li><code>builder-detect</code> determines the builder type (herokuish, pack, dockerfile, etc.)</li>
+<li><code>pre-build</code> trigger runs pre-build hooks</li>
+<li><code>builder-build</code> creates the Docker image</li>
+<li><code>post-build</code> trigger runs post-build hooks</li>
+</ol>
+<h3 id="stage-3-release">Stage 3: Release<a class="headerlink" href="#stage-3-release" title="Permanent link">&para;</a></h3>
+<p>The release stage prepares the image for deployment:</p>
+<ol>
+<li><code>pre-release-builder</code> allows image modifications</li>
+<li><code>builder-release</code> sets environment variables in the image</li>
+<li><code>post-release-builder</code> runs final release hooks</li>
+</ol>
+<h3 id="stage-4-deploy">Stage 4: Deploy<a class="headerlink" href="#stage-4-deploy" title="Permanent link">&para;</a></h3>
+<p>The deploy stage starts containers and configures networking:</p>
+<ol>
+<li><code>scheduler-deploy</code> starts new containers</li>
+<li><code>check-deploy</code> runs health checks</li>
+<li><code>core-post-deploy</code> switches traffic to new containers</li>
+<li><code>post-deploy</code> runs deployment tasks</li>
+<li>Old containers are retired</li>
+</ol>
+<h2 id="state-management">State Management<a class="headerlink" href="#state-management" title="Permanent link">&para;</a></h2>
+<p>Dokku uses a file-based state system for simplicity and transparency.</p>
+<h3 id="property-system">Property System<a class="headerlink" href="#property-system" title="Permanent link">&para;</a></h3>
+<p>Plugin-specific configuration is stored in the property system:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>/var/lib/dokku/data/&lt;plugin&gt;/&lt;app&gt;/&lt;property&gt;
+</code></pre></div>
+<p>Properties are managed via helper functions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Shell</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>fn-plugin-property-write<span class="w"> </span><span class="s2">&quot;git&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$APP</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;deploy-branch&quot;</span><span class="w"> </span><span class="s2">&quot;main&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>fn-plugin-property-get<span class="w"> </span><span class="s2">&quot;git&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$APP</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;deploy-branch&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Go</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">common</span><span class="p">.</span><span class="nx">PropertyWrite</span><span class="p">(</span><span class="s">&quot;git&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">appName</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;deploy-branch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">common</span><span class="p">.</span><span class="nx">PropertyGet</span><span class="p">(</span><span class="s">&quot;git&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">appName</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;deploy-branch&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="per-app-data">Per-App Data<a class="headerlink" href="#per-app-data" title="Permanent link">&para;</a></h3>
+<p>Application-specific data sometimes lives in <code>$DOKKU_ROOT/&lt;app&gt;/</code>:</p>
+<ul>
+<li><code>refs/</code> - Git references</li>
+<li><code>tls/</code> - SSL certificates</li>
+<li><code>ENV</code> - Environment file</li>
+<li>Container IDs, port mappings, etc.</li>
+</ul>
+<p>All non-git code is being migrated to the property system.</p>
+<h3 id="global-configuration">Global Configuration<a class="headerlink" href="#global-configuration" title="Permanent link">&para;</a></h3>
+<p>Global settings can be configured via:</p>
+<ul>
+<li><code>/etc/default/dokku</code> - System-level defaults</li>
+<li><code>$DOKKU_ROOT/dokkurc</code> - User-level configuration</li>
+<li><code>$DOKKU_ROOT/.dokkurc/*</code> - Additional configuration files</li>
+</ul>
+<h2 id="key-design-decisions">Key Design Decisions<a class="headerlink" href="#key-design-decisions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plugin-based architecture</strong></td>
+<td>Enables extensibility without modifying core code. Community plugins can add databases, caching, and other services.</td>
+</tr>
+<tr>
+<td><strong>Bash + Go hybrid</strong></td>
+<td>Bash for orchestration and simple commands; Go for performance-critical operations and complex logic.</td>
+</tr>
+<tr>
+<td><strong>Trigger system</strong></td>
+<td>Loose coupling between plugins. Plugins don't need to know about each other; they just fire and respond to events.</td>
+</tr>
+<tr>
+<td><strong>File-based state</strong></td>
+<td>Simple, transparent, and easy to debug. No database dependency. State can be inspected with standard Unix tools.</td>
+</tr>
+<tr>
+<td><strong>Docker as foundation</strong></td>
+<td>Leverages Docker's container runtime, networking, and image management. Allows multiple scheduler backends.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../plugin-creation/">Plugin Creation</a> - How to create custom plugins</li>
+<li><a href="../plugin-triggers/">Plugin Triggers</a> - Complete list of available triggers</li>
+<li><a href="../testing/">Testing</a> - How to test Dokku and plugins</li>
+<li><a href="../../deployment/application-deployment/">Application Deployment</a> - User-facing deployment guide</li>
+<li><a href="../../deployment/builders/builder-management/">Builder Management</a> - Available build backends</li>
+<li><a href="../../deployment/schedulers/scheduler-management/">Scheduler Management</a> - Available scheduler backends</li>
+</ul>
 
 
 
@@ -4776,7 +5468,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../registry-management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Registry Management">
+          <a href="../../deployment/schedulers/null/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Null Scheduler">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4786,20 +5478,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Registry Management
+                Null Scheduler
               </div>
             </div>
           </a>
         
         
           
-          <a href="../persistent-storage/" class="md-footer__link md-footer__link--next" aria-label="Next: Persistent Storage">
+          <a href="../plugin-creation/" class="md-footer__link md-footer__link--next" aria-label="Next: Plugin creation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Persistent Storage
+                Plugin creation
               </div>
             </div>
             <div class="md-footer__button md-icon">

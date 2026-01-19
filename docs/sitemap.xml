@@ -305,6 +305,10 @@
          <lastmod>2026-01-19</lastmod>
     </url>
     <url>
+         <loc>https://dokku.com/docs/development/architecture/</loc>
+         <lastmod>2026-01-19</lastmod>
+    </url>
+    <url>
          <loc>https://dokku.com/docs/development/plugin-creation/</loc>
          <lastmod>2026-01-19</lastmod>
     </url>
