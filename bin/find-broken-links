@@ -1,0 +1,414 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "beautifulsoup4",
+#     "requests",
+# ]
+# ///
+"""Finds broken links in the dokku.com docs and maps them to source HTML files."""
+
+import argparse
+import json
+import os
+import pathlib
+import posixpath
+import sys
+import tempfile
+import threading
+import time
+import urllib.parse
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import bs4
+import requests
+
+ROOT_DOMAIN = "dokku.com"
+SKIP_SCHEMES = {"mailto", "javascript", "tel"}
+USER_AGENT = "Mozilla/5.0 (compatible; DokkuLinkChecker/1.0)"
+CURRENT_DIRS = {"docs", "blog", "tutorials"}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Find broken links in dokku.com docs")
+    parser.add_argument(
+        "--internal-only",
+        action="store_true",
+        help="Only check internal links (skip external HTTP checks)",
+    )
+    parser.add_argument(
+        "--current-only",
+        action="store_true",
+        help="Only check docs/, blog/, tutorials/ (skip versioned docs~v* dirs)",
+    )
+    parser.add_argument(
+        "--version",
+        type=str,
+        default=None,
+        help="Check a specific version only (e.g. 'v0.37.7' or 'latest')",
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Print progress to stderr"
+    )
+    return parser.parse_args()
+
+
+def version_to_dir(version):
+    if version == "latest":
+        return "docs"
+    return f"docs~{version}"
+
+
+def discover_html_files(root_dir, current_only=False, version=None):
+    html_files = []
+
+    if version:
+        target = root_dir / version_to_dir(version)
+        if not target.is_dir():
+            print(f"Error: version directory '{target.name}' not found", file=sys.stderr)
+            sys.exit(1)
+        for dirpath, _, filenames in os.walk(target):
+            for filename in sorted(filenames):
+                if filename.endswith(".html"):
+                    html_files.append(pathlib.Path(dirpath) / filename)
+        return html_files
+
+    root_index = root_dir / "index.html"
+    if root_index.is_file():
+        html_files.append(root_index)
+
+    for entry in sorted(root_dir.iterdir()):
+        if not entry.is_dir():
+            continue
+        if entry.name.startswith(".") or entry.name in (
+            "assets",
+            "nginx.conf.d",
+            "bin",
+        ):
+            continue
+        if current_only and entry.name not in CURRENT_DIRS:
+            continue
+
+        for dirpath, _, filenames in os.walk(entry):
+            for filename in sorted(filenames):
+                if filename.endswith(".html"):
+                    html_files.append(pathlib.Path(dirpath) / filename)
+
+    return html_files
+
+
+def extract_links(html_text):
+    soup = bs4.BeautifulSoup(html_text, "html.parser")
+    links = []
+    for anchor in soup.find_all("a", href=True):
+        href = anchor["href"].strip()
+        if href:
+            links.append(href)
+    return links
+
+
+def classify_link(href):
+    if not href or href.startswith("#"):
+        return "skip"
+
+    parsed = urllib.parse.urlparse(href)
+
+    if parsed.scheme in SKIP_SCHEMES:
+        return "skip"
+
+    if parsed.scheme in ("http", "https"):
+        if parsed.netloc == ROOT_DOMAIN or parsed.netloc == f"www.{ROOT_DOMAIN}":
+            return "internal"
+        return "external"
+
+    if parsed.scheme:
+        return "skip"
+
+    return "internal"
+
+
+def is_versioned_docs_file(rel_path):
+    return rel_path.startswith("docs~v")
+
+
+def is_absolute_latest_docs_link(href):
+    parsed = urllib.parse.urlparse(href)
+    if parsed.scheme in ("http", "https") and parsed.netloc in (ROOT_DOMAIN, f"www.{ROOT_DOMAIN}"):
+        return parsed.path.startswith("/docs/")
+    return False
+
+
+def normalize_internal_link(href, source_file, root_dir):
+    parsed = urllib.parse.urlparse(href)
+    path = parsed.path
+
+    if not path:
+        return None
+
+    if parsed.scheme in ("http", "https"):
+        path = parsed.path
+    elif path.startswith("/"):
+        pass
+    else:
+        source_dir = str(source_file.parent.relative_to(root_dir))
+        path = posixpath.normpath(posixpath.join(source_dir, path))
+
+    path = path.lstrip("/")
+
+    if path.startswith(".."):
+        return None
+
+    return path
+
+
+def file_exists_for_path(root_dir, url_path):
+    if not url_path:
+        return (root_dir / "index.html").is_file()
+
+    target = root_dir / url_path
+
+    if target.is_file():
+        return True
+
+    if target.is_dir() and (target / "index.html").is_file():
+        return True
+
+    index_target = root_dir / url_path / "index.html"
+    if index_target.is_file():
+        return True
+
+    return False
+
+
+class DomainThrottle:
+    """Per-domain rate limiting: ensures a minimum delay between requests to the same host."""
+
+    def __init__(self, delay=1.0):
+        self._delay = delay
+        self._lock = threading.Lock()
+        self._last_request = {}  # domain -> timestamp
+        self._domain_locks = {}  # domain -> Lock
+
+    def wait(self, domain):
+        with self._lock:
+            if domain not in self._domain_locks:
+                self._domain_locks[domain] = threading.Lock()
+            domain_lock = self._domain_locks[domain]
+
+        with domain_lock:
+            now = time.monotonic()
+            last = self._last_request.get(domain, 0)
+            wait_time = self._delay - (now - last)
+            if wait_time > 0:
+                time.sleep(wait_time)
+            with self._lock:
+                self._last_request[domain] = time.monotonic()
+
+
+_throttle = DomainThrottle(delay=1.0)
+MAX_RETRIES = 3
+CACHE_FILE = os.path.join(tempfile.gettempdir(), "dokku-link-checker-cache.json")
+CACHE_MAX_AGE = 86400  # 24 hours
+
+
+def load_cache():
+    try:
+        with open(CACHE_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        now = time.time()
+        return {url: entry for url, entry in data.items() if now - entry["ts"] < CACHE_MAX_AGE}
+    except (FileNotFoundError, json.JSONDecodeError, KeyError):
+        return {}
+
+
+def save_cache(cache):
+    try:
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(cache, f)
+    except OSError:
+        pass
+
+
+def _request_with_retry(method, url, **kwargs):
+    headers = {"User-Agent": USER_AGENT}
+    domain = urllib.parse.urlparse(url).netloc
+
+    for attempt in range(MAX_RETRIES):
+        _throttle.wait(domain)
+        resp = method(url, timeout=10, allow_redirects=True, headers=headers, **kwargs)
+        if resp.status_code != 429:
+            return resp
+        retry_after = resp.headers.get("Retry-After")
+        delay = int(retry_after) if retry_after and retry_after.isdigit() else 2 ** (attempt + 1)
+        delay = min(delay, 30)
+        time.sleep(delay)
+
+    return resp
+
+
+def check_external_url(url):
+    try:
+        resp = _request_with_retry(requests.head, url)
+        if resp.status_code == 405:
+            resp = _request_with_retry(requests.get, url, stream=True)
+        return resp.status_code >= 400
+    except (requests.RequestException, Exception):
+        try:
+            resp = _request_with_retry(requests.get, url, stream=True)
+            return resp.status_code >= 400
+        except (requests.RequestException, Exception):
+            return True
+
+
+def check_external_links(external_links, verbose=False):
+    broken = {}
+    cache = load_cache()
+    urls_to_check = []
+
+    for url in external_links:
+        if url in cache:
+            if cache[url]["broken"]:
+                broken[url] = external_links[url]
+        else:
+            urls_to_check.append(url)
+
+    if verbose:
+        cached = len(external_links) - len(urls_to_check)
+        print(
+            f"Checking {len(urls_to_check)} unique external URLs ({cached} cached)...",
+            file=sys.stderr,
+        )
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        future_to_url = {
+            executor.submit(check_external_url, url): url for url in urls_to_check
+        }
+        for i, future in enumerate(as_completed(future_to_url), 1):
+            url = future_to_url[future]
+            if verbose and i % 50 == 0:
+                print(
+                    f"  Checked {i}/{len(urls_to_check)} external URLs...",
+                    file=sys.stderr,
+                )
+            try:
+                is_broken = future.result()
+                cache[url] = {"broken": is_broken, "ts": time.time()}
+                if is_broken:
+                    broken[url] = external_links[url]
+            except Exception:
+                cache[url] = {"broken": True, "ts": time.time()}
+                broken[url] = external_links[url]
+
+    save_cache(cache)
+    return broken
+
+
+def repo_relative(path, root_dir):
+    return str(path.relative_to(root_dir))
+
+
+def print_results(broken_internal, broken_external, cross_version_links, stats):
+    if broken_internal:
+        print("BROKEN INTERNAL LINKS")
+        print("=====================")
+        for url_path in sorted(broken_internal):
+            print(f"\n  /{url_path}")
+            for source in sorted(broken_internal[url_path]):
+                print(f"    {source}")
+
+    if cross_version_links:
+        if broken_internal:
+            print()
+        print("CROSS-VERSION LINKS (versioned docs linking to /docs/)")
+        print("=====================================================")
+        for url in sorted(cross_version_links):
+            print(f"\n  {url}")
+            for source in sorted(cross_version_links[url]):
+                print(f"    {source}")
+
+    if broken_external:
+        if broken_internal or cross_version_links:
+            print()
+        print("BROKEN EXTERNAL LINKS")
+        print("=====================")
+        for url in sorted(broken_external):
+            print(f"\n  {url}")
+            for source in sorted(broken_external[url]):
+                print(f"    {source}")
+
+    print(f"\nSUMMARY")
+    print(f"=======")
+    print(f"Files checked: {stats['files']}")
+    print(f"Internal links checked: {stats['internal_total']} ({stats['internal_unique']} unique)")
+    if "external_total" in stats:
+        print(f"External links checked: {stats['external_total']} ({stats['external_unique']} unique)")
+    print(f"Broken internal links: {len(broken_internal)}")
+    print(f"Cross-version links: {len(cross_version_links)}")
+    if "external_total" in stats:
+        print(f"Broken external links: {len(broken_external)}")
+
+
+def main():
+    args = parse_args()
+    root_dir = pathlib.Path(__file__).parent.parent.resolve()
+
+    html_files = discover_html_files(root_dir, current_only=args.current_only, version=args.version)
+    if args.verbose:
+        print(f"Found {len(html_files)} HTML files to check", file=sys.stderr)
+
+    internal_links = defaultdict(set)
+    external_links = defaultdict(set)
+    cross_version_links = defaultdict(set)
+    internal_total = 0
+    external_total = 0
+
+    for html_file in html_files:
+        if args.verbose:
+            print(f"  Parsing {repo_relative(html_file, root_dir)}", file=sys.stderr)
+
+        text = html_file.read_text(encoding="utf-8")
+        hrefs = extract_links(text)
+        rel_path = repo_relative(html_file, root_dir)
+
+        for href in hrefs:
+            link_type = classify_link(href)
+            if link_type == "skip":
+                continue
+            elif link_type == "internal":
+                if is_versioned_docs_file(rel_path) and is_absolute_latest_docs_link(href):
+                    cross_version_links[href].add(rel_path)
+                    internal_total += 1
+                    continue
+                norm_path = normalize_internal_link(href, html_file, root_dir)
+                if norm_path is not None:
+                    internal_links[norm_path].add(rel_path)
+                    internal_total += 1
+            elif link_type == "external":
+                external_links[href].add(rel_path)
+                external_total += 1
+
+    broken_internal = {}
+    for norm_path, sources in internal_links.items():
+        if not file_exists_for_path(root_dir, norm_path):
+            broken_internal[norm_path] = sources
+
+    broken_external = {}
+    if not args.internal_only:
+        broken_external = check_external_links(external_links, verbose=args.verbose)
+
+    stats = {
+        "files": len(html_files),
+        "internal_total": internal_total,
+        "internal_unique": len(internal_links),
+    }
+    if not args.internal_only:
+        stats["external_total"] = external_total
+        stats["external_unique"] = len(external_links)
+
+    print_results(broken_internal, broken_external, cross_version_links, stats)
+    sys.exit(1 if broken_internal or broken_external or cross_version_links else 0)
+
+
+if __name__ == "__main__":
+    main()
