@@ -6168,8 +6168,8 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>{{ .APP }}                          Application name
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>{{ .APP_SSL_PATH }}                 Path to SSL certificate and key
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>{{ .DOKKU_ROOT }}                   Global Dokku root directory (ex: app dir would be `{{ .DOKKU_ROOT }}/{{ .APP }}`)
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as `DOKKU_PROXY_PORT` config var)
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as `DOKKU_PROXY_SSL_PORT` config var)
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as the `proxy-port` property)
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as the `proxy-ssl-port` property)
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as the `map` ports property)
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from the `map` ports property)

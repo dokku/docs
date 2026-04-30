@@ -1093,6 +1093,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#environment-variables-migrated-to-plugin-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables migrated to plugin properties
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5021,6 +5032,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#environment-variables-migrated-to-plugin-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables migrated to plugin properties
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5087,6 +5109,101 @@
 </ul>
 <h3 id="tls-handshake-behavior-change">TLS handshake behavior change<a class="headerlink" href="#tls-handshake-behavior-change" title="Permanent link">&para;</a></h3>
 <p>With the new catch-all installed, an HTTPS request to a hostname that matches a configured dokku app but where the app has no TLS certificate configured will have its TLS handshake rejected by the catch-all (via <code>ssl_reject_handshake on</code>). Previously, nginx fell through to the lexicographically first port-443 server block and presented that block's certificate, producing a cert-mismatch error on the client. The new behavior is a correctness improvement, but operators who deliberately relied on the old fall-through certificate (for monitoring probes, for example) need to either configure a certificate for the target app or remove the catch-all on that host. Existing apps that already have certificates configured are unaffected: nginx selects the right server block via SNI before TLS completion, so the catch-all is never consulted for legitimate requests.</p>
+<h3 id="environment-variables-migrated-to-plugin-properties">Environment variables migrated to plugin properties<a class="headerlink" href="#environment-variables-migrated-to-plugin-properties" title="Permanent link">&para;</a></h3>
+<p>A number of <code>DOKKU_*</code> config environment variables have been replaced with properly-namespaced plugin properties. Existing values are migrated automatically the first time <code>dokku</code> runs after the upgrade, and the original config variable is unset. No manual action is required.</p>
+<p>Going forward, configure these settings using the property commands listed below. Setting the deprecated env vars via <code>dokku config:set</code> will no longer have any effect.</p>
+<table>
+<thead>
+<tr>
+<th>Deprecated Env Var</th>
+<th>Replacement Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DOKKU_APP_PROXY_TYPE</code></td>
+<td><code>dokku proxy:set &lt;app&gt; type &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_APP_RESTORE</code></td>
+<td><code>dokku ps:set &lt;app&gt; restore &lt;true\|false&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_APP_SHELL</code></td>
+<td><code>dokku scheduler:set &lt;app&gt; shell &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_DISABLED</code></td>
+<td><code>dokku checks:disable &lt;app&gt; [proctypes]</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_ENABLED</code></td>
+<td><code>dokku checks:enable &lt;app&gt; [proctypes]</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_SKIPPED</code></td>
+<td><code>dokku checks:skip &lt;app&gt; [proctypes]</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_WAIT</code></td>
+<td><code>dokku checks:set &lt;app&gt; wait &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_TIMEOUT</code></td>
+<td><code>dokku checks:set &lt;app&gt; timeout &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_ATTEMPTS</code></td>
+<td><code>dokku checks:set &lt;app&gt; attempts &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_DEFAULT_CHECKS_WAIT</code></td>
+<td><code>dokku checks:set --global default-wait &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_DISABLE_APP_AUTOCREATION</code></td>
+<td><code>dokku apps:set --global disable-autocreation &lt;true\|false&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_DISABLE_PROXY</code></td>
+<td><code>dokku proxy:disable &lt;app&gt;</code> / <code>dokku proxy:enable &lt;app&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_DOCKERFILE_START_CMD</code></td>
+<td><code>dokku ps:set &lt;app&gt; dockerfile-start-cmd &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_PROXY_PORT</code></td>
+<td><code>dokku proxy:set &lt;app&gt; proxy-port &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_PROXY_SSL_PORT</code></td>
+<td><code>dokku proxy:set &lt;app&gt; proxy-ssl-port &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_SKIP_ALL_CHECKS</code></td>
+<td><code>dokku checks:disable &lt;app&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_SKIP_CLEANUP</code></td>
+<td><code>dokku builder:set &lt;app&gt; skip-cleanup &lt;true\|false&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_SKIP_DEFAULT_CHECKS</code></td>
+<td><code>dokku checks:skip &lt;app&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_SKIP_DEPLOY</code></td>
+<td><code>dokku ps:set &lt;app&gt; skip-deploy &lt;true\|false&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_START_CMD</code></td>
+<td><code>dokku ps:set &lt;app&gt; start-cmd &lt;value&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>DOKKU_PARALLEL_ARGUMENTS</code> is removed entirely; it has no replacement.</p>
+<p><code>DOKKU_SKIP_CLEANUP</code> continues to be honored when set in <code>/etc/environment</code> or <code>~dokku/.dokkurc/*</code> so that bootstrap-time configuration keeps working, but the <code>builder skip-cleanup</code> property is the canonical interface and takes precedence when set.</p>
 
 
 

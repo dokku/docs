@@ -5422,13 +5422,15 @@
 <p>Mount cache targets may vary depending on the tool in use, and users are encouraged to investigate the directories that apply for their language and framework.</p>
 <p>You would adjust the cache directory for whatever application cache you have, e.g. <code>/root/.pnpm-store/v3</code> for pnpm, <code>$HOME/.m2</code> for maven, or <code>/root/.cache</code> for golang.</p>
 <h3 id="customizing-the-run-command">Customizing the run command<a class="headerlink" href="#customizing-the-run-command" title="Permanent link">&para;</a></h3>
-<p>By default no arguments are passed to <code>docker run</code> when deploying the container and the <code>CMD</code> or <code>ENTRYPOINT</code> defined in the <code>Dockerfile</code> are executed. You can take advantage of docker ability of overriding the <code>CMD</code> or passing parameters to your <code>ENTRYPOINT</code> setting <code>$DOKKU_DOCKERFILE_START_CMD</code>. Let's say for example you are deploying a base Node.js image, with the following <code>ENTRYPOINT</code>:</p>
+<p>By default no arguments are passed to <code>docker run</code> when deploying the container and the <code>CMD</code> or <code>ENTRYPOINT</code> defined in the <code>Dockerfile</code> are executed. You can take advantage of docker's ability to override the <code>CMD</code> or pass parameters to your <code>ENTRYPOINT</code> by setting the <code>dockerfile-start-cmd</code> property on the <code>ps</code> plugin. Let's say for example you are deploying a base Node.js image, with the following <code>ENTRYPOINT</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>You can do:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">DOKKU_DOCKERFILE_START_CMD</span><span class="o">=</span><span class="s2">&quot;--harmony server.js&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-start-cmd<span class="w"> </span><span class="s2">&quot;--harmony server.js&quot;</span>
 </code></pre></div>
-<p>To tell Docker what to run.</p>
+<p>To tell Docker what to run. Pass an empty value to clear the override:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-start-cmd
+</code></pre></div>
 <h3 id="procfiles-and-multiple-processes">Procfiles and multiple processes<a class="headerlink" href="#procfiles-and-multiple-processes" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>

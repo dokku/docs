@@ -2134,6 +2134,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#disabling-automatic-app-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling automatic app creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removing-a-deployed-app" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5141,6 +5152,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#disabling-automatic-app-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling automatic app creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removing-a-deployed-app" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5269,7 +5291,8 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>apps:locked &lt;app&gt;                              # Checks if an app is locked for deployment
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>apps:rename &lt;old-app&gt; &lt;new-app&gt;                # Rename an app
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>apps:report [&lt;app&gt;] [&lt;flag&gt;]                   # Display report about an app
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>apps:unlock &lt;app&gt;                              # Unlocks an app for deployment
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>apps:set [--global] &lt;app&gt; &lt;key&gt; (&lt;value&gt;)      # Set or clear an apps property for an app
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>apps:unlock &lt;app&gt;                              # Unlocks an app for deployment
 </code></pre></div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="listing-applications">Listing applications<a class="headerlink" href="#listing-applications" title="Permanent link">&para;</a></h3>
@@ -5341,20 +5364,27 @@
 <li>Create and link datastores.</li>
 <li>Set environment variables.</li>
 </ul>
+<h3 id="disabling-automatic-app-creation">Disabling automatic app creation<a class="headerlink" href="#disabling-automatic-app-creation" title="Permanent link">&para;</a></h3>
+<p>By default, pushing to a git remote for an app that does not yet exist on the Dokku host will cause the app to be created automatically. On shared or production hosts this may be undesirable - operators may prefer that an explicit <code>apps:create</code> is required first. The <code>disable-autocreation</code> global property controls this behavior:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>apps:set<span class="w"> </span>--global<span class="w"> </span>disable-autocreation<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<p>While set, pushes targeting an app that does not exist will be rejected. The default behavior may be restored by passing an empty value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>apps:set<span class="w"> </span>--global<span class="w"> </span>disable-autocreation
+</code></pre></div>
 <h3 id="removing-a-deployed-app">Removing a deployed app<a class="headerlink" href="#removing-a-deployed-app" title="Permanent link">&para;</a></h3>
 <p>In some cases, you may need to destroy an application, whether it is because the application is temporary or because it was misconfigured. In these cases, you can use the <code>apps:destroy</code> command. Performing any destructive actions in Dokku requires confirmation, and this command will ask for the name of the application being deleted before doing so.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>apps:destroy<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>apps:destroy<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a> !     WARNING: Potentially Destructive Action
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a> !     This command will destroy node-js-app (including all add-ons).
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a> !     To proceed, type &quot;node-js-app&quot;
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Destroying node-js-app (including all add-ons)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a> !     This command will destroy node-js-app (including all add-ons).
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a> !     To proceed, type &quot;node-js-app&quot;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Destroying node-js-app (including all add-ons)
 </code></pre></div>
 </div>
 </div>
@@ -5367,11 +5397,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>apps:destroy<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>apps:destroy<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Destroying node-js-app (including all add-ons)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Destroying node-js-app (including all add-ons)
 </code></pre></div>
 </div>
 </div>
@@ -5380,11 +5410,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>apps:destroy<span class="w"> </span>--force<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>apps:destroy<span class="w"> </span>--force<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Destroying node-js-app (including all add-ons)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Destroying node-js-app (including all add-ons)
 </code></pre></div>
 </div>
 </div>
@@ -5399,34 +5429,34 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Destroying node-js-app (including all add-ons)
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>-----&gt; Cleaning up...
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>-----&gt; Building io-js-app from herokuish...
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>-----&gt; Adding BUILD_ENV to build environment...
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>-----&gt; Node.js app detected
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>-----&gt; Creating runtime environment
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>...
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>=====&gt; Application deployed:
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>       http://io-js-app.ci.dokku.me
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>Renaming node-js-app to io-js-app... done
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Destroying node-js-app (including all add-ons)
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>-----&gt; Cleaning up...
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>-----&gt; Building io-js-app from herokuish...
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>-----&gt; Adding BUILD_ENV to build environment...
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>-----&gt; Node.js app detected
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>-----&gt; Creating runtime environment
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>...
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>=====&gt; Application deployed:
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>       http://io-js-app.ci.dokku.me
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>Renaming node-js-app to io-js-app... done
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>This will copy all of your app's contents into a new app directory with the name of your choice, delete your old app, then rebuild the new version of the app and deploy it. All of your config variables, including database urls, will be preserved.</p>
 <p>By default, Dokku will deploy the renamed app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
 <p>Remember to also change your git remote on your local machine in order to make <code>git push dokku main</code> work again. For this you can use <code>git remote set-url</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:io-js-app
 </code></pre></div>
 <h3 id="cloning-an-existing-app">Cloning an existing app<a class="headerlink" href="#cloning-an-existing-app" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
@@ -5437,11 +5467,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Cloning node-js-app to io-js-app... done
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Cloning node-js-app to io-js-app... done
 </code></pre></div>
 </div>
 </div>
@@ -5458,10 +5488,10 @@
 <p>If you have exposed specific ports via <code>docker-options</code> plugin, or performed anything that cannot be done against multiple applications, <code>apps:clone</code> may result in errors.</p>
 </div>
 <p>By default, Dokku will deploy this new app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
 <p>Finally, if the application already exists, you may wish to ignore errors resulting from attempting to clone over it. To do so, you can use the <code>--ignore-existing</code> flag. A warning will be emitted, but the command will return <code>0</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--ignore-existing<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--ignore-existing<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
 </code></pre></div>
 <h3 id="locking-app-deploys">Locking app deploys<a class="headerlink" href="#locking-app-deploys" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
@@ -5472,11 +5502,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>apps:lock<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>apps:lock<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>-----&gt; Deploy lock created
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>-----&gt; Deploy lock created
 </code></pre></div>
 </div>
 </div>
@@ -5494,13 +5524,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>apps:unlock<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>apps:unlock<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a> !     A deploy may be in progress.
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a> !     Removing the app lock will not stop in progress deploys.
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>-----&gt; Deploy lock removed.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a> !     A deploy may be in progress.
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a> !     Removing the app lock will not stop in progress deploys.
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>-----&gt; Deploy lock removed.
 </code></pre></div>
 </div>
 </div>
@@ -5514,11 +5544,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Shell</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>apps:locked<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>apps:locked<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Deploy lock does not exist
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Deploy lock does not exist
 </code></pre></div>
 </div>
 </div>
@@ -5532,28 +5562,28 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Shell</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>apps:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>apps:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>=====&gt; node-js-app app information
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>       App created at:              1635126111
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>       App dir:                     /home/dokku/node-js-app
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>       App deploy source:           git
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>       App locked:                  false
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>=====&gt; python-sample app information
-<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>       App created at:              1635126000
-<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>       App dir:                     /home/dokku/python-sample
-<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>       App deploy source:
-<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>       App deploy source metadata:
-<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>       App locked:                  false
-<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>=====&gt; ruby-sample app information
-<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>       App created at:              1635122462
-<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>       App dir:                     /home/dokku/ruby-sample
-<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>       App deploy source:           git
-<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>       App deploy source metadata:  c60921ea2799ca108276414b95ea197f16798d51
-<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>       App locked:                  false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>=====&gt; node-js-app app information
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>       App created at:              1635126111
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>       App dir:                     /home/dokku/node-js-app
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>       App deploy source:           git
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>       App locked:                  false
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>=====&gt; python-sample app information
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>       App created at:              1635126000
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>       App dir:                     /home/dokku/python-sample
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>       App deploy source:
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>       App deploy source metadata:
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>       App locked:                  false
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>=====&gt; ruby-sample app information
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>       App created at:              1635122462
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>       App dir:                     /home/dokku/ruby-sample
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>       App deploy source:           git
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>       App deploy source metadata:  c60921ea2799ca108276414b95ea197f16798d51
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>       App locked:                  false
 </code></pre></div>
 </div>
 </div>
@@ -5562,21 +5592,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Shell</label><label for="__tabbed_14_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>=====&gt; node-js-app app information
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>       App dir:                     /home/dokku/node-js-app
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>       App deploy source:           git
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
-<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>       App locked:                  false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>=====&gt; node-js-app app information
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>       App dir:                     /home/dokku/node-js-app
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>       App deploy source:           git
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>       App locked:                  false
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app<span class="w"> </span>--app-dir
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app<span class="w"> </span>--app-dir
 </code></pre></div>
 
 

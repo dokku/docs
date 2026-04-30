@@ -3162,6 +3162,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#customizing-the-start-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the start command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#restart-policies" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5402,6 +5413,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#customizing-the-start-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the start command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#restart-policies" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5701,6 +5723,17 @@
 <p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
 </code></pre></div>
+<h3 id="customizing-the-start-command">Customizing the start command<a class="headerlink" href="#customizing-the-start-command" title="Permanent link">&para;</a></h3>
+<p>The command used to start an app's containers can be customized via two <code>ps</code> properties, depending on which builder is in use.</p>
+<p>For buildpack-built apps (where the start command normally comes from the <code>Procfile</code>), set <code>start-cmd</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>start-cmd<span class="w"> </span><span class="s2">&quot;node server.js&quot;</span>
+</code></pre></div>
+<p>For Dockerfile-built apps, set <code>dockerfile-start-cmd</code>. This value is passed as arguments to <code>docker run</code> and overrides or supplements the image's <code>CMD</code> / <code>ENTRYPOINT</code>. See the <a href="../../deployment/builders/dockerfiles/#customizing-the-run-command">Dockerfile builder documentation</a> for context.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-start-cmd<span class="w"> </span><span class="s2">&quot;--harmony server.js&quot;</span>
+</code></pre></div>
+<p>Either property can be cleared by passing an empty value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>start-cmd
+</code></pre></div>
 <h3 id="restart-policies">Restart policies<a class="headerlink" href="#restart-policies" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
@@ -5713,20 +5746,20 @@
 <p>A change in the restart policy must be followed by a <code>ps:rebuild</code> call.</p>
 </div>
 <p>You can configure this via the <code>ps:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># always restart an exited container</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>always
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># never restart an exited container</span>
-<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>no
-<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
-<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="c1"># only restart it on Docker restart if it was not manually stopped</span>
-<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>unless-stopped
-<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>
-<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="c1"># restart only on non-zero exit status</span>
-<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure
-<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>
-<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="c1"># restart only on non-zero exit status up to 20 times</span>
-<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure:20
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># always restart an exited container</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>always
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="c1"># never restart an exited container</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>no
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="c1"># only restart it on Docker restart if it was not manually stopped</span>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>unless-stopped
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>
+<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="c1"># restart only on non-zero exit status</span>
+<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure
+<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>
+<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="c1"># restart only on non-zero exit status up to 20 times</span>
+<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure:20
 </code></pre></div>
 <p>Restart policies have no bearing on server reboot, and Dokku will always attempt to restart your apps at that point unless they were manually stopped.</p>
 <p>Dokku also runs <code>dokku-event-listener</code> in the background via the system's init service. This monitors container state, performing the following actions:</p>
@@ -5743,40 +5776,40 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>ps:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>ps:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>=====&gt; node-js-app ps information
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>       Deployed:                      false
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>       Processes:                     0
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>       Ps can scale:                  true
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>       Ps computed procfile path:     Procfile2
-<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>       Ps global procfile path:       Procfile
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>       Ps procfile path:              Procfile2
-<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>       Restore:                       true
-<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>       Running:                       false
-<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>=====&gt; python-sample ps information
-<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>       Deployed:                      false
-<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>       Processes:                     0
-<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>       Ps can scale:                  true
-<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>       Ps computed procfile path:     Procfile
-<a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>       Ps global procfile path:       Procfile
-<a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>       Ps procfile path:
-<a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a>       Restore:                       true
-<a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a>       Running:                       false
-<a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a>=====&gt; ruby-sample ps information
-<a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a>       Deployed:                      false
-<a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>       Processes:                     0
-<a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a>       Ps can scale:                  true
-<a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a>       Ps computed procfile path:     Procfile
-<a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a>       Ps global procfile path:       Procfile
-<a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a>       Ps procfile path:
-<a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a>       Restore:                       true
-<a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a>       Running:                       false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>=====&gt; node-js-app ps information
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>       Deployed:                      false
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>       Processes:                     0
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>       Ps can scale:                  true
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>       Ps computed procfile path:     Procfile2
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>       Ps global procfile path:       Procfile
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>       Ps restart policy:             on-failure:10
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>       Ps procfile path:              Procfile2
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>       Restore:                       true
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>       Running:                       false
+<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>=====&gt; python-sample ps information
+<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>       Deployed:                      false
+<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>       Processes:                     0
+<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>       Ps can scale:                  true
+<a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>       Ps computed procfile path:     Procfile
+<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>       Ps global procfile path:       Procfile
+<a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a>       Ps restart policy:             on-failure:10
+<a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a>       Ps procfile path:
+<a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a>       Restore:                       true
+<a id="__codelineno-40-20" name="__codelineno-40-20" href="#__codelineno-40-20"></a>       Running:                       false
+<a id="__codelineno-40-21" name="__codelineno-40-21" href="#__codelineno-40-21"></a>=====&gt; ruby-sample ps information
+<a id="__codelineno-40-22" name="__codelineno-40-22" href="#__codelineno-40-22"></a>       Deployed:                      false
+<a id="__codelineno-40-23" name="__codelineno-40-23" href="#__codelineno-40-23"></a>       Processes:                     0
+<a id="__codelineno-40-24" name="__codelineno-40-24" href="#__codelineno-40-24"></a>       Ps can scale:                  true
+<a id="__codelineno-40-25" name="__codelineno-40-25" href="#__codelineno-40-25"></a>       Ps computed procfile path:     Procfile
+<a id="__codelineno-40-26" name="__codelineno-40-26" href="#__codelineno-40-26"></a>       Ps global procfile path:       Procfile
+<a id="__codelineno-40-27" name="__codelineno-40-27" href="#__codelineno-40-27"></a>       Ps restart policy:             on-failure:10
+<a id="__codelineno-40-28" name="__codelineno-40-28" href="#__codelineno-40-28"></a>       Ps procfile path:
+<a id="__codelineno-40-29" name="__codelineno-40-29" href="#__codelineno-40-29"></a>       Restore:                       true
+<a id="__codelineno-40-30" name="__codelineno-40-30" href="#__codelineno-40-30"></a>       Running:                       false
 </code></pre></div>
 </div>
 </div>
@@ -5785,23 +5818,23 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>=====&gt; node-js-app ps information
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>       Deployed:                      false
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>       Processes:                     0
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>       Ps can scale:                  true
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>       Restore:                       true
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>       Running:                       false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>=====&gt; node-js-app ps information
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>       Deployed:                      false
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>       Processes:                     0
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>       Ps can scale:                  true
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>       Ps restart policy:             on-failure:10
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>       Restore:                       true
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>       Running:                       false
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app<span class="w"> </span>--deployed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app<span class="w"> </span>--deployed
 </code></pre></div>
 <h3 id="restoring-apps-after-a-server-reboot">Restoring apps after a server reboot<a class="headerlink" href="#restoring-apps-after-a-server-reboot" title="Permanent link">&para;</a></h3>
 <p>When a server reboots or Docker is restarted/upgraded, Docker may or may not start old app containers automatically, and may in some cases re-assign container IP addresses. To combat this issue, Dokku uses an init process that triggers <code>dokku ps:restore</code> after the Docker daemon is detected as starting. When triggered, the <code>dokku ps:restore</code> command will serially (one by one) run the following for each:</p>
@@ -5815,6 +5848,12 @@
 </li>
 </ul>
 <p>During this time, requests may route to the incorrect app if the assigned IPs correspond to those for other apps. While dokku makes all efforts to avoid this, there may be a few minutes where urls may route to the wrong app. To avoid this, either use a custom proxy plugin or wait a few minutes until the restoration process is complete.</p>
+<p>Per-app restore behavior can be controlled via the <code>restore</code> property. When set to <code>false</code>, <code>ps:restore</code> will skip the app on reboot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restore<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<p>The default value (<code>true</code>) may be restored by passing an empty value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restore
+</code></pre></div>
 
 
 

@@ -2781,17 +2781,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#deprecated-environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deprecated Environment Variables
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5023,17 +5012,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#deprecated-environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deprecated Environment Variables
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5267,12 +5245,6 @@
 <td>Turn on very verbose debugging.</td>
 </tr>
 <tr>
-<td><code>DOKKU_SKIP_CLEANUP</code></td>
-<td></td>
-<td><code>/etc/environment</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code></td>
-<td>When a deploy is triggered, if this is set to a non-empty value, then old docker containers and images will not be removed. Falls back to the <code>builder:set skip-cleanup</code> property.</td>
-</tr>
-<tr>
 <td><code>DOKKU_SYSTEM_GROUP</code></td>
 <td><code>dokku</code></td>
 <td><code>/etc/environment</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code></td>
@@ -5283,102 +5255,6 @@
 <td><code>dokku</code></td>
 <td><code>/etc/environment</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code></td>
 <td>System user to chown files as.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="deprecated-environment-variables">Deprecated Environment Variables<a class="headerlink" href="#deprecated-environment-variables" title="Permanent link">&para;</a></h2>
-<p>The following environment variables have been migrated to plugin properties. Existing values will be automatically migrated on upgrade. Use the corresponding property commands going forward.</p>
-<table>
-<thead>
-<tr>
-<th>Deprecated Env Var</th>
-<th>Replacement Command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DOKKU_APP_PROXY_TYPE</code></td>
-<td><code>dokku proxy:set &lt;app&gt; type &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_APP_RESTORE</code></td>
-<td><code>dokku ps:set &lt;app&gt; restore &lt;true\|false&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_APP_SHELL</code></td>
-<td><code>dokku scheduler:set &lt;app&gt; shell &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_CHECKS_DISABLED</code></td>
-<td><code>dokku checks:disable &lt;app&gt; [proctypes]</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_CHECKS_ENABLED</code></td>
-<td><code>dokku checks:enable &lt;app&gt; [proctypes]</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_CHECKS_SKIPPED</code></td>
-<td><code>dokku checks:skip &lt;app&gt; [proctypes]</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_CHECKS_WAIT</code></td>
-<td><code>dokku checks:set &lt;app&gt; wait &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_CHECKS_TIMEOUT</code></td>
-<td><code>dokku checks:set &lt;app&gt; timeout &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_CHECKS_ATTEMPTS</code></td>
-<td><code>dokku checks:set &lt;app&gt; attempts &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_DEFAULT_CHECKS_WAIT</code></td>
-<td><code>dokku checks:set --global default-wait &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_DISABLE_APP_AUTOCREATION</code></td>
-<td><code>dokku apps:set --global disable-autocreation &lt;true\|false&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_DISABLE_PROXY</code></td>
-<td><code>dokku proxy:disable &lt;app&gt;</code> / <code>dokku proxy:enable &lt;app&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_DOCKERFILE_START_CMD</code></td>
-<td><code>dokku ps:set &lt;app&gt; dockerfile-start-cmd &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_PARALLEL_ARGUMENTS</code></td>
-<td>Removed. No longer supported.</td>
-</tr>
-<tr>
-<td><code>DOKKU_PROXY_PORT</code></td>
-<td><code>dokku proxy:set &lt;app&gt; proxy-port &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_PROXY_SSL_PORT</code></td>
-<td><code>dokku proxy:set &lt;app&gt; proxy-ssl-port &lt;value&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_SKIP_ALL_CHECKS</code></td>
-<td><code>dokku checks:disable &lt;app&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_SKIP_CLEANUP</code></td>
-<td><code>dokku builder:set &lt;app&gt; skip-cleanup &lt;true\|false&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_SKIP_DEFAULT_CHECKS</code></td>
-<td><code>dokku checks:skip &lt;app&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_SKIP_DEPLOY</code></td>
-<td><code>dokku ps:set &lt;app&gt; skip-deploy &lt;true\|false&gt;</code></td>
-</tr>
-<tr>
-<td><code>DOKKU_START_CMD</code></td>
-<td><code>dokku ps:set &lt;app&gt; start-cmd &lt;value&gt;</code></td>
 </tr>
 </tbody>
 </table>

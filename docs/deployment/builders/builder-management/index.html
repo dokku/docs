@@ -2355,6 +2355,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#skipping-container-and-image-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skipping container and image cleanup
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5092,6 +5103,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#skipping-container-and-image-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skipping container and image cleanup
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5211,36 +5233,47 @@
 <p>The default value may be set by passing an empty value for the option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>build-dir
 </code></pre></div>
+<h4 id="skipping-container-and-image-cleanup">Skipping container and image cleanup<a class="headerlink" href="#skipping-container-and-image-cleanup" title="Permanent link">&para;</a></h4>
+<p>After a successful deploy, Dokku removes old containers and images that are no longer referenced by the app. On hosts where image rebuilds are expensive or where operators want to retain prior images for manual rollback, this cleanup can be disabled per-app or globally via the <code>skip-cleanup</code> property:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>skip-cleanup<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<p>The property can also be set globally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>--global<span class="w"> </span>skip-cleanup<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<p>The default behavior (cleanup enabled) may be restored by passing an empty value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>skip-cleanup
+</code></pre></div>
+<p>For backwards compatibility with bootstrap-time configuration, the <code>DOKKU_SKIP_CLEANUP</code> environment variable in <code>/etc/environment</code> or <code>~dokku/.dokkurc/*</code> is still honored when the <code>skip-cleanup</code> property is unset. The property is the canonical interface and takes precedence when set.</p>
 <h3 id="displaying-builder-reports-for-an-app">Displaying builder reports for an app<a class="headerlink" href="#displaying-builder-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's builder status using the <code>builder:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>builder:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>builder:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app builder information
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Builder build dir:          custom
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Builder computed build dir: custom
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>       Builder computed selected:  herokuish
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>       Builder global build dir:
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>       Builder global selected: herokuish
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>       Builder selected: herokuish
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>=====&gt; python-sample builder information
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>       Builder build dir:
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>       Builder computed build dir:
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>       Builder computed selected: dockerfile
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>       Builder global build dir:
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>       Builder global selected: herokuish
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>       Builder selected: dockerfile
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>=====&gt; ruby-sample builder information
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>       Builder build dir:
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>       Builder computed build dir:
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>       Builder computed selected: herokuish
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>       Builder global build dir:
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>       Builder global selected: herokuish
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>       Builder selected:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>=====&gt; node-js-app builder information
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>       Builder build dir:          custom
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>       Builder computed build dir: custom
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>       Builder computed selected:  herokuish
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>       Builder global build dir:
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>       Builder global selected: herokuish
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>       Builder selected: herokuish
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>=====&gt; python-sample builder information
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>       Builder build dir:
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>       Builder computed build dir:
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>       Builder computed selected: dockerfile
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>       Builder global build dir:
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>       Builder global selected: herokuish
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>       Builder selected: dockerfile
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>=====&gt; ruby-sample builder information
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>       Builder build dir:
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>       Builder computed build dir:
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>       Builder computed selected: herokuish
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>       Builder global build dir:
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>       Builder global selected: herokuish
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>       Builder selected:
 </code></pre></div>
 </div>
 </div>
@@ -5249,18 +5282,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>=====&gt; node-js-app builder information
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       Builder selected: herokuish
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>=====&gt; node-js-app builder information
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>       Builder selected: herokuish
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-selected
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>builder:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-selected
 </code></pre></div>
 <h3 id="custom-builders">Custom builders<a class="headerlink" href="#custom-builders" title="Permanent link">&para;</a></h3>
 <p>To create a custom builder, the following triggers must be implemented:</p>
