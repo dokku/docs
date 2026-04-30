@@ -5702,7 +5702,7 @@
 </div>
 <h3 id="switching-to-traefik">Switching to Traefik<a class="headerlink" href="#switching-to-traefik" title="Permanent link">&para;</a></h3>
 <p>To use the Traefik plugin, use the <code>proxy:set</code> command for the app in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>traefik
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nb">type</span><span class="w"> </span>traefik
 </code></pre></div>
 <p>This will enable the docker label-based Traefik integration. All future deploys will inject the correct labels for Traefik to read and route requests to containers. Due to the docker label-based integration used by Traefik, a single deploy or rebuild will be required before requests will route successfully.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app

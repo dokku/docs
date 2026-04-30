@@ -5452,7 +5452,7 @@
 </ul>
 <h3 id="switching-to-haproxy">Switching to Haproxy<a class="headerlink" href="#switching-to-haproxy" title="Permanent link">&para;</a></h3>
 <p>To use the Haproxy plugin, use the <code>proxy:set</code> command for the app in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>haproxy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nb">type</span><span class="w"> </span>haproxy
 </code></pre></div>
 <p>This will enable the docker label-based Haproxy integration. All future deploys will inject the correct labels for Haproxy to read and route requests to containers. Due to the docker label-based integration used by Haproxy, a single deploy or rebuild will be required before requests will route successfully.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app

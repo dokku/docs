@@ -5478,7 +5478,7 @@
 </ul>
 <h3 id="switching-to-caddy">Switching to Caddy<a class="headerlink" href="#switching-to-caddy" title="Permanent link">&para;</a></h3>
 <p>To use the Caddy plugin, use the <code>proxy:set</code> command for the app in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span>caddy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nb">type</span><span class="w"> </span>caddy
 </code></pre></div>
 <p>This will enable the docker label-based Caddy integration. All future deploys will inject the correct labels for Caddy to read and route requests to containers. Due to the docker label-based integration used by Caddy, a single deploy or rebuild will be required before requests will route successfully.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
