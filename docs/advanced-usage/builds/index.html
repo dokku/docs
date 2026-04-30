@@ -5214,7 +5214,7 @@
 <h1 id="build-tracking">Build Tracking<a class="headerlink" href="#build-tracking" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
-<p>Introduced in 0.34.0</p>
+<p>Introduced in 0.38.0</p>
 </div>
 <p>Every deploy that flows through Dokku - whether triggered by <code>git push</code>, <code>ps:rebuild</code>, <code>ps:restart</code>, <code>config:set</code>, or <code>git:from-archive</code> / <code>git:from-image</code> / <code>git:sync</code> / <code>git:load-image</code> - is recorded as a structured build record on disk. The <code>builds</code> plugin lets operators inspect what is currently deploying, look up the result of an old deploy, and stream the captured build log without depending on <code>journalctl</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>builds:cancel &lt;app&gt;                               # Cancel a running build for an app
