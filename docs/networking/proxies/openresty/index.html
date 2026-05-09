@@ -5588,6 +5588,7 @@
 <li><code>openresty/http-includes/</code>: Injected in the <code>server</code> block serving http(s) requests for the app.</li>
 <li><code>openresty/http-location-includes/</code>: Injected in the <code>location</code> block that proxies to the app in the app's respective <code>server</code> block.</li>
 </ul>
+<p>Custom snippets filenames may only include alphanumeric, underscore, and dot characters. For security reasons, filenames that contain other characters will be ignored.</p>
 <h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
 <p>The OpenResty plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure OpenResty behavior beyond what the plugin provides by default.</p>
 <p>Refer to the upstream <a href="https://github.com/dokku/openresty-docker-proxy">openresty-docker-proxy</a> documentation for more information on what labels are available.</p>
