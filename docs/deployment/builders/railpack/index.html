@@ -5204,10 +5204,9 @@
        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--privileged<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>buildkit<span class="w"> </span>moby/buildkit
 </code></pre></div></li>
 <li>Set the buildkit builder: Update the <code>/etc/default/dokku</code> file to set <code>BUILDKIT_HOST</code>:
-       ```shell
-       touch /etc/default/dokku
-       echo "export BUILDKIT_HOST='docker-container://buildkit'" &gt;&gt; /etc/default/dokku
-       ````</li>
+       <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>touch<span class="w"> </span>/etc/default/dokku
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export BUILDKIT_HOST=&#39;docker-container://buildkit&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/default/dokku
+</code></pre></div></li>
 </ul>
 <h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
 <p>This builder will be auto-detected in the following case:</p>
@@ -5215,17 +5214,17 @@
 <li>A <code>railpack.json</code> exists in the root of the app repository.</li>
 </ul>
 <p>The builder may also be selected via the <code>builder:set</code> command</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>railpack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>railpack
 </code></pre></div>
 <h3 id="supported-languages">Supported languages<a class="headerlink" href="#supported-languages" title="Permanent link">&para;</a></h3>
 <p>See the <a href="https://railpack.com/">upstream railpack documentation</a> for further information on what languages and frameworks are supported.</p>
 <h3 id="build-time-configuration-variables">Build-time configuration variables<a class="headerlink" href="#build-time-configuration-variables" title="Permanent link">&para;</a></h3>
 <p>For security reasons - and as per <a href="https://github.com/docker/docker/issues/13490">Docker recommendations</a> - railpack-based deploys have variables available only during runtime.</p>
 <p>For users that require customization in the <code>build</code> phase, you may use build arguments via the <a href="../../../advanced-usage/docker-options/">docker-options plugin</a>. All environment variables set by the <code>config</code> plugin are automatically exported within the railpack build environment, and thus <code>--env</code> only requires setting a key without a value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV&#39;</span>
 </code></pre></div>
 <p>Alternatively, a full value may be provided in the form of <code>--env KEY=VALUE</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV=production&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV=production&#39;</span>
 </code></pre></div>
 <h3 id="changing-the-railpackjson-location">Changing the <code>railpack.json</code> location<a class="headerlink" href="#changing-the-railpackjson-location" title="Permanent link">&para;</a></h3>
 <p>The <code>railpack.json</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
@@ -5234,43 +5233,43 @@
 <li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
 </ul>
 <p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>railpackjson-path</code> property:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>node-js-app<span class="w"> </span>railpackjson-path<span class="w"> </span>.dokku/railpack.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>node-js-app<span class="w"> </span>railpackjson-path<span class="w"> </span>.dokku/railpack.json
 </code></pre></div>
 <p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, the build will fail.</p>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>node-js-app<span class="w"> </span>railpackjson-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>node-js-app<span class="w"> </span>railpackjson-path
 </code></pre></div>
 <p>The <code>railpackjson-path</code> property can also be set globally. The global default is <code>railpack.json</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>--global<span class="w"> </span>railpackjson-path<span class="w"> </span>railpack2.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>--global<span class="w"> </span>railpackjson-path<span class="w"> </span>railpack2.json
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>--global<span class="w"> </span>railpackjson-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-railpack:set<span class="w"> </span>--global<span class="w"> </span>railpackjson-path
 </code></pre></div>
 <h3 id="disabling-cache">Disabling cache<a class="headerlink" href="#disabling-cache" title="Permanent link">&para;</a></h3>
 <p>Disable cache using the [docker-options] plugin:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;--no-cache&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;--no-cache&quot;</span>
 </code></pre></div>
 <h3 id="displaying-builder-railpack-reports-for-an-app">Displaying builder-railpack reports for an app<a class="headerlink" href="#displaying-builder-railpack-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's storage status using the <code>builder-railpack:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>builder-railpack:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-railpack:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app builder-railpack information
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Builder-railpack computed railpackjson path: railpack2.json
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Builder-railpack global railpackjson path:   railpack.json
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>       Builder-railpack railpackjson path:          railpack2.json
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>=====&gt; python-sample builder-railpack information
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>       Builder-railpack computed railpackjson path: railpack.json
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>       Builder-railpack global railpackjson path:   railpack.json
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>       Builder-railpack railpackjson path:
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>=====&gt; ruby-sample builder-railpack information
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>       Builder-railpack computed railpackjson path: railpack.json
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>       Builder-railpack global railpackjson path:   railpack.json
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>       Builder-railpack railpackjson path:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=====&gt; node-js-app builder-railpack information
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>       Builder-railpack computed railpackjson path: railpack2.json
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>       Builder-railpack global railpackjson path:   railpack.json
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>       Builder-railpack railpackjson path:          railpack2.json
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>=====&gt; python-sample builder-railpack information
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>       Builder-railpack computed railpackjson path: railpack.json
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>       Builder-railpack global railpackjson path:   railpack.json
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>       Builder-railpack railpackjson path:
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>=====&gt; ruby-sample builder-railpack information
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>       Builder-railpack computed railpackjson path: railpack.json
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>       Builder-railpack global railpackjson path:   railpack.json
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>       Builder-railpack railpackjson path:
 </code></pre></div>
 </div>
 </div>
@@ -5279,14 +5278,14 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>builder-railpack:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>builder-railpack:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>=====&gt; node-js-app builder-railpack information
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       Builder-railpack computed railpackjson path: railpack2.json
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>       Builder-railpack global railpackjson path:   railpack.json
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>       Builder-railpack railpackjson path:          railpack2.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>=====&gt; node-js-app builder-railpack information
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>       Builder-railpack computed railpackjson path: railpack2.json
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>       Builder-railpack global railpackjson path:   railpack.json
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>       Builder-railpack railpackjson path:          railpack2.json
 </code></pre></div>
 </div>
 </div>
@@ -5295,11 +5294,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>builder-railpack:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-railpack-railpackjson-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>builder-railpack:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-railpack-railpackjson-path
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>railpack2.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>railpack2.json
 </code></pre></div>
 </div>
 </div>
