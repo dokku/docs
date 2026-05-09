@@ -2671,6 +2671,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#archive-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Archive Safety
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4990,6 +5001,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#archive-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Archive Safety
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5042,6 +5064,22 @@
 </code></pre></div>
 <p>Finally, if the archive url is specified as <code>--</code>, the archive will be fetched from stdin.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-sSL<span class="w"> </span>https://github.com/dokku/smoke-test-app/releases/download/2.0.0/smoke-test-app.tar<span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>git:from-archive<span class="w"> </span>node-js-app<span class="w">  </span>--
+</code></pre></div>
+<h2 id="archive-safety">Archive Safety<a class="headerlink" href="#archive-safety" title="Permanent link">&para;</a></h2>
+<p>Archive contents are validated before extraction to prevent path traversal and symlink escape attacks. Archives containing absolute paths, parent directory traversal entries (<code>..</code>), or symlinks pointing outside the extraction directory are rejected.</p>
+<p>The following limits can be configured via global git properties:</p>
+<ul>
+<li><code>archive-max-size</code> - maximum archive size in bytes (default: <code>1073741824</code>, 1 GiB)</li>
+<li><code>archive-max-files</code> - maximum number of entries in an archive (default: <code>10000</code>)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>--global<span class="w"> </span>archive-max-size<span class="w"> </span><span class="m">2147483648</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>--global<span class="w"> </span>archive-max-files<span class="w"> </span><span class="m">20000</span>
+</code></pre></div>
+<p>Unset a property to restore the default:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>--global<span class="w"> </span>archive-max-size
+</code></pre></div>
+<p>The current values can be inspected via the global git report:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>git:report<span class="w"> </span>--global
 </code></pre></div>
 
 
