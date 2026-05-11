@@ -860,6 +860,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#container-readiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container readiness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#plugin-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5032,6 +5043,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#container-readiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container readiness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#plugin-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5127,7 +5149,7 @@
 
 <h1 id="docker-installation-notes">Docker Installation Notes<a class="headerlink" href="#docker-installation-notes" title="Permanent link">&para;</a></h1>
 <p>Pull the dokku/dokku image:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>dokku/dokku:0.38.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>dokku/dokku:0.38.2
 </code></pre></div>
 <p>Next, run the image.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
@@ -5140,12 +5162,12 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--publish<span class="w"> </span><span class="m">8443</span>:443<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--volume<span class="w"> </span>/var/lib/dokku:/mnt/dokku<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>dokku/dokku:0.38.1
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>dokku/dokku:0.38.2
 </code></pre></div>
 <p>Alternatively, you can use <code>docker-compose.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">dokku</span><span class="p">:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dokku/dokku:0.38.1</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dokku/dokku:0.38.2</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dokku</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
@@ -5161,7 +5183,27 @@
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">DOKKU_LIB_HOST_ROOT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/dokku/var/lib/dokku</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 </code></pre></div>
-<p>The above command will start a new docker container that is ready when a message similar to <code>Runit started as PID 12345</code> appears.</p>
+<h2 id="container-readiness">Container readiness<a class="headerlink" href="#container-readiness" title="Permanent link">&para;</a></h2>
+<p>The image ships with a Docker <code>HEALTHCHECK</code> that flips from <code>starting</code> to <code>healthy</code> once first-boot bootstrap is complete (skel restored, <code>plugin-list</code> plugins installed, core install triggers fired), nginx and sshd are accepting connections, and <code>dokku ps:restore</code> has finished. Until those conditions hold, the container is considered unhealthy and dependent services should not yet send traffic.</p>
+<p>To check the current state from the host:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;{{.State.Health.Status}}&#39;</span><span class="w"> </span>dokku
+</code></pre></div>
+<p>Internally, the check is backed by a loopback-only HTTP endpoint:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>dokku<span class="w"> </span>curl<span class="w"> </span>-fsS<span class="w"> </span>http://127.0.0.1:18080/_dokku/health
+</code></pre></div>
+<p>The endpoint binds to <code>127.0.0.1:18080</code> inside the container by design - it is not published to the host and does not interfere with user app vhosts on ports 80/443.</p>
+<p>Compose dependents can gate on the healthcheck via <code>depends_on</code> with <code>condition: service_healthy</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">dokku</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dokku/dokku:0.38.2</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1"># ...</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nt">bootstrap</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine:3.20</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;echo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dokku</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">ready&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="nt">dokku</span><span class="p">:</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+</code></pre></div>
 <p>Dokku is run in the following configuration:</p>
 <ul>
 <li>The global hostname is set to <code>dokku.me</code> on boot.</li>
@@ -5178,31 +5220,31 @@
 <h2 id="plugin-installation">Plugin Installation<a class="headerlink" href="#plugin-installation" title="Permanent link">&para;</a></h2>
 <h3 id="on-dokku-start">On Dokku start<a class="headerlink" href="#on-dokku-start" title="Permanent link">&para;</a></h3>
 <p>To install custom plugins, create a <code>plugin-list</code> file in the host's <code>/var/lib/dokku</code> directory. The plugins listed herein will be automatically installed by Dokku on container boot. This file should be the following format:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">plugin_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repository_url</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">plugin_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repository_url</span>
 </code></pre></div>
 <p>An example for installing the postgres and redis plugins follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">postgres</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-postgres.git</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">redis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-redis.git</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">postgres</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-postgres.git</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">redis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dokku/dokku-redis.git</span>
 </code></pre></div>
 <h3 id="prior-to-dokku-start">Prior to Dokku start<a class="headerlink" href="#prior-to-dokku-start" title="Permanent link">&para;</a></h3>
 <p>The alternative is to build a custom docker image via a custom Dockerfile. This Dockerfile can run any <code>plugin:install</code> command, though the <code>install</code> trigger must be skipped via the <code>--skip-install-trigger</code>. The version installed at that time will be the one that persists. Below is an example Dockerfile showing this method.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">dokku/dokku:0.38.1</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>--skip-install-trigger
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-redis.git<span class="w"> </span>--skip-install-trigger
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">dokku/dokku:0.38.2</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>--skip-install-trigger
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">RUN</span><span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-redis.git<span class="w"> </span>--skip-install-trigger
 </code></pre></div>
 <h2 id="ssh-key-management">SSH Key Management<a class="headerlink" href="#ssh-key-management" title="Permanent link">&para;</a></h2>
 <p>To initialize ssh-keys within the container, use <code>docker exec</code> to enter the container:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dokku<span class="w"> </span>bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dokku<span class="w"> </span>bash
 </code></pre></div>
 <p>Next, run the appropriate ssh-keys commands:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONTENTS_OF_YOUR_PUBLIC_SSH_KEY_HERE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>KEY_NAME
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONTENTS_OF_YOUR_PUBLIC_SSH_KEY_HERE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>KEY_NAME
 </code></pre></div>
 <p>Please see the <a href="../../../deployment/user-management/">user management documentation</a> for more information.</p>
 <h2 id="pushing-applications">Pushing Applications<a class="headerlink" href="#pushing-applications" title="Permanent link">&para;</a></h2>
 <p>When exposing the Dokku container's SSH port (22) on 3022, something similar to the following will need to be setup within the user's <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Host dokku.docker
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  HostName 127.0.0.1
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  Port 3022
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Host dokku.docker
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  HostName 127.0.0.1
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  Port 3022
 </code></pre></div>
 <p>In the above example, the hostname <code>127.0.0.1</code> is being aliased to <code>dokku.docker</code>, while the port is being overridden to <code>3022</code>. All SSH commands - including git pushes - for the hostname <code>dokku.docker</code> will be transparently sent to <code>127.0.0.1:3022</code>.</p>
 
