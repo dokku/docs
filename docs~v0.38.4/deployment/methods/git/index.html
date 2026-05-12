@@ -5520,17 +5520,22 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=====&gt; node-js-app git information
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>       Git deploy branch:             master
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>       Git global deploy branch:      master
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>       Git keep git dir:              false
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>       Git rev env var:               GIT_REV
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>       Git sha:                       a1b2c3d
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>       Git source image:
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>       Git last updated at:           1700000000
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>       Git computed deploy branch:    master
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>       Git computed keep git dir:     false
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>       Git deploy branch:
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>       Git global archive max files:  10000
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>       Git global archive max size:   1073741824
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>       Git global deploy branch:      master
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>       Git keep git dir:
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>       Git rev env var:               GIT_REV
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>       Git sha:                       a1b2c3d
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>       Git source image:
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>       Git last updated at:           1700000000
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The <code>deploy-branch</code> and <code>keep-git-dir</code> keys hold the raw per-app value and are empty when nothing has been set on the app. The <code>computed-deploy-branch</code> and <code>computed-keep-git-dir</code> keys hold the effective value used at deploy time, falling back to the corresponding global value (where one exists) and then to the built-in default.</p>
 <p>You can run the command for a specific app also.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>git:report<span class="w"> </span>node-js-app
 </code></pre></div>

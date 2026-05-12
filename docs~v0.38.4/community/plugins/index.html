@@ -27,31 +27,31 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/deployment/schedulers/docker-local/">
+        <link rel="canonical" href="https://dokku.com/docs/community/plugins/">
       
       
-        <link rel="prev" href="../scheduler-management/">
+        <link rel="prev" href="../clients/">
       
       
-        <link rel="next" href="../k3s/">
+        <link rel="next" href="../../appendices/file-formats/app-json/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
+      <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Docker Local Scheduler - Dokku Documentation</title>
+        <title>Plugins - Dokku Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -80,9 +80,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -92,7 +92,7 @@
   <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
   <link
     rel="stylesheet"
-    href="../../../overrides/assets/stylesheets/main.css"
+    href="../../overrides/assets/stylesheets/main.css"
   />
 
   </head>
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-local-scheduler" class="md-skip">
+        <a href="#plugins" class="md-skip">
           Skip to content
         </a>
       
@@ -145,12 +145,12 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/deployment/schedulers/docker-local/">
+  <a href="/docs/community/plugins/">
     <strong>Click here to go to latest.</strong>
   </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -160,9 +160,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -179,7 +179,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker Local Scheduler
+              Plugins
             
           </span>
         </div>
@@ -312,7 +312,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../getting-started/installation/" class="md-tabs__link">
+        <a href="../../getting-started/installation/" class="md-tabs__link">
           
   
   
@@ -430,9 +430,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     Dokku Documentation
@@ -652,7 +652,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../getting-started/installation/" class="md-nav__link ">
+            <a href="../../getting-started/installation/" class="md-nav__link ">
               
   
   
@@ -696,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/advanced-installation/" class="md-nav__link">
+      <a href="../../getting-started/advanced-installation/" class="md-nav__link">
         
   
   
@@ -724,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/azure/" class="md-nav__link">
+      <a href="../../getting-started/install/azure/" class="md-nav__link">
         
   
   
@@ -752,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/debian/" class="md-nav__link">
+      <a href="../../getting-started/install/debian/" class="md-nav__link">
         
   
   
@@ -780,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/digitalocean/" class="md-nav__link">
+      <a href="../../getting-started/install/digitalocean/" class="md-nav__link">
         
   
   
@@ -808,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/docker/" class="md-nav__link">
+      <a href="../../getting-started/install/docker/" class="md-nav__link">
         
   
   
@@ -836,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/dreamhost/" class="md-nav__link">
+      <a href="../../getting-started/install/dreamhost/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/vagrant/" class="md-nav__link">
+      <a href="../../getting-started/install/vagrant/" class="md-nav__link">
         
   
   
@@ -975,7 +975,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../getting-started/upgrading/" class="md-nav__link ">
+            <a href="../../getting-started/upgrading/" class="md-nav__link ">
               
   
   
@@ -1019,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.38.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.38.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.37.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1103,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.35.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1131,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.34.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.34.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1159,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.33.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.33.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1187,7 +1187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.32.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.32.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1215,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.31.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1243,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.30.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.30.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1271,7 +1271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.29.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.29.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1299,7 +1299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.28.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.28.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1327,7 +1327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.27.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.27.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1355,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.26.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.26.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1383,7 +1383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.25.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.25.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1411,7 +1411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.24.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.24.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1439,7 +1439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.23.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.23.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1467,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.22.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.22.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1495,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.21.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.21.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1523,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.20.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.20.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1551,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.10.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.10.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1579,7 +1579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.9.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.9.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1607,7 +1607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.8.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.8.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1635,7 +1635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.7.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.7.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1663,7 +1663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.6.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.6.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1691,7 +1691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.5.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.5.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1719,7 +1719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats" class="md-nav__link">
+      <a href="../../appendices/file-formats" class="md-nav__link">
         
   
   
@@ -1755,7 +1755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/uninstalling/" class="md-nav__link">
+      <a href="../../getting-started/uninstalling/" class="md-nav__link">
         
   
   
@@ -1783,7 +1783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/troubleshooting/" class="md-nav__link">
+      <a href="../../getting-started/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1811,7 +1811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/where-to-get-help/" class="md-nav__link">
+      <a href="../../getting-started/where-to-get-help/" class="md-nav__link">
         
   
   
@@ -1906,7 +1906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../enterprise/pro/" class="md-nav__link">
+      <a href="../../enterprise/pro/" class="md-nav__link">
         
   
   
@@ -2011,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../application-deployment/" class="md-nav__link">
+      <a href="../../deployment/application-deployment/" class="md-nav__link">
         
   
   
@@ -2039,7 +2039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../application-management/" class="md-nav__link">
+      <a href="../../deployment/application-management/" class="md-nav__link">
         
   
   
@@ -2067,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../logs/" class="md-nav__link">
+      <a href="../../deployment/logs/" class="md-nav__link">
         
   
   
@@ -2095,7 +2095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../remote-commands/" class="md-nav__link">
+      <a href="../../deployment/remote-commands/" class="md-nav__link">
         
   
   
@@ -2123,7 +2123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-management/" class="md-nav__link">
+      <a href="../../deployment/user-management/" class="md-nav__link">
         
   
   
@@ -2151,7 +2151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../zero-downtime-deploys/" class="md-nav__link">
+      <a href="../../deployment/zero-downtime-deploys/" class="md-nav__link">
         
   
   
@@ -2260,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/builder-management/" class="md-nav__link">
+      <a href="../../deployment/builders/builder-management/" class="md-nav__link">
         
   
   
@@ -2288,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/cloud-native-buildpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
         
   
   
@@ -2316,7 +2316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/herokuish-buildpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
         
   
   
@@ -2344,7 +2344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/dockerfiles/" class="md-nav__link">
+      <a href="../../deployment/builders/dockerfiles/" class="md-nav__link">
         
   
   
@@ -2372,7 +2372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/lambda/" class="md-nav__link">
+      <a href="../../deployment/builders/lambda/" class="md-nav__link">
         
   
   
@@ -2400,7 +2400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/nixpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/nixpacks/" class="md-nav__link">
         
   
   
@@ -2428,7 +2428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/null/" class="md-nav__link">
+      <a href="../../deployment/builders/null/" class="md-nav__link">
         
   
   
@@ -2456,7 +2456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../builders/railpack/" class="md-nav__link">
+      <a href="../../deployment/builders/railpack/" class="md-nav__link">
         
   
   
@@ -2555,7 +2555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../methods/git/" class="md-nav__link">
+      <a href="../../deployment/methods/git/" class="md-nav__link">
         
   
   
@@ -2583,7 +2583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../methods/image/" class="md-nav__link">
+      <a href="../../deployment/methods/image/" class="md-nav__link">
         
   
   
@@ -2611,7 +2611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../methods/archive/" class="md-nav__link">
+      <a href="../../deployment/methods/archive/" class="md-nav__link">
         
   
   
@@ -2710,7 +2710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/environment-variables/" class="md-nav__link">
+      <a href="../../configuration/environment-variables/" class="md-nav__link">
         
   
   
@@ -2738,7 +2738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/domains/" class="md-nav__link">
+      <a href="../../configuration/domains/" class="md-nav__link">
         
   
   
@@ -2766,7 +2766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/ssl/" class="md-nav__link">
+      <a href="../../configuration/ssl/" class="md-nav__link">
         
   
   
@@ -2867,7 +2867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/entering-containers/" class="md-nav__link">
+      <a href="../../processes/entering-containers/" class="md-nav__link">
         
   
   
@@ -2895,7 +2895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/one-off-tasks/" class="md-nav__link">
+      <a href="../../processes/one-off-tasks/" class="md-nav__link">
         
   
   
@@ -2923,7 +2923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/process-management/" class="md-nav__link">
+      <a href="../../processes/process-management/" class="md-nav__link">
         
   
   
@@ -2951,7 +2951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/scheduled-cron-tasks/" class="md-nav__link">
+      <a href="../../processes/scheduled-cron-tasks/" class="md-nav__link">
         
   
   
@@ -3050,7 +3050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/dns/" class="md-nav__link">
+      <a href="../../networking/dns/" class="md-nav__link">
         
   
   
@@ -3078,7 +3078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/network/" class="md-nav__link">
+      <a href="../../networking/network/" class="md-nav__link">
         
   
   
@@ -3106,7 +3106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/port-management/" class="md-nav__link">
+      <a href="../../networking/port-management/" class="md-nav__link">
         
   
   
@@ -3211,7 +3211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxy-management/" class="md-nav__link">
+      <a href="../../networking/proxy-management/" class="md-nav__link">
         
   
   
@@ -3239,7 +3239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/caddy/" class="md-nav__link">
+      <a href="../../networking/proxies/caddy/" class="md-nav__link">
         
   
   
@@ -3267,7 +3267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/haproxy/" class="md-nav__link">
+      <a href="../../networking/proxies/haproxy/" class="md-nav__link">
         
   
   
@@ -3295,7 +3295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/nginx/" class="md-nav__link">
+      <a href="../../networking/proxies/nginx/" class="md-nav__link">
         
   
   
@@ -3323,7 +3323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/openresty/" class="md-nav__link">
+      <a href="../../networking/proxies/openresty/" class="md-nav__link">
         
   
   
@@ -3351,7 +3351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/traefik/" class="md-nav__link">
+      <a href="../../networking/proxies/traefik/" class="md-nav__link">
         
   
   
@@ -3464,7 +3464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/backup-recovery/" class="md-nav__link">
+      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
         
   
   
@@ -3492,7 +3492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/builds/" class="md-nav__link">
+      <a href="../../advanced-usage/builds/" class="md-nav__link">
         
   
   
@@ -3520,7 +3520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/deployment-tasks/" class="md-nav__link">
+      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
         
   
   
@@ -3548,7 +3548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/docker-options/" class="md-nav__link">
+      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
         
   
   
@@ -3576,7 +3576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/registry-management/" class="md-nav__link">
+      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
         
   
   
@@ -3604,7 +3604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/event-logs/" class="md-nav__link">
+      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
         
   
   
@@ -3632,7 +3632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/persistent-storage/" class="md-nav__link">
+      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
         
   
   
@@ -3660,7 +3660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/plugin-management/" class="md-nav__link">
+      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
         
   
   
@@ -3688,7 +3688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/repository-management/" class="md-nav__link">
+      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
         
   
   
@@ -3716,7 +3716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/resource-management/" class="md-nav__link">
+      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
         
   
   
@@ -3749,8 +3749,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3778,11 +3776,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
         
           
           <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="">
@@ -3803,7 +3801,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3821,7 +3819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scheduler-management/" class="md-nav__link">
+      <a href="../../deployment/schedulers/scheduler-management/" class="md-nav__link">
         
   
   
@@ -3846,37 +3844,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker Local Scheduler
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../deployment/schedulers/docker-local/" class="md-nav__link">
         
   
   
@@ -3892,171 +3863,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deploying-amd64-images-on-arm64" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying amd64 images on arm64
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disabling-the-init-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Disabling the init process
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploying-process-types-in-parallel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Process Types in Parallel
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploying Process Types in Parallel">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#increasing-parallelism-within-a-process-deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Increasing parallelism within a process deploy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scheduler-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scheduler Interface
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Scheduler Interface">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#implemented-commands-and-triggers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implemented Commands and Triggers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logging-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Logging support
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#supported-resource-management-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Resource Management Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Resource Management Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-limits" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resource Limits
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resource Reservations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4069,7 +3875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../k3s/" class="md-nav__link">
+      <a href="../../deployment/schedulers/k3s/" class="md-nav__link">
         
   
   
@@ -4097,7 +3903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../nomad/" class="md-nav__link">
+      <a href="../../deployment/schedulers/nomad/" class="md-nav__link">
         
   
   
@@ -4125,7 +3931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../null/" class="md-nav__link">
+      <a href="../../deployment/schedulers/null/" class="md-nav__link">
         
   
   
@@ -4228,7 +4034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/architecture/" class="md-nav__link">
+      <a href="../../development/architecture/" class="md-nav__link">
         
   
   
@@ -4256,7 +4062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/plugin-creation/" class="md-nav__link">
+      <a href="../../development/plugin-creation/" class="md-nav__link">
         
   
   
@@ -4284,7 +4090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/plugin-triggers/" class="md-nav__link">
+      <a href="../../development/plugin-triggers/" class="md-nav__link">
         
   
   
@@ -4312,7 +4118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/testing/" class="md-nav__link">
+      <a href="../../development/testing/" class="md-nav__link">
         
   
   
@@ -4340,7 +4146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/release-process/" class="md-nav__link">
+      <a href="../../development/release-process/" class="md-nav__link">
         
   
   
@@ -4441,7 +4247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/github-actions/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/github-actions/" class="md-nav__link">
         
   
   
@@ -4469,7 +4275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/gitlab-ci/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
         
   
   
@@ -4497,7 +4303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/generic/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/generic/" class="md-nav__link">
         
   
   
@@ -4525,7 +4331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/woodpecker-ci/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/woodpecker-ci/" class="md-nav__link">
         
   
   
@@ -4558,6 +4364,8 @@
                 
   
   
+    
+  
   
   
     
@@ -4579,11 +4387,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" checked>
         
           
           <label class="md-nav__link" for="__nav_1_14" id="__nav_1_14_label" tabindex="">
@@ -4604,7 +4412,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_14">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4622,7 +4430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/clients/" class="md-nav__link">
+      <a href="../clients/" class="md-nav__link">
         
   
   
@@ -4647,10 +4455,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../community/plugins/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4666,6 +4501,192 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-a-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing a plugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-own-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating your own plugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Official Plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community plugins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Community plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datastores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datastores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Datastores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relational" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relational
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NewSQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queuing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Queuing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugins-implementing-new-dokku-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugins Implementing New Dokku Functionality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deprecated Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unmaintained-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unmaintained Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4759,7 +4780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/app-json/" class="md-nav__link">
+      <a href="../../appendices/file-formats/app-json/" class="md-nav__link">
         
   
   
@@ -4787,7 +4808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/dockerfile/" class="md-nav__link">
+      <a href="../../appendices/file-formats/dockerfile/" class="md-nav__link">
         
   
   
@@ -4815,7 +4836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/lambda-yml/" class="md-nav__link">
+      <a href="../../appendices/file-formats/lambda-yml/" class="md-nav__link">
         
   
   
@@ -4843,7 +4864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/nginx-conf-sigil/" class="md-nav__link">
+      <a href="../../appendices/file-formats/nginx-conf-sigil/" class="md-nav__link">
         
   
   
@@ -4871,7 +4892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/nixpacks-toml/" class="md-nav__link">
+      <a href="../../appendices/file-formats/nixpacks-toml/" class="md-nav__link">
         
   
   
@@ -4899,7 +4920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/procfile/" class="md-nav__link">
+      <a href="../../appendices/file-formats/procfile/" class="md-nav__link">
         
   
   
@@ -4927,7 +4948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/project-toml/" class="md-nav__link">
+      <a href="../../appendices/file-formats/project-toml/" class="md-nav__link">
         
   
   
@@ -4955,7 +4976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/railpack-json/" class="md-nav__link">
+      <a href="../../appendices/file-formats/railpack-json/" class="md-nav__link">
         
   
   
@@ -5126,123 +5147,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#installing-a-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Installing a plugin
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deploying-amd64-images-on-arm64" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying amd64 images on arm64
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disabling-the-init-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Disabling the init process
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploying-process-types-in-parallel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Process Types in Parallel
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploying Process Types in Parallel">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#increasing-parallelism-within-a-process-deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Increasing parallelism within a process deploy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scheduler-interface" class="md-nav__link">
+  <a href="#creating-your-own-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scheduler Interface
+        Creating your own plugin
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Scheduler Interface">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Official Plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community plugins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Community plugins">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#implemented-commands-and-triggers" class="md-nav__link">
+  <a href="#datastores" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implemented Commands and Triggers
+        Datastores
       
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logging-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Logging support
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#supported-resource-management-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Resource Management Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Resource Management Properties">
+    <nav class="md-nav" aria-label="Datastores">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resource-limits" class="md-nav__link">
+  <a href="#relational" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resource Limits
+        Relational
       
     </span>
   </a>
@@ -5250,10 +5215,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#resource-reservations" class="md-nav__link">
+  <a href="#newsql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resource Reservations
+        NewSQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queuing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Queuing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other
       
     </span>
   </a>
@@ -5262,6 +5260,50 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugins-implementing-new-dokku-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugins Implementing New Dokku Functionality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deprecated Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unmaintained-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unmaintained Plugins
+      
+    </span>
+  </a>
   
 </li>
         
@@ -5287,7 +5329,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/schedulers/docker-local.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/community/plugins.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5296,127 +5338,922 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/deployment/schedulers/docker-local.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/community/plugins.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="docker-local-scheduler">Docker Local Scheduler<a class="headerlink" href="#docker-local-scheduler" title="Permanent link">&para;</a></h1>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Subcommands introduced in 0.12.12</p>
+<h1 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h1>
+<p>Dokku itself is built out of plugins and uses <a href="https://github.com/dokku/plugn">plugn</a> for its plugin system. In essence a plugin is a collection of scripts that will be run based on naming convention.</p>
+<p>Let's take a quick look at the current Dokku nginx plugin that's shipped with Dokku by default.</p>
+<div class="highlight"><pre><span></span><code>nginx-vhosts/
+├── plugin.toml  # plugin metadata
+├── commands     # contains additional commands
+├── install      # runs on Dokku installation
+└── post-deploy  # runs after an app is deployed
+</code></pre></div>
+<h2 id="installing-a-plugin">Installing a plugin<a class="headerlink" href="#installing-a-plugin" title="Permanent link">&para;</a></h2>
+<p><a href="../../advanced-usage/plugin-management/">See the plugin management documentation</a>.</p>
+<h2 id="creating-your-own-plugin">Creating your own plugin<a class="headerlink" href="#creating-your-own-plugin" title="Permanent link">&para;</a></h2>
+<p><a href="../../development/plugin-creation/">See the full documentation</a>.</p>
+<h2 id="official-plugins">Official Plugins<a class="headerlink" href="#official-plugins" title="Permanent link">&para;</a></h2>
+<p>The following plugins are available and provided by Dokku maintainers.  Please file issues against their respective issue trackers.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/dokku/dokku-clickhouse">Clickhouse</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-copyfiles-to-image">Copy Files to Image</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-couchdb">CouchDB</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-cron-restart">Cron Restart</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.30.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-elasticsearch">Elasticsearch</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-graphite">Grafana/Graphite/Statsd</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-http-auth">HTTP Auth</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-letsencrypt">Let's Encrypt</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-maintenance">Maintenance mode</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-mariadb">MariaDB</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-meilisearch">Meilisearch</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-memcached">Memcached</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-mongo">Mongo</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-mysql">MySQL</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-nats">Nats</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-omnisci">Omnisci</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-postgres">Postgres</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-pushpin">Pushpin</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-rabbitmq">RabbitMQ</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-redirect">Redirect</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-redis">Redis</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-registry">Registry</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.12.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-rethinkdb">RethinkDB</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-scheduler-kubernetes">Scheduler Kubernetes</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-scheduler-nomad">Scheduler Nomad</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-solr">Solr</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedricziel/dokku-hostkeys-plugin">SSH Hostkeys</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-typesense">Typesense</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>0.4.0+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="community-plugins">Community plugins<a class="headerlink" href="#community-plugins" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following plugins have been supplied by our community and may not have been tested by Dokku maintainers.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-docker-local:report [&lt;app&gt;] [&lt;flag&gt;]              # Displays a scheduler-docker-local report for one or more apps
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-docker-local:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)            # Set or clear a scheduler-docker-local property for an app
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.12.0</p>
-</div>
-<p>Dokku natively includes functionality to manage application lifecycles for a single server using the <code>scheduler-docker-local</code> plugin. It is the default scheduler, but as with all schedulers, it is set on a per-application basis. The scheduler can currently be overridden by running the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected<span class="w"> </span>docker-local
-</code></pre></div>
-<p>As it is the default, unsetting the <code>selected</code> scheduler property is also a valid way to reset the scheduler.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>scheduler:set<span class="w"> </span>node-js-app<span class="w"> </span>selected
-</code></pre></div>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="deploying-amd64-images-on-arm64">Deploying amd64 images on arm64<a class="headerlink" href="#deploying-amd64-images-on-arm64" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.33.0</p>
-</div>
-<p>Many builders only produce amd64-compatible images. The docker-local scheduler will automatically detect these and run them via the <code>--platform=linux/amd64</code> on arm64 deploy targets.</p>
-<h3 id="disabling-the-init-process">Disabling the init process<a class="headerlink" href="#disabling-the-init-process" title="Permanent link">&para;</a></h3>
-<p>The <code>scheduler-docker-local</code> injects an init process by default via the <code>--init</code>. For some apps - such as those where the built docker image uses S6 as the init - this may be undesirable and cause issues with process starts. You may disable this by running the following <code>scheduler-docker-local:set</code> command for your application:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process<span class="w"> </span><span class="nb">false</span>
-</code></pre></div>
-<p>Once set, you may re-enable it by setting a blank value for <code>init-process</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process
-</code></pre></div>
-<p>All image containers with the label <code>org.opencontainers.image.vendor=linuxserver.io</code> will have the automatic init process injection force-disabled without further intervention.</p>
-<h3 id="deploying-process-types-in-parallel">Deploying Process Types in Parallel<a class="headerlink" href="#deploying-process-types-in-parallel" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.25.5</p>
-</div>
-<p>By default, Dokku deploys an app's processes one-by-one in order, with the <code>web</code> process being deployed first. Deployment parallelism may be achieved by setting the <code>parallel-schedule-count</code> property, which defaults to <code>1</code>. Increasing this number increases the number of process types that may be deployed in parallel (with the web process being the exception).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Increase parallelism from 1 process type at a time to 4 process types at a time.</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count<span class="w"> </span><span class="m">4</span>
-</code></pre></div>
-<p>Once set, you may reset it by setting a blank value for <code>parallel-schedule-count</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count
-</code></pre></div>
-<p>If the value of <code>parallel-schedule-count</code> is increased and a given process type fails to schedule successfully, then any in-flight process types will continue to be processed, while all process types that have not been scheduled will be skipped before the deployment finally fails.</p>
-<p>Container scheduling output is shown in the order it is received, and thus may be out of order in case of output to stderr.</p>
-<p>Note that increasing the value of <code>parallel-schedule-count</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
-<h4 id="increasing-parallelism-within-a-process-deploy">Increasing parallelism within a process deploy<a class="headerlink" href="#increasing-parallelism-within-a-process-deploy" title="Permanent link">&para;</a></h4>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.26.0</p>
-</div>
-<p>By default, Dokku will deploy one instance of a given process type at a time. This can be increased by customizing the <code>app.json</code> <code>formation</code> key to include a <code>max_parallel</code> key for the given process type.</p>
-<p>The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span>
-</code></pre></div>
-<p>Omitting or removing the entry will result in parallelism for that process type to return to 1 entry at a time. This can be combined with the <code>parallel-schedule-count</code> property to speed up deployments.</p>
-<p>Note that increasing the value of <code>max_parallel</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
-<p>See the <a href="../../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
-<h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
-<p>The following sections describe implemented scheduler functionality for the <code>docker-local</code> scheduler.</p>
-<h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
-<p>This plugin implements various functionality through <code>plugn</code> triggers to integrate with Docker for running apps on a single server. The following functionality is supported by the <code>scheduler-docker-local</code> plugin.</p>
-<ul>
-<li><code>apps:clone</code></li>
-<li><code>apps:destroy</code></li>
-<li><code>apps:rename</code></li>
-<li><code>deploy</code></li>
-<li><code>enter</code></li>
-<li><code>logs</code></li>
-<li><code>ps:inspect</code></li>
-<li><code>ps:stop</code></li>
-<li><code>run</code></li>
-</ul>
-<h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
-<p>App logs for the <code>logs</code> command are fetched from running containers via the <code>docker</code> cli. To persist logs across deployments, consider using Dokku's <a href="../../logs/#vector-logging-shipping">vector integration</a> to ship logs to another service or a third-party platform.</p>
-<h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
-<p>The <code>docker-local</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>. The following properties are supported:</p>
-<h4 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h4>
-<ul>
-<li>cpu: (docker option: <code>--cpus</code>), is specified in number of CPUs a process can access.<ul>
-<li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#cpu">"CPU" section</a> of the Docker Runtime Options documentation for more information.</li>
-</ul>
-</li>
-<li>memory: (docker option: <code>--memory</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).<ul>
-<li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
-</ul>
-</li>
-<li>memory-swap: (docker option: <code>--memory-swap</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes)<ul>
-<li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
-</ul>
-</li>
-<li>nvidia-gpus: (docker option: <code>--gpus</code>), is specified in number of Nvidia GPUs a process can access.<ul>
-<li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#gpu">"GPU" section</a> of the Docker Runtime Options documentation for more information.</li>
-</ul>
-</li>
-</ul>
-<h4 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h4>
-<ul>
-<li>memory: (docker option: <code>--memory-reservation</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).<ul>
-<li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
-</ul>
-</li>
-</ul>
+<h3 id="datastores">Datastores<a class="headerlink" href="#datastores" title="Permanent link">&para;</a></h3>
+<h4 id="relational">Relational<a class="headerlink" href="#relational" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Kloadut/dokku-md-plugin">MariaDB</a></td>
+<td><a href="https://github.com/kloadut">kloadut</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ohardy/dokku-mariadb">MariaDB (single container)</a></td>
+<td><a href="https://github.com/ohardy">ohardy</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/krisrang/dokku-mariadb">MariaDB (single container)</a></td>
+<td><a href="https://github.com/krisrang">krisrang</a></td>
+<td>0.3.26+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jlachowski/dokku-pg-plugin">PostgreSQL</a></td>
+<td><a href="https://github.com/jlachowski">jlachowski</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ohardy/dokku-psql">PostgreSQL (single container)</a></td>
+<td><a href="https://github.com/ohardy">ohardy</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Flink/dokku-psql-single-container">PostgreSQL (single container)</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>0.3.26+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/IgnisDa/dokku-edgedb">Edgedb</a></td>
+<td><a href="https://github.com/IgnisDa">ignisda</a></td>
+<td>0.27.0+</td>
+</tr>
+</tbody>
+</table>
+<h4 id="newsql">NewSQL<a class="headerlink" href="#newsql" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/IgnisDa/dokku-surrealdb">Surrealdb</a></td>
+<td><a href="https://github.com/IgnisDa">ignisda</a></td>
+<td>0.27.0+</td>
+</tr>
+</tbody>
+</table>
+<h4 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Aluxian/dokku-nginx-cache">Nginx Cache</a></td>
+<td><a href="https://github.com/aluxian">aluxian</a></td>
+<td>0.5.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ohardy/dokku-redis">Redis (single container)</a></td>
+<td><a href="https://github.com/ohardy">ohardy</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Zenedith/dokku-varnish-plugin">Varnish</a></td>
+<td><a href="https://github.com/zenedith">zenedith</a></td>
+<td>Varnish cache between nginx and application with base configuration</td>
+</tr>
+</tbody>
+</table>
+<h4 id="queuing">Queuing<a class="headerlink" href="#queuing" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/jlachowski/dokku-rabbitmq-plugin">RabbitMQ</a></td>
+<td><a href="https://github.com/jlachowski">jlachowski</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jlachowski/dokku-rabbitmq-single-plugin">RabbitMQ (single container)</a></td>
+<td><a href="https://github.com/jlachowski">jlachowski</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cu12/dokku-elasticmq">ElasticMQ (SQS compatible)</a></td>
+<td><a href="https://github.com/cu12">cu12</a></td>
+<td>0.5.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SpinifexGroup/dokku-vernemq">VerneMQ (MQTT Broker)</a></td>
+<td><a href="https://github.com/mrname">mrname</a></td>
+<td>0.4.0+</td>
+</tr>
+</tbody>
+</table>
+<h4 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/basgys/dokku-etcd">etcd</a></td>
+<td><a href="https://github.com/basgys">basgys</a></td>
+<td>0.4.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cu12/dokku-fake_sns">FakeSNS</a></td>
+<td><a href="https://github.com/cu12">cu12</a></td>
+<td>0.5.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/basgys/dokku-influxdb">InfluxDB</a></td>
+<td><a href="https://github.com/basgys">basgys</a></td>
+<td>0.4.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/stuartpb/dokku-rethinkdb-plugin">RethinkDB</a></td>
+<td><a href="https://github.com/stuartpb">stuartpb</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lazyatom/dokku-chrome">Headless Chrome</a></td>
+<td><a href="https://github.com/lazyatom">lazyatom</a></td>
+<td>0.8.1+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cheif/dokku-http-oauth">HTTP OAuth</a></td>
+<td><a href="https://github.com/cheif">cheif</a></td>
+<td>0.4.0+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plugins-implementing-new-dokku-functionality">Plugins Implementing New Dokku Functionality<a class="headerlink" href="#plugins-implementing-new-dokku-functionality" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/cjblomqvist/dokku-app-name-env">App name as env</a></td>
+<td><a href="https://github.com/cjblomqvist">cjblomqvist</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-apt">APT</a></td>
+<td><a href="https://github.com/dokku-community">dokku-community</a></td>
+<td>0.18.x+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/IdeaSynthesis/dokku-autosync">Auto Sync</a><sup>1</sup></td>
+<td><a href="https://github.com/fomojola">fomojola</a></td>
+<td>0.8.1+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/IdeaSynthesis/dokku-deploy-webhook">Deploy Webhook</a><sup>2</sup></td>
+<td><a href="https://github.com/fomojola">fomojola</a></td>
+<td>0.8.1+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/deanmarano/dokku-dns">DNS</a></td>
+<td><a href="https://github.com/deanmarano">deanmarano</a></td>
+<td>0.31.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Flink/dokku-docker-auto-volumes">Docker auto persist volumes</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-docker-direct">Docker Direct</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/crisward/dokku-clone">Dokku Clone</a></td>
+<td><a href="https://github.com/crisward">crisward</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-supply-config">Dokku Copy App Config Files</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/crisward/dokku-require">Dokku Require</a><sup>3</sup></td>
+<td><a href="https://github.com/crisward">crisward</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/josegonzalez/dokku-global-cert">Global Certificates</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>0.5.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/glassechidna/dokku-graduate">Graduate (Environment Management)</a></td>
+<td><a href="https://github.com/benjamin-dobell">benjamin-dobell</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/baikunz/dokku-post-deploy-script">Host post-build command hook</a></td>
+<td><a href="https://github.com/baikunz">baikunz</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/fteychene/dokku-build-hook">Host pre-build command hook</a></td>
+<td><a href="https://github.com/fteychene">fteychene</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-hostname">Hostname</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/matto1990/dokku-secure-apps">HTTP Auth Secure Apps</a></td>
+<td><a href="https://github.com/matto1990">matto1990</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Tashows/dokku-image-size-limit">Image Size Limit</a></td>
+<td><a href="https://github.com/Tashows">Tashows</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/AxelTheGerman/dokku-litestream">Litestream</a><sup>4</sup></td>
+<td><a href="https://github.com/AxelTheGerman">AxelTheGerman</a></td>
+<td>0.27.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mbreit/dokku-monit">Monit (Health Checks)</a></td>
+<td><a href="https://github.com/mbreit">mbreit</a></td>
+<td>0.8.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cjblomqvist/dokku-monit">Monit</a></td>
+<td><a href="https://github.com/cjblomqvist">cjblomqvist</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/calyhre/dokku-mdns">Multicast DNS (mDNS)</a></td>
+<td><a href="https://github.com/calyhre">calyhre</a></td>
+<td>0.33.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-nuke">Nuke Containers</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-proctype-filter">Proctype Filter</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://notabug.org/candlewaster/dokku-robots.txt">robots.txt</a></td>
+<td><a href="https://notabug.org/candlewaster">candlewaster</a></td>
+<td>0.4.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-tor">Tor</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-ufw">UFW</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>0.3.x</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mainto/dokku-access">User Access</a></td>
+<td><a href="https://github.com/mainto">mainto</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-acl">User ACL</a></td>
+<td><a href="https://github.com/mlebkowski">maciej łebkowski</a></td>
+<td>0.4.0+</td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> Adds the ability to sync an application repo with a remote GitHub repo (useful for automated rebuilds without needing a git push from an external system</p>
+<p><sup>2</sup> Adds the ability to invoke a post-deploy webhook with the IP, port and app name, all with a single config:set).</p>
+<p><sup>3</sup> Extends app.json support to include creating volumes and creating / linking databases on push</p>
+<p><sup>4</sup> Adds SQLite replication to external object storage via <a href="https://litestream.io">Litestream</a></p>
+<h3 id="other-plugins">Other Plugins<a class="headerlink" href="#other-plugins" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/nickcharlton/dokku-cookbook">Chef cookbook</a></td>
+<td><a href="https://github.com/nickcharlton">nickcharlton</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/badsyntax/dokku-discourse">Discourse</a></td>
+<td><a href="https://github.com/badsyntax">badsyntax</a></td>
+<td>0.21.4+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/andrew-womeldorf/dokku-tailscale">Tailscale</a></td>
+<td><a href="https://github.com/andrew-womeldorf">andrew-womeldorf</a></td>
+<td>0.34.4+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-wordpress">Wordpress</a></td>
+<td><a href="https://github.com/dokku-community">dokku-community</a></td>
+<td>0.4.0+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deprecated-plugins">Deprecated Plugins<a class="headerlink" href="#deprecated-plugins" title="Permanent link">&para;</a></h3>
+<p>The following plugins have been removed as their functionality is now in Dokku Core.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>In Dokku Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Flink/dokku-airbrake-deploy">Airbrake deploy</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-app-user">App User</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>v0.7.1 (herokuish 0.3.18)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/thrashr888/dokku-bower-grunt-build-plugin">Bower/Grunt</a></td>
+<td><a href="https://github.com/thrashr888">thrashr888</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/gdi2290/dokku-bower-gulp-build-plugin">Bower/Gulp</a></td>
+<td><a href="https://github.com/gdi2290">gdi2290</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/alexanderbeletsky/dokku-bower-install">Bower install</a></td>
+<td><a href="https://github.com/alexanderbeletsky">alexanderbeletsky</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jagandecapri/dokku-bower-gulp-build-plugin">Bower/Gulp</a></td>
+<td><a href="https://github.com/jagandecapri">jagandecapri</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ignlg/dokku-builders-plugin">Builders: bower, compass, gulp, grunt</a></td>
+<td><a href="https://github.com/ignlg">ignlg</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/neam/dokku-custom-domains">Custom Domains</a></td>
+<td><a href="https://github.com/neam">neam</a></td>
+<td>v0.3.10 (domains plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/josegonzalez/dokku-debug">Debug</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>v0.3.9 (trace command)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mimischi/dokku-dockerfile">Dockerfile custom path</a></td>
+<td><a href="https://github.com/mimischi">mimischi</a></td>
+<td>v0.25.0 (monorepo support)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dyson/dokku-docker-options">Docker Options</a></td>
+<td><a href="https://github.com/dyson">dyson</a></td>
+<td>v0.3.17 (docker-options plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/alex-sherwin/dokku-name">Dokku Name</a></td>
+<td><a href="https://github.com/alex-sherwin">alex-sherwin</a></td>
+<td>v0.4.2 (named containers plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/alessio/dokku-events">Events Logger</a></td>
+<td><a href="https://github.com/alessio">alessio</a></td>
+<td>v0.3.21 (events plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ollej/dokku-fonts">Fonts</a></td>
+<td><a href="https://github.com/ollej">ollej</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku-community/dokku-git-rev">git rev-parse HEAD in env</a></td>
+<td><a href="https://github.com/cjblomqvist">cjblomqvist</a></td>
+<td>v0.12.0 (enhanced core git plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/stuartpb/dokku-bind-port">Host Port binding</a></td>
+<td><a href="https://github.com/stuartpb">stuartpb</a></td>
+<td>v0.3.17 (docker-options plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/rlaneve/dokku-link">Link Containers</a></td>
+<td><a href="https://github.com/rlaneve">rlaneve</a></td>
+<td>v0.3.17 (docker-options plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/josegonzalez/dokku-list">List Containers</a></td>
+<td><a href="https://github.com/josegonzalez">josegonzalez</a></td>
+<td>v0.3.14 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-logspout">Logspout</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>v0.22.6 (vector log shipping)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/investtools/dokku-long-timeout-plugin">Long Timeout</a></td>
+<td><a href="https://github.com/investtools">investtools</a></td>
+<td>v0.21.0 (proxy-read-timeout nginx setting)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/iamale/dokku-monorepo">Monorepo</a></td>
+<td><a href="https://github.com/iamale">iamale</a></td>
+<td>v0.25.0 (monorepo builder support)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pauldub/dokku-multi-buildpack">Multi-Buildpack</a></td>
+<td><a href="https://github.com/pauldub">pauldub</a></td>
+<td>v0.4.0 (herokuish)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/wmluke/dokku-domains-plugin">Multiple Domains</a><sup>1</sup></td>
+<td><a href="https://github.com/wmluke">wmluke</a></td>
+<td>v0.3.10 (domains plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/artofrawr/dokku-multi-dockerfile">Multi Dockerfile</a></td>
+<td><a href="https://github.com/artofrawr">artofrawr</a></td>
+<td>v0.25.0 (monorepo support)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Flink/dokku-named-containers">Named-containers</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>v0.4.2 (named-containers plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/kingsquare/dokku-nginx-vhost-trustproxy">Nginx Trust Proxy</a></td>
+<td><a href="https://github.com/kingsquare">kingsquare</a></td>
+<td>v0.23.0 (nginx x-forwarded-* properties)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ademuk/dokku-nodejs">Node</a></td>
+<td><a href="https://github.com/ademuk">ademuk</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pnegahdar/dokku-node">Node</a></td>
+<td><a href="https://github.com/pnegahdar">pnegahdar</a></td>
+<td>v0.5.0 (deployment tasks and .buildpacks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mikexstudios/dokku-nginx-alt">Nginx-Alt</a></td>
+<td><a href="https://github.com/mikexstudios">mikexstudios</a></td>
+<td>v0.3.10 (domains plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dyson/dokku-persistent-storage">Persistent Storage</a></td>
+<td><a href="https://github.com/dyson">dyson</a></td>
+<td>v0.3.17 (docker-options plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-app-predeploy-tasks">Pre-Deploy Tasks</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/darkpixel/dokku-prime-cache">PrimeCache</a></td>
+<td><a href="https://github.com/darkpixel">darkpixel</a></td>
+<td>v0.3.0 (zero downtime deploys)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/iloveitaly/dokku-rollbar">Rollbar</a></td>
+<td><a href="https://github.com/iloveitaly">iloveitaly</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/michaelshobbs/dokku-syslog">Syslog</a></td>
+<td><a href="https://github.com/michaelshobbs">michaelshobbs</a></td>
+<td>v0.22.6 (vector log shipping)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/256dpi/dokku-haproxy">Haproxy tcp load balancer</a></td>
+<td><a href="https://github.com/256dpi">256dpi</a></td>
+<td>v0.28.0 (haproxt plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/apmorton/dokku-circus">Process Manager: Circus</a></td>
+<td><a href="https://github.com/apmorton">apmorton</a></td>
+<td>v0.3.14/0.7.0 (ps/restart policy plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Flink/dokku-forego">Process Manager: Forego</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>v0.3.14/0.7.0 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/iskandar/dokku-forego">Process Manager: Forego</a></td>
+<td><a href="https://github.com/iskandar">iskandar</a></td>
+<td>v0.3.14/0.7.0 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sehrope/dokku-logging-supervisord">Process Manager: Logging Supervisord</a></td>
+<td><a href="https://github.com/sehrope">sehrope</a></td>
+<td>v0.3.14/0.7.0 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/statianzo/dokku-shoreman">Process Manager: Shoreman</a></td>
+<td><a href="https://github.com/statianzo">statianzo</a></td>
+<td>v0.3.14/0.7.0 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/statianzo/dokku-supervisord">Process Manager: Supervisord</a></td>
+<td><a href="https://github.com/statianzo">statianzo</a></td>
+<td>v0.3.14/0.7.0 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/scottatron/dokku-rebuild">Rebuild application</a></td>
+<td><a href="https://github.com/scottatron">scottatron</a></td>
+<td>v0.3.14 (ps plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mixxorz/dokku-docker-reset-mtime">Reset mtime</a></td>
+<td><a href="https://github.com/mixxorz">mixxorz</a></td>
+<td>Docker 1.8+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedricziel/dokku-deployment-keys">SSH Deployment Keys</a></td>
+<td><a href="https://github.com/dokku">dokku</a></td>
+<td>v0.33.0 (git plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cameron-martin/dokku-build-env">Supply env vars to buildpacks</a><sup>2</sup></td>
+<td><a href="https://github.com/cameron-martin">cameron-martin</a></td>
+<td>v0.3.9 (build-env plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ribot/dokku-slack">Slack Notifications</a></td>
+<td><a href="https://github.com/ribot">ribot</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/m0rth1um/dokku-telegram">Telegram Notifications</a></td>
+<td><a href="https://github.com/m0rth1um">m0rth1um</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/motin/dokku-user-env-compile">user-env-compile</a><sup>2</sup></td>
+<td><a href="https://github.com/motin">motin</a></td>
+<td>v0.3.9 (build-env plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/musicglue/dokku-user-env-compile">user-env-compile</a><sup>2</sup></td>
+<td><a href="https://github.com/musicglue">musicglue</a></td>
+<td>v0.3.9 (build-env plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ohardy/dokku-volume">Volume (persistent storage)</a></td>
+<td><a href="https://github.com/ohardy">ohardy</a></td>
+<td>v0.5.0 (storage plugin)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nickstenning/dokku-webhooks">Webhooks</a></td>
+<td><a href="https://github.com/nickstenning">nickstenning</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mbriskar/dokku-wkhtmltopdf">Wkhtmltopdf</a></td>
+<td><a href="https://github.com/mbriskar">mbriskar</a></td>
+<td>v0.5.0 (deployment tasks)</td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> Conflicts with <a href="https://github.com/neam/dokku-nginx-vhosts-custom-configuration">VHOSTS Custom Configuration</a>
+<sup>2</sup> Similar to the <a href="https://devcenter.heroku.com/articles/labs-user-env-compile">heroku-labs feature</a></p>
+<h3 id="unmaintained-plugins">Unmaintained Plugins<a class="headerlink" href="#unmaintained-plugins" title="Permanent link">&para;</a></h3>
+<p>The following plugins are no longer maintained by their developers.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Author</th>
+<th>Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/mikecsh/dokku-app-url">app-url</a></td>
+<td><a href="https://github.com/mikecsh">mikecsh</a></td>
+<td>Works with 0.2.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/fgrehm/chef-dokku">Chef cookbooks</a></td>
+<td><a href="https://github.com/fgrehm">fgrehm</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Flink/dokku-couchdb-multi-containers">CouchDB (multi containers)</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/racehub/dokku-couchdb-plugin">CouchDB</a></td>
+<td><a href="https://github.com/racehub">raceHub</a></td>
+<td>Compatible with 0.2.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/alexkruegger/dokku-app-configfiles">Dokku Copy App Config Files</a></td>
+<td><a href="https://github.com/alexkruegger">alexkruegger</a></td>
+<td>Compatible with 0.3.17+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/agco-adm/dokku-registry">Dokku Registry</a></td>
+<td><a href="https://github.com/agco-adm">agco-adm</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/robv/dokku-elasticsearch">Elasticsearch</a></td>
+<td><a href="https://github.com/robv">robv</a></td>
+<td>Not compatible with &gt;= 0.3.0 (still uses /home/git)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/blag/dokku-elasticsearch-plugin">Elasticsearch</a><sup>1</sup></td>
+<td><a href="https://github.com/blag">blag</a></td>
+<td>Compatible with 0.2.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jlachowski/dokku-graphite-plugin">Graphite/statsd</a></td>
+<td><a href="https://github.com/jlachowski">jlachowski</a></td>
+<td>&lt; 0.4.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cef/dokku-hipchat">HipChat Notifications</a></td>
+<td><a href="https://github.com/cef">cef</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Flink/dokku-memcached-plugin">Memcached</a></td>
+<td><a href="https://github.com/flink">flink</a></td>
+<td>0.4.0+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jeffutter/dokku-mongodb-plugin">MongoDB (single container)</a></td>
+<td><a href="https://github.com/jeffutter">jeffutter</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/hughfletcher/dokku-mysql-plugin">MySQL</a></td>
+<td><a href="https://github.com/hughfletcher">hughfletcher</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Aomitayo/dokku-neo4j-plugin">Neo4j</a></td>
+<td><a href="https://github.com/aomitayo">aomitayo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/fermuch/dokku-pg-plugin">PostGIS</a></td>
+<td><a href="https://github.com/fermuch">fermuch</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/jeffutter/dokku-postgresql-plugin">PostgreSQL (single container)</a></td>
+<td><a href="https://github.com/jeffutter">jeffutter</a></td>
+<td>This plugin creates a single postgresql container that all your apps can use. Thus only one instance of postgresql running (good for servers without a ton of memory).</td>
+</tr>
+<tr>
+<td><a href="https://github.com/luxifer/dokku-redis-plugin">Redis</a></td>
+<td><a href="https://github.com/luxifer">luxifer</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/sekjun9878/dokku-redis-plugin">Redis</a></td>
+<td><a href="https://github.com/sekjun9878">sekjun9878</a></td>
+<td>0.3.26+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jeffutter/dokku-riakcs-plugin">RiakCS (single container)</a></td>
+<td><a href="https://github.com/jeffutter">jeffutter</a></td>
+<td>Incompatible with 0.2.0</td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> Forked from <a href="https://github.com/jezdez/dokku-elasticsearch-plugin">jezdez/dokku-elasticsearch-plugin</a>: uses Elasticsearch 1.2 (instead of 0.90), doesn't depend on dokku-link, runs as elasticsearch user instead of root, and turns off multicast autodiscovery for use in a VPS environment.</p>
 
 
 
@@ -5452,7 +6289,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../scheduler-management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Scheduler Management">
+          <a href="../clients/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Clients">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5462,20 +6299,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Scheduler Management
+                Clients
               </div>
             </div>
           </a>
         
         
           
-          <a href="../k3s/" class="md-footer__link md-footer__link--next" aria-label="Next: K3s Scheduler">
+          <a href="../../appendices/file-formats/app-json/" class="md-footer__link md-footer__link--next" aria-label="Next: app.json">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                K3s Scheduler
+                app.json
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5605,16 +6442,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
 
   <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
-  <script src="../../../overrides/assets/javascripts/bundle.js"></script>
+  <script src="../../overrides/assets/javascripts/bundle.js"></script>
 
   </body>
 </html>
