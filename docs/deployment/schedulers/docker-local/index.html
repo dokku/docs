@@ -3958,6 +3958,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#displaying-scheduler-docker-local-reports-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying scheduler-docker-local reports for an app
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5175,6 +5186,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#displaying-scheduler-docker-local-reports-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying scheduler-docker-local reports for an app
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5297,7 +5319,7 @@
 <p>Subcommands introduced in 0.12.12</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scheduler-docker-local:report [&lt;app&gt;] [&lt;flag&gt;]              # Displays a scheduler-docker-local report for one or more apps
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-docker-local:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;)            # Set or clear a scheduler-docker-local property for an app
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>scheduler-docker-local:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;) # Set or clear a scheduler-docker-local property for an app or globally
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
@@ -5323,18 +5345,30 @@
 <p>Once set, you may re-enable it by setting a blank value for <code>init-process</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>init-process
 </code></pre></div>
-<p>All image containers with the label <code>org.opencontainers.image.vendor=linuxserver.io</code> will have the automatic init process injection force-disabled without further intervention.</p>
+<p>The default value may also be configured globally with the <code>--global</code> flag. Per-app values take precedence over the global value when set.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>--global<span class="w"> </span>init-process<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<p>The global value may also be unset by setting a blank value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>--global<span class="w"> </span>init-process
+</code></pre></div>
+<p>All image containers with the label <code>org.opencontainers.image.vendor=linuxserver.io</code> will have the automatic init process injection force-disabled without further intervention when neither an app-level nor a global value is set.</p>
 <h3 id="deploying-process-types-in-parallel">Deploying Process Types in Parallel<a class="headerlink" href="#deploying-process-types-in-parallel" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
 <p>Introduced in 0.25.5</p>
 </div>
 <p>By default, Dokku deploys an app's processes one-by-one in order, with the <code>web</code> process being deployed first. Deployment parallelism may be achieved by setting the <code>parallel-schedule-count</code> property, which defaults to <code>1</code>. Increasing this number increases the number of process types that may be deployed in parallel (with the web process being the exception).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Increase parallelism from 1 process type at a time to 4 process types at a time.</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count<span class="w"> </span><span class="m">4</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Increase parallelism from 1 process type at a time to 4 process types at a time.</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count<span class="w"> </span><span class="m">4</span>
 </code></pre></div>
 <p>Once set, you may reset it by setting a blank value for <code>parallel-schedule-count</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>node-js-app<span class="w"> </span>parallel-schedule-count
+</code></pre></div>
+<p>The default value may also be configured globally with the <code>--global</code> flag. Per-app values take precedence over the global value when set.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>--global<span class="w"> </span>parallel-schedule-count<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<p>The global value may also be unset by setting a blank value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>--global<span class="w"> </span>parallel-schedule-count
 </code></pre></div>
 <p>If the value of <code>parallel-schedule-count</code> is increased and a given process type fails to schedule successfully, then any in-flight process types will continue to be processed, while all process types that have not been scheduled will be skipped before the deployment finally fails.</p>
 <p>Container scheduling output is shown in the order it is received, and thus may be out of order in case of output to stderr.</p>
@@ -5346,20 +5380,61 @@
 </div>
 <p>By default, Dokku will deploy one instance of a given process type at a time. This can be increased by customizing the <code>app.json</code> <code>formation</code> key to include a <code>max_parallel</code> key for the given process type.</p>
 <p>The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">      </span><span class="nt">&quot;max_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="p">}</span>
 </code></pre></div>
 <p>Omitting or removing the entry will result in parallelism for that process type to return to 1 entry at a time. This can be combined with the <code>parallel-schedule-count</code> property to speed up deployments.</p>
 <p>Note that increasing the value of <code>max_parallel</code> may significantly impact CPU utilization on your host as your app containers - and their respective processes - start up. Setting a value higher than the number of available CPUs is discouraged. It is recommended that users carefully set this value so as not to overburden their server.</p>
 <p>See the <a href="../../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
+<h3 id="displaying-scheduler-docker-local-reports-for-an-app">Displaying scheduler-docker-local reports for an app<a class="headerlink" href="#displaying-scheduler-docker-local-reports-for-an-app" title="Permanent link">&para;</a></h3>
+<p>You can get a report about the app's scheduler-docker-local configuration using the <code>scheduler-docker-local:report</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>scheduler-docker-local:report
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>=====&gt; node-js-app scheduler-docker-local information
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>       Scheduler docker local computed init process:          true
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>       Scheduler docker local computed parallel schedule count:1
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>       Scheduler docker local global init process:            true
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>       Scheduler docker local global parallel schedule count: 1
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>       Scheduler docker local init process:
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>       Scheduler docker local parallel schedule count:
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You can run the command for a specific app also.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-docker-local:report<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>You can pass flags which will output only the value of the specific information you want. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>scheduler-docker-local:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-docker-local-computed-init-process
+</code></pre></div>
+<p>When run against <code>--global</code>, only the global keys are reported.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>scheduler-docker-local:report<span class="w"> </span>--global
+</code></pre></div>
+<p>The available keys are:</p>
+<ul>
+<li><code>--scheduler-docker-local-init-process</code>: the raw per-app init-process value (empty when unset).</li>
+<li><code>--scheduler-docker-local-computed-init-process</code>: the effective init-process value, computed as the per-app value if set, otherwise the global value, otherwise <code>true</code>.</li>
+<li><code>--scheduler-docker-local-global-init-process</code>: the global init-process value (defaults to <code>true</code>).</li>
+<li><code>--scheduler-docker-local-parallel-schedule-count</code>: the raw per-app parallel-schedule-count value (empty when unset).</li>
+<li><code>--scheduler-docker-local-computed-parallel-schedule-count</code>: the effective parallel-schedule-count value, computed as the per-app value if set, otherwise the global value, otherwise <code>1</code>.</li>
+<li><code>--scheduler-docker-local-global-parallel-schedule-count</code>: the global parallel-schedule-count value (defaults to <code>1</code>).</li>
+</ul>
+<p>The report may also be emitted as JSON using <code>--format json</code>, which is useful for external tooling that needs to distinguish a value set on the app from one that is defaulting.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>scheduler-docker-local:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
 <h2 id="scheduler-interface">Scheduler Interface<a class="headerlink" href="#scheduler-interface" title="Permanent link">&para;</a></h2>
 <p>The following sections describe implemented scheduler functionality for the <code>docker-local</code> scheduler.</p>
 <h3 id="implemented-commands-and-triggers">Implemented Commands and Triggers<a class="headerlink" href="#implemented-commands-and-triggers" title="Permanent link">&para;</a></h3>
