@@ -30,13 +30,13 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/blog/2024/dokku-0.33.0/">
+        <link rel="canonical" href="https://dokku.com/blog/2026/dokku-0.38.0/">
       
       
-        <link rel="prev" href="../../2025/pro-release-1.3.0/">
+        <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../../2023/dokku-0.31.0/">
+        <link rel="next" href="../../2025/pro-release-1.3.0/">
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
@@ -44,7 +44,7 @@
     
     
       
-        <title>Dokku Release 0.33.0 - Dokku Blog</title>
+        <title>Dokku Release 0.38.0 - Dokku Blog</title>
       
     
     
@@ -113,7 +113,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#new-in-033x" class="md-skip">
+        <a href="#security-fixes-in-0382" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dokku Release 0.33.0
+              Dokku Release 0.38.0
             
           </span>
         </div>
@@ -637,6 +637,8 @@
                 
   
   
+    
+  
   
   
     
@@ -655,11 +657,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
@@ -673,7 +675,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             2026
@@ -684,10 +686,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2026/dokku-0.38.0/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Dokku Release 0.38.0
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -696,6 +716,318 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#security-fixes-in-0382" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security fixes in 0.38.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#breaking-changes-in-038x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking changes in 0.38.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Breaking changes in 0.38.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables-migrated-to-plugin-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment variables migrated to plugin properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env-file-paths-consolidated" class="md-nav__link">
+    <span class="md-ellipsis">
+      ENV file paths consolidated
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-nginx-behavior-for-apps-without-running-web-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default nginx behavior for apps without running web processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catch-all-default-site-on-fresh-apt-installs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catch-all default site on fresh apt installs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigterm-sent-immediately-to-old-containers-on-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIGTERM sent immediately to old containers on deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-plugin-redesign" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage plugin redesign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduler-k3s-env-config-and-pull-secret-split-into-stable-helm-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      scheduler-k3s env config and pull secret split into stable helm releases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-in-038x" class="md-nav__link">
+    <span class="md-ellipsis">
+      New in 0.38.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New in 0.38.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builds-plugin-migrated-to-go-with-per-build-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Builds plugin migrated to Go with per-build records
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buildpacks-via-appjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buildpacks via app.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-restore-enabled-by-default-on-fresh-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Live-restore enabled by default on fresh install
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-limits-on-the-build-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource limits on the build container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-process-docker-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Per-process docker-options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appjson-env-honored-on-post-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      app.json env honored on post-create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitauth-status-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      git:auth-status command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-global-on-all-report-subcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      --global on all :report subcommands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-validation-of-custom-nginxconfsigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-validation of custom nginx.conf.sigil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k3s-chart-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      k3s chart upgrades
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bug Fixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preserve-all-domains-when-renaming-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preserve all domains when renaming an app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skip-retiring-images-still-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip retiring images still in use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retire-orphaned-containers-when-scaling-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retire orphaned containers when scaling down
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cnb-launcher-entrypoint-for-dokku-run-cronrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNB launcher entrypoint for dokku run / cron:run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keda-fallback-only-emitted-when-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      KEDA fallback only emitted when needed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Plans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Plans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-next-minor-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Next Minor Release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dokku-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dokku Pro
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -789,8 +1121,6 @@
                 
   
   
-    
-  
   
   
     
@@ -809,11 +1139,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
@@ -827,7 +1157,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             2024
@@ -838,28 +1168,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Dokku Release 0.33.0
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2024/dokku-0.33.0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,135 +1180,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#new-in-033x" class="md-nav__link">
-    <span class="md-ellipsis">
-      New in 0.33.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="New in 0.33.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#user-namespace-support-for-interacting-with-persistent-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      User namespace support for interacting with persistent storage
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy-key-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploy Key generation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#automatically-detecting-amd64-image-platform-on-arm64-servers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Automatically detecting AMD64 image platform on ARM64 servers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#support-for-setting-a-global-proxy-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      Support for setting a global proxy type
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-registry-image-repo-templates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Registry Image Repo templates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integrated-kubernetes-support-with-the-k3s-scheduler" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integrated Kubernetes support with the K3s scheduler
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#future-plans" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Plans
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Future Plans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#k3s-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      K3s support
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dokku-pro" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dokku Pro
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-next-minor-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Next Minor Release
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1941,64 +2124,82 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#new-in-033x" class="md-nav__link">
+  <a href="#security-fixes-in-0382" class="md-nav__link">
     <span class="md-ellipsis">
-      New in 0.33.x
+      Security fixes in 0.38.2
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="New in 0.33.x">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#breaking-changes-in-038x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking changes in 0.38.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Breaking changes in 0.38.x">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#user-namespace-support-for-interacting-with-persistent-storage" class="md-nav__link">
+  <a href="#environment-variables-migrated-to-plugin-properties" class="md-nav__link">
     <span class="md-ellipsis">
-      User namespace support for interacting with persistent storage
+      Environment variables migrated to plugin properties
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deploy-key-generation" class="md-nav__link">
+  <a href="#env-file-paths-consolidated" class="md-nav__link">
     <span class="md-ellipsis">
-      Deploy Key generation
+      ENV file paths consolidated
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#automatically-detecting-amd64-image-platform-on-arm64-servers" class="md-nav__link">
+  <a href="#default-nginx-behavior-for-apps-without-running-web-processes" class="md-nav__link">
     <span class="md-ellipsis">
-      Automatically detecting AMD64 image platform on ARM64 servers
+      Default nginx behavior for apps without running web processes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#support-for-setting-a-global-proxy-type" class="md-nav__link">
+  <a href="#catch-all-default-site-on-fresh-apt-installs" class="md-nav__link">
     <span class="md-ellipsis">
-      Support for setting a global proxy type
+      Catch-all default site on fresh apt installs
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#docker-registry-image-repo-templates" class="md-nav__link">
+  <a href="#sigterm-sent-immediately-to-old-containers-on-deploy" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker Registry Image Repo templates
+      SIGTERM sent immediately to old containers on deploy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#integrated-kubernetes-support-with-the-k3s-scheduler" class="md-nav__link">
+  <a href="#storage-plugin-redesign" class="md-nav__link">
     <span class="md-ellipsis">
-      Integrated Kubernetes support with the K3s scheduler
+      Storage plugin redesign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduler-k3s-env-config-and-pull-secret-split-into-stable-helm-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      scheduler-k3s env config and pull secret split into stable helm releases
     </span>
   </a>
   
@@ -2006,6 +2207,180 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-in-038x" class="md-nav__link">
+    <span class="md-ellipsis">
+      New in 0.38.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New in 0.38.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builds-plugin-migrated-to-go-with-per-build-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Builds plugin migrated to Go with per-build records
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buildpacks-via-appjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buildpacks via app.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-restore-enabled-by-default-on-fresh-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Live-restore enabled by default on fresh install
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-limits-on-the-build-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource limits on the build container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-process-docker-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Per-process docker-options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appjson-env-honored-on-post-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      app.json env honored on post-create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitauth-status-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      git:auth-status command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-global-on-all-report-subcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      --global on all :report subcommands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-validation-of-custom-nginxconfsigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-validation of custom nginx.conf.sigil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k3s-chart-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      k3s chart upgrades
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bug Fixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preserve-all-domains-when-renaming-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preserve all domains when renaming an app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skip-retiring-images-still-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip retiring images still in use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retire-orphaned-containers-when-scaling-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retire orphaned containers when scaling down
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cnb-launcher-entrypoint-for-dokku-run-cronrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNB launcher entrypoint for dokku run / cron:run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keda-fallback-only-emitted-when-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      KEDA fallback only emitted when needed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrading
+    </span>
+  </a>
   
 </li>
       
@@ -2020,9 +2395,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#k3s-support" class="md-nav__link">
+  <a href="#the-next-minor-release" class="md-nav__link">
     <span class="md-ellipsis">
-      K3s support
+      The Next Minor Release
     </span>
   </a>
   
@@ -2032,15 +2407,6 @@
   <a href="#dokku-pro" class="md-nav__link">
     <span class="md-ellipsis">
       Dokku Pro
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-next-minor-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Next Minor Release
     </span>
   </a>
   
@@ -2069,77 +2435,164 @@
   
 
 
-  <h1>Dokku Release 0.33.0</h1>
+  <h1>Dokku Release 0.38.0</h1>
 
-<p>The first release of the year is here! Here is a summary of what is new in <a href="https://github.com/dokku/dokku/releases/tag/v0.33.0">0.33.x</a>.</p>
+<p>The first release of the year is here! Here is a summary of what is new in <a href="https://github.com/dokku/dokku/releases/tag/v0.38.0">0.38.x</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
 </div>
-<h2 id="new-in-033x">New in 0.33.x<a class="headerlink" href="#new-in-033x" title="Permanent link">&para;</a></h2>
-<h3 id="user-namespace-support-for-interacting-with-persistent-storage">User namespace support for interacting with persistent storage<a class="headerlink" href="#user-namespace-support-for-interacting-with-persistent-storage" title="Permanent link">&para;</a></h3>
-<p>While Dokku has had partial support for <a href="https://docs.docker.com/engine/security/userns-remap/">custom Docker user namespaces</a> for a while, persistent storage has always been an issue. Users of persistent storage backed by local directories would have directories mounted with incorrect permissions.</p>
-<p>Dokku now automatically detects user namespace remapping and will increase the ownership on the folders created via <code>dokku storage:ensure-directory</code> to match the namespace IDs. This should allow for more secure container isolation for security conscious users.</p>
-<h3 id="deploy-key-generation">Deploy Key generation<a class="headerlink" href="#deploy-key-generation" title="Permanent link">&para;</a></h3>
-<p>Many users of Github are familiar with the concept of a <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys">deployment key</a>, but if you aren't, they allow access via <code>git+ssh</code> to a given remote repository. Deployment keys are a simple way of cloning a remote repository, and Dokku users have long used the community <a href="https://github.com/cedricziel/dokku-deployment-keys">deployment-keys</a> plugin.</p>
-<p>While most repositories can be authenticated to via the <code>git:auth</code> command, some users may prefer to use an ssh key. As of 0.33.x, this can be generated via the <code>git:generate-deploy-key</code> command, which generates a passwordless ed25519 key-pair:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku<span class="w"> </span>git:generate-deploy-key
-</code></pre></div>
-<p>In order to clone a remote repository, the remote server should have the Dokku host's public key configured. The generated key can be shown via the <code>git:public-key</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>git:public-key
-</code></pre></div>
-<p>Note that the <code>git:auth</code> method provides a more secure way of access remote repositories based on matching a host to a user/token combination, and should be preferred where possible.</p>
-<h3 id="automatically-detecting-amd64-image-platform-on-arm64-servers">Automatically detecting AMD64 image platform on ARM64 servers<a class="headerlink" href="#automatically-detecting-amd64-image-platform-on-arm64-servers" title="Permanent link">&para;</a></h3>
-<p>While users could previously build AMD64-based images on ARM64 servers, deploying them was another issue. Containers would be started with an incorrect platform, resulting in failure to boot.</p>
-<p>Dokku now automatically injects the correct platform for AMD64 images deployed on ARM64 servers. This should allow folks to have running applications while slowly migrate image builds to ARM64.</p>
-<h3 id="support-for-setting-a-global-proxy-type">Support for setting a global proxy type<a class="headerlink" href="#support-for-setting-a-global-proxy-type" title="Permanent link">&para;</a></h3>
-<p>Previously, changing the proxy implementation from the default <code>nginx</code> proxy to any other implementation - <code>caddy</code>, <code>haproxy</code>, <code>openresty</code>, <code>traefik</code> - had to be done on a per-app basis. This made it more cumbersome to provision new applications for users that switched to another proxy implementation.</p>
-<p>Dokku users can now specify a global proxy type, avoiding the need for any post-creation steps:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>--global<span class="w"> </span>caddy
-</code></pre></div>
-<h3 id="docker-registry-image-repo-templates">Docker Registry Image Repo templates<a class="headerlink" href="#docker-registry-image-repo-templates" title="Permanent link">&para;</a></h3>
-<p>In the same vein as setting a global proxy type, users who build and push apps to a remote docker registry <em>also</em> had to specify the image repo each time. Image repositories are usually app-specific, and doubly so for Dokku, which uses an increasing integer value for each built image.</p>
-<p>With Dokku 0.33.x, a global image template can now be specified:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;dokku/{{ .AppName }}&quot;</span>
-</code></pre></div>
-<p>The template uses golang templating and provides an <code>AppName</code> variable for use. Users can there use any repo prefix they'd like, allowing for usage against registries such as Docker Hub where the namespace is specific to a given user (and therefore none can use the default <code>dokku/</code> prefix):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}&quot;</span>
-</code></pre></div>
-<h3 id="integrated-kubernetes-support-with-the-k3s-scheduler">Integrated Kubernetes support with the K3s scheduler<a class="headerlink" href="#integrated-kubernetes-support-with-the-k3s-scheduler" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This functionality was graciously sponsored by <a href="https://rechat.com/">Rechat</a>, a company doing remarkable efforts to help simplify and elevate how Real Estate Agents and Brokers operate. The Dokku project is grateful to their sponsorship of this and other Dokku functionality.</p>
-</div>
-<p>Long-time users will know that Dokku is an extensible framework used for building and releasing applications. It comes with multiple plugins for building (Dockerfile, Nixpacks, Buildpacks, Lambda functions), proxying (caddy, haproxy, nginx, openresty, traefik), and other parts of the system. We've also long had Kubernetes and Nomad support with external plugins, though these were more difficult to setup and therefore not often used.</p>
-<p>Dokku 0.33.x introduces a new official <code>k3s</code> core plugin which bridges the gap between single and multi-server usage. This builds upon improvements to other parts of Dokku - such as changes to the proxy layer, cron integration, registry support - to provide a simple-to-use Kubernetes experience.</p>
-<p>Starting a single-node cluster is simple:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize
-</code></pre></div>
-<p>And with a few more commands, Dokku will be ready to deploy your application to Kubernetes. We also make it easy to add new server and workers to your cluster:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster-add<span class="w"> </span>ssh://root@worker-1.example.com
-</code></pre></div>
-<p>With <code>k3s</code> as the plumbing, Dokku provides a great experience for those that need high availability but find onboarding to Kubernetes difficult. Simply spin up some servers, connect Dokku to them, and deploy as normal.</p>
-<p>While the <code>k3s</code> integration is in it's infancy, it supports much of the underlying Dokku functionality. Users can expect most commands - fetching logs, entering containers, running arbitrary commands - to work with the <code>k3s</code> scheduler as they work with <code>docker-local</code>, and missing functionality will be added over time. Users of the <code>docker-local</code> scheduler can also expect things to continue working as normal, with no need to interact with <code>k3s</code> at all if the functionality is not in use.</p>
-<p>There will be an upcoming FAQ posted regarding k3s/kubernetes plans in Dokku and how it's addition impacts the Dokku project/ecosystem, but users can follow <a href="https://dokku.com/tutorials/other/deploying-to-k3s/">this tutorial</a> to setup a new server that uses <code>k3s</code> as it's scheduler.</p>
-<h2 id="future-plans">Future Plans<a class="headerlink" href="#future-plans" title="Permanent link">&para;</a></h2>
-<h3 id="k3s-support">K3s support<a class="headerlink" href="#k3s-support" title="Permanent link">&para;</a></h3>
-<p>While we've added preliminary Kubernetes support via the <code>k3s</code> scheduler, there are a number of improvements to do:</p>
+<h2 id="security-fixes-in-0382">Security fixes in 0.38.2<a class="headerlink" href="#security-fixes-in-0382" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/dokku/dokku/releases/tag/v0.38.2">0.38.2</a> patch release bundles four security fixes. All users on 0.38.x are encouraged to upgrade to 0.38.2 (or later) as soon as possible.</p>
 <ul>
-<li>Making it easy to join an existing k3s cluster</li>
-<li>Adding support for generic Kubernetes clusters</li>
-<li>Scale-to-zero support and autoscaling</li>
-<li>Support for alternative proxy implementations</li>
-<li>Further integration with existing Dokku features</li>
+<li><a href="https://github.com/dokku/dokku/pull/8590">#8590</a>: Restrict app names to prevent command injection.</li>
+<li><a href="https://github.com/dokku/dokku/pull/8591">#8591</a>: Harden archive extraction against symlink traversal.</li>
+<li><a href="https://github.com/dokku/dokku/pull/8589">#8589</a>: Enforce <code>0600</code> permissions on the <code>.netrc</code> credentials file.</li>
+<li><a href="https://github.com/dokku/dokku/pull/8588">#8588</a>: Sanitize openresty include filenames to prevent eval injection.</li>
 </ul>
-<p>We hope to have more comprehensive support over the next few releases. Stay tuned!</p>
+<p>Upgrade via the bootstrap script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-NP<span class="w"> </span>.<span class="w"> </span>https://dokku.com/install/v0.38.2/bootstrap.sh
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span><span class="nv">DOKKU_TAG</span><span class="o">=</span>v0.38.2<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
+</code></pre></div>
+<h2 id="breaking-changes-in-038x">Breaking changes in 0.38.x<a class="headerlink" href="#breaking-changes-in-038x" title="Permanent link">&para;</a></h2>
+<h3 id="environment-variables-migrated-to-plugin-properties">Environment variables migrated to plugin properties<a class="headerlink" href="#environment-variables-migrated-to-plugin-properties" title="Permanent link">&para;</a></h3>
+<p>A number of <code>DOKKU_*</code> config environment variables have been replaced with properly-namespaced plugin properties. Existing values are migrated automatically the first time <code>dokku</code> runs after the upgrade, and the original config variable is unset. No manual action is required at upgrade time, but setting the deprecated env vars via <code>dokku config:set</code> will no longer have any effect going forward.</p>
+<p>The most common mappings:</p>
+<table>
+<thead>
+<tr>
+<th>Deprecated env var</th>
+<th>Replacement command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DOKKU_APP_PROXY_TYPE</code></td>
+<td><code>dokku proxy:set &lt;app&gt; type &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_APP_RESTORE</code></td>
+<td><code>dokku ps:set &lt;app&gt; restore &lt;true\|false&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_APP_SHELL</code></td>
+<td><code>dokku scheduler:set &lt;app&gt; shell &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_DISABLED</code></td>
+<td><code>dokku checks:disable &lt;app&gt; [proctypes]</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_CHECKS_ENABLED</code></td>
+<td><code>dokku checks:enable &lt;app&gt; [proctypes]</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_DISABLE_PROXY</code></td>
+<td><code>dokku proxy:disable &lt;app&gt;</code> / <code>dokku proxy:enable &lt;app&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_DOCKERFILE_START_CMD</code></td>
+<td><code>dokku ps:set &lt;app&gt; dockerfile-start-cmd &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_PROXY_PORT</code></td>
+<td><code>dokku proxy:set &lt;app&gt; proxy-port &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_PROXY_SSL_PORT</code></td>
+<td><code>dokku proxy:set &lt;app&gt; proxy-ssl-port &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_SKIP_DEPLOY</code></td>
+<td><code>dokku ps:set &lt;app&gt; skip-deploy &lt;true\|false&gt;</code></td>
+</tr>
+<tr>
+<td><code>DOKKU_START_CMD</code></td>
+<td><code>dokku ps:set &lt;app&gt; start-cmd &lt;value&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>DOKKU_PARALLEL_ARGUMENTS</code> is removed entirely with no replacement. <code>DOKKU_SKIP_CLEANUP</code> continues to be honored when set in <code>/etc/environment</code> or <code>~dokku/.dokkurc/*</code> so that bootstrap-time configuration keeps working, but the new <code>builder skip-cleanup</code> property is the canonical interface and takes precedence when set.</p>
+<p>The <a href="https://dokku.com/docs/appendices/0.38.0-migration-guide/">0.38.0 migration guide</a> has the complete list.</p>
+<h3 id="env-file-paths-consolidated">ENV file paths consolidated<a class="headerlink" href="#env-file-paths-consolidated" title="Permanent link">&para;</a></h3>
+<p>The path on disk to both the global <code>ENV</code> file and per-app <code>ENV</code> files have been moved to a consolidated config path. Users should reference environment variables via the provided plugin triggers rather than directly sourcing the <code>ENV</code> files. Existing files are left untouched and will be removed on the subsequent Dokku install.</p>
+<h3 id="default-nginx-behavior-for-apps-without-running-web-processes">Default nginx behavior for apps without running web processes<a class="headerlink" href="#default-nginx-behavior-for-apps-without-running-web-processes" title="Permanent link">&para;</a></h3>
+<p>Dokku now generates a minimal nginx configuration for apps without running <code>web</code> processes - undeployed apps, apps with no <code>web</code> process type, or apps with stopped web processes. The generated configuration returns a <code>502 Bad Gateway</code> response, ensuring the app's domain resolves and monitoring tools can detect non-200 status codes. The configuration is automatically replaced with the full proxy configuration once the app is deployed with running <code>web</code> processes.</p>
+<p>Users with custom <code>nginx.conf.sigil</code> templates that reference <code>DOKKU_APP_WEB_LISTENERS</code> should be aware that this variable may now be empty when the template is rendered. Custom templates should handle this case gracefully, for example by using a conditional to serve an error page instead of proxying:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>location / {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>{{ if $.DOKKU_APP_WEB_LISTENERS }}
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  proxy_pass  http://{{ $.APP }}-{{ $upstream_port }};
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>{{ else }}
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  return 502;
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>{{ end }}
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>}
+</code></pre></div>
+<h3 id="catch-all-default-site-on-fresh-apt-installs">Catch-all default site on fresh apt installs<a class="headerlink" href="#catch-all-default-site-on-fresh-apt-installs" title="Permanent link">&para;</a></h3>
+<p>Fresh apt installs now ship a catch-all default site at <code>/etc/nginx/conf.d/00-default-vhost.conf</code> that rejects requests with unknown Host headers using <code>ssl_reject_handshake on</code> (HTTPS) and <code>return 444</code> (HTTP). This replaces the manual workaround previously documented in the nginx docs. The behavior can be opted out at install time via the <code>dokku/install_default_site</code> debconf prompt.</p>
+<p>On nginx older than 1.19.4 (such as Debian Bullseye's nginx 1.18.0), the postinst installs an HTTP-only variant of the catch-all that omits the SSL listener and <code>ssl_reject_handshake</code>, since that directive is unsupported on those versions.</p>
+<p>During a fresh apt install, the upstream nginx default vhost files (<code>/etc/nginx/sites-enabled/default</code>, <code>/etc/nginx/sites-available/default</code>, and <code>/etc/nginx/conf.d/default.conf</code>) are renamed to <code>${path}.dokku-disabled</code> rather than deleted, so operators with local customizations can recover them by inspecting the <code>.dokku-disabled</code> siblings. Upgrade-in-place installs do not touch any existing nginx files.</p>
+<p>With the new catch-all installed on nginx 1.19.4+, an HTTPS request to a hostname that matches a configured Dokku app but where the app has no TLS certificate configured will have its TLS handshake rejected by the catch-all. Previously, nginx fell through to the lexicographically first port-443 server block and presented that block's certificate, producing a cert-mismatch error on the client. The new behavior is a correctness improvement, but operators who deliberately relied on the old fall-through certificate need to either configure a certificate for the target app or remove the catch-all. Existing apps that already have certificates configured are unaffected.</p>
+<h3 id="sigterm-sent-immediately-to-old-containers-on-deploy"><code>SIGTERM</code> sent immediately to old containers on deploy<a class="headerlink" href="#sigterm-sent-immediately-to-old-containers-on-deploy" title="Permanent link">&para;</a></h3>
+<p>The <code>docker-local</code> scheduler now sends <code>SIGTERM</code> to old containers immediately after a successful deploy, rather than waiting <code>wait-to-retire</code> seconds before signaling. This matches Heroku's graceful-shutdown contract and lets applications begin draining in-flight work as soon as proxy traffic switches. The <code>wait-to-retire</code> grace period and <code>stop-timeout-seconds</code> hard-stop continue to apply as before.</p>
+<h3 id="storage-plugin-redesign">Storage plugin redesign<a class="headerlink" href="#storage-plugin-redesign" title="Permanent link">&para;</a></h3>
+<p>The storage plugin now treats persistent volumes as named, scheduler-aware first-class resources via <code>storage:create</code>, <code>storage:mount</code>, <code>storage:set</code>, and <code>storage:destroy</code>. The legacy <code>storage:mount &lt;app&gt; &lt;host&gt;:&lt;container&gt;</code> colon form continues to work on docker-local apps but is deprecated; on k3s apps it is rejected outright.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>my-data
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>my-app<span class="w"> </span>my-data:/data
+</code></pre></div>
+<p>Existing colon-form mounts are migrated automatically the first time the new storage plugin runs - they appear as <code>legacy-&lt;hash&gt;</code> entries in <code>storage:list-entries</code>. Storage entry names must now be DNS-1123 labels of 45 characters or less so they can be used verbatim as Helm release and Kubernetes resource names. The <code>storage:ensure-directory</code> command keeps working but now emits a deprecation warning; prefer <code>storage:create &lt;name&gt; [&lt;path&gt;]</code> going forward.</p>
+<h3 id="scheduler-k3s-env-config-and-pull-secret-split-into-stable-helm-releases"><code>scheduler-k3s</code> env config and pull secret split into stable helm releases<a class="headerlink" href="#scheduler-k3s-env-config-and-pull-secret-split-into-stable-helm-releases" title="Permanent link">&para;</a></h3>
+<p>The <code>scheduler-k3s</code> plugin now manages env config and the Dokku-generated image pull Secret as their own helm releases with stable names (<code>config-{app}</code> and <code>pull-secret-{app}</code>) rather than bundling them into the app helm chart with a per-deploy timestamp suffix. This fixes two bugs: a helm rollback of the app chart no longer deletes Secrets that older ReplicaSets still reference, and the Deployment's <code>imagePullSecrets</code> list no longer accumulates references to nonexistent Secrets across deploys.</p>
+<p>The next deploy of an app switches the Deployment's <code>envFrom</code> and <code>imagePullSecrets</code> references to the stable names and prunes any leaked entries. App rename now also uninstalls the old <code>tls-{app}</code>, <code>config-{app}</code>, and <code>pull-secret-{app}</code> releases under the previous app name; the new name's releases are recreated on the next deploy or certs sync.</p>
+<h2 id="new-in-038x">New in 0.38.x<a class="headerlink" href="#new-in-038x" title="Permanent link">&para;</a></h2>
+<h3 id="builds-plugin-migrated-to-go-with-per-build-records">Builds plugin migrated to Go with per-build records<a class="headerlink" href="#builds-plugin-migrated-to-go-with-per-build-records" title="Permanent link">&para;</a></h3>
+<p>The builds plugin has been rewritten in Go and now tracks per-build records. Dokku now retains a history of each build performed against an app, with metadata about the build available via the plugin. The new <code>builds:output</code> command retrieves build logs for a tracked build, making post-mortem debugging of failed builds much easier without having to scroll through the deploy log.</p>
+<h3 id="buildpacks-via-appjson">Buildpacks via <code>app.json</code><a class="headerlink" href="#buildpacks-via-appjson" title="Permanent link">&para;</a></h3>
+<p>Users can now specify CNB and herokuish buildpacks declaratively in <code>app.json</code> rather than via a separate <code>.buildpacks</code> file or environment variable. This brings buildpack configuration in line with the rest of the build-time configuration Dokku already reads from <code>app.json</code>.</p>
+<h3 id="live-restore-enabled-by-default-on-fresh-install">Live-restore enabled by default on fresh install<a class="headerlink" href="#live-restore-enabled-by-default-on-fresh-install" title="Permanent link">&para;</a></h3>
+<p>Dokku now configures the Docker daemon with <code>live-restore</code> enabled on fresh apt installs. This keeps running containers up across daemon restarts and upgrades, removing a common source of unexpected app downtime during routine Docker maintenance. Existing installs are not modified.</p>
+<h3 id="resource-limits-on-the-build-container">Resource limits on the build container<a class="headerlink" href="#resource-limits-on-the-build-container" title="Permanent link">&para;</a></h3>
+<p>Users can now apply resource limits - memory and CPU - to the container Dokku spawns to build an app. This is particularly useful on shared or low-memory hosts where a single runaway build can starve running apps.</p>
+<h3 id="per-process-docker-options">Per-process docker-options<a class="headerlink" href="#per-process-docker-options" title="Permanent link">&para;</a></h3>
+<p>The <code>docker-options</code> plugin can now scope options to specific Procfile process types rather than the app as a whole. Users who want to apply, say, a particular memory limit only to a <code>worker</code> process type can do so without affecting the <code>web</code> process.</p>
+<h3 id="appjson-env-honored-on-post-create"><code>app.json</code> <code>env</code> honored on post-create<a class="headerlink" href="#appjson-env-honored-on-post-create" title="Permanent link">&para;</a></h3>
+<p>The <code>env</code> key in <code>app.json</code> is now honored during the <code>post-create</code> phase, so apps created from a remote image or built from a repository that contains an <code>app.json</code> will receive their declared environment variables automatically.</p>
+<h3 id="gitauth-status-command"><code>git:auth-status</code> command<a class="headerlink" href="#gitauth-status-command" title="Permanent link">&para;</a></h3>
+<p>A new <code>git:auth-status</code> command checks whether a given remote matches a configured netrc entry, without exposing the credential itself. This is handy for verifying that <code>git:auth</code> was configured correctly without having to attempt a deploy.</p>
+<h3 id="-global-on-all-report-subcommands"><code>--global</code> on all <code>:report</code> subcommands<a class="headerlink" href="#-global-on-all-report-subcommands" title="Permanent link">&para;</a></h3>
+<p>All <code>:report</code> subcommands now accept the <code>--global</code> flag, which scopes the report to globally-configured properties. The flag composes with <code>--format json</code>, so a JSON report of global properties can be obtained via, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>scheduler:report<span class="w"> </span>--global<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
+<p>Previously, combining <code>--global</code> with <code>--format json</code> was rejected with an "info flag" error, and <code>--global</code> on its own was treated as an unknown flag.</p>
+<h3 id="pre-validation-of-custom-nginxconfsigil">Pre-validation of custom <code>nginx.conf.sigil</code><a class="headerlink" href="#pre-validation-of-custom-nginxconfsigil" title="Permanent link">&para;</a></h3>
+<p>Custom <code>nginx.conf.sigil</code> templates are now validated during <code>core-post-extract</code>, catching template errors before the deploy proceeds rather than at proxy-rebuild time. Users with broken templates will see a clear error early in the deploy rather than a partial outage on rebuild.</p>
+<h3 id="k3s-chart-upgrades">k3s chart upgrades<a class="headerlink" href="#k3s-chart-upgrades" title="Permanent link">&para;</a></h3>
+<p>The bundled charts for k3s users have been refreshed:</p>
+<ul>
+<li>vector from 0.42.0 to 0.52.0</li>
+<li>ingress-nginx from 4.10.0 to 4.15.1</li>
+<li>keda to 2.19.0, and keda-add-ons-http to 0.12.2</li>
+</ul>
+<h2 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h2>
+<h3 id="preserve-all-domains-when-renaming-an-app">Preserve all domains when renaming an app<a class="headerlink" href="#preserve-all-domains-when-renaming-an-app" title="Permanent link">&para;</a></h3>
+<p>Previously, renaming an app could result in the domain set being partially lost. Dokku now correctly preserves all configured domains across a rename.</p>
+<h3 id="skip-retiring-images-still-in-use">Skip retiring images still in use<a class="headerlink" href="#skip-retiring-images-still-in-use" title="Permanent link">&para;</a></h3>
+<p>The <code>dokku-retire</code> cron timer would previously log <code>Image ... has running containers, skipping rm</code> on every run when a <code>ps:rebuild</code> against an image-based deploy produced an identical-SHA image. Dokku no longer queues an image for retirement when another running container of the same app still uses it. Stuck entries from prior versions are pruned automatically on the next <code>ps:retire</code> run.</p>
+<h3 id="retire-orphaned-containers-when-scaling-down">Retire orphaned containers when scaling down<a class="headerlink" href="#retire-orphaned-containers-when-scaling-down" title="Permanent link">&para;</a></h3>
+<p>Scaling an app down now correctly retires orphaned containers that were left behind by the previous scale.</p>
+<h3 id="cnb-launcher-entrypoint-for-dokku-run-cronrun">CNB <code>launcher</code> entrypoint for <code>dokku run</code> / <code>cron:run</code><a class="headerlink" href="#cnb-launcher-entrypoint-for-dokku-run-cronrun" title="Permanent link">&para;</a></h3>
+<p>CNB images launched via <code>dokku run</code> and <code>cron:run</code> now correctly use the CNB <code>launcher</code> entrypoint, fixing one-off commands and cron tasks for buildpack apps that previously failed to start.</p>
+<h3 id="keda-fallback-only-emitted-when-needed">KEDA fallback only emitted when needed<a class="headerlink" href="#keda-fallback-only-emitted-when-needed" title="Permanent link">&para;</a></h3>
+<p>The <code>scheduler-k3s</code> plugin now emits the KEDA fallback configuration only when a non-cpu/memory trigger exists, avoiding spurious configuration for the common case.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<p>As with every upgrade, please see the <a href="https://dokku.com/docs/appendices/0.38.0-migration-guide/">0.38.0 migration guide</a> for more information on upgrading to 0.38.0.</p>
+<h2 id="future-plans">Future Plans<a class="headerlink" href="#future-plans" title="Permanent link">&para;</a></h2>
+<h3 id="the-next-minor-release">The Next Minor Release<a class="headerlink" href="#the-next-minor-release" title="Permanent link">&para;</a></h3>
+<p>Our next minor release will be 0.39.0, continuing the work on the <a href="https://github.com/dokku/dokku/milestone/16">outstanding 1.0 issues</a>. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
+<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <h3 id="dokku-pro">Dokku Pro<a class="headerlink" href="#dokku-pro" title="Permanent link">&para;</a></h3>
-<p>With the release of Dokku 0.33.x, there is finally some breathing room to concentrate on Dokku Pro. A new release with api and ui additions for user and team management are coming, and there are improvements in the pipeline that will make future development much quicker!</p>
 <p>Dokku Pro is a commercial offering that provides a familiar Web UI for all common tasks performed by developers. End users can expect an interface that provides various complex cli commands in an intuitive, app-centric manner, quickly speeding up tasks that might otherwise be difficult for new and old users to perform. Additionally, it provides a way to perform these tasks remotely via a json api, enabling easier, audited remote management of servers. Finally, Dokku Pro provides an alternative, https-based method for deploying code which can be used in environments that lockdown ssh access to servers.</p>
 <p>Interested in purchasing <a href="https://pro.dokku.com/">Dokku Pro</a>? Dokku Pro is currently provided under early bird pricing (with the price going up as we continue to release new versions). Server licenses are sold in perpetuity, so lock in lower pricing today!</p>
 <p><a data-dpd-type="button" data-text="PURCHASE NOW" data-variant="price-right" data-button-size="dpd-large" data-bg-color="469d3d" data-bg-color-hover="5cc052" data-text-color="ffffff" data-pr-bg-color="ffffff" data-pr-color="000000" data-lightbox="1" href="https://dokku.dpdcart.com/cart/add?product_id=217344&amp;method_id=236878">Purchase Now</a><script src="https://dokku.dpdcart.com/dpd.js"></script></p>
-<h3 id="the-next-minor-release">The Next Minor Release<a class="headerlink" href="#the-next-minor-release" title="Permanent link">&para;</a></h3>
-<p>Our next release will continue on the <a href="https://github.com/dokku/dokku/milestone/16">4 outstanding 1.0 issues</a>. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
-<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
 <hr />
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
