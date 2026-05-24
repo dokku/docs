@@ -2398,6 +2398,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5146,6 +5185,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5317,6 +5395,58 @@
 <p>Custom plugins names <em>must</em> have the prefix <code>builder-</code> or builder overriding via <code>builder:set</code> may not function as expected.</p>
 <p>Builders can use any tools available on the system to build the docker image, and may even be used to schedule building off-server. The only current requirement is that the image must exist on the server at the end of the <code>builder-build</code> command, though this requirement may be relaxed in a future release.</p>
 <p>For a simple example of how to implement this trigger, see <code>builder-pack</code>, which utilizes a cli tool - <code>pack-cli</code> - to generate an OCI image that is compatible with Docker and can be scheduled by the official scheduling plugins.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>build-dir</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--builder-build-dir</code>, <code>--builder-global-build-dir</code>, <code>--builder-computed-build-dir</code></td>
+<td>Subdirectory within the repository to use as the build context</td>
+</tr>
+<tr>
+<td><code>selected</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--builder-selected</code>, <code>--builder-global-selected</code>, <code>--builder-computed-selected</code></td>
+<td>Builder plugin to use; overrides automatic detection</td>
+</tr>
+<tr>
+<td><code>skip-cleanup</code></td>
+<td>app + global</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>When <code>true</code>, leaves intermediate build artifacts in place after the build</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>builder:report</code> but are not managed by <code>builder:set</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--builder-detected</code></td>
+<td>Builder auto-selected for the app when <code>selected</code> is unset</td>
+</tr>
+</tbody>
+</table>
 
 
 

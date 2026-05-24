@@ -2971,6 +2971,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5280,6 +5308,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5438,6 +5494,51 @@ after they've been generated. You can export it as follows:</p>
 <h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h2>
 <h3 id="running-behind-a-proxy-x-forwarded-ssl-etc">Running behind a proxy (<code>X-Forwarded-Ssl</code>, etc.)<a class="headerlink" href="#running-behind-a-proxy-x-forwarded-ssl-etc" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../networking/proxies/nginx/#running-behind-another-proxy--configuring-x-forwarded--headers">running behind another proxy documentation</a> for more information on how to configure your Nginx config when your server is running behind a proxy (e.g. load balancer, etc.).</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>certs:report</code> but are not managed by <code>certs:set</code> - they are derived from the on-disk certificate:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ssl-enabled</code></td>
+<td><code>true</code> when an SSL certificate is installed for the app</td>
+</tr>
+<tr>
+<td><code>--ssl-dir</code></td>
+<td>Absolute path to the per-app certificate directory</td>
+</tr>
+<tr>
+<td><code>--ssl-hostnames</code></td>
+<td>Hostnames the certificate covers (CN plus Subject Alternative Names)</td>
+</tr>
+<tr>
+<td><code>--ssl-issuer</code></td>
+<td>Certificate issuer DN</td>
+</tr>
+<tr>
+<td><code>--ssl-subject</code></td>
+<td>Certificate subject DN</td>
+</tr>
+<tr>
+<td><code>--ssl-verified</code></td>
+<td><code>true</code> if the certificate chain verifies against the system CA bundle</td>
+</tr>
+<tr>
+<td><code>--ssl-expires-at</code></td>
+<td>Certificate <code>notAfter</code> timestamp</td>
+</tr>
+<tr>
+<td><code>--ssl-starts-at</code></td>
+<td>Certificate <code>notBefore</code> timestamp</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -2226,6 +2226,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5244,6 +5272,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5608,6 +5664,39 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app<span class="w"> </span>--app-dir
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>apps:report</code> but are not managed by <code>apps:set</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--app-created-at</code></td>
+<td>UNIX timestamp of app creation</td>
+</tr>
+<tr>
+<td><code>--app-deploy-source</code></td>
+<td>Source kind of the last deploy (<code>git</code>, <code>archive</code>, <code>docker-image</code>, <code>git-sync</code>)</td>
+</tr>
+<tr>
+<td><code>--app-deploy-source-metadata</code></td>
+<td>Free-form metadata for the deploy source (commit sha, image ref, URL)</td>
+</tr>
+<tr>
+<td><code>--app-dir</code></td>
+<td>Absolute path of the app root on disk</td>
+</tr>
+<tr>
+<td><code>--app-locked</code></td>
+<td><code>true</code> while a deploy or rebuild holds the app lock</td>
+</tr>
+</tbody>
+</table>
 
 
 

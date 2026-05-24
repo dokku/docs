@@ -3758,6 +3758,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5234,6 +5262,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5422,6 +5478,56 @@
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># globally</span>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image-repo</code></td>
+<td>app only</td>
+<td><code>dokku/&lt;app&gt;</code></td>
+<td><code>--registry-image-repo</code>, <code>--registry-computed-image-repo</code></td>
+<td>Repository name used when pushing the app's image (overrides the global template)</td>
+</tr>
+<tr>
+<td><code>image-repo-template</code></td>
+<td>global only</td>
+<td><code>dokku/{{ .AppName }}</code></td>
+<td><code>--registry-global-image-repo-template</code></td>
+<td>Go template used to compute the per-app image repository when <code>image-repo</code> is unset</td>
+</tr>
+<tr>
+<td><code>push-extra-tags</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--registry-push-extra-tags</code></td>
+<td>Comma-separated list of additional tags pushed alongside the deploy tag</td>
+</tr>
+<tr>
+<td><code>push-on-release</code></td>
+<td>app + global</td>
+<td><code>false</code></td>
+<td><code>--registry-push-on-release</code>, <code>--registry-global-push-on-release</code>, <code>--registry-computed-push-on-release</code></td>
+<td>When <code>true</code>, pushes the image to the registry on every successful build</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--registry-server</code>, <code>--registry-global-server</code>, <code>--registry-computed-server</code></td>
+<td>Registry server host (e.g. <code>ghcr.io</code>) used when pushing images</td>
+</tr>
+</tbody>
+</table>
 
 
 

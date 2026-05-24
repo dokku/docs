@@ -3167,6 +3167,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5302,6 +5330,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5601,6 +5657,49 @@
 <a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a>
 <a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a>### PLACE ALL CRON TASKS ABOVE, DO NOT REMOVE THE WHITESPACE AFTER THIS LINE
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mailfrom</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--cron-mailfrom</code></td>
+<td><code>From:</code> address used in cron failure emails</td>
+</tr>
+<tr>
+<td><code>mailto</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--cron-mailto</code></td>
+<td>Recipient address for cron failure emails; empty disables email</td>
+</tr>
+<tr>
+<td><code>maintenance</code></td>
+<td>app + global</td>
+<td><code>false</code></td>
+<td><code>--cron-maintenance</code>, <code>--cron-global-maintenance</code>, <code>--cron-computed-maintenance</code></td>
+<td>When <code>true</code>, suspends all cron tasks for the app (or globally)</td>
+</tr>
+<tr>
+<td><code>maintenance.&lt;cron-id&gt;</code></td>
+<td>app only</td>
+<td><code>false</code></td>
+<td><code>--cron-maintenance-&lt;cron-id&gt;</code> (dynamic per task)</td>
+<td>Suspends an individual cron task by its computed ID (one row per task); written by <code>cron:suspend</code>/<code>cron:resume</code></td>
+</tr>
+</tbody>
+</table>
 
 
 

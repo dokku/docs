@@ -2294,6 +2294,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5324,6 +5352,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5541,6 +5597,56 @@
 <p>As with app-specific label alias settings, the global value may also be cleared by setting no value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app-label-alias</code></td>
+<td>app + global</td>
+<td><code>com.dokku.app-name</code></td>
+<td><code>--logs-app-label-alias</code>, <code>--logs-global-app-label-alias</code>, <code>--logs-computed-app-label-alias</code></td>
+<td>Docker label key whose value is used to identify the app when shipping logs</td>
+</tr>
+<tr>
+<td><code>max-size</code></td>
+<td>app + global</td>
+<td><code>10m</code></td>
+<td><code>--logs-max-size</code>, <code>--logs-global-max-size</code>, <code>--logs-computed-max-size</code></td>
+<td>Maximum size of an individual log file before rotation</td>
+</tr>
+<tr>
+<td><code>vector-image</code></td>
+<td>global only</td>
+<td><em>parsed from <code>plugins/logs/Dockerfile</code></em></td>
+<td><code>--logs-global-vector-image</code>, <code>--logs-computed-vector-image</code></td>
+<td>Docker image used to run the vector log-shipper container</td>
+</tr>
+<tr>
+<td><code>vector-networks</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--logs-global-vector-networks</code>, <code>--logs-computed-vector-networks</code></td>
+<td>Comma-separated list of docker networks the vector container is attached to</td>
+</tr>
+<tr>
+<td><code>vector-sink</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--logs-vector-sink</code>, <code>--logs-global-vector-sink</code>, <code>--logs-computed-vector-sink</code></td>
+<td>DSN-style sink configuration for vector (e.g. <code>console://</code> or <code>loki://...</code>)</td>
+</tr>
+</tbody>
+</table>
 
 
 

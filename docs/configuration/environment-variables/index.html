@@ -2781,6 +2781,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5012,6 +5040,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5255,6 +5311,25 @@
 <td><code>dokku</code></td>
 <td><code>/etc/environment</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code></td>
 <td>System user to chown files as.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
+<p>The following property is recorded internally by the config plugin and is not exposed via <code>config:report</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>env-migrated</code></td>
+<td>Migration sentinel that records the per-app or global <code>DOKKU_*</code> env-var → property migration completed for 0.38.0</td>
+<td><code>plugins/config/triggers.go</code> writes <code>"true"</code> after the upgrade-time pass</td>
 </tr>
 </tbody>
 </table>

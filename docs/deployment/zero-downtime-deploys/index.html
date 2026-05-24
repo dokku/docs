@@ -2300,6 +2300,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5168,6 +5196,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5295,24 +5351,25 @@ checks will fail. To avoid this:</p>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>       Checks disabled list: none
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>       Checks skipped list: none
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>       Checks computed wait to retire: 60
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>       Checks global wait to retire: 60
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>       Checks global wait to retire:
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>       Checks wait to retire:
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>=====&gt; python-app checks information
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>       Checks disabled list: none
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>       Checks skipped list: none
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>       Checks computed wait to retire: 60
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       Checks global wait to retire: 60
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       Checks global wait to retire:
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>       Checks wait to retire:
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>=====&gt; ruby-app checks information
 <a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>       Checks disabled list: _all_
 <a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>       Checks skipped list: none
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>       Checks computed wait to retire: 60
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>       Checks global wait to retire: 60
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>       Checks global wait to retire:
 <a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>       Checks wait to retire:
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The <code>wait-to-retire</code> and <code>global-wait-to-retire</code> keys hold the raw per-app and global value respectively, and are empty when nothing has been set. The <code>computed-wait-to-retire</code> key holds the effective value used at deploy time, falling back to the global value (where one has been set) and then to the built-in default of <code>60</code>.</p>
 <p>You can run the command for a specific app also.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
@@ -5325,7 +5382,7 @@ checks will fail. To avoid this:</p>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       Checks disabled list: none
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Checks skipped list: none
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Checks computed wait to retire: 60
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>       Checks global wait to retire: 60
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>       Checks global wait to retire:
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>       Checks wait to retire:
 </code></pre></div>
 </div>
@@ -5474,6 +5531,28 @@ checks will fail. To avoid this:</p>
 </div>
 </div>
 </div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wait-to-retire</code></td>
+<td>app + global</td>
+<td><code>60</code></td>
+<td><code>--checks-wait-to-retire</code>, <code>--checks-global-wait-to-retire</code>, <code>--checks-computed-wait-to-retire</code></td>
+<td>Seconds to wait between deploying the new container and stopping the old one</td>
+</tr>
+</tbody>
+</table>
 
 
 

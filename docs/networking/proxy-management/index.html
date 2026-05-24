@@ -3393,6 +3393,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5234,6 +5273,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5387,18 +5465,25 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>=====&gt; node-js-app proxy information
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>       Proxy enabled:       true
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>       Proxy type:          nginx
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>=====&gt; python-sample proxy information
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>       Proxy enabled:       true
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>       Proxy type:          nginx
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>=====&gt; ruby-sample proxy information
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>       Proxy computed type: nginx
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>       Proxy enabled:       true
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>       Proxy global type:
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>       Proxy type:
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>=====&gt; python-sample proxy information
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>       Proxy computed type: nginx
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>       Proxy enabled:       true
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>       Proxy type:          nginx
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>       Proxy global type:
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>       Proxy type:
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>=====&gt; ruby-sample proxy information
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>       Proxy computed type: nginx
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>       Proxy enabled:       true
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>       Proxy global type:
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>       Proxy type:
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The <code>type</code> and <code>global-type</code> keys hold the raw per-app and global value respectively, and are empty when nothing has been set. The <code>computed-type</code> key holds the effective value used at deploy time, falling back to the global value (where one has been set) and then to the built-in default of <code>nginx</code>.</p>
 <p>You can run the command for a specific app also.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
@@ -5408,14 +5493,16 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>=====&gt; node-js-app proxy information
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       Proxy enabled:       true
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>       Proxy type:          nginx
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       Proxy computed type: nginx
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>       Proxy enabled:       true
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>       Proxy global type:
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>       Proxy type:
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--proxy-type
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>proxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--proxy-computed-type
 </code></pre></div>
 <h4 id="proxy-port-scheme">Proxy Port Scheme<a class="headerlink" href="#proxy-port-scheme" title="Permanent link">&para;</a></h4>
 <p>See the <a href="../port-management/#port-scheme">port scheme documentation</a> for more information on the port mapping scheme used by dokku.</p>
@@ -5495,6 +5582,65 @@
 <p>Proxy implementations may decide to omit some functionality here, or use plugin triggers to supplement config with information from other plugins.</p>
 <p>Individual proxy implementations <em>may</em> trigger app rebuilds, depending on how proxy metadata is exposed for the proxy implementation.</p>
 <p>Finally, proxy implementations <em>may</em> install extra software needed for the proxy itself in whatever manner deemed fit. Proxy software can run on the host itself or within a running Docker container with either exposed ports or host networking.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disabled</code></td>
+<td>app only</td>
+<td><code>false</code></td>
+<td>(exposed inverted as <code>--proxy-enabled</code>)</td>
+<td>When <code>true</code>, disables proxy integration for this app (<code>proxy:enable</code>/<code>proxy:disable</code> write this)</td>
+</tr>
+<tr>
+<td><code>proxy-port</code></td>
+<td>app + global</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Override port used for the HTTP listener in the generated proxy config</td>
+</tr>
+<tr>
+<td><code>proxy-ssl-port</code></td>
+<td>app + global</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Override port used for the HTTPS listener in the generated proxy config</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>app + global</td>
+<td><code>nginx</code></td>
+<td><code>--proxy-type</code>, <code>--proxy-global-type</code>, <code>--proxy-computed-type</code></td>
+<td>Proxy implementation handling traffic for the app (<code>nginx</code>, <code>caddy</code>, <code>haproxy</code>, <code>traefik</code>, <code>openresty</code>, or a custom plugin)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>proxy:report</code> but are not managed by <code>proxy:set</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--proxy-enabled</code></td>
+<td><code>true</code> when the app's <code>disabled</code> property is not <code>true</code></td>
+</tr>
+</tbody>
+</table>
 
 
 

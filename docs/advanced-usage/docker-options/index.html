@@ -3775,6 +3775,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5324,6 +5352,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5543,6 +5599,25 @@ The <code>run</code> phase does <em>not</em> correspond 1-to-1 to <code>docker r
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>docker-options:list<span class="w"> </span>node-js-app<span class="w"> </span>--process<span class="w"> </span>web<span class="w"> </span>--phase<span class="w"> </span>deploy
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dokku<span class="w"> </span>docker-options:list<span class="w"> </span>node-js-app<span class="w"> </span>--phase<span class="w"> </span>deploy
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
+<p>The following property is recorded internally by the docker-options plugin and is not exposed via <code>docker-options:report</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>migrated-from-files</code></td>
+<td>Global migration sentinel that records that the legacy <code>DOCKER_OPTIONS_&lt;PHASE&gt;</code> flat-file store has been drained into plugin properties</td>
+<td><code>plugins/docker-options/functions.go</code> writes <code>"true"</code> once the install-time migration runs</td>
+</tr>
+</tbody>
+</table>
 
 
 

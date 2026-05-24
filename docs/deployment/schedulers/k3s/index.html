@@ -4418,6 +4418,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5956,6 +5984,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6597,6 +6653,126 @@ Users with older installations will need to manually install Keda.</p>
 <p class="admonition-title">Note</p>
 <p>Cron tasks retrieve resource limits based on the computed cron task ID.</p>
 </div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deploy-timeout</code></td>
+<td>app + global</td>
+<td><code>300s</code></td>
+<td><code>--scheduler-k3s-deploy-timeout</code>, <code>--scheduler-k3s-global-deploy-timeout</code>, <code>--scheduler-k3s-computed-deploy-timeout</code></td>
+<td>Timeout for a single helm install/upgrade cycle</td>
+</tr>
+<tr>
+<td><code>image-pull-secrets</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--scheduler-k3s-image-pull-secrets</code>, <code>--scheduler-k3s-global-image-pull-secrets</code>, <code>--scheduler-k3s-computed-image-pull-secrets</code></td>
+<td>Comma-separated list of Kubernetes secret names used to pull private images</td>
+</tr>
+<tr>
+<td><code>ingress-class</code></td>
+<td>global only</td>
+<td><code>nginx</code></td>
+<td><code>--scheduler-k3s-global-ingress-class</code></td>
+<td>IngressClass name used for app ingresses (e.g. <code>nginx</code>, <code>traefik</code>)</td>
+</tr>
+<tr>
+<td><code>kube-context</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--scheduler-k3s-global-kube-context</code></td>
+<td>Kube context name used by helm and kubectl invocations</td>
+</tr>
+<tr>
+<td><code>kubeconfig-path</code></td>
+<td>global only</td>
+<td><code>/etc/rancher/k3s/k3s.yaml</code></td>
+<td><code>--scheduler-k3s-global-kubeconfig-path</code></td>
+<td>Filesystem path to the kubeconfig used to talk to the cluster</td>
+</tr>
+<tr>
+<td><code>kustomize-root-path</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--scheduler-k3s-kustomize-root-path</code>, <code>--scheduler-k3s-global-kustomize-root-path</code>, <code>--scheduler-k3s-computed-kustomize-root-path</code></td>
+<td>Path within the app to a kustomize root applied after the helm install</td>
+</tr>
+<tr>
+<td><code>letsencrypt-email-prod</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--scheduler-k3s-global-letsencrypt-email-prod</code></td>
+<td>Contact email for the production cert-manager ClusterIssuer</td>
+</tr>
+<tr>
+<td><code>letsencrypt-email-stag</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--scheduler-k3s-global-letsencrypt-email-stag</code></td>
+<td>Contact email for the staging cert-manager ClusterIssuer</td>
+</tr>
+<tr>
+<td><code>letsencrypt-server</code></td>
+<td>app + global</td>
+<td><code>prod</code></td>
+<td><code>--scheduler-k3s-letsencrypt-server</code>, <code>--scheduler-k3s-global-letsencrypt-server</code>, <code>--scheduler-k3s-computed-letsencrypt-server</code></td>
+<td>ACME directory (<code>prod</code> or <code>staging</code>) used for app certificates</td>
+</tr>
+<tr>
+<td><code>namespace</code></td>
+<td>app + global</td>
+<td><code>default</code></td>
+<td><code>--scheduler-k3s-namespace</code>, <code>--scheduler-k3s-global-namespace</code>, <code>--scheduler-k3s-computed-namespace</code></td>
+<td>Kubernetes namespace into which the app's resources are installed</td>
+</tr>
+<tr>
+<td><code>network-interface</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--scheduler-k3s-global-network-interface</code></td>
+<td>Host network interface used by k3s</td>
+</tr>
+<tr>
+<td><code>rollback-on-failure</code></td>
+<td>app + global</td>
+<td><code>false</code></td>
+<td><code>--scheduler-k3s-rollback-on-failure</code>, <code>--scheduler-k3s-global-rollback-on-failure</code>, <code>--scheduler-k3s-computed-rollback-on-failure</code></td>
+<td>When <code>true</code>, helm rolls back the release if a deploy fails</td>
+</tr>
+<tr>
+<td><code>shm-size</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--scheduler-k3s-shm-size</code>, <code>--scheduler-k3s-global-shm-size</code>, <code>--scheduler-k3s-computed-shm-size</code></td>
+<td><code>/dev/shm</code> size override applied to app containers</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>global only</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Cluster join token used by <code>scheduler-k3s:cluster-add</code></td>
+</tr>
+<tr>
+<td><code>chart.&lt;chart-name&gt;.&lt;property&gt;</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--scheduler-k3s-global-chart.&lt;chart-name&gt;.&lt;property&gt;</code> (dynamic per chart/property)</td>
+<td>Override a value injected into the helm chart named <code>&lt;chart-name&gt;</code> (one row per chart/property pair)</td>
+</tr>
+</tbody>
+</table>
 
 
 

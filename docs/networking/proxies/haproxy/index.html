@@ -3538,6 +3538,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5412,6 +5451,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5565,15 +5643,21 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>=====&gt; node-js-app haproxy information
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>=====&gt; python-app haproxy information
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>=====&gt; ruby-app haproxy information
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       Haproxy computed image:           byjg/easy-haproxy:4.0.0
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>       Haproxy computed letsencrypt email:
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>       Haproxy computed letsencrypt server: https://acme-v02.api.letsencrypt.org/directory
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>       Haproxy computed log level:       ERROR
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>       Haproxy computed refresh conf:    10
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>       Haproxy global image:
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>       Haproxy global letsencrypt email:
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>       Haproxy global letsencrypt server:
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>       Haproxy global log level:
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>       Haproxy global refresh conf:
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The <code>global-&lt;prop&gt;</code> keys hold the raw global value and are empty when nothing has been set globally. The <code>computed-&lt;prop&gt;</code> keys hold the effective value used at deploy time, falling back to the built-in default when the global value is empty.</p>
 <p>You can run the command for a specific app also.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
@@ -5583,14 +5667,92 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>=====&gt; node-js-app haproxy information
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       Haproxy image:                   byjg/easy-haproxy:4.0.0
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       Haproxy computed image:           byjg/easy-haproxy:4.0.0
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>       Haproxy computed letsencrypt email:
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>       Haproxy computed letsencrypt server: https://acme-v02.api.letsencrypt.org/directory
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>       Haproxy computed log level:       ERROR
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>       Haproxy computed refresh conf:    10
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>       Haproxy global image:
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>       Haproxy global letsencrypt email:
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>       Haproxy global letsencrypt server:
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>       Haproxy global log level:
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>       Haproxy global refresh conf:
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>haproxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--haproxy-image
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>haproxy:report<span class="w"> </span>node-js-app<span class="w"> </span>--haproxy-computed-image
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<p>All haproxy properties are global only. Set with <code>haproxy:set --global &lt;property&gt; &lt;value&gt;</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image</code></td>
+<td>global only</td>
+<td><em>parsed from <code>plugins/haproxy-vhosts/Dockerfile</code></em></td>
+<td><code>--haproxy-global-image</code>, <code>--haproxy-computed-image</code></td>
+<td>Docker image used to run the Haproxy container</td>
+</tr>
+<tr>
+<td><code>letsencrypt-email</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--haproxy-global-letsencrypt-email</code>, <code>--haproxy-computed-letsencrypt-email</code></td>
+<td>Contact email enabling letsencrypt; empty disables https issuance</td>
+</tr>
+<tr>
+<td><code>letsencrypt-server</code></td>
+<td>global only</td>
+<td><code>https://acme-v02.api.letsencrypt.org/directory</code></td>
+<td><code>--haproxy-global-letsencrypt-server</code>, <code>--haproxy-computed-letsencrypt-server</code></td>
+<td>ACME directory used when requesting certificates</td>
+</tr>
+<tr>
+<td><code>log-level</code></td>
+<td>global only</td>
+<td><code>ERROR</code></td>
+<td><code>--haproxy-global-log-level</code>, <code>--haproxy-computed-log-level</code></td>
+<td>Haproxy log level</td>
+</tr>
+<tr>
+<td><code>refresh-conf</code></td>
+<td>global only</td>
+<td><code>10</code></td>
+<td><code>--haproxy-global-refresh-conf</code>, <code>--haproxy-computed-refresh-conf</code></td>
+<td>Seconds between Haproxy polls of the Docker API for label changes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
+<p>The following properties are not managed by <code>haproxy:set</code> but are recorded internally by the plugin:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>proxy-status</code></td>
+<td><code>started</code>/<code>stopped</code> state of the haproxy compose project</td>
+<td><code>cmd-haproxy-start</code>/<code>cmd-haproxy-stop</code> in <code>plugins/haproxy-vhosts/command-functions</code></td>
+</tr>
+</tbody>
+</table>
 
 
 

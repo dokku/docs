@@ -4964,6 +4964,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5154,6 +5182,29 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app<span class="w"> </span>--buildpacks-list
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<p>These properties are managed via <code>buildpacks:set-property</code> (the legacy command name for this plugin).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stack</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--buildpacks-stack</code>, <code>--buildpacks-global-stack</code>, <code>--buildpacks-computed-stack</code></td>
+<td>Herokuish stack image used to compile the app (e.g. <code>heroku/heroku:24</code>)</td>
+</tr>
+</tbody>
+</table>
 
 
 

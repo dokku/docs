@@ -3803,6 +3803,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5886,6 +5936,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6552,6 +6652,278 @@ These headers indicate the IP address of the original client making the request,
 <p>See the <a href="../../port-management/">ports documentation</a> for more information on how to manage ports proxied for your app.</p>
 <h3 id="regenerating-nginx-config">Regenerating nginx config<a class="headerlink" href="#regenerating-nginx-config" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../proxy-management/#regenerating-proxy-config">proxy documentation</a> for more information on how to rebuild the nginx proxy configuration for your app.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<p>All nginx-vhosts properties are settable at both the app and global scope.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access-log-format</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--nginx-access-log-format</code>, <code>--nginx-global-access-log-format</code>, <code>--nginx-computed-access-log-format</code></td>
+<td>Custom nginx <code>log_format</code> directive used for the access log</td>
+</tr>
+<tr>
+<td><code>access-log-path</code></td>
+<td>app + global</td>
+<td><em><code>{nginx-log-root}/{app}-access.log</code></em></td>
+<td><code>--nginx-access-log-path</code>, <code>--nginx-global-access-log-path</code>, <code>--nginx-computed-access-log-path</code></td>
+<td>Path inside the nginx container where access logs are written</td>
+</tr>
+<tr>
+<td><code>bind-address-ipv4</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--nginx-bind-address-ipv4</code>, <code>--nginx-global-bind-address-ipv4</code>, <code>--nginx-computed-bind-address-ipv4</code></td>
+<td>IPv4 address the nginx server block binds to</td>
+</tr>
+<tr>
+<td><code>bind-address-ipv6</code></td>
+<td>app + global</td>
+<td><code>::</code></td>
+<td><code>--nginx-bind-address-ipv6</code>, <code>--nginx-global-bind-address-ipv6</code>, <code>--nginx-computed-bind-address-ipv6</code></td>
+<td>IPv6 address the nginx server block binds to</td>
+</tr>
+<tr>
+<td><code>client-body-timeout</code></td>
+<td>app + global</td>
+<td><code>60s</code></td>
+<td><code>--nginx-client-body-timeout</code>, <code>--nginx-global-client-body-timeout</code>, <code>--nginx-computed-client-body-timeout</code></td>
+<td>Time allowed to read the request body from the client</td>
+</tr>
+<tr>
+<td><code>client-header-timeout</code></td>
+<td>app + global</td>
+<td><code>60s</code></td>
+<td><code>--nginx-client-header-timeout</code>, <code>--nginx-global-client-header-timeout</code>, <code>--nginx-computed-client-header-timeout</code></td>
+<td>Time allowed to read the request header from the client</td>
+</tr>
+<tr>
+<td><code>client-max-body-size</code></td>
+<td>app + global</td>
+<td><code>1m</code></td>
+<td><code>--nginx-client-max-body-size</code>, <code>--nginx-global-client-max-body-size</code>, <code>--nginx-computed-client-max-body-size</code></td>
+<td>Maximum allowed request body size</td>
+</tr>
+<tr>
+<td><code>disable-custom-config</code></td>
+<td>app + global</td>
+<td><code>false</code></td>
+<td><code>--nginx-disable-custom-config</code>, <code>--nginx-global-disable-custom-config</code>, <code>--nginx-computed-disable-custom-config</code></td>
+<td>When <code>true</code>, ignores app-supplied <code>nginx.conf.d/*.conf</code> snippets</td>
+</tr>
+<tr>
+<td><code>error-log-path</code></td>
+<td>app + global</td>
+<td><em><code>{nginx-log-root}/{app}-error.log</code></em></td>
+<td><code>--nginx-error-log-path</code>, <code>--nginx-global-error-log-path</code>, <code>--nginx-computed-error-log-path</code></td>
+<td>Path inside the nginx container where error logs are written</td>
+</tr>
+<tr>
+<td><code>hsts</code></td>
+<td>app + global</td>
+<td><code>true</code></td>
+<td><code>--nginx-hsts</code>, <code>--nginx-global-hsts</code>, <code>--nginx-computed-hsts</code></td>
+<td>When <code>true</code>, emits a <code>Strict-Transport-Security</code> header on HTTPS responses</td>
+</tr>
+<tr>
+<td><code>hsts-include-subdomains</code></td>
+<td>app + global</td>
+<td><code>true</code></td>
+<td><code>--nginx-hsts-include-subdomains</code>, <code>--nginx-global-hsts-include-subdomains</code>, <code>--nginx-computed-hsts-include-subdomains</code></td>
+<td>Adds the <code>includeSubDomains</code> directive to the HSTS header</td>
+</tr>
+<tr>
+<td><code>hsts-max-age</code></td>
+<td>app + global</td>
+<td><code>15724800</code></td>
+<td><code>--nginx-hsts-max-age</code>, <code>--nginx-global-hsts-max-age</code>, <code>--nginx-computed-hsts-max-age</code></td>
+<td><code>max-age</code> value (seconds) in the HSTS header</td>
+</tr>
+<tr>
+<td><code>hsts-preload</code></td>
+<td>app + global</td>
+<td><code>false</code></td>
+<td><code>--nginx-hsts-preload</code>, <code>--nginx-global-hsts-preload</code>, <code>--nginx-computed-hsts-preload</code></td>
+<td>Adds the <code>preload</code> directive to the HSTS header</td>
+</tr>
+<tr>
+<td><code>keepalive-timeout</code></td>
+<td>app + global</td>
+<td><code>75s</code></td>
+<td><code>--nginx-keepalive-timeout</code>, <code>--nginx-global-keepalive-timeout</code>, <code>--nginx-computed-keepalive-timeout</code></td>
+<td>Time an idle keep-alive connection stays open</td>
+</tr>
+<tr>
+<td><code>lingering-timeout</code></td>
+<td>app + global</td>
+<td><code>5s</code></td>
+<td><code>--nginx-lingering-timeout</code>, <code>--nginx-global-lingering-timeout</code>, <code>--nginx-computed-lingering-timeout</code></td>
+<td>Time nginx waits for more client data when closing a connection</td>
+</tr>
+<tr>
+<td><code>nginx-conf-sigil-path</code></td>
+<td>app + global</td>
+<td><code>nginx.conf.sigil</code></td>
+<td><code>--nginx-nginx-conf-sigil-path</code>, <code>--nginx-global-nginx-conf-sigil-path</code>, <code>--nginx-computed-nginx-conf-sigil-path</code></td>
+<td>Path within the app to a custom <code>nginx.conf.sigil</code> template</td>
+</tr>
+<tr>
+<td><code>nginx-service-command</code></td>
+<td>app + global</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Override command used by <code>nginx:start</code>/<code>nginx:stop</code>/<code>nginx:reload</code></td>
+</tr>
+<tr>
+<td><code>proxy-buffer-size</code></td>
+<td>app + global</td>
+<td><em>system pagesize</em></td>
+<td><code>--nginx-proxy-buffer-size</code>, <code>--nginx-global-proxy-buffer-size</code>, <code>--nginx-computed-proxy-buffer-size</code></td>
+<td>Buffer size for reading the first part of the upstream response</td>
+</tr>
+<tr>
+<td><code>proxy-buffering</code></td>
+<td>app + global</td>
+<td><code>on</code></td>
+<td><code>--nginx-proxy-buffering</code>, <code>--nginx-global-proxy-buffering</code>, <code>--nginx-computed-proxy-buffering</code></td>
+<td>Whether nginx buffers upstream responses (<code>on</code> or <code>off</code>)</td>
+</tr>
+<tr>
+<td><code>proxy-buffers</code></td>
+<td>app + global</td>
+<td><em><code>8 {pagesize}</code></em></td>
+<td><code>--nginx-proxy-buffers</code>, <code>--nginx-global-proxy-buffers</code>, <code>--nginx-computed-proxy-buffers</code></td>
+<td>Number and size of buffers used for an upstream response</td>
+</tr>
+<tr>
+<td><code>proxy-busy-buffers-size</code></td>
+<td>app + global</td>
+<td><em><code>2 * pagesize</code></em></td>
+<td><code>--nginx-proxy-busy-buffers-size</code>, <code>--nginx-global-proxy-busy-buffers-size</code>, <code>--nginx-computed-proxy-busy-buffers-size</code></td>
+<td>Maximum buffer size that can be busy sending a response to the client</td>
+</tr>
+<tr>
+<td><code>proxy-connect-timeout</code></td>
+<td>app + global</td>
+<td><code>60s</code></td>
+<td><code>--nginx-proxy-connect-timeout</code>, <code>--nginx-global-proxy-connect-timeout</code>, <code>--nginx-computed-proxy-connect-timeout</code></td>
+<td>Time to establish a connection to the upstream</td>
+</tr>
+<tr>
+<td><code>proxy-keepalive</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--nginx-proxy-keepalive</code>, <code>--nginx-global-proxy-keepalive</code>, <code>--nginx-computed-proxy-keepalive</code></td>
+<td>Number of idle keep-alive connections to upstream servers held open per worker</td>
+</tr>
+<tr>
+<td><code>proxy-read-timeout</code></td>
+<td>app + global</td>
+<td><code>60s</code></td>
+<td><code>--nginx-proxy-read-timeout</code>, <code>--nginx-global-proxy-read-timeout</code>, <code>--nginx-computed-proxy-read-timeout</code></td>
+<td>Time to read a response from the upstream</td>
+</tr>
+<tr>
+<td><code>proxy-send-timeout</code></td>
+<td>app + global</td>
+<td><code>60s</code></td>
+<td><code>--nginx-proxy-send-timeout</code>, <code>--nginx-global-proxy-send-timeout</code>, <code>--nginx-computed-proxy-send-timeout</code></td>
+<td>Time to transmit a request to the upstream</td>
+</tr>
+<tr>
+<td><code>send-timeout</code></td>
+<td>app + global</td>
+<td><code>60s</code></td>
+<td><code>--nginx-send-timeout</code>, <code>--nginx-global-send-timeout</code>, <code>--nginx-computed-send-timeout</code></td>
+<td>Time between two successive write operations to the client</td>
+</tr>
+<tr>
+<td><code>underscore-in-headers</code></td>
+<td>app + global</td>
+<td><code>off</code></td>
+<td><code>--nginx-underscore-in-headers</code>, <code>--nginx-global-underscore-in-headers</code>, <code>--nginx-computed-underscore-in-headers</code></td>
+<td>Whether to allow underscores in client request header field names</td>
+</tr>
+<tr>
+<td><code>x-forwarded-for-value</code></td>
+<td>app + global</td>
+<td><code>$remote_addr</code></td>
+<td><code>--nginx-x-forwarded-for-value</code>, <code>--nginx-global-x-forwarded-for-value</code>, <code>--nginx-computed-x-forwarded-for-value</code></td>
+<td>Value used for the <code>X-Forwarded-For</code> header</td>
+</tr>
+<tr>
+<td><code>x-forwarded-port-value</code></td>
+<td>app + global</td>
+<td><code>$server_port</code></td>
+<td><code>--nginx-x-forwarded-port-value</code>, <code>--nginx-global-x-forwarded-port-value</code>, <code>--nginx-computed-x-forwarded-port-value</code></td>
+<td>Value used for the <code>X-Forwarded-Port</code> header</td>
+</tr>
+<tr>
+<td><code>x-forwarded-proto-value</code></td>
+<td>app + global</td>
+<td><code>$scheme</code></td>
+<td><code>--nginx-x-forwarded-proto-value</code>, <code>--nginx-global-x-forwarded-proto-value</code>, <code>--nginx-computed-x-forwarded-proto-value</code></td>
+<td>Value used for the <code>X-Forwarded-Proto</code> header</td>
+</tr>
+<tr>
+<td><code>x-forwarded-ssl</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--nginx-x-forwarded-ssl</code>, <code>--nginx-global-x-forwarded-ssl</code>, <code>--nginx-computed-x-forwarded-ssl</code></td>
+<td>Value used for the <code>X-Forwarded-Ssl</code> header (e.g. <code>on</code>/<code>off</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flag surfaces in <code>nginx:report</code> but is not managed by <code>nginx:set</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--nginx-last-visited-at</code></td>
+<td>UNIX timestamp of the last request served by nginx for the app</td>
+</tr>
+</tbody>
+</table>
+<h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
+<p>The following properties are recorded internally by the plugin and are not exposed via <code>nginx:report</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>proxy-status</code></td>
+<td><code>started</code>/<code>stopped</code> state of the nginx system service</td>
+<td><code>cmd-nginx-start</code>/<code>cmd-nginx-stop</code></td>
+</tr>
+<tr>
+<td><code>nginx-conf-sigil-migrated</code></td>
+<td>Migration sentinel set the first time a v1 template is rewritten to the current schema</td>
+<td><code>plugins/nginx-vhosts/install</code> writes <code>"true"</code> once the install-time migration runs</td>
+</tr>
+</tbody>
+</table>
 
 
 

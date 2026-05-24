@@ -3227,6 +3227,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5478,6 +5517,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5854,6 +5932,102 @@
 <p>The default value (<code>true</code>) may be restored by passing an empty value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restore
 </code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dockerfile-start-cmd</code></td>
+<td>app only</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Override <code>CMD</code> for Dockerfile-based apps</td>
+</tr>
+<tr>
+<td><code>procfile-path</code></td>
+<td>app + global</td>
+<td><code>Procfile</code></td>
+<td><code>--ps-procfile-path</code>, <code>--ps-global-procfile-path</code>, <code>--ps-computed-procfile-path</code></td>
+<td>Path to the app's Procfile, relative to the build root</td>
+</tr>
+<tr>
+<td><code>restart-policy</code></td>
+<td>app only</td>
+<td><code>on-failure:10</code></td>
+<td><code>--ps-restart-policy</code></td>
+<td>Docker restart policy applied to deployed containers (<code>no</code>, <code>always</code>, <code>unless-stopped</code>, <code>on-failure[:max-retries]</code>)</td>
+</tr>
+<tr>
+<td><code>restore</code></td>
+<td>app only</td>
+<td><code>true</code></td>
+<td><code>--restore</code></td>
+<td>When <code>true</code>, the app is restarted automatically by <code>ps:retire</code> after a host reboot</td>
+</tr>
+<tr>
+<td><code>skip-deploy</code></td>
+<td>app + global</td>
+<td><code>false</code></td>
+<td>(not in report)</td>
+<td>When <code>true</code>, skips the deploy phase after a successful build</td>
+</tr>
+<tr>
+<td><code>start-cmd</code></td>
+<td>app only</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Override start command for buildpack apps</td>
+</tr>
+<tr>
+<td><code>stop-timeout-seconds</code></td>
+<td>app + global</td>
+<td><code>30</code></td>
+<td><code>--stop-timeout-seconds</code>, <code>--global-stop-timeout-seconds</code>, <code>--computed-stop-timeout-seconds</code></td>
+<td>Seconds Docker waits before SIGKILLing a container on stop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>ps:report</code> but are not managed by <code>ps:set</code> - they are derived from the running process state:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ps-can-scale</code></td>
+<td><code>false</code> when the app's procfile or builder forbids horizontal scaling</td>
+</tr>
+<tr>
+<td><code>--deployed</code></td>
+<td><code>true</code> after the first successful deploy</td>
+</tr>
+<tr>
+<td><code>--running</code></td>
+<td><code>true</code> while any container for the app is running</td>
+</tr>
+<tr>
+<td><code>--processes</code></td>
+<td>Total scaled process count across all proctypes</td>
+</tr>
+<tr>
+<td><code>--status-&lt;proctype&gt;</code></td>
+<td>Container status and ID for each running proctype (one entry per Procfile process type)</td>
+</tr>
+</tbody>
+</table>
 
 
 

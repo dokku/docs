@@ -3940,6 +3940,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5112,6 +5140,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5199,16 +5255,17 @@
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Scheduler selected: herokuish
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>=====&gt; python-sample scheduler information
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>       Scheduler computed selected: dockerfile
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>       Scheduler global selected: herokuish
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>       Scheduler global selected:
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>       Scheduler selected: dockerfile
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>=====&gt; ruby-sample scheduler information
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>       Scheduler computed selected: herokuish
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>       Scheduler global selected: herokuish
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>       Scheduler computed selected: docker-local
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>       Scheduler global selected:
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>       Scheduler selected:
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The <code>selected</code> and <code>global-selected</code> keys hold the raw per-app and global value respectively, and are empty when nothing has been set. The <code>computed-selected</code> key holds the effective value used at deploy time, falling back to the global value (where one has been set) and then to the built-in default of <code>docker-local</code>.</p>
 <p>You can run the command for a specific app also.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
@@ -5218,7 +5275,9 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=====&gt; node-js-app scheduler information
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>       Scheduler selected: herokuish
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>       Scheduler computed selected:  herokuish
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>       Scheduler global selected:
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>       Scheduler selected: herokuish
 </code></pre></div>
 </div>
 </div>
@@ -5286,6 +5345,35 @@
 <p>Schedulers may decide to omit some functionality here, or use plugin triggers to supplement config with information from other plugins. Additionally, a scheduler may implement other triggers in order handle any extra processes needed during a deploy.</p>
 <p>Schedulers can use any tools available on the system to build the docker image, and may even be used to interact with off-server systems. The only current requirement is that the scheduler must have access to the image built in the build phase. If this is not the case, the registry plugin can be used to push the image to a registry that the scheduler software can access.</p>
 <p>Deployment tasks are currently executed directly on the primary Dokku server.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>selected</code></td>
+<td>app + global</td>
+<td><code>docker-local</code></td>
+<td><code>--scheduler-selected</code>, <code>--scheduler-global-selected</code>, <code>--scheduler-computed-selected</code></td>
+<td>Scheduler plugin used to deploy this app (<code>docker-local</code>, <code>k3s</code>, etc.)</td>
+</tr>
+<tr>
+<td><code>shell</code></td>
+<td>app + global</td>
+<td>none</td>
+<td>(not in report)</td>
+<td>Shell used by <code>enter</code>/<code>run</code> commands when entering a container</td>
+</tr>
+</tbody>
+</table>
 
 
 

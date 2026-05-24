@@ -2493,6 +2493,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5112,6 +5140,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5205,20 +5261,21 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>=====&gt; node-js-app builder-lambda information
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>       Builder lambda computed lambdayml path: lambda2.yml
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>       Builder lambda global lambdayml path:   lambda.yml
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>       Builder lambda global lambdayml path:
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>       Builder lambda lambdayml path:          lambda2.yml
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>=====&gt; python-sample builder-lambda information
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>       Builder lambda computed lambdayml path: lambda.yml
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>       Builder lambda global lambdayml path:   lambda.yml
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>       Builder lambda global lambdayml path:
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>       Builder lambda lambdayml path:
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>=====&gt; ruby-sample builder-lambda information
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>       Builder lambda computed lambdayml path: lambda.yml
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       Builder lambda global lambdayml path:   lambda.yml
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       Builder lambda global lambdayml path:
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>       Builder lambda lambdayml path:
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The <code>lambdayml-path</code> and <code>global-lambdayml-path</code> keys hold the raw per-app and global value respectively, and are empty when nothing has been set. The <code>computed-lambdayml-path</code> key holds the effective value used at build time, falling back to the global value (where one has been set) and then to the built-in default of <code>lambda.yml</code>.</p>
 <p>You can run the command for a specific app also.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
@@ -5229,7 +5286,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>=====&gt; node-js-app builder-lambda information
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       Builder lambda computed lambdayml path: lambda2.yml
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Builder lambda global lambdayml path:   lambda.yml
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Builder lambda global lambdayml path:
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Builder lambda lambdayml path:          lambda2.yml
 </code></pre></div>
 </div>
@@ -5248,6 +5305,28 @@
 </div>
 </div>
 </div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lambdayml-path</code></td>
+<td>app + global</td>
+<td><code>lambda.yml</code></td>
+<td><code>--builder-lambda-lambdayml-path</code>, <code>--builder-lambda-global-lambdayml-path</code>, <code>--builder-lambda-computed-lambdayml-path</code></td>
+<td>Path within the app to the <code>lambda.yml</code> manifest used by the lambda builder</td>
+</tr>
+</tbody>
+</table>
 
 
 

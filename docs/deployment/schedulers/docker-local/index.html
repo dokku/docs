@@ -4052,6 +4052,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5280,6 +5308,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5480,6 +5536,35 @@
 </ul>
 </li>
 </ul>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>init-process</code></td>
+<td>app + global</td>
+<td><code>true</code></td>
+<td><code>--scheduler-docker-local-init-process</code>, <code>--scheduler-docker-local-global-init-process</code>, <code>--scheduler-docker-local-computed-init-process</code></td>
+<td>When <code>true</code>, runs containers with Docker's <code>--init</code> flag (reaping zombie processes)</td>
+</tr>
+<tr>
+<td><code>parallel-schedule-count</code></td>
+<td>app + global</td>
+<td><code>1</code></td>
+<td><code>--scheduler-docker-local-parallel-schedule-count</code>, <code>--scheduler-docker-local-global-parallel-schedule-count</code>, <code>--scheduler-docker-local-computed-parallel-schedule-count</code></td>
+<td>Maximum number of containers scheduled in parallel during a deploy</td>
+</tr>
+</tbody>
+</table>
 
 
 

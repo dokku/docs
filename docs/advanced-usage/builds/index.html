@@ -3646,6 +3646,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5178,6 +5217,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5344,6 +5422,72 @@
 <li><code>--builds-computed-retention</code>: the resolved retention applied to this app</li>
 </ul>
 <p><code>--build-status</code> returns the <strong>display</strong> status, so an abandoned in-flight build shows <code>abandoned</code> rather than <code>running</code>. The raw on-disk status is only visible by reading the JSON record directly.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>retention</code></td>
+<td>app + global</td>
+<td><code>20</code></td>
+<td><code>--builds-retention</code>, <code>--builds-global-retention</code>, <code>--builds-computed-retention</code></td>
+<td>Number of recent build records kept per app; older finalized records are pruned at the end of each deploy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>builds:report</code> but are not managed by <code>builds:set</code> - they are derived metadata recorded during the build:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--build-id</code></td>
+<td>Unique identifier of the most recent build for the app</td>
+</tr>
+<tr>
+<td><code>--build-kind</code></td>
+<td>Whether the record was a <code>build</code> or a <code>deploy</code></td>
+</tr>
+<tr>
+<td><code>--build-status</code></td>
+<td>Display status (<code>running</code>, <code>succeeded</code>, <code>failed</code>, <code>canceled</code>, <code>abandoned</code>); computed at read time</td>
+</tr>
+<tr>
+<td><code>--build-source</code></td>
+<td>Trigger that started the build (e.g. <code>git-hook</code>, <code>ps:rebuild</code>, <code>ps:restart</code>)</td>
+</tr>
+<tr>
+<td><code>--build-pid</code></td>
+<td>PID of the build process</td>
+</tr>
+<tr>
+<td><code>--build-started-at</code></td>
+<td>UNIX timestamp the build started</td>
+</tr>
+<tr>
+<td><code>--build-finished-at</code></td>
+<td>UNIX timestamp the build finished</td>
+</tr>
+<tr>
+<td><code>--build-exit-code</code></td>
+<td>Exit code of the build process</td>
+</tr>
+</tbody>
+</table>
 
 
 
