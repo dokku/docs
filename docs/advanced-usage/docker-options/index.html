@@ -5601,11 +5601,12 @@ The <code>run</code> phase does <em>not</em> correspond 1-to-1 to <code>docker r
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
-<p>The following property is recorded internally by the docker-options plugin and is not exposed via <code>docker-options:report</code>:</p>
+<p>The following properties are recorded internally by the docker-options plugin and are not exposed via <code>docker-options:report</code>:</p>
 <table>
 <thead>
 <tr>
 <th>Property</th>
+<th>Scope</th>
 <th>Description</th>
 <th>Source</th>
 </tr>
@@ -5613,8 +5614,27 @@ The <code>run</code> phase does <em>not</em> correspond 1-to-1 to <code>docker r
 <tbody>
 <tr>
 <td><code>migrated-from-files</code></td>
+<td>global</td>
 <td>Global migration sentinel that records that the legacy <code>DOCKER_OPTIONS_&lt;PHASE&gt;</code> flat-file store has been drained into plugin properties</td>
 <td><code>plugins/docker-options/functions.go</code> writes <code>"true"</code> once the install-time migration runs</td>
+</tr>
+<tr>
+<td><code>migrated-build</code></td>
+<td>per-app</td>
+<td>Per-app marker recording that the app's legacy <code>DOCKER_OPTIONS_BUILD</code> file was drained into the <code>_default_.build</code> property list. Only set when the legacy file contained non-empty content</td>
+<td><code>plugins/docker-options/functions.go</code> writes <code>"true"</code> after the per-phase drain</td>
+</tr>
+<tr>
+<td><code>migrated-deploy</code></td>
+<td>per-app</td>
+<td>Per-app marker recording that the app's legacy <code>DOCKER_OPTIONS_DEPLOY</code> file was drained into the <code>_default_.deploy</code> property list. Only set when the legacy file contained non-empty content</td>
+<td><code>plugins/docker-options/functions.go</code> writes <code>"true"</code> after the per-phase drain</td>
+</tr>
+<tr>
+<td><code>migrated-run</code></td>
+<td>per-app</td>
+<td>Per-app marker recording that the app's legacy <code>DOCKER_OPTIONS_RUN</code> file was drained into the <code>_default_.run</code> property list. Only set when the legacy file contained non-empty content</td>
+<td><code>plugins/docker-options/functions.go</code> writes <code>"true"</code> after the per-phase drain</td>
 </tr>
 </tbody>
 </table>

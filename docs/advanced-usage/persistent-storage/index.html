@@ -3836,6 +3836,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5278,6 +5306,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5527,6 +5583,27 @@
 <p>this user must exist in your herokuish image.</p>
 </div>
 <p>Additionally, the default <code>docker-local</code> scheduler that comes with Dokku will ensure your storage mounts are owned by either <code>herokuishuser</code> or the overridden value you have set in <code>DOKKU_APP_USER</code>. See the <a href="../../deployment/schedulers/docker-local/#disabling-chown-of-persistent-storage">docker-local scheduler documentation</a> docs for more information.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
+<p>The following property is recorded internally by the storage plugin and is not exposed via <code>storage:report</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>legacy-mounts-migrated</code></td>
+<td>per-app</td>
+<td>Per-app marker recording that the app's legacy <code>-v</code> docker-options entries were drained into named storage entries plus attachments. Only set when at least one <code>-v</code> line was actually migrated; apps that have never had legacy mounts never receive this marker</td>
+<td><code>plugins/storage/migrate.go</code> writes <code>"true"</code> after a successful drain</td>
+</tr>
+</tbody>
+</table>
 
 
 
