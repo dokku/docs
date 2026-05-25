@@ -5440,6 +5440,7 @@
 <li>Each scheduled task is executed within a one-off <code>run</code> container, and thus inherit any docker-options specified for <code>run</code> containers. Resources are never shared between scheduled tasks.</li>
 <li>Scheduled cron tasks are supported on a per-scheduler basis, and are currently only implemented by the <code>docker-local</code> scheduler.</li>
 <li>Tasks for <em>all</em> apps managed by the <code>docker-local</code> scheduler are written to a single crontab file owned by the <code>dokku</code> user. The <code>dokku</code> user's crontab should be considered reserved for this purpose.</li>
+<li>The <code>command</code> is tokenized and exec'd directly inside the container. Shell features such as <code>;</code>, <code>&amp;&amp;</code>, <code>|</code>, and <code>&gt;</code> are <em>not</em> interpreted. Commands that contain a bare shell operator are rejected when <code>app.json</code> is validated at deploy time, so a malformed cron command will fail the deploy rather than silently fail to run. If shell semantics are required, wrap the command explicitly, for example <code>"sh -c 'do-thing &gt; /var/log/x.log'"</code>.</li>
 </ul>
 <h3 id="changing-cron-management-settings">Changing cron management settings<a class="headerlink" href="#changing-cron-management-settings" title="Permanent link">&para;</a></h3>
 <p>The <code>cron</code> plugin provides a number of settings that can be used to managed deployments on a per-app basis. The following table outlines ones not covered elsewhere:</p>
