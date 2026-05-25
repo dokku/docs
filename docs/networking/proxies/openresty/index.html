@@ -5750,12 +5750,12 @@
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app<span class="w"> </span>--openresty-letsencrypt-email
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app<span class="w"> </span>--openresty-computed-letsencrypt-email
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
 <p>Five properties (<code>image</code>, <code>log-level</code>, <code>letsencrypt-email</code>, <code>letsencrypt-server</code>, <code>allowed-letsencrypt-domains-func-base64</code>) are global only. The rest are app only - they cannot be set with <code>--global</code>.</p>
-<p><code>openresty:report</code> currently exposes a single raw flag per property (no <code>--global-</code> / <code>--computed-</code> split) except for <code>hsts</code>, which has all three flag shapes.</p>
+<p>Global-only properties expose two report flags: <code>--openresty-global-&lt;property&gt;</code> returns the raw stored value (empty when the property has never been set), while <code>--openresty-computed-&lt;property&gt;</code> returns the effective value (the global value if set, otherwise the built-in default). The per-app <code>hsts</code> property additionally has a bare <code>--openresty-hsts</code> flag for the raw per-app value.</p>
 <table>
 <thead>
 <tr>
@@ -5785,7 +5785,7 @@
 <td><code>allowed-letsencrypt-domains-func-base64</code></td>
 <td>global only</td>
 <td><em>allow-all stub</em></td>
-<td><code>--openresty-allowed-letsencrypt-domains-func-base64</code></td>
+<td><code>--openresty-global-allowed-letsencrypt-domains-func-base64</code>, <code>--openresty-computed-allowed-letsencrypt-domains-func-base64</code></td>
 <td>Base64-encoded Lua function deciding which domains may request a letsencrypt certificate</td>
 </tr>
 <tr>
@@ -5862,7 +5862,7 @@
 <td><code>image</code></td>
 <td>global only</td>
 <td><em>parsed from <code>plugins/openresty-vhosts/Dockerfile</code></em></td>
-<td><code>--openresty-image</code></td>
+<td><code>--openresty-global-image</code>, <code>--openresty-computed-image</code></td>
 <td>Docker image used to run the openresty container</td>
 </tr>
 <tr>
@@ -5876,14 +5876,14 @@
 <td><code>letsencrypt-email</code></td>
 <td>global only</td>
 <td>none</td>
-<td><code>--openresty-letsencrypt-email</code></td>
+<td><code>--openresty-global-letsencrypt-email</code>, <code>--openresty-computed-letsencrypt-email</code></td>
 <td>Contact email enabling letsencrypt; empty disables https issuance</td>
 </tr>
 <tr>
 <td><code>letsencrypt-server</code></td>
 <td>global only</td>
 <td><code>https://acme-v02.api.letsencrypt.org/directory</code></td>
-<td><code>--openresty-letsencrypt-server</code></td>
+<td><code>--openresty-global-letsencrypt-server</code>, <code>--openresty-computed-letsencrypt-server</code></td>
 <td>ACME directory used when requesting certificates</td>
 </tr>
 <tr>
