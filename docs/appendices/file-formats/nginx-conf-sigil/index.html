@@ -4709,6 +4709,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP/2
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4990,6 +5001,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP/2
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5028,6 +5050,19 @@
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
 <p>A custom <code>nginx.conf.sigil</code> is pre-validated at the start of every deploy, immediately after it is extracted from the source tree and before the build phase runs. Pre-validation renders the template via sigil with the same parameters used at deploy time, wraps the rendered config in a minimal <code>events</code>/<code>http</code> scaffold, and runs <code>nginx -t</code> against the result. The deploy is aborted if either the sigil render or the <code>nginx -t</code> check fails, so build work is not wasted on a syntactically invalid template. When no app listeners exist yet (typical for first deploys), pre-validation injects a placeholder <code>127.0.0.1:5000</code> listener for <code>DOKKU_APP_WEB_LISTENERS</code> so that the rendered upstream block has a static server entry and <code>nginx -t</code> does not bail out on "host not found in upstream".</p>
 <p>Pre-validation is skipped when the proxy type is not <code>nginx</code> or when <code>disable-custom-config</code> is set to <code>true</code> for the app.</p>
+<h2 id="http2">HTTP/2<a class="headerlink" href="#http2" title="Permanent link">&para;</a></h2>
+<p>nginx 1.25.1 deprecated the <code>http2</code> parameter on the <code>listen</code> directive in favor of a standalone <code>http2 on;</code> directive. Custom <code>nginx.conf.sigil</code> templates that hardcode <code>listen ... ssl http2;</code> will produce <code>nginx: [warn] the "listen ... http2" directive is deprecated</code> warnings when run against nginx 1.25.1 or newer.</p>
+<p>Dokku exposes the <code>HTTP2_DIRECTIVE_SUPPORTED</code> template variable, set to <code>"true"</code> when the host nginx is 1.25.1 or newer, so a single template can render the correct syntax against either version. The default template uses this pattern:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{{ if eq $.HTTP2_DIRECTIVE_SUPPORTED &quot;true&quot; }}
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>listen      [{{ $.NGINX_BIND_ADDRESS_IP6 }}]:{{ $listen_port }} ssl;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }} ssl;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>http2 on;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>{{ else }}
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>listen      [{{ $.NGINX_BIND_ADDRESS_IP6 }}]:{{ $listen_port }} ssl http2;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }} ssl http2;
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>{{ end }}
+</code></pre></div>
+<p>Dokku logs a deprecation warning during deploys when a custom template still uses the <code>listen ... http2</code> form, so the offending template can be located via the deploy output.</p>
 
 
 
