@@ -5185,6 +5185,10 @@
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
 <p>These properties are managed via <code>buildpacks:set-property</code> (the legacy command name for this plugin).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>buildpacks:report</code>. The JSON keys emitted by <code>buildpacks:report --format json</code> are the same names with the leading <code>--buildpacks-</code> stripped (e.g. <code>stack</code>, <code>global-stack</code>, <code>computed-stack</code>). Legacy keys with the <code>buildpacks-</code> prefix are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
+</div>
 <table>
 <thead>
 <tr>

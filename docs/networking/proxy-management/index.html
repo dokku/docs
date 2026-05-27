@@ -5584,6 +5584,10 @@
 <p>Finally, proxy implementations <em>may</em> install extra software needed for the proxy itself in whatever manner deemed fit. Proxy software can run on the host itself or within a running Docker container with either exposed ports or host networking.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>proxy:report</code>. The JSON keys emitted by <code>proxy:report --format json</code> are the same names with the leading <code>--proxy-</code> stripped (e.g. <code>type</code>, <code>global-type</code>, <code>computed-type</code>). Legacy keys with the <code>proxy-</code> prefix (e.g. <code>proxy-type</code>) are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
+</div>
 <table>
 <thead>
 <tr>

@@ -5424,6 +5424,10 @@
 <p><code>--build-status</code> returns the <strong>display</strong> status, so an abandoned in-flight build shows <code>abandoned</code> rather than <code>running</code>. The raw on-disk status is only visible by reading the JSON record directly.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>builds:report</code>. The JSON keys emitted by <code>builds:report --format json</code> are the same names with the leading <code>--builds-</code> stripped (e.g. <code>retention</code>, <code>global-retention</code>, <code>computed-retention</code>). Legacy keys with the <code>builds-</code> prefix (e.g. <code>builds-retention</code>) are also emitted during the 0.38.x deprecation window and will be removed in a future major release. Status keys (<code>build-id</code>, <code>build-status</code>, etc.) have no plugin prefix and are unaffected.</p>
+</div>
 <table>
 <thead>
 <tr>

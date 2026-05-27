@@ -5571,6 +5571,10 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 </ul>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>app-json:report</code>. The JSON keys emitted by <code>app-json:report --format json</code> are the same names with the leading <code>--app-json-</code> stripped (e.g. <code>appjson-path</code>, <code>global-appjson-path</code>, <code>computed-appjson-path</code>). Legacy keys with the <code>app-json-</code> prefix are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
+</div>
 <table>
 <thead>
 <tr>

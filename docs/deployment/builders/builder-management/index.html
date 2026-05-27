@@ -5397,6 +5397,10 @@
 <p>For a simple example of how to implement this trigger, see <code>builder-pack</code>, which utilizes a cli tool - <code>pack-cli</code> - to generate an OCI image that is compatible with Docker and can be scheduled by the official scheduling plugins.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>builder:report</code>. The JSON keys emitted by <code>builder:report --format json</code> are the same names with the leading <code>--builder-</code> stripped (e.g. <code>selected</code>, <code>global-selected</code>, <code>computed-selected</code>). Legacy keys with the <code>builder-</code> prefix are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
+</div>
 <table>
 <thead>
 <tr>
