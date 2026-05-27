@@ -5475,44 +5475,55 @@
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>image-repo
 </code></pre></div>
 <h3 id="templating-the-image-repository-name">Templating the image repository name<a class="headerlink" href="#templating-the-image-repository-name" title="Permanent link">&para;</a></h3>
-<p>Instead of setting the image repository name on a per-app basis, it can be set via a template globally with the <code>image-repo-template</code> property:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}&quot;</span>
+<p>Instead of setting the image repository name on a per-app basis, it can be set via a template with the <code>image-repo-template</code> property. The property can be set globally or for a specific app, with the per-app value overriding the global value when both are present:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># globally</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># per-app</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>image-repo-template<span class="w"> </span><span class="s2">&quot;my-awesome-prefix/{{ .AppName }}-prod&quot;</span>
 </code></pre></div>
-<p>Dokku uses a Golang template and has access to the <code>AppName</code> variable as shown above.</p>
+<p>Dokku uses a Golang template and has access to the <code>AppName</code> variable as shown above. The per-app <code>image-repo</code> property always takes precedence over the rendered template when both are set.</p>
+<p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># per-app</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>image-repo-template
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># globally</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>image-repo-template
+</code></pre></div>
 <h3 id="pushing-images-on-build">Pushing images on build<a class="headerlink" href="#pushing-images-on-build" title="Permanent link">&para;</a></h3>
 <p>To push the image on release, set the <code>push-on-release</code> property to <code>true</code> via the <code>registry:set</code> command. The default value for this property is <code>false</code>. Setting the property to <code>true</code> will result in the image being tagged with an ID that is incremented with every release. This tag will be what is used for running app code.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>This property can be set for a single app or globally via the <code>--global</code> flag. When set globally, the app-specific value will always overide the global value. The default global value for this property is <code>false</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># per-app</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># globally</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># per-app</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-on-release
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># globally</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
 </code></pre></div>
 <h4 id="recovering-from-local-image-gc">Recovering from local image GC<a class="headerlink" href="#recovering-from-local-image-gc" title="Permanent link">&para;</a></h4>
 <p>When <code>push-on-release</code> is enabled, Dokku treats the remote registry as the canonical store for app images. If a local image disappears - for example because a <code>docker image prune</code> cron ran, the host rebooted, or an operator removed it manually - subsequent commands that need the image (<code>ps:restart</code>, <code>ps:scale</code>, <code>dokku run</code>, <code>domains:add</code>, <code>certs:add</code>, etc.) will pull the missing tag back from the registry automatically. Per-app registry credentials configured via <code>registry:login</code> are honored during the pull. This recovery covers the deployed numeric tag pushed by the registry plugin - a missing <code>latest</code> tag will be ignored.</p>
 <h3 id="push-extra-tags">Push extra tags<a class="headerlink" href="#push-extra-tags" title="Permanent link">&para;</a></h3>
 <p>To push the image on release with extra tags, set the <code>push-extra-tags</code> to a comma-separated list of tags via the <code>registry:set</code> command. The default value for this property is empty. Setting the property will result in the image being tagged with extra tags every release.</p>
 <p>The <code>push-extra-tags</code> can be set to a single tag too.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># multiple-tags</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags<span class="w"> </span>foo,bar
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># multiple-tags</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags<span class="w"> </span>foo,bar
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># single tag</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags<span class="w"> </span>foo
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># single tag</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags<span class="w"> </span>foo
 </code></pre></div></p>
 <p>This property can be set for a single app or globally via the <code>--global</code> flag. When set globally, the app-specific value will always overide the global value. The default global value for this property is <code>false</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags<span class="w"> </span>foo,bar
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags<span class="w"> </span>foo,bar
 </code></pre></div>
 <p>Setting the property value to an empty string will reset the value to the system default. Resetting the value can be done per app or globally.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># per-app</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># globally</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># per-app</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>node-js-app<span class="w"> </span>push-extra-tags
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># globally</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-extra-tags
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
@@ -5536,16 +5547,16 @@
 </tr>
 <tr>
 <td><code>image-repo-template</code></td>
-<td>global only</td>
+<td>app + global</td>
 <td>none</td>
-<td><code>--registry-global-image-repo-template</code>, <code>--registry-computed-image-repo-template</code></td>
+<td><code>--registry-image-repo-template</code>, <code>--registry-global-image-repo-template</code>, <code>--registry-computed-image-repo-template</code></td>
 <td>Go template used to compute the per-app image repository when <code>image-repo</code> is unset</td>
 </tr>
 <tr>
 <td><code>push-extra-tags</code></td>
 <td>app + global</td>
 <td>none</td>
-<td><code>--registry-push-extra-tags</code></td>
+<td><code>--registry-push-extra-tags</code>, <code>--registry-global-push-extra-tags</code>, <code>--registry-computed-push-extra-tags</code></td>
 <td>Comma-separated list of additional tags pushed alongside the deploy tag</td>
 </tr>
 <tr>
