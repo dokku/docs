@@ -6684,27 +6684,27 @@ Users with older installations will need to manually install Keda.</p>
 <td><code>ingress-class</code></td>
 <td>global only</td>
 <td><code>nginx</code></td>
-<td><code>--scheduler-k3s-global-ingress-class</code></td>
+<td><code>--scheduler-k3s-global-ingress-class</code>, <code>--scheduler-k3s-computed-ingress-class</code></td>
 <td>IngressClass name used for app ingresses (e.g. <code>nginx</code>, <code>traefik</code>)</td>
 </tr>
 <tr>
 <td><code>kube-context</code></td>
 <td>global only</td>
 <td>none</td>
-<td><code>--scheduler-k3s-global-kube-context</code></td>
+<td><code>--scheduler-k3s-global-kube-context</code>, <code>--scheduler-k3s-computed-kube-context</code></td>
 <td>Kube context name used by helm and kubectl invocations</td>
 </tr>
 <tr>
 <td><code>kubeconfig-path</code></td>
 <td>global only</td>
 <td><code>/etc/rancher/k3s/k3s.yaml</code></td>
-<td><code>--scheduler-k3s-global-kubeconfig-path</code></td>
+<td><code>--scheduler-k3s-global-kubeconfig-path</code>, <code>--scheduler-k3s-computed-kubeconfig-path</code></td>
 <td>Filesystem path to the kubeconfig used to talk to the cluster</td>
 </tr>
 <tr>
 <td><code>kustomize-root-path</code></td>
 <td>app + global</td>
-<td>none</td>
+<td><code>config/kustomize</code></td>
 <td><code>--scheduler-k3s-kustomize-root-path</code>, <code>--scheduler-k3s-global-kustomize-root-path</code>, <code>--scheduler-k3s-computed-kustomize-root-path</code></td>
 <td>Path within the app to a kustomize root applied after the helm install</td>
 </tr>
@@ -6712,14 +6712,14 @@ Users with older installations will need to manually install Keda.</p>
 <td><code>letsencrypt-email-prod</code></td>
 <td>global only</td>
 <td>none</td>
-<td><code>--scheduler-k3s-global-letsencrypt-email-prod</code></td>
+<td><code>--scheduler-k3s-global-letsencrypt-email-prod</code>, <code>--scheduler-k3s-computed-letsencrypt-email-prod</code></td>
 <td>Contact email for the production cert-manager ClusterIssuer</td>
 </tr>
 <tr>
 <td><code>letsencrypt-email-stag</code></td>
 <td>global only</td>
 <td>none</td>
-<td><code>--scheduler-k3s-global-letsencrypt-email-stag</code></td>
+<td><code>--scheduler-k3s-global-letsencrypt-email-stag</code>, <code>--scheduler-k3s-computed-letsencrypt-email-stag</code></td>
 <td>Contact email for the staging cert-manager ClusterIssuer</td>
 </tr>
 <tr>
@@ -6739,8 +6739,8 @@ Users with older installations will need to manually install Keda.</p>
 <tr>
 <td><code>network-interface</code></td>
 <td>global only</td>
-<td>none</td>
-<td><code>--scheduler-k3s-global-network-interface</code></td>
+<td><code>eth0</code></td>
+<td><code>--scheduler-k3s-global-network-interface</code>, <code>--scheduler-k3s-computed-network-interface</code></td>
 <td>Host network interface used by k3s</td>
 </tr>
 <tr>
