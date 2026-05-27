@@ -3740,6 +3740,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Pushing images on build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recovering-from-local-image-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovering from local image GC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -5244,6 +5261,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Pushing images on build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recovering-from-local-image-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovering from local image GC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -5459,6 +5493,8 @@
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># globally</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>dokku<span class="w"> </span>registry:set<span class="w"> </span>--global<span class="w"> </span>push-on-release
 </code></pre></div>
+<h4 id="recovering-from-local-image-gc">Recovering from local image GC<a class="headerlink" href="#recovering-from-local-image-gc" title="Permanent link">&para;</a></h4>
+<p>When <code>push-on-release</code> is enabled, Dokku treats the remote registry as the canonical store for app images. If a local image disappears - for example because a <code>docker image prune</code> cron ran, the host rebooted, or an operator removed it manually - subsequent commands that need the image (<code>ps:restart</code>, <code>ps:scale</code>, <code>dokku run</code>, <code>domains:add</code>, <code>certs:add</code>, etc.) will pull the missing tag back from the registry automatically. Per-app registry credentials configured via <code>registry:login</code> are honored during the pull. This recovery covers the deployed numeric tag pushed by the registry plugin - a missing <code>latest</code> tag will be ignored.</p>
 <h3 id="push-extra-tags">Push extra tags<a class="headerlink" href="#push-extra-tags" title="Permanent link">&para;</a></h3>
 <p>To push the image on release with extra tags, set the <code>push-extra-tags</code> to a comma-separated list of tags via the <code>registry:set</code> command. The default value for this property is empty. Setting the property will result in the image being tagged with extra tags every release.</p>
 <p>The <code>push-extra-tags</code> can be set to a single tag too.
