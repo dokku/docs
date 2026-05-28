@@ -27,31 +27,31 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/development/release-process/">
+        <link rel="canonical" href="https://dokku.com/docs/networking/proxies/openresty/">
       
       
-        <link rel="prev" href="../testing/">
+        <link rel="prev" href="../nginx/">
       
       
-        <link rel="next" href="../../deployment/continuous-integration/github-actions/">
+        <link rel="next" href="../traefik/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
+      <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Release Process - Dokku Documentation</title>
+        <title>OpenResty Proxy - Dokku Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -80,9 +80,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/extra.css">
+      <link rel="stylesheet" href="../../../assets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -92,7 +92,7 @@
   <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
   <link
     rel="stylesheet"
-    href="../../overrides/assets/stylesheets/main.css"
+    href="../../../overrides/assets/stylesheets/main.css"
   />
 
   </head>
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#release-process" class="md-skip">
+        <a href="#openresty-proxy" class="md-skip">
           Skip to content
         </a>
       
@@ -145,12 +145,12 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/development/release-process/">
+  <a href="/docs/networking/proxies/openresty/">
     <strong>Click here to go to latest.</strong>
   </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -160,9 +160,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -179,7 +179,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Release Process
+              OpenResty Proxy
             
           </span>
         </div>
@@ -312,7 +312,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../getting-started/installation/" class="md-tabs__link">
+        <a href="../../../getting-started/installation/" class="md-tabs__link">
           
   
   
@@ -430,9 +430,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     Dokku Documentation
@@ -652,7 +652,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../getting-started/installation/" class="md-nav__link ">
+            <a href="../../../getting-started/installation/" class="md-nav__link ">
               
   
   
@@ -696,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/advanced-installation/" class="md-nav__link">
+      <a href="../../../getting-started/advanced-installation/" class="md-nav__link">
         
   
   
@@ -724,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/azure/" class="md-nav__link">
+      <a href="../../../getting-started/install/azure/" class="md-nav__link">
         
   
   
@@ -752,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/debian/" class="md-nav__link">
+      <a href="../../../getting-started/install/debian/" class="md-nav__link">
         
   
   
@@ -780,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/digitalocean/" class="md-nav__link">
+      <a href="../../../getting-started/install/digitalocean/" class="md-nav__link">
         
   
   
@@ -808,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/docker/" class="md-nav__link">
+      <a href="../../../getting-started/install/docker/" class="md-nav__link">
         
   
   
@@ -836,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/dreamhost/" class="md-nav__link">
+      <a href="../../../getting-started/install/dreamhost/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/install/vagrant/" class="md-nav__link">
+      <a href="../../../getting-started/install/vagrant/" class="md-nav__link">
         
   
   
@@ -975,7 +975,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../getting-started/upgrading/" class="md-nav__link ">
+            <a href="../../../getting-started/upgrading/" class="md-nav__link ">
               
   
   
@@ -1019,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.38.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.38.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.37.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.36.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1103,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.35.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1131,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.34.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.34.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1159,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.33.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.33.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1187,7 +1187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.32.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.32.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1215,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.31.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1243,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.30.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.30.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1271,7 +1271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.29.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.29.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1299,7 +1299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.28.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.28.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1327,7 +1327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.27.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.27.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1355,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.26.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.26.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1383,7 +1383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.25.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.25.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1411,7 +1411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.24.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.24.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1439,7 +1439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.23.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.23.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1467,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.22.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.22.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1495,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.21.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.21.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1523,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.20.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.20.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1551,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.10.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.10.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1579,7 +1579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.9.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.9.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1607,7 +1607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.8.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.8.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1635,7 +1635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.7.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.7.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1663,7 +1663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.6.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.6.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1691,7 +1691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/0.5.0-migration-guide/" class="md-nav__link">
+      <a href="../../../appendices/0.5.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1719,7 +1719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats" class="md-nav__link">
+      <a href="../../../appendices/file-formats" class="md-nav__link">
         
   
   
@@ -1755,7 +1755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/uninstalling/" class="md-nav__link">
+      <a href="../../../getting-started/uninstalling/" class="md-nav__link">
         
   
   
@@ -1783,7 +1783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/troubleshooting/" class="md-nav__link">
+      <a href="../../../getting-started/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1811,7 +1811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/where-to-get-help/" class="md-nav__link">
+      <a href="../../../getting-started/where-to-get-help/" class="md-nav__link">
         
   
   
@@ -1906,7 +1906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../enterprise/pro/" class="md-nav__link">
+      <a href="../../../enterprise/pro/" class="md-nav__link">
         
   
   
@@ -2011,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/application-deployment/" class="md-nav__link">
+      <a href="../../../deployment/application-deployment/" class="md-nav__link">
         
   
   
@@ -2039,7 +2039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/application-management/" class="md-nav__link">
+      <a href="../../../deployment/application-management/" class="md-nav__link">
         
   
   
@@ -2067,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/logs/" class="md-nav__link">
+      <a href="../../../deployment/logs/" class="md-nav__link">
         
   
   
@@ -2095,7 +2095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/remote-commands/" class="md-nav__link">
+      <a href="../../../deployment/remote-commands/" class="md-nav__link">
         
   
   
@@ -2123,7 +2123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/user-management/" class="md-nav__link">
+      <a href="../../../deployment/user-management/" class="md-nav__link">
         
   
   
@@ -2151,7 +2151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/zero-downtime-deploys/" class="md-nav__link">
+      <a href="../../../deployment/zero-downtime-deploys/" class="md-nav__link">
         
   
   
@@ -2260,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/builder-management/" class="md-nav__link">
+      <a href="../../../deployment/builders/builder-management/" class="md-nav__link">
         
   
   
@@ -2288,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
+      <a href="../../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
         
   
   
@@ -2316,7 +2316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
+      <a href="../../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
         
   
   
@@ -2344,7 +2344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/dockerfiles/" class="md-nav__link">
+      <a href="../../../deployment/builders/dockerfiles/" class="md-nav__link">
         
   
   
@@ -2372,7 +2372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/lambda/" class="md-nav__link">
+      <a href="../../../deployment/builders/lambda/" class="md-nav__link">
         
   
   
@@ -2400,7 +2400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/nixpacks/" class="md-nav__link">
+      <a href="../../../deployment/builders/nixpacks/" class="md-nav__link">
         
   
   
@@ -2428,7 +2428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/null/" class="md-nav__link">
+      <a href="../../../deployment/builders/null/" class="md-nav__link">
         
   
   
@@ -2456,7 +2456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/railpack/" class="md-nav__link">
+      <a href="../../../deployment/builders/railpack/" class="md-nav__link">
         
   
   
@@ -2555,7 +2555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/git/" class="md-nav__link">
+      <a href="../../../deployment/methods/git/" class="md-nav__link">
         
   
   
@@ -2583,7 +2583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/image/" class="md-nav__link">
+      <a href="../../../deployment/methods/image/" class="md-nav__link">
         
   
   
@@ -2611,7 +2611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/archive/" class="md-nav__link">
+      <a href="../../../deployment/methods/archive/" class="md-nav__link">
         
   
   
@@ -2710,7 +2710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/environment-variables/" class="md-nav__link">
+      <a href="../../../configuration/environment-variables/" class="md-nav__link">
         
   
   
@@ -2738,7 +2738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/domains/" class="md-nav__link">
+      <a href="../../../configuration/domains/" class="md-nav__link">
         
   
   
@@ -2766,7 +2766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/ssl/" class="md-nav__link">
+      <a href="../../../configuration/ssl/" class="md-nav__link">
         
   
   
@@ -2867,7 +2867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/entering-containers/" class="md-nav__link">
+      <a href="../../../processes/entering-containers/" class="md-nav__link">
         
   
   
@@ -2895,7 +2895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/one-off-tasks/" class="md-nav__link">
+      <a href="../../../processes/one-off-tasks/" class="md-nav__link">
         
   
   
@@ -2923,7 +2923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/process-management/" class="md-nav__link">
+      <a href="../../../processes/process-management/" class="md-nav__link">
         
   
   
@@ -2951,7 +2951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../processes/scheduled-cron-tasks/" class="md-nav__link">
+      <a href="../../../processes/scheduled-cron-tasks/" class="md-nav__link">
         
   
   
@@ -3050,7 +3050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/dns/" class="md-nav__link">
+      <a href="../../dns/" class="md-nav__link">
         
   
   
@@ -3078,7 +3078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/network/" class="md-nav__link">
+      <a href="../../network/" class="md-nav__link">
         
   
   
@@ -3106,7 +3106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/port-management/" class="md-nav__link">
+      <a href="../../port-management/" class="md-nav__link">
         
   
   
@@ -3139,6 +3139,8 @@
                 
   
   
+    
+  
   
   
     
@@ -3168,11 +3170,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" checked>
         
           
           <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="">
@@ -3193,7 +3195,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3211,7 +3213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxy-management/" class="md-nav__link">
+      <a href="../../proxy-management/" class="md-nav__link">
         
   
   
@@ -3239,7 +3241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/caddy/" class="md-nav__link">
+      <a href="../caddy/" class="md-nav__link">
         
   
   
@@ -3267,7 +3269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/haproxy/" class="md-nav__link">
+      <a href="../haproxy/" class="md-nav__link">
         
   
   
@@ -3295,7 +3297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/nginx/" class="md-nav__link">
+      <a href="../nginx/" class="md-nav__link">
         
   
   
@@ -3320,10 +3322,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../networking/proxies/openresty/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenResty Proxy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3339,6 +3368,309 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#switching-to-openresty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Switching to OpenResty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-openresty-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting OpenResty container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-the-openresty-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stopping the OpenResty container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#showing-the-openresty-compose-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Showing the OpenResty compose config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-openresty-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the OpenResty container image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-the-openresty-containers-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking the OpenResty container's logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-openresty-settings-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing Openresty Settings for an app
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Openresty Settings for an app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openresty-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenResty Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-openresty-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom OpenResty Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injecting-custom-snippets-into-the-openresty-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Injecting custom snippets into the OpenResty config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Label Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a label
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing a label
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#showing-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Showing labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSL Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSL Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-letsencrypt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling letsencrypt integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-letsencrypt-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the letsencrypt server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-letsencrypt-to-certain-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limiting letsencrypt to certain domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-openresty-reports-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying OpenResty reports for an app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3351,7 +3683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/proxies/traefik/" class="md-nav__link">
+      <a href="../traefik/" class="md-nav__link">
         
   
   
@@ -3464,7 +3796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
+      <a href="../../../advanced-usage/backup-recovery/" class="md-nav__link">
         
   
   
@@ -3492,7 +3824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/builds/" class="md-nav__link">
+      <a href="../../../advanced-usage/builds/" class="md-nav__link">
         
   
   
@@ -3520,7 +3852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
+      <a href="../../../advanced-usage/deployment-tasks/" class="md-nav__link">
         
   
   
@@ -3548,7 +3880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
+      <a href="../../../advanced-usage/docker-options/" class="md-nav__link">
         
   
   
@@ -3576,7 +3908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/registry-management/" class="md-nav__link">
         
   
   
@@ -3604,7 +3936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
+      <a href="../../../advanced-usage/event-logs/" class="md-nav__link">
         
   
   
@@ -3632,7 +3964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
+      <a href="../../../advanced-usage/persistent-storage/" class="md-nav__link">
         
   
   
@@ -3660,7 +3992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/plugin-management/" class="md-nav__link">
         
   
   
@@ -3688,7 +4020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/repository-management/" class="md-nav__link">
         
   
   
@@ -3716,7 +4048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
+      <a href="../../../advanced-usage/resource-management/" class="md-nav__link">
         
   
   
@@ -3819,7 +4151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/scheduler-management/" class="md-nav__link">
+      <a href="../../../deployment/schedulers/scheduler-management/" class="md-nav__link">
         
   
   
@@ -3847,7 +4179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/docker-local/" class="md-nav__link">
+      <a href="../../../deployment/schedulers/docker-local/" class="md-nav__link">
         
   
   
@@ -3875,7 +4207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/k3s/" class="md-nav__link">
+      <a href="../../../deployment/schedulers/k3s/" class="md-nav__link">
         
   
   
@@ -3903,7 +4235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/nomad/" class="md-nav__link">
+      <a href="../../../deployment/schedulers/nomad/" class="md-nav__link">
         
   
   
@@ -3931,7 +4263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/null/" class="md-nav__link">
+      <a href="../../../deployment/schedulers/null/" class="md-nav__link">
         
   
   
@@ -3964,8 +4296,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3993,11 +4323,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
         
           
           <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="">
@@ -4018,7 +4348,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_12">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4036,7 +4366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../../development/architecture/" class="md-nav__link">
         
   
   
@@ -4064,7 +4394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugin-creation/" class="md-nav__link">
+      <a href="../../../development/plugin-creation/" class="md-nav__link">
         
   
   
@@ -4092,7 +4422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugin-triggers/" class="md-nav__link">
+      <a href="../../../development/plugin-triggers/" class="md-nav__link">
         
   
   
@@ -4120,7 +4450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../../development/testing/" class="md-nav__link">
         
   
   
@@ -4145,37 +4475,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Release Process
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../development/release-process/" class="md-nav__link">
         
   
   
@@ -4191,65 +4494,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#versioning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versioning
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arch-linux-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arch Linux Packages
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arch Linux Packages">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detailed-information-for-arch-linux-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detailed information for Arch Linux packages
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4335,7 +4579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/github-actions/" class="md-nav__link">
+      <a href="../../../deployment/continuous-integration/github-actions/" class="md-nav__link">
         
   
   
@@ -4363,7 +4607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
+      <a href="../../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
         
   
   
@@ -4391,7 +4635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/generic/" class="md-nav__link">
+      <a href="../../../deployment/continuous-integration/generic/" class="md-nav__link">
         
   
   
@@ -4419,7 +4663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/woodpecker-ci/" class="md-nav__link">
+      <a href="../../../deployment/continuous-integration/woodpecker-ci/" class="md-nav__link">
         
   
   
@@ -4516,7 +4760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../community/clients/" class="md-nav__link">
+      <a href="../../../community/clients/" class="md-nav__link">
         
   
   
@@ -4544,7 +4788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../community/plugins/" class="md-nav__link">
+      <a href="../../../community/plugins/" class="md-nav__link">
         
   
   
@@ -4653,7 +4897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/app-json/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/app-json/" class="md-nav__link">
         
   
   
@@ -4681,7 +4925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/dockerfile/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/dockerfile/" class="md-nav__link">
         
   
   
@@ -4709,7 +4953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/lambda-yml/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/lambda-yml/" class="md-nav__link">
         
   
   
@@ -4737,7 +4981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/nginx-conf-sigil/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/nginx-conf-sigil/" class="md-nav__link">
         
   
   
@@ -4765,7 +5009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/nixpacks-toml/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/nixpacks-toml/" class="md-nav__link">
         
   
   
@@ -4793,7 +5037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/procfile/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/procfile/" class="md-nav__link">
         
   
   
@@ -4821,7 +5065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/project-toml/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/project-toml/" class="md-nav__link">
         
   
   
@@ -4849,7 +5093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendices/file-formats/railpack-json/" class="md-nav__link">
+      <a href="../../../appendices/file-formats/railpack-json/" class="md-nav__link">
         
   
   
@@ -5020,10 +5264,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#versioning" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Versioning
+        Requirements
       
     </span>
   </a>
@@ -5031,22 +5275,266 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arch-linux-packages" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Arch Linux Packages
+        Usage
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Arch Linux Packages">
+    <nav class="md-nav" aria-label="Usage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#detailed-information-for-arch-linux-packages" class="md-nav__link">
+  <a href="#switching-to-openresty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Detailed information for Arch Linux packages
+        Switching to OpenResty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-openresty-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting OpenResty container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-the-openresty-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stopping the OpenResty container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#showing-the-openresty-compose-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Showing the OpenResty compose config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-openresty-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the OpenResty container image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-the-openresty-containers-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking the OpenResty container's logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-openresty-settings-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing Openresty Settings for an app
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Openresty Settings for an app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openresty-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenResty Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-openresty-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom OpenResty Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injecting-custom-snippets-into-the-openresty-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Injecting custom snippets into the OpenResty config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Label Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a label
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing a label
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#showing-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Showing labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSL Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSL Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-letsencrypt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling letsencrypt integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-letsencrypt-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the letsencrypt server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-letsencrypt-to-certain-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limiting letsencrypt to certain domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-openresty-reports-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying OpenResty reports for an app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
       
     </span>
   </a>
@@ -5075,7 +5563,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/development/release-process.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/networking/proxies/openresty.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5084,65 +5572,440 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/development/release-process.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/networking/proxies/openresty.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="release-process">Release Process<a class="headerlink" href="#release-process" title="Permanent link">&para;</a></h1>
-<p>Dokku is released in intervals <em>at most</em> three weeks apart, though may be released much quicker.</p>
-<p>To propose a release, the following tasks need to be performed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PACKAGECLOUD_TOKEN</span><span class="o">=</span>SOME_TOKEN
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># supports major/minor/patch/betafish</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>contrib/release-dokku
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If you are a maintainer and need the PACKAGECLOUD_TOKEN in order to make a release, please contact @josegonzalez to get this information.</p>
+<h1 id="openresty-proxy">OpenResty Proxy<a class="headerlink" href="#openresty-proxy" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.31.0</p>
 </div>
-<p>As well, the Arch Linux package description <em>must</em> be updated via <code>vagrant up build-arch</code> (needs to be done after the tag is pushed to GitHub, because it is based on that)</p>
-<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
-<p>Dokku follows semver standards. As we are not yet at a stable release, breaking changes will require <em>only</em> a minor release, while all other changes only require a patch release. Once we hit stable, breaking changes will require a major release.</p>
-<p>At the moment, tags need not be signed, though that may change in the future.</p>
-<h2 id="arch-linux-packages">Arch Linux Packages<a class="headerlink" href="#arch-linux-packages" title="Permanent link">&para;</a></h2>
-<p>Arch Linux packages are not really build, because all that is needed for an Arch User Repo (AUR) package is the description of how to build the package. To make this process as easy as possible there is a vagrant box called <code>build-arch</code> that updates the version of this build description (a file called <code>PKGBUILD</code>), then runs some helper scripts to fill all additional information and does test if the package could be build. Then only those changes need to be pushed to the AUR repo and an updated version of the package is ready for usage for our Arch Linux users. For detailed information see the section below.</p>
-<p>The workflow looks like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># having dokku-arch in ../dokku-arch</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>vagrant<span class="w"> </span>up<span class="w"> </span>build-arch
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># wait for &quot;==&gt; build-arch: ==&gt; Finished making: dokku 0.38.8-2 (Mon Feb 22 23:20:37 CET 2016)&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>../dokku-arch
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>git<span class="w"> </span>add<span class="w"> </span>PKGBUILD<span class="w"> </span>.SRCINFO
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Update to dokku 0.9.9&#39;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>git<span class="w"> </span>push<span class="w"> </span>aur<span class="w"> </span>master
+<p>Dokku can provide integration with the <a href="https://openresty.org/">OpenResty</a> proxy service by utilizing the Docker label-based integration implemented by <a href="https://github.com/dokku/openresty-docker-proxy">openresty-docker-proxy</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>openresty:report [&lt;app&gt;] [&lt;flag&gt;]            # Displays a openresty report for one or more apps
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>openresty:logs [--num num] [--tail]          # Display openresty log output
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>openresty:set &lt;app&gt; &lt;property&gt; (&lt;value&gt;)     # Set or clear an openresty property for an app
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>openresty:show-config &lt;app&gt;                  # Display openresty compose config
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>openresty:start                              # Starts the openresty server
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>openresty:stop                               # Stops the openresty server
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If you are a maintainer and need access to the AUR repositories in order to make a release, please contact @morrisjobke or @josegonzalez to get this co-maintainership.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>Using the <code>openresty</code> plugin integration requires the <code>docker-compose-plugin</code> for Docker. See <a href="https://docs.docker.com/compose/install/">this document</a> from the Docker documentation for more information on the installation process for the <code>docker-compose-plugin</code>.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As using multiple proxy plugins on a single Dokku installation can lead to issues routing requests to apps, doing so should be avoided. As the default proxy implementation is nginx, users are encouraged to stop the nginx service before switching to OpenResty.</p>
 </div>
-<h3 id="detailed-information-for-arch-linux-packages">Detailed information for Arch Linux packages<a class="headerlink" href="#detailed-information-for-arch-linux-packages" title="Permanent link">&para;</a></h3>
-<p>All of the information to build the Arch Linux package is in the AUR git repository (see <a href="https://aur.archlinux.org/packages/dokku/">dokku AUR page</a>). The release of a AUR package only consists of pushing the package information into the AUR git repo. Then users could use that information to build the package on their machines.</p>
-<p>To update the package clone the repository and adjust the files in the repository. Then a helper script - <code>updpkgsums</code> - to update the SHA sum could  be called (check against the original SHA sum). Another helper script - <code>mksrcinfo</code> - needs to be called to update the meta information of the package in a file called <code>.SRCINFO</code>. The next step builds the package locally for verification - <code>makepkg</code>. As last step commit your changes and push the commit.</p>
+<p>The OpenResty plugin has specific rules for routing requests:</p>
 <ul>
-<li>dependencies are defined in the <code>depends</code> attribute in <code>PKGBUILD</code></li>
-<li>build steps during package build time are defined in the <code>package()</code> method in <code>PKGBUILD</code></li>
-<li>steps that should be executed during install/update/remove time are defined in the file <code>dokku.install</code></li>
-<li>detailed information about all attributes in <code>PKGBUILD</code> could be found in the <a href="https://wiki.archlinux.org/index.php/PKGBUILD">Arch Linux wiki</a></li>
-<li>detailed information about the AUR workflow could be found in the <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR article</a> in the Arch Linux wiki</li>
+<li>OpenResty integration is exposed via docker labels attached to containers. Changes in labels require either app deploys or rebuilds.</li>
+<li>While OpenResty will respect labels associated with other containers, only <code>web</code> containers have OpenResty labels injected by the plugin.</li>
+<li>Only <code>http:80</code> and <code>https:443</code> port mappings are supported at this time.</li>
+<li>Requests are routed as soon as the container is running and passing healthchecks.</li>
 </ul>
-<p>That is the usual workflow:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>updpkgsums<span class="w"> </span><span class="c1"># update sha sums - compare them with the original ones</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mksrcinfo<span class="w"> </span><span class="c1"># update package metadata for AUR</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>makepkg<span class="w"> </span><span class="c1"># test package builds</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>git<span class="w"> </span>add<span class="w"> </span>PKGBUILD<span class="w"> </span>.SRCINFO
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Update to dokku 0.9.9&#39;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>git<span class="w"> </span>push
+<h3 id="switching-to-openresty">Switching to OpenResty<a class="headerlink" href="#switching-to-openresty" title="Permanent link">&para;</a></h3>
+<p>To use the OpenResty plugin, use the <code>proxy:set</code> command for the app in question:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nb">type</span><span class="w"> </span>openresty
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If there is something unclear simply ask @morrisjobke for help.</p>
+<p>This will enable the docker label-based OpenResty integration. All future deploys will inject the correct labels for OpenResty to read and route requests to containers. Due to the docker label-based integration used by OpenResty, a single deploy or rebuild will be required before requests will route successfully.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>Any changes to domains or port mappings will also require either a deploy or rebuild.</p>
+<h3 id="starting-openresty-container">Starting OpenResty container<a class="headerlink" href="#starting-openresty-container" title="Permanent link">&para;</a></h3>
+<p>OpenResty can be started via the <code>openresty:start</code> command. This will start a OpenResty container via the <code>docker compose up</code> command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>openresty:start
+</code></pre></div>
+<h3 id="stopping-the-openresty-container">Stopping the OpenResty container<a class="headerlink" href="#stopping-the-openresty-container" title="Permanent link">&para;</a></h3>
+<p>OpenResty may be stopped via the <code>openresty:stop</code> command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>openresty:stop
+</code></pre></div>
+<p>The OpenResty container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
+<h3 id="showing-the-openresty-compose-config">Showing the OpenResty compose config<a class="headerlink" href="#showing-the-openresty-compose-config" title="Permanent link">&para;</a></h3>
+<p>For debugging purposes, it may be useful to show the OpenResty compose config. This can be achieved via the <code>openresty:show-config</code> command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>openresty:show-config
+</code></pre></div>
+<h3 id="customizing-the-openresty-container-image">Customizing the OpenResty container image<a class="headerlink" href="#customizing-the-openresty-container-image" title="Permanent link">&para;</a></h3>
+<p>While the default OpenResty image is hardcoded, users may specify an alternative by setting the <code>image</code> property with the <code>--global</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>dokku/openresty-docker-proxy:0.5.6
+</code></pre></div>
+<h3 id="checking-the-openresty-containers-logs">Checking the OpenResty container's logs<a class="headerlink" href="#checking-the-openresty-containers-logs" title="Permanent link">&para;</a></h3>
+<p>It may be necessary to check the OpenResty container's logs to ensure that OpenResty is operating as expected. This can be performed with the <code>openresty:logs</code> command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>openresty:logs
+</code></pre></div>
+<p>This command also supports the following modifiers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
+</code></pre></div>
+<p>You can use these modifiers as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>openresty:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+<p>The above command will show logs continually from the openresty container, with an initial history of 10 log lines</p>
+<h3 id="customizing-openresty-settings-for-an-app">Customizing Openresty Settings for an app<a class="headerlink" href="#customizing-openresty-settings-for-an-app" title="Permanent link">&para;</a></h3>
+<h4 id="openresty-properties">OpenResty Properties<a class="headerlink" href="#openresty-properties" title="Permanent link">&para;</a></h4>
+<p>The OpenResty plugin supports all properties supported by the <code>nginx:set</code> command via <code>openresty:set</code>. At this time, please consult the nginx documentation for more information on what properties are available.</p>
+<p>Please note that the oldest running container will be used for OpenResty configuration, and thus newer config may not apply until older app containers are retired during/after a deploy, depending on your zero-downtime settings.</p>
+<h4 id="custom-openresty-templates">Custom OpenResty Templates<a class="headerlink" href="#custom-openresty-templates" title="Permanent link">&para;</a></h4>
+<p>At this time, the OpenResty plugin does not allow complete customization of the template used to manage an app's vhost. Apps will use a template provided by the OpenResty container to proxy requests. See the next section for documentation on how to configure portions of the template.</p>
+<h4 id="injecting-custom-snippets-into-the-openresty-config">Injecting custom snippets into the OpenResty config<a class="headerlink" href="#injecting-custom-snippets-into-the-openresty-config" title="Permanent link">&para;</a></h4>
+<p>The OpenResty plugin allows users to specify templates in their repository for auto-injection into the OpenResty config. Please note that this configuration should be validated prior to deployment or may cause outages in your OpenResty proxy layer.</p>
+<p>The following folders within an app repository may have <code>*.conf</code> files that will be automatically injected into the OpenResty config.</p>
+<ul>
+<li><code>openresty/http-includes/</code>: Injected in the <code>server</code> block serving http(s) requests for the app.</li>
+<li><code>openresty/http-location-includes/</code>: Injected in the <code>location</code> block that proxies to the app in the app's respective <code>server</code> block.</li>
+</ul>
+<p>Custom snippets filenames may only include alphanumeric, underscore, and dot characters. For security reasons, filenames that contain other characters will be ignored.</p>
+<h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
+<p>The OpenResty plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure OpenResty behavior beyond what the plugin provides by default.</p>
+<p>Refer to the upstream <a href="https://github.com/dokku/openresty-docker-proxy">openresty-docker-proxy</a> documentation for more information on what labels are available.</p>
+<h4 id="adding-a-label">Adding a label<a class="headerlink" href="#adding-a-label" title="Permanent link">&para;</a></h4>
+<p>To add a custom container label to an app, use the <code>openresty:labels:add</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>openresty:labels:add<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive<span class="w"> </span>value
+</code></pre></div>
+<p>This will add the label <code>openresty.directive=value</code> to the app's containers. After adding a label, you will need to rebuild or redeploy the app for the label to be applied to running containers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+</code></pre></div>
+<h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
+<p>To remove a custom container label from an app, use the <code>openresty:labels:remove</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>openresty:labels:remove<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive
+</code></pre></div>
+<p>This will remove the specified label from the app. After removing a label, you will need to rebuild or redeploy the app for the change to be applied to running containers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+</code></pre></div>
+<h4 id="showing-labels">Showing labels<a class="headerlink" href="#showing-labels" title="Permanent link">&para;</a></h4>
+<p>To view all custom container labels for an app, use the <code>openresty:labels:show</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>openresty:labels:show<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>To view a specific label value, provide the label name:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>openresty:labels:show<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive
+</code></pre></div>
+<h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
+<p>The OpenResty plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
+<h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
+<p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
+</code></pre></div>
+<p>After enabling, the OpenResty container will need to be restarted and apps will need to be rebuilt. All http requests will then be redirected to https.</p>
+<h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
+<p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
+</code></pre></div>
+<p>After enabling, the OpenResty container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
+<h4 id="limiting-letsencrypt-to-certain-domains">Limiting letsencrypt to certain domains<a class="headerlink" href="#limiting-letsencrypt-to-certain-domains" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing this value may cause OpenResty to fail to start if the value is not valid. Caution should be exercised when changing this value from the defaults.</p>
 </div>
+<p>In cases where your server's IP may have invalid domains pointing at it, limiting letsencrypt to certain allowed domains may be desirable to reduce spam requests on the Letsencrypt servers. The default is to allow all domains to have certificates retrieved, but this can be limited by specifying the <code>allowed-letsencrypt-domains-func-base64</code> global property.</p>
+<p>The default internal value for <code>allowed-letsencrypt-domains-func-base64</code> is the base64 representation of <code>return true</code>, and is meant to be the body of a lua function that return a boolean value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;return true&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
+</code></pre></div>
+<p>As this is a global value, once changed, OpenResty should be stopped and started again for the value to take effect:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>openresty:stop
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>openresty:start
+</code></pre></div>
+<p>A more complex example would be to limit provisioning of certificates to domains in a specific list. The body of the lua function has access to a variable <code>domain</code>, and we can use it like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">body</span><span class="o">=</span><span class="s1">&#39;allowed_domains = {&quot;domain.com&quot;, &quot;extra-domain.com&quot;}</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="s1">for index, value in ipairs(allowed_domains) do</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="s1">  if value == domain then</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="s1">    return true</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="s1">  end</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="s1">end</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="s1">return false</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="s1">&#39;</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$body</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
+</code></pre></div>
+<p>To reset the value to the default, simply specify a blank value prior to restarting OpenResty:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64
+</code></pre></div>
+<h2 id="displaying-openresty-reports-for-an-app">Displaying OpenResty reports for an app<a class="headerlink" href="#displaying-openresty-reports-for-an-app" title="Permanent link">&para;</a></h2>
+<p>You can get a report about the app's OpenResty config using the <code>openresty:report</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>openresty:report
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>=====&gt; node-js-app openresty information
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>       Openresty letsencrypt email:       automated@dokku.sh
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>=====&gt; python-app openresty information
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>       Openresty letsencrypt email:       automated@dokku.sh
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>=====&gt; ruby-app openresty information
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>       Openresty letsencrypt email:       automated@dokku.sh
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You can run the command for a specific app also.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>=====&gt; node-js-app openresty information
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>       Openresty letsencrypt email:       automated@dokku.sh
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You can pass flags which will output only the value of the specific information you want. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app<span class="w"> </span>--openresty-computed-letsencrypt-email
+</code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<p>Five properties (<code>image</code>, <code>log-level</code>, <code>letsencrypt-email</code>, <code>letsencrypt-server</code>, <code>allowed-letsencrypt-domains-func-base64</code>) are global only. The rest may be set per-app or globally with <code>--global</code>; a global value applies to any app that has no per-app value, otherwise the built-in default is used.</p>
+<p>Global-only properties expose two report flags: <code>--openresty-global-&lt;property&gt;</code> returns the raw stored value (empty when the property has never been set), while <code>--openresty-computed-&lt;property&gt;</code> returns the effective value (the global value if set, otherwise the built-in default).</p>
+<p>App-or-global properties expose three report flags: <code>--openresty-&lt;property&gt;</code> returns the raw per-app value (empty when unset), <code>--openresty-global-&lt;property&gt;</code> returns the raw global value (empty when unset), and <code>--openresty-computed-&lt;property&gt;</code> returns the effective value, resolving the per-app value first, then the global value, then the built-in default.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access-log-format</code></td>
+<td>app or global</td>
+<td>none</td>
+<td><code>--openresty-access-log-format</code>, <code>--openresty-global-access-log-format</code>, <code>--openresty-computed-access-log-format</code></td>
+<td>Custom nginx <code>log_format</code> directive used for the access log</td>
+</tr>
+<tr>
+<td><code>access-log-path</code></td>
+<td>app or global</td>
+<td><em><code>/var/log/nginx/{app}-access.log</code></em></td>
+<td><code>--openresty-access-log-path</code>, <code>--openresty-global-access-log-path</code>, <code>--openresty-computed-access-log-path</code></td>
+<td>Path inside the openresty container where access logs are written</td>
+</tr>
+<tr>
+<td><code>allowed-letsencrypt-domains-func-base64</code></td>
+<td>global only</td>
+<td><em>allow-all stub</em></td>
+<td><code>--openresty-global-allowed-letsencrypt-domains-func-base64</code>, <code>--openresty-computed-allowed-letsencrypt-domains-func-base64</code></td>
+<td>Base64-encoded Lua function deciding which domains may request a letsencrypt certificate</td>
+</tr>
+<tr>
+<td><code>bind-address-ipv4</code></td>
+<td>app or global</td>
+<td>none</td>
+<td><code>--openresty-bind-address-ipv4</code>, <code>--openresty-global-bind-address-ipv4</code>, <code>--openresty-computed-bind-address-ipv4</code></td>
+<td>IPv4 address the openresty server block binds to</td>
+</tr>
+<tr>
+<td><code>bind-address-ipv6</code></td>
+<td>app or global</td>
+<td><code>::</code></td>
+<td><code>--openresty-bind-address-ipv6</code>, <code>--openresty-global-bind-address-ipv6</code>, <code>--openresty-computed-bind-address-ipv6</code></td>
+<td>IPv6 address the openresty server block binds to</td>
+</tr>
+<tr>
+<td><code>client-body-timeout</code></td>
+<td>app or global</td>
+<td><code>60s</code></td>
+<td><code>--openresty-client-body-timeout</code>, <code>--openresty-global-client-body-timeout</code>, <code>--openresty-computed-client-body-timeout</code></td>
+<td>Time allowed to read the request body from the client</td>
+</tr>
+<tr>
+<td><code>client-header-timeout</code></td>
+<td>app or global</td>
+<td><code>60s</code></td>
+<td><code>--openresty-client-header-timeout</code>, <code>--openresty-global-client-header-timeout</code>, <code>--openresty-computed-client-header-timeout</code></td>
+<td>Time allowed to read the request header from the client</td>
+</tr>
+<tr>
+<td><code>client-max-body-size</code></td>
+<td>app or global</td>
+<td><code>1m</code></td>
+<td><code>--openresty-client-max-body-size</code>, <code>--openresty-global-client-max-body-size</code>, <code>--openresty-computed-client-max-body-size</code></td>
+<td>Maximum allowed request body size</td>
+</tr>
+<tr>
+<td><code>error-log-path</code></td>
+<td>app or global</td>
+<td><em><code>/var/log/nginx/{app}-error.log</code></em></td>
+<td><code>--openresty-error-log-path</code>, <code>--openresty-global-error-log-path</code>, <code>--openresty-computed-error-log-path</code></td>
+<td>Path inside the openresty container where error logs are written</td>
+</tr>
+<tr>
+<td><code>hsts</code></td>
+<td>app or global</td>
+<td><code>true</code></td>
+<td><code>--openresty-hsts</code>, <code>--openresty-global-hsts</code>, <code>--openresty-computed-hsts</code></td>
+<td>When <code>true</code>, emits a <code>Strict-Transport-Security</code> header on HTTPS responses</td>
+</tr>
+<tr>
+<td><code>hsts-include-subdomains</code></td>
+<td>app or global</td>
+<td><code>true</code></td>
+<td><code>--openresty-hsts-include-subdomains</code>, <code>--openresty-global-hsts-include-subdomains</code>, <code>--openresty-computed-hsts-include-subdomains</code></td>
+<td>Adds the <code>includeSubDomains</code> directive to the HSTS header</td>
+</tr>
+<tr>
+<td><code>hsts-max-age</code></td>
+<td>app or global</td>
+<td><code>15724800</code></td>
+<td><code>--openresty-hsts-max-age</code>, <code>--openresty-global-hsts-max-age</code>, <code>--openresty-computed-hsts-max-age</code></td>
+<td><code>max-age</code> value (seconds) in the HSTS header</td>
+</tr>
+<tr>
+<td><code>hsts-preload</code></td>
+<td>app or global</td>
+<td><code>false</code></td>
+<td><code>--openresty-hsts-preload</code>, <code>--openresty-global-hsts-preload</code>, <code>--openresty-computed-hsts-preload</code></td>
+<td>Adds the <code>preload</code> directive to the HSTS header</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>global only</td>
+<td><em>parsed from <code>plugins/openresty-vhosts/Dockerfile</code></em></td>
+<td><code>--openresty-global-image</code>, <code>--openresty-computed-image</code></td>
+<td>Docker image used to run the openresty container</td>
+</tr>
+<tr>
+<td><code>keepalive-timeout</code></td>
+<td>app or global</td>
+<td><code>75s</code></td>
+<td><code>--openresty-keepalive-timeout</code>, <code>--openresty-global-keepalive-timeout</code>, <code>--openresty-computed-keepalive-timeout</code></td>
+<td>Time an idle keep-alive connection stays open</td>
+</tr>
+<tr>
+<td><code>letsencrypt-email</code></td>
+<td>global only</td>
+<td>none</td>
+<td><code>--openresty-global-letsencrypt-email</code>, <code>--openresty-computed-letsencrypt-email</code></td>
+<td>Contact email enabling letsencrypt; empty disables https issuance</td>
+</tr>
+<tr>
+<td><code>letsencrypt-server</code></td>
+<td>global only</td>
+<td><code>https://acme-v02.api.letsencrypt.org/directory</code></td>
+<td><code>--openresty-global-letsencrypt-server</code>, <code>--openresty-computed-letsencrypt-server</code></td>
+<td>ACME directory used when requesting certificates</td>
+</tr>
+<tr>
+<td><code>lingering-timeout</code></td>
+<td>app or global</td>
+<td><code>5s</code></td>
+<td><code>--openresty-lingering-timeout</code>, <code>--openresty-global-lingering-timeout</code>, <code>--openresty-computed-lingering-timeout</code></td>
+<td>Time openresty waits for more client data when closing a connection</td>
+</tr>
+<tr>
+<td><code>log-level</code></td>
+<td>global only</td>
+<td><code>ERROR</code></td>
+<td><code>--openresty-global-log-level</code>, <code>--openresty-computed-log-level</code></td>
+<td>Openresty log level</td>
+</tr>
+<tr>
+<td><code>proxy-buffer-size</code></td>
+<td>app or global</td>
+<td><em>system pagesize</em></td>
+<td><code>--openresty-proxy-buffer-size</code>, <code>--openresty-global-proxy-buffer-size</code>, <code>--openresty-computed-proxy-buffer-size</code></td>
+<td>Buffer size for reading the first part of the upstream response</td>
+</tr>
+<tr>
+<td><code>proxy-buffering</code></td>
+<td>app or global</td>
+<td><code>on</code></td>
+<td><code>--openresty-proxy-buffering</code>, <code>--openresty-global-proxy-buffering</code>, <code>--openresty-computed-proxy-buffering</code></td>
+<td>Whether openresty buffers upstream responses (<code>on</code> or <code>off</code>)</td>
+</tr>
+<tr>
+<td><code>proxy-buffers</code></td>
+<td>app or global</td>
+<td><em><code>8 {pagesize}</code></em></td>
+<td><code>--openresty-proxy-buffers</code>, <code>--openresty-global-proxy-buffers</code>, <code>--openresty-computed-proxy-buffers</code></td>
+<td>Number and size of buffers used for an upstream response</td>
+</tr>
+<tr>
+<td><code>proxy-busy-buffers-size</code></td>
+<td>app or global</td>
+<td><em><code>2 * pagesize</code></em></td>
+<td><code>--openresty-proxy-busy-buffers-size</code>, <code>--openresty-global-proxy-busy-buffers-size</code>, <code>--openresty-computed-proxy-busy-buffers-size</code></td>
+<td>Maximum buffer size that can be busy sending a response to the client</td>
+</tr>
+<tr>
+<td><code>proxy-connect-timeout</code></td>
+<td>app or global</td>
+<td><code>60s</code></td>
+<td><code>--openresty-proxy-connect-timeout</code>, <code>--openresty-global-proxy-connect-timeout</code>, <code>--openresty-computed-proxy-connect-timeout</code></td>
+<td>Time to establish a connection to the upstream</td>
+</tr>
+<tr>
+<td><code>proxy-read-timeout</code></td>
+<td>app or global</td>
+<td><code>60s</code></td>
+<td><code>--openresty-proxy-read-timeout</code>, <code>--openresty-global-proxy-read-timeout</code>, <code>--openresty-computed-proxy-read-timeout</code></td>
+<td>Time to read a response from the upstream</td>
+</tr>
+<tr>
+<td><code>proxy-send-timeout</code></td>
+<td>app or global</td>
+<td><code>60s</code></td>
+<td><code>--openresty-proxy-send-timeout</code>, <code>--openresty-global-proxy-send-timeout</code>, <code>--openresty-computed-proxy-send-timeout</code></td>
+<td>Time to transmit a request to the upstream</td>
+</tr>
+<tr>
+<td><code>send-timeout</code></td>
+<td>app or global</td>
+<td><code>60s</code></td>
+<td><code>--openresty-send-timeout</code>, <code>--openresty-global-send-timeout</code>, <code>--openresty-computed-send-timeout</code></td>
+<td>Time between two successive write operations to the client</td>
+</tr>
+<tr>
+<td><code>underscore-in-headers</code></td>
+<td>app or global</td>
+<td><code>off</code></td>
+<td><code>--openresty-underscore-in-headers</code>, <code>--openresty-global-underscore-in-headers</code>, <code>--openresty-computed-underscore-in-headers</code></td>
+<td>Whether to allow underscores in client request header field names</td>
+</tr>
+<tr>
+<td><code>x-forwarded-for-value</code></td>
+<td>app or global</td>
+<td><code>$remote_addr</code></td>
+<td><code>--openresty-x-forwarded-for-value</code>, <code>--openresty-global-x-forwarded-for-value</code>, <code>--openresty-computed-x-forwarded-for-value</code></td>
+<td>Value used for the <code>X-Forwarded-For</code> header</td>
+</tr>
+<tr>
+<td><code>x-forwarded-port-value</code></td>
+<td>app or global</td>
+<td><code>$server_port</code></td>
+<td><code>--openresty-x-forwarded-port-value</code>, <code>--openresty-global-x-forwarded-port-value</code>, <code>--openresty-computed-x-forwarded-port-value</code></td>
+<td>Value used for the <code>X-Forwarded-Port</code> header</td>
+</tr>
+<tr>
+<td><code>x-forwarded-proto-value</code></td>
+<td>app or global</td>
+<td><code>$scheme</code></td>
+<td><code>--openresty-x-forwarded-proto-value</code>, <code>--openresty-global-x-forwarded-proto-value</code>, <code>--openresty-computed-x-forwarded-proto-value</code></td>
+<td>Value used for the <code>X-Forwarded-Proto</code> header</td>
+</tr>
+<tr>
+<td><code>x-forwarded-ssl</code></td>
+<td>app or global</td>
+<td>none</td>
+<td><code>--openresty-x-forwarded-ssl</code>, <code>--openresty-global-x-forwarded-ssl</code>, <code>--openresty-computed-x-forwarded-ssl</code></td>
+<td>Value used for the <code>X-Forwarded-Ssl</code> header (e.g. <code>on</code>/<code>off</code>)</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -5178,7 +6041,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../testing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Running Tests">
+          <a href="../nginx/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nginx Proxy">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5188,20 +6051,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Running Tests
+                Nginx Proxy
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../deployment/continuous-integration/github-actions/" class="md-footer__link md-footer__link--next" aria-label="Next: GitHub Actions">
+          <a href="../traefik/" class="md-footer__link md-footer__link--next" aria-label="Next: Traefik Proxy">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                GitHub Actions
+                Traefik Proxy
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5331,16 +6194,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
 
   <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
-  <script src="../../overrides/assets/javascripts/bundle.js"></script>
+  <script src="../../../overrides/assets/javascripts/bundle.js"></script>
 
   </body>
 </html>

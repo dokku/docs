@@ -27,13 +27,13 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/processes/process-management/">
+        <link rel="canonical" href="https://dokku.com/docs/advanced-usage/plugin-management/">
       
       
-        <link rel="prev" href="../one-off-tasks/">
+        <link rel="prev" href="../persistent-storage/">
       
       
-        <link rel="next" href="../scheduled-cron-tasks/">
+        <link rel="next" href="../repository-management/">
       
       
         
@@ -44,7 +44,7 @@
     
     
       
-        <title>Process Management - Dokku Documentation</title>
+        <title>Plugin Management - Dokku Documentation</title>
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#process-management" class="md-skip">
+        <a href="#plugin-management" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/processes/process-management/">
+  <a href="/docs/advanced-usage/plugin-management/">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -179,7 +179,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Process Management
+              Plugin Management
             
           </span>
         </div>
@@ -2799,8 +2799,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2826,11 +2824,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
         
           
           <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="">
@@ -2851,7 +2849,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2869,7 +2867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entering-containers/" class="md-nav__link">
+      <a href="../../processes/entering-containers/" class="md-nav__link">
         
   
   
@@ -2897,7 +2895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../one-off-tasks/" class="md-nav__link">
+      <a href="../../processes/one-off-tasks/" class="md-nav__link">
         
   
   
@@ -2922,37 +2920,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Process Management
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../processes/process-management/" class="md-nav__link">
         
   
   
@@ -2968,320 +2939,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inspecting-app-containers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inspecting app containers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rebuilding-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rebuilding apps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restarting-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restarting apps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaying-existing-scale-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Displaying existing scale properties
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changing-process-management-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changing process management settings
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-processes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining Processes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Defining Processes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#procfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Procfile
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-web-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The web process
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-release-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The release process
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changing-the-procfile-location" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changing the Procfile location
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scaling-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scaling apps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Scaling apps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#via-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Via CLI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manually-managing-process-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manually managing process scaling
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stopping-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stopping apps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#starting-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Starting apps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#customizing-the-start-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing the start command
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restart-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restart policies
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Restart policies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-the-restart-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting the restart policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaying-reports-for-an-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Displaying reports for an app
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restoring-apps-after-a-server-reboot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restoring apps after a server reboot
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#settable-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Settable properties
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read-only-flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Read-only flags
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3294,7 +2951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scheduled-cron-tasks/" class="md-nav__link">
+      <a href="../../processes/scheduled-cron-tasks/" class="md-nav__link">
         
   
   
@@ -3727,6 +3384,8 @@
                 
   
   
+    
+  
   
   
     
@@ -3764,11 +3423,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
         
           
           <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="">
@@ -3789,7 +3448,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3807,7 +3466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
+      <a href="../backup-recovery/" class="md-nav__link">
         
   
   
@@ -3835,7 +3494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/builds/" class="md-nav__link">
+      <a href="../builds/" class="md-nav__link">
         
   
   
@@ -3863,7 +3522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
+      <a href="../deployment-tasks/" class="md-nav__link">
         
   
   
@@ -3891,7 +3550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
+      <a href="../docker-options/" class="md-nav__link">
         
   
   
@@ -3919,7 +3578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
+      <a href="../registry-management/" class="md-nav__link">
         
   
   
@@ -3947,7 +3606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
+      <a href="../event-logs/" class="md-nav__link">
         
   
   
@@ -3975,7 +3634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
+      <a href="../persistent-storage/" class="md-nav__link">
         
   
   
@@ -4000,10 +3659,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Management
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4019,6 +3705,142 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listing-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-if-a-plugin-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking if a plugin is installed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-a-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing a plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-plugin-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing plugin dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating a plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstalling-a-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uninstalling a plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-a-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling a plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-a-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling a plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggering-a-plugin-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triggering a plugin trigger
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4031,7 +3853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
+      <a href="../repository-management/" class="md-nav__link">
         
   
   
@@ -4059,7 +3881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
+      <a href="../resource-management/" class="md-nav__link">
         
   
   
@@ -5287,10 +5109,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inspecting-app-containers" class="md-nav__link">
+  <a href="#listing-plugins" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inspecting app containers
+        Listing Plugins
       
     </span>
   </a>
@@ -5298,10 +5120,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rebuilding-apps" class="md-nav__link">
+  <a href="#checking-if-a-plugin-is-installed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rebuilding apps
+        Checking if a plugin is installed
       
     </span>
   </a>
@@ -5309,10 +5131,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#restarting-apps" class="md-nav__link">
+  <a href="#installing-a-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Restarting apps
+        Installing a plugin
       
     </span>
   </a>
@@ -5320,10 +5142,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#displaying-existing-scale-properties" class="md-nav__link">
+  <a href="#installing-plugin-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Displaying existing scale properties
+        Installing plugin dependencies
       
     </span>
   </a>
@@ -5331,10 +5153,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#changing-process-management-settings" class="md-nav__link">
+  <a href="#updating-a-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Changing process management settings
+        Updating a plugin
       
     </span>
   </a>
@@ -5342,22 +5164,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#defining-processes" class="md-nav__link">
+  <a href="#uninstalling-a-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Defining Processes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Defining Processes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#procfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Procfile
+        Uninstalling a plugin
       
     </span>
   </a>
@@ -5365,10 +5175,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-web-process" class="md-nav__link">
+  <a href="#disabling-a-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The web process
+        Disabling a plugin
       
     </span>
   </a>
@@ -5376,10 +5186,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-release-process" class="md-nav__link">
+  <a href="#enabling-a-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The release process
+        Enabling a plugin
       
     </span>
   </a>
@@ -5387,176 +5197,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#changing-the-procfile-location" class="md-nav__link">
+  <a href="#triggering-a-plugin-trigger" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Changing the Procfile location
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scaling-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scaling apps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Scaling apps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#via-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Via CLI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manually-managing-process-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manually managing process scaling
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stopping-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stopping apps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#starting-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Starting apps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#customizing-the-start-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing the start command
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restart-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restart policies
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Restart policies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-the-restart-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting the restart policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaying-reports-for-an-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Displaying reports for an app
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restoring-apps-after-a-server-reboot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restoring apps after a server reboot
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#settable-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Settable properties
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read-only-flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Read-only flags
+        Triggering a plugin trigger
       
     </span>
   </a>
@@ -5585,7 +5229,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/processes/process-management.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/advanced-usage/plugin-management.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5594,456 +5238,212 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/processes/process-management.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/advanced-usage/plugin-management.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="process-management">Process Management<a class="headerlink" href="#process-management" title="Permanent link">&para;</a></h1>
+<h1 id="plugin-management">Plugin Management<a class="headerlink" href="#plugin-management" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
-<p>Introduced in 0.3.14, Enhanced in 0.7.0</p>
+<p>Introduced in 0.4.0</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ps:inspect &lt;app&gt;                                                  # Displays a sanitized version of docker inspect for an app
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ps:rebuild [--parallel count] [--all|&lt;app&gt;]                       # Rebuilds an app from source
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ps:report [&lt;app&gt;] [&lt;flag&gt;]                                        # Displays a process report for one or more apps
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ps:restart [--parallel count] [--all|&lt;app&gt;]  [&lt;process-name&gt;]     # Restart an app
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ps:restore [&lt;app&gt;]                                                # Start previously running apps e.g. after reboot
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ps:scale [--skip-deploy] &lt;app&gt; &lt;proc&gt;=&lt;count&gt; [&lt;proc&gt;=&lt;count&gt;...] # Get/Set how many instances of a given process to run
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>ps:set &lt;app&gt; &lt;key&gt; &lt;value&gt;                                        # Set or clear a ps property for an app
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>ps:start [--parallel count] [--all|&lt;app&gt;]                         # Start an app
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>ps:stop [--parallel count] [--all|&lt;app&gt;]                          # Stop an app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>plugin:disable &lt;name&gt;                    # Disable an installed plugin (third-party only)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>plugin:enable &lt;name&gt;                     # Enable a previously disabled plugin
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>plugin:install [--core|git-url] [--committish branch|commit|tag] [--name custom-plugin-name] [--skip-install-trigger] # Optionally download git-url (and pin to the specified branch/commit/tag) &amp; run install trigger for active plugins (or only core ones)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>plugin:installed &lt;name&gt;                  # Checks if a plugin is installed
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>plugin:install-dependencies [--core]     # Run install-dependencies trigger for active plugins (or only core ones)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>plugin:list                              # Print active plugins
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>plugin:trigger &lt;args...&gt;.                # Trigger an arbitrary plugin hook
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>plugin:uninstall &lt;name&gt;                  # Uninstall a plugin (third-party only)
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>plugin:update [name [branch|commit|tag]] # Optionally update named plugin from git (and pin to the specified branch/commit/tag) &amp; run update trigger for active plugins
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># for 0.3.x</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>/var/lib/dokku/plugins
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;git<span class="w"> </span>url&gt;
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>dokku<span class="w"> </span>plugins-install
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>These commands require <code>root</code> permissions as the <code>install</code> and <code>install-dependencies</code> plugin triggers may utilize commands such as <code>apt-get</code>. For non-core plugins, please inspect those plugins before running the following command as <code>root</code> user.</p>
+</div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="inspecting-app-containers">Inspecting app containers<a class="headerlink" href="#inspecting-app-containers" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.13.0</p>
-</div>
-<p>A common administrative task to perform is calling <code>docker inspect</code> on the containers that are running for an app. This can be an error-prone task to perform, and may also reveal sensitive environment variables if not done correctly. Dokku provides a wrapper around this command via the <code>ps:inspect</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ps:inspect<span class="w"> </span>node-js-app
-</code></pre></div>
-<p>This command will gather all the running container IDs for your app and call <code>docker inspect</code>, sanitizing the output data so it can be copy-pasted elsewhere safely.</p>
-<h3 id="rebuilding-apps">Rebuilding apps<a class="headerlink" href="#rebuilding-apps" title="Permanent link">&para;</a></h3>
-<p>It may be useful to rebuild an app at will, such as for commands that do not rebuild an app or when skipping a rebuild after setting multiple config values. For these use cases, the <code>ps:rebuild</code> function can be used.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
-</code></pre></div>
-<p>All apps may be rebuilt by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all
-</code></pre></div>
-<p>By default, rebuilding all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
-</code></pre></div>
-<p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
-</code></pre></div>
-<p>A missing linked container will result in failure to boot apps. Services should all be started for apps being rebuilt.</p>
-<h3 id="restarting-apps">Restarting apps<a class="headerlink" href="#restarting-apps" title="Permanent link">&para;</a></h3>
-<p>An app may be restarted using the <code>ps:restart</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>node-js-app
-</code></pre></div>
-<p>A single process type - such as <code>web</code> or <code>worker</code> - may also be specified. This <em>does not</em> support specifying a given instance of a process type, and only supports restarting all instances of that process type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>node-js-app<span class="w"> </span>web
-</code></pre></div>
-<p>All apps may be restarted by using the <code>--all</code> flag. This flag is incompatible with specifying a process type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all
-</code></pre></div>
-<p>By default, restarting all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
-</code></pre></div>
-<p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
-</code></pre></div>
-<p>A missing linked container will result in failure to boot apps. Services should all be started for apps being rebuilt.</p>
-<h3 id="displaying-existing-scale-properties">Displaying existing scale properties<a class="headerlink" href="#displaying-existing-scale-properties" title="Permanent link">&para;</a></h3>
-<p>Issuing the <code>ps:scale</code> command with no arguments will output the current scaling properties for an app.</p>
+<h3 id="listing-plugins">Listing Plugins<a class="headerlink" href="#listing-plugins" title="Permanent link">&para;</a></h3>
+<p>Installed plugins can be listed via the <code>plugin:list</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>plugin:list
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>-----&gt; Scaling for python
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>proctype: qty
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>--------: ---
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>web:  1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>plugn: dev
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  00_dokku-standard    0.38.9 enabled    dokku core standard plugin
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  20_events            0.38.9 enabled    dokku core events logging plugin
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  app-json             0.38.9 enabled    dokku core app-json plugin
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  apps                 0.38.9 enabled    dokku core apps plugin
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  build-env            0.38.9 enabled    dokku core build-env plugin
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  buildpacks           0.38.9 enabled    dokku core buildpacks plugin
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  certs                0.38.9 enabled    dokku core certificate management plugin
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  checks               0.38.9 enabled    dokku core checks plugin
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  common               0.38.9 enabled    dokku core common plugin
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  config               0.38.9 enabled    dokku core config plugin
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  docker-options       0.38.9 enabled    dokku core docker-options plugin
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  domains              0.38.9 enabled    dokku core domains plugin
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  enter                0.38.9 enabled    dokku core enter plugin
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  git                  0.38.9 enabled    dokku core git plugin
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  logs                 0.38.9 enabled    dokku core logs plugin
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  network              0.38.9 enabled    dokku core network plugin
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>  nginx-vhosts         0.38.9 enabled    dokku core nginx-vhosts plugin
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>  plugin               0.38.9 enabled    dokku core plugin plugin
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  proxy                0.38.9 enabled    dokku core proxy plugin
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  ps                   0.38.9 enabled    dokku core ps plugin
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  repo                 0.38.9 enabled    dokku core repo plugin
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  resource             0.38.9 enabled    dokku core resource plugin
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  scheduler-docker-local 0.38.9 enabled    dokku core scheduler-docker-local plugin
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  shell                0.38.9 enabled    dokku core shell plugin
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  ssh-keys             0.38.9 enabled    dokku core ssh-keys plugin
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>  storage              0.38.9 enabled    dokku core storage plugin
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>  tags                 0.38.9 enabled    dokku core tags plugin
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  tar                  0.38.9 enabled    dokku core tar plugin
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>  trace                0.38.9 enabled    dokku core trace plugin
 </code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="changing-process-management-settings">Changing process management settings<a class="headerlink" href="#changing-process-management-settings" title="Permanent link">&para;</a></h3>
-<p>The <code>ps</code> plugin provides a number of settings that can be used to managed deployments on a per-app basis. The following table outlines ones not covered elsewhere:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Global Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>stop-timeout</code></td>
-<td>Configurable grace period given to the <code>docker stop</code> command. If a container has not stopped by this time, a <code>kill -9</code> signal or equivalent is sent in order to force-terminate the container. Both the <code>ps:stop</code> and <code>apps:destroy</code> commands <em>also</em> respect this value. If not specified, the Docker defaults for the <a href="https://docs.docker.com/engine/reference/commandline/stop/"><code>docker stop</code> command</a> will be used.</td>
-<td><code>30</code></td>
-</tr>
-</tbody>
-</table>
-<p>All settings can be set via the <code>ps:set</code> command. Using <code>stop-timeout</code> as an example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>stop-timeout<span class="w"> </span><span class="m">60</span>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All plugin commands other than <code>plugin:list</code> and <code>plugin:help</code> require sudo access and must be run directly from the Dokku server.</p>
+</div>
+<h3 id="checking-if-a-plugin-is-installed">Checking if a plugin is installed<a class="headerlink" href="#checking-if-a-plugin-is-installed" title="Permanent link">&para;</a></h3>
+<p>You can check if a plugin has been installed via the <code>plugin:installed</code> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>plugin:installed<span class="w"> </span>postgres
 </code></pre></div>
-<p>The default value may be set by passing an empty value for the option in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>stop-timeout
-</code></pre></div>
-<p>Properties can also be set globally. If not set for an app, the global value will apply.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>stop-timeout<span class="w"> </span><span class="m">60</span>
-</code></pre></div>
-<p>The global default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>stop-timeout
-</code></pre></div>
-<h3 id="defining-processes">Defining Processes<a class="headerlink" href="#defining-processes" title="Permanent link">&para;</a></h3>
-<h4 id="procfile">Procfile<a class="headerlink" href="#procfile" title="Permanent link">&para;</a></h4>
+<h3 id="installing-a-plugin">Installing a plugin<a class="headerlink" href="#installing-a-plugin" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Dokku supports the Procfile format as defined in <a href="https://github.com/dokku/procfile-util/blob/master/PROCFILE_FORMAT.md">this document</a> under "Strict Mode" parsing rules.</p>
+<p>Plugins installed in this method within a <a href="../../getting-started/install/docker/">docker-based installation</a> of Dokku do not persist across installs. Please see the <a href="../../getting-started/install/docker/#plugin-installation">plugin installation section</a> of the docker-based installation docs for further details.</p>
 </div>
-<p>Apps can define processes to run by using a <code>Procfile</code>. A <code>Procfile</code> is a simple text file that can be used to specify multiple commands, each of which is subject to process scaling. In the case where the built image sets a default command to run - either through usage of <code>CMD</code> for Dockerfile-based builds, a default process for buildpack-based builds, or any other method for the builder in use - the <code>Procfile</code> will take precedence.</p>
-<p>If the file exists, it should not be empty, as doing so may result in a failed deploy.</p>
-<p>The syntax for declaring a <code>Procfile</code> is as follows. Note that the format is one process type per line, with no duplicate process types.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="err">&lt;</span>process<span class="w"> </span>type<span class="err">&gt;:</span><span class="w"> </span><span class="err">&lt;</span>command<span class="err">&gt;</span>
-</code></pre></div>
-<p>If, for example, you have multiple queue workers and wish to scale them separately, the following would be a valid way to work around the requirement of not duplicating process types:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nl">worker</span><span class="p">:</span><span class="w">           </span>env<span class="w"> </span>QUEUE<span class="err">=*</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nl">importantworker</span><span class="p">:</span><span class="w">  </span>env<span class="w"> </span><span class="nv">QUEUE</span><span class="p">=</span><span class="s">important</span><span class="w"> </span>bundle<span class="w"> </span>exec<span class="w"> </span>rake<span class="w"> </span>resque<span class="err">:</span>work
-</code></pre></div>
-<p>If the app build declares an <code>ENTRYPOINT</code>, the command defined in the <code>Procfile</code> is passed as an argument to that entrypoint. This is the case for all Dockerfile-based, Docker Image, and Cloud Native Buildpack deployments.</p>
-<p>The <code>web</code> process type holds some significance in that it is the only process type that is automatically scaled to <code>1</code> on the initial application deploy. See the <a href="./#the-web-process">web process scaling documentation</a> for more details around scaling individual processes.</p>
-<p>See the <a href="./#changing-the-procfile-location">Procfile location documentation</a> for more information on where to place your <code>Procfile</code> file.</p>
-<h4 id="the-web-process">The <code>web</code> process<a class="headerlink" href="#the-web-process" title="Permanent link">&para;</a></h4>
-<p>For initial app deploys, Dokku will default to starting a single <code>web</code> process for each app. This process may be defined within the <code>Procfile</code> or as the <code>CMD</code> (for Dockerfile or Docker image deploys). Scaling of the <code>web</code> process - and all other processes - may be managed via <code>ps:scale</code> or the <code>formation</code> key in the <code>app.json</code> file either before or after the initial deploy.</p>
-<p>There are also a few other exceptions for the <code>web</code> process.</p>
+<p>Installing a plugin is easy as well using the <code>plugin:install</code> command. This command will also trigger the <code>install</code> pluginhook on all existing plugins.</p>
+<p>The most common usage is to install a plugin from a url. This url may be any of the following:</p>
 <ul>
-<li>By default, the built-in nginx proxy implementation only proxies the <code>web</code> process (others may be handled via a custom <code>nginx.conf.sigil</code>).<ul>
-<li>See the <a href="../../networking/proxies/nginx/#request-proxying">nginx request proxying documentation</a> for more information on how nginx handles proxied requests.</li>
+<li><code>git</code>: For git+ssh based plugin repository clones.</li>
+<li><code>ssh</code>: For git+ssh based plugin repository clones.</li>
+<li><code>file</code>: For copying plugins from a path on disk.</li>
+<li><code>https</code>: For http based plugin repository clones.</li>
 </ul>
-</li>
-<li>Only the <code>web</code> process may be bound to an external port.</li>
-</ul>
-<h4 id="the-release-process">The <code>release</code> process<a class="headerlink" href="#the-release-process" title="Permanent link">&para;</a></h4>
-<p>The <code>Procfile</code> also supports a special <code>release</code> command which acts in a similar way to the <a href="https://devcenter.heroku.com/articles/release-phase">Heroku Release Phase</a>. See the <a href="../../advanced-usage/deployment-tasks/#procfile-release-command">Release deployment task documentation</a> for more information on how Dokku handles this process type.</p>
-<h4 id="changing-the-procfile-location">Changing the <code>Procfile</code> location<a class="headerlink" href="#changing-the-procfile-location" title="Permanent link">&para;</a></h4>
-<p>The <code>Procfile</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
-<ul>
-<li>The <code>WORKDIR</code> of the Docker image for deploys resulting from <code>git:from-image</code> and <code>git:load-image</code> commands.</li>
-<li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
-</ul>
-<p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>procfile-path</code> property:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path<span class="w"> </span>.dokku/Procfile
-</code></pre></div>
-<p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, Dokku will continue the build process as if the repository has no <code>Procfile</code>.</p>
-<p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>procfile-path
-</code></pre></div>
-<p>The <code>procfile-path</code> property can also be set globally. The global default is <code>Procfile</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>procfile-path<span class="w"> </span>global-Procfile
-</code></pre></div>
-<p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>--global<span class="w"> </span>procfile-path
-</code></pre></div>
-<h3 id="scaling-apps">Scaling apps<a class="headerlink" href="#scaling-apps" title="Permanent link">&para;</a></h3>
-<h4 id="via-cli">Via CLI<a class="headerlink" href="#via-cli" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This functionality is disabled if the formation is managed via the <code>formation</code> key of <code>app.json</code>.</p>
-</div>
-<p>Dokku can also manage scaling itself via the <code>ps:scale</code> command. This command can be used to scale multiple process types at the same time.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span>
-</code></pre></div>
-<p>Multiple process types can be scaled at once:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">worker</span><span class="o">=</span><span class="m">1</span>
-</code></pre></div>
-<p>If desired, the corresponding deploy will be skipped by using the <code>--skip-deploy</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span>
-</code></pre></div>
-<h4 id="manually-managing-process-scaling">Manually managing process scaling<a class="headerlink" href="#manually-managing-process-scaling" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Using a <code>formation</code> key in an <code>app.json</code> file with <em>any</em> <code>quantity</code> specified disables the ability to use <code>ps:scale</code> for scaling. All processes not specified in the <code>app.json</code> will have their process count set to zero.</p>
-</div>
-<p>Users can also configure scaling within the codebase itself to manage process scaling. The <code>formation</code> key should be specified as follows in the <code>app.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="p">}</span>
-</code></pre></div>
-<p>Removing the <code>formation</code> key or removing the <code>app.json</code> file from your repository will result in Dokku respecting the <code>ps:scale</code> command for setting scale values. The values set via the <code>app.json</code> file from a previous deploy will be respected.</p>
-<p>See the <a href="../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
-<h3 id="stopping-apps">Stopping apps<a class="headerlink" href="#stopping-apps" title="Permanent link">&para;</a></h3>
-<p>Deployed apps can be stopped using the <code>ps:stop</code> command. This turns off all running containers for an app, and will result in a <strong>502 Bad Gateway</strong> response for the default nginx proxy implementation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>node-js-app
-</code></pre></div>
-<p>All apps may be stopped by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all
-</code></pre></div>
-<p>By default, stopping all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
-</code></pre></div>
-<p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>ps:stop<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
-</code></pre></div>
-<h3 id="starting-apps">Starting apps<a class="headerlink" href="#starting-apps" title="Permanent link">&para;</a></h3>
-<p>All stopped containers can be started using the <code>ps:start</code> command. This is similar to running <code>ps:restart</code>, except no action will be taken if the app containers are running.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>node-js-app
-</code></pre></div>
-<p>All apps may be started by using the <code>--all</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all
-</code></pre></div>
-<p>By default, starting all apps happens serially. The parallelism may be controlled by the <code>--parallel</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span><span class="m">2</span>
-</code></pre></div>
-<p>Finally, the number of parallel workers may be automatically set to the number of CPUs available by setting the <code>--parallel</code> flag to <code>-1</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>ps:start<span class="w"> </span>--all<span class="w"> </span>--parallel<span class="w"> </span>-1
-</code></pre></div>
-<h3 id="customizing-the-start-command">Customizing the start command<a class="headerlink" href="#customizing-the-start-command" title="Permanent link">&para;</a></h3>
-<p>The command used to start an app's containers can be customized via two <code>ps</code> properties, depending on which builder is in use.</p>
-<p>For buildpack-built apps (where the start command normally comes from the <code>Procfile</code>), set <code>start-cmd</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>start-cmd<span class="w"> </span><span class="s2">&quot;node server.js&quot;</span>
-</code></pre></div>
-<p>For Dockerfile-built apps, set <code>dockerfile-start-cmd</code>. This value is passed as arguments to <code>docker run</code> and overrides or supplements the image's <code>CMD</code> / <code>ENTRYPOINT</code>. See the <a href="../../deployment/builders/dockerfiles/#customizing-the-run-command">Dockerfile builder documentation</a> for context.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-start-cmd<span class="w"> </span><span class="s2">&quot;--harmony server.js&quot;</span>
-</code></pre></div>
-<p>Either property can be cleared by passing an empty value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>start-cmd
-</code></pre></div>
-<h3 id="restart-policies">Restart policies<a class="headerlink" href="#restart-policies" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.7.0, Command Changed in 0.22.0</p>
-</div>
-<p>By default, Dokku will automatically restart containers that exit with a non-zero status up to 10 times via the <a href="https://docs.docker.com/engine/reference/run/#restart-policies---restart">on-failure Docker restart policy</a>.</p>
-<h4 id="setting-the-restart-policy">Setting the restart policy<a class="headerlink" href="#setting-the-restart-policy" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>A change in the restart policy must be followed by a <code>ps:rebuild</code> call.</p>
-</div>
-<p>You can configure this via the <code>ps:set</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># always restart an exited container</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>always
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>
-<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="c1"># never restart an exited container</span>
-<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>no
-<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>
-<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="c1"># only restart it on Docker restart if it was not manually stopped</span>
-<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>unless-stopped
-<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>
-<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="c1"># restart only on non-zero exit status</span>
-<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure
-<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>
-<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="c1"># restart only on non-zero exit status up to 20 times</span>
-<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restart-policy<span class="w"> </span>on-failure:20
-</code></pre></div>
-<p>Restart policies have no bearing on server reboot, and Dokku will always attempt to restart your apps at that point unless they were manually stopped.</p>
-<p>Dokku also runs <code>dokku-event-listener</code> in the background via the system's init service. This monitors container state, performing the following actions:</p>
-<ul>
-<li>If a web process restarts and it's container IP address changes, the app's proxy configuration will be rebuilt.</li>
-<li>If a process within an app exceeds the restart count, the app will be rebuilt.</li>
-</ul>
-<h3 id="displaying-reports-for-an-app">Displaying reports for an app<a class="headerlink" href="#displaying-reports-for-an-app" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.12.0</p>
-</div>
-<p>You can get a report about the deployed apps using the <code>ps:report</code> command:</p>
+<p>Additionally, any urls with the extensions <code>.tar.gz</code> or <code>.tgz</code> are treated as Gzipped Tarballs for installation purposes and will be downloaded and extracted into place.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>ps:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>=====&gt; node-js-app ps information
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>       Deployed:                      false
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>       Processes:                     0
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>       Ps can scale:                  true
-<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>       Ps computed procfile path:     Procfile2
-<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>       Ps global procfile path:       Procfile
-<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>       Ps procfile path:              Procfile2
-<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>       Restore:                       true
-<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>       Running:                       false
-<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>=====&gt; python-sample ps information
-<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>       Deployed:                      false
-<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>       Processes:                     0
-<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>       Ps can scale:                  true
-<a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>       Ps computed procfile path:     Procfile
-<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>       Ps global procfile path:       Procfile
-<a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a>       Ps procfile path:
-<a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a>       Restore:                       true
-<a id="__codelineno-40-20" name="__codelineno-40-20" href="#__codelineno-40-20"></a>       Running:                       false
-<a id="__codelineno-40-21" name="__codelineno-40-21" href="#__codelineno-40-21"></a>=====&gt; ruby-sample ps information
-<a id="__codelineno-40-22" name="__codelineno-40-22" href="#__codelineno-40-22"></a>       Deployed:                      false
-<a id="__codelineno-40-23" name="__codelineno-40-23" href="#__codelineno-40-23"></a>       Processes:                     0
-<a id="__codelineno-40-24" name="__codelineno-40-24" href="#__codelineno-40-24"></a>       Ps can scale:                  true
-<a id="__codelineno-40-25" name="__codelineno-40-25" href="#__codelineno-40-25"></a>       Ps computed procfile path:     Procfile
-<a id="__codelineno-40-26" name="__codelineno-40-26" href="#__codelineno-40-26"></a>       Ps global procfile path:       Procfile
-<a id="__codelineno-40-27" name="__codelineno-40-27" href="#__codelineno-40-27"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-40-28" name="__codelineno-40-28" href="#__codelineno-40-28"></a>       Ps procfile path:
-<a id="__codelineno-40-29" name="__codelineno-40-29" href="#__codelineno-40-29"></a>       Restore:                       true
-<a id="__codelineno-40-30" name="__codelineno-40-30" href="#__codelineno-40-30"></a>       Running:                       false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----&gt; Cloning plugin repo https://github.com/dokku/dokku-postgres.git to /var/lib/dokku/plugins/available/postgres
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Cloning into &#39;postgres&#39;...
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>remote: Counting objects: 646, done.
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>remote: Total 646 (delta 0), reused 0 (delta 0), pack-reused 646
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Receiving objects: 100% (646/646), 134.24 KiB | 0 bytes/s, done.
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Resolving deltas: 100% (406/406), done.
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Checking connectivity... done.
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>-----&gt; Plugin postgres enabled
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>You can run the command for a specific app also.</p>
+<p>For git-based plugin installation, a commit SHA-like object may be specified (tag/branch/commit sha) via the <code>--committish</code> argument and Dokku will attempt to install the specified commit object.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># where 2.0.0 is a potential git tag</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>--committish<span class="w"> </span><span class="m">2</span>.0.0
+</code></pre></div>
+<p>Plugin names are interpolated based on the repository name minus the <code>dokku-</code> prefix. If the plugin being installed has a name other than what matches the repository name - or another name is desired - the <code>--name</code> flag can be used to override this interpolation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin
+</code></pre></div>
+<p>The <code>--core</code> flag may also be indicated as the sole argument, though it is only for installation of core plugins, and thus not useful for end-user installations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>--core
+</code></pre></div>
+<p>If installing plugins in a Dockerfile, you will want to skip the <code>install</code> trigger. This will be run on container boot.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin<span class="w"> </span>--skip-install-trigger
+</code></pre></div>
+<p>Finally, all flags may be omitted to trigger the <code>install</code> procedures for both core and third-party plugins:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>plugin:install
+</code></pre></div>
+<h3 id="installing-plugin-dependencies">Installing plugin dependencies<a class="headerlink" href="#installing-plugin-dependencies" title="Permanent link">&para;</a></h3>
+<p>In some cases, plugins will have system-level dependencies. These are not automatically installed via <code>plugin:install</code>, and must be separately via the <code>plugin:install-dependencies</code> command. This will run through all the <code>dependencies</code> trigger for all plugins.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>plugin:install-dependencies
+</code></pre></div>
+<p>This command may also target <em>just</em> core plugins via the <code>--core</code> flag. This is usually only useful for source-based installs of Dokku.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>plugin:install-dependencies<span class="w"> </span>--core
+</code></pre></div>
+<h3 id="updating-a-plugin">Updating a plugin<a class="headerlink" href="#updating-a-plugin" title="Permanent link">&para;</a></h3>
+<p>An installed, third-party plugin can be updated can updated via the <code>plugin:update</code> command. This should be done after any upgrades of Dokku as there may be changes in the internal api that require an update of how the plugin interfaces with Dokku.</p>
+<p>Please note that this command is only valid for plugin installs that were backed by a git-repository.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>=====&gt; node-js-app ps information
-<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>       Deployed:                      false
-<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>       Processes:                     0
-<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>       Ps can scale:                  true
-<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>       Ps restart policy:             on-failure:10
-<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>       Restore:                       true
-<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>       Running:                       false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Plugin (postgres) updated
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>ps:report<span class="w"> </span>node-js-app<span class="w"> </span>--deployed
+<p>An optional commit SHA-like object may be specified.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span><span class="m">2</span>.0.0
 </code></pre></div>
-<h3 id="restoring-apps-after-a-server-reboot">Restoring apps after a server reboot<a class="headerlink" href="#restoring-apps-after-a-server-reboot" title="Permanent link">&para;</a></h3>
-<p>When a server reboots or Docker is restarted/upgraded, Docker may or may not start old app containers automatically, and may in some cases re-assign container IP addresses. To combat this issue, Dokku uses an init process that triggers <code>dokku ps:restore</code> after the Docker daemon is detected as starting. When triggered, the <code>dokku ps:restore</code> command will serially (one by one) run the following for each:</p>
-<ul>
-<li>Start all linked services.</li>
-<li>Clear generated proxy configuration files.</li>
-<li>Start the app if it has not been manually stopped.<ul>
-<li>If the app containers still exist, they will be started and the generated proxy configuration files will be rebuilt.</li>
-<li>If any of the app containers are missing, the entire app will be rebuilt.</li>
-</ul>
-</li>
-</ul>
-<p>During this time, requests may route to the incorrect app if the assigned IPs correspond to those for other apps. While dokku makes all efforts to avoid this, there may be a few minutes where urls may route to the wrong app. To avoid this, either use a custom proxy plugin or wait a few minutes until the restoration process is complete.</p>
-<p>Per-app restore behavior can be controlled via the <code>restore</code> property. When set to <code>false</code>, <code>ps:restore</code> will skip the app on reboot:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restore<span class="w"> </span><span class="nb">false</span>
+<p>Any future invocation of <code>plugin:update</code> will respect the previously specified SHA-like object. To follow a particular branch again, specify that branch:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span>main
 </code></pre></div>
-<p>The default value (<code>true</code>) may be restored by passing an empty value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>restore
+<h3 id="uninstalling-a-plugin">Uninstalling a plugin<a class="headerlink" href="#uninstalling-a-plugin" title="Permanent link">&para;</a></h3>
+<p>Third party plugins can be uninstalled using the <code>plugin:uninstall</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>plugin:uninstall<span class="w"> </span>postgres
 </code></pre></div>
-<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
-<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>ps:report</code>. The JSON keys emitted by <code>ps:report --format json</code> are the same names with the leading <code>--ps-</code> stripped (e.g. <code>procfile-path</code>, <code>global-procfile-path</code>, <code>computed-procfile-path</code>). Legacy keys with the <code>ps-</code> prefix (e.g. <code>ps-procfile-path</code>) are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
 </div>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Scope</th>
-<th>Default</th>
-<th>Report flags</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dockerfile-start-cmd</code></td>
-<td>app only</td>
-<td>none</td>
-<td><code>--ps-dockerfile-start-cmd</code>, <code>--ps-computed-dockerfile-start-cmd</code></td>
-<td>Override <code>CMD</code> for Dockerfile-based apps</td>
-</tr>
-<tr>
-<td><code>procfile-path</code></td>
-<td>app + global</td>
-<td><code>Procfile</code></td>
-<td><code>--ps-procfile-path</code>, <code>--ps-global-procfile-path</code>, <code>--ps-computed-procfile-path</code></td>
-<td>Path to the app's Procfile, relative to the build root</td>
-</tr>
-<tr>
-<td><code>restart-policy</code></td>
-<td>app only</td>
-<td><code>on-failure:10</code></td>
-<td><code>--ps-restart-policy</code></td>
-<td>Docker restart policy applied to deployed containers (<code>no</code>, <code>always</code>, <code>unless-stopped</code>, <code>on-failure[:max-retries]</code>)</td>
-</tr>
-<tr>
-<td><code>restore</code></td>
-<td>app only</td>
-<td><code>true</code></td>
-<td><code>--restore</code></td>
-<td>When <code>true</code>, the app is restarted automatically by <code>ps:retire</code> after a host reboot</td>
-</tr>
-<tr>
-<td><code>skip-deploy</code></td>
-<td>app + global</td>
-<td><code>false</code></td>
-<td><code>--ps-skip-deploy</code>, <code>--ps-global-skip-deploy</code>, <code>--ps-computed-skip-deploy</code></td>
-<td>When <code>true</code>, skips the deploy phase after a successful build</td>
-</tr>
-<tr>
-<td><code>start-cmd</code></td>
-<td>app only</td>
-<td>none</td>
-<td><code>--ps-start-cmd</code>, <code>--ps-computed-start-cmd</code></td>
-<td>Override start command for buildpack apps</td>
-</tr>
-<tr>
-<td><code>stop-timeout-seconds</code></td>
-<td>app + global</td>
-<td><code>30</code></td>
-<td><code>--ps-stop-timeout-seconds</code>, <code>--ps-global-stop-timeout-seconds</code>, <code>--ps-computed-stop-timeout-seconds</code></td>
-<td>Seconds Docker waits before SIGKILLing a container on stop</td>
-</tr>
-</tbody>
-</table>
-<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
-<p>The following flags surface in <code>ps:report</code> but are not managed by <code>ps:set</code> - they are derived from the running process state:</p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--ps-can-scale</code></td>
-<td><code>false</code> when the app's procfile or builder forbids horizontal scaling</td>
-</tr>
-<tr>
-<td><code>--deployed</code></td>
-<td><code>true</code> after the first successful deploy</td>
-</tr>
-<tr>
-<td><code>--running</code></td>
-<td><code>true</code> while any container for the app is running</td>
-</tr>
-<tr>
-<td><code>--processes</code></td>
-<td>Total scaled process count across all proctypes</td>
-</tr>
-<tr>
-<td><code>--status-&lt;proctype&gt;</code></td>
-<td>Container status and ID for each running proctype (one entry per Procfile process type)</td>
-</tr>
-</tbody>
-</table>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>-----&gt; Plugin postgres uninstalled
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="disabling-a-plugin">Disabling a plugin<a class="headerlink" href="#disabling-a-plugin" title="Permanent link">&para;</a></h3>
+<p>Disabling a plugin can also be useful for debugging whether a third-party plugin is causing issues in a Dokku installation. Another common use case is for disabling core functionality for replacement with a third-party plugin.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>plugin:disable<span class="w"> </span>postgres
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>-----&gt; Plugin postgres disabled
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="enabling-a-plugin">Enabling a plugin<a class="headerlink" href="#enabling-a-plugin" title="Permanent link">&para;</a></h3>
+<p>Disabled plugins can be re-enabled via the <code>plugin:enable</code> command.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>plugin:enable<span class="w"> </span>postgres
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>-----&gt; Plugin postgres enabled
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger<a class="headerlink" href="#triggering-a-plugin-trigger" title="Permanent link">&para;</a></h3>
+<p>The <code>plugin:trigger</code> can be used to call any internal plugin trigger. This may have unintended consequences, and thus should only be called for development or debugging purposes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>plugin:trigger<span class="w"> </span>some-internal-trigger<span class="w"> </span>args-go-here
+</code></pre></div>
 
 
 
@@ -6079,7 +5479,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../one-off-tasks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: One-off Tasks">
+          <a href="../persistent-storage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Persistent Storage">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6089,20 +5489,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                One-off Tasks
+                Persistent Storage
               </div>
             </div>
           </a>
         
         
           
-          <a href="../scheduled-cron-tasks/" class="md-footer__link md-footer__link--next" aria-label="Next: Scheduled Cron Tasks">
+          <a href="../repository-management/" class="md-footer__link md-footer__link--next" aria-label="Next: Repository Management">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Scheduled Cron Tasks
+                Repository Management
               </div>
             </div>
             <div class="md-footer__button md-icon">
