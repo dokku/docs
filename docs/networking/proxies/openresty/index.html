@@ -5754,8 +5754,9 @@
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
-<p>Five properties (<code>image</code>, <code>log-level</code>, <code>letsencrypt-email</code>, <code>letsencrypt-server</code>, <code>allowed-letsencrypt-domains-func-base64</code>) are global only. The rest are app only - they cannot be set with <code>--global</code>.</p>
-<p>Global-only properties expose two report flags: <code>--openresty-global-&lt;property&gt;</code> returns the raw stored value (empty when the property has never been set), while <code>--openresty-computed-&lt;property&gt;</code> returns the effective value (the global value if set, otherwise the built-in default). The per-app <code>hsts</code> property additionally has a bare <code>--openresty-hsts</code> flag for the raw per-app value.</p>
+<p>Five properties (<code>image</code>, <code>log-level</code>, <code>letsencrypt-email</code>, <code>letsencrypt-server</code>, <code>allowed-letsencrypt-domains-func-base64</code>) are global only. The rest may be set per-app or globally with <code>--global</code>; a global value applies to any app that has no per-app value, otherwise the built-in default is used.</p>
+<p>Global-only properties expose two report flags: <code>--openresty-global-&lt;property&gt;</code> returns the raw stored value (empty when the property has never been set), while <code>--openresty-computed-&lt;property&gt;</code> returns the effective value (the global value if set, otherwise the built-in default).</p>
+<p>App-or-global properties expose three report flags: <code>--openresty-&lt;property&gt;</code> returns the raw per-app value (empty when unset), <code>--openresty-global-&lt;property&gt;</code> returns the raw global value (empty when unset), and <code>--openresty-computed-&lt;property&gt;</code> returns the effective value, resolving the per-app value first, then the global value, then the built-in default.</p>
 <table>
 <thead>
 <tr>
@@ -5769,16 +5770,16 @@
 <tbody>
 <tr>
 <td><code>access-log-format</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td>none</td>
-<td><code>--openresty-access-log-format</code></td>
+<td><code>--openresty-access-log-format</code>, <code>--openresty-global-access-log-format</code>, <code>--openresty-computed-access-log-format</code></td>
 <td>Custom nginx <code>log_format</code> directive used for the access log</td>
 </tr>
 <tr>
 <td><code>access-log-path</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><em><code>/var/log/nginx/{app}-access.log</code></em></td>
-<td><code>--openresty-access-log-path</code></td>
+<td><code>--openresty-access-log-path</code>, <code>--openresty-global-access-log-path</code>, <code>--openresty-computed-access-log-path</code></td>
 <td>Path inside the openresty container where access logs are written</td>
 </tr>
 <tr>
@@ -5790,72 +5791,72 @@
 </tr>
 <tr>
 <td><code>bind-address-ipv4</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td>none</td>
-<td><code>--openresty-bind-address-ipv4</code></td>
+<td><code>--openresty-bind-address-ipv4</code>, <code>--openresty-global-bind-address-ipv4</code>, <code>--openresty-computed-bind-address-ipv4</code></td>
 <td>IPv4 address the openresty server block binds to</td>
 </tr>
 <tr>
 <td><code>bind-address-ipv6</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>::</code></td>
-<td><code>--openresty-bind-address-ipv6</code></td>
+<td><code>--openresty-bind-address-ipv6</code>, <code>--openresty-global-bind-address-ipv6</code>, <code>--openresty-computed-bind-address-ipv6</code></td>
 <td>IPv6 address the openresty server block binds to</td>
 </tr>
 <tr>
 <td><code>client-body-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>60s</code></td>
-<td><code>--openresty-client-body-timeout</code></td>
+<td><code>--openresty-client-body-timeout</code>, <code>--openresty-global-client-body-timeout</code>, <code>--openresty-computed-client-body-timeout</code></td>
 <td>Time allowed to read the request body from the client</td>
 </tr>
 <tr>
 <td><code>client-header-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>60s</code></td>
-<td><code>--openresty-client-header-timeout</code></td>
+<td><code>--openresty-client-header-timeout</code>, <code>--openresty-global-client-header-timeout</code>, <code>--openresty-computed-client-header-timeout</code></td>
 <td>Time allowed to read the request header from the client</td>
 </tr>
 <tr>
 <td><code>client-max-body-size</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>1m</code></td>
-<td><code>--openresty-client-max-body-size</code></td>
+<td><code>--openresty-client-max-body-size</code>, <code>--openresty-global-client-max-body-size</code>, <code>--openresty-computed-client-max-body-size</code></td>
 <td>Maximum allowed request body size</td>
 </tr>
 <tr>
 <td><code>error-log-path</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><em><code>/var/log/nginx/{app}-error.log</code></em></td>
-<td><code>--openresty-error-log-path</code></td>
+<td><code>--openresty-error-log-path</code>, <code>--openresty-global-error-log-path</code>, <code>--openresty-computed-error-log-path</code></td>
 <td>Path inside the openresty container where error logs are written</td>
 </tr>
 <tr>
 <td><code>hsts</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>true</code></td>
 <td><code>--openresty-hsts</code>, <code>--openresty-global-hsts</code>, <code>--openresty-computed-hsts</code></td>
 <td>When <code>true</code>, emits a <code>Strict-Transport-Security</code> header on HTTPS responses</td>
 </tr>
 <tr>
 <td><code>hsts-include-subdomains</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>true</code></td>
-<td><code>--openresty-hsts-include-subdomains</code></td>
+<td><code>--openresty-hsts-include-subdomains</code>, <code>--openresty-global-hsts-include-subdomains</code>, <code>--openresty-computed-hsts-include-subdomains</code></td>
 <td>Adds the <code>includeSubDomains</code> directive to the HSTS header</td>
 </tr>
 <tr>
 <td><code>hsts-max-age</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>15724800</code></td>
-<td><code>--openresty-hsts-max-age</code></td>
+<td><code>--openresty-hsts-max-age</code>, <code>--openresty-global-hsts-max-age</code>, <code>--openresty-computed-hsts-max-age</code></td>
 <td><code>max-age</code> value (seconds) in the HSTS header</td>
 </tr>
 <tr>
 <td><code>hsts-preload</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>false</code></td>
-<td><code>--openresty-hsts-preload</code></td>
+<td><code>--openresty-hsts-preload</code>, <code>--openresty-global-hsts-preload</code>, <code>--openresty-computed-hsts-preload</code></td>
 <td>Adds the <code>preload</code> directive to the HSTS header</td>
 </tr>
 <tr>
@@ -5867,9 +5868,9 @@
 </tr>
 <tr>
 <td><code>keepalive-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>75s</code></td>
-<td><code>--openresty-keepalive-timeout</code></td>
+<td><code>--openresty-keepalive-timeout</code>, <code>--openresty-global-keepalive-timeout</code>, <code>--openresty-computed-keepalive-timeout</code></td>
 <td>Time an idle keep-alive connection stays open</td>
 </tr>
 <tr>
@@ -5888,9 +5889,9 @@
 </tr>
 <tr>
 <td><code>lingering-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>5s</code></td>
-<td><code>--openresty-lingering-timeout</code></td>
+<td><code>--openresty-lingering-timeout</code>, <code>--openresty-global-lingering-timeout</code>, <code>--openresty-computed-lingering-timeout</code></td>
 <td>Time openresty waits for more client data when closing a connection</td>
 </tr>
 <tr>
@@ -5902,93 +5903,93 @@
 </tr>
 <tr>
 <td><code>proxy-buffer-size</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><em>system pagesize</em></td>
-<td><code>--openresty-proxy-buffer-size</code></td>
+<td><code>--openresty-proxy-buffer-size</code>, <code>--openresty-global-proxy-buffer-size</code>, <code>--openresty-computed-proxy-buffer-size</code></td>
 <td>Buffer size for reading the first part of the upstream response</td>
 </tr>
 <tr>
 <td><code>proxy-buffering</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>on</code></td>
-<td><code>--openresty-proxy-buffering</code></td>
+<td><code>--openresty-proxy-buffering</code>, <code>--openresty-global-proxy-buffering</code>, <code>--openresty-computed-proxy-buffering</code></td>
 <td>Whether openresty buffers upstream responses (<code>on</code> or <code>off</code>)</td>
 </tr>
 <tr>
 <td><code>proxy-buffers</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><em><code>8 {pagesize}</code></em></td>
-<td><code>--openresty-proxy-buffers</code></td>
+<td><code>--openresty-proxy-buffers</code>, <code>--openresty-global-proxy-buffers</code>, <code>--openresty-computed-proxy-buffers</code></td>
 <td>Number and size of buffers used for an upstream response</td>
 </tr>
 <tr>
 <td><code>proxy-busy-buffers-size</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><em><code>2 * pagesize</code></em></td>
-<td><code>--openresty-proxy-busy-buffers-size</code></td>
+<td><code>--openresty-proxy-busy-buffers-size</code>, <code>--openresty-global-proxy-busy-buffers-size</code>, <code>--openresty-computed-proxy-busy-buffers-size</code></td>
 <td>Maximum buffer size that can be busy sending a response to the client</td>
 </tr>
 <tr>
 <td><code>proxy-connect-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>60s</code></td>
-<td><code>--openresty-proxy-connect-timeout</code></td>
+<td><code>--openresty-proxy-connect-timeout</code>, <code>--openresty-global-proxy-connect-timeout</code>, <code>--openresty-computed-proxy-connect-timeout</code></td>
 <td>Time to establish a connection to the upstream</td>
 </tr>
 <tr>
 <td><code>proxy-read-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>60s</code></td>
-<td><code>--openresty-proxy-read-timeout</code></td>
+<td><code>--openresty-proxy-read-timeout</code>, <code>--openresty-global-proxy-read-timeout</code>, <code>--openresty-computed-proxy-read-timeout</code></td>
 <td>Time to read a response from the upstream</td>
 </tr>
 <tr>
 <td><code>proxy-send-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>60s</code></td>
-<td><code>--openresty-proxy-send-timeout</code></td>
+<td><code>--openresty-proxy-send-timeout</code>, <code>--openresty-global-proxy-send-timeout</code>, <code>--openresty-computed-proxy-send-timeout</code></td>
 <td>Time to transmit a request to the upstream</td>
 </tr>
 <tr>
 <td><code>send-timeout</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>60s</code></td>
-<td><code>--openresty-send-timeout</code></td>
+<td><code>--openresty-send-timeout</code>, <code>--openresty-global-send-timeout</code>, <code>--openresty-computed-send-timeout</code></td>
 <td>Time between two successive write operations to the client</td>
 </tr>
 <tr>
 <td><code>underscore-in-headers</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>off</code></td>
-<td><code>--openresty-underscore-in-headers</code></td>
+<td><code>--openresty-underscore-in-headers</code>, <code>--openresty-global-underscore-in-headers</code>, <code>--openresty-computed-underscore-in-headers</code></td>
 <td>Whether to allow underscores in client request header field names</td>
 </tr>
 <tr>
 <td><code>x-forwarded-for-value</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>$remote_addr</code></td>
-<td><code>--openresty-x-forwarded-for-value</code></td>
+<td><code>--openresty-x-forwarded-for-value</code>, <code>--openresty-global-x-forwarded-for-value</code>, <code>--openresty-computed-x-forwarded-for-value</code></td>
 <td>Value used for the <code>X-Forwarded-For</code> header</td>
 </tr>
 <tr>
 <td><code>x-forwarded-port-value</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>$server_port</code></td>
-<td><code>--openresty-x-forwarded-port-value</code></td>
+<td><code>--openresty-x-forwarded-port-value</code>, <code>--openresty-global-x-forwarded-port-value</code>, <code>--openresty-computed-x-forwarded-port-value</code></td>
 <td>Value used for the <code>X-Forwarded-Port</code> header</td>
 </tr>
 <tr>
 <td><code>x-forwarded-proto-value</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td><code>$scheme</code></td>
-<td><code>--openresty-x-forwarded-proto-value</code></td>
+<td><code>--openresty-x-forwarded-proto-value</code>, <code>--openresty-global-x-forwarded-proto-value</code>, <code>--openresty-computed-x-forwarded-proto-value</code></td>
 <td>Value used for the <code>X-Forwarded-Proto</code> header</td>
 </tr>
 <tr>
 <td><code>x-forwarded-ssl</code></td>
-<td>app only</td>
+<td>app or global</td>
 <td>none</td>
-<td><code>--openresty-x-forwarded-ssl</code></td>
+<td><code>--openresty-x-forwarded-ssl</code>, <code>--openresty-global-x-forwarded-ssl</code>, <code>--openresty-computed-x-forwarded-ssl</code></td>
 <td>Value used for the <code>X-Forwarded-Ssl</code> header (e.g. <code>on</code>/<code>off</code>)</td>
 </tr>
 </tbody>
