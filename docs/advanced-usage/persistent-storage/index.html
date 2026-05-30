@@ -5614,6 +5614,61 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-deploy-mounts
 </code></pre></div>
+<p>In addition to the aggregated <code>Storage build/deploy/run mounts:</code> lines, the report emits one flat dotted key per attachment field, indexed from <code>1</code>. The key shape is <code>--storage-attachment.&lt;index&gt;.&lt;field&gt;</code> for each of <code>entry-name</code>, <code>host-path</code>, <code>container-path</code>, <code>phases</code>, <code>process-type</code>, <code>subpath</code>, <code>readonly</code>, <code>volume-options</code>, and <code>volume-chown</code>. Fields render as empty strings when unset, and attachments are ordered by lex-sort of the index (so <code>10</code> sorts before <code>2</code>):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>node-js-data
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data<span class="w"> </span>--container-dir<span class="w"> </span>/app/storage<span class="w"> </span>--volume-options<span class="w"> </span>Z<span class="w"> </span>--volume-chown<span class="w"> </span>herokuish<span class="w"> </span>--volume-subpath<span class="w"> </span>uploads
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>=====&gt; node-js-app storage information
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       Storage attachment 1 container path:  /app/storage
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>       Storage attachment 1 entry name:      node-js-data
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>       Storage attachment 1 host path:       /var/lib/dokku/data/storage/node-js-data
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>       Storage attachment 1 phases:          deploy,run
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>       Storage attachment 1 process type:    _default_
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>       Storage attachment 1 readonly:        false
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>       Storage attachment 1 subpath:         uploads
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>       Storage attachment 1 volume chown:    herokuish
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>       Storage attachment 1 volume options:  Z
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>       Storage build mounts:
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-data:/app/storage:Z
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-data:/app/storage:Z
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The same keys are exposed in JSON output, both in the stripped (<code>attachment.1.volume-options</code>) and legacy (<code>storage-attachment.1.volume-options</code>) forms:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | with_entries(select(.key | startswith(&quot;attachment.&quot;)))&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">{</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="nt">&quot;attachment.1.container-path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/app/storage&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="nt">&quot;attachment.1.entry-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node-js-data&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="nt">&quot;attachment.1.host-path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/lib/dokku/data/storage/node-js-data&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="nt">&quot;attachment.1.phases&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deploy,run&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span><span class="nt">&quot;attachment.1.process-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;_default_&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">  </span><span class="nt">&quot;attachment.1.readonly&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">  </span><span class="nt">&quot;attachment.1.subpath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uploads&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">  </span><span class="nt">&quot;attachment.1.volume-chown&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;herokuish&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">  </span><span class="nt">&quot;attachment.1.volume-options&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Z&quot;</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="p">}</span>
+</code></pre></div>
+<p>A single attachment field can be fetched directly via the info-flag form:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-attachment.1.volume-options
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Z
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
 <h3 id="sharing-storage-across-deploys">Sharing storage across deploys<a class="headerlink" href="#sharing-storage-across-deploys" title="Permanent link">&para;</a></h3>
 <p>Dokku is powered by Docker containers, which recommends in their <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#containers-should-be-ephemeral">best practices</a> that containers be treated as ephemeral. In order to manage persistent storage for web apps, like user uploads or large binary assets like images, a directory outside the container should be mounted.</p>
@@ -5625,7 +5680,7 @@
 <p>Your app may have services that are running in memory and need to be backed up locally (like a key store). Mount a non ephemeral storage mount will allow backups that are not lost when the app is shut down.</p>
 <h3 id="build-phase">Build phase<a class="headerlink" href="#build-phase" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku will only bind storage mounts during the deploy and run phases. Under certain conditions, one might want to bind a storage mount during the build phase. This can be accomplished by using the <code>docker-options</code> plugin directly.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;-v /tmp/python-test:/opt/test&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;-v /tmp/python-test:/opt/test&quot;</span>
 </code></pre></div>
 <p>You cannot use mounted volumes during the build phase of a Dockerfile deploy. This is because Docker does not support volumes when executing <code>docker build</code>.</p>
 <div class="admonition warning">
