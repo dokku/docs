@@ -27,13 +27,13 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/development/release-process/">
+        <link rel="canonical" href="https://dokku.com/docs/deployment/application-management/">
       
       
-        <link rel="prev" href="../testing/">
+        <link rel="prev" href="../application-deployment/">
       
       
-        <link rel="next" href="../../deployment/continuous-integration/github-actions/">
+        <link rel="next" href="../logs/">
       
       
         
@@ -44,7 +44,7 @@
     
     
       
-        <title>Release Process - Dokku Documentation</title>
+        <title>Application Management - Dokku Documentation</title>
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#release-process" class="md-skip">
+        <a href="#application-management" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/development/release-process/">
+  <a href="/docs/deployment/application-management/">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -179,7 +179,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Release Process
+              Application Management
             
           </span>
         </div>
@@ -1939,6 +1939,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1968,11 +1970,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
         
           
           <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
@@ -1993,7 +1995,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2011,7 +2013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/application-deployment/" class="md-nav__link">
+      <a href="../application-deployment/" class="md-nav__link">
         
   
   
@@ -2036,10 +2038,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../deployment/application-management/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Management
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2055,6 +2084,203 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listing-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing applications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-if-an-application-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking if an application exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-creating-an-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manually creating an application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-automatic-app-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling automatic app creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-deployed-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing a deployed app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-a-deployed-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renaming a deployed app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloning-an-existing-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloning an existing app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locking-app-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locking app deploys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlocking-app-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlocking app deploys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-lock-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking lock status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-reports-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying reports for an app
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2067,7 +2293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/logs/" class="md-nav__link">
+      <a href="../logs/" class="md-nav__link">
         
   
   
@@ -2095,7 +2321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/remote-commands/" class="md-nav__link">
+      <a href="../remote-commands/" class="md-nav__link">
         
   
   
@@ -2123,7 +2349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/user-management/" class="md-nav__link">
+      <a href="../user-management/" class="md-nav__link">
         
   
   
@@ -2151,7 +2377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/zero-downtime-deploys/" class="md-nav__link">
+      <a href="../zero-downtime-deploys/" class="md-nav__link">
         
   
   
@@ -2260,7 +2486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/builder-management/" class="md-nav__link">
+      <a href="../builders/builder-management/" class="md-nav__link">
         
   
   
@@ -2288,7 +2514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
+      <a href="../builders/cloud-native-buildpacks/" class="md-nav__link">
         
   
   
@@ -2316,7 +2542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
+      <a href="../builders/herokuish-buildpacks/" class="md-nav__link">
         
   
   
@@ -2344,7 +2570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/dockerfiles/" class="md-nav__link">
+      <a href="../builders/dockerfiles/" class="md-nav__link">
         
   
   
@@ -2372,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/lambda/" class="md-nav__link">
+      <a href="../builders/lambda/" class="md-nav__link">
         
   
   
@@ -2400,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/nixpacks/" class="md-nav__link">
+      <a href="../builders/nixpacks/" class="md-nav__link">
         
   
   
@@ -2428,7 +2654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/null/" class="md-nav__link">
+      <a href="../builders/null/" class="md-nav__link">
         
   
   
@@ -2456,7 +2682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/builders/railpack/" class="md-nav__link">
+      <a href="../builders/railpack/" class="md-nav__link">
         
   
   
@@ -2555,7 +2781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/git/" class="md-nav__link">
+      <a href="../methods/git/" class="md-nav__link">
         
   
   
@@ -2583,7 +2809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/image/" class="md-nav__link">
+      <a href="../methods/image/" class="md-nav__link">
         
   
   
@@ -2611,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/methods/archive/" class="md-nav__link">
+      <a href="../methods/archive/" class="md-nav__link">
         
   
   
@@ -3819,7 +4045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/scheduler-management/" class="md-nav__link">
+      <a href="../schedulers/scheduler-management/" class="md-nav__link">
         
   
   
@@ -3847,7 +4073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/docker-local/" class="md-nav__link">
+      <a href="../schedulers/docker-local/" class="md-nav__link">
         
   
   
@@ -3875,7 +4101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/k3s/" class="md-nav__link">
+      <a href="../schedulers/k3s/" class="md-nav__link">
         
   
   
@@ -3903,7 +4129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/nomad/" class="md-nav__link">
+      <a href="../schedulers/nomad/" class="md-nav__link">
         
   
   
@@ -3931,7 +4157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/schedulers/null/" class="md-nav__link">
+      <a href="../schedulers/null/" class="md-nav__link">
         
   
   
@@ -3964,8 +4190,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3993,11 +4217,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
         
           
           <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="">
@@ -4018,7 +4242,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_12">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4036,7 +4260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../development/architecture/" class="md-nav__link">
         
   
   
@@ -4064,7 +4288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugin-creation/" class="md-nav__link">
+      <a href="../../development/plugin-creation/" class="md-nav__link">
         
   
   
@@ -4092,7 +4316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugin-triggers/" class="md-nav__link">
+      <a href="../../development/plugin-triggers/" class="md-nav__link">
         
   
   
@@ -4120,7 +4344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../development/testing/" class="md-nav__link">
         
   
   
@@ -4145,37 +4369,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Release Process
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../development/release-process/" class="md-nav__link">
         
   
   
@@ -4191,65 +4388,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#versioning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versioning
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arch-linux-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arch Linux Packages
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arch Linux Packages">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detailed-information-for-arch-linux-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detailed information for Arch Linux packages
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4335,7 +4473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/github-actions/" class="md-nav__link">
+      <a href="../continuous-integration/github-actions/" class="md-nav__link">
         
   
   
@@ -4363,7 +4501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
+      <a href="../continuous-integration/gitlab-ci/" class="md-nav__link">
         
   
   
@@ -4391,7 +4529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/generic/" class="md-nav__link">
+      <a href="../continuous-integration/generic/" class="md-nav__link">
         
   
   
@@ -4419,7 +4557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/continuous-integration/woodpecker-ci/" class="md-nav__link">
+      <a href="../continuous-integration/woodpecker-ci/" class="md-nav__link">
         
   
   
@@ -5020,33 +5158,171 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#versioning" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Versioning
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listing-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing applications
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#arch-linux-packages" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#checking-if-an-application-exists" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Arch Linux Packages
+        Checking if an application exists
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Arch Linux Packages">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-creating-an-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manually creating an application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-automatic-app-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling automatic app creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-deployed-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing a deployed app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-a-deployed-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renaming a deployed app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloning-an-existing-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloning an existing app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locking-app-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locking app deploys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlocking-app-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlocking app deploys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-lock-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking lock status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-reports-for-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying reports for an app
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#detailed-information-for-arch-linux-packages" class="md-nav__link">
+  <a href="#settable-properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Detailed information for Arch Linux packages
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-only-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only flags
       
     </span>
   </a>
@@ -5075,7 +5351,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/development/release-process.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/application-management.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5084,65 +5360,402 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/development/release-process.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/deployment/application-management.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="release-process">Release Process<a class="headerlink" href="#release-process" title="Permanent link">&para;</a></h1>
-<p>Dokku is released in intervals <em>at most</em> three weeks apart, though may be released much quicker.</p>
-<p>To propose a release, the following tasks need to be performed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PACKAGECLOUD_TOKEN</span><span class="o">=</span>SOME_TOKEN
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># supports major/minor/patch/betafish</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>contrib/release-dokku
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If you are a maintainer and need the PACKAGECLOUD_TOKEN in order to make a release, please contact @josegonzalez to get this information.</p>
+<h1 id="application-management">Application Management<a class="headerlink" href="#application-management" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.3.1</p>
 </div>
-<p>As well, the Arch Linux package description <em>must</em> be updated via <code>vagrant up build-arch</code> (needs to be done after the tag is pushed to GitHub, because it is based on that)</p>
-<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
-<p>Dokku follows semver standards. As we are not yet at a stable release, breaking changes will require <em>only</em> a minor release, while all other changes only require a patch release. Once we hit stable, breaking changes will require a major release.</p>
-<p>At the moment, tags need not be signed, though that may change in the future.</p>
-<h2 id="arch-linux-packages">Arch Linux Packages<a class="headerlink" href="#arch-linux-packages" title="Permanent link">&para;</a></h2>
-<p>Arch Linux packages are not really build, because all that is needed for an Arch User Repo (AUR) package is the description of how to build the package. To make this process as easy as possible there is a vagrant box called <code>build-arch</code> that updates the version of this build description (a file called <code>PKGBUILD</code>), then runs some helper scripts to fill all additional information and does test if the package could be build. Then only those changes need to be pushed to the AUR repo and an updated version of the package is ready for usage for our Arch Linux users. For detailed information see the section below.</p>
-<p>The workflow looks like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># having dokku-arch in ../dokku-arch</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>vagrant<span class="w"> </span>up<span class="w"> </span>build-arch
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># wait for &quot;==&gt; build-arch: ==&gt; Finished making: dokku 0.38.11-2 (Mon Feb 22 23:20:37 CET 2016)&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>../dokku-arch
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>git<span class="w"> </span>add<span class="w"> </span>PKGBUILD<span class="w"> </span>.SRCINFO
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Update to dokku 0.9.9&#39;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>git<span class="w"> </span>push<span class="w"> </span>aur<span class="w"> </span>master
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>apps:clone &lt;old-app&gt; &lt;new-app&gt;                 # Clones an app
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>apps:create &lt;app&gt;                              # Create a new app
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>apps:destroy &lt;app&gt;                             # Permanently destroy an app
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>apps:exists &lt;app&gt;                              # Checks if an app exists
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>apps:list                                      # List your apps
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>apps:lock &lt;app&gt;                                # Locks an app for deployment
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>apps:locked &lt;app&gt;                              # Checks if an app is locked for deployment
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>apps:rename &lt;old-app&gt; &lt;new-app&gt;                # Rename an app
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>apps:report [&lt;app&gt;] [&lt;flag&gt;]                   # Display report about an app
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>apps:set [--global] &lt;app&gt; &lt;key&gt; (&lt;value&gt;)      # Set or clear an apps property for an app
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>apps:unlock &lt;app&gt;                              # Unlocks an app for deployment
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If you are a maintainer and need access to the AUR repositories in order to make a release, please contact @morrisjobke or @josegonzalez to get this co-maintainership.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="listing-applications">Listing applications<a class="headerlink" href="#listing-applications" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.8.1. Use the <code>apps</code> command for older versions.</p>
 </div>
-<h3 id="detailed-information-for-arch-linux-packages">Detailed information for Arch Linux packages<a class="headerlink" href="#detailed-information-for-arch-linux-packages" title="Permanent link">&para;</a></h3>
-<p>All of the information to build the Arch Linux package is in the AUR git repository (see <a href="https://aur.archlinux.org/packages/dokku/">dokku AUR page</a>). The release of a AUR package only consists of pushing the package information into the AUR git repo. Then users could use that information to build the package on their machines.</p>
-<p>To update the package clone the repository and adjust the files in the repository. Then a helper script - <code>updpkgsums</code> - to update the SHA sum could  be called (check against the original SHA sum). Another helper script - <code>mksrcinfo</code> - needs to be called to update the meta information of the package in a file called <code>.SRCINFO</code>. The next step builds the package locally for verification - <code>makepkg</code>. As last step commit your changes and push the commit.</p>
+<p>You can easily list all available applications using the <code>apps:list</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>apps:list
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>=====&gt; My Apps
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>node-js-app
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python-app
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Note that you can easily hide extra output from Dokku commands by using the <code>--quiet</code> flag, which makes it easier to parse on the command line.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>--quiet<span class="w"> </span>apps:list
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>node-js-app
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python-app
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="checking-if-an-application-exists">Checking if an application exists<a class="headerlink" href="#checking-if-an-application-exists" title="Permanent link">&para;</a></h3>
+<p>For CI/CD pipelines, it may be useful to see if an application exists before creating a "review" application for a specific branch. You can do so via the <code>apps:exists</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>apps:exists<span class="w">  </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>App does not exist
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <code>apps:exists</code> command will return non-zero if the application does not exist, and zero if it does.</p>
+<h3 id="manually-creating-an-application">Manually creating an application<a class="headerlink" href="#manually-creating-an-application" title="Permanent link">&para;</a></h3>
+<p>A common pattern for deploying applications to Dokku is to configure an application before deploying it. You can do so via the <code>apps:create</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Creating node-js-app... done
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Once created, you can configure the application as normal, and deploy the application whenever ready. This is useful for cases where you may wish to do any of the following kinds of tasks:</p>
 <ul>
-<li>dependencies are defined in the <code>depends</code> attribute in <code>PKGBUILD</code></li>
-<li>build steps during package build time are defined in the <code>package()</code> method in <code>PKGBUILD</code></li>
-<li>steps that should be executed during install/update/remove time are defined in the file <code>dokku.install</code></li>
-<li>detailed information about all attributes in <code>PKGBUILD</code> could be found in the <a href="https://wiki.archlinux.org/index.php/PKGBUILD">Arch Linux wiki</a></li>
-<li>detailed information about the AUR workflow could be found in the <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR article</a> in the Arch Linux wiki</li>
+<li>Configure domain names and SSL certificates.</li>
+<li>Create and link datastores.</li>
+<li>Set environment variables.</li>
 </ul>
-<p>That is the usual workflow:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>updpkgsums<span class="w"> </span><span class="c1"># update sha sums - compare them with the original ones</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mksrcinfo<span class="w"> </span><span class="c1"># update package metadata for AUR</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>makepkg<span class="w"> </span><span class="c1"># test package builds</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>git<span class="w"> </span>add<span class="w"> </span>PKGBUILD<span class="w"> </span>.SRCINFO
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Update to dokku 0.9.9&#39;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>git<span class="w"> </span>push
+<h3 id="disabling-automatic-app-creation">Disabling automatic app creation<a class="headerlink" href="#disabling-automatic-app-creation" title="Permanent link">&para;</a></h3>
+<p>By default, pushing to a git remote for an app that does not yet exist on the Dokku host will cause the app to be created automatically. On shared or production hosts this may be undesirable - operators may prefer that an explicit <code>apps:create</code> is required first. The <code>disable-autocreation</code> global property controls this behavior:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>apps:set<span class="w"> </span>--global<span class="w"> </span>disable-autocreation<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
+<p>While set, pushes targeting an app that does not exist will be rejected. The default behavior may be restored by passing an empty value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>apps:set<span class="w"> </span>--global<span class="w"> </span>disable-autocreation
+</code></pre></div>
+<h3 id="removing-a-deployed-app">Removing a deployed app<a class="headerlink" href="#removing-a-deployed-app" title="Permanent link">&para;</a></h3>
+<p>In some cases, you may need to destroy an application, whether it is because the application is temporary or because it was misconfigured. In these cases, you can use the <code>apps:destroy</code> command. Performing any destructive actions in Dokku requires confirmation, and this command will ask for the name of the application being deleted before doing so.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>apps:destroy<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a> !     This command will destroy node-js-app (including all add-ons).
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a> !     To proceed, type &quot;node-js-app&quot;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Destroying node-js-app (including all add-ons)
+</code></pre></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>If there is something unclear simply ask @morrisjobke for help.</p>
+<p>node-js-app</p>
 </div>
+<p>This will prompt you to verify the application's name before destroying it. You may also use the <code>--force</code> flag to circumvent this verification process:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>apps:destroy<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Destroying node-js-app (including all add-ons)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <code>--force</code> flag can also be specified on the command vs globally:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>apps:destroy<span class="w"> </span>--force<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Destroying node-js-app (including all add-ons)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Destroying an application will unlink all linked services and destroy any config related to the application. Note that linked services will retain their data for later use (or removal).</p>
+<h3 id="renaming-a-deployed-app">Renaming a deployed app<a class="headerlink" href="#renaming-a-deployed-app" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.4.7</p>
+</div>
+<p>You can rename a deployed app using the <code>apps:rename</code> command. Note that the application <em>must</em> have been deployed at least once, or the rename will not complete successfully:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Destroying node-js-app (including all add-ons)
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>-----&gt; Cleaning up...
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>-----&gt; Building io-js-app from herokuish...
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>-----&gt; Adding BUILD_ENV to build environment...
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>-----&gt; Node.js app detected
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>-----&gt; Creating runtime environment
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>...
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>=====&gt; Application deployed:
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>       http://io-js-app.ci.dokku.me
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>Renaming node-js-app to io-js-app... done
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This will copy all of your app's contents into a new app directory with the name of your choice, delete your old app, then rebuild the new version of the app and deploy it. All of your config variables, including database urls, will be preserved.</p>
+<p>By default, Dokku will deploy the renamed app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>apps:rename<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+</code></pre></div>
+<p>Remember to also change your git remote on your local machine in order to make <code>git push dokku main</code> work again. For this you can use <code>git remote set-url</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>dokku<span class="w"> </span>dokku@dokku.me:io-js-app
+</code></pre></div>
+<h3 id="cloning-an-existing-app">Cloning an existing app<a class="headerlink" href="#cloning-an-existing-app" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.11.5</p>
+</div>
+<p>You can clone an existing app using the <code>apps:clone</code> command.  Note that the application <em>must</em> have been deployed at least once, or cloning will not complete successfully:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Cloning node-js-app to io-js-app... done
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This will copy all of your app's contents into a new app directory with the name of your choice and then rebuild the new version of the app and deploy it with the following caveats:</p>
+<ul>
+<li>All of your environment variables, including database urls, will be preserved.</li>
+<li>Custom domains are not applied to the new app.</li>
+<li>SSL certificates will not be copied to the new app.</li>
+<li>Port mappings with the scheme <code>https</code> and host-port <code>443</code> will be skipped.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have exposed specific ports via <code>docker-options</code> plugin, or performed anything that cannot be done against multiple applications, <code>apps:clone</code> may result in errors.</p>
+</div>
+<p>By default, Dokku will deploy this new app, though you can skip the deploy by using the <code>--skip-deploy</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+</code></pre></div>
+<p>Finally, if the application already exists, you may wish to ignore errors resulting from attempting to clone over it. To do so, you can use the <code>--ignore-existing</code> flag. A warning will be emitted, but the command will return <code>0</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>apps:clone<span class="w"> </span>--ignore-existing<span class="w"> </span>node-js-app<span class="w"> </span>io-js-app
+</code></pre></div>
+<h3 id="locking-app-deploys">Locking app deploys<a class="headerlink" href="#locking-app-deploys" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.11.6</p>
+</div>
+<p>If you wish to disable deploying for a period of time, this can be done via deploy locks. Normally, deploy locks exist only for the duration of a deploy so as to avoid deploys from colliding, but a deploy lock can be created by running the <code>apps:lock</code> command.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>apps:lock<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>-----&gt; Deploy lock created
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="unlocking-app-deploys">Unlocking app deploys<a class="headerlink" href="#unlocking-app-deploys" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.11.6</p>
+</div>
+<p>In some cases, it may be necessary to remove an existing deploy lock. This can be performed via the <code>apps:unlock</code> command.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Removing the deploy lock <em>will not</em> stop in progress deploys. At this time, in progress deploys will need to be manually terminated by someone with server access.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>apps:unlock<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a> !     A deploy may be in progress.
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a> !     Removing the app lock will not stop in progress deploys.
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>-----&gt; Deploy lock removed.
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="checking-lock-status">Checking lock status<a class="headerlink" href="#checking-lock-status" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.13.0</p>
+</div>
+<p>In some cases, you may wish to inspect the state of an app lock. To do so, you can issue an <code>apps:lock</code> command. This will exit non-zero if there is no app lock in place.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Shell</label><label for="__tabbed_12_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>apps:locked<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Deploy lock does not exist
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="displaying-reports-for-an-app">Displaying reports for an app<a class="headerlink" href="#displaying-reports-for-an-app" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.8.1</p>
+</div>
+<p>You can get a report about the deployed apps using the <code>apps:report</code> command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Shell</label><label for="__tabbed_13_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>apps:report
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>=====&gt; node-js-app app information
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>       App created at:              1635126111
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>       App dir:                     /home/dokku/node-js-app
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>       App deploy source:           git
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>       App locked:                  false
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>=====&gt; python-sample app information
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>       App created at:              1635126000
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>       App dir:                     /home/dokku/python-sample
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>       App deploy source:
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>       App deploy source metadata:
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>       App locked:                  false
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>=====&gt; ruby-sample app information
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>       App created at:              1635122462
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>       App dir:                     /home/dokku/ruby-sample
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>       App deploy source:           git
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>       App deploy source metadata:  c60921ea2799ca108276414b95ea197f16798d51
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>       App locked:                  false
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You can run the command for a specific app also.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Shell</label><label for="__tabbed_14_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>=====&gt; node-js-app app information
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>       App dir:                     /home/dokku/node-js-app
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>       App deploy source:           git
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>       App deploy source metadata:  cd7b8afccb202f222e7dc7b427553e71ba5ddafd
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>       App locked:                  false
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You can pass flags which will output only the value of the specific information you want. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app<span class="w"> </span>--app-dir
+</code></pre></div>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>apps:report</code>. The JSON keys emitted by <code>apps:report --format json</code> are the same names with the leading <code>--app-</code> stripped (e.g. <code>global-disable-autocreation</code>). Legacy keys with the <code>app-</code> prefix (e.g. <code>app-global-disable-autocreation</code>) are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disable-autocreation</code></td>
+<td>global only</td>
+<td><code>false</code></td>
+<td><code>--app-global-disable-autocreation</code></td>
+<td>When <code>true</code>, pushes to a remote for an app that does not yet exist are rejected instead of auto-creating the app</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface in <code>apps:report</code> but are not managed by <code>apps:set</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--app-created-at</code></td>
+<td>UNIX timestamp of app creation</td>
+</tr>
+<tr>
+<td><code>--app-deploy-source</code></td>
+<td>Source kind of the last deploy (<code>git</code>, <code>archive</code>, <code>docker-image</code>, <code>git-sync</code>)</td>
+</tr>
+<tr>
+<td><code>--app-deploy-source-metadata</code></td>
+<td>Free-form metadata for the deploy source (commit sha, image ref, URL)</td>
+</tr>
+<tr>
+<td><code>--app-dir</code></td>
+<td>Absolute path of the app root on disk</td>
+</tr>
+<tr>
+<td><code>--app-locked</code></td>
+<td><code>true</code> while a deploy or rebuild holds the app lock</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -5178,7 +5791,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../testing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Running Tests">
+          <a href="../application-deployment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploying an Application">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5188,20 +5801,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Running Tests
+                Deploying an Application
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../deployment/continuous-integration/github-actions/" class="md-footer__link md-footer__link--next" aria-label="Next: GitHub Actions">
+          <a href="../logs/" class="md-footer__link md-footer__link--next" aria-label="Next: Log Management">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                GitHub Actions
+                Log Management
               </div>
             </div>
             <div class="md-footer__button md-icon">
