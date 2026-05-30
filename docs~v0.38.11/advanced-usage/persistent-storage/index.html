@@ -5507,6 +5507,7 @@
 <li><code>--chown false</code>: Skips the <code>chown</code> call.</li>
 </ul>
 <p>Users deploying via Dockerfile will want to specify <code>--chown false</code> and manually <code>chown</code> the created directory if the user and/or group id  of the runnning process in the deployed container do not correspond to any of the above options.</p>
+<p>The <code>--chown</code> flag - whether on <code>storage:create</code> or <code>storage:ensure-directory</code> - only manages the default <code>/var/lib/dokku/data/storage/&lt;name&gt;</code> location. If a custom <code>&lt;path&gt;</code> is passed to <code>storage:create</code>, the chown call is refused and the operator must chown the path themselves.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Failing to set the correct directory ownership may result in issues in persisting files written to the mounted storage directory.</p>

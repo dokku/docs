@@ -2239,6 +2239,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#read-only-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5285,6 +5296,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#settable-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#read-only-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5665,6 +5687,31 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>apps:report<span class="w"> </span>node-js-app<span class="w"> </span>--app-dir
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>Report flags</code> column lists the CLI argument names accepted by <code>apps:report</code>. The JSON keys emitted by <code>apps:report --format json</code> are the same names with the leading <code>--app-</code> stripped (e.g. <code>global-disable-autocreation</code>). Legacy keys with the <code>app-</code> prefix (e.g. <code>app-global-disable-autocreation</code>) are also emitted during the 0.38.x deprecation window and will be removed in a future major release.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Default</th>
+<th>Report flags</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disable-autocreation</code></td>
+<td>global only</td>
+<td><code>false</code></td>
+<td><code>--app-global-disable-autocreation</code></td>
+<td>When <code>true</code>, pushes to a remote for an app that does not yet exist are rejected instead of auto-creating the app</td>
+</tr>
+</tbody>
+</table>
 <h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
 <p>The following flags surface in <code>apps:report</code> but are not managed by <code>apps:set</code>:</p>
 <table>
