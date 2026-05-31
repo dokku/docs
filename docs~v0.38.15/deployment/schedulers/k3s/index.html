@@ -6388,6 +6388,7 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <li><code>traefik_ingressroute</code></li>
 <li><code>traefik_middleware</code></li>
 </ul>
+<p>Annotation keys may contain <code>/</code> (e.g. Kubernetes-style keys such as <code>prometheus.io/scrape</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>A <code>ps:restart</code> is required after setting annotations in order to have them apply to running resources.</p>
 <h4 id="removing-an-annotation">Removing an annotation<a class="headerlink" href="#removing-an-annotation" title="Permanent link">&para;</a></h4>
 <p>To unset an annotation, pass an empty value:</p>
@@ -6432,6 +6433,7 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <li><code>traefik_ingressroute</code></li>
 <li><code>traefik_middleware</code></li>
 </ul>
+<p>Label keys may contain <code>/</code> (e.g. Kubernetes-style keys such as <code>app.kubernetes.io/part-of</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>A <code>ps:restart</code> is required after setting labels in order to have them apply to running resources.</p>
 <h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
 <p>To unset an label, pass an empty value:</p>
@@ -6642,6 +6644,7 @@ Users with older installations will need to manually install Keda.</p>
 <p class="admonition-title">Note</p>
 <p>Properties follow dot-notation, and are expanded according to Helm's internal logic. See the <a href="https://helm.sh/docs/helm/helm_install/#helm-install">Helm documentation</a> for <code>helm install</code> for further details.</p>
 </div>
+<p>Property names may contain <code>/</code> (e.g. for Kubernetes-style annotation keys such as <code>service.annotations.prometheus.io/scrape</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>To unset a chart property, omit the value from the <code>scheduler-k3s:charts:set</code> call:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version
 </code></pre></div>
