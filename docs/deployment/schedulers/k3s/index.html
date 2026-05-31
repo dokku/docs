@@ -6630,6 +6630,7 @@ Users with older installations will need to manually install Keda.</p>
 <p class="admonition-title">Note</p>
 <p>Properties follow dot-notation, and are expanded according to Helm's internal logic. See the <a href="https://helm.sh/docs/helm/helm_install/#helm-install">Helm documentation</a> for <code>helm install</code> for further details.</p>
 </div>
+<p>Property names may contain <code>/</code> (e.g. for Kubernetes-style annotation keys such as <code>service.annotations.prometheus.io/scrape</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>To unset a chart property, omit the value from the <code>scheduler-k3s:charts:set</code> call:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version
 </code></pre></div>
