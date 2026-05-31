@@ -6376,6 +6376,7 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <li><code>traefik_ingressroute</code></li>
 <li><code>traefik_middleware</code></li>
 </ul>
+<p>Annotation keys may contain <code>/</code> (e.g. Kubernetes-style keys such as <code>prometheus.io/scrape</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>A <code>ps:restart</code> is required after setting annotations in order to have them apply to running resources.</p>
 <h4 id="removing-an-annotation">Removing an annotation<a class="headerlink" href="#removing-an-annotation" title="Permanent link">&para;</a></h4>
 <p>To unset an annotation, pass an empty value:</p>
@@ -6420,6 +6421,7 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <li><code>traefik_ingressroute</code></li>
 <li><code>traefik_middleware</code></li>
 </ul>
+<p>Label keys may contain <code>/</code> (e.g. Kubernetes-style keys such as <code>app.kubernetes.io/part-of</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>A <code>ps:restart</code> is required after setting labels in order to have them apply to running resources.</p>
 <h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
 <p>To unset an label, pass an empty value:</p>
