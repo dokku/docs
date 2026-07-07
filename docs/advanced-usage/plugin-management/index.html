@@ -5243,7 +5243,7 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>plugin:install [--core|git-url] [--committish branch|commit|tag] [--name custom-plugin-name] [--skip-install-trigger] # Optionally download git-url (and pin to the specified branch/commit/tag) &amp; run install trigger for active plugins (or only core ones)
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>plugin:installed &lt;name&gt;                  # Checks if a plugin is installed
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>plugin:install-dependencies [--core]     # Run install-dependencies trigger for active plugins (or only core ones)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>plugin:list                              # Print active plugins
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>plugin:list [--format stdout|json]       # Print active plugins
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>plugin:trigger &lt;args...&gt;.                # Trigger an arbitrary plugin hook
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>plugin:uninstall &lt;name&gt;                  # Uninstall a plugin (third-party only)
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>plugin:update [name [branch|commit|tag]] # Optionally update named plugin from git (and pin to the specified branch/commit/tag) &amp; run update trigger for active plugins
@@ -5268,46 +5268,73 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>plugn: dev
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  00_dokku-standard    0.38.20 enabled    dokku core standard plugin
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  20_events            0.38.20 enabled    dokku core events logging plugin
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  app-json             0.38.20 enabled    dokku core app-json plugin
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  apps                 0.38.20 enabled    dokku core apps plugin
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  build-env            0.38.20 enabled    dokku core build-env plugin
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  buildpacks           0.38.20 enabled    dokku core buildpacks plugin
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  certs                0.38.20 enabled    dokku core certificate management plugin
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  checks               0.38.20 enabled    dokku core checks plugin
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  common               0.38.20 enabled    dokku core common plugin
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  config               0.38.20 enabled    dokku core config plugin
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  docker-options       0.38.20 enabled    dokku core docker-options plugin
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  domains              0.38.20 enabled    dokku core domains plugin
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  enter                0.38.20 enabled    dokku core enter plugin
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  git                  0.38.20 enabled    dokku core git plugin
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  logs                 0.38.20 enabled    dokku core logs plugin
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  network              0.38.20 enabled    dokku core network plugin
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>  nginx-vhosts         0.38.20 enabled    dokku core nginx-vhosts plugin
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>  plugin               0.38.20 enabled    dokku core plugin plugin
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  proxy                0.38.20 enabled    dokku core proxy plugin
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  ps                   0.38.20 enabled    dokku core ps plugin
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  repo                 0.38.20 enabled    dokku core repo plugin
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  resource             0.38.20 enabled    dokku core resource plugin
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  scheduler-docker-local 0.38.20 enabled    dokku core scheduler-docker-local plugin
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  shell                0.38.20 enabled    dokku core shell plugin
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  ssh-keys             0.38.20 enabled    dokku core ssh-keys plugin
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>  storage              0.38.20 enabled    dokku core storage plugin
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>  tags                 0.38.20 enabled    dokku core tags plugin
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  tar                  0.38.20 enabled    dokku core tar plugin
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>  trace                0.38.20 enabled    dokku core trace plugin
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  00_dokku-standard    0.38.21 enabled    dokku core standard plugin
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  20_events            0.38.21 enabled    dokku core events logging plugin
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  app-json             0.38.21 enabled    dokku core app-json plugin
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  apps                 0.38.21 enabled    dokku core apps plugin
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  build-env            0.38.21 enabled    dokku core build-env plugin
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  buildpacks           0.38.21 enabled    dokku core buildpacks plugin
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  certs                0.38.21 enabled    dokku core certificate management plugin
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  checks               0.38.21 enabled    dokku core checks plugin
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  common               0.38.21 enabled    dokku core common plugin
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  config               0.38.21 enabled    dokku core config plugin
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  docker-options       0.38.21 enabled    dokku core docker-options plugin
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  domains              0.38.21 enabled    dokku core domains plugin
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  enter                0.38.21 enabled    dokku core enter plugin
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  git                  0.38.21 enabled    dokku core git plugin
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  logs                 0.38.21 enabled    dokku core logs plugin
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  network              0.38.21 enabled    dokku core network plugin
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>  nginx-vhosts         0.38.21 enabled    dokku core nginx-vhosts plugin
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>  plugin               0.38.21 enabled    dokku core plugin plugin
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  proxy                0.38.21 enabled    dokku core proxy plugin
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  ps                   0.38.21 enabled    dokku core ps plugin
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  repo                 0.38.21 enabled    dokku core repo plugin
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  resource             0.38.21 enabled    dokku core resource plugin
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  scheduler-docker-local 0.38.21 enabled    dokku core scheduler-docker-local plugin
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  shell                0.38.21 enabled    dokku core shell plugin
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  ssh-keys             0.38.21 enabled    dokku core ssh-keys plugin
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>  storage              0.38.21 enabled    dokku core storage plugin
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>  tags                 0.38.21 enabled    dokku core tags plugin
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  tar                  0.38.21 enabled    dokku core tar plugin
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>  trace                0.38.21 enabled    dokku core trace plugin
 </code></pre></div>
 </div>
 </div>
 </div>
+<p>The list can also be emitted as JSON via the <code>--format json</code> flag. In addition to the name, version, enabled state, and description shown in the default output, the JSON output includes whether a plugin is a core plugin and - for git-based third-party plugins - the install source (the git remote URL, the currently checked-out commit, and the followed branch). This is useful for tooling that reconstructs a server's set of installed plugins:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>plugin:list<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">[</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apps&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.38.21&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">&quot;core&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dokku core apps plugin&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nt">&quot;committish&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nt">&quot;branch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.42.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nt">&quot;core&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dokku postgres service plugin&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nt">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/dokku/dokku-postgres.git&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nt">&quot;committish&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nt">&quot;branch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;master&quot;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="p">]</span>
+</code></pre></div>
+<p>The <code>source_url</code>, <code>committish</code>, and <code>branch</code> fields are only populated for plugins installed from a git repository. They are empty for core plugins as well as for plugins installed from a tarball or a local <code>file://</code> path. When a plugin is pinned to a specific commit or tag (a detached checkout), the <code>branch</code> field is empty while <code>committish</code> still reports the exact commit.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>All plugin commands other than <code>plugin:list</code> and <code>plugin:help</code> require sudo access and must be run directly from the Dokku server.</p>
 </div>
 <h3 id="checking-if-a-plugin-is-installed">Checking if a plugin is installed<a class="headerlink" href="#checking-if-a-plugin-is-installed" title="Permanent link">&para;</a></h3>
 <p>You can check if a plugin has been installed via the <code>plugin:installed</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>plugin:installed<span class="w"> </span>postgres
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>plugin:installed<span class="w"> </span>postgres
 </code></pre></div>
 <h3 id="installing-a-plugin">Installing a plugin<a class="headerlink" href="#installing-a-plugin" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
@@ -5326,44 +5353,44 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>-----&gt; Cloning plugin repo https://github.com/dokku/dokku-postgres.git to /var/lib/dokku/plugins/available/postgres
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Cloning into &#39;postgres&#39;...
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>remote: Counting objects: 646, done.
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>remote: Total 646 (delta 0), reused 0 (delta 0), pack-reused 646
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Receiving objects: 100% (646/646), 134.24 KiB | 0 bytes/s, done.
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Resolving deltas: 100% (406/406), done.
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Checking connectivity... done.
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>-----&gt; Plugin postgres enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-----&gt; Cloning plugin repo https://github.com/dokku/dokku-postgres.git to /var/lib/dokku/plugins/available/postgres
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Cloning into &#39;postgres&#39;...
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>remote: Counting objects: 646, done.
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>remote: Total 646 (delta 0), reused 0 (delta 0), pack-reused 646
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>Receiving objects: 100% (646/646), 134.24 KiB | 0 bytes/s, done.
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>Resolving deltas: 100% (406/406), done.
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Checking connectivity... done.
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>-----&gt; Plugin postgres enabled
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>For git-based plugin installation, a commit SHA-like object may be specified (tag/branch/commit sha) via the <code>--committish</code> argument and Dokku will attempt to install the specified commit object.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># where 2.0.0 is a potential git tag</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>--committish<span class="w"> </span><span class="m">2</span>.0.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># where 2.0.0 is a potential git tag</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/dokku-postgres.git<span class="w"> </span>--committish<span class="w"> </span><span class="m">2</span>.0.0
 </code></pre></div>
 <p>Plugin names are interpolated based on the repository name minus the <code>dokku-</code> prefix. If the plugin being installed has a name other than what matches the repository name - or another name is desired - the <code>--name</code> flag can be used to override this interpolation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin
 </code></pre></div>
 <p>The <code>--core</code> flag may also be indicated as the sole argument, though it is only for installation of core plugins, and thus not useful for end-user installations.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>--core
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>--core
 </code></pre></div>
 <p>If installing plugins in a Dockerfile, you will want to skip the <code>install</code> trigger. This will be run on container boot.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin<span class="w"> </span>--skip-install-trigger
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>plugin:install<span class="w"> </span>https://github.com/dokku/smoke-test-plugin.git<span class="w"> </span>--name<span class="w"> </span>smoke-test-plugin<span class="w"> </span>--skip-install-trigger
 </code></pre></div>
 <p>Finally, all flags may be omitted to trigger the <code>install</code> procedures for both core and third-party plugins:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>plugin:install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>plugin:install
 </code></pre></div>
 <h3 id="installing-plugin-dependencies">Installing plugin dependencies<a class="headerlink" href="#installing-plugin-dependencies" title="Permanent link">&para;</a></h3>
 <p>In some cases, plugins will have system-level dependencies. These are not automatically installed via <code>plugin:install</code>, and must be separately via the <code>plugin:install-dependencies</code> command. This will run through all the <code>dependencies</code> trigger for all plugins.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>plugin:install-dependencies
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>plugin:install-dependencies
 </code></pre></div>
 <p>This command may also target <em>just</em> core plugins via the <code>--core</code> flag. This is usually only useful for source-based installs of Dokku.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>plugin:install-dependencies<span class="w"> </span>--core
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>plugin:install-dependencies<span class="w"> </span>--core
 </code></pre></div>
 <h3 id="updating-a-plugin">Updating a plugin<a class="headerlink" href="#updating-a-plugin" title="Permanent link">&para;</a></h3>
 <p>An installed, third-party plugin can be updated can updated via the <code>plugin:update</code> command. This should be done after any upgrades of Dokku as there may be changes in the internal api that require an update of how the plugin interfaces with Dokku.</p>
@@ -5371,31 +5398,31 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Plugin (postgres) updated
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Plugin (postgres) updated
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>An optional commit SHA-like object may be specified.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span><span class="m">2</span>.0.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span><span class="m">2</span>.0.0
 </code></pre></div>
 <p>Any future invocation of <code>plugin:update</code> will respect the previously specified SHA-like object. To follow a particular branch again, specify that branch:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span>main
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>plugin:update<span class="w"> </span>postgres<span class="w"> </span>main
 </code></pre></div>
 <h3 id="uninstalling-a-plugin">Uninstalling a plugin<a class="headerlink" href="#uninstalling-a-plugin" title="Permanent link">&para;</a></h3>
 <p>Third party plugins can be uninstalled using the <code>plugin:uninstall</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>plugin:uninstall<span class="w"> </span>postgres
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>plugin:uninstall<span class="w"> </span>postgres
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>-----&gt; Plugin postgres uninstalled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>-----&gt; Plugin postgres uninstalled
 </code></pre></div>
 </div>
 </div>
@@ -5405,11 +5432,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>plugin:disable<span class="w"> </span>postgres
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>plugin:disable<span class="w"> </span>postgres
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>-----&gt; Plugin postgres disabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>-----&gt; Plugin postgres disabled
 </code></pre></div>
 </div>
 </div>
@@ -5419,18 +5446,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Shell</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>plugin:enable<span class="w"> </span>postgres
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>plugin:enable<span class="w"> </span>postgres
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>-----&gt; Plugin postgres enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>-----&gt; Plugin postgres enabled
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger<a class="headerlink" href="#triggering-a-plugin-trigger" title="Permanent link">&para;</a></h3>
 <p>The <code>plugin:trigger</code> can be used to call any internal plugin trigger. This may have unintended consequences, and thus should only be called for development or debugging purposes.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>plugin:trigger<span class="w"> </span>some-internal-trigger<span class="w"> </span>args-go-here
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>plugin:trigger<span class="w"> </span>some-internal-trigger<span class="w"> </span>args-go-here
 </code></pre></div>
 
 
