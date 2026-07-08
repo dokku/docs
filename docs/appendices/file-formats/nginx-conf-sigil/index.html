@@ -4707,6 +4707,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-nginx-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom nginx modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4999,6 +5016,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-nginx-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom nginx modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5050,17 +5084,43 @@
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
 <p>A custom <code>nginx.conf.sigil</code> is pre-validated at the start of every deploy, immediately after it is extracted from the source tree and before the build phase runs. Pre-validation renders the template via sigil with the same parameters used at deploy time, wraps the rendered config in a minimal <code>events</code>/<code>http</code> scaffold, and runs <code>nginx -t</code> against the result. The deploy is aborted if either the sigil render or the <code>nginx -t</code> check fails, so build work is not wasted on a syntactically invalid template. When no app listeners exist yet (typical for first deploys), pre-validation injects a placeholder <code>127.0.0.1:5000</code> listener for <code>DOKKU_APP_WEB_LISTENERS</code> so that the rendered upstream block has a static server entry and <code>nginx -t</code> does not bail out on "host not found in upstream".</p>
 <p>Pre-validation is skipped when the proxy type is not <code>nginx</code> or when <code>disable-custom-config</code> is set to <code>true</code> for the app.</p>
+<h3 id="custom-nginx-modules">Custom nginx modules<a class="headerlink" href="#custom-nginx-modules" title="Permanent link">&para;</a></h3>
+<p>Pre-validation runs <code>nginx -t</code> against a minimal wrapper config that does <em>not</em> include the top-level <code>load_module</code> directives from the global <code>/etc/nginx/nginx.conf</code>. A <code>nginx.conf.sigil</code> that uses a directive provided by a dynamically loaded module - such as <code>image_filter</code>, provided by the <a href="https://nginx.org/en/docs/http/ngx_http_image_filter_module.html">ngx_http_image_filter_module</a> - therefore fails pre-validation with an <code>unknown directive</code> error, even though <code>nginx -t</code> succeeds against the real server config where the module is loaded.</p>
+<p>The <code>load_module</code> directive cannot be added to the app's <code>nginx.conf.sigil</code> to work around this, as that file is included inside the <code>http { }</code> block while <code>load_module</code> is only valid in nginx's top-level main context.</p>
+<p>To make pre-validation aware of a module, override the wrapper template used for validation. The <a href="../../../development/plugin-triggers/#nginx-app-template-source"><code>nginx-app-template-source</code></a> trigger returns the path to the <code>sigil</code> template used to generate a given nginx configuration file, and its <code>validate-config</code> template type controls the pre-validation wrapper. Create a <a href="../../../development/plugin-creation/">custom plugin</a> that implements the trigger and returns a <code>validate.conf.sigil</code> that adds the required <code>load_module</code> line at the top of the wrapper.</p>
+<p>The trigger file (named <code>nginx-app-template-source</code> and marked executable):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">TEMPLATE_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TEMPLATE_TYPE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;validate-config&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/validate.conf.sigil&quot;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">fi</span>
+</code></pre></div>
+<p>The custom <code>validate.conf.sigil</code>, which is the <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/validate.conf.sigil">default wrapper</a> with the required <code>load_module</code> line added at the top. Use the same <code>load_module</code> line that the host's global <code>/etc/nginx/nginx.conf</code> uses:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>load_module modules/ngx_http_image_filter_module.so;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>events { worker_connections 768; }
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>http {
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  access_log off;
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  error_log /dev/null;
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  include {{ $.NGINX_CONF }};
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>}
+</code></pre></div>
+<p>The same override also governs the standalone <code>dokku nginx:validate-config</code> command, which renders the <code>validate-config</code> template as well.</p>
 <h2 id="http2">HTTP/2<a class="headerlink" href="#http2" title="Permanent link">&para;</a></h2>
 <p>nginx 1.25.1 deprecated the <code>http2</code> parameter on the <code>listen</code> directive in favor of a standalone <code>http2 on;</code> directive. Custom <code>nginx.conf.sigil</code> templates that hardcode <code>listen ... ssl http2;</code> will produce <code>nginx: [warn] the "listen ... http2" directive is deprecated</code> warnings when run against nginx 1.25.1 or newer.</p>
 <p>Dokku exposes the <code>HTTP2_DIRECTIVE_SUPPORTED</code> template variable, set to <code>"true"</code> when the host nginx is 1.25.1 or newer, so a single template can render the correct syntax against either version. The default template uses this pattern:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{{ if eq $.HTTP2_DIRECTIVE_SUPPORTED &quot;true&quot; }}
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>listen      [{{ $.NGINX_BIND_ADDRESS_IP6 }}]:{{ $listen_port }} ssl;
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }} ssl;
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>http2 on;
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>{{ else }}
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>listen      [{{ $.NGINX_BIND_ADDRESS_IP6 }}]:{{ $listen_port }} ssl http2;
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }} ssl http2;
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>{{ end }}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{{ if eq $.HTTP2_DIRECTIVE_SUPPORTED &quot;true&quot; }}
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>listen      [{{ $.NGINX_BIND_ADDRESS_IP6 }}]:{{ $listen_port }} ssl;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }} ssl;
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>http2 on;
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>{{ else }}
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>listen      [{{ $.NGINX_BIND_ADDRESS_IP6 }}]:{{ $listen_port }} ssl http2;
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }} ssl http2;
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>{{ end }}
 </code></pre></div>
 <p>Dokku logs a deprecation warning during deploys when a custom template still uses the <code>listen ... http2</code> form, so the offending template can be located via the deploy output.</p>
 
