@@ -4905,6 +4905,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#replacing-the-entire-buildpack-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the entire buildpack list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removing-a-buildpack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5036,6 +5047,7 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>buildpacks:remove &lt;app&gt; &lt;buildpack&gt;                     # Remove a buildpack set on the app
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>buildpacks:report [&lt;app&gt;] [&lt;flag&gt;]                      # Displays a buildpack report for one or more apps
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>buildpacks:set [--index 1] &lt;app&gt; &lt;buildpack&gt;            # Set new app buildpack at a given position defaulting to the first buildpack if no index is specified
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>buildpacks:set --replace &lt;app&gt; &lt;buildpack&gt; [&lt;buildpack&gt; ...] # Replace the entire ordered buildpack list with the specified buildpacks
 </code></pre></div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="listing-buildpacks-in-use">Listing Buildpacks in Use<a class="headerlink" href="#listing-buildpacks-in-use" title="Permanent link">&para;</a></h3>
@@ -5093,16 +5105,28 @@
 <p>If the index specified is larger than the number of buildpacks currently configured, the buildpack will be appended to the end of the list.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>--index<span class="w"> </span><span class="m">99</span><span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
 </code></pre></div>
+<h3 id="replacing-the-entire-buildpack-list">Replacing the entire buildpack list<a class="headerlink" href="#replacing-the-entire-buildpack-list" title="Permanent link">&para;</a></h3>
+<p>To replace the complete ordered buildpack list in a single command, use the <code>--replace</code> flag. This is useful for tooling that needs to apply a full buildpack list atomically instead of running <code>buildpacks:clear</code> followed by multiple <code>buildpacks:add</code> calls.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs.git
+</code></pre></div>
+<p>The buildpacks are executed in the order they are specified, and the previous list is discarded. If any specified buildpack is invalid, the existing list is left unchanged.</p>
+<p>A single buildpack may also be specified to replace the entire list with just that buildpack:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>--replace</code> flag cannot be combined with the <code>--index</code> flag. To remove all buildpacks, use the <code>buildpacks:clear</code> command instead of <code>--replace</code> with no buildpacks.</p>
+</div>
 <h3 id="removing-a-buildpack">Removing a buildpack<a class="headerlink" href="#removing-a-buildpack" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>At least one of a buildpack or index must be specified</p>
 </div>
 <p>A single buildpack can be removed by name via the <code>buildpacks:remove</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>buildpacks:remove<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>buildpacks:remove<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-ruby.git
 </code></pre></div>
 <p>Buildpacks can also be removed by index via the <code>--index</code> flag. This flag is specified starting at a 1-index value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>buildpacks:remove<span class="w"> </span>node-js-app<span class="w"> </span>--index<span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:remove<span class="w"> </span>node-js-app<span class="w"> </span>--index<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <h3 id="clearing-all-buildpacks">Clearing all buildpacks<a class="headerlink" href="#clearing-all-buildpacks" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -5110,7 +5134,7 @@
 <p>This does not affect automatically detected buildpacks, nor does it impact any specified <code>BUILDPACK_URL</code> environment variable.</p>
 </div>
 <p>The <code>buildpacks:clear</code> command can be used to clear all configured buildpacks for a specified app.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>buildpacks:clear<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>buildpacks:clear<span class="w"> </span>node-js-app
 </code></pre></div>
 <h3 id="using-a-specific-buildpack-version">Using a specific buildpack version<a class="headerlink" href="#using-a-specific-buildpack-version" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -5118,22 +5142,22 @@
 <p>Always remember to pin your buildpack versions when using the multi-buildpacks method, or you may find deploys changing your deployed environment.</p>
 </div>
 <p>By default, builders will pin their vendored buildpacks, resulting in a consistent build result for your application. There may be occasions where the pinned version results in a broken deploy, or does not have a particular feature that is required to build your project. To use a more recent version of a given buildpack, the buildpack may be specified <em>without</em> a Git commit SHA like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># using the latest nodejs buildpack</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># using the latest nodejs buildpack</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs
 </code></pre></div>
 <p>This will use the latest commit on the <code>master</code> branch of the specified buildpack. To pin to a newer version of a buildpack, a sha may also be specified by using the form <code>REPOSITORY_URL#COMMIT_SHA</code>, where <code>COMMIT_SHA</code> is any tree-ish git object - usually a git tag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># using v87 of the nodejs buildpack</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs#v87
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># using v87 of the nodejs buildpack</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>buildpacks:set<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/heroku-buildpack-nodejs#v87
 </code></pre></div>
 <h3 id="specifying-buildpacks-via-appjson">Specifying buildpacks via app.json<a class="headerlink" href="#specifying-buildpacks-via-appjson" title="Permanent link">&para;</a></h3>
 <p>Buildpacks can also be specified in the <code>app.json</code> file at the root of your repository:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nt">&quot;buildpacks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;heroku/python&quot;</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span><span class="p">]</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">&quot;buildpacks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;heroku/python&quot;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="p">}</span>
 </code></pre></div>
 <p>Buildpacks configured via <code>buildpacks:add</code> or <code>buildpacks:set</code> commands take precedence over those specified in <code>app.json</code>. If no buildpacks are configured via commands and <code>app.json</code> contains a <code>buildpacks</code> entry, those buildpacks will be used.</p>
 <p>Shorthand buildpack references (e.g., <code>heroku/python</code>) are expanded to full GitHub URLs automatically.</p>
@@ -5142,25 +5166,25 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>buildpacks:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>buildpacks:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>=====&gt; node-js-app buildpacks information
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>       Buildpacks computed stack:  gliderlabs/herokuish:v0.7.0-22
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>       Buildpacks list:            https://github.com/heroku/heroku-buildpack-nodejs.git
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>       Buildpacks stack:           gliderlabs/herokuish:v0.7.0-20
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>=====&gt; python-sample buildpacks information
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-24
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>       Buildpacks list:            https://github.com/heroku/heroku-buildpack-nodejs.git,https://github.com/heroku/heroku-buildpack-python.git
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>       Buildpacks stack:
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>=====&gt; ruby-sample buildpacks information
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-24
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>       Buildpacks list:
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>       Buildpacks stack:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>=====&gt; node-js-app buildpacks information
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>       Buildpacks computed stack:  gliderlabs/herokuish:v0.7.0-22
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>       Buildpacks list:            https://github.com/heroku/heroku-buildpack-nodejs.git
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>       Buildpacks stack:           gliderlabs/herokuish:v0.7.0-20
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>=====&gt; python-sample buildpacks information
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-24
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>       Buildpacks list:            https://github.com/heroku/heroku-buildpack-nodejs.git,https://github.com/heroku/heroku-buildpack-python.git
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>       Buildpacks stack:
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>=====&gt; ruby-sample buildpacks information
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>       Buildpacks computed stack:  gliderlabs/herokuish:latest-24
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>       Buildpacks global stack:    gliderlabs/herokuish:latest-24
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>       Buildpacks list:
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>       Buildpacks stack:
 </code></pre></div>
 </div>
 </div>
@@ -5169,18 +5193,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>=====&gt; node-js-app buildpacks information
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>       Buildpacks list:               https://github.com/heroku/heroku-buildpack-nodejs.git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=====&gt; node-js-app buildpacks information
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>       Buildpacks list:               https://github.com/heroku/heroku-buildpack-nodejs.git
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app<span class="w"> </span>--buildpacks-list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>buildpacks:report<span class="w"> </span>node-js-app<span class="w"> </span>--buildpacks-list
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
