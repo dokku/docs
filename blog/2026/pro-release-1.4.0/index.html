@@ -20,6 +20,28 @@
   IN THE SOFTWARE.
 -->
 
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -28,15 +50,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Dokku Pro 1.4.0 turns last release's internal rewrite into a wave of user-facing features, headlined by a completely redesigned interface, in-browser process management, streaming logs, bulk environment variables, and a much larger API.
+">
       
       
-        <link rel="canonical" href="https://dokku.com/blog/2023/dokku-0.31.0/">
+      
+        <link rel="canonical" href="https://dokku.com/blog/2026/pro-release-1.4.0/">
       
       
-        <link rel="prev" href="../../2024/dokku-0.33.0/">
+        <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../dokku-0.30.0/">
+        <link rel="next" href="../dokku-0.38.0/">
       
       
       <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
@@ -44,7 +69,7 @@
     
     
       
-        <title>Dokku Release 0.31.0 - Dokku Blog</title>
+        <title>Pro release 1.4.0 - Dokku Blog</title>
       
     
     
@@ -113,7 +138,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deprecations" class="md-skip">
+        <a href="#major-changes" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +187,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dokku Release 0.31.0
+              Pro release 1.4.0
             
           </span>
         </div>
@@ -637,6 +662,8 @@
                 
   
   
+    
+  
   
   
     
@@ -657,11 +684,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
@@ -675,7 +702,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             2026
@@ -686,10 +713,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2026/pro-release-1.4.0/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pro release 1.4.0
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -698,6 +743,192 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#major-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Major Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Major Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requires-dokku-03822" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requires Dokku 0.38.22+
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-required-service-plugin-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum required service plugin versions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-completely-redesigned-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      A completely redesigned interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-management-in-the-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process management in the browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bulk-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bulk environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-auth-and-maintenance-mode-in-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Auth and Maintenance mode in the UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-keys-and-passwords-in-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH keys and passwords in the UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rename-apps-custom-push-urls-and-login-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rename apps, custom push URLs, and login messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-creation-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service creation options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-much-larger-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      A much larger API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-webhooks-and-gitsync-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub webhooks and git:sync deploys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse-proxy-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse proxy authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-and-restore-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and restore guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minor-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minor Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokku-pro-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dokku Pro Pricing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coming up next?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -710,7 +941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2026/dokku-0.38.0/" class="md-nav__link">
+      <a href="../dokku-0.38.0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -888,8 +1119,6 @@
                 
   
   
-    
-  
   
   
     
@@ -910,11 +1139,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
@@ -928,7 +1157,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             2023
@@ -939,28 +1168,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Dokku Release 0.31.0
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2023/dokku-0.31.0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,261 +1180,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deprecations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deprecations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deprecations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arm-not-arm64-support-is-deprecated" class="md-nav__link">
-    <span class="md-ellipsis">
-      ARM (not ARM64!) support is deprecated
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deprecation-of-the-checks-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deprecation of the CHECKS file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proxyports-commands-are-deprecated" class="md-nav__link">
-    <span class="md-ellipsis">
-      proxy:ports-* commands are deprecated
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changes-in-031x" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changes in 0.31.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Changes in 0.31.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#heroku-22-is-the-new-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      heroku-22 is the new default
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#herokuish-builds-now-use-volumes-for-cache" class="md-nav__link">
-    <span class="md-ellipsis">
-      Herokuish builds now use volumes for cache
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#new-in-030x" class="md-nav__link">
-    <span class="md-ellipsis">
-      New in 0.30.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="New in 0.30.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#an-official-openresty-proxy-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      An official openresty proxy implementation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#improved-healthchecking-support-via-appjson" class="md-nav__link">
-    <span class="md-ellipsis">
-      Improved healthchecking support via app.json
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dokku-cron-improvements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dokku Cron Improvements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#environment-variables-are-available-for-use-with-dockerfile-based-builds" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment variables are available for use with Dockerfile-based builds
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#multi-network-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multi-network apps
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#more-robust-port-handling-via-the-new-ports-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      More robust port handling via the new ports plugin
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bug Fixes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bug Fixes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-restarts-do-not-start-all-proxy-implementations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server restarts do not start all proxy implementations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-source-image-git-property-is-now-cleared-when-changing-deployment-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      The source-image git property is now cleared when changing deployment methods
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traefik-integration-now-runs-correctly-when-running-on-arm64" class="md-nav__link">
-    <span class="md-ellipsis">
-      Traefik integration now runs correctly when running on ARM64
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrading" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrading
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#future-plans" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Plans
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Future Plans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#short-term-project-re-prioritization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Short-term project re-prioritization
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dokku-pro" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dokku Pro
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-next-minor-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Next Minor Release
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1236,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dokku-0.30.0/" class="md-nav__link">
+      <a href="../../2023/dokku-0.30.0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2090,37 +2046,136 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#deprecations" class="md-nav__link">
+  <a href="#major-changes" class="md-nav__link">
     <span class="md-ellipsis">
-      Deprecations
+      Major Changes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deprecations">
+    <nav class="md-nav" aria-label="Major Changes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#arm-not-arm64-support-is-deprecated" class="md-nav__link">
+  <a href="#requires-dokku-03822" class="md-nav__link">
     <span class="md-ellipsis">
-      ARM (not ARM64!) support is deprecated
+      Requires Dokku 0.38.22+
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deprecation-of-the-checks-file" class="md-nav__link">
+  <a href="#minimum-required-service-plugin-versions" class="md-nav__link">
     <span class="md-ellipsis">
-      Deprecation of the CHECKS file
+      Minimum required service plugin versions
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#proxyports-commands-are-deprecated" class="md-nav__link">
+  <a href="#a-completely-redesigned-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      proxy:ports-* commands are deprecated
+      A completely redesigned interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-management-in-the-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process management in the browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bulk-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bulk environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-auth-and-maintenance-mode-in-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Auth and Maintenance mode in the UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-keys-and-passwords-in-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH keys and passwords in the UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rename-apps-custom-push-urls-and-login-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rename apps, custom push URLs, and login messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-creation-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service creation options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-much-larger-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      A much larger API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-webhooks-and-gitsync-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub webhooks and git:sync deploys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse-proxy-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse proxy authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-and-restore-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and restore guide
     </span>
   </a>
   
@@ -2132,197 +2187,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#changes-in-031x" class="md-nav__link">
+  <a href="#minor-changes" class="md-nav__link">
     <span class="md-ellipsis">
-      Changes in 0.31.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Changes in 0.31.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#heroku-22-is-the-new-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      heroku-22 is the new default
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#herokuish-builds-now-use-volumes-for-cache" class="md-nav__link">
-    <span class="md-ellipsis">
-      Herokuish builds now use volumes for cache
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#new-in-030x" class="md-nav__link">
-    <span class="md-ellipsis">
-      New in 0.30.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="New in 0.30.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#an-official-openresty-proxy-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      An official openresty proxy implementation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#improved-healthchecking-support-via-appjson" class="md-nav__link">
-    <span class="md-ellipsis">
-      Improved healthchecking support via app.json
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dokku-cron-improvements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dokku Cron Improvements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#environment-variables-are-available-for-use-with-dockerfile-based-builds" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment variables are available for use with Dockerfile-based builds
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#multi-network-apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multi-network apps
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#more-robust-port-handling-via-the-new-ports-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      More robust port handling via the new ports plugin
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bug Fixes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bug Fixes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-restarts-do-not-start-all-proxy-implementations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server restarts do not start all proxy implementations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-source-image-git-property-is-now-cleared-when-changing-deployment-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      The source-image git property is now cleared when changing deployment methods
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traefik-integration-now-runs-correctly-when-running-on-arm64" class="md-nav__link">
-    <span class="md-ellipsis">
-      Traefik integration now runs correctly when running on ARM64
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrading" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrading
+      Minor Changes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#future-plans" class="md-nav__link">
+  <a href="#dokku-pro-pricing" class="md-nav__link">
     <span class="md-ellipsis">
-      Future Plans
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Future Plans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#short-term-project-re-prioritization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Short-term project re-prioritization
+      Dokku Pro Pricing
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#dokku-pro" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
     <span class="md-ellipsis">
-      Dokku Pro
+      Coming up next?
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-next-minor-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Next Minor Release
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2338,152 +2225,327 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
   
   
 
 
-  <h1>Dokku Release 0.31.0</h1>
+  <h1>Pro release 1.4.0</h1>
 
-<p>The second release of the year is here! Here is a summary of what is new in <a href="https://github.com/dokku/dokku/releases/tag/v0.31.0">0.31.x</a>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
-</div>
-<h2 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h2>
-<p>To start, there are a few features that are now deprecated in Dokku.</p>
-<h3 id="arm-not-arm64-support-is-deprecated">ARM (not ARM64!) support is deprecated<a class="headerlink" href="#arm-not-arm64-support-is-deprecated" title="Permanent link">&para;</a></h3>
-<p>Our build process around ARM is fairly flaky - breaking CI more often than not - and the resulting docker image/debian packages are not actually tested. As a result, we're going to remove support for the platform in the next release, and recommend users upgrade their operating systems to ARM64 where possible.</p>
-<h3 id="deprecation-of-the-checks-file">Deprecation of the CHECKS file<a class="headerlink" href="#deprecation-of-the-checks-file" title="Permanent link">&para;</a></h3>
-<p>This file is now deprecated in favor of the new healthchecks functionality in <code>app.json</code> - more on that later - and users should begin migrating today. The <a href="https://github.com/dokku/docker-container-healthchecker">docker-container-healthchecker</a> tool can be used to convert a CHECKS file into the correct format for <code>app.json</code> usage. We expect to remove <code>CHECKS</code> support in a future release (likely 0.32.x).</p>
-<h3 id="proxyports-commands-are-deprecated"><code>proxy:ports-*</code> commands are deprecated<a class="headerlink" href="#proxyports-commands-are-deprecated" title="Permanent link">&para;</a></h3>
-<p>The <code>proxy:ports-*</code> commands are deprecated in favor of the new <code>ports</code> plugin - more on that later - users should adjust their workflows appropriately. The deprecation is occuring it was quite common for users to set port mappings incorrectly via <code>proxy:set</code>, thus breaking routing. Rather than keep the old commands around, we're going to nix it completely.</p>
-<h2 id="changes-in-031x">Changes in 0.31.x<a class="headerlink" href="#changes-in-031x" title="Permanent link">&para;</a></h2>
-<h3 id="heroku-22-is-the-new-default">heroku-22 is the new default<a class="headerlink" href="#heroku-22-is-the-new-default" title="Permanent link">&para;</a></h3>
-<p>Dokku now tracks Ubuntu 22.04 for it's default builders. What does this mean?</p>
-<ul>
-<li>Herokuish builds are now based on <code>heroku-22</code>. Upgrading herokuish will <em>only</em> pull that image now, vs one for each supported herokuish base image, thus reducing disk utilization.</li>
-<li>Cloud Native Buildpack builds now use the <code>heroku/builder:22</code> base builder. This is heroku's native CNB builder, and does not provide any shims for old buildpacks.</li>
-</ul>
-<p>Users can still switch their base images via the command appropriate for their builder :)</p>
-<h3 id="herokuish-builds-now-use-volumes-for-cache">Herokuish builds now use volumes for cache<a class="headerlink" href="#herokuish-builds-now-use-volumes-for-cache" title="Permanent link">&para;</a></h3>
-<p>Previously, Herokuish builds would mount a directory on disk for build-time file caching. This worked mostly fine, but was an issue for a few reasons:</p>
-<ul>
-<li>The build cache was stored in the app's git directory, mucking up the usage of that folder. One of the goals for a 1.0 release is to remove anything that doesn't belong in that folder so we can have a better backup strategy.</li>
-<li>Folder permissions for the build cache effectively broke deploys when SELinux is enabled.</li>
-<li>Build cache could not be mounted properly in remote development environments such as Github Codespaces.</li>
-</ul>
-<p>Dokku now uses a docker volume for herokuish build cache - similar to how Cloud Native Buildpacks treat cache - which greatly simplifies cache management.</p>
-<h2 id="new-in-030x">New in 0.30.x<a class="headerlink" href="#new-in-030x" title="Permanent link">&para;</a></h2>
-<h4 id="an-official-openresty-proxy-implementation">An official openresty proxy implementation<a class="headerlink" href="#an-official-openresty-proxy-implementation" title="Permanent link">&para;</a></h4>
-<p>This plugin uses a docker-compose based OpenResty installation in conjunction with injected container labels to route requests. It supports all properties supported by the nginx plugin, and includes built-in Letsencrypt support. Over time, we intend to make further improvements to this plugin and place the nginx plugin in a general maintenance mode. Users are encouraged to try out the OpenResty plugin to see if it meets their needs.</p>
-<p>Big thanks to <a href="https://orcascan.com/">OrcaScan</a> for sponsoring the work on <a href="https://github.com/dokku/openresty-docker-proxy">OpenResty</a>!</p>
-<p>Checkout the official <a href="https://dokku.com/docs/networking/proxies/openresty/">openresty integration documentation here</a>.</p>
-<h3 id="improved-healthchecking-support-via-appjson">Improved healthchecking support via <code>app.json</code><a class="headerlink" href="#improved-healthchecking-support-via-appjson" title="Permanent link">&para;</a></h3>
-<p>The pre-existing healthcheck support in Dokku was fairly limited:</p>
-<ul>
-<li>Only web processes could be healthchecked</li>
-<li>Only http checks were supported (via curl)</li>
-<li>Configuring default uptime checks could only be done for an entire app, and not on a per-process basis</li>
-<li>Customizations to the http checks (such as extra headers) were impossible</li>
-</ul>
-<p>All of these - and more - are solved by the new <code>healthchecks</code> support in the <code>app.json</code> file. Users can now specify one or more customized uptime checks, arbitrary command checks, as well as http checks (with more functionality!) for any process type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;healthchecks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;startup&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;web check&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Checking if the app responds to the /health/ready endpoint&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;/health/ready&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="nt">&quot;attempts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">],</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">&quot;worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;startup&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;uptime check&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Checking if the container is up for at least 10 seconds&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nt">&quot;uptime&quot;</span><span class="p">:</span><span class="w">      </span><span class="mi">10</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="p">},</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;startup&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;command check&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Checking if a command in the container runs as expected&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w">     </span><span class="mi">5</span><span class="p">,</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="nt">&quot;attempts&quot;</span><span class="p">:</span><span class="w">    </span><span class="mi">5</span><span class="p">,</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">            </span><span class="nt">&quot;wait&quot;</span><span class="p">:</span><span class="w">        </span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w">     </span><span class="p">[</span><span class="s2">&quot;/app/script.sh&quot;</span><span class="p">]</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="p">]</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">}</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Support for individual healthcheck properties is provided by individual schedulers, and not guaranteed to work the same across all schedulers. In particular, only the <code>docker-local</code> scheduler supports content checks for http requests.</p>
-</div>
-<p>Dokku will convert all <code>CHECKS</code> files into the <code>app.json</code> format until support for that file format is removed, and users can use the <a href="https://github.com/dokku/docker-container-healthchecker">docker-container-healthchecker</a> tool to migrate to the new format.</p>
-<p>While we only support <code>startup</code> checks - checks that happen during container start at deploy time - in the future, Dokku will also support readiness and liveness checks in the future for it's <code>docker-local</code> scheduler.</p>
-<p>See the <a href="https://dokku.com/docs/deployment/zero-downtime-deploys/#customizing-checks">zero downtime deploy checks documentation</a> for further details.</p>
-<h3 id="dokku-cron-improvements">Dokku Cron Improvements<a class="headerlink" href="#dokku-cron-improvements" title="Permanent link">&para;</a></h3>
-<p>For the docker-local scheduler, the crontab generation has been sped up tremendously. Deploys on installations with many apps should be much quicker as cron tasks for each app are generated in parallel vs serially as had been the case.</p>
-<p>The <code>cron:list</code> command now has json output via the <code>--format json</code> option. This can help those integrating Dokku with other systems - such as Ansible modules.</p>
-<p>Finally, cron tasks can now be executed on the fly via the <code>cron:run</code> command. This takes a cron-id - retrievable from the <code>cron:list</code> command - and happens inline by default. They can also be invoked in a detached manner, allowing cron tasks to be run by dispatch.</p>
-<p>See the <a href="https://dokku.com/docs/processes/scheduled-cron-tasks/">cron documentation</a> for further details.</p>
-<h3 id="environment-variables-are-available-for-use-with-dockerfile-based-builds">Environment variables are available for use with Dockerfile-based builds<a class="headerlink" href="#environment-variables-are-available-for-use-with-dockerfile-based-builds" title="Permanent link">&para;</a></h3>
-<p>Previously, a user wanting to use an environment variable during a build would have to specify the environment variable twice - once for run-time via <code>config:set</code> and once for build-time via <code>docker-options:add</code>. This was error prone as it was easy to fat finger a value, allowed for configuration drift, and made it more annoying to paste the output of <code>dokku report</code> for an app.</p>
-<p>Dokku now automatically exports all environment variables during Dockerfile build. Users can simply specify <code>--build-arg SOME_ENV_VAR</code> docker option to pull in the desired environment variable.</p>
-<p>See the <a href="https://dokku.com/docs/deployment/builders/dockerfiles/">dockerfile builder documentation</a> for further details.</p>
-<h3 id="multi-network-apps">Multi-network apps<a class="headerlink" href="#multi-network-apps" title="Permanent link">&para;</a></h3>
-<p>Dokku has long had support for attaching apps to networks at different phases of an app lifecycle, but could only ever use a single network for each phase. This works well enough for simple architectures, but folks wanting more isolation between applications and datastores might want to place each in a different network and then join them as desired for inter-service communication.</p>
-<p>Dokku now supports specifying multiple, comma-separated networks at each phase. Users can enjoy network isolation support and more easily deploy advanced topologies with the <code>docker-local</code> scheduler, allowing them to mimic what might be the case in production.</p>
-<p>See the <a href="https://dokku.com/docs/networking/network/">network documentation</a> for further details.</p>
-<h3 id="more-robust-port-handling-via-the-new-ports-plugin">More robust port handling via the new <code>ports</code> plugin<a class="headerlink" href="#more-robust-port-handling-via-the-new-ports-plugin" title="Permanent link">&para;</a></h3>
-<p>Dokku's port management has long been confusing:</p>
-<ul>
-<li>Several different environment variables controlling how ports are managed</li>
-<li>Port mappings could be overwritten by Dokku on deploy</li>
-<li>Responsibility for port handling was held by several different plugins</li>
-<li>The commands were hidden under the proxy plugin</li>
-</ul>
-<p>Dokku 0.31.x introduces a new <code>ports</code> plugin, reducing a ton of complexity around how port mappings are managed. The new plugin centralizes a lot of the port management code, resulting in a removal of a few port-related network triggers, some environment variables, and more.</p>
-<p>Additionally, Dokku now has "detected" port mappings that are fetched on a per-build basis. Users can override the port mapping as necessary, and Dokku will respect any overrides - or allow you to go back to the detected defaults! This makes it easy to ignore ports that are <code>EXPOSEd</code> in a Dockerfile or even use an alternate mapping for buildpack deploys.</p>
-<p>The new ports plugin fixes several long-standing issues in port management in Dokku, and hopefully simplifies port interactions for all of our users.</p>
-<p>See the <a href="https://dokku.com/docs/networking/port-management/">port management documentation</a> for further details.</p>
-<h2 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h2>
-<h3 id="server-restarts-do-not-start-all-proxy-implementations">Server restarts do not start all proxy implementations<a class="headerlink" href="#server-restarts-do-not-start-all-proxy-implementations" title="Permanent link">&para;</a></h3>
-<p>Dokku previously started a container for each proxy implementation, even when not in use. These are now properly tracked, and users will not see Dokku start the containers unless the user has explicitely run the <code>:start</code> subcommand.</p>
-<h3 id="the-source-image-git-property-is-now-cleared-when-changing-deployment-methods">The <code>source-image</code> git property is now cleared when changing deployment methods<a class="headerlink" href="#the-source-image-git-property-is-now-cleared-when-changing-deployment-methods" title="Permanent link">&para;</a></h3>
-<p>Previously, this property was left alone, resulting in Dokku not respecting the new source for extracting files for use in the deploy (such as <code>app.json</code>). Dokku will now properly handle this when the deployment method changes (such as when going from image-based to git push), greatly simplifying the process for our users who are experimenting with Dokku.</p>
-<h3 id="traefik-integration-now-runs-correctly-when-running-on-arm64">Traefik integration now runs correctly when running on ARM64<a class="headerlink" href="#traefik-integration-now-runs-correctly-when-running-on-arm64" title="Permanent link">&para;</a></h3>
-<p>Previously, users on ARM64 machines would not be able to enable traefik's letsencrypt integration due to a docker bug in file mounting. This is now fixed across all platforms - simply run <code>traefik:stop</code> and <code>traefik:start</code>.</p>
-<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
-<p>As with every upgrade, please see the <a href="https://dokku.com/docs/appendices/0.31.0-migration-guide/">0.31.0 migration guide</a> for more information on upgrading to 0.31.0.</p>
-<h2 id="future-plans">Future Plans<a class="headerlink" href="#future-plans" title="Permanent link">&para;</a></h2>
-<h3 id="short-term-project-re-prioritization">Short-term project re-prioritization<a class="headerlink" href="#short-term-project-re-prioritization" title="Permanent link">&para;</a></h3>
-<p>With the release of Dokku 0.31.0, we've fixed a number of long-standing issues while also implementing a ton of great new features. While development isn't stopping, now is the time to refocus the project a bit for a few reasons:</p>
-<ul>
-<li>Dokku Pro - which I myself use for managing my own servers - hasn't had a release in quite some time, and there are a number of features built in Dokku that can now be better exposed in Dokku Pro.</li>
-<li>There are a number of open issues in official plugins that have thus been ignored. This has been an annoyance for more than a few users, and greatly diminishes the quality of the overall project.</li>
-<li>Dokku now has a ton of features but the Kubernetes and Nomad plugins implement but a fraction of them - missing are cron support, better healthchecks, and much more.</li>
-<li>Issues blocking a 1.0 release haven't decreased drastically over the past few years. Dokku itself is rock-solid, but a 1.0 label will ease anxieties for users upgrading Dokku.</li>
-</ul>
-<p>With all of the above in mind, the next few months will be spent on enhancing Dokku Pro, implementing long-desired functionality in the official plugins, burning through 1.0 blockers, and bringing the Kubernetes and Nomad scheduler plugins to parity with the built-in docker-local scheduler.</p>
-<p>Is Dokku going away? No. Development will continue unabated, just in other parts of the project. Other than Dokku Pro, no features will be placed behind any paywall, nor will features be removed from the project for any reason. Users can continue to know that Dokku will stay open source, providing a great base for busy developers to get their projects deployed so they can concentrate on building great products.</p>
-<p>We'll still be making releases over the coming months, albeit smaller ones that are more manageable in size. Hopefully the next Dokku release comes out in a month, and not 6 months!</p>
-<h3 id="dokku-pro">Dokku Pro<a class="headerlink" href="#dokku-pro" title="Permanent link">&para;</a></h3>
-<p>Dokku Pro is a commercial offering that provides a familiar Web UI for all common tasks performed by developers. End users can expect an interface that provides various complex cli commands in an intuitive, app-centric manner, quickly speeding up tasks that might otherwise be difficult for new and old users to perform. Additionally, it provides a way to perform these tasks remotely via a json api, enabling easier, audited remote management of servers. Finally, Dokku Pro provides an alternative, https-based method for deploying code which can be used in environments that lockdown ssh access to servers.</p>
-<p>Interested in purchasing <a href="https://pro.dokku.com/">Dokku Pro</a>? Dokku Pro is currently provided under early bird pricing (with the price going up as we continue to release new versions). Server licenses are sold in perpetuity, so lock in lower pricing today!</p>
-<p><a data-dpd-type="button" data-text="PURCHASE NOW" data-variant="price-right" data-button-size="dpd-large" data-bg-color="469d3d" data-bg-color-hover="5cc052" data-text-color="ffffff" data-pr-bg-color="ffffff" data-pr-color="000000" data-lightbox="1" href="https://dokku.dpdcart.com/cart/add?product_id=217344&amp;method_id=236878">Purchase Now</a><script src="https://dokku.dpdcart.com/dpd.js"></script></p>
-<h3 id="the-next-minor-release">The Next Minor Release<a class="headerlink" href="#the-next-minor-release" title="Permanent link">&para;</a></h3>
-<p>Our next release will continue on the <a href="https://github.com/dokku/dokku/milestone/16">7 outstanding 1.0 issues</a>. We encourage folks to take a peak at them and help investigate bugs, come up with work plans, or contribute PRs where possible to help bring us over the finish line.</p>
-<p>As always, please post issues with bugs or functionality you think Dokku might benefit from. As well, feel free to hop into <a href="https://github.com/dokku/dokku/discussions">Github Discussions</a> or <a href="https://slack.dokku.com/">Slack channel</a> if you have questions, comments, or concerns.</p>
+<p><strong>The 1.4.0 release turns the internal rewrite from 1.3.0 into a wave of
+user-facing features, headlined by a completely redesigned interface.</strong></p>
+<p><a class="md-button" href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878">Get your copy today</a></p>
 <hr />
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you're using Dokku - especially for commercial purposes - consider donating to project development via <a href="https://github.com/sponsors/dokku">Github Sponsors</a>, <a href="https://opencollective.com/dokku">OpenCollective</a>, or <a href="https://www.patreon.com/dokku">Patreon</a>. Funds go to general development, support, and infrastructure costs.</p>
+<p>Dokku Pro 1.3.0 was largely an internal affair. We rewrote the Web UI from
+scratch and reworked much of the product's internals so that adding new
+functionality would be far less painful. This release is where that work pays
+off.</p>
+<p>Where 1.3.0 introduced user and team management, 1.4.0 is almost entirely about
+things you can see and use. It closes out a long list of requests that have been
+sitting in the backlog for years - in-browser process management, streaming
+access and error logs, bulk environment variable editing, deploying from a
+Docker image, and a much larger API - all wrapped in a completely new interface.</p>
+<p>Here are the highlights from Dokku Pro 1.4.0.</p>
+<h2 id="major-changes">Major Changes<a class="headerlink" href="#major-changes" title="Permanent link">&para;</a></h2>
+<h3 id="requires-dokku-03822">Requires Dokku 0.38.22+<a class="headerlink" href="#requires-dokku-03822" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Dokku Pro 1.2+ will refuse to start if the minimum Dokku version is not installed.</p>
 </div>
+<p>The minimum required Dokku version has moved from 0.35.15 to 0.38.22. As with
+previous releases, the bump lets Dokku Pro rely on newer functionality in Dokku
+itself, and there have been a significant number of improvements to Dokku since
+the previous minimum. Users are encouraged to upgrade to the latest version of
+Dokku prior to upgrading Dokku Pro.</p>
+<p>To update, run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># update the `dokku-update` package first</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dokku-update
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
+</code></pre></div>
+<h3 id="minimum-required-service-plugin-versions">Minimum required service plugin versions<a class="headerlink" href="#minimum-required-service-plugin-versions" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Dokku Pro 1.2+ will refuse to start if an installed plugin is not at the
+minimum supported version.</p>
+</div>
+<p>As a reminder, it is also recommended to update all service plugins to ensure
+services are properly listed in the API and UI, and to keep deferred app rebuilds
+during service linking working correctly.</p>
+<p>Here are the versions necessary for this release of Dokku Pro:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/dokku/dokku-clickhouse">clickhouse</a></td>
+<td>1.49.2</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-couchdb">couchdb</a></td>
+<td>1.39.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-elasticsearch">elasticsearch</a></td>
+<td>1.41.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-graphite">graphite</a></td>
+<td>1.37.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-mariadb">mariadb</a></td>
+<td>1.45.2</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-meilisearch">meilisearch</a></td>
+<td>1.76.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-memcached">memcached</a></td>
+<td>1.37.4</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-mongo">mongo</a></td>
+<td>1.40.6</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-mysql">mysql</a></td>
+<td>1.44.3</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-nats">nats</a></td>
+<td>1.39.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-omnisci">omnisci</a></td>
+<td>1.37.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-postgres">postgres</a></td>
+<td>1.48.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-pushpin">pushpin</a></td>
+<td>1.42.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-rabbitmq">rabbitmq</a></td>
+<td>1.40.5</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-redis">redis</a></td>
+<td>1.43.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-rethinkdb">rethinkdb</a></td>
+<td>1.37.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-solr">solr</a></td>
+<td>1.43.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-typesense">typesense</a></td>
+<td>1.43.1</td>
+</tr>
+</tbody>
+</table>
+<p>A few features in this release are backed by optional Dokku plugins. If you want
+to manage HTTP Basic Auth, Let's Encrypt certificates, or maintenance mode from
+Dokku Pro, install the corresponding plugins at these versions:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/dokku/dokku-http-auth">http-auth</a></td>
+<td>0.11.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-letsencrypt">letsencrypt</a></td>
+<td>0.25.1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dokku/dokku-maintenance">maintenance</a></td>
+<td>0.10.1</td>
+</tr>
+</tbody>
+</table>
+<p>To update, run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># update the `dokku-update` package first</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dokku-update
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># update your install (skipping app rebuild)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dokku-update<span class="w"> </span>run<span class="w"> </span>--skip-rebuild
+</code></pre></div>
+<h3 id="a-completely-redesigned-interface">A completely redesigned interface<a class="headerlink" href="#a-completely-redesigned-interface" title="Permanent link">&para;</a></h3>
+<p>The headline change in 1.4.0 is a brand new interface. The entire Web UI has been
+redesigned from the ground up for a cleaner, more modern look, it now uses the
+Dokku logo throughout, and it ships with a light and dark theme toggle so you can
+match your preference.</p>
+<figure>
+  <img alt="The redesigned Dokku Pro apps list" src="/blog/assets/images/release-1.4.0/01-apps-list.png" />
+  <figcaption>The redesigned apps list</figcaption>
+</figure>
+<p>The redesign touches every page in the product. If you have used Dokku Pro
+before, everything is where you would expect it to be, just far nicer to look at
+and easier to navigate.</p>
+<h3 id="process-management-in-the-browser">Process management in the browser<a class="headerlink" href="#process-management-in-the-browser" title="Permanent link">&para;</a></h3>
+<p>You can now start, stop, restart, and scale an app's processes directly from the
+UI, without dropping to the command line. Each process type is listed with its
+current scale, and changes are queued as background jobs just like every other
+action in Dokku Pro.</p>
+<figure>
+  <img alt="Managing an app's processes in the UI" src="/blog/assets/images/release-1.4.0/11-app-processes.png" />
+  <figcaption>Starting, stopping, and scaling processes from the browser</figcaption>
+</figure>
+<h3 id="bulk-environment-variables">Bulk environment variables<a class="headerlink" href="#bulk-environment-variables" title="Permanent link">&para;</a></h3>
+<p>Editing environment variables one at a time gets old fast. The environment
+variables screen now lets you stage several changes at once and commit them
+together, so a rebuild happens once instead of once per variable. You can import
+an entire <code>.env</code> file, and replace the full set of variables in a single
+operation.</p>
+<figure>
+  <img alt="Staging several environment variable changes before committing them" src="/blog/assets/images/release-1.4.0/21b-app-env-commit-bar.png" />
+  <figcaption>Staging changes and committing them all at once</figcaption>
+</figure>
+<h3 id="streaming-logs">Streaming logs<a class="headerlink" href="#streaming-logs" title="Permanent link">&para;</a></h3>
+<p>Application logs are no longer the only thing you can watch. Dokku Pro can now
+stream an app's access and error logs as well. And when the connection cannot be
+established - for example when the proxy in front of Dokku Pro does not allow
+websockets - the UI now shows a clear error instead of an empty screen with no
+explanation.</p>
+<figure>
+  <img alt="Streaming logs in the redesigned UI" src="/blog/assets/images/release-1.4.0/23-app-logs-streaming.png" />
+  <figcaption>Streaming logs, with a visible error state when the connection drops</figcaption>
+</figure>
+<h3 id="http-auth-and-maintenance-mode-in-the-ui">HTTP Auth and Maintenance mode in the UI<a class="headerlink" href="#http-auth-and-maintenance-mode-in-the-ui" title="Permanent link">&para;</a></h3>
+<p>Two more proxy features are now available without touching the command line. You
+can put an app behind HTTP Basic Auth, and you can toggle maintenance mode to
+show a holding page while you work. Both require the relevant Dokku plugins
+listed above.</p>
+<h3 id="ssh-keys-and-passwords-in-the-ui">SSH keys and passwords in the UI<a class="headerlink" href="#ssh-keys-and-passwords-in-the-ui" title="Permanent link">&para;</a></h3>
+<p>Each user can now have their SSH keys and an optional password managed from the
+UI. Passwords are stored encrypted, keys and users are reconciled independently
+of one another, and the root user can revoke access as needed. This rounds out
+the user management that landed in 1.3.0.</p>
+<h3 id="rename-apps-custom-push-urls-and-login-messages">Rename apps, custom push URLs, and login messages<a class="headerlink" href="#rename-apps-custom-push-urls-and-login-messages" title="Permanent link">&para;</a></h3>
+<p>A handful of smaller but frequently requested customizations made it in:</p>
+<ul>
+<li>You can rename an app from the UI.</li>
+<li>The git push URL is now configurable on the server rather than always being
+  inferred from the request hostname, which is handy when Dokku Pro is exposed on
+  a different domain than the one used for deploys.</li>
+<li>You can set a custom message on the login screen, useful for internal notices
+  or onboarding instructions.</li>
+</ul>
+<h3 id="service-creation-options">Service creation options<a class="headerlink" href="#service-creation-options" title="Permanent link">&para;</a></h3>
+<p>When creating a service, you can now choose the image and version along with
+other creation options directly in the UI, instead of creating it from the
+command line to pick a specific version.</p>
+<figure>
+  <img alt="Choosing a service image and version when creating a service" src="/blog/assets/images/release-1.4.0/20-service-create-advanced.png" />
+  <figcaption>Choosing an image, version, and other options at create time</figcaption>
+</figure>
+<h3 id="a-much-larger-api">A much larger API<a class="headerlink" href="#a-much-larger-api" title="Permanent link">&para;</a></h3>
+<p>This release expands the API considerably.</p>
+<ul>
+<li><strong>Deploy from a Docker image.</strong> You can now deploy an app directly from a
+  Docker image via the API.</li>
+<li><strong>Batch operations.</strong> A new <code>/operations</code> endpoint follows the
+  <a href="https://jsonapi.org/ext/atomic/">JSON:API atomic operations</a> style to add,
+  update, and remove many domains, environment variables, process scales,
+  buildpacks, and HTTP Basic Auth entries in a single request. Dokku Pro coalesces
+  the work so each affected app is rebuilt at most once - importing ten
+  environment variables runs one <code>config:set</code> and queues one rebuild instead of
+  ten of each.</li>
+<li><strong>Certificates and Let's Encrypt.</strong> New endpoints let you upload and manage TLS
+  certificates as well as drive Let's Encrypt, so certificate management is no
+  longer a command-line-only affair.</li>
+</ul>
+<figure>
+  <img alt="Managing TLS for an app in the UI" src="/blog/assets/images/release-1.4.0/10-app-tls.png" />
+  <figcaption>Certificate and Let's Encrypt management</figcaption>
+</figure>
+<ul>
+<li><strong>A more consistent API surface.</strong> We have continued tightening the API's
+  adherence to the JSON:API specification so it behaves more predictably for the
+  people building tooling and integrations on top of it.</li>
+</ul>
+<h3 id="github-webhooks-and-gitsync-deploys">GitHub webhooks and git:sync deploys<a class="headerlink" href="#github-webhooks-and-gitsync-deploys" title="Permanent link">&para;</a></h3>
+<p>Dokku Pro can now deploy an app from a git repository, either on demand from the
+app's <strong>Actions</strong> menu or automatically when you push to GitHub. Both paths use
+Dokku's <code>git:sync</code> under the hood and run as queued background jobs.</p>
+<figure>
+  <img alt="Configuring a GitHub webhook for an app" src="/blog/assets/images/release-1.4.0/19-app-webhook-settings.png" />
+  <figcaption>Configuring a webhook to deploy on push</figcaption>
+</figure>
+<p>Checkout the <a href="../features/webhooks/">GitHub webhooks documentation</a> for
+details on configuring automatic deploys.</p>
+<h3 id="reverse-proxy-authentication">Reverse proxy authentication<a class="headerlink" href="#reverse-proxy-authentication" title="Permanent link">&para;</a></h3>
+<p>Dokku Pro can now trust an identity-aware reverse proxy to sign users in. When the
+proxy in front of Dokku Pro sets a configured header naming the logged-in user,
+Dokku Pro reads it, resolves the matching user, and issues a normal session with
+no login form. This is the same mechanism used by Tailscale Serve's identity
+headers and Gitea's reverse-proxy authentication, and direct access still falls
+back to the usual username and password login.</p>
+<p>Because a trusted header is only as trustworthy as the network in front of it,
+this feature fails closed and must be scoped to specific trusted proxies. Please
+read the <a href="../features/reverse-proxy-authentication/">reverse proxy authentication documentation</a>
+in full before enabling it.</p>
+<h3 id="backup-and-restore-guide">Backup and restore guide<a class="headerlink" href="#backup-and-restore-guide" title="Permanent link">&para;</a></h3>
+<p>Finally, there is now a proper <a href="../operating/backup-restore/">backup and restore guide</a>
+that documents the Dokku Pro specific state you need to preserve - the database
+directory, the server configuration and secrets, and the per-app settings stored
+alongside Dokku - and the order to restore them in so a fresh install comes up
+cleanly.</p>
+<h2 id="minor-changes">Minor Changes<a class="headerlink" href="#minor-changes" title="Permanent link">&para;</a></h2>
+<p>As with the last release, rather than a catch-all "miscellaneous bug fixes and
+improvements" section, here are the smaller fixes that went into 1.4.0:</p>
+<ul>
+<li>Deleting a resource and navigating away no longer bounces you back to that
+  resource's list view.</li>
+<li>Environment variable changes now hit the correct endpoint.</li>
+<li>App locking was restored in the redesigned UI, while the <code>locked</code> status was
+  dropped from the app list view, which had been slowing that page down.</li>
+</ul>
+<h2 id="dokku-pro-pricing">Dokku Pro Pricing<a class="headerlink" href="#dokku-pro-pricing" title="Permanent link">&para;</a></h2>
+<p>This release does not include any pricing changes. Dokku Pro's price will continue
+to increase over time by various amounts until the product settles to a more
+"feature-complete" state.</p>
+<p>Please bear in mind that this is a lifetime license, and users are entitled to
+all upgrades of Dokku Pro as long as they are made. Folks wishing to support
+continued development of the project are encouraged to purchase today before the
+price is increased.</p>
+<p><a class="md-button" href="https://dokku.dpdcart.com/cart/add?product_id=217344&method_id=236878">Get your copy today</a></p>
+<h2 id="coming-up-next">Coming up next?<a class="headerlink" href="#coming-up-next" title="Permanent link">&para;</a></h2>
+<p>This was a big release, and it clears out a lot of long-standing requests. There
+is still plenty we want to build. Here is some of what we will be working towards
+over the next few releases:</p>
+<ul>
+<li>Persistent storage management</li>
+<li>Installed plugin management</li>
+<li>An API method for triggering arbitrary run commands</li>
+<li>Log and metric storage</li>
+</ul>
+<p>Have a feature request or a bug to report? Feel free to file it in the issue
+tracker <a href="https://github.com/dokku/dokku-pro-issues/issues">here</a>.</p>
+<p>Thanks everyone for your support, and I hope you all enjoy this release of Dokku
+Pro!</p>
 
 
 
@@ -2500,6 +2562,53 @@
 
 
                 
+
+  <!-- Giscus - generated by https://giscus.app -->
+  <!-- <h2 id="__comments">Comments</h2>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="squidfunk/mkdocs-material"
+    data-repo-id="MDEwOlJlcG9zaXRvcnk1MDYxNzQyOA=="
+    data-category="_"
+    data-category-id="DIC_kwDOAwRcVM4CAtJY"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+  >
+  </script> -->
+
+  <!-- Reload on palette change -->
+  <!-- <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script> -->
+
               </article>
             </div>
           
