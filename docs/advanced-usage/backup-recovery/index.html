@@ -3671,6 +3671,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#restoring-on-a-machine-with-a-different-cpu-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restoring on a machine with a different CPU Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5270,6 +5281,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#restoring-on-a-machine-with-a-different-cpu-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restoring on a machine with a different CPU Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5383,11 +5405,15 @@
 <p>Dokku doesn't enforce a <a href="https://devcenter.heroku.com/articles/slug-compiler#slug-size">300mb</a> limit on apps, but it's best practice to keep binary assets outside of git. Since containers are considered volatile in Dokku, external stores like s3 or storage mounts should be used for non-volatile items like user uploads. The Dokku storage core plugin can be used to mount local directories / volumes inside the docker container.</p>
 <p>System administrators are highly encouraged to store persistent data in app-specific subdirectories of the path <code>/var/lib/dokku/data/storage</code>. This will help ensure restores of the aforementioned primary Dokku directories will restore service to all apps.</p>
 <p>See the <a href="../persistent-storage/">persistent storage documentation</a> for more information on how to attach persistent storage to your app.</p>
+<h3 id="restoring-on-a-machine-with-a-different-cpu-architecture">Restoring on a machine with a different CPU Architecture<a class="headerlink" href="#restoring-on-a-machine-with-a-different-cpu-architecture" title="Permanent link">&para;</a></h3>
+<p>When restoring a backup on a machine that has a different CPU architecture, you will need to clear out the <code>~/.basher</code>  as it's not portable across different CPU architectures. Do so with the following command immediately after restoring your dokku configs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/home/dokku/.basher
+</code></pre></div>
 <h2 id="recovering-app-code">Recovering app code<a class="headerlink" href="#recovering-app-code" title="Permanent link">&para;</a></h2>
 <p>In case of an emergency when your git repo and backups are completely lost, you can recover the last pushed copy from your remote Dokku server (assuming you still have the ssh key).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span><span class="o">[</span>app-name<span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>!$
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@<span class="o">[</span>dokku.me:app-name<span class="o">]</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>pull<span class="w"> </span>dokku/master<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>dokku/master
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir<span class="w"> </span><span class="o">[</span>app-name<span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>!$
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>dokku<span class="w"> </span>dokku@<span class="o">[</span>dokku.me:app-name<span class="o">]</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git<span class="w"> </span>pull<span class="w"> </span>dokku/master<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>dokku/master
 </code></pre></div>
 
 
