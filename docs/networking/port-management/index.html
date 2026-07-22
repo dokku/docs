@@ -3348,6 +3348,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configured-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configured flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#read-only-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5339,6 +5350,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configured-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configured flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#read-only-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5602,7 +5624,70 @@
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>ports:report<span class="w"> </span>node-js-app<span class="w"> </span>--ports-map
 </code></pre></div>
+<p>Use <code>--ports-map-json</code> or <code>--ports-map-detected-json</code> to get the same data as a JSON array of objects. Each object has the following fields:</p>
+<ul>
+<li><code>scheme</code>: the port scheme (e.g. <code>http</code>, <code>https</code>, <code>udp</code>)</li>
+<li><code>host_port</code>: the host/listener port</li>
+<li><code>container_port</code>: the container port</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>ports:report<span class="w"> </span>node-js-app<span class="w"> </span>--ports-map-json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">[</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="nt">&quot;host_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="nt">&quot;container_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">    </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">    </span><span class="nt">&quot;host_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">    </span><span class="nt">&quot;container_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="p">]</span>
+</code></pre></div>
+<p>The JSON output can be processed with tools such as <code>jq</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:4"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label><label for="__tabbed_10_3">Shell</label><label for="__tabbed_10_4">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>ports:report<span class="w"> </span>node-js-app<span class="w"> </span>--ports-map-json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[].host_port&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>80
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>443
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>ports:report<span class="w"> </span>node-js-app<span class="w"> </span>--ports-map-detected-json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[0].container_port&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>5000
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="configured-flags">Configured flags<a class="headerlink" href="#configured-flags" title="Permanent link">&para;</a></h3>
+<p>The following flags surface configured port mappings managed by <code>ports:set</code> / <code>ports:add</code> / <code>ports:remove</code> / <code>ports:clear</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ports-map</code></td>
+<td>Configured port mappings as space-separated <code>scheme:host-port:container-port</code> values</td>
+</tr>
+<tr>
+<td><code>--ports-map-json</code></td>
+<td>Configured port mappings as a JSON array of <code>{scheme, host_port, container_port}</code> objects</td>
+</tr>
+</tbody>
+</table>
 <h3 id="read-only-flags">Read-only flags<a class="headerlink" href="#read-only-flags" title="Permanent link">&para;</a></h3>
 <p>The following flags surface in <code>ports:report</code> but are not managed by <code>ports:set</code> - they are derived from the deploy:</p>
 <table>
@@ -5616,6 +5701,10 @@
 <tr>
 <td><code>--ports-map-detected</code></td>
 <td>Port mapping inferred from <code>EXPOSE</code> directives or the running container</td>
+</tr>
+<tr>
+<td><code>--ports-map-detected-json</code></td>
+<td>Detected port mappings as a JSON array of <code>{scheme, host_port, container_port}</code> objects</td>
 </tr>
 </tbody>
 </table>
