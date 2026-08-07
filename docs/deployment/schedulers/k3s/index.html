@@ -4072,6 +4072,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#the-node-profile-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The node profile label
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4341,6 +4352,45 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-kernel-sysctls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting kernel sysctls
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting kernel sysctls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaced-sysctls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespaced sysctls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-namespaced-sysctls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-namespaced sysctls
+      
+    </span>
+  </a>
   
 </li>
         
@@ -5682,6 +5732,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#the-node-profile-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The node profile label
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5960,6 +6021,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#setting-kernel-sysctls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting kernel sysctls
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting kernel sysctls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaced-sysctls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespaced sysctls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-namespaced-sysctls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-namespaced sysctls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#integrating-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6181,14 +6281,16 @@
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>scheduler-k3s:initialize                            # Initializes a cluster
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>scheduler-k3s:labels:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Set or clear a label for a given app/process-type/resource-type combination
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>scheduler-k3s:labels:report [&lt;app&gt;|--global] [--format stdout|json] [--process-type PROCESS_TYPE] [--resource-type RESOURCE_TYPE] # Displays a scheduler-k3s labels report for one or more apps
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>scheduler-k3s:preview &lt;app&gt; [--context N] [--show-secrets] [--show-secrets-decoded] # Displays a diff between the current and next deployment for an app
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>scheduler-k3s:profiles:add &lt;profile&gt; [--role ROLE] [--insecure-allow-unknown-hosts] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] Adds a node profile to the k3s cluster
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>scheduler-k3s:profiles:list [--format json|stdout]  # Lists all node profiles in the k3s cluster
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>scheduler-k3s:profiles:remove &lt;profile&gt;             # Removes a node profile from the k3s cluster
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>scheduler-k3s:report [&lt;app&gt;] [&lt;flag&gt;]               # Displays a scheduler-k3s report for one or more apps
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)  # Set or clear a scheduler-k3s property for an app or the scheduler
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>scheduler-k3s:show-kubeconfig                       # Displays the kubeconfig for remote usage
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>scheduler-k3s:uninstall                             # Uninstalls k3s from the Dokku server
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>scheduler-k3s:node-sysctls:set &lt;sysctl&gt; (&lt;value&gt;) [--global|--profile PROFILE] # Set or clear a node-level kernel sysctl for unprofiled nodes or a single node profile
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>scheduler-k3s:node-sysctls:report [--format stdout|json] # Displays the node-level kernel sysctls applied to each scope
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>scheduler-k3s:preview &lt;app&gt; [--context N] [--show-secrets] [--show-secrets-decoded] # Displays a diff between the current and next deployment for an app
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>scheduler-k3s:profiles:add &lt;profile&gt; [--role ROLE] [--insecure-allow-unknown-hosts] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] Adds a node profile to the k3s cluster
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>scheduler-k3s:profiles:list [--format json|stdout]  # Lists all node profiles in the k3s cluster
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>scheduler-k3s:profiles:remove &lt;profile&gt;             # Removes a node profile from the k3s cluster
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>scheduler-k3s:report [&lt;app&gt;] [&lt;flag&gt;]               # Displays a scheduler-k3s report for one or more apps
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>scheduler-k3s:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)  # Set or clear a scheduler-k3s property for an app or the scheduler
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>scheduler-k3s:show-kubeconfig                       # Displays the kubeconfig for remote usage
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>scheduler-k3s:uninstall                             # Uninstalls k3s from the Dokku server
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -6224,6 +6326,14 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <p>Dokku can also use Traefik on cluster initialization via the <a href="https://doc.traefik.io/traefik/providers/kubernetes-crd/">Traefik's CRDs</a>. To change the ingress, set the <code>--ingress-class</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--ingress-class<span class="w"> </span>traefik
 </code></pre></div>
+<p>Kubelet flags for the initial server node can be supplied by passing <code>--kubelet-args</code> with a comma-separated <code>key=value</code> list. This is the only way to configure the kubelet on the node created by <code>scheduler-k3s:initialize</code>, as that node never passes through <code>scheduler-k3s:cluster:add</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.ipv6.conf.all.disable_ipv6
+</code></pre></div>
+<p>Multiple kubelet arguments can be specified in the same call by separating them with commas.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.ipv6.conf.all.disable_ipv6,max-pods<span class="o">=</span><span class="m">150</span>
+</code></pre></div>
 <h3 id="adding-nodes-to-the-cluster">Adding nodes to the cluster<a class="headerlink" href="#adding-nodes-to-the-cluster" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -6231,23 +6341,23 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 </div>
 <h4 id="adding-a-worker-node">Adding a worker node<a class="headerlink" href="#adding-a-worker-node" title="Permanent link">&para;</a></h4>
 <p>Nodes that run app workloads can be added via the <code>scheduler-k3s:cluster:add</code> command. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in worker mode. Workers are typically used to run app workloads.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w">  </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w">  </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <p>Per-node kubelet flags can be supplied by passing <code>--kubelet-args</code> with a comma-separated <code>key=value</code> list. This is useful for tuning scheduler capacity or enforcing cluster-wide defaults at the node level.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.ipv6.conf.all.disable_ipv6<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.ipv6.conf.all.disable_ipv6<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <p>Multiple kubelet arguments can be specified in the same call by separating them with commas. The following example enables IPv4 forwarding while also increasing the pod density on the worker.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.ipv6.conf.all.disable_ipv6,max-pods<span class="o">=</span><span class="m">150</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>ssh://root@worker-2.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.ipv6.conf.all.disable_ipv6,max-pods<span class="o">=</span><span class="m">150</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>ssh://root@worker-2.example.com
 </code></pre></div>
 <p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <p>By default, Dokku will attempt to auto-detect the IP address of the Dokku server for the remote server to connect to. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@worker-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@worker-1.example.com
 </code></pre></div>
 <h4 id="adding-a-server-node">Adding a server node<a class="headerlink" href="#adding-a-server-node" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
@@ -6256,20 +6366,20 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 </div>
 <p>Server nodes are typically used to replicate the cluster state, and it is recommended to have an odd number of nodes spread across several availability zones (datacenters in close proximity within a region). This allows for higher availability in the event of a cluster failure. Server nodes run control-plane services such as the traefik load balancer and the etcd backing store.</p>
 <p>Server nodes can also be added with the <code>scheduler-k3s:cluster:add</code> command by specifying <code>--role server</code>. This will ssh onto the specified server, install k3s, and join it to the current Dokku node in server mode.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w">  </span>--role<span class="w"> </span>server<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <p>Server nodes allow any workloads to be scheduled on them by default, in addition to the control-plane, etcd, and the scheduler itself. To avoid app workloads being scheduled on your control-plane, use the <code>--taint-scheduling</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--taint-scheduling<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <p>If the server isn't in the <code>known_hosts</code> file, the connection will fail. This can be bypassed by setting the <code>--insecure-allow-unknown-hosts</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--insecure-allow-unknown-hosts<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <p>By default, Dokku will attempt to auto-detect the IP address of the Dokku server for the remote server to connect to. In cases where the auto-detected IP address is incorrect, an override may be specified via the <code>--server-ip</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@server-1.example.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>scheduler-k3s:cluster:add<span class="w"> </span>--role<span class="w"> </span>server<span class="w"> </span>--server-ip<span class="w"> </span><span class="m">192</span>.168.20.15<span class="w"> </span>ssh://root@server-1.example.com
 </code></pre></div>
 <h4 id="changing-the-network-interface">Changing the network interface<a class="headerlink" href="#changing-the-network-interface" title="Permanent link">&para;</a></h4>
 <p>When attaching an worker or server node, the K3s plugin will look at the IP associated with the <code>eth0</code> interface and use that to connect the new node to the cluster. To change this, set the <code>network-interface</code> property to the appropriate value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>network-interface<span class="w"> </span>eth1
 </code></pre></div>
 <h3 id="node-profiles">Node Profiles<a class="headerlink" href="#node-profiles" title="Permanent link">&para;</a></h3>
 <p>Node profiles capture repeatable <code>scheduler-k3s:cluster:add</code> options so you can join multiple nodes with identical settings. A profile name can be specified for the <code>scheduler-k3s:cluster:add</code> command via the  <code>--profile &lt;name&gt;</code> flag. Any flags passed directly to <code>scheduler-k3s:cluster:add</code> override the stored values for that run.</p>
@@ -6278,12 +6388,12 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:list
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>name            role
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>awesome-profile worker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>name            role
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>awesome-profile worker
 </code></pre></div>
 </div>
 </div>
@@ -6291,17 +6401,27 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <p>This command also takes an optional <code>--format</code> flag to specify a format for the output. Options include <code>json</code> and <code>stdout</code></p>
 <h4 id="adding-profiles">Adding profiles<a class="headerlink" href="#adding-profiles" title="Permanent link">&para;</a></h4>
 <p>Create or update a profile that defines how new nodes should be prepared before joining the cluster.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:add<span class="w"> </span>edge-workers<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span>--role<span class="w"> </span>worker<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>--insecure-allow-unknown-hosts<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>protect-kernel-defaults<span class="o">=</span>true,eviction-hard<span class="o">=</span>memory.available&lt;200Mi
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:add<span class="w"> </span>edge-workers<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span>--role<span class="w"> </span>worker<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--insecure-allow-unknown-hosts<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>protect-kernel-defaults<span class="o">=</span>true,eviction-hard<span class="o">=</span>memory.available&lt;200Mi
 </code></pre></div>
 <p>Profile names must be alphanumeric, may include internal dashes, cannot start/end with a dash, and must be ≤32 characters. Other than the <code>--server-ip</code> flag, all flags used for <code>scheduler-k3s:cluster:add</code> are valid for the <code>scheduler-k3s:profiles:add</code> command.</p>
 <h4 id="scheduler-k3sprofilesremove">scheduler-k3s:profiles:remove<a class="headerlink" href="#scheduler-k3sprofilesremove" title="Permanent link">&para;</a></h4>
 <p>Delete a profile once it’s no longer required.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:remove<span class="w"> </span>edge-workers
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:remove<span class="w"> </span>edge-workers
 </code></pre></div>
 <p>Removal only deletes the stored definition; nodes that already joined the cluster keep their existing configuration.</p>
+<h4 id="the-node-profile-label">The node profile label<a class="headerlink" href="#the-node-profile-label" title="Permanent link">&para;</a></h4>
+<p>When a node joins via <code>scheduler-k3s:cluster:add --profile &lt;name&gt;</code>, Dokku labels it with <code>dokku.com/node-profile=&lt;name&gt;</code>. This makes a profile selectable after the fact, whether via <code>kubectl</code>, a <code>nodeSelector</code>, or a node affinity rule.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-L<span class="w"> </span>dokku.com/node-profile
+</code></pre></div>
+<p>Nodes added without <code>--profile</code> are not labeled, as an empty label value would be indistinguishable from a profile literally named the empty string.</p>
+<p>Two limits are worth knowing before relying on this label:</p>
+<ul>
+<li>The server node never carries it. That node is created by <code>scheduler-k3s:initialize</code> and never passes through <code>scheduler-k3s:cluster:add</code>, so no profile is ever associated with it.</li>
+<li>Nodes that joined before this label existed are not backfilled. Use <code>kubectl label node &lt;node&gt; dokku.com/node-profile=&lt;name&gt;</code> to set it on an existing node.</li>
+</ul>
 <h3 id="changing-deployment-settings">Changing deployment settings<a class="headerlink" href="#changing-deployment-settings" title="Permanent link">&para;</a></h3>
 <p>The k3s plugin provides a number of settings that can be used to managed deployments on a per-app basis. The following table outlines ones not covered elsewhere:</p>
 <table>
@@ -6346,29 +6466,29 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 </tbody>
 </table>
 <p>All settings can be set via the <code>scheduler-k3s:set</code> command. Using <code>deploy-timeout</code> as an example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>deploy-timeout
 </code></pre></div>
 <p>Properties can also be set globally. If not set for an app, the global value will apply.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout<span class="w"> </span>60s
 </code></pre></div>
 <p>The global default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>deploy-timeout
 </code></pre></div>
 <h3 id="previewing-deployment-changes">Previewing deployment changes<a class="headerlink" href="#previewing-deployment-changes" title="Permanent link">&para;</a></h3>
 <p>Before triggering a deploy, the <code>scheduler-k3s:preview</code> command can be used to display a unified diff between the manifests currently stored in the live Helm release for an app and the manifests that the next deploy would roll out:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>A clean redeploy with no property changes produces no output. After modifying a property that affects the main app chart (for example <code>dokku resource:limit --memory 256m node-js-app</code>), the command shows the unified diff for each changed resource. For an app that has never been deployed, the entire proposed manifest is rendered as added lines.</p>
 <p>By default each change is shown with 3 lines of surrounding context, git-diff style. The <code>--context</code> flag overrides this; pass <code>-1</code> to render the full resource around every change:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--context<span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--context<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--context<span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--context<span class="w"> </span>-1
 </code></pre></div>
 <p>By default any <code>kind: Secret</code> resources have their <code>data</code> values redacted so secret bytes never appear in terminal scrollback or CI logs. Two flags adjust this behavior:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--show-secrets
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--show-secrets-decoded
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--show-secrets
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>dokku<span class="w"> </span>scheduler-k3s:preview<span class="w"> </span>node-js-app<span class="w"> </span>--show-secrets-decoded
 </code></pre></div>
 <p><code>--show-secrets</code> keeps the raw base64-encoded values, and <code>--show-secrets-decoded</code> renders them base64-decoded. In current dokku, the only Secret objects in the main app chart come from KEDA autoscaling auth resources configured via <a href="#workload-autoscaling-authentication"><code>scheduler-k3s:autoscaling-auth:set</code></a>; for apps without autoscaling auth, these flags are no-ops.</p>
 <div class="admonition info">
@@ -6382,15 +6502,15 @@ The preview only covers the main app helm release (the release named after the a
 </div>
 <h3 id="exposing-services-on-the-network">Exposing services on the network<a class="headerlink" href="#exposing-services-on-the-network" title="Permanent link">&para;</a></h3>
 <p>Dokku will automatically expose the <code>web</code> process as a Kubernetes Service, with all others being treated as background processes. In some cases, it may be useful to have other processes exposed as Kubernetes Service objects so as to segregate internal http endpoints from public http endpoints. This can be done by modifying the <code>app.json</code> Formation entry for your process type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="p">{</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="nt">&quot;internal-web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">      </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">        </span><span class="nt">&quot;exposed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p">{</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="nt">&quot;internal-web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">      </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">        </span><span class="nt">&quot;exposed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="p">}</span>
 </code></pre></div>
 <p>In the above example, the <code>internal-web</code> process is exposed as a service. The <code>PORT</code> variable for the process will be set to <code>5000</code>, and a kubernetes <code>Service</code> object will be created pointing at your processes.</p>
 <div class="admonition note">
@@ -6400,48 +6520,48 @@ The preview only covers the main app helm release (the release named after the a
 <h3 id="ssl-certificates">SSL Certificates<a class="headerlink" href="#ssl-certificates" title="Permanent link">&para;</a></h3>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email-prod</code> or <code>letsencrypt-email-stag</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># set the value for prod</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>automated@dokku.sh
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># set the value for stag</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-stag<span class="w"> </span>automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># set the value for prod</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>automated@dokku.sh
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># set the value for stag</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email-stag<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling and rebuilding, all apps with an <code>http:80</code> port mapping will have a corresponding <code>https:443</code> added and ssl will be automatically enabled. All http requests will then be redirected to https.</p>
 <h4 id="customizing-the-letsencrypt-email-per-app">Customizing the letsencrypt email per app<a class="headerlink" href="#customizing-the-letsencrypt-email-per-app" title="Permanent link">&para;</a></h4>
 <p>The <code>letsencrypt-email-prod</code> and <code>letsencrypt-email-stag</code> properties can also be set per app, overriding the global value for that app. This is useful when different apps should register their certificates under different contact emails.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>team@node-js-app.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-email-prod<span class="w"> </span>team@node-js-app.com
 </code></pre></div>
 <p>The value resolves in two steps: the app's <code>letsencrypt-server</code> selects which server (<code>prod</code> or <code>staging</code>) is used, and the matching <code>letsencrypt-email-&lt;server&gt;</code> property is then resolved as the app-level value, falling back to the global value. Because the two emails are per-server, an app-level <code>letsencrypt-email-stag</code> only takes effect once the app's <code>letsencrypt-server</code> is set to <code>staging</code>.</p>
 <p>When an app sets its own email for the selected server, Dokku renders a namespaced cert-manager <code>Issuer</code> into the app's own release using that email instead of pointing the app at the shared global <code>ClusterIssuer</code>. Apps without an app-level email continue to use the shared <code>ClusterIssuer</code> with the global email.</p>
 <p>The default value may be set by passing an empty value for the option, which falls the app back to the global value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-email-prod
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-email-prod
 </code></pre></div>
 <p>The computed value in effect for an app can be inspected via the report command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>scheduler-k3s:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-computed-letsencrypt-email-prod
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-computed-letsencrypt-email-prod
 </code></pre></div>
 <h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. This can be changed on an app-level by setting the <code>letsencrypt-server</code> property with the <code>scheduler-k3s:set</code> command</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server
 </code></pre></div>
 <p>The <code>letsencrypt-server</code> property can also be set globally. The global default is <code>production</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
 <p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>staging
 </code></pre></div>
 <p>Letsencrypt can be completely disabled for a given app by setting the <code>letsencrypt-server</code> to <code>false</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span><span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>node-js-app<span class="w"> </span>letsencrypt-server<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <p>The server can also be disabled globally, and then conditionally enabled on a per-app basis:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span><span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <h4 id="using-imported-ssl-certificates">Using imported SSL certificates<a class="headerlink" href="#using-imported-ssl-certificates" title="Permanent link">&para;</a></h4>
 <p>SSL certificates imported via the <code>certs</code> plugin can be used with the k3s scheduler. When a certificate is imported, it is automatically synced to Kubernetes as a TLS secret and will be used for the app's ingress configuration.</p>
 <p>To import a certificate:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>certs:add<span class="w"> </span>node-js-app<span class="w"> </span>server.crt<span class="w"> </span>server.key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>certs:add<span class="w"> </span>node-js-app<span class="w"> </span>server.crt<span class="w"> </span>server.key
 </code></pre></div>
 <p>When a certificate is imported:</p>
 <ul>
@@ -6451,7 +6571,7 @@ The preview only covers the main app helm release (the release named after the a
 </ul>
 <p>Imported certificates take precedence over Let's Encrypt certificates. If you have both an imported certificate and Let's Encrypt configured, the imported certificate will be used.</p>
 <p>To remove an imported certificate:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>certs:remove<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>certs:remove<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>When a certificate is removed:</p>
 <ul>
@@ -6467,10 +6587,10 @@ The preview only covers the main app helm release (the release named after the a
 </div>
 <h4 id="setting-annotations">Setting Annotations<a class="headerlink" href="#setting-annotations" title="Permanent link">&para;</a></h4>
 <p>Dokku injects certain annotations into each created resource by default, but it may be necessary to inject others for tighter integration with third-party tools. The <code>scheduler-k3s:annotations:set</code> command can be used to perform this task. The command takes an app name and a required <code>--resource-type</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
 </code></pre></div>
 <p>If not specified, the annotation will be applied to all processes within an app, though it may be further scoped to a specific process type via the <code>--process-type</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>annotation.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>The following resource types are supported:</p>
 <ul>
@@ -6490,32 +6610,32 @@ The preview only covers the main app helm release (the release named after the a
 <p>A <code>ps:restart</code> is required after setting annotations in order to have them apply to running resources.</p>
 <h4 id="removing-an-annotation">Removing an annotation<a class="headerlink" href="#removing-an-annotation" title="Permanent link">&para;</a></h4>
 <p>To unset an annotation, pass an empty value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
-<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>annotation.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>A <code>ps:restart</code> is required after removing annotations in order to remove them from running resources.</p>
 <h4 id="displaying-annotations">Displaying annotations<a class="headerlink" href="#displaying-annotations" title="Permanent link">&para;</a></h4>
 <p>Configured annotations can be inspected with the <code>scheduler-k3s:annotations:report</code> command. Without arguments, it iterates every app and prints all annotations. Passing an app name (or <code>--global</code>) scopes the report:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report
-<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app
-<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>--global
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>--global
 </code></pre></div>
 <p><code>--process-type</code> and <code>--resource-type</code> flags narrow the output to a specific scope, matching the flags accepted by <code>scheduler-k3s:annotations:set</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--resource-type<span class="w"> </span>deployment
-<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--process-type<span class="w"> </span>web<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--process-type<span class="w"> </span>web<span class="w"> </span>--resource-type<span class="w"> </span>deployment
 </code></pre></div>
 <p>JSON output emits flat keys of the form <code>{process_type}.{resource_type}.{annotation_key}</code>. The literal <code>--global</code> process type is rendered as <code>global</code> to keep keys free of leading dashes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
 </code></pre></div>
 <p>A single value can also be read directly with a flag of the form <code>--scheduler-k3s-annotations.{process_type}.{resource_type}.{annotation_key}</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-annotations.global.deployment.annotation.key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-annotations.global.deployment.annotation.key
 </code></pre></div>
 <h4 id="setting-labels">Setting Labels<a class="headerlink" href="#setting-labels" title="Permanent link">&para;</a></h4>
 <p>Dokku injects certain labels into each created resource by default, but it may be necessary to inject others for tighter integration with third-party tools. The <code>scheduler-k3s:labels:set</code> command can be used to perform this task. The command takes an app name and a required <code>--resource-type</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>label.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>label.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment
 </code></pre></div>
 <p>If not specified, the label will be applied to all processes within an app, though it may be further scoped to a specific process type via the <code>--process-type</code> flag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>label.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>label.value<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>The following resource types are supported:</p>
 <ul>
@@ -6535,19 +6655,19 @@ The preview only covers the main app helm release (the release named after the a
 <p>A <code>ps:restart</code> is required after setting labels in order to have them apply to running resources.</p>
 <h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
 <p>To unset an label, pass an empty value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
-<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>dokku<span class="w"> </span>scheduler-k3s:annotations:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>dokku<span class="w"> </span>scheduler-k3s:labels:set<span class="w"> </span>node-js-app<span class="w"> </span>label.key<span class="w"> </span>--resource-type<span class="w"> </span>deployment<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>A <code>ps:restart</code> is required after removing labels in order to remove them from running resources.</p>
 <h4 id="displaying-labels">Displaying labels<a class="headerlink" href="#displaying-labels" title="Permanent link">&para;</a></h4>
 <p>Configured labels can be inspected with the <code>scheduler-k3s:labels:report</code> command. The surface mirrors <code>scheduler-k3s:annotations:report</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report
-<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app
-<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>--global
-<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--resource-type<span class="w"> </span>deployment
-<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--process-type<span class="w"> </span>web<span class="w"> </span>--resource-type<span class="w"> </span>deployment
-<a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
-<a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-labels.global.deployment.label.key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>--global
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--process-type<span class="w"> </span>web<span class="w"> </span>--resource-type<span class="w"> </span>deployment
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a>dokku<span class="w"> </span>scheduler-k3s:labels:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-labels.global.deployment.label.key
 </code></pre></div>
 <h3 id="autoscaling">Autoscaling<a class="headerlink" href="#autoscaling" title="Permanent link">&para;</a></h3>
 <h4 id="workload-autoscaling">Workload Autoscaling<a class="headerlink" href="#workload-autoscaling" title="Permanent link">&para;</a></h4>
@@ -6566,27 +6686,27 @@ Users with older installations will need to manually install Keda.</p>
 <li><code>triggers</code>: A list of autoscaling triggers.</li>
 </ul>
 <p>Autoscaling triggers are passed as is to Keda, and should match the configuration keda uses for a given <a href="https://keda.sh/docs/2.19/scalers/">scaler</a>. Below is an example for <a href="https://keda.sh/docs/2.19/scalers/datadog/#example-2---driving-scale-directly">datadog</a>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="p">{</span>
-<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="w">    </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="w">        </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="w">            </span><span class="nt">&quot;autoscaling&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a><span class="w">                </span><span class="nt">&quot;min_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a><span class="w">                </span><span class="nt">&quot;max_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="w">                </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a><span class="w">                        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name-for-trigger&quot;</span><span class="p">,</span>
-<a id="__codelineno-52-10" name="__codelineno-52-10" href="#__codelineno-52-10"></a><span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datadog&quot;</span><span class="p">,</span>
-<a id="__codelineno-52-11" name="__codelineno-52-11" href="#__codelineno-52-11"></a><span class="w">                        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-12" name="__codelineno-52-12" href="#__codelineno-52-12"></a><span class="w">                            </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;per_second(sum:http.requests{service:myservice1}).rollup(max, 300))/180,per_second(sum:http.backlog{service:myservice1}).rollup(max, 300)/30&quot;</span><span class="p">,</span>
-<a id="__codelineno-52-13" name="__codelineno-52-13" href="#__codelineno-52-13"></a><span class="w">                            </span><span class="nt">&quot;queryValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<a id="__codelineno-52-14" name="__codelineno-52-14" href="#__codelineno-52-14"></a><span class="w">                            </span><span class="nt">&quot;queryAggregator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;max&quot;</span>
-<a id="__codelineno-52-15" name="__codelineno-52-15" href="#__codelineno-52-15"></a><span class="w">                        </span><span class="p">}</span>
-<a id="__codelineno-52-16" name="__codelineno-52-16" href="#__codelineno-52-16"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-52-17" name="__codelineno-52-17" href="#__codelineno-52-17"></a><span class="w">                </span><span class="p">]</span>
-<a id="__codelineno-52-18" name="__codelineno-52-18" href="#__codelineno-52-18"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-52-19" name="__codelineno-52-19" href="#__codelineno-52-19"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-52-20" name="__codelineno-52-20" href="#__codelineno-52-20"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-52-21" name="__codelineno-52-21" href="#__codelineno-52-21"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="p">{</span>
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="w">    </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="w">        </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a><span class="w">            </span><span class="nt">&quot;autoscaling&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="w">                </span><span class="nt">&quot;min_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a><span class="w">                </span><span class="nt">&quot;max_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a><span class="w">                </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a><span class="w">                    </span><span class="p">{</span>
+<a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a><span class="w">                        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name-for-trigger&quot;</span><span class="p">,</span>
+<a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a><span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datadog&quot;</span><span class="p">,</span>
+<a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a><span class="w">                        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a><span class="w">                            </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;per_second(sum:http.requests{service:myservice1}).rollup(max, 300))/180,per_second(sum:http.backlog{service:myservice1}).rollup(max, 300)/30&quot;</span><span class="p">,</span>
+<a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a><span class="w">                            </span><span class="nt">&quot;queryValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a><span class="w">                            </span><span class="nt">&quot;queryAggregator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;max&quot;</span>
+<a id="__codelineno-55-15" name="__codelineno-55-15" href="#__codelineno-55-15"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-55-16" name="__codelineno-55-16" href="#__codelineno-55-16"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-55-17" name="__codelineno-55-17" href="#__codelineno-55-17"></a><span class="w">                </span><span class="p">]</span>
+<a id="__codelineno-55-18" name="__codelineno-55-18" href="#__codelineno-55-18"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-55-19" name="__codelineno-55-19" href="#__codelineno-55-19"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-55-20" name="__codelineno-55-20" href="#__codelineno-55-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-55-21" name="__codelineno-55-21" href="#__codelineno-55-21"></a><span class="p">}</span>
 </code></pre></div>
 <p>Each value in the <code>metadata</code> stanza can use the following interpolated strings:</p>
 <ul>
@@ -6597,7 +6717,7 @@ Users with older installations will need to manually install Keda.</p>
 <p>Dokku configures a Keda <code>fallback</code> (with a failure threshold of <code>3</code> and the configured replica count) on the generated <code>ScaledObject</code> so that scaling falls back to the configured replica count when a scaler's metric source becomes unavailable. Keda only allows <code>fallback</code> when at least one trigger is something other than <code>cpu</code> or <code>memory</code>, so Dokku omits the <code>fallback</code> block when every configured trigger is a <code>cpu</code> or <code>memory</code> scaler.</p>
 <h5 id="http-autoscaling">HTTP Autoscaling<a class="headerlink" href="#http-autoscaling" title="Permanent link">&para;</a></h5>
 <p>In addition to the built-in scalers that Keda provides, Dokku also supports Keda's HTTP Add On. This requires that the addon be properly installed and configured. For existing k3s clusters, this can be performed by the <code>scheduler-k3s:ensure-charts</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -6608,25 +6728,25 @@ Users with older installations will need to manually install Keda.</p>
 <p>If the <code>keda-http-add-on</code> chart is not installed, then this trigger will be ignored.</p>
 </div>
 <p>Once the chart is configured, an <code>http</code> trigger can be specified like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="p">{</span>
-<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="w">    </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="w">        </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a><span class="w">            </span><span class="nt">&quot;autoscaling&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="w">                </span><span class="nt">&quot;min_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a><span class="w">                </span><span class="nt">&quot;max_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="w">                </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
-<a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a><span class="w">                        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a><span class="w">                            </span><span class="nt">&quot;scaledown_period_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;150&quot;</span><span class="p">,</span>
-<a id="__codelineno-54-12" name="__codelineno-54-12" href="#__codelineno-54-12"></a><span class="w">                            </span><span class="nt">&quot;request_rate_target_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;50&quot;</span>
-<a id="__codelineno-54-13" name="__codelineno-54-13" href="#__codelineno-54-13"></a><span class="w">                        </span><span class="p">}</span>
-<a id="__codelineno-54-14" name="__codelineno-54-14" href="#__codelineno-54-14"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-54-15" name="__codelineno-54-15" href="#__codelineno-54-15"></a><span class="w">                </span><span class="p">]</span>
-<a id="__codelineno-54-16" name="__codelineno-54-16" href="#__codelineno-54-16"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-54-17" name="__codelineno-54-17" href="#__codelineno-54-17"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-54-18" name="__codelineno-54-18" href="#__codelineno-54-18"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-54-19" name="__codelineno-54-19" href="#__codelineno-54-19"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="p">{</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="w">    </span><span class="nt">&quot;formation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="w">        </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="w">            </span><span class="nt">&quot;autoscaling&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="w">                </span><span class="nt">&quot;min_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="w">                </span><span class="nt">&quot;max_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="w">                </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a><span class="w">                    </span><span class="p">{</span>
+<a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a><span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
+<a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a><span class="w">                        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="w">                            </span><span class="nt">&quot;scaledown_period_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;150&quot;</span><span class="p">,</span>
+<a id="__codelineno-57-12" name="__codelineno-57-12" href="#__codelineno-57-12"></a><span class="w">                            </span><span class="nt">&quot;request_rate_target_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;50&quot;</span>
+<a id="__codelineno-57-13" name="__codelineno-57-13" href="#__codelineno-57-13"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-57-14" name="__codelineno-57-14" href="#__codelineno-57-14"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-57-15" name="__codelineno-57-15" href="#__codelineno-57-15"></a><span class="w">                </span><span class="p">]</span>
+<a id="__codelineno-57-16" name="__codelineno-57-16" href="#__codelineno-57-16"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-57-17" name="__codelineno-57-17" href="#__codelineno-57-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-57-18" name="__codelineno-57-18" href="#__codelineno-57-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-57-19" name="__codelineno-57-19" href="#__codelineno-57-19"></a><span class="p">}</span>
 </code></pre></div>
 <p>The following metadata properties are supported with the http autoscaler:</p>
 <ul>
@@ -6643,10 +6763,10 @@ Users with older installations will need to manually install Keda.</p>
 <p>If no app-specific authentication is provided for a given trigger type, Dokku will fallback to any globally defined <code>ClusterTriggerAuthentication</code> resources. Autoscaling triggers within an app all share the same <code>TriggerAuthentication</code> resources, while <code>ClusterTriggerAuthentication</code> resources can be shared across all apps deployed by Dokku within a given cluster.</p>
 <h5 id="creating-authentication-resources">Creating Authentication Resources<a class="headerlink" href="#creating-authentication-resources" title="Permanent link">&para;</a></h5>
 <p>Users can specify custom authentication resources directly via the Kubernetes api <em>or</em> use the <code>scheduler-k3s:autoscaling-auth:set</code> command to create the resources in the Kubernetes cluster.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:set<span class="w"> </span><span class="nv">$APP</span><span class="w"> </span><span class="nv">$TRIGGER</span><span class="w"> </span>--metadata<span class="w"> </span><span class="nv">apiKey</span><span class="o">=</span>some-api-key<span class="w"> </span>--metadata<span class="w"> </span><span class="nv">appKey</span><span class="o">=</span>some-app-key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:set<span class="w"> </span><span class="nv">$APP</span><span class="w"> </span><span class="nv">$TRIGGER</span><span class="w"> </span>--metadata<span class="w"> </span><span class="nv">apiKey</span><span class="o">=</span>some-api-key<span class="w"> </span>--metadata<span class="w"> </span><span class="nv">appKey</span><span class="o">=</span>some-app-key
 </code></pre></div>
 <p>For example, the following will configure the authentication for all datadog triggers on the specified app:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:set<span class="w"> </span>node-js-app<span class="w"> </span>datadog<span class="w"> </span>--metadata<span class="w"> </span><span class="nv">apiKey</span><span class="o">=</span><span class="m">1234567890</span><span class="w"> </span>--metadata<span class="w"> </span><span class="nv">appKey</span><span class="o">=</span>asdfghjkl<span class="w"> </span>--metadata<span class="w"> </span><span class="nv">datadogSite</span><span class="o">=</span>us5.datadoghq.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:set<span class="w"> </span>node-js-app<span class="w"> </span>datadog<span class="w"> </span>--metadata<span class="w"> </span><span class="nv">apiKey</span><span class="o">=</span><span class="m">1234567890</span><span class="w"> </span>--metadata<span class="w"> </span><span class="nv">appKey</span><span class="o">=</span>asdfghjkl<span class="w"> </span>--metadata<span class="w"> </span><span class="nv">datadogSite</span><span class="o">=</span>us5.datadoghq.com
 </code></pre></div>
 <p>After execution, Dokku will include the following resources for each specified trigger with the helm release generated on subsequent app deploys:</p>
 <ul>
@@ -6656,21 +6776,21 @@ Users with older installations will need to manually install Keda.</p>
 <p>If the <code>--global</code> flag is specified instead of an app name, a custom helm chart is created on the fly with the above resources.</p>
 <h5 id="removing-authentication-resources">Removing Authentication Resources<a class="headerlink" href="#removing-authentication-resources" title="Permanent link">&para;</a></h5>
 <p>To remove a configured authenticatin resource, run the <code>scheduler-k3s:autoscaling-auth:set</code> command with no metadata specified. Subsequent deploys will not include these resources.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:set<span class="w"> </span><span class="nv">$APP</span><span class="w"> </span><span class="nv">$TRIGGER_TYPE</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:set<span class="w"> </span><span class="nv">$APP</span><span class="w"> </span><span class="nv">$TRIGGER_TYPE</span>
 </code></pre></div>
 <h5 id="displaying-an-authentication-resource-report">Displaying an Authentication Resource report<a class="headerlink" href="#displaying-an-authentication-resource-report" title="Permanent link">&para;</a></h5>
 <p>To see a list of authentication resources managed by Dokku, run the <code>scheduler-k3s:autoscaling-auth:report</code> command. Without arguments, the report iterates every app; passing an app name (or <code>--global</code>) scopes the report:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report
-<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app
-<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>--global
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>--global
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>====&gt; node-js-app autoscaling-auth information
-<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>      Datadog:                       configured
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>====&gt; node-js-app autoscaling-auth information
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>      Datadog:                       configured
 </code></pre></div>
 </div>
 </div>
@@ -6679,40 +6799,74 @@ Users with older installations will need to manually install Keda.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app<span class="w"> </span>--include-metadata
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app<span class="w"> </span>--include-metadata
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>====&gt; node-js-app autoscaling-auth information
-<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>      Datadog:                       configured
-<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>      Datadog apiKey:                1234567890
-<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>      Datadog appKey:                asdfghjkl
-<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>      Datadog datadogSite:           us5.datadoghq.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>====&gt; node-js-app autoscaling-auth information
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>      Datadog:                       configured
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>      Datadog apiKey:                1234567890
+<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a>      Datadog appKey:                asdfghjkl
+<a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>      Datadog datadogSite:           us5.datadoghq.com
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>JSON output emits flat keys of the form <code>{trigger}.{metadata_key}</code> and includes the actual metadata values so export tools can reconstruct the configured state:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
 </code></pre></div>
 <p>A single configured metadata key can also be queried with a flag of the form <code>--scheduler-k3s-autoscaling-auth.{trigger}.{metadata_key}</code>. The returned value is masked in the same way as stdout output; use <code>--format json</code> to read the actual value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-autoscaling-auth.datadog.apiKey
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>dokku<span class="w"> </span>scheduler-k3s:autoscaling-auth:report<span class="w"> </span>node-js-app<span class="w"> </span>--scheduler-k3s-autoscaling-auth.datadog.apiKey
 </code></pre></div>
+<h3 id="setting-kernel-sysctls">Setting kernel sysctls<a class="headerlink" href="#setting-kernel-sysctls" title="Permanent link">&para;</a></h3>
+<p>Kernel sysctls fall into two categories, and which one a sysctl belongs to determines how it must be set.</p>
+<p>The kernel maintains a per-namespace copy of <code>net.*</code> (network namespace) as well as <code>kernel.shm*</code>, <code>kernel.msg*</code>, <code>kernel.sem</code>, and <code>fs.mqueue.*</code> (IPC namespace). These can be set on a single app's pods. Every other sysctl - including all of <code>vm.*</code>, and therefore <code>vm.max_map_count</code> - holds a single value shared by the entire machine, so it cannot be scoped to a pod and must be applied to the node itself.</p>
+<h4 id="namespaced-sysctls">Namespaced sysctls<a class="headerlink" href="#namespaced-sysctls" title="Permanent link">&para;</a></h4>
+<p>Namespaced sysctls are set with the <code>docker-options</code> plugin, and are translated into the pod's <code>securityContext.sysctls</code>. A <code>ps:restart</code> is required to apply them.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;--sysctl net.ipv4.ip_unprivileged_port_start=1024&quot;</span>
+</code></pre></div>
+<p>Passing a non-namespaced sysctl this way fails the deploy rather than silently dropping the value, since it provably cannot take effect within a pod. Note this differs from the <code>docker-local</code> scheduler, where such an option is passed straight through to <code>docker run</code>.</p>
+<p>Kubernetes further splits namespaced sysctls into a <em>safe</em> list that any pod may set, and everything else. A sysctl outside the safe list - <code>net.core.somaxconn</code>, for example - is rejected at pod admission unless the node's kubelet was started with a matching <code>allowed-unsafe-sysctls</code> value, which can be supplied at cluster initialization or when joining a node.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>dokku<span class="w"> </span>scheduler-k3s:initialize<span class="w"> </span>--kubelet-args<span class="w"> </span>allowed-unsafe-sysctls<span class="o">=</span>net.core.somaxconn
+</code></pre></div>
+<p>Dokku does not enforce the safe list itself, as its membership changes between Kubernetes releases. Only the namespaced/non-namespaced distinction, which is a property of the kernel, is validated.</p>
+<h4 id="non-namespaced-sysctls">Non-namespaced sysctls<a class="headerlink" href="#non-namespaced-sysctls" title="Permanent link">&para;</a></h4>
+<p>Non-namespaced sysctls are a property of the node, not of any app, and are managed with the <code>node-sysctls:set</code> command. Dokku applies them via a privileged DaemonSet, so they reach every node without being told which nodes exist, cover nodes joined later, and are reapplied after a node reboots.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:set<span class="w"> </span>--global<span class="w"> </span>vm.max_map_count<span class="w"> </span><span class="m">262144</span>
+</code></pre></div>
+<p>Omitting the value clears it.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:set<span class="w"> </span>--global<span class="w"> </span>vm.max_map_count
+</code></pre></div>
+<p>Clearing a sysctl stops Dokku managing it, but does not restore whatever the node had before. The last value written stays in place until that node reboots, which is how <code>sysctl -w</code> behaves everywhere else.</p>
+<p>Sysctls can also be scoped to a <a href="#node-profiles">node profile</a> with <code>--profile</code>, which applies them only to nodes joined with that profile.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:set<span class="w"> </span>--profile<span class="w"> </span>edge-workers<span class="w"> </span>vm.max_map_count<span class="w"> </span><span class="m">524288</span>
+</code></pre></div>
+<p>A profile scope inherits everything set globally and overrides it on conflict, so each node is covered by exactly one DaemonSet and no two ever write the same value. Note that the server node created by <code>scheduler-k3s:initialize</code> never carries a profile label, so only globally-scoped sysctls reach it.</p>
+<p>Use <code>node-sysctls:report</code> to see the resolved set for every scope.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:report
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:report<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div></p>
+<p>The DaemonSet pulls <code>busybox</code> and <code>registry.k8s.io/pause</code> by default. On an air-gapped cluster or one behind a registry mirror, point them elsewhere:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>node-sysctls-image<span class="w"> </span>registry.internal/busybox:1.36
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>node-sysctls-pause-image<span class="w"> </span>registry.internal/pause:3.9
+</code></pre></div></p>
 <h3 id="integrating-kustomize">Integrating Kustomize<a class="headerlink" href="#integrating-kustomize" title="Permanent link">&para;</a></h3>
 <p>Dokku supports integration with <a href="https://kustomize.io/">Kustomize</a> to further customize the generated helm charts for app deployments. For example, a <code>config/kustomize/kustomization.yaml</code> file with the following contents will override the scale for each process deployed to <code>3</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize.config.k8s.io/v1beta1</span>
-<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kustomization</span>
-<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="nt">resources</span><span class="p">:</span>
-<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rendered.yaml</span>
-<a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a><span class="nt">patches</span><span class="p">:</span>
-<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
-<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="w">    </span><span class="no">- op: replace</span>
-<a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="w">      </span><span class="no">path: /spec/replicas</span>
-<a id="__codelineno-64-9" name="__codelineno-64-9" href="#__codelineno-64-9"></a><span class="w">      </span><span class="no">value: 3</span>
-<a id="__codelineno-64-10" name="__codelineno-64-10" href="#__codelineno-64-10"></a><span class="w">  </span><span class="nt">target</span><span class="p">:</span>
-<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a><span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span>
-<a id="__codelineno-64-12" name="__codelineno-64-12" href="#__codelineno-64-12"></a><span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<a id="__codelineno-64-13" name="__codelineno-64-13" href="#__codelineno-64-13"></a><span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize.config.k8s.io/v1beta1</span>
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kustomization</span>
+<a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rendered.yaml</span>
+<a id="__codelineno-76-5" name="__codelineno-76-5" href="#__codelineno-76-5"></a><span class="nt">patches</span><span class="p">:</span>
+<a id="__codelineno-76-6" name="__codelineno-76-6" href="#__codelineno-76-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a><span class="w">    </span><span class="no">- op: replace</span>
+<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a><span class="w">      </span><span class="no">path: /spec/replicas</span>
+<a id="__codelineno-76-9" name="__codelineno-76-9" href="#__codelineno-76-9"></a><span class="w">      </span><span class="no">value: 3</span>
+<a id="__codelineno-76-10" name="__codelineno-76-10" href="#__codelineno-76-10"></a><span class="w">  </span><span class="nt">target</span><span class="p">:</span>
+<a id="__codelineno-76-11" name="__codelineno-76-11" href="#__codelineno-76-11"></a><span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span>
+<a id="__codelineno-76-12" name="__codelineno-76-12" href="#__codelineno-76-12"></a><span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-76-13" name="__codelineno-76-13" href="#__codelineno-76-13"></a><span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 </code></pre></div>
 <p>When using Kustomize with Dokku, all Kustomize-files <em>must</em> be placed in the <code>config/kustomize</code> folder, with a <code>kustomization.yaml</code> file being the entrypoint to Kustomize. Dokku will render the helm chart to a <code>rendered.yaml</code> file, and then execute Kustomize with the <code>config/kustomize</code> folder as the context.</p>
 <p>See the <a href="https://kustomize.io/">Kustomize</a> website for more details on how to use Kustomize.</p>
@@ -6722,27 +6876,27 @@ Users with older installations will need to manually install Keda.</p>
 <p>Certain ports must be open for interacting with the remote kubernets api. Refer to the <a href="https://docs.k3s.io/installation/requirements?os=debian#networking">K3s networking documentation</a> for the required open ports between servers prior to running the command.</p>
 </div>
 <p>By default, Dokku assumes that all it controls all actions on the cluster, and thus does not expose the <code>kubectl</code> binary for administrators. To interact with kubectl, you will need to retrieve the <code>kubeconfig</code> for the cluster and configure your client to use that configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>dokku<span class="w"> </span>scheduler-k3s:show-kubeconfig
 </code></pre></div>
 <h3 id="interacting-with-an-external-kubernetes-cluster">Interacting with an external Kubernetes cluster<a class="headerlink" href="#interacting-with-an-external-kubernetes-cluster" title="Permanent link">&para;</a></h3>
 <p>While the k3s scheduler plugin is designed to work with a Dokku-managed k3s cluster, Dokku can be configured to interact with any Kubernetes cluster by setting the global <code>kubeconfig-path</code> to a path to a custom kubeconfig on the Dokku server. This property is only available at a global level.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path<span class="w"> </span>/path/to/custom/kubeconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path<span class="w"> </span>/path/to/custom/kubeconfig
 </code></pre></div>
 <p>To set the default value, omit the value from the <code>scheduler-k3s:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kubeconfig-path
 </code></pre></div>
 <p>The default value for the <code>kubeconfig-path</code> is the k3s kubeconfig located at <code>/etc/rancher/k3s/k3s.yaml</code>.</p>
 <h3 id="customizing-the-kubernetes-context">Customizing the Kubernetes context<a class="headerlink" href="#customizing-the-kubernetes-context" title="Permanent link">&para;</a></h3>
 <p>When interacting with a custom Kubeconfig, the <code>kube-context</code> property can be set to specify a specific context within the kubeconfig to use. This property is available only at the global leve.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context<span class="w"> </span>lollipop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context<span class="w"> </span>lollipop
 </code></pre></div>
 <p>To set the default value, omit the value from the <code>scheduler-k3s:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a>dokku<span class="w"> </span>scheduler-k3s:set<span class="w"> </span>--global<span class="w"> </span>kube-context
 </code></pre></div>
 <p>The default value for the <code>kube-context</code> is an empty string, and will result in Dokku using the current context within the kubeconfig.</p>
 <h3 id="customizing-helm-chart-properties">Customizing Helm Chart Properties<a class="headerlink" href="#customizing-helm-chart-properties" title="Permanent link">&para;</a></h3>
 <p>Dokku includes a number of helm charts by default with settings that are optimized for Dokku. That said, it may be useful to further customize the charts for a given environment. Chart overrides are managed via the <code>scheduler-k3s:charts:set</code> command, which takes a <code>&lt;chart-name&gt;.&lt;property&gt;</code> argument and a value. Chart overrides are always global because helm charts are not managed on a per-app basis.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version<span class="w"> </span><span class="m">1</span>.13.3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version<span class="w"> </span><span class="m">1</span>.13.3
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -6750,35 +6904,35 @@ Users with older installations will need to manually install Keda.</p>
 </div>
 <p>Property names may contain <code>/</code> (e.g. for Kubernetes-style annotation keys such as <code>service.annotations.prometheus.io/scrape</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>To unset a chart property, omit the value from the <code>scheduler-k3s:charts:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version
 </code></pre></div>
 <p>Configured chart overrides can be inspected with the <code>scheduler-k3s:charts:report</code> command. Without an argument, it lists every chart known to Dokku along with any configured overrides; passing a chart name scopes the report to that chart:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report
-<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report<span class="w"> </span>cert-manager
-<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report<span class="w"> </span>--format<span class="w"> </span>json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report
+<a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report<span class="w"> </span>cert-manager
+<a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report<span class="w"> </span>--format<span class="w"> </span>json
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The legacy form <code>dokku scheduler-k3s:set --global chart.&lt;chart&gt;.&lt;property&gt; &lt;value&gt;</code> continues to work but is deprecated and will be removed in a future major release. Migrate to <code>scheduler-k3s:charts:set</code> instead.</p>
 </div>
 <p>A <code>scheduler-k3s:ensure-charts</code> command with the <code>--force</code> flag is required after changing any chart properties in order to have them apply. This will install all charts, not just the ones that have changed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--force
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--force
 </code></pre></div>
 <p>Alternatively, a comma separated list of chart names can be specified to only force install the specified charts:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>cert-manager
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>cert-manager
 </code></pre></div>
 <h3 id="persistent-storage">Persistent storage<a class="headerlink" href="#persistent-storage" title="Permanent link">&para;</a></h3>
 <p>K3s apps mount persistent volumes through the Dokku storage plugin. A <code>storage:create --scheduler k3s</code> call provisions a PersistentVolumeClaim through a small per-entry helm release; <code>storage:mount &lt;app&gt; &lt;name&gt; --container-dir &lt;path&gt;</code> then attaches it to an app. Because storage entries are global, the same PVC can be mounted into multiple apps (for <code>ReadWriteMany</code> workloads) or into the same app at multiple subpaths.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="c1"># dynamically-provisioned PVC backed by Longhorn</span>
-<a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>demo-data<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a><span class="w">  </span>--scheduler<span class="w"> </span>k3s<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a><span class="w">  </span>--size<span class="w"> </span>2Gi<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-75-5" name="__codelineno-75-5" href="#__codelineno-75-5"></a><span class="w">  </span>--access-mode<span class="w"> </span>ReadWriteOnce<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-75-6" name="__codelineno-75-6" href="#__codelineno-75-6"></a><span class="w">  </span>--storage-class-name<span class="w"> </span>longhorn
-<a id="__codelineno-75-7" name="__codelineno-75-7" href="#__codelineno-75-7"></a>
-<a id="__codelineno-75-8" name="__codelineno-75-8" href="#__codelineno-75-8"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>demo<span class="w"> </span>demo-data<span class="w"> </span>--container-dir<span class="w"> </span>/data
-<a id="__codelineno-75-9" name="__codelineno-75-9" href="#__codelineno-75-9"></a>dokku<span class="w"> </span>storage:wait<span class="w"> </span>demo-data
-<a id="__codelineno-75-10" name="__codelineno-75-10" href="#__codelineno-75-10"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="c1"># dynamically-provisioned PVC backed by Longhorn</span>
+<a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>demo-data<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a><span class="w">  </span>--scheduler<span class="w"> </span>k3s<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a><span class="w">  </span>--size<span class="w"> </span>2Gi<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-87-5" name="__codelineno-87-5" href="#__codelineno-87-5"></a><span class="w">  </span>--access-mode<span class="w"> </span>ReadWriteOnce<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-87-6" name="__codelineno-87-6" href="#__codelineno-87-6"></a><span class="w">  </span>--storage-class-name<span class="w"> </span>longhorn
+<a id="__codelineno-87-7" name="__codelineno-87-7" href="#__codelineno-87-7"></a>
+<a id="__codelineno-87-8" name="__codelineno-87-8" href="#__codelineno-87-8"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>demo<span class="w"> </span>demo-data<span class="w"> </span>--container-dir<span class="w"> </span>/data
+<a id="__codelineno-87-9" name="__codelineno-87-9" href="#__codelineno-87-9"></a>dokku<span class="w"> </span>storage:wait<span class="w"> </span>demo-data
+<a id="__codelineno-87-10" name="__codelineno-87-10" href="#__codelineno-87-10"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
 </code></pre></div>
 <p>For a hostPath-backed PV (no StorageClass), pass <code>&lt;path&gt;</code> as the second positional argument and omit <code>--storage-class-name</code>. The plugin renders both the PV and the PVC into the entry's helm release. The <code>--reclaim-policy</code> flag (<code>Retain</code> or <code>Delete</code>) controls whether the underlying PV survives <code>storage:destroy</code>. Annotations and labels on <code>storage:create</code> / <code>storage:set</code> propagate to both the PVC and the PV so backup tools (Velero, Longhorn snapshots) can find them.</p>
 <p>The legacy <code>storage:mount &lt;app&gt; &lt;host&gt;:&lt;container&gt;</code> colon form is rejected on k3s apps; create a named entry instead. See <a href="../../../advanced-usage/persistent-storage/">Persistent Storage</a> for the full command reference.</p>
@@ -6799,6 +6953,7 @@ Users with older installations will need to manually install Keda.</p>
 <li><code>--cap-add</code></li>
 <li><code>--cap-drop</code></li>
 <li><code>--privileged</code></li>
+<li><code>--sysctl</code> (namespaced sysctls only, see <a href="#setting-kernel-sysctls">Setting kernel sysctls</a>)</li>
 </ul>
 </li>
 </ul>
@@ -6840,10 +6995,10 @@ Users with older installations will need to manually install Keda.</p>
 <h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
 <p>App logs for the <code>logs</code> command are fetched by Dokku from running containers via the Kubernetes api. While the <code>k3s</code> scheduler does not integrate with the <code>logs:vector-*</code> subcommands, it does respect the global <code>vector-sink</code> logs property. When that property is set, the <code>scheduler-k3s:ensure-charts</code> command can be utilized to reconfigure vector to ship kubernetes logs to the provided sink.</p>
 <p>To setup log shipping, configure the global <code>vector-sink</code> property for the <code>logs</code> plugin.. Note that this can be run before <em>or</em> after the <code>scheduler-k3s:ensure-charts</code> command - if run before, the <code>scheduler-k3s:ensure-charts</code> subcommand will pick up the value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>Next, run the <code>scheduler-k3s:ensure-charts</code> command with the <code>vector</code> chart to force the <code>k3s</code> scheduler to reconfigure vector with the specified sink:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
 </code></pre></div>
 <p>Please see the <a href="../../logs/#configuring-a-log-sink">vector logs documentation</a> for more information on specifying vector sinks.</p>
 <h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
@@ -6950,6 +7105,20 @@ Users with older installations will need to manually install Keda.</p>
 <td><code>eth0</code></td>
 <td><code>--scheduler-k3s-global-network-interface</code>, <code>--scheduler-k3s-computed-network-interface</code></td>
 <td>Host network interface used by k3s</td>
+</tr>
+<tr>
+<td><code>node-sysctls-image</code></td>
+<td>global only</td>
+<td><code>busybox:1.36</code></td>
+<td><code>--scheduler-k3s-global-node-sysctls-image</code></td>
+<td>Image used to apply node-level sysctls, override for air-gapped clusters</td>
+</tr>
+<tr>
+<td><code>node-sysctls-pause-image</code></td>
+<td>global only</td>
+<td><code>registry.k8s.io/pause:3.9</code></td>
+<td><code>--scheduler-k3s-global-node-sysctls-pause-image</code></td>
+<td>Image keeping the node sysctls daemonset pods running</td>
 </tr>
 <tr>
 <td><code>rollback-on-failure</code></td>
