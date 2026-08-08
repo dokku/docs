@@ -5365,8 +5365,8 @@
 <tbody>
 <tr>
 <td><code>env-migrated</code></td>
-<td>Migration sentinel that records the per-app or global <code>DOKKU_*</code> env-var → property migration completed for 0.38.0</td>
-<td><code>plugins/config/triggers.go</code> writes <code>"true"</code> after the upgrade-time pass</td>
+<td>Migration sentinel that records that the per-app or global <code>ENV</code> file has been drained out of its pre-0.38.0 location into the config path. The old file is removed as soon as it has been drained, so one that reappears afterwards was written by hand rather than through <code>dokku config:*</code>; its contents are merged in and named in a warning on the next migration pass</td>
+<td><code>plugins/config/migrate.go</code> writes <code>"true"</code> once the file has been drained</td>
 </tr>
 </tbody>
 </table>
