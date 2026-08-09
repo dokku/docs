@@ -4574,6 +4574,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Logging support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shipping-cron-task-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shipping cron task logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6284,6 +6301,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Logging support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shipping-cron-task-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shipping cron task logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -7159,6 +7193,18 @@ Users with older installations will need to manually install Keda.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
 </code></pre></div>
 <p>Please see the <a href="../../logs/#configuring-a-log-sink">vector logs documentation</a> for more information on specifying vector sinks.</p>
+<h4 id="shipping-cron-task-logs">Shipping cron task logs<a class="headerlink" href="#shipping-cron-task-logs" title="Permanent link">&para;</a></h4>
+<p>The global <code>vector-cron-sink</code> property is also respected. When set, logs from cron task pods are routed to that sink instead of the sink configured for everything else, matching the behavior described in the <a href="../../logs/#configuring-a-cron-task-log-sink">cron task log sink documentation</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=text&quot;</span>
+<a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
+</code></pre></div>
+<p>As with <code>vector-sink</code>, only the global property is respected - a per-app <code>vector-cron-sink</code> has no effect on the <code>k3s</code> scheduler.</p>
+<p>Cron events carry the same <code>dokku_app</code> and <code>dokku_cron_id</code> fields as they do on the <code>docker-local</code> scheduler, so sink configuration referencing them is portable between the two.</p>
+<p>Two differences are worth noting:</p>
+<ul>
+<li>Templated values must be base64 encoded. Sink values containing <code>{{ }}</code> are interpreted by Helm at chart install time rather than by Vector, so the <code>base64enc:</code> form documented under <a href="../../logs/#log-sink-dsn-format">log sink DSN format</a> is required.</li>
+<li>The <code>file</code> sink is not useful here. Vector runs as a DaemonSet agent, so a file path resolves to whichever node the agent is running on rather than to durable shared storage. Use a network sink and reference <code>dokku_cron_id</code> as a field instead of as a path component.</li>
+</ul>
 <h3 id="supported-resource-management-properties">Supported Resource Management Properties<a class="headerlink" href="#supported-resource-management-properties" title="Permanent link">&para;</a></h3>
 <p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>:</p>
 <ul>

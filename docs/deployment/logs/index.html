@@ -2268,6 +2268,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-a-cron-task-log-sink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring a cron task log sink
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring a cron task log sink">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-cron-output-to-a-file-on-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing cron output to a file on disk
+      
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#configuring-the-app-label" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5356,6 +5384,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-a-cron-task-log-sink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring a cron task log sink
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring a cron task log sink">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-cron-output-to-a-file-on-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing cron output to a file on disk
+      
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#configuring-the-app-label" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5521,70 +5577,81 @@
 </ul>
 <p>The <code>/etc/vector</code> mount includes the <code>vector.json</code> configuration file, but also may be used to provide extra files to the vector container.</p>
 <p>The final volume mount - <code>/var/log/dokku/apps</code> - may be used for users that wish to ship logs to a file on disk that may be later logrotated. This directory is owned by the <code>dokku</code> user and group, with permissions set to <code>0755</code>. At this time, log-rotation is not configured for this directory.</p>
+<p>Operators using a <code>file</code> sink are encouraged to configure rotation themselves, as Dokku will not truncate these files. A minimal <code>/etc/logrotate.d/dokku-app-logs</code> might look like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>/var/log/dokku/apps/*/*.log {
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  daily
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  rotate 14
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  compress
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  missingok
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>  notifempty
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  copytruncate
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>}
+</code></pre></div>
+<p><code>copytruncate</code> is used because Vector holds the file open between writes.</p>
 <h4 id="stopping-the-vector-container">Stopping the Vector container<a class="headerlink" href="#stopping-the-vector-container" title="Permanent link">&para;</a></h4>
 <p>Vector may be stopped via the <code>logs:vector-stop</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>logs:vector-stop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>logs:vector-stop
 </code></pre></div>
 <p>The <code>vector</code> container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
 <h4 id="checking-vectors-logs">Checking Vector's Logs<a class="headerlink" href="#checking-vectors-logs" title="Permanent link">&para;</a></h4>
 <p>It may be necessary to check the vector container's logs to ensure that vector is operating as expected. This can be performed with the <code>logs:vector-logs</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>logs:vector-logs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>logs:vector-logs
 </code></pre></div>
 <p>This command also supports the following modifiers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
 </code></pre></div>
 <p>You can use these modifiers as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>logs:vector-logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>logs:vector-logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the vector container, with an initial history of 10 log lines</p>
 <h4 id="changing-the-vector-image">Changing the vector image<a class="headerlink" href="#changing-the-vector-image" title="Permanent link">&para;</a></h4>
 <p>Dokku integrates with a Vector docker image version that is known to be compatible with the documentation. In some cases, it may be useful to specify an alternative image version. To do so, set the global <code>vector-image</code> property.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-image<span class="w"> </span>timberio/vector:0.35.X-debian
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-image<span class="w"> </span>timberio/vector:0.35.X-debian
 </code></pre></div>
 <p>Once set, the vector container will need to be stopped and then started. Note that specifying the <code>--vector-image</code> flag on the <code>logs:vector-start</code> will override the setting.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>logs:vector-stop
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>logs:vector-start
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>logs:vector-stop
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>logs:vector-start
 </code></pre></div>
 <p>Setting this to an empty string will reset the version to the version currently compatible with the Dokku installation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-image
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-image
 </code></pre></div>
 <h4 id="attaching-vector-to-additional-docker-networks">Attaching Vector to additional Docker networks<a class="headerlink" href="#attaching-vector-to-additional-docker-networks" title="Permanent link">&para;</a></h4>
 <p>By default, the Vector container runs with <code>network_mode: bridge</code> and can only reach app containers that are also on the default bridge network. Apps deployed onto a per-app network or a custom network - typically via <code>dokku network:set &lt;app&gt; initial-network &lt;name&gt;</code> - are not reachable from Vector over Docker's internal DNS, so sinks that need to talk to those apps directly (for example, an in-host log search service such as <a href="https://github.com/dokku/logpond">Logpond</a>) would have to route traffic out through the external proxy.</p>
 <p>The global <code>vector-networks</code> property accepts a comma-separated list of Docker networks for Vector to join.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-networks<span class="w"> </span>dokku-logs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-networks<span class="w"> </span>dokku-logs
 </code></pre></div>
 <p>Multiple networks may be specified by separating them with a comma.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-networks<span class="w"> </span>dokku-logs,observability
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-networks<span class="w"> </span>dokku-logs,observability
 </code></pre></div>
 <p>Setting this property <strong>replaces</strong> the default bridge attachment: the Vector container will be on the configured user-defined networks only, not the default Docker <code>bridge</code> network. Outbound traffic continues to work through the user-defined networks' NAT, so external sinks such as Datadog or hosted HTTP endpoints remain reachable.</p>
 <p>Each network must already exist; setting a non-existent network or the reserved <code>bridge</code> value will fail. The list can be cleared by setting an empty value, which restores the default <code>network_mode: bridge</code> configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-networks
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-networks
 </code></pre></div>
 <p>Network attachments are reconciled by <code>docker compose</code> on every <code>logs:vector-start</code>, so after changing the value the Vector container must be cycled.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>logs:vector-stop
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dokku<span class="w"> </span>logs:vector-start
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>logs:vector-stop
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>dokku<span class="w"> </span>logs:vector-start
 </code></pre></div>
 <p>Once attached, an app on <code>dokku-logs</code> (for example via <code>dokku network:set node-js-app initial-network dokku-logs</code>) is reachable from Vector at <code>&lt;app&gt;.&lt;process&gt;:&lt;port&gt;</code> over the shared network without round-tripping through the external proxy.</p>
 <h4 id="configuring-a-log-sink">Configuring a log sink<a class="headerlink" href="#configuring-a-log-sink" title="Permanent link">&para;</a></h4>
 <p>Vector uses the concept of log "sinks" to send logs to a given endpoint. Log sinks may be configured globally or on a per-app basis by specifying a <code>vector-sink</code> in DSN form with the <code>logs:set</code> command. Specifying a sink value will reload any running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>A sink may be removed by setting an empty value, which will also reload the running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-sink
 </code></pre></div>
 <p>Only one sink may be specified on a per-app basis at a given time.</p>
 <p>Log sinks can also be specified globally by specifying the <code>--global</code> flag to <code>logs:set</code> with no app name specified:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=json&quot;</span>
 </code></pre></div>
 <p>As with app-specific sink settings, the global value may also be cleared by setting no value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink
 </code></pre></div>
 <h5 id="log-sink-dsn-format">Log Sink DSN Format<a class="headerlink" href="#log-sink-dsn-format" title="Permanent link">&para;</a></h5>
 <p>The DSN form of a sink is as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>SINK_TYPE://?SINK_OPTIONS
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>SINK_TYPE://?SINK_OPTIONS
 </code></pre></div>
 <p>Valid values for <code>SINK_TYPE</code> include all log vector log sinks, while <code>SINK_OPTIONS</code> is a query-string form for the sink's options. The following is a short description on how to set various values:</p>
 <ul>
@@ -5596,36 +5663,95 @@
 <li><code>table</code>: form: <code>option[key]=value</code></li>
 </ul>
 <p>For some sinks - such as the <code>http</code> sink - it may be useful to use special characters such as <code>&amp;</code>. These characters must be url escaped as per <a href="https://datatracker.ietf.org/doc/html/rfc3986.html">RFC 3986</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># the following command will set the `http` sink with a uri config value</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># for a uri config value: https://loggerservice.com:1234/?token=abc1234&amp;type=vector</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="c1"># the url quoted version: https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector</span>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?uri=https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># the following command will set the `http` sink with a uri config value</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1"># for a uri config value: https://loggerservice.com:1234/?token=abc1234&amp;type=vector</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="c1"># the url quoted version: https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?uri=https%3A//loggerservice.com%3A1234/%3Ftoken%3Dabc1234%26type%3Dvector&quot;</span>
 </code></pre></div>
 <p>For kubernetes, it may be necessary to use template syntax - <code>{{ .parent.child }}</code> - in the sink configuration. Naively using brackets will fail due to the Helm chart install process assuming that the template should be interpreted at Helm install time vs by Vector itself. To avoid this, use <code>base64enc:</code> values (available only for top-level properties at this time). The following example shows how to use <code>{{ pod }}</code> as a value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># encode the value with a Helm `print` statement wrapper</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nv">encoded</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{{ print &quot;{{ pod }}&quot; }}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="c1"># the value of encoded should be: e3sgcHJpbnQgInt7IHBvZCB9fSIgfX0K</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="c1"># set the value</span>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?process=base64enc%3A</span><span class="si">${</span><span class="nv">encoded</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># encode the value with a Helm `print` statement wrapper</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nv">encoded</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{{ print &quot;{{ pod }}&quot; }}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="c1"># the value of encoded should be: e3sgcHJpbnQgInt7IHBvZCB9fSIgfX0K</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1"># set the value</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span><span class="nb">test</span><span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">&quot;http://?process=base64enc%3A</span><span class="si">${</span><span class="nv">encoded</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>This will transform the value to it's encoded form when configuring Vector sinks for Kubernetes.</p>
 <p>Please read the <a href="https://vector.dev/docs/reference/configuration/sinks/">sink documentation</a> for your sink of choice to configure the sink as desired.</p>
+<h4 id="configuring-a-cron-task-log-sink">Configuring a cron task log sink<a class="headerlink" href="#configuring-a-cron-task-log-sink" title="Permanent link">&para;</a></h4>
+<p>Scheduled cron tasks run in one-off containers that carry the app's usual labels, so their output is already collected by the <code>vector-sink</code> configured for the app or globally. To send that output somewhere separate, set a <code>vector-cron-sink</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=text&quot;</span>
+</code></pre></div>
+<p>As with <code>vector-sink</code>, the value may be cleared by setting an empty value, and may also be set globally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;console://?encoding[codec]=text&quot;</span>
+</code></pre></div>
+<p>Setting a cron sink <strong>moves</strong> cron task output rather than copying it. Vector routes each log line to exactly one of the two sinks:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Where cron output goes</th>
+<th>Where all other output goes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vector-sink</code> only</td>
+<td><code>vector-sink</code></td>
+<td><code>vector-sink</code></td>
+</tr>
+<tr>
+<td><code>vector-cron-sink</code> only</td>
+<td><code>vector-cron-sink</code></td>
+<td>nowhere</td>
+</tr>
+<tr>
+<td>both</td>
+<td><code>vector-cron-sink</code></td>
+<td><code>vector-sink</code></td>
+</tr>
+</tbody>
+</table>
+<p>If an app is already shipping to a metered service via <code>vector-sink</code>, adding a cron sink will stop cron output from arriving there.</p>
+<p>Events on the cron branch have two extra fields added to them, so that they can be used in sink options that support templating:</p>
+<ul>
+<li><code>dokku_app</code>: the name of the app the task belongs to</li>
+<li><code>dokku_cron_id</code>: the cron task ID, as shown by <code>dokku cron:list</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Cron task containers are removed as soon as the task exits. Vector attaches to a container after it starts, so output from tasks that finish almost immediately - a bare <code>echo</code>, for instance - may be missed. Log shipping should not be relied on as the sole record that a task ran; use an external check for that.</p>
+</div>
+<h5 id="writing-cron-output-to-a-file-on-disk">Writing cron output to a file on disk<a class="headerlink" href="#writing-cron-output-to-a-file-on-disk" title="Permanent link">&para;</a></h5>
+<p>The <code>file</code> sink writes to a path within the vector container. The <code>/var/log/dokku/apps</code> directory is mounted into that container from the host at the same path, so it is the correct destination for output that should survive on the host.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;file://?path=/var/log/dokku/apps/node-js-app/cron.log&amp;encoding[codec]=text&quot;</span>
+</code></pre></div>
+<p>Because <code>path</code> supports templating, <code>dokku_cron_id</code> can be used to give each task its own file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;file://?path=/var/log/dokku/apps/node-js-app/cron-{{ dokku_cron_id }}.log&amp;encoding[codec]=text&quot;</span>
+</code></pre></div>
+<p>Quoting the value is required, both for the <code>&amp;</code> separators and for the spaces inside the template.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Vector drops any event whose templated <code>path</code> references a field it cannot resolve. Only <code>dokku_app</code> and <code>dokku_cron_id</code> are guaranteed to exist on cron events - referencing anything else risks silently discarding log lines.</p>
+</div>
+<p>Vector creates missing parent directories, and buffers writes before flushing. Set <code>idle_timeout_secs</code> to shorten that delay for infrequent tasks:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;file://?path=/var/log/dokku/apps/node-js-app/cron.log&amp;encoding[codec]=text&amp;idle_timeout_secs=5&quot;</span>
+</code></pre></div>
 <h5 id="configuring-the-app-label">Configuring the app label<a class="headerlink" href="#configuring-the-app-label" title="Permanent link">&para;</a></h5>
 <p>Logs shipped by vector include the label <code>com.dokku.app-name</code>, which is an alias for the app name. This can be changed via the <code>app-label-alias</code> logs property with the <code>logs:set</code> command. Specifying a new alias will reload any running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
 </code></pre></div>
 <p>An alias may be removed by setting an empty value, which will also reload the running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias
 </code></pre></div>
 <p>Only one alias may be specified on a per-app basis at a given time.</p>
 <p>App label aliases can also be specified globally by specifying the <code>--global</code> flag to <code>logs:set</code> with no app name specified:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
 </code></pre></div>
 <p>As with app-specific label alias settings, the global value may also be cleared by setting no value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
@@ -5671,6 +5797,13 @@
 <td>none</td>
 <td><code>--logs-global-vector-networks</code>, <code>--logs-computed-vector-networks</code></td>
 <td>Comma-separated list of docker networks the vector container is attached to</td>
+</tr>
+<tr>
+<td><code>vector-cron-sink</code></td>
+<td>app + global</td>
+<td>none</td>
+<td><code>--logs-vector-cron-sink</code>, <code>--logs-global-vector-cron-sink</code>, <code>--logs-computed-vector-cron-sink</code></td>
+<td>DSN-style sink configuration for scheduled cron task output; when set, cron output is routed here instead of to <code>vector-sink</code></td>
 </tr>
 <tr>
 <td><code>vector-sink</code></td>
