@@ -5649,6 +5649,7 @@
 <p>As with app-specific sink settings, the global value may also be cleared by setting no value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink
 </code></pre></div>
+<p>The generated vector configuration is also rewritten whenever an app is renamed, cloned or destroyed. A renamed app keeps shipping to its sink under the new name, a cloned app gets a source of its own for the sink it inherited, and a destroyed app's source and sink are removed rather than left pointing at an endpoint that was decommissioned with the app.</p>
 <h5 id="log-sink-dsn-format">Log Sink DSN Format<a class="headerlink" href="#log-sink-dsn-format" title="Permanent link">&para;</a></h5>
 <p>The DSN form of a sink is as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>SINK_TYPE://?SINK_OPTIONS
