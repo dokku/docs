@@ -5738,21 +5738,22 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">&quot;file://?path=/var/log/dokku/apps/node-js-app/cron.log&amp;encoding[codec]=text&amp;idle_timeout_secs=5&quot;</span>
 </code></pre></div>
 <h5 id="configuring-the-app-label">Configuring the app label<a class="headerlink" href="#configuring-the-app-label" title="Permanent link">&para;</a></h5>
-<p>Logs shipped by vector include the label <code>com.dokku.app-name</code>, which is an alias for the app name. This can be changed via the <code>app-label-alias</code> logs property with the <code>logs:set</code> command. Specifying a new alias will reload any running vector container.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># setting the sink value in quotes is encouraged to avoid</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># issues with ampersand encoding in shell commands</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+<p>Dokku labels every app container with <code>com.dokku.app-name</code>, and events shipped by vector carry that label as the field <code>label."com.dokku.app-name"</code>. Some sinks cannot use a field named that way - Loki label names, for instance, may only contain letters, digits and underscores - so the field can be renamed on the way to the sink via the <code>app-label-alias</code> logs property. Specifying a new alias will reload any running vector container.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app_name&quot;</span>
 </code></pre></div>
+<p>Events for <code>node-js-app</code> then carry <code>label.app_name</code> and no longer carry <code>label."com.dokku.app-name"</code>.</p>
 <p>An alias may be removed by setting an empty value, which will also reload the running vector container.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>node-js-app<span class="w"> </span>app-label-alias
 </code></pre></div>
-<p>Only one alias may be specified on a per-app basis at a given time.</p>
+<p>Only one alias may be specified on a per-app basis at a given time. Valid values start with a letter or number and may otherwise contain letters, numbers, underscores, periods and hyphens.</p>
 <p>App label aliases can also be specified globally by specifying the <code>--global</code> flag to <code>logs:set</code> with no app name specified:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app-name&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias<span class="w"> </span><span class="s2">&quot;app_name&quot;</span>
 </code></pre></div>
 <p>As with app-specific label alias settings, the global value may also be cleared by setting no value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>app-label-alias
 </code></pre></div>
+<p>An app-specific value takes precedence over the global one, and is applied to that app's events whether they are shipped by the app's own <code>vector-sink</code> or by the global one.</p>
+<p>The alias only changes the shipped event. Containers are always discovered by the <code>com.dokku.app-name</code> label, so changing this property never affects which logs are collected, and a change takes effect on the next vector reload without redeploying the app. Cron events are unaffected in another respect too: <code>dokku_app</code> is read from the container label before the rename, so it holds the app name regardless of the configured alias.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
@@ -5775,7 +5776,7 @@
 <td>app + global</td>
 <td><code>com.dokku.app-name</code></td>
 <td><code>--logs-app-label-alias</code>, <code>--logs-global-app-label-alias</code>, <code>--logs-computed-app-label-alias</code></td>
-<td>Docker label key whose value is used to identify the app when shipping logs</td>
+<td>Field name the app name is shipped under, renamed from <code>com.dokku.app-name</code> on the event</td>
 </tr>
 <tr>
 <td><code>max-size</code></td>
