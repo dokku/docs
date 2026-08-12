@@ -5365,7 +5365,7 @@
 <tbody>
 <tr>
 <td><code>env-migrated</code></td>
-<td>Migration sentinel that records that the per-app or global <code>ENV</code> file has been drained out of its pre-0.38.0 location into the config path. The old file is removed as soon as it has been drained, so one that reappears afterwards was written by hand rather than through <code>dokku config:*</code>; its contents are merged in and named in a warning on the next migration pass</td>
+<td>Migration sentinel that records that the per-app or global <code>ENV</code> file has been drained out of its pre-0.38.0 location into the config path. The drain happens once: a file found at the old path once this is recorded is never imported, since the config path holds every change made since. Such a file is removed when it agrees with the current config, and otherwise moved aside to <code>ENV.migrated</code> with the keys it disagrees on named in a warning. The preserved copy is left for review and should be deleted afterwards, since it holds keys that were unset on purpose</td>
 <td><code>plugins/config/migrate.go</code> writes <code>"true"</code> once the file has been drained</td>
 </tr>
 </tbody>

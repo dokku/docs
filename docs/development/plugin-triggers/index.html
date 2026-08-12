@@ -9539,7 +9539,7 @@
 </code></pre></div>
 <h3 id="config-migrate-env"><code>config-migrate-env</code><a class="headerlink" href="#config-migrate-env" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Drains the pre-0.38 <code>$DOKKU_ROOT/ENV</code> and <code>$DOKKU_ROOT/&lt;app&gt;/ENV</code> files into the config property path, removing each file once it has been drained. Idempotent, and safe to call from an install trigger that runs before the config plugin's own.</li>
+<li>Description: Drains the pre-0.38 <code>$DOKKU_ROOT/ENV</code> and <code>$DOKKU_ROOT/&lt;app&gt;/ENV</code> files into the config property path, removing each file once it has been drained. A file found at the old path after its migration has been recorded is never imported: the config path holds every change made since, so the file is removed when it agrees with the current config and otherwise moved aside to <code>ENV.migrated</code>. Idempotent, and safe to call from an install trigger that runs before the config plugin's own.</li>
 <li>Invoked by: <code>common</code> when migrating deprecated config vars to plugin properties, checks plugin</li>
 <li>Arguments: none</li>
 <li>Example:</li>
