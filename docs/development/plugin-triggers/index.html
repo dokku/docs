@@ -11638,8 +11638,8 @@ between minor releases until the 1.0 release.</p>
 between minor releases until the 1.0 release.</p>
 </div>
 <ul>
-<li>Description: Allows you to retire containers started by the <code>run</code> command</li>
-<li>Invoked by: <code>dokku run:retire</code></li>
+<li>Description: Allows you to retire containers started by the <code>run</code> and <code>cron:run</code> commands that have exceeded their active deadline</li>
+<li>Invoked by: <code>dokku run:retire</code>, <code>dokku ps:retire</code></li>
 <li>Arguments: <code>$DOKKU_SCHEDULER $APP</code></li>
 <li>Example:</li>
 </ul>

@@ -5448,12 +5448,12 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.23.0</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cron:list &lt;app&gt; [--format json|stdout]  # List scheduled cron tasks for an app
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cron:report [&lt;app&gt;] [&lt;flag&gt;]            # Display report about an app
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cron:resume &lt;app&gt; &lt;cron_id&gt;             # Resume a cron task
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>cron:run &lt;app&gt; &lt;cron_id&gt; [--detach]     # Run a cron task on the fly
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cron:set [--global|&lt;app&gt;] &lt;key&gt; &lt;value&gt; # Set or clear a cron property for an app
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>cron:suspend &lt;app&gt; &lt;cron_id&gt;            # Suspend a cron task
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cron:list &lt;app&gt; [--format json|stdout]                      # List scheduled cron tasks for an app
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cron:report [&lt;app&gt;] [&lt;flag&gt;]                                # Display report about an app
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cron:resume &lt;app&gt; &lt;cron_id&gt;                                 # Resume a cron task
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>cron:run &lt;app&gt; &lt;cron_id&gt; [--detach] [--ttl-seconds SECONDS] # Run a cron task on the fly
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cron:set [--global|&lt;app&gt;] &lt;key&gt; &lt;value&gt;                     # Set or clear a cron property for an app
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>cron:suspend &lt;app&gt; &lt;cron_id&gt;                                # Suspend a cron task
 </code></pre></div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="dokku-managed-cron">Dokku Managed Cron<a class="headerlink" href="#dokku-managed-cron" title="Permanent link">&para;</a></h3>
@@ -5477,7 +5477,7 @@
 <li><code>concurrency_policy</code>: A string (default: <code>allow</code>), that controls whether the cron task can be run concurrently with another invocation of itself. Valid options are <code>allow</code> (allow concurrency), <code>forbid</code> (exit the new cron task if there is an existing one), <code>replace</code> (delete any existing cron task and start the new one).</li>
 </ul>
 <p>Zero or more cron tasks can be specified per app. Cron tasks are validated after the build artifact is created but before the app is deployed, and the cron schedule is updated during the post-deploy phase.</p>
-<p>Cron tasks can run for a maximum of 24 hours via the docker-local scheduler, after which they are reaped from the system.</p>
+<p>Cron tasks can run for a maximum of 24 hours, after which they are reaped from the system. The <code>docker-local</code> scheduler reaps expired tasks via the <code>dokku ps:retire</code> pass that runs every 5 minutes, so a task may overrun its deadline by up to 5 minutes. The <code>k3s</code> scheduler enforces the deadline directly through the job's <code>activeDeadlineSeconds</code>.</p>
 <p>See the <a href="../../advanced-usage/deployment-tasks/#changing-the-appjson-location">app.json location documentation</a> for more information on where to place your <code>app.json</code> file.</p>
 <h4 id="task-environment">Task Environment<a class="headerlink" href="#task-environment" title="Permanent link">&para;</a></h4>
 <p>When running scheduled cron tasks, there are a few items to be aware of:</p>
@@ -5612,22 +5612,26 @@
 <p>By default, the task is run in an attached container - as supported by the scheduler. To run in a background detached container, specify the <code>--detach</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>cron:run<span class="w"> </span>node-js-app<span class="w"> </span>cGhwPT09cGhwIHRlc3QucGhwPT09QGRhaWx5<span class="w"> </span>--detach
 </code></pre></div>
+<p>An on-the-fly invocation runs for a maximum of 24 hours (86400 seconds), the same deadline scheduled invocations receive. A different deadline can be requested with the <code>--ttl-seconds</code> argument:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>cron:run<span class="w"> </span>node-js-app<span class="w"> </span>cGhwPT09cGhwIHRlc3QucGhwPT09QGRhaWx5<span class="w"> </span>--detach<span class="w"> </span>--ttl-seconds<span class="w"> </span><span class="m">600</span>
+</code></pre></div>
+<p>The value applies only to that invocation - tasks started by the schedule keep the 24 hour default.</p>
 <p>All one-off cron executions have their containers terminated after invocation.</p>
 <h4 id="displaying-reports">Displaying reports<a class="headerlink" href="#displaying-reports" title="Permanent link">&para;</a></h4>
 <p>You can get a report about the cron configuration for apps using the <code>cron:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Shell</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>cron:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>cron:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>=====&gt; node-js-app cron information
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>       Cron task count:               2
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>=====&gt; python-sample cron information
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>       Cron task count:               0
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>=====&gt; ruby-sample cron information
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>       Cron task count:               10
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>=====&gt; node-js-app cron information
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       Cron task count:               2
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>=====&gt; python-sample cron information
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>       Cron task count:               0
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>=====&gt; ruby-sample cron information
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>       Cron task count:               10
 </code></pre></div>
 </div>
 </div>
@@ -5636,18 +5640,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Shell</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>cron:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>cron:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=====&gt; node-js-app cron information
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>       Cron task count:               2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>=====&gt; node-js-app cron information
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       Cron task count:               2
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>cron:report<span class="w"> </span>node-js-app<span class="w"> </span>--cron-task-count
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>cron:report<span class="w"> </span>node-js-app<span class="w"> </span>--cron-task-count
 </code></pre></div>
 <h3 id="self-managed-cron">Self Managed Cron<a class="headerlink" href="#self-managed-cron" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -5657,18 +5661,18 @@
 <p>Some installations may require more fine-grained control over cron usage. The following are advanced instructions for configuring cron.</p>
 <h4 id="using-run-for-cron-tasks">Using <code>run</code> for cron tasks<a class="headerlink" href="#using-run-for-cron-tasks" title="Permanent link">&para;</a></h4>
 <p>You can always use a one-off container to run an app task:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>some-command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>some-command
 </code></pre></div>
 <p>For tasks that should not be interrupted, run is the <em>preferred</em> method of handling cron tasks, as the container will continue running even during a deploy or scaling event. The trade-off is that there will be an increase in memory usage if there are multiple concurrent tasks running.</p>
 <h4 id="using-enter-for-cron-tasks">Using <code>enter</code> for cron tasks<a class="headerlink" href="#using-enter-for-cron-tasks" title="Permanent link">&para;</a></h4>
 <p>Your Procfile can have the following entry:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nl">cron</span><span class="p">:</span><span class="w"> </span>sleep<span class="w"> </span>infinity
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nl">cron</span><span class="p">:</span><span class="w"> </span>sleep<span class="w"> </span>infinity
 </code></pre></div>
 <p>With the <code>cron</code> process scaled to <code>1</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">cron</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">cron</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <p>You can now run all your commands in that container:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>enter<span class="w"> </span>node-js-app<span class="w"> </span>cron<span class="w"> </span>some-command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>enter<span class="w"> </span>node-js-app<span class="w"> </span>cron<span class="w"> </span>some-command
 </code></pre></div>
 <p>Note that you can also run multiple commands at the same time to reduce memory usage, though that may result in polluting the container environment.</p>
 <p>For tasks that will properly resume, you <em>should</em> use the above method, as running tasks will be interrupted during deploys and scaling events, and subsequent commands will always run with the latest container. Note that if you scale the cron container down, this may interrupt proper running of the task.</p>
@@ -5695,34 +5699,34 @@
 <li>Remember to have trailing newlines in your cronfile! cron is finicky.</li>
 </ul>
 <p>The following is a sample cronfile that you can use for your apps:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a># server cron jobs
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>MAILTO=&quot;mail@dokku.me&quot;
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>PATH=/usr/local/bin:/usr/bin:/bin
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>SHELL=/bin/bash
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a># m   h   dom mon dow   username command
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a># *   *   *   *   *     dokku    command to be executed
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a># -   -   -   -   -
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a># |   |   |   |   |
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a># |   |   |   |   +----- day of week (0 - 6) (Sunday=0)
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a># |   |   |   +------- month (1 - 12)
-<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a># |   |   +--------- day of month (1 - 31)
-<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a># |   +----------- hour (0 - 23)
-<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a># +----------- min (0 - 59)
-<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
-<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>### HIGH TRAFFIC TIME IS B/W 00:00 - 04:00 AND 14:00 - 23:59
-<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>### RUN YOUR TASKS FROM 04:00 - 14:00
-<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>### KEEP SORTED IN TIME ORDER
-<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
-<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>### PLACE ALL CRON TASKS BELOW
-<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>
-<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a># removes unresponsive users from the subscriber list to decrease bounce rates
-<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>0 0 * * * dokku dokku run node-js-app some-command
-<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>
-<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a># sends out our email alerts to users
-<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>0 1 * * * dokku dokku ps:scale node-js-app cron=1 &amp;&amp; dokku enter node-js-app cron some-other-command &amp;&amp; dokku ps:scale node-js-app cron=0
-<a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>
-<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>### PLACE ALL CRON TASKS ABOVE, DO NOT REMOVE THE WHITESPACE AFTER THIS LINE
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a># server cron jobs
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>MAILTO=&quot;mail@dokku.me&quot;
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>PATH=/usr/local/bin:/usr/bin:/bin
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>SHELL=/bin/bash
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a># m   h   dom mon dow   username command
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a># *   *   *   *   *     dokku    command to be executed
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a># -   -   -   -   -
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a># |   |   |   |   |
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a># |   |   |   |   +----- day of week (0 - 6) (Sunday=0)
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a># |   |   |   +------- month (1 - 12)
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a># |   |   +--------- day of month (1 - 31)
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a># |   +----------- hour (0 - 23)
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a># +----------- min (0 - 59)
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>### HIGH TRAFFIC TIME IS B/W 00:00 - 04:00 AND 14:00 - 23:59
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>### RUN YOUR TASKS FROM 04:00 - 14:00
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>### KEEP SORTED IN TIME ORDER
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>### PLACE ALL CRON TASKS BELOW
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a># removes unresponsive users from the subscriber list to decrease bounce rates
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>0 0 * * * dokku dokku run node-js-app some-command
+<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a>
+<a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a># sends out our email alerts to users
+<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a>0 1 * * * dokku dokku ps:scale node-js-app cron=1 &amp;&amp; dokku enter node-js-app cron some-other-command &amp;&amp; dokku ps:scale node-js-app cron=0
+<a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a>
+<a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a>### PLACE ALL CRON TASKS ABOVE, DO NOT REMOVE THE WHITESPACE AFTER THIS LINE
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
