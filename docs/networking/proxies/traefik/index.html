@@ -5911,10 +5911,15 @@
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dns-provider-cf_api_key<span class="w"> </span>your-api-key
 </code></pre></div>
 <p>The <code>dns-provider-</code> prefix will be stripped and the variable name will be uppercased when passed to the Traefik container. For example, <code>dns-provider-cf_api_email</code> becomes <code>CF_API_EMAIL</code>.</p>
+<p>Each configured variable is surfaced by <code>traefik:report</code> as <code>--traefik-global-dns-provider-&lt;env_var&gt;</code>. As these values are provider credentials, they are masked as <code>*******</code> in the default report output, including the aggregate <code>dokku report</code>. The raw value is returned when the flag is requested explicitly or when the report is rendered as json:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>--global<span class="w"> </span>--traefik-global-dns-provider-cf_api_email
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>--global<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.&quot;global-dns-provider-cf_api_email&quot;&#39;</span>
+</code></pre></div></p>
 <p>After configuring, the Traefik container will need to be restarted and apps will need to be rebuilt.</p>
 <p>Refer to the <a href="https://doc.traefik.io/traefik/https/acme/#dnschallenge">Traefik DNS Challenge documentation</a> for the list of supported DNS providers and their required environment variables.</p>
 <p>To switch back to TLS challenge mode:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>challenge-mode<span class="w"> </span>tls
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>challenge-mode<span class="w"> </span>tls
 </code></pre></div>
 <h3 id="api-access">API Access<a class="headerlink" href="#api-access" title="Permanent link">&para;</a></h3>
 <p>Traefik exposes an API and Dashboard, which Dokku disables by default for security reasons. It can be exposed and customized as described below.</p>
@@ -5924,7 +5929,7 @@
 <p>Users enabling the dashboard should also enable api basic auth.</p>
 </div>
 <p>By default, the api is disabled. To enable, set the <code>api-enabled</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-enabled<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-enabled<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="enabling-the-dashboard">Enabling the dashboard<a class="headerlink" href="#enabling-the-dashboard" title="Permanent link">&para;</a></h4>
@@ -5933,18 +5938,18 @@
 <p>Users enabling the dashboard should also enable api basic auth.</p>
 </div>
 <p>By default, the dashboard is disabled. To enable, set the <code>dashboard-enabled</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dashboard-enabled<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dashboard-enabled<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="enabling-api-basic-auth">Enabling api basic auth<a class="headerlink" href="#enabling-api-basic-auth" title="Permanent link">&para;</a></h4>
 <p>Users enabling either the api or dashboard are encouraged to enable basic auth. This will apply <em>only</em> to the api/dashboard, and not to apps. To enable, set the <code>basic-auth-username</code> and <code>basic-auth-password</code> properties with the <code>--global</code> flag:. Both must be set or basic auth will not be enabled.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-username<span class="w"> </span>username
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-password<span class="w"> </span>password
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-username<span class="w"> </span>username
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>basic-auth-password<span class="w"> </span>password
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h4 id="customizing-the-api-hostname">Customizing the api hostname<a class="headerlink" href="#customizing-the-api-hostname" title="Permanent link">&para;</a></h4>
 <p>The hostname used for the api and dashboard is set to <code>traefik.dokku.me</code> by default. It can be customized by setting the <code>api-vhost</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-vhost<span class="w"> </span>lb.dokku.me
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>api-vhost<span class="w"> </span>lb.dokku.me
 </code></pre></div>
 <p>After enabling, the Traefik container will need to be restarted.</p>
 <h2 id="displaying-traefik-reports-for-an-app">Displaying Traefik reports for an app<a class="headerlink" href="#displaying-traefik-reports-for-an-app" title="Permanent link">&para;</a></h2>
@@ -5952,41 +5957,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>traefik:report
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>=====&gt; node-js-app traefik information
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>       Traefik computed api enabled:      false
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>       Traefik computed api vhost:        traefik.dokku.me
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>       Traefik computed challenge mode:   tls
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>       Traefik computed dashboard enabled: false
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>       Traefik computed http entry point: http
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>       Traefik computed https entry point: https
-<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>       Traefik computed image:            traefik:v2.8
-<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>       Traefik computed letsencrypt email:
-<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>       Traefik computed letsencrypt server: https://acme-v02.api.letsencrypt.org/directory
-<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>       Traefik computed log level:        ERROR
-<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>       Traefik global api enabled:
-<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>       Traefik global api vhost:
-<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>       Traefik global challenge mode:
-<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>       Traefik global dashboard enabled:
-<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>       Traefik global http entry point:
-<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>       Traefik global https entry point:
-<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>       Traefik global image:
-<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a>       Traefik global letsencrypt email:
-<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>       Traefik global letsencrypt server:
-<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a>       Traefik global log level:
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>The <code>global-&lt;prop&gt;</code> keys hold the raw global value and are empty when nothing has been set globally. The <code>computed-&lt;prop&gt;</code> keys hold the effective value used at deploy time, falling back to the built-in default when the global value is empty.</p>
-<p>You can run the command for a specific app also.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>traefik:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -6015,8 +5986,42 @@
 </div>
 </div>
 </div>
+<p>The <code>global-&lt;prop&gt;</code> keys hold the raw global value and are empty when nothing has been set globally. The <code>computed-&lt;prop&gt;</code> keys hold the effective value used at deploy time, falling back to the built-in default when the global value is empty.</p>
+<p>You can run the command for a specific app also.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>=====&gt; node-js-app traefik information
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>       Traefik computed api enabled:      false
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>       Traefik computed api vhost:        traefik.dokku.me
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>       Traefik computed challenge mode:   tls
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>       Traefik computed dashboard enabled: false
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>       Traefik computed http entry point: http
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>       Traefik computed https entry point: https
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>       Traefik computed image:            traefik:v2.8
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>       Traefik computed letsencrypt email:
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>       Traefik computed letsencrypt server: https://acme-v02.api.letsencrypt.org/directory
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>       Traefik computed log level:        ERROR
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>       Traefik global api enabled:
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>       Traefik global api vhost:
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>       Traefik global challenge mode:
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>       Traefik global dashboard enabled:
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>       Traefik global http entry point:
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>       Traefik global https entry point:
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>       Traefik global image:
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>       Traefik global letsencrypt email:
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>       Traefik global letsencrypt server:
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>       Traefik global log level:
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app<span class="w"> </span>--traefik-computed-api-enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>node-js-app<span class="w"> </span>--traefik-computed-api-enabled
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
@@ -6064,7 +6069,7 @@
 <td><code>basic-auth-password</code></td>
 <td>global only</td>
 <td>none</td>
-<td><code>--traefik-global-basic-auth-password</code>, <code>--traefik-computed-basic-auth-password</code></td>
+<td><code>--traefik-global-basic-auth-password</code>, <code>--traefik-computed-basic-auth-password</code> (masked as <code>*******</code> in the default stdout report; the raw value is returned when queried via <code>--format json</code> or when one of these flags is requested explicitly)</td>
 <td>Password for basic auth in front of the API/dashboard</td>
 </tr>
 <tr>
@@ -6099,7 +6104,7 @@
 <td><code>dns-provider-&lt;ENV_VAR&gt;</code></td>
 <td>global only</td>
 <td>none</td>
-<td><code>--traefik-dns-provider-&lt;env_var&gt;</code> (masked as <code>*******</code> in the default stdout report; the raw value is returned when queried via <code>--format json</code> or when this flag is requested explicitly)</td>
+<td><code>--traefik-global-dns-provider-&lt;env_var&gt;</code> (masked as <code>*******</code> in the default stdout report; the raw value is returned when queried via <code>--format json</code> or when this flag is requested explicitly)</td>
 <td>Per-provider environment variables passed to the Traefik container; <code>&lt;ENV_VAR&gt;</code> is the upstream variable name (e.g. <code>dns-provider-cloudflare-api-token</code>)</td>
 </tr>
 <tr>

@@ -11314,15 +11314,15 @@ between minor releases until the 1.0 release.</p>
 between minor releases until the 1.0 release.</p>
 </div>
 <ul>
-<li>Description: Allows you to run scheduler commands when an app is deployed</li>
+<li>Description: Allows you to run scheduler commands when an app is deployed. <code>$PROCESS_TYPE</code> is empty for a normal deploy and set when a single process type is targeted, as by <code>dokku ps:restart &lt;app&gt; &lt;process-type&gt;</code>, in which case only that process type should be redeployed.</li>
 <li>Invoked by: <code>dokku deploy</code></li>
-<li>Arguments: <code>$DOKKU_SCHEDULER $APP $IMAGE_TAG</code></li>
+<li>Arguments: <code>$DOKKU_SCHEDULER $APP $IMAGE_TAG $PROCESS_TYPE</code></li>
 <li>Example:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="ch">#!/usr/bin/env bash</span>
 <a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>
 <a id="__codelineno-148-3" name="__codelineno-148-3" href="#__codelineno-148-3"></a><span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail<span class="p">;</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$DOKKU_TRACE</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
-<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">PROCESS_TYPE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span><span class="p">;</span>
 <a id="__codelineno-148-5" name="__codelineno-148-5" href="#__codelineno-148-5"></a>
 <a id="__codelineno-148-6" name="__codelineno-148-6" href="#__codelineno-148-6"></a><span class="c1"># TODO</span>
 </code></pre></div>
