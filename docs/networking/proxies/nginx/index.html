@@ -6247,7 +6247,7 @@
 <p>To recover an original file, inspect the <code>.dokku-disabled</code> sibling.</p>
 <h4 id="disabling-the-catch-all-on-first-install">Disabling the catch-all on first install<a class="headerlink" href="#disabling-the-catch-all-on-first-install" title="Permanent link">&para;</a></h4>
 <p>Select "No" at the <code>dokku/install_default_site</code> debconf prompt, or pre-seed the answer before installing:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;dokku dokku/install_default_site boolean false&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>debconf-set-selections
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'dokku dokku/install_default_site boolean false'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>debconf-set-selections
 </code></pre></div>
 <h4 id="customizing-or-removing-the-catch-all-after-install">Customizing or removing the catch-all after install<a class="headerlink" href="#customizing-or-removing-the-catch-all-after-install" title="Permanent link">&para;</a></h4>
 <p>To customize the reject behavior, edit <code>/etc/nginx/conf.d/00-default-vhost.conf</code> and reload:</p>
@@ -6330,7 +6330,7 @@
 </code></pre></div>
 <p>That means you can put additional configuration in separate files. To increase the client request header timeout, the following can be performed:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>mkdir<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;client_header_timeout 50s;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/timeout.conf
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'client_header_timeout 50s;'</span><span class="w"> </span>&gt;<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/timeout.conf
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>chown<span class="w"> </span>dokku:dokku<span class="w"> </span>/home/dokku/node-js-app/nginx.conf.d/upload.conf
 <a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>service<span class="w"> </span>nginx<span class="w"> </span>reload
 </code></pre></div>
@@ -6599,9 +6599,9 @@
 These headers indicate the IP address of the original client making the request, the protocol of the original request (HTTP or HTTPS), and the port number of the original request, respectively.</p>
 <p>If you have another HTTP proxy sitting in between the end user and your server (for example, a load balancer, or a CDN), then the values of these headers will contain information about (e.g. the IP address of) the closest proxy, and not the end user.</p>
 <p>To fix this, assuming that the other proxy also passes <code>X-Forwarded-*</code> headers, which in turn contain information about the end user, you can tell Nginx include those values in the <code>X-Forwarded-*</code> headers that it sends to your application. You can do this via <code>nginx:set</code>, like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-for-value<span class="w"> </span><span class="s1">&#39;$http_x_forwarded_for&#39;</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-port-value<span class="w"> </span><span class="s1">&#39;$http_x_forwarded_port&#39;</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-proto-value<span class="w"> </span><span class="s1">&#39;$http_x_forwarded_proto&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-for-value<span class="w"> </span><span class="s1">'$http_x_forwarded_for'</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-port-value<span class="w"> </span><span class="s1">'$http_x_forwarded_port'</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-proto-value<span class="w"> </span><span class="s1">'$http_x_forwarded_proto'</span>
 </code></pre></div>
 <p>However, note that you should only do this if:</p>
 <ol>
@@ -6636,17 +6636,17 @@ These headers indicate the IP address of the original client making the request,
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># /etc/nginx/conf.d/00-log-formats.conf</span>
 <a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="c1"># escape=json was added in nginx 1.11.8</span>
 <a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="k">log_format</span><span class="w"> </span><span class="s">json_combined</span><span class="w"> </span><span class="s">escape=json</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="w">    </span><span class="s">&#39;&quot;time_local&quot;:&quot;</span><span class="nv">$time_local&quot;,&#39;</span>
-<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="w">    </span><span class="s">&#39;&quot;remote_addr&quot;:&quot;</span><span class="nv">$remote_addr&quot;,&#39;</span>
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="w">    </span><span class="s">&#39;&quot;remote_user&quot;:&quot;</span><span class="nv">$remote_user&quot;,&#39;</span>
-<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">    </span><span class="s">&#39;&quot;request&quot;:&quot;</span><span class="nv">$request&quot;,&#39;</span>
-<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">    </span><span class="s">&#39;&quot;status&quot;:&quot;</span><span class="nv">$status&quot;,&#39;</span>
-<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="w">    </span><span class="s">&#39;&quot;body_bytes_sent&quot;:&quot;</span><span class="nv">$body_bytes_sent&quot;,&#39;</span>
-<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="w">    </span><span class="s">&#39;&quot;request_time&quot;:&quot;</span><span class="nv">$request_time&quot;,&#39;</span>
-<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="w">    </span><span class="s">&#39;&quot;http_referrer&quot;:&quot;</span><span class="nv">$http_referer&quot;,&#39;</span>
-<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="w">    </span><span class="s">&#39;&quot;http_user_agent&quot;:&quot;</span><span class="nv">$http_user_agent&quot;&#39;</span>
-<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a><span class="w">  </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span><span class="s">'</span><span class="p">{</span><span class="kn">'</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="w">    </span><span class="s">'"time_local":"</span><span class="nv">$time_local",'</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="w">    </span><span class="s">'"remote_addr":"</span><span class="nv">$remote_addr",'</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="w">    </span><span class="s">'"remote_user":"</span><span class="nv">$remote_user",'</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">    </span><span class="s">'"request":"</span><span class="nv">$request",'</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">    </span><span class="s">'"status":"</span><span class="nv">$status",'</span>
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="w">    </span><span class="s">'"body_bytes_sent":"</span><span class="nv">$body_bytes_sent",'</span>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="w">    </span><span class="s">'"request_time":"</span><span class="nv">$request_time",'</span>
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="w">    </span><span class="s">'"http_referrer":"</span><span class="nv">$http_referer",'</span>
+<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="w">    </span><span class="s">'"http_user_agent":"</span><span class="nv">$http_user_agent"'</span>
+<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a><span class="w">  </span><span class="s">'</span><span class="err">}</span><span class="s">'</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="specifying-a-read-timeout">Specifying a read timeout<a class="headerlink" href="#specifying-a-read-timeout" title="Permanent link">&para;</a></h4>
 <div class="admonition note">

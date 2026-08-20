@@ -5718,7 +5718,7 @@
 </div>
 <p>In cases where your server's IP may have invalid domains pointing at it, limiting letsencrypt to certain allowed domains may be desirable to reduce spam requests on the Letsencrypt servers. The default is to allow all domains to have certificates retrieved, but this can be limited by specifying the <code>allowed-letsencrypt-domains-func-base64</code> global property.</p>
 <p>The default internal value for <code>allowed-letsencrypt-domains-func-base64</code> is the base64 representation of <code>return true</code>, and is meant to be the body of a lua function that return a boolean value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;return true&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">'return true'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">"</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
 </code></pre></div>
 <p>As this is a global value, once changed, OpenResty should be stopped and started again for the value to take effect:</p>
@@ -5726,7 +5726,7 @@
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>openresty:start
 </code></pre></div>
 <p>A more complex example would be to limit provisioning of certificates to domains in a specific list. The body of the lua function has access to a variable <code>domain</code>, and we can use it like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">body</span><span class="o">=</span><span class="s1">&#39;allowed_domains = {&quot;domain.com&quot;, &quot;extra-domain.com&quot;}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">body</span><span class="o">=</span><span class="s1">'allowed_domains = {"domain.com", "extra-domain.com"}</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="s1">for index, value in ipairs(allowed_domains) do</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="s1">  if value == domain then</span>
@@ -5735,8 +5735,8 @@
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="s1">end</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="s1">return false</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="s1">&#39;</span>
-<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$body</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="s1">'</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$body</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">"</span>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
 </code></pre></div>
 <p>To reset the value to the default, simply specify a blank value prior to restarting OpenResty:</p>

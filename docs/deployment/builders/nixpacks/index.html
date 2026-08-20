@@ -5298,10 +5298,10 @@
 <h3 id="build-time-configuration-variables">Build-time configuration variables<a class="headerlink" href="#build-time-configuration-variables" title="Permanent link">&para;</a></h3>
 <p>For security reasons - and as per <a href="https://github.com/docker/docker/issues/13490">Docker recommendations</a> - nixpacks-based deploys have variables available only during runtime.</p>
 <p>For users that require customization in the <code>build</code> phase, you may use build arguments via the <a href="../../../advanced-usage/docker-options/">docker-options plugin</a>. All environment variables set by the <code>config</code> plugin are automatically exported within the nixpacks build environment, and thus <code>--env</code> only requires setting a key without a value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">'--env NODE_ENV'</span>
 </code></pre></div>
 <p>Alternatively, a full value may be provided in the form of <code>--env KEY=VALUE</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">&#39;--env NODE_ENV=production&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">'--env NODE_ENV=production'</span>
 </code></pre></div>
 <h3 id="changing-the-nixpackstoml-location">Changing the <code>nixpacks.toml</code> location<a class="headerlink" href="#changing-the-nixpackstoml-location" title="Permanent link">&para;</a></h3>
 <p>The <code>nixpacks.toml</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
@@ -5324,7 +5324,7 @@
 </code></pre></div>
 <h3 id="disabling-cache">Disabling cache<a class="headerlink" href="#disabling-cache" title="Permanent link">&para;</a></h3>
 <p>Disable cache using the [docker-options] plugin:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;--no-cache&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">"--no-cache"</span>
 </code></pre></div>
 <h3 id="displaying-builder-nixpacks-reports-for-an-app">Displaying builder-nixpacks reports for an app<a class="headerlink" href="#displaying-builder-nixpacks-reports-for-an-app" title="Permanent link">&para;</a></h3>
 <p>You can get a report about the app's storage status using the <code>builder-nixpacks:report</code> command:</p>

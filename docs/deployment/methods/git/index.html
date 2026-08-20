@@ -5405,10 +5405,10 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git:allow-host &lt;host&gt;                             # Adds a host to known_hosts
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git:auth &lt;host&gt; [&lt;username&gt; &lt;password&gt;]           # Configures netrc authentication for a given git server
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git:auth-status &lt;host&gt; [&lt;username&gt; &lt;password&gt;]    # Reports whether the netrc entry matches the requested state
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git:from-archive [--archive-type ARCHIVE_TYPE] &lt;app&gt; &lt;archive-url&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a given archive file
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git:from-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a given docker image
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git:from-archive [--archive-type ARCHIVE_TYPE] &lt;app&gt; &lt;archive-url&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app's git repository with a given archive file
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git:from-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app's git repository with a given docker image
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git:generate-deploy-key                           # Generates a deploy ssh key
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git:load-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app&#39;s git repository with a docker image loaded from stdin
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git:load-image [--build-dir DIRECTORY] &lt;app&gt; &lt;docker-image&gt; [&lt;git-username&gt; &lt;git-email&gt;] # Updates an app's git repository with a docker image loaded from stdin
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git:sync [--build|--build-if-changes] [--skip-deploy-branch] &lt;app&gt; &lt;repository&gt; [&lt;git-ref&gt;] # Clone or fetch an app from remote git repo
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git:initialize &lt;app&gt;                              # Initialize a git repository for an app
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>git:public-key                                    # Outputs the dokku public deploy key
@@ -5474,7 +5474,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># on the Dokku host</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># override for a specific app</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>node-js-app<span class="w"> </span>rev-env-var<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>node-js-app<span class="w"> </span>rev-env-var<span class="w"> </span><span class="s2">""</span>
 </code></pre></div>
 <h3 id="keeping-the-git-directory">Keeping the <code>.git</code> directory<a class="headerlink" href="#keeping-the-git-directory" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku will remove the contents of the <code>.git</code> before triggering a build for a given app. This is generally a safe default as shipping the entire source code history of your app in the deployed image artifact is unnecessary as it increases bloat and potentially can leak information if there are any security issues with your app code.</p>
@@ -5491,7 +5491,7 @@
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>node-js-app<span class="w"> </span>keep-git-dir<span class="w"> </span><span class="nb">false</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># delete the .git directory during builds (default)</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>node-js-app<span class="w"> </span>keep-git-dir<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>dokku<span class="w"> </span>git:set<span class="w"> </span>node-js-app<span class="w"> </span>keep-git-dir<span class="w"> </span><span class="s2">""</span>
 </code></pre></div>
 <p>Please keep in mind that setting <code>keep-git-dir</code> to <code>true</code> may result in unstaged changes shown within the built container due to the build process generating application changes within the built app directory.</p>
 <h3 id="initializing-an-app-repository-from-a-remote-repository">Initializing an app repository from a remote repository<a class="headerlink" href="#initializing-an-app-repository-from-a-remote-repository" title="Permanent link">&para;</a></h3>
@@ -5545,7 +5545,7 @@
 <p>For syncing to a private repository stored on a remote Git product such as GitHub or GitLab, Dokku's recommendation is to use a personal access token on a bot user where possible. Please see your service's documentation for information regarding the recommended best practices.</p>
 <p>The password for <code>git:auth</code> may also be provided over <code>STDIN</code> to avoid placing it on the command line:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># pipe the password into git:auth</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;personal-access-token&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>git:auth<span class="w"> </span>github.com<span class="w"> </span>username
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"personal-access-token"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>git:auth<span class="w"> </span>github.com<span class="w"> </span>username
 </code></pre></div>
 <h4 id="checking-the-configured-auth-state">Checking the configured auth state<a class="headerlink" href="#checking-the-configured-auth-state" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
@@ -5560,7 +5560,7 @@
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>dokku<span class="w"> </span>git:auth-status<span class="w"> </span>github.com
 </code></pre></div>
 <p>As with <code>git:auth</code>, the password may be provided via <code>STDIN</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;personal-access-token&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>git:auth-status<span class="w"> </span>github.com<span class="w"> </span>username
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"personal-access-token"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>git:auth-status<span class="w"> </span>github.com<span class="w"> </span>username
 </code></pre></div>
 <h3 id="allowing-remote-repository-hosts">Allowing remote repository hosts<a class="headerlink" href="#allowing-remote-repository-hosts" title="Permanent link">&para;</a></h3>
 <p>By default, the Dokku host may not have access to a server containing the remote repository. This can be initialized via the <code>git:allow-host</code> command.</p>
@@ -5585,7 +5585,7 @@
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Your public key has been saved in /home/dokku/.ssh/id_ed25519.pub
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>The key fingerprint is:
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>SHA256:PvlvVfbpYvkmA87rTfLUq07e3GarRN1BcLqDSjod+p8 dokku@ubuntu
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>The key&#39;s randomart image is:
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>The key's randomart image is:
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>+--[ED25519 256]--+
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>|             ..o |
 <a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>|              +  |

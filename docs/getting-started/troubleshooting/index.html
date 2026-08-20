@@ -5450,7 +5450,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <p>Most errors that happen in this phase are due to transient network issues (either locally or remotely) buildpack bugs.</p>
 <p>Find the failed phase's container image (<code>077581956a92</code> in this example).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>build
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">## 94d9515e6d93        077581956a92                &quot;/build&quot;       29 minutes ago      Exited (0) 25 minutes ago                       cocky_bell</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">## 94d9515e6d93        077581956a92                "/build"       29 minutes ago      Exited (0) 25 minutes ago                       cocky_bell</span>
 </code></pre></div>
 <p>Start a new container with the failed image and poke around (i.e. ensure you can access the internet from within the container or attempt the failed command, if known).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>077581956a92<span class="w"> </span>/bin/bash
@@ -5474,13 +5474,13 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <p>Certain systems may have access to the <code>dokku</code> user via SSH disabled. Please check that the <code>dokku</code> user is allowed access to the system in the file <code>/etc/security/access.conf</code>. As Dokku does not manage this file, please consult your Operating System's documentation for more information.</p>
 <h3 id="i-want-to-deploy-my-app-but-i-am-getting-asked-for-the-password-of-the-git-user">I want to deploy my app but I am getting asked for the password of the Git user<a class="headerlink" href="#i-want-to-deploy-my-app-but-i-am-getting-asked-for-the-password-of-the-git-user" title="Permanent link">&para;</a></h3>
 <p>Sometimes the following error message may be shown on push</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>fatal: &#39;NAME&#39; does not appear to be a git repository
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>fatal: 'NAME' does not appear to be a git repository
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>fatal: Could not read from remote repository.
 </code></pre></div>
 <p>You get asked for a password because your SSH secret key can't be found. This may happen if the private key corresponding to the public key you added with <code>sshcommand acl-add</code> is not located in the default location <code>~/.ssh/id_rsa</code>.</p>
 <p>You have to point SSH to the correct secret key for your domain name. Add the following to your <code>~/.ssh/config</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="na">Host DOKKU_HOSTNAME</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">IdentityFile &quot;~/.ssh/KEYNAME&quot;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">IdentityFile "~/.ssh/KEYNAME"</span>
 </code></pre></div>
 <p>Also see <a href="https://github.com/dokku/dokku/issues/116">issue #116</a>.</p>
 <h3 id="i-successfully-deployed-my-application-with-no-deployment-errors-and-receiving-bad-gateway-when-attempting-to-access-the-application">I successfully deployed my application with no deployment errors and receiving <strong>Bad Gateway</strong> when attempting to access the application<a class="headerlink" href="#i-successfully-deployed-my-application-with-no-deployment-errors-and-receiving-bad-gateway-when-attempting-to-access-the-application" title="Permanent link">&para;</a></h3>
@@ -5493,7 +5493,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <p>Please see <a href="https://github.com/dokku/dokku/issues/5798">#5798</a>.</p>
 <h3 id="deployment-fails-because-of-slow-internet-connection-messages-shows-gzip-stdin-unexpected-end-of-file">Deployment fails because of slow internet connection, messages shows <code>gzip: stdin: unexpected end of file</code><a class="headerlink" href="#deployment-fails-because-of-slow-internet-connection-messages-shows-gzip-stdin-unexpected-end-of-file" title="Permanent link">&para;</a></h3>
 <p>If you see output similar this when deploying:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a> Command: &#39;set -o pipefail; curl --fail --retry 3 --retry-delay 1 --connect-timeout 3 --max-time 30 https://s3-external-1.amazonaws.com/heroku-buildpack-ruby/ruby-2.0.0-p451-default-cache.tgz -s -o - | tar zxf -&#39; failed unexpectedly:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a> Command: 'set -o pipefail; curl --fail --retry 3 --retry-delay 1 --connect-timeout 3 --max-time 30 https://s3-external-1.amazonaws.com/heroku-buildpack-ruby/ruby-2.0.0-p451-default-cache.tgz -s -o - | tar zxf -' failed unexpectedly:
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a> !
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a> !     gzip: stdin: unexpected end of file
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a> !     tar: Unexpected EOF in archive
@@ -5512,7 +5512,7 @@ A value of 64 would allow domains with up to 64 characters. Set it to 128 if you
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/swapfile<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1k<span class="w"> </span><span class="nv">count</span><span class="o">=</span>2048k
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>mkswap<span class="w"> </span>/swapfile
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>swapon<span class="w"> </span>/swapfile
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/swapfile       swap    swap    auto      0       0&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/swapfile       swap    swap    auto      0       0"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">10</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nb">echo</span><span class="w"> </span>vm.swappiness<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf
 </code></pre></div>
