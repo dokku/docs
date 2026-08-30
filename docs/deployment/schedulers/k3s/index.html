@@ -6562,7 +6562,7 @@ The k3s plugin requires usage of a docker registry to store deployed image artif
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--insecure-allow-unknown-hosts<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--kubelet-args<span class="w"> </span>protect-kernel-defaults<span class="o">=</span>true,eviction-hard<span class="o">=</span>memory.available&lt;200Mi
 </code></pre></div>
-<p>Profile names must be alphanumeric, may include internal dashes, cannot start/end with a dash, and must be ≤32 characters. Other than the <code>--server-ip</code> flag, all flags used for <code>scheduler-k3s:cluster:add</code> are valid for the <code>scheduler-k3s:profiles:add</code> command.</p>
+<p>Profile names must be lowercase alphanumeric, may include internal dashes, cannot start/end with a dash, and must be ≤26 characters. The limit is not arbitrary: the name becomes part of the helm release backing that profile's <a href="#non-namespaced-sysctls">non-namespaced sysctls</a>, and helm caps a release name at 53 characters. Other than the <code>--server-ip</code> flag, all flags used for <code>scheduler-k3s:cluster:add</code> are valid for the <code>scheduler-k3s:profiles:add</code> command.</p>
 <h4 id="scheduler-k3sprofilesremove">scheduler-k3s:profiles:remove<a class="headerlink" href="#scheduler-k3sprofilesremove" title="Permanent link">&para;</a></h4>
 <p>Delete a profile once it’s no longer required.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>scheduler-k3s:profiles:remove<span class="w"> </span>edge-workers
@@ -7063,6 +7063,7 @@ Users with older installations will need to manually install Keda.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:set<span class="w"> </span>--profile<span class="w"> </span>edge-workers<span class="w"> </span>vm.max_map_count<span class="w"> </span><span class="m">524288</span>
 </code></pre></div>
 <p>A profile scope inherits everything set globally and overrides it on conflict, so each node is covered by exactly one DaemonSet and no two ever write the same value. Note that the server node created by <code>scheduler-k3s:initialize</code> never carries a profile label, so only globally-scoped sysctls reach it.</p>
+<p>A profile created by an older Dokku may carry a name outside the <a href="#adding-profiles">current rules</a>, such as one containing uppercase or longer than 26 characters. Dokku cannot name a helm release after such a profile, so it is skipped with a warning and <code>node-sysctls:set --profile</code> refuses it. Recreate the profile under a valid name to give it sysctls; <code>scheduler-k3s:profiles:remove</code> still removes the old one.</p>
 <p>Use <code>node-sysctls:report</code> to see the resolved set for every scope.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>dokku<span class="w"> </span>scheduler-k3s:node-sysctls:report
 </code></pre></div>
