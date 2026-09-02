@@ -5467,24 +5467,28 @@ after they've been generated. You can export it as follows:</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>=====&gt; node-js-app
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>       Ssl dir:             /home/dokku/node-js-app/tls
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>       Ssl enabled:         true
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>       Ssl hostnames:       *.node-js-app.org node-js-app.org
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>       Ssl expires at:      Oct  5 23:59:59 2019 GMT
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>       Ssl issuer:          C=GB, ST=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>       Ssl starts at:       Oct  5 00:00:00 2016 GMT
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>       Ssl subject:         OU=Domain Control Validated; OU=PositiveSSL Wildcard; CN=*.node-js-app.org
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>       Ssl verified:        self signed.
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>=====&gt; python-app
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>       Ssl dir:             /home/dokku/python-app/tls
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>       Ssl enabled:         false
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>       Ssl hostnames:
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>       Ssl expires at:
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>       Ssl issuer:
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>       Ssl starts at:
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>       Ssl subject:
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>       Ssl verified:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>=====&gt; node-js-app ssl information
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>       Ssl dir:                       /home/dokku/node-js-app/tls
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>       Ssl enabled:                   true
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>       Ssl expires at:                Oct  5 23:59:59 2019 GMT
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>       Ssl fingerprint:               9E:2F:0B:74:C3:5A:81:D6:4F:AA:12:38:E7:6B:90:5C:D1:47:2E:8A:B3:65:F9:0D:28:C4:71:AE:53:80:6F:12
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>       Ssl hostnames:                 *.node-js-app.org node-js-app.org
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>       Ssl issuer:                    C=GB, ST=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>       Ssl serial:                    2F4B8C1D6E9A0357B8C2D4E6F8091A2B
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>       Ssl starts at:                 Oct  5 00:00:00 2016 GMT
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>       Ssl subject:                   OU=Domain Control Validated; OU=PositiveSSL Wildcard; CN=*.node-js-app.org
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>       Ssl verified:                  self signed
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>=====&gt; python-app ssl information
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>       Ssl dir:                       /home/dokku/python-app/tls
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>       Ssl enabled:                   false
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>       Ssl expires at:
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>       Ssl fingerprint:
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>       Ssl hostnames:
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>       Ssl issuer:
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>       Ssl serial:
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>       Ssl starts at:
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>       Ssl subject:
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>       Ssl verified:
 </code></pre></div>
 </div>
 </div>
@@ -5498,14 +5502,16 @@ after they've been generated. You can export it as follows:</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app ssl information
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Ssl dir:             /home/dokku/node-js-app/tls
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Ssl enabled:         true
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Ssl hostnames:       *.dokku.org dokku.org
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>       Ssl expires at:      Oct  5 23:59:59 2019 GMT
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Ssl issuer:          C=GB, ST=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Ssl starts at:       Oct  5 00:00:00 2016 GMT
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Ssl subject:         OU=Domain Control Validated; OU=PositiveSSL Wildcard; CN=*.dokku.org
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       Ssl verified:        self signed.
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Ssl dir:                       /home/dokku/node-js-app/tls
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Ssl enabled:                   true
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Ssl expires at:                Oct  5 23:59:59 2019 GMT
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>       Ssl fingerprint:               9E:2F:0B:74:C3:5A:81:D6:4F:AA:12:38:E7:6B:90:5C:D1:47:2E:8A:B3:65:F9:0D:28:C4:71:AE:53:80:6F:12
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Ssl hostnames:                 *.dokku.org dokku.org
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Ssl issuer:                    C=GB, ST=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Ssl serial:                    2F4B8C1D6E9A0357B8C2D4E6F8091A2B
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       Ssl starts at:                 Oct  5 00:00:00 2016 GMT
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Ssl subject:                   OU=Domain Control Validated; OU=PositiveSSL Wildcard; CN=*.dokku.org
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       Ssl verified:                  self signed
 </code></pre></div>
 </div>
 </div>
@@ -5556,8 +5562,16 @@ after they've been generated. You can export it as follows:</p>
 <td>Certificate subject DN</td>
 </tr>
 <tr>
+<td><code>--ssl-fingerprint</code></td>
+<td>SHA-256 digest of the leaf certificate's DER encoding, the value <code>openssl x509 -noout -fingerprint -sha256</code> prints</td>
+</tr>
+<tr>
+<td><code>--ssl-serial</code></td>
+<td>Serial number of the leaf certificate</td>
+</tr>
+<tr>
 <td><code>--ssl-verified</code></td>
-<td><code>true</code> if the certificate chain verifies against the system CA bundle</td>
+<td><code>verified by a certificate authority</code> when the certificate chain verifies against the system CA bundle, <code>self signed</code> otherwise</td>
 </tr>
 <tr>
 <td><code>--ssl-expires-at</code></td>
