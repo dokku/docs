@@ -11163,7 +11163,7 @@
 </code></pre></div>
 <h3 id="ps-set-scale"><code>ps-set-scale</code><a class="headerlink" href="#ps-set-scale" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Sets the scale for an app based on a specified formation (process-type=quantity). Any unspecified process types will be left as is.</li>
+<li>Description: Sets the scale for an app based on a specified formation (process-type=quantity). Any unspecified process types will be left as is, or have their process count set to zero when <code>$CLEAR_EXISTING</code> is <code>true</code>.</li>
 <li>Invoked by:</li>
 <li>Arguments: <code>$APP $SKIP_DEPLOY $CLEAR_EXISTING [$PROCESS_TUPLE...]</code></li>
 <li>Example:</li>
