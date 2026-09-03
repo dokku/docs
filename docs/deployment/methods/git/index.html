@@ -5552,13 +5552,42 @@
 <p class="admonition-title">New</p>
 <p>Introduced in 0.38.0</p>
 </div>
-<p>The <code>git:auth-status</code> command reports whether the configured <code>netrc</code> entry matches a desired state without exposing the underlying file. It exits <code>0</code> when the configured state matches and <code>1</code> otherwise. This allows external tooling such as configuration management systems to perform idempotent updates without reading <code>$DOKKU_ROOT/.netrc</code> directly.</p>
+<p>The <code>git:auth-status</code> command reports whether the configured <code>netrc</code> entry matches a desired state without exposing the underlying file. This allows external tooling such as configuration management systems to perform idempotent updates without reading <code>$DOKKU_ROOT/.netrc</code> directly.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># check whether github.com is configured with the expected credentials</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>git:auth-status<span class="w"> </span>github.com<span class="w"> </span>username<span class="w"> </span>personal-access-token
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># check whether no credentials are configured for github.com</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>dokku<span class="w"> </span>git:auth-status<span class="w"> </span>github.com
 </code></pre></div>
+<p>The result is reported via the exit code:</p>
+<table>
+<thead>
+<tr>
+<th>Exit code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>The configured <code>netrc</code> entry matches the requested state.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>There is no <code>netrc</code> entry for the specified host.</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>There is a <code>netrc</code> entry for the specified host, but it does not match the requested state.</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>The command was called with invalid arguments and the state could not be checked.</td>
+</tr>
+</tbody>
+</table>
+<p>The distinction between <code>1</code> and <code>2</code> allows a caller to tell a host that needs a <code>netrc</code> entry created apart from a host whose existing credentials would be replaced, without issuing a second call.</p>
+<p>When called without a username, the requested state is that no <code>netrc</code> entry exists for the host. An existing entry is therefore reported as <code>2</code>, and <code>1</code> is never returned.</p>
 <p>As with <code>git:auth</code>, the password may be provided via <code>STDIN</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"personal-access-token"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dokku<span class="w"> </span>git:auth-status<span class="w"> </span>github.com<span class="w"> </span>username
 </code></pre></div>
