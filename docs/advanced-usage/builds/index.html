@@ -5341,6 +5341,7 @@
 <li><code>$DOKKU_LIB_ROOT/data/builds/&lt;app&gt;/&lt;build-id&gt;.log</code> - the captured stdout/stderr of the deploy</li>
 </ul>
 <p>Output is also tagged into syslog as <code>dokku-&lt;build-id&gt;</code> so <code>journalctl -t dokku-&lt;build-id&gt;</code> continues to work. The on-disk log file is the durable source of truth and is read for <code>builds:output</code> even when journald has rotated old entries away.</p>
+<p>A run that builds nothing leaves no record behind. <code>git:sync</code> has to fetch before it can tell whether there is anything to deploy, so it opens a record up front and discards it again when it turns out there is not - a <code>git:sync</code> with no <code>--build</code> flag, or a <code>--build-if-changes</code> poll that finds the remote unchanged. Without that, an app polled on a timer would accumulate <code>running</code> records that are later reaped as spurious failures, pushing real deploys out of the retention window.</p>
 <h3 id="record-schema">Record schema<a class="headerlink" href="#record-schema" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01j8c4xv7bk5w3"</span><span class="p">,</span>
