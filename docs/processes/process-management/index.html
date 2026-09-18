@@ -5835,6 +5835,10 @@
 <p>Multiple process types can be scaled at once:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">worker</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each argument must name a process type, and process counts must be zero or greater. Scaling a process type to <code>0</code> stops all of its containers, while a negative count is rejected.</p>
+</div>
 <p>If desired, the corresponding deploy will be skipped by using the <code>--skip-deploy</code> flag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>ps:scale<span class="w"> </span>--skip-deploy<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>

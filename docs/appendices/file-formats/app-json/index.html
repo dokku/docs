@@ -5468,7 +5468,7 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <ul>
 <li><code>autoscaling</code> (map of string to object, optional) autoscaling rules. See the autoscaling section for more details</li>
 <li><code>max_parallel</code>: (int, optional) number of instances to deploy in parallel at a given time</li>
-<li><code>quantity</code>: (int, optional) number of processes to maintain. Default 1 for web processes, 0 for all others.</li>
+<li><code>quantity</code>: (int, optional) number of processes to maintain. Must be zero or greater. Default 1 for web processes, 0 for all others.</li>
 <li><code>service</code>: (map of string to oject, optional) governs how non-web processes are exposed as services on the network</li>
 </ul>
 <h3 id="autoscaling">Autoscaling<a class="headerlink" href="#autoscaling" title="Permanent link">&para;</a></h3>
