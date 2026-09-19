@@ -6546,8 +6546,8 @@
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>scheduler-k3s:cluster:add [--profile PROFILE] [--role ROLE] [--insecure-allow-unknown-hosts] [--server-ip SERVER_IP] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] &lt;ssh://user@host:port&gt; # Adds a server node to a Dokku-managed cluster
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>scheduler-k3s:cluster:list [--format json|stdout] # Lists all nodes in a Dokku-managed cluster
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>scheduler-k3s:cluster:remove [node-id] # Removes client node to a Dokku-managed cluster
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>scheduler-k3s:ensure-charts # Ensures the k3s charts are installed
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>scheduler-k3s:initialize [--server-ip SERVER_IP] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] # Initializes a cluster
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>scheduler-k3s:ensure-charts [--force] [--charts CHART_NAMES] # Ensures the k3s charts are installed
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>scheduler-k3s:initialize [--server-ip SERVER_IP] [--ingress-class INGRESS_CLASS] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] # Initializes a cluster
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>scheduler-k3s:labels:clear &lt;app|--global&gt; [--process-type PROCESS_TYPE] [--resource-type RESOURCE_TYPE] # Clear all labels for an app or a single process-type/resource-type scope
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>scheduler-k3s:labels:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Set or clear a label for a given app/process-type/resource-type combination
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>scheduler-k3s:labels:set --replace &lt;app|--global&gt; &lt;key=value&gt; [&lt;key=value&gt; ...] [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Replace the entire label map for a given app/process-type/resource-type combination
@@ -7287,15 +7287,16 @@ Users with older installations will need to manually install Keda.</p>
 <p>The default value for the <code>kube-context</code> is an empty string, and will result in Dokku using the current context within the kubeconfig.</p>
 <h3 id="customizing-helm-chart-properties">Customizing Helm Chart Properties<a class="headerlink" href="#customizing-helm-chart-properties" title="Permanent link">&para;</a></h3>
 <p>Dokku includes a number of helm charts by default with settings that are optimized for Dokku. That said, it may be useful to further customize the charts for a given environment. Chart overrides are managed via the <code>scheduler-k3s:charts:set</code> command, which takes a <code>&lt;chart-name&gt;.&lt;property&gt;</code> argument and a value. Chart overrides are always global because helm charts are not managed on a per-app basis.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version<span class="w"> </span><span class="m">1</span>.13.3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.installCRDs<span class="w"> </span><span class="nb">false</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Properties follow dot-notation, and are expanded according to Helm's internal logic. See the <a href="https://helm.sh/docs/helm/helm_install/#helm-install">Helm documentation</a> for <code>helm install</code> for further details.</p>
 </div>
+<p>Chart overrides are values passed to a chart, not the version of the chart itself. Dokku pins the version of every chart it manages, and those versions are not user-configurable. The <code>scheduler-k3s:ensure-charts</code> command reconciles each installed release back to the pinned version, upgrading or downgrading a release that has drifted away from it.</p>
 <p>Property names may contain <code>/</code> (e.g. for Kubernetes-style annotation keys such as <code>service.annotations.prometheus.io/scrape</code>) and values may span multiple lines; both are preserved verbatim.</p>
 <p>To unset a chart property, omit the value from the <code>scheduler-k3s:charts:set</code> call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>cert-manager.installCRDs
 </code></pre></div>
 <p>Configured chart overrides can be inspected with the <code>scheduler-k3s:charts:report</code> command. Without an argument, it lists every chart known to Dokku along with any configured overrides; passing a chart name scopes the report to that chart:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:report
