@@ -5290,6 +5290,11 @@ See also the list of <a href="../../community/plugins/">community-provided plugi
 <p>Use <code>visudo /etc/sudoers.d/dokku-users</code>, or <code>visudo /etc/sudoers</code> to add the following line:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>%dokku ALL=(ALL:ALL) NOPASSWD:SETENV: /usr/bin/dokku
 </code></pre></div>
+<p>The <code>SETENV:</code> tag is required. When a user other than <code>dokku</code> runs the <code>dokku</code> binary, it re-executes
+itself as the <code>dokku</code> user and names the environment variables that have to survive that step via
+<code>sudo --preserve-env=</code>. Without <code>SETENV:</code> those variables are filtered out, and global flags such as
+<code>--quiet</code>, <code>--trace</code> and <code>--force</code> stop taking effect. See
+<a href="../../configuration/environment-variables/#forwarding-environment-variables">Forwarding environment variables</a>.</p>
 
 
 

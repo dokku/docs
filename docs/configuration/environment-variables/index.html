@@ -2812,6 +2812,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#forwarding-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forwarding environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5071,6 +5082,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#forwarding-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forwarding environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5315,6 +5337,24 @@
 <td>Whether to force delete an application. Also used by other plugins for destructive actions.</td>
 </tr>
 <tr>
+<td><code>DOKKU_DISABLE_TTY</code></td>
+<td>none</td>
+<td><code>dokku run --no-tty</code> <br /> environment</td>
+<td>Forces <code>dokku run</code> to treat the session as non-interactive.</td>
+</tr>
+<tr>
+<td><code>DOKKU_FORCE_TTY</code></td>
+<td>none</td>
+<td><code>dokku run --force-tty</code> <br /> environment</td>
+<td>Forces <code>dokku run</code> to treat the session as interactive.</td>
+</tr>
+<tr>
+<td><code>DOKKU_PRESERVE_ENV</code></td>
+<td>none</td>
+<td><code>/etc/default/dokku</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code> <br /> environment</td>
+<td>Comma-separated list of extra environment variable names to carry across the privilege drop to the <code>dokku</code> user. See <a href="#forwarding-environment-variables">Forwarding environment variables</a>.</td>
+</tr>
+<tr>
 <td><code>DOKKU_CHECKS_URL</code></td>
 <td><code>https://dokku.com/docs/deployment/zero-downtime-deploys/</code></td>
 <td><code>/etc/environment</code> <br /> <code>~dokku/.dokkurc</code> <br /> <code>~dokku/.dokkurc/*</code></td>
@@ -5352,6 +5392,62 @@
 </tr>
 </tbody>
 </table>
+<h2 id="forwarding-environment-variables">Forwarding environment variables<a class="headerlink" href="#forwarding-environment-variables" title="Permanent link">&para;</a></h2>
+<p>When <code>dokku</code> is invoked by any user other than <code>dokku</code> - <code>root</code>, or a member of the <code>sudo</code> group - it
+re-executes itself as the <code>dokku</code> user. Most configuration does not need to survive that step, since
+<code>/etc/default/dokku</code>, <code>~dokku/dokkurc</code> and <code>~dokku/.dokkurc/*</code> are read again by the re-executed
+process, and <code>/etc/environment</code> is applied by PAM.</p>
+<p>What cannot be recomputed is state that belongs to the invocation itself, so those variables are
+named explicitly and forwarded:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DOKKU_APP_NAME</code>, <code>DOKKU_APPS_FORCE_DELETE</code>, <code>DOKKU_QUIET_OUTPUT</code>, <code>DOKKU_TRACE</code></td>
+<td>the <code>--app</code>, <code>--force</code>, <code>--quiet</code> and <code>--trace</code> global flags, or the environment</td>
+</tr>
+<tr>
+<td><code>DOKKU_GLOBAL_FLAGS</code></td>
+<td>every global flag as given, replayed by plugins that need them</td>
+</tr>
+<tr>
+<td><code>DOKKU_DISABLE_TTY</code>, <code>DOKKU_FORCE_TTY</code></td>
+<td>the <code>dokku run</code> tty flags, or the environment</td>
+</tr>
+<tr>
+<td><code>DOKKU_PRESERVE_ENV</code></td>
+<td>the list below</td>
+</tr>
+<tr>
+<td><code>SSH_USER</code>, <code>SSH_NAME</code>, <code>NAME</code>, <code>FINGERPRINT</code>, <code>SSH_ORIGINAL_COMMAND</code></td>
+<td>the ssh session the command arrived on</td>
+</tr>
+<tr>
+<td><code>DOCKER_BIN</code>, <code>DOKKU_CNB_BUILDER</code>, <code>DOKKU_EVENTS_LOGFILE</code>, <code>DOKKU_HOST_ROOT</code>, <code>DOKKU_IMAGE</code>, <code>DOKKU_LIB_PATH</code>, <code>DOKKU_LOGS_DIR</code>, <code>DOKKU_LOGS_HOST_DIR</code>, <code>DOKKU_ROOT</code>, <code>DOKKU_SYSTEM_GROUP</code>, <code>DOKKU_SYSTEM_USER</code>, <code>PLUGIN_PATH</code>, <code>PLUGIN_AVAILABLE_PATH</code>, <code>PLUGIN_ENABLED_PATH</code>, <code>PLUGIN_CORE_PATH</code>, <code>PLUGIN_CORE_AVAILABLE_PATH</code>, <code>PLUGIN_CORE_ENABLED_PATH</code></td>
+<td>the environment, so the re-executed process derives the same paths as the caller</td>
+</tr>
+<tr>
+<td><code>DOKKU_INIT_SYSTEM</code>, <code>DOKKU_LIB_HOST_ROOT</code></td>
+<td>the environment, which is where they live while a Docker image is being built</td>
+</tr>
+</tbody>
+</table>
+<p><code>DOKKU_PID</code> is deliberately not forwarded: it is unset before the privilege drop so the re-executed
+process gets its own.</p>
+<p>To forward anything else - a variable read by a third-party plugin, or a one-off override of a
+setting that normally lives in <code>/etc/default/dokku</code> - name it in <code>DOKKU_PRESERVE_ENV</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">DOKKU_PRESERVE_ENV</span><span class="o">=</span>DOCKER_BUILDKIT<span class="w"> </span><span class="nv">DOCKER_BUILDKIT</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>Set it persistently to forward a variable for every invocation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"export DOKKU_PRESERVE_ENV=MY_PLUGIN_DEBUG"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
+</code></pre></div>
+<p>Variables sudo manages for the target user - <code>HOME</code>, <code>PATH</code>, <code>SHELL</code>, <code>USER</code>, <code>LOGNAME</code>, <code>MAIL</code> and
+<code>SUDO_*</code> - are never forwarded, and naming them in <code>DOKKU_PRESERVE_ENV</code> is not supported.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
 <p>The following property is recorded internally by the config plugin and is not exposed via <code>config:report</code>:</p>
