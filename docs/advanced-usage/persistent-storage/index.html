@@ -3787,6 +3787,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mounting storage into apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-entire-mount-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the entire mount set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3797,6 +3814,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Unmounting storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removing-every-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing every mount
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5318,6 +5352,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mounting storage into apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-entire-mount-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the entire mount set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -5328,6 +5379,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Unmounting storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removing-every-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing every mount
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5525,24 +5593,23 @@
 <p>Introduced in 0.5.0. Named storage entries introduced in 0.38.0.</p>
 </div>
 <p>The preferred method to attach persistent storage to a Dokku-managed container is the Dokku storage plugin.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>storage:annotations:report [&lt;name&gt;] [&lt;flag&gt;]           # Display annotations for one or more storage entries
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>storage:annotations:set &lt;name&gt; &lt;key&gt; [&lt;value&gt;]         # Set or clear a single annotation on a storage entry
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>storage:create &lt;name&gt; [&lt;path&gt;] [flags]                 # Register a named storage entry
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>storage:destroy &lt;name&gt; [--force] [--destroy-host-dir]  # Remove a named storage entry (must be unmounted from every app first)
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>storage:ensure-directory [--chown option] &lt;directory&gt;  # [DEPRECATED] use storage:create instead
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>storage:exec &lt;name&gt; [-- &lt;cmd&gt;...]                      # Run a command (or shell) in a temporary container that mounts the entry
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>storage:info &lt;name&gt; [--format text|json]               # Show details for one storage entry
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>storage:labels:report [&lt;name&gt;] [&lt;flag&gt;]                # Display labels for one or more storage entries
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>storage:labels:set &lt;name&gt; &lt;key&gt; [&lt;value&gt;]              # Set or clear a single label on a storage entry
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>storage:list &lt;app&gt; [--format text|json]                # List bind mounts for an app's container(s) (legacy host:container view)
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>storage:list-entries [--scheduler s] [--format text|json]  # List registered storage entries
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>storage:mount &lt;app&gt; &lt;name&gt; --container-dir &lt;path&gt; [flags]  # Mount a named entry into an app
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>storage:mount &lt;app&gt; &lt;host-dir:container-dir&gt;           # [LEGACY] colon-form mount, docker-local only
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>storage:report [&lt;app&gt;] [&lt;flag&gt;]                        # Display a storage report for one or more apps
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>storage:report --global                                # Display a cluster-wide entry inventory
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>storage:set &lt;name&gt; &lt;property&gt; [&lt;value&gt;]                # Update a storage entry in place
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>storage:unmount &lt;app&gt; &lt;name&gt; [--container-dir &lt;path&gt;]  # Remove an attachment
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>storage:wait &lt;name&gt;                                    # Block until a k3s entry's PVC is bound
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>storage:annotations:report [&lt;name&gt;] [&lt;flag&gt;]                         # Displays annotations for one or more storage entries
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>storage:annotations:set &lt;name&gt; &lt;key&gt; [&lt;value&gt;]                       # Set or clear a single annotation on a storage entry
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>storage:create &lt;name&gt; [&lt;path&gt;] [flags]                               # Register a named storage entry
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>storage:destroy &lt;name&gt; [--force] [--destroy-host-dir]                # Remove a named storage entry (must be unmounted from every app first)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>storage:ensure-directory [--chown option] &lt;directory&gt;                # [DEPRECATED] use storage:create instead
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>storage:exec &lt;name&gt; [-- &lt;cmd&gt;...]                                    # Run a command (or shell) in a temporary container that mounts the entry
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>storage:info &lt;name&gt; [--format text|json]                             # Show details for one storage entry
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>storage:labels:report [&lt;name&gt;] [&lt;flag&gt;]                              # Displays labels for one or more storage entries
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>storage:labels:set &lt;name&gt; &lt;key&gt; [&lt;value&gt;]                            # Set or clear a single label on a storage entry
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>storage:list &lt;app&gt; [--format text|json]                              # List bind mounts for an app's container(s) (legacy host:container view)
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>storage:list-entries [--scheduler s] [--format text|json]            # List registered storage entries
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>storage:migrate [&lt;app&gt;|--all]                                        # Re-run the legacy -v to attachment migration for an app
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>storage:mount [--replace] &lt;app&gt; &lt;host-dir:container-dir&gt;... [flags]  # Create or replace bind mounts
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>storage:report [&lt;app&gt;|--global] [&lt;flag&gt;]                             # Displays a storage report for one or more apps
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>storage:set &lt;name&gt; &lt;property&gt; [&lt;value&gt;]                              # Update a storage entry in place
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>storage:unmount [--all] &lt;app&gt; [&lt;host-dir:container-dir&gt;...] [flags]  # Remove one or all bind mounts
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>storage:wait &lt;name&gt;                                                  # Wait for a storage entry's PVC to be bound (k3s)
 </code></pre></div>
 <p>A storage entry is the source of truth for the underlying volume - a host directory on docker-local, or a PersistentVolumeClaim on k3s. Multiple apps can mount the same entry, and an attachment carries the per-app details (container path, phases, subpath, readonly, process type). Names are globally unique across the install and must be DNS-1123 labels (lowercase letters, digits, dashes) of 45 characters or less so they can be used verbatim as Helm release and PVC names.</p>
 <p>The legacy <code>storage:mount &lt;app&gt; &lt;host&gt;:&lt;container&gt;</code> form continues to work on docker-local. On a k3s app it is rejected; create a named entry with <code>storage:create --scheduler k3s</code> and mount it instead. Existing colon-form mounts are migrated automatically the first time the new code runs - they show up as <code>legacy-&lt;hash&gt;</code> entries in <code>storage:list-entries</code>.</p>
@@ -5807,36 +5874,84 @@
 <p>Once persistent storage is mounted, the app requires a restart. See the <a href="../../processes/process-management/">process scaling documentation</a> for more information.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>app-name
 </code></pre></div>
+<h4 id="replacing-the-entire-mount-set">Replacing the entire mount set<a class="headerlink" href="#replacing-the-entire-mount-set" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.38.28</p>
+</div>
+<p>The form above mounts one entry at a time, so matching an app's mounts to a declared set means reading <code>storage:list</code>, computing the difference in both directions and issuing one <code>storage:mount</code> or <code>storage:unmount</code> per addition and removal - with a failure partway through leaving the app holding a mixture of the two sets. The <code>--replace</code> flag writes the whole set in a single call, taking <code>name:container-dir</code> pairs instead of a single entry and a <code>--container-dir</code> flag.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data:/app/storage<span class="w"> </span>node-js-cache:/cache
+</code></pre></div>
+<p>Anything previously mounted and not named in the call is unmounted. Each pair takes the same optional third field as the legacy colon form, so <code>ro</code> and other mount options can vary between mounts:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data:/app/storage:Z<span class="w"> </span>node-js-cache:/cache:ro,noexec
+</code></pre></div>
+<p>A pair whose first field starts with <code>/</code> is a legacy host path rather than an entry name, and registers its <code>legacy-&lt;hash&gt;</code> entry the same way the colon form does. Any other first field must name a registered entry, so a mistyped name is rejected rather than taken for a docker volume. A docker volume already mounted through the colon form is named here by the <code>legacy-&lt;hash&gt;</code> entry that <code>storage:list-entries</code> shows.</p>
+<p>The remaining mount-time flags scope the whole call rather than a single pair, so every mount in the replacement shares them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data:/app/storage<span class="w"> </span>--phase<span class="w"> </span>deploy<span class="w"> </span>--volume-subpath<span class="w"> </span>uploads<span class="w"> </span>--volume-chown<span class="w"> </span>herokuish
+</code></pre></div>
+<p>This means <code>--volume-subpath</code> and <code>--volume-chown</code> cannot differ between mounts declared in one call. Mounts needing different values for either are declared under a different <code>--process-type</code>, or set individually with the single-entry form.</p>
+<p><code>--process-type</code> scopes the replacement the same way it scopes a single mount. Omitting it replaces the <code>_default_</code> process type, leaving mounts scoped to a named process type in place:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data:/app/storage
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>node-js-cache:/cache<span class="w"> </span>--process-type<span class="w"> </span>web
+</code></pre></div>
+<p>Every pair is parsed and validated before anything is written, so a rejected pair leaves the stored mounts untouched. A pair without a container directory, a container directory that is not absolute, an entry that is not registered, an entry whose scheduler does not match the app's, and a container directory named more than once in one call are all rejected.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An empty pair list is rejected rather than treated as a request to unmount everything, so a generated list that expands to nothing cannot silently drop an app's storage. Use <code>storage:unmount --all</code> for that.</p>
+</div>
+<p>As with a single mount, the app requires a restart afterward.</p>
 <h3 id="unmounting-storage">Unmounting storage<a class="headerlink" href="#unmounting-storage" title="Permanent link">&para;</a></h3>
-<p>If an app no longer requires a mounted volume or directory, the <code>storage:unmount</code> command can be called. This takes the same arguments as the <code>storage:mount</code> command, an app name and a <code>host-path:container-path</code> or <code>docker-volume:container-path</code> combination.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># unmount the directory from your container's /app/storage directory, relative to the container root (/)</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>/var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># unmount the docker volume from your container's /app/storage directory, relative to the container root (/)</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>some-docker-volume:/app/storage
+<p>If an app no longer requires a mounted volume or directory, the <code>storage:unmount</code> command can be called. This takes the same arguments as the <code>storage:mount</code> command, an app name and a <code>host-path:container-path</code> or <code>docker-volume:container-path</code> combination, or a registered entry name.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># unmount the directory from your container's /app/storage directory, relative to the container root (/)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>/var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># unmount the docker volume from your container's /app/storage directory, relative to the container root (/)</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>some-docker-volume:/app/storage
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Removing more than one attachment at a time is introduced in 0.38.28</p>
+</div>
+<p>More than one attachment can be removed in a single call, naming each by entry name or by the colon form. Every argument is resolved against the app's attachments before any of them is removed, so an argument naming an attachment the app does not have removes none of them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data<span class="w"> </span>node-js-cache
+</code></pre></div>
+<p>An entry mounted at several container directories is disambiguated with <code>--container-dir</code>, which therefore applies only when a single entry is named. Naming the container directory in the argument itself works with any number of attachments:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data<span class="w"> </span>--container-dir<span class="w"> </span>/app/storage
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data:/app/storage<span class="w"> </span>node-js-data:/app/uploads
+</code></pre></div>
+<h4 id="removing-every-mount">Removing every mount<a class="headerlink" href="#removing-every-mount" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.38.28</p>
+</div>
+<p>The <code>--all</code> flag removes every attachment on an app. This is the empty case <code>storage:mount --replace</code> refuses to handle, and it takes no entry arguments:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>--all<span class="w"> </span>node-js-app
+</code></pre></div>
+<p><code>--process-type</code> narrows what is removed to a single scope, filtering the same way it scopes a replacement. Omitting it removes every scope, and a scope that matches nothing is a no-op rather than an error, so the command is safe to re-run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>storage:unmount<span class="w"> </span>--all<span class="w"> </span>node-js-app<span class="w"> </span>--process-type<span class="w"> </span>web
 </code></pre></div>
 <p>Once persistent storage is unmounted, the app requires a restart. See the <a href="../../processes/process-management/">process scaling documentation</a> for more information.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>app-name
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>app-name
 </code></pre></div>
 <h3 id="destroying-storage-entries">Destroying storage entries<a class="headerlink" href="#destroying-storage-entries" title="Permanent link">&para;</a></h3>
 <p>A named storage entry can be removed with the <code>storage:destroy</code> command. The entry must first be unmounted from every app that mounts it.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>rdmtest-entry
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>rdmtest-entry
 </code></pre></div>
 <p>As the command is destructive - removing the registry entry and, depending on the scheduler and reclaim policy, the underlying volume - it will default to asking for confirmation before executing the removal.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a> !     WARNING: Potentially Destructive Action
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a> !     This command will destroy storage entry rdmtest-entry.
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a> !     To proceed, type "rdmtest-entry"
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>-----&gt; Storage entry rdmtest-entry destroyed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a> !     This command will destroy storage entry rdmtest-entry.
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a> !     To proceed, type "rdmtest-entry"
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>-----&gt; Storage entry rdmtest-entry destroyed
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>rdmtest-entry</p>
 </div>
 <p>The confirmation may be avoided by providing the <code>--force</code> flag, which is useful for non-interactive or automated callers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>rdmtest-entry<span class="w"> </span>--force
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>rdmtest-entry<span class="w"> </span>--force
 </code></pre></div>
 <p>The global <code>--force</code> flag is also supported:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>storage:destroy<span class="w"> </span>rdmtest-entry
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>--force<span class="w"> </span>storage:destroy<span class="w"> </span>rdmtest-entry
 </code></pre></div>
 <h4 id="removing-the-host-directory">Removing the host directory<a class="headerlink" href="#removing-the-host-directory" title="Permanent link">&para;</a></h4>
 <div class="admonition tip">
@@ -5847,22 +5962,22 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Shell</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>node-js-data<span class="w"> </span>--destroy-host-dir
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>node-js-data<span class="w"> </span>--destroy-host-dir
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a> !     Storage entry node-js-data is backed by /var/lib/dokku/data/storage/node-js-data, which will be removed along with its contents.
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a> !     WARNING: Potentially Destructive Action
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a> !     This command will destroy storage entry node-js-data.
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a> !     To proceed, type "node-js-data"
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a> !     Storage entry node-js-data is backed by /var/lib/dokku/data/storage/node-js-data, which will be removed along with its contents.
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a> !     WARNING: Potentially Destructive Action
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a> !     This command will destroy storage entry node-js-data.
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a> !     To proceed, type "node-js-data"
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>The removal is recursive, so it succeeds whether or not the directory is empty. It is only permitted for entries at the default <code>/var/lib/dokku/data/storage/&lt;name&gt;</code> location; an entry created with a custom <code>&lt;path&gt;</code> is refused, and the operator removes the path themselves.</p>
 <p>The same removal can be declared ahead of time with <code>--reclaim-policy</code>, which behaves for a docker-local host directory the way it behaves for a k3s PersistentVolume. An entry created with <code>Delete</code> has its host directory removed on <code>storage:destroy</code> without any extra flag, while <code>Retain</code> - the default when unset - keeps it:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>node-js-data<span class="w"> </span>--reclaim-policy<span class="w"> </span>Delete
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>node-js-data<span class="w"> </span>--force
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>node-js-data<span class="w"> </span>--reclaim-policy<span class="w"> </span>Delete
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>dokku<span class="w"> </span>storage:destroy<span class="w"> </span>node-js-data<span class="w"> </span>--force
 </code></pre></div>
 <p><code>--destroy-host-dir</code> is docker-local only. On a k3s entry the underlying volume is already governed by the reclaim policy recorded on the entry, so passing the flag is an error.</p>
 <h3 id="displaying-storage-reports-for-an-app">Displaying storage reports for an app<a class="headerlink" href="#displaying-storage-reports-for-an-app" title="Permanent link">&para;</a></h3>
@@ -5874,22 +5989,22 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>storage:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>dokku<span class="w"> </span>storage:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>=====&gt; node-js-app storage information
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>       Storage build mounts:
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>=====&gt; python-sample storage information
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>       Storage build mounts:
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>       Storage deploy mounts:
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>       Storage run mounts:
-<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>=====&gt; ruby-sample storage information
-<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>       Storage build mounts:
-<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>       Storage deploy mounts:
-<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>       Storage run mounts:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>=====&gt; node-js-app storage information
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>       Storage build mounts:
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>=====&gt; python-sample storage information
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>       Storage build mounts:
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>       Storage deploy mounts:
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>       Storage run mounts:
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>=====&gt; ruby-sample storage information
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>       Storage build mounts:
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>       Storage deploy mounts:
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>       Storage run mounts:
 </code></pre></div>
 </div>
 </div>
@@ -5898,72 +6013,73 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>=====&gt; node-js-app storage information
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>       Storage build mounts:
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
-<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>=====&gt; node-js-app storage information
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>       Storage build mounts:
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-app:/app/storage
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-app:/app/storage
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-deploy-mounts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-deploy-mounts
 </code></pre></div>
 <p>In addition to the aggregated <code>Storage build/deploy/run mounts:</code> lines, the report emits one flat dotted key per attachment field, indexed from <code>1</code>. The key shape is <code>--storage-attachment.&lt;index&gt;.&lt;field&gt;</code> for each of <code>entry-name</code>, <code>host-path</code>, <code>container-path</code>, <code>phases</code>, <code>process-type</code>, <code>subpath</code>, <code>readonly</code>, <code>volume-options</code>, and <code>volume-chown</code>. Fields render as empty strings when unset, and attachments are ordered by lex-sort of the index (so <code>10</code> sorts before <code>2</code>):</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Shell</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>node-js-data
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data<span class="w"> </span>--container-dir<span class="w"> </span>/app/storage<span class="w"> </span>--volume-options<span class="w"> </span>Z<span class="w"> </span>--volume-chown<span class="w"> </span>herokuish<span class="w"> </span>--volume-subpath<span class="w"> </span>uploads
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>node-js-data
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>node-js-app<span class="w"> </span>node-js-data<span class="w"> </span>--container-dir<span class="w"> </span>/app/storage<span class="w"> </span>--volume-options<span class="w"> </span>Z<span class="w"> </span>--volume-chown<span class="w"> </span>herokuish<span class="w"> </span>--volume-subpath<span class="w"> </span>uploads
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>=====&gt; node-js-app storage information
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>       Storage attachment 1 container path:  /app/storage
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>       Storage attachment 1 entry name:      node-js-data
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>       Storage attachment 1 host path:       /var/lib/dokku/data/storage/node-js-data
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>       Storage attachment 1 phases:          deploy,run
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>       Storage attachment 1 process type:    _default_
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>       Storage attachment 1 readonly:        false
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>       Storage attachment 1 subpath:         uploads
-<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>       Storage attachment 1 volume chown:    herokuish
-<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>       Storage attachment 1 volume options:  Z
-<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>       Storage build mounts:
-<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-data:/app/storage:Z
-<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-data:/app/storage:Z
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>=====&gt; node-js-app storage information
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>       Storage attachment 1 container path:  /app/storage
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>       Storage attachment 1 entry name:      node-js-data
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>       Storage attachment 1 host path:       /var/lib/dokku/data/storage/node-js-data
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>       Storage attachment 1 phases:          deploy,run
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>       Storage attachment 1 process type:    _default_
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a>       Storage attachment 1 readonly:        false
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a>       Storage attachment 1 subpath:         uploads
+<a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a>       Storage attachment 1 volume chown:    herokuish
+<a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a>       Storage attachment 1 volume options:  Z
+<a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a>       Storage build mounts:
+<a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a>       Storage deploy mounts: -v /var/lib/dokku/data/storage/node-js-data:/app/storage:Z
+<a id="__codelineno-47-13" name="__codelineno-47-13" href="#__codelineno-47-13"></a>       Storage run mounts:  -v /var/lib/dokku/data/storage/node-js-data:/app/storage:Z
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>The same keys are exposed in JSON output, both in the stripped (<code>attachment.1.volume-options</code>) and legacy (<code>storage-attachment.1.volume-options</code>) forms:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'. | with_entries(select(.key | startswith("attachment.")))'</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'. | with_entries(select(.key | startswith("attachment.")))'</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="p">{</span>
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">  </span><span class="nt">"attachment.1.container-path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/app/storage"</span><span class="p">,</span>
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="w">  </span><span class="nt">"attachment.1.entry-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node-js-data"</span><span class="p">,</span>
-<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="w">  </span><span class="nt">"attachment.1.host-path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/dokku/data/storage/node-js-data"</span><span class="p">,</span>
-<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="w">  </span><span class="nt">"attachment.1.phases"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deploy,run"</span><span class="p">,</span>
-<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">  </span><span class="nt">"attachment.1.process-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_default_"</span><span class="p">,</span>
-<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="w">  </span><span class="nt">"attachment.1.readonly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
-<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a><span class="w">  </span><span class="nt">"attachment.1.subpath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads"</span><span class="p">,</span>
-<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="w">  </span><span class="nt">"attachment.1.volume-chown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"herokuish"</span><span class="p">,</span>
-<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="w">  </span><span class="nt">"attachment.1.volume-options"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z"</span>
-<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="p">{</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="w">  </span><span class="nt">"attachment.1.container-path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/app/storage"</span><span class="p">,</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="w">  </span><span class="nt">"attachment.1.entry-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node-js-data"</span><span class="p">,</span>
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="w">  </span><span class="nt">"attachment.1.host-path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/dokku/data/storage/node-js-data"</span><span class="p">,</span>
+<a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="w">  </span><span class="nt">"attachment.1.phases"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deploy,run"</span><span class="p">,</span>
+<a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a><span class="w">  </span><span class="nt">"attachment.1.process-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_default_"</span><span class="p">,</span>
+<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a><span class="w">  </span><span class="nt">"attachment.1.readonly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a><span class="w">  </span><span class="nt">"attachment.1.subpath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploads"</span><span class="p">,</span>
+<a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a><span class="w">  </span><span class="nt">"attachment.1.volume-chown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"herokuish"</span><span class="p">,</span>
+<a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a><span class="w">  </span><span class="nt">"attachment.1.volume-options"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z"</span>
+<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a><span class="p">}</span>
 </code></pre></div>
+<p>Indices are assigned in stored order, so <code>storage:mount --replace</code> renumbers them: the attachments it leaves in place keep their relative order and the declared ones follow.</p>
 <p>A single attachment field can be fetched directly via the info-flag form:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Shell</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-attachment.1.volume-options
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>dokku<span class="w"> </span>storage:report<span class="w"> </span>node-js-app<span class="w"> </span>--storage-attachment.1.volume-options
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>Z
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>Z
 </code></pre></div>
 </div>
 </div>
@@ -5979,7 +6095,7 @@
 <p>Your app may have services that are running in memory and need to be backed up locally (like a key store). Mount a non ephemeral storage mount will allow backups that are not lost when the app is shut down.</p>
 <h3 id="build-phase">Build phase<a class="headerlink" href="#build-phase" title="Permanent link">&para;</a></h3>
 <p>By default, Dokku will only bind storage mounts during the deploy and run phases. Under certain conditions, one might want to bind a storage mount during the build phase. This can be accomplished by using the <code>docker-options</code> plugin directly.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">"-v /tmp/python-test:/opt/test"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s2">"-v /tmp/python-test:/opt/test"</span>
 </code></pre></div>
 <p>You cannot use mounted volumes during the build phase of a Dockerfile deploy. This is because Docker does not support volumes when executing <code>docker build</code>.</p>
 <div class="admonition warning">
