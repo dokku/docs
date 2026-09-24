@@ -5321,6 +5321,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># runs `bundle exec racksh` in the `/app` directory of the app `my-app`</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dokku<span class="w"> </span>run<span class="w"> </span>my-app<span class="w"> </span>console
 </code></pre></div>
+<p>The Procfile command is split into arguments using the same shell quoting rules used when deploying the app. See the <a href="../process-management/#procfile">Procfile documentation</a> for more details.</p>
 <h4 id="specifying-container-labels">Specifying container labels<a class="headerlink" href="#specifying-container-labels" title="Permanent link">&para;</a></h4>
 <p>Containers may have specific labels attached. In order to avoid issues with dokku internals, do not use any labels beginning with either <code>com.dokku</code> or <code>org.label-schema</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>--label<span class="o">=</span>com.example.test-label<span class="o">=</span>value<span class="w"> </span>run<span class="w"> </span>node-js-app<span class="w"> </span>ls<span class="w"> </span>-lah
