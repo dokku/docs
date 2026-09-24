@@ -5545,9 +5545,9 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <li><code>initialDelay</code>: (int, optional)</li>
 <li><code>listening</code>: (boolean, optional)</li>
 <li><code>name</code>: (string, optional)</li>
-<li><code>path</code>: (string, optional)</li>
+<li><code>path</code>: (string, optional) Must start with a <code>/</code> and must not contain whitespace, control characters, quotes, or backslashes. Deploys with an invalid <code>path</code> will fail.</li>
 <li><code>port</code>: (int, optional)</li>
-<li><code>scheme</code>: (string, optional)</li>
+<li><code>scheme</code>: (string, optional) Must be either <code>http</code> or <code>https</code>. Deploys with an invalid <code>scheme</code> will fail.</li>
 <li><code>timeout</code>: (int, optional)</li>
 <li><code>type</code>: (string, optional)</li>
 <li><code>uptime</code>: (int, optional)</li>
