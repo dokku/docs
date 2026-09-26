@@ -7570,14 +7570,14 @@ Users with older installations will need to manually install Keda.</p>
 <td><code>node-sysctls-image</code></td>
 <td>global only</td>
 <td><code>busybox:1.36</code></td>
-<td><code>--scheduler-k3s-global-node-sysctls-image</code></td>
+<td><code>--scheduler-k3s-global-node-sysctls-image</code>, <code>--scheduler-k3s-computed-node-sysctls-image</code></td>
 <td>Image used to apply node-level sysctls, override for air-gapped clusters</td>
 </tr>
 <tr>
 <td><code>node-sysctls-pause-image</code></td>
 <td>global only</td>
 <td><code>registry.k8s.io/pause:3.9</code></td>
-<td><code>--scheduler-k3s-global-node-sysctls-pause-image</code></td>
+<td><code>--scheduler-k3s-global-node-sysctls-pause-image</code>, <code>--scheduler-k3s-computed-node-sysctls-pause-image</code></td>
 <td>Image keeping the node sysctls daemonset pods running</td>
 </tr>
 <tr>
