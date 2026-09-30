@@ -5485,6 +5485,7 @@
 </div>
 </div>
 </div>
+<p>Core plugins that were not enabled at install time - such as the nginx-vhosts plugin when the <code>dokku/nginx_enable</code> debconf option is set to <code>false</code> - can also be enabled this way. Run <code>dokku plugin:install --core</code> afterwards so the plugin's install trigger is executed.</p>
 <h3 id="triggering-a-plugin-trigger">Triggering a plugin trigger<a class="headerlink" href="#triggering-a-plugin-trigger" title="Permanent link">&para;</a></h3>
 <p>The <code>plugin:trigger</code> can be used to call any internal plugin trigger. This may have unintended consequences, and thus should only be called for development or debugging purposes.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>plugin:trigger<span class="w"> </span>some-internal-trigger<span class="w"> </span>args-go-here

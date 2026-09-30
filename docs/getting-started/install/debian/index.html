@@ -826,6 +826,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#enabling-the-nginx-vhosts-plugin-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling the nginx-vhosts plugin after installation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5051,6 +5062,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#enabling-the-nginx-vhosts-plugin-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling the nginx-vhosts plugin after installation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5149,10 +5171,21 @@
 <td>dokku/nginx_enable</td>
 <td>boolean</td>
 <td>true</td>
-<td>Enable nginx-vhosts plugin</td>
+<td>Enable nginx-vhosts plugin. When <code>false</code>, the plugin is installed but left disabled, and the <code>nginx:*</code> commands are unavailable.</td>
+</tr>
+<tr>
+<td>dokku/install_default_site</td>
+<td>boolean</td>
+<td>true</td>
+<td>Install a catch-all nginx default site on fresh install</td>
 </tr>
 </tbody>
 </table>
+<h3 id="enabling-the-nginx-vhosts-plugin-after-installation">Enabling the nginx-vhosts plugin after installation<a class="headerlink" href="#enabling-the-nginx-vhosts-plugin-after-installation" title="Permanent link">&para;</a></h3>
+<p>If Dokku was installed with <code>dokku/nginx_enable</code> set to <code>false</code>, the nginx-vhosts plugin can be enabled later. The <code>plugin:install --core</code> call runs the plugin's install trigger, which sets up the nginx configuration required by Dokku.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>dokku<span class="w"> </span>plugin:enable<span class="w"> </span>nginx-vhosts
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>dokku<span class="w"> </span>plugin:install<span class="w"> </span>--core
+</code></pre></div>
 
 
 
