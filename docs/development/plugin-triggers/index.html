@@ -9657,10 +9657,13 @@
 </code></pre></div>
 <h3 id="cron-entries"><code>cron-entries</code><a class="headerlink" href="#cron-entries" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Allows injecting cron tasks into the written out scheduled cron task list. Each entry is newline delimited, and individual tasks come in the form <code>$SCHEDULE;$FULL_COMMAND;$ARBITRARY_DATA</code>. Individual implementations of cron writing can decide whether and how to include these cron tasks. The <code>ARBITRARY_DATA</code> includes the log file path for the basic <code>docker-local</code> cron implementation.</li>
-<li>Invoked by:</li>
-<li>Arguments: <code>$DOKKU_SCHEDULER</code></li>
-<li>Example:</li>
+<li>
+<p>Description: Allows injecting cron tasks into the written out scheduled cron task list. Each entry is newline delimited, and individual tasks come in the form <code>$SCHEDULE;$FULL_COMMAND;$ARBITRARY_DATA</code>. Individual implementations of cron writing can decide whether and how to include these cron tasks. The <code>ARBITRARY_DATA</code> includes the log file path for the basic <code>docker-local</code> cron implementation.</p>
+<p>When <code>$CRON_ENTRY_FORMAT</code> is <code>json</code>, each entry may instead be printed as a json object on its own line, with the keys <code>schedule</code>, <code>command</code>, <code>log-file</code> and <code>mailto</code>. Only <code>schedule</code> and <code>command</code> are required. A task with a <code>mailto</code> value is written to the crontab after a <code>MAILTO</code> line of its own and followed by one resetting <code>MAILTO</code> to the global value, or to the <code>dokku</code> user when no global value is set, so the value only applies to that task. Its output is mailed to that address in addition to being appended to its <code>log-file</code>. Json entries and <code>;</code> delimited entries may be printed together. Older versions of Dokku do not pass <code>$CRON_ENTRY_FORMAT</code>, and fail to write the crontab if a json entry is printed, so a json entry should only be printed when the argument is <code>json</code>.
+- Invoked by: <code>dokku cron:list --global</code>, and when the <code>dokku</code> user crontab is written
+- Arguments: <code>$DOKKU_SCHEDULER $CRON_ENTRY_FORMAT</code>
+- Example:</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="ch">#!/usr/bin/env bash</span>
 <a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>
@@ -9668,8 +9671,13 @@
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="nv">$PLUGIN_CORE_AVAILABLE_PATH</span><span class="s2">/common/functions"</span>
 <a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>
 <a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="nv">DOKKU_SCHEDULER</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="c1"># TODO</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="nv">CRON_ENTRY_FORMAT</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CRON_ENTRY_FORMAT</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"json"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'{"schedule":"@daily","command":"/usr/local/bin/some-task","log-file":"/var/log/dokku/some-task.log","mailto":"ops@example.com"}'</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="k">else</span>
+<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"@daily;/usr/local/bin/some-task;/var/log/dokku/some-task.log"</span>
+<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="k">fi</span>
 </code></pre></div>
 <h3 id="dependencies"><code>dependencies</code><a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
 <ul>

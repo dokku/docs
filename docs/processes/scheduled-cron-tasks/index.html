@@ -5487,6 +5487,7 @@
 <li>At this time, only the <code>PATH</code> and <code>SHELL</code> environment variables are specified in the cron template.<ul>
 <li>A <code>MAILTO</code> value can be set via the <code>cron:set</code> command.</li>
 <li>A <code>MAILFROM</code> value can be set via the <code>cron:set</code> command.</li>
+<li>Tasks injected by plugins via the <a href="../../development/plugin-triggers/#cron-entries"><code>cron-entries</code> trigger</a> may set a <code>MAILTO</code> value of their own, which is used for that task instead of the global value. <code>MAILTO</code> is reset after the task to the global value, or to the <code>dokku</code> user when no global value is set, so no other task is mailed to that address. The output of such a task is mailed to that address as well as appended to the task's log file.</li>
 </ul>
 </li>
 <li>Each scheduled task is executed within a one-off <code>run</code> container, and thus inherit any docker-options specified for <code>run</code> containers. Resources are never shared between scheduled tasks.</li>
