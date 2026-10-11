@@ -5179,7 +5179,7 @@
 </ul>
 <h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
 <ul>
-<li>In previous versions of Dokku, the only way to specify a custom <code>Dockerfile</code> was to use the <code>docker-options</code> plugin to set the <code>--file</code> flag for a docker build. As of 0.25.0, the <code>builder-dockerfile:set</code> command should be used instead, as outlined in the <a href="../../deployment/builders/dockerfiles/#changingthe-dockerfile-location">docs here</a>. Usage of the old method should be migrated to the new method.</li>
+<li>In previous versions of Dokku, the only way to specify a custom <code>Dockerfile</code> was to use the <code>docker-options</code> plugin to set the <code>--file</code> flag for a docker build. As of 0.25.0, the <code>builder-dockerfile:set</code> command should be used instead, as outlined in the <a href="../../deployment/builders/dockerfiles/#changing-the-dockerfile-location">docs here</a>. Usage of the old method should be migrated to the new method.</li>
 <li>The <code>--rm</code> and <code>--rm-container</code> flags may be specified but no longer have any effect on <code>dokku run</code>.</li>
 <li>The <code>--detach</code> flag is deprecated in favor of the <code>run:detached</code> command.</li>
 <li>The <code>DOKKU_SCALE</code> file is deprecated. Please see the <a href="../../processes/process-management/#manually-managing-process-scaling">process management documentation</a> for more information on it's replacement with the <code>formation</code> key of the <code>app.json</code> file.</li>

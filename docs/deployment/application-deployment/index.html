@@ -5499,7 +5499,7 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>apps:create<span class="w"> </span>ruby-getting-started
 </code></pre></div>
 <h3 id="create-the-backing-services">Create the backing services<a class="headerlink" href="#create-the-backing-services" title="Permanent link">&para;</a></h3>
-<p>Dokku by default <strong>does not</strong> provide datastores (e.g. MySQL, PostgreSQL) on a newly created app. You can add datastore support by installing plugins, and the Dokku project <a href="../../community/plugins/#official-plugins-beta">provides official plugins</a> for common datastores.</p>
+<p>Dokku by default <strong>does not</strong> provide datastores (e.g. MySQL, PostgreSQL) on a newly created app. You can add datastore support by installing plugins, and the Dokku project <a href="../../community/plugins/#official-plugins">provides official plugins</a> for common datastores.</p>
 <p>The Getting Started app requires a PostgreSQL service, so install the plugin and create the related service as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># on the Dokku host</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># install the postgres plugin</span>
@@ -5571,7 +5571,7 @@ Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a
 </ul>
 </li>
 <li><a href="https://docs.docker.com/reference/builder/">Dockerfile</a>: See the <a href="../builders/dockerfiles/">dockerfile documentation</a> to learn about the different ways to configure Dockerfile-based deploys.</li>
-<li><a href="https://docs.docker.com/get-started/overview/#docker-objects">Docker Image</a>: See the <a href="../methods/git/#initializing-an-app-repository-from-a-docker-image">docker image documentation</a> to learn about how to deploy a Docker Image.</li>
+<li><a href="https://docs.docker.com/get-started/overview/#docker-objects">Docker Image</a>: See the <a href="../methods/image/#initializing-an-app-repository-from-a-docker-image">docker image documentation</a> to learn about how to deploy a Docker Image.</li>
 </ul>
 <h3 id="setting-up-ssl">Setting up SSL<a class="headerlink" href="#setting-up-ssl" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -5688,7 +5688,7 @@ Please see the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a
 <h2 id="dockerfile-deployment">Dockerfile deployment<a class="headerlink" href="#dockerfile-deployment" title="Permanent link">&para;</a></h2>
 <p>See the <a href="../builders/dockerfiles/">Dockerfile documentation</a> for information Dokku's Dockerfile support.</p>
 <h2 id="image-tagging">Image tagging<a class="headerlink" href="#image-tagging" title="Permanent link">&para;</a></h2>
-<p>See the <a href="../methods/git/#initializing-an-app-repository-from-a-docker-image">image tagging documentation</a> for more information on how Docker images can be tagged and deployed for a given application.</p>
+<p>See the <a href="../methods/image/#initializing-an-app-repository-from-a-docker-image">image tagging documentation</a> for more information on how Docker images can be tagged and deployed for a given application.</p>
 <h2 id="specifying-a-custom-buildpack">Specifying a custom buildpack<a class="headerlink" href="#specifying-a-custom-buildpack" title="Permanent link">&para;</a></h2>
 <p>See the <a href="../builders/herokuish-buildpacks/">herokuish buildpack documentation</a> for more information on how to specify a set of custom buildpacks for your application.</p>
 <h2 id="removing-a-deployed-app">Removing a deployed app<a class="headerlink" href="#removing-a-deployed-app" title="Permanent link">&para;</a></h2>
