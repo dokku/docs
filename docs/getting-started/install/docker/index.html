@@ -5244,8 +5244,9 @@
 <li>Data within the container is stored on the host within the <code>/var/lib/dokku</code> directory.</li>
 <li>Image build cache is set to the data dir + <code>/home/dokku</code>.</li>
 <li>The docker socket is mounted into container.</li>
+<li><code>DOKKU_HOST_ROOT</code> and <code>DOKKU_LIB_HOST_ROOT</code> tell Dokku how the host Docker daemon sees those same trees when creating bind mounts (app repos and plugin data such as named storage).</li>
 </ul>
-<p>Application repositories, plugin config, as well as plugin data are persisted to disk within the specified host directory for <code>/var/lib/dokku</code>.</p>
+<p>Application repositories, plugin config, as well as plugin data are persisted to disk within the specified host directory for <code>/var/lib/dokku</code>. <code>DOKKU_LIB_HOST_ROOT</code> must point at that host path's <code>var/lib/dokku</code> subtree so Docker <code>-v</code> mounts resolve under the data volume rather than under the host's own <code>/var/lib/dokku</code>.</p>
 <p>Other docker container options can also be used when running Dokku, though the specific outcome will depend upon the specified options. For example, the Dokku container's nginx port can be bound to a specific host ip by specifying <code>--publish $HOST_IP:8080:80</code>, where <code>$HOST_IP</code> is the IP desired. Please see the <a href="https://docs.docker.com/engine/reference/commandline/run/">docker container run documentation</a> for further explanation for various docker arguments.</p>
 <h2 id="plugin-installation">Plugin Installation<a class="headerlink" href="#plugin-installation" title="Permanent link">&para;</a></h2>
 <h3 id="on-dokku-start">On Dokku start<a class="headerlink" href="#on-dokku-start" title="Permanent link">&para;</a></h3>

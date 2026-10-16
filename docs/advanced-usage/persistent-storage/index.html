@@ -5694,6 +5694,7 @@
 <p>Introduced in 0.25.5</p>
 </div>
 <p>A storage directory can be created with the <code>storage:ensure-directory</code> command. This command will create a subdirectory in the recommended <code>/var/lib/dokku/data/storage</code> path - created during Dokku installation - and prepare it for use with an app.</p>
+<p>When Dokku itself runs in a container with a shared Docker socket, default named storage is still created under <code>DOKKU_LIB_ROOT</code> (typically <code>/var/lib/dokku</code>) inside the Dokku container. Docker <code>-v</code> mounts for <code>storage:exec</code> and app deploys rewrite that path to <code>DOKKU_LIB_HOST_ROOT</code> so the host Docker daemon binds the directory from the host-visible data volume. See the <a href="../../getting-started/install/docker/">Docker installation notes</a> for setting <code>DOKKU_LIB_HOST_ROOT</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
