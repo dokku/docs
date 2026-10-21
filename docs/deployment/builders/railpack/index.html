@@ -5286,13 +5286,17 @@
 <p>Before using Railpacks, the following steps must be taken:</p>
 <ul>
 <li>Install the <code>railpack</code> cli: The <code>railpack</code> cli tool is not included by default with Dokku or as a dependency. It must also be installed as shown on <a href="https://railpack.com/installation">this page</a>.</li>
-<li>Create a <code>buildkit</code> builder: Railpack uses buildkit.
-       <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--privileged<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>buildkit<span class="w"> </span>moby/buildkit
-</code></pre></div></li>
-<li>Set the buildkit builder: Update the <code>/etc/default/dokku</code> file to set <code>BUILDKIT_HOST</code>:
-       <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>touch<span class="w"> </span>/etc/default/dokku
+<li>
+<p>Create a <code>buildkit</code> builder: Railpack uses buildkit.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--privileged<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>buildkit<span class="w"> </span>moby/buildkit
+</code></pre></div>
+</li>
+<li>
+<p>Set the buildkit builder: Update the <code>/etc/default/dokku</code> file to set <code>BUILDKIT_HOST</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>touch<span class="w"> </span>/etc/default/dokku
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"export BUILDKIT_HOST='docker-container://buildkit'"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/default/dokku
-</code></pre></div></li>
+</code></pre></div>
+</li>
 </ul>
 <h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
 <p>This builder will be auto-detected in the following case:</p>

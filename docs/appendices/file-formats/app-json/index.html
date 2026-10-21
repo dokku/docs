@@ -5412,19 +5412,21 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <li><strong>Required variables without a value or generator</strong>: If a TTY is available, the user is prompted for a value. Otherwise, the deploy fails with an error</li>
 <li><strong>Optional variables without a value</strong>: Skipped silently if no TTY is available</li>
 </ol>
-<p>On subsequent deploys:
-- Variables are NOT re-set unless <code>sync: true</code> is specified
-- Variables with <code>sync: true</code> are always set to their configured value, overwriting any manual changes
-- Variables that already have values are not modified</p>
+<p>On subsequent deploys:</p>
+<ul>
+<li>Variables are NOT re-set unless <code>sync: true</code> is specified</li>
+<li>Variables with <code>sync: true</code> are always set to their configured value, overwriting any manual changes</li>
+<li>Variables that already have values are not modified</li>
+</ul>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<p><strong>Simple default value:</strong>
+<p><strong>Simple default value:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"WEB_CONCURRENCY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
-</code></pre></div></p>
-<p><strong>Generated secret (recommended for API keys, tokens, etc.):</strong>
+</code></pre></div>
+<p><strong>Generated secret (recommended for API keys, tokens, etc.):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">"SECRET_KEY_BASE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -5433,8 +5435,8 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
-</code></pre></div></p>
-<p><strong>Required variable that must be provided:</strong>
+</code></pre></div>
+<p><strong>Required variable that must be provided:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">"DATABASE_URL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -5443,8 +5445,8 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
-</code></pre></div></p>
-<p><strong>Variable that stays in sync with app.json:</strong>
+</code></pre></div>
+<p><strong>Variable that stays in sync with app.json:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">"FEATURE_FLAGS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -5453,7 +5455,7 @@ While the <code>app.json</code> format used by Dokku is based on the one <a href
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="formation">Formation<a class="headerlink" href="#formation" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">"formation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>

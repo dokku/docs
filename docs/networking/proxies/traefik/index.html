@@ -5895,21 +5895,23 @@
 <h4 id="switching-to-dns-01-challenge-mode">Switching to DNS-01 challenge mode<a class="headerlink" href="#switching-to-dns-01-challenge-mode" title="Permanent link">&para;</a></h4>
 <p>By default, Traefik uses TLS-ALPN-01 challenge for obtaining certificates. To switch to DNS-01 challenge mode (useful for wildcard certificates or when port 443 is not accessible), you need to:</p>
 <ol>
-<li>Set the challenge mode to <code>dns</code>:</li>
-</ol>
+<li>
+<p>Set the challenge mode to <code>dns</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>challenge-mode<span class="w"> </span>dns
 </code></pre></div>
-<ol>
-<li>Set your DNS provider:</li>
-</ol>
+</li>
+<li>
+<p>Set your DNS provider:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dns-provider<span class="w"> </span>cloudflare
 </code></pre></div>
-<ol>
-<li>Configure the required environment variables for your DNS provider. Each DNS provider requires specific environment variables. The variable names should be prefixed with <code>dns-provider-</code>:</li>
-</ol>
+</li>
+<li>
+<p>Configure the required environment variables for your DNS provider. Each DNS provider requires specific environment variables. The variable names should be prefixed with <code>dns-provider-</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dns-provider-cf_api_email<span class="w"> </span>user@example.com
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>dns-provider-cf_api_key<span class="w"> </span>your-api-key
 </code></pre></div>
+</li>
+</ol>
 <p>The <code>dns-provider-</code> prefix will be stripped and the variable name will be uppercased when passed to the Traefik container. For example, <code>dns-provider-cf_api_email</code> becomes <code>CF_API_EMAIL</code>.</p>
 <p>Each configured variable is surfaced by <code>traefik:report</code> as <code>--traefik-global-dns-provider-&lt;env_var&gt;</code>. As these values are provider credentials, they are masked as <code>*******</code> in the default report output, including the aggregate <code>dokku report</code>. The raw value is returned when the flag is requested explicitly or when the report is rendered as json:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>traefik:report<span class="w"> </span>--global<span class="w"> </span>--traefik-global-dns-provider-cf_api_email

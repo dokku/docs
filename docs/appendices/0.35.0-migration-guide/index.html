@@ -5061,14 +5061,18 @@
 <li>The provided <code>dokku/dokku:latest</code> Docker image now runs Ubuntu 24.04 Noble. Users that install custom packages within their docker-based installations should be sure to check package compatibility with Ubuntu 24.04.</li>
 <li>The default image used for Cloud Native Buildpack builds is now <code>heroku/builder:24</code>, and is based on both the <code>heroku-24</code> stack as well as Ubuntu 24.04. Users that wish to stick with the old, <code>heroku-22</code>/Ubuntu 22.04 builder may specify <code>heroku/buildpacks:22</code> as their builder image. Please see the <a href="../../deployment/builders/cloud-native-buildpacks/#customizing-the-buildpack-stack-builder">cloud native buildpack deployment documentation</a> for more information on how to specify a custom buildpack stack builder.</li>
 <li>The default image used for Herokuish Buildpack builds is now <code>gliderlabs/herokuish:latest-24</code>, and is based on both the <code>heroku-24</code> stack as well as Ubuntu 24.04. Users that wish to stick with the old, <code>heroku-22</code>/Ubuntu 22.04 builder may specify <code>gliderlabs/herokuish:latest-22</code> as their builder image. Please see the <a href="../../deployment/builders/herokuish-buildpacks/#customizing-the-buildpack-stack-builder">herokuish buildpack deployment documentation</a> for more information on how to specify a custom buildpack stack builder.</li>
-<li>The <code>vector</code> image used by Dokku for enhanced logging support has been upgraded from 0.39.x to 0.41.x. To take advantage of the new image, execute the following commands:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku logs:vector-stop
+<li>
+<p>The <code>vector</code> image used by Dokku for enhanced logging support has been upgraded from 0.39.x to 0.41.x. To take advantage of the new image, execute the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dokku logs:vector-stop
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dokku logs:vector-start
-</code></pre></div></li>
-<li>The <code>openresty</code> image used by Dokku for proxying via openresty has been upgraded from 0.8.0 to 0.9.0. To take advantage of the new image, execute the following commands:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku openresty:stop
+</code></pre></div>
+</li>
+<li>
+<p>The <code>openresty</code> image used by Dokku for proxying via openresty has been upgraded from 0.8.0 to 0.9.0. To take advantage of the new image, execute the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku openresty:stop
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku openresty:start
-</code></pre></div></li>
+</code></pre></div>
+</li>
 </ul>
 
 
