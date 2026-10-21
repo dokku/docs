@@ -5546,11 +5546,11 @@
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#cpu">"CPU" section</a> of the Docker Runtime Options documentation for more information.</li>
 </ul>
 </li>
-<li>memory: (docker option: <code>--memory</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).<ul>
+<li>memory: (docker option: <code>--memory</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes), <code>t</code> (terabytes) or <code>p</code> (petabytes). Suffixes are case-insensitive and may be followed by <code>i</code> and/or <code>b</code>, such as <code>512M</code>, <code>1G</code>, or <code>1GiB</code>. Default unit is <code>m</code> (megabytes).<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
 </ul>
 </li>
-<li>memory-swap: (docker option: <code>--memory-swap</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes)<ul>
+<li>memory-swap: (docker option: <code>--memory-swap</code>) should be specified with the same suffixes as <code>memory</code>, or <code>-1</code> for unlimited swap. Values without a suffix are in bytes.<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
 </ul>
 </li>
@@ -5561,7 +5561,7 @@
 </ul>
 <h4 id="resource-reservations">Resource Reservations<a class="headerlink" href="#resource-reservations" title="Permanent link">&para;</a></h4>
 <ul>
-<li>memory: (docker option: <code>--memory-reservation</code>) should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes). Default unit is <code>m</code> (megabytes).<ul>
+<li>memory: (docker option: <code>--memory-reservation</code>) should be specified with the same suffixes as the <code>memory</code> limit. Default unit is <code>m</code> (megabytes).<ul>
 <li>See the <a href="https://docs.docker.com/config/containers/resource_constraints/#memory">"Memory" section</a> of the Docker Runtime Options documentation for more information.</li>
 </ul>
 </li>

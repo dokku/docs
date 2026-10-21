@@ -7451,7 +7451,7 @@ Users with older installations will need to manually install Keda.</p>
 <p>The <code>k3s</code> scheduler supports a minimal list of resource <em>limits</em> and <em>reservations</em>:</p>
 <ul>
 <li>cpu: is specified in number of CPUs a process can access.</li>
-<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>Ki</code> (kilobytes), <code>Mi</code> (megabytes), <code>Gi</code> (gigabytes). Default unit is <code>Mi</code> (megabytes).</li>
+<li>memory: should be specified with a suffix of <code>b</code> (bytes), <code>k</code> (kilobytes), <code>m</code> (megabytes), <code>g</code> (gigabytes), <code>t</code> (terabytes) or <code>p</code> (petabytes). Suffixes are case-insensitive and may be followed by <code>i</code> and/or <code>b</code>, such as <code>512Mi</code>, <code>1G</code>, or <code>1GiB</code>. Units are binary, so <code>1G</code> and <code>1Gi</code> are equivalent. Default unit is <code>Mi</code> (megabytes).</li>
 </ul>
 <p>If unspecified for any task, the default reservation will be <code>.1</code> CPU and <code>128Mi</code> RAM, with no limit set for either CPU or RAM. This is to avoid issues with overscheduling pods on a cluster. To avoid issues, set more specific values for at least resource reservations. If unbounded utilization is desired, set CPU and Memory to <code>0m</code> and <code>0Mi</code>, respectively.</p>
 <div class="admonition note">

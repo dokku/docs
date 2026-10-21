@@ -5293,6 +5293,7 @@
 <li><code>--network-egress</code></li>
 <li><code>--nvidia-gpu</code></li>
 </ul>
+<p>Values for <code>--memory</code> and <code>--memory-swap</code> are validated when set, and invalid values are rejected.</p>
 <p>See the <a href="../../deployment/schedulers/docker-local/#supported-resource-management-properties">Supported Resource Management Properties</a> section of the docker local scheduler documentation for more information on how each resource limit maps to Docker.</p>
 <p>Resource reservations are applied only during the <code>run</code> and <code>deploy</code> phases of an application. Resource limits also apply during the <code>build</code> phase when explicitly configured against the <code>build</code> process type - see <a href="#build-time-resource-limits">Build-time Resource Limits</a> below.</p>
 <h3 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">&para;</a></h3>
