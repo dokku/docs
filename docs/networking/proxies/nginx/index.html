@@ -6499,67 +6499,23 @@
 <td>Limits the total size of buffers that can be busy sending a response to the client while the response is not yet fully read.</td>
 </tr>
 <tr>
-<td>proxy-connect-timeout</td>
-<td><code>60s</code></td>
+<td>proxy-http-version</td>
+<td><code>1.1</code></td>
 <td>string</td>
-<td>Timeout (with units) for establishing a connection to your backend server</td>
-</tr>
-<tr>
-<td>proxy-keepalive</td>
-<td>empty (disabled)</td>
-<td>integer</td>
-<td>Number of idle keepalive connections to upstream servers (disabled by default)</td>
-</tr>
-<tr>
-<td>proxy-read-timeout</td>
-<td><code>60s</code></td>
-<td>string</td>
-<td>Timeout (with units) for reading response from your backend server</td>
-</tr>
-<tr>
-<td>proxy-send-timeout</td>
-<td><code>60s</code></td>
-<td>string</td>
-<td>Timeout (with units) for transmitting a request to your backend server</td>
-</tr>
-<tr>
-<td>send-timeout</td>
-<td><code>60s</code></td>
-<td>string</td>
-<td>Timeout (with units) for transmitting a response to your the client</td>
-</tr>
-<tr>
-<td>underscore-in-headers</td>
-<td><code>off</code></td>
-<td>string</td>
-<td>Enables or disables the use of underscores in client request header fields.</td>
-</tr>
-<tr>
-<td>x-forwarded-for-value</td>
-<td><code>$remote_addr</code></td>
-<td>string</td>
-<td>Used for specifying the header value to set for the <code>X-Forwarded-For</code> header</td>
-</tr>
-<tr>
-<td>x-forwarded-port-value</td>
-<td><code>$server_port</code></td>
-<td>string</td>
-<td>Used for specifying the header value to set for the <code>X-Forwarded-Port</code> header</td>
-</tr>
-<tr>
-<td>x-forwarded-proto-value</td>
-<td><code>$scheme</code></td>
-<td>string</td>
-<td>Used for specifying the header value to set for the <code>X-Forwarded-Proto</code> header</td>
-</tr>
-<tr>
-<td>x-forwarded-ssl</td>
-<td>empty string</td>
-<td>string</td>
-<td>Less commonly used alternative to <code>X-Forwarded-Proto</code> (valid values: <code>on</code> or <code>off</code>)</td>
+<td>The HTTP version to use for establishing a connection to your backend server. Ensure that your backend server supports this.</td>
 </tr>
 </tbody>
 </table>
+<p>| proxy-connect-timeout     | <code>60s</code>                                 | string  | Timeout (with units) for establishing a connection to your backend server           |
+| proxy-keepalive           | empty (disabled)                      | integer | Number of idle keepalive connections to upstream servers (disabled by default)      |
+| proxy-read-timeout        | <code>60s</code>                                 | string  | Timeout (with units) for reading response from your backend server                  |
+| proxy-send-timeout        | <code>60s</code>                                 | string  | Timeout (with units) for transmitting a request to your backend server              |
+| send-timeout              | <code>60s</code>                                 | string  | Timeout (with units) for transmitting a response to your the client                 |
+| underscore-in-headers     | <code>off</code>                                 | string  | Enables or disables the use of underscores in client request header fields.         |
+| x-forwarded-for-value     | <code>$remote_addr</code>                        | string  | Used for specifying the header value to set for the <code>X-Forwarded-For</code> header        |
+| x-forwarded-port-value    | <code>$server_port</code>                        | string  | Used for specifying the header value to set for the <code>X-Forwarded-Port</code> header       |
+| x-forwarded-proto-value   | <code>$scheme</code>                             | string  | Used for specifying the header value to set for the <code>X-Forwarded-Proto</code> header      |
+| x-forwarded-ssl           | empty string                          | string  | Less commonly used alternative to <code>X-Forwarded-Proto</code> (valid values: <code>on</code> or <code>off</code>) |</p>
 <h4 id="binding-to-specific-addresses">Binding to specific addresses<a class="headerlink" href="#binding-to-specific-addresses" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -6844,6 +6800,13 @@ These headers indicate the IP address of the original client making the request,
 <td><em><code>2 * pagesize</code></em></td>
 <td><code>--nginx-proxy-busy-buffers-size</code>, <code>--nginx-global-proxy-busy-buffers-size</code>, <code>--nginx-computed-proxy-busy-buffers-size</code></td>
 <td>Maximum buffer size that can be busy sending a response to the client</td>
+</tr>
+<tr>
+<td><code>proxy-http-version</code></td>
+<td>app + global</td>
+<td><code>1.1</code></td>
+<td><code>--nginx-proxy-http-version</code>, <code>--nginx-global-proxy-http-version</code>, <code>--nginx-computed-proxy-http-version</code></td>
+<td>HTTP version to use for a connection to the upstream</td>
 </tr>
 <tr>
 <td><code>proxy-connect-timeout</code></td>
