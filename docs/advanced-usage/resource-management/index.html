@@ -5271,10 +5271,10 @@
 <p>Introduced in 0.15.0</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>resource:limit [--process-type &lt;process-type&gt;] [RESOURCE_OPTS...] &lt;app&gt;    # Limit resources for a given app/process-type combination
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>resource:limit-clear [--process-type &lt;process-type&gt;] &lt;app&gt;                 # Limit resources for a given app/process-type combination
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>resource:limit-clear [--process-type &lt;process-type&gt;] &lt;app&gt;                 # Clear resource limits for a given app/process-type combination
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>resource:report [&lt;app&gt;] [&lt;flag&gt;]                                           # Displays a resource report for one or more apps
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>resource:reserve [--process-type &lt;process-type&gt;] [RESOURCE_OPTS...] &lt;app&gt;  # Reserve resources for a given app/process-type combination
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>resource:reserve-clear [--process-type &lt;process-type&gt;] &lt;app&gt;               # Reserve resources for a given app/process-type combination
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>resource:reserve-clear [--process-type &lt;process-type&gt;] &lt;app&gt;               # Clear resource reservations for a given app/process-type combination
 </code></pre></div>
 <p>The resource plugin is meant to allow users to limit or reserve resources for a given app/process-type combination.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
@@ -5479,7 +5479,7 @@
 </table>
 <p>Resource keys outside the supported set for a builder are silently ignored. Reservations (<code>resource:reserve</code>) are never applied at build time - only limits.</p>
 <h4 id="clearing-resource-limits">Clearing Resource Limits<a class="headerlink" href="#clearing-resource-limits" title="Permanent link">&para;</a></h4>
-<p>In cases where the values are incorrect - or there is no desire to limit resources - resource limits may be cleared using the <code>resource:limit-clear</code> command.</p>
+<p>In cases where the values are incorrect - or there is no desire to limit resources - resource limits may be cleared using the <code>resource:limit-clear</code> command. When no process type is specified, resource limits are cleared for all process types. Resource reservations are left untouched.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5487,20 +5487,20 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>-----&gt; Clearing resource limit for node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>=====&gt; clearing node-js-app limits
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>Defaults can also be cleared by leaving the app unspecified.</p>
+<p>Resource limits for a single process type can be cleared by specifying the <code>--process-type</code> flag.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Shell</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>resource:limit-clear
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>resource:limit-clear<span class="w"> </span>--process-type<span class="w"> </span>worker<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>-----&gt; Clearing default resource limits
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>=====&gt; clearing node-js-app limits (worker)
 </code></pre></div>
 </div>
 </div>
@@ -5607,7 +5607,7 @@
 </div>
 </div>
 <h4 id="clearing-resource-reservations">Clearing Resource Reservations<a class="headerlink" href="#clearing-resource-reservations" title="Permanent link">&para;</a></h4>
-<p>In cases where the values are incorrect - or there is no desire to reserve resources - resource reservations may be cleared using the <code>resource:reserve-clear</code> command.</p>
+<p>In cases where the values are incorrect - or there is no desire to reserve resources - resource reservations may be cleared using the <code>resource:reserve-clear</code> command. When no process type is specified, resource reservations are cleared for all process types. Resource limits are left untouched.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Shell</label><label for="__tabbed_16_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5615,20 +5615,20 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>-----&gt; Clearing resource reservation for node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>=====&gt; clearing node-js-app reservation
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>Defaults can also be cleared by leaving the app unspecified.</p>
+<p>Resource reservations for a single process type can be cleared by specifying the <code>--process-type</code> flag.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Shell</label><label for="__tabbed_17_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>resource:reserve-clear
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>resource:reserve-clear<span class="w"> </span>--process-type<span class="w"> </span>worker<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>-----&gt; Clearing default resource reservation
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>=====&gt; clearing node-js-app reservation (worker)
 </code></pre></div>
 </div>
 </div>
