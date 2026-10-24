@@ -5525,7 +5525,7 @@
 <p>By default, when running <code>git:sync</code> with a git branch reference, Dokku will automatically set the <code>deploy-branch</code> property to the specified branch. To skip setting the deploy branch, specify the <code>--skip-deploy-branch</code> flag.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>git:sync<span class="w"> </span>--skip-deploy-branch<span class="w"> </span>node-js-app<span class="w"> </span>https://github.com/heroku/node-js-getting-started.git<span class="w"> </span>main
 </code></pre></div>
-<p>The <code>git:sync</code> command holds the app's deploy lock while fetching, and will fail if a deploy is already in progress. When the fetched code changes the repository or a build is triggered, the <code>source-image</code> property set by <a href="../image/">image deploys</a> is cleared. As the synced code is kept even when a build fails, the property is not restored on build failure.</p>
+<p>The <code>git:sync</code> command holds the app's deploy lock while fetching, and will fail if a deploy is already in progress or the app has been locked via <code>apps:lock</code>. When the fetched code changes the repository or a build is triggered, the <code>source-image</code> property set by <a href="../image/">image deploys</a> is cleared. As the synced code is kept even when a build fails, the property is not restored on build failure.</p>
 <h3 id="initializing-from-private-repositories">Initializing from private repositories<a class="headerlink" href="#initializing-from-private-repositories" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
