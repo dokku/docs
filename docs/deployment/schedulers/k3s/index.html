@@ -4568,6 +4568,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Customizing Helm Chart Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-entire-chart-override-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the entire chart override set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearing-chart-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearing chart overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6361,6 +6389,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Customizing Helm Chart Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-entire-chart-override-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the entire chart override set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearing-chart-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearing chart overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6541,29 +6597,31 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>scheduler-k3s:autoscaling-auth:set &lt;app|--global&gt; &lt;trigger&gt; [&lt;--metadata key=value&gt;...] # Set or clear a scheduler-k3s autoscaling keda trigger authentication resource for an app
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>scheduler-k3s:autoscaling-auth:set --replace &lt;app|--global&gt; &lt;trigger&gt; &lt;--metadata key=value&gt; [&lt;--metadata key=value&gt;...] # Replace the entire metadata map for a scheduler-k3s autoscaling keda trigger authentication resource
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>scheduler-k3s:autoscaling-auth:report [&lt;app&gt;|--global] [--format stdout|json] [--include-metadata] # Displays a scheduler-k3s autoscaling auth report for one or more apps
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>scheduler-k3s:charts:report [&lt;chart&gt;] [--format stdout|json] # Displays a scheduler-k3s chart override report
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>scheduler-k3s:charts:set &lt;chart-name.property&gt; (&lt;value&gt;) # Set or clear a chart-specific helm value
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>scheduler-k3s:cluster:add [--profile PROFILE] [--role ROLE] [--insecure-allow-unknown-hosts] [--server-ip SERVER_IP] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] &lt;ssh://user@host:port&gt; # Adds a server node to a Dokku-managed cluster
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>scheduler-k3s:cluster:list [--format json|stdout] # Lists all nodes in a Dokku-managed cluster
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>scheduler-k3s:cluster:remove [node-id] # Removes client node to a Dokku-managed cluster
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>scheduler-k3s:ensure-charts [--force] [--charts CHART_NAMES] # Ensures the k3s charts are installed
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>scheduler-k3s:initialize [--server-ip SERVER_IP] [--ingress-class INGRESS_CLASS] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] # Initializes a cluster
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>scheduler-k3s:labels:clear &lt;app|--global&gt; [--process-type PROCESS_TYPE] [--resource-type RESOURCE_TYPE] # Clear all labels for an app or a single process-type/resource-type scope
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>scheduler-k3s:labels:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Set or clear a label for a given app/process-type/resource-type combination
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>scheduler-k3s:labels:set --replace &lt;app|--global&gt; &lt;key=value&gt; [&lt;key=value&gt; ...] [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Replace the entire label map for a given app/process-type/resource-type combination
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>scheduler-k3s:labels:report [&lt;app&gt;|--global] [--format stdout|json] [--process-type PROCESS_TYPE] [--resource-type RESOURCE_TYPE] # Displays a scheduler-k3s labels report for one or more apps
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>scheduler-k3s:node-sysctls:clear [--global|--profile PROFILE] # Clear all node-level kernel sysctls for unprofiled nodes or a single node profile
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>scheduler-k3s:node-sysctls:set &lt;sysctl&gt; (&lt;value&gt;) [--global|--profile PROFILE] # Set or clear a node-level kernel sysctl for unprofiled nodes or a single node profile
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>scheduler-k3s:node-sysctls:set --replace &lt;sysctl=value&gt; [&lt;sysctl=value&gt; ...] [--global|--profile PROFILE] # Replace the entire node-level kernel sysctl map for unprofiled nodes or a single node profile
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>scheduler-k3s:node-sysctls:report [--format stdout|json] [--stored] [--global|--profile PROFILE] # Displays the node-level kernel sysctls for each scope
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>scheduler-k3s:preview &lt;app&gt; [--context N] [--show-secrets] [--show-secrets-decoded] # Displays a diff between the current and next deployment for an app
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>scheduler-k3s:profiles:add &lt;profile&gt; [--role ROLE] [--insecure-allow-unknown-hosts] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] # Adds a node profile to the k3s cluster
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>scheduler-k3s:profiles:list [--format json|stdout] # Lists all node profiles in the k3s cluster
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>scheduler-k3s:profiles:remove &lt;profile&gt; # Removes a node profile from the k3s cluster
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>scheduler-k3s:report [&lt;app&gt;|--global] [--format stdout|json] [&lt;flag&gt;] # Displays a scheduler-k3s report for one or more apps
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>scheduler-k3s:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) # Set or clear a scheduler-k3s property for an app or globally
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>scheduler-k3s:show-kubeconfig # Displays the kubeconfig for remote usage
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>scheduler-k3s:uninstall # Uninstalls k3s from the Dokku server
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>scheduler-k3s:charts:clear &lt;chart&gt; # Clear all chart-specific helm values for a chart
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>scheduler-k3s:charts:report [&lt;chart&gt;] [--format stdout|json] # Displays a scheduler-k3s chart override report
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>scheduler-k3s:charts:set &lt;chart-name.property&gt; (&lt;value&gt;) # Set or clear a chart-specific helm value
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>scheduler-k3s:charts:set --replace &lt;chart&gt; &lt;property=value&gt; [&lt;property=value&gt; ...] # Replace the entire helm value override map for a chart
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>scheduler-k3s:cluster:add [--profile PROFILE] [--role ROLE] [--insecure-allow-unknown-hosts] [--server-ip SERVER_IP] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] &lt;ssh://user@host:port&gt; # Adds a server node to a Dokku-managed cluster
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>scheduler-k3s:cluster:list [--format json|stdout] # Lists all nodes in a Dokku-managed cluster
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>scheduler-k3s:cluster:remove [node-id] # Removes client node to a Dokku-managed cluster
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>scheduler-k3s:ensure-charts [--force] [--charts CHART_NAMES] # Ensures the k3s charts are installed
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>scheduler-k3s:initialize [--server-ip SERVER_IP] [--ingress-class INGRESS_CLASS] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] # Initializes a cluster
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>scheduler-k3s:labels:clear &lt;app|--global&gt; [--process-type PROCESS_TYPE] [--resource-type RESOURCE_TYPE] # Clear all labels for an app or a single process-type/resource-type scope
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>scheduler-k3s:labels:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Set or clear a label for a given app/process-type/resource-type combination
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>scheduler-k3s:labels:set --replace &lt;app|--global&gt; &lt;key=value&gt; [&lt;key=value&gt; ...] [--process-type PROCESS_TYPE] &lt;--resource-type RESOURCE_TYPE&gt; # Replace the entire label map for a given app/process-type/resource-type combination
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>scheduler-k3s:labels:report [&lt;app&gt;|--global] [--format stdout|json] [--process-type PROCESS_TYPE] [--resource-type RESOURCE_TYPE] # Displays a scheduler-k3s labels report for one or more apps
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>scheduler-k3s:node-sysctls:clear [--global|--profile PROFILE] # Clear all node-level kernel sysctls for unprofiled nodes or a single node profile
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>scheduler-k3s:node-sysctls:set &lt;sysctl&gt; (&lt;value&gt;) [--global|--profile PROFILE] # Set or clear a node-level kernel sysctl for unprofiled nodes or a single node profile
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>scheduler-k3s:node-sysctls:set --replace &lt;sysctl=value&gt; [&lt;sysctl=value&gt; ...] [--global|--profile PROFILE] # Replace the entire node-level kernel sysctl map for unprofiled nodes or a single node profile
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>scheduler-k3s:node-sysctls:report [--format stdout|json] [--stored] [--global|--profile PROFILE] # Displays the node-level kernel sysctls for each scope
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>scheduler-k3s:preview &lt;app&gt; [--context N] [--show-secrets] [--show-secrets-decoded] # Displays a diff between the current and next deployment for an app
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>scheduler-k3s:profiles:add &lt;profile&gt; [--role ROLE] [--insecure-allow-unknown-hosts] [--taint-scheduling] [--kubelet-args KUBELET_ARGS] # Adds a node profile to the k3s cluster
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>scheduler-k3s:profiles:list [--format json|stdout] # Lists all node profiles in the k3s cluster
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>scheduler-k3s:profiles:remove &lt;profile&gt; # Removes a node profile from the k3s cluster
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>scheduler-k3s:report [&lt;app&gt;|--global] [--format stdout|json] [&lt;flag&gt;] # Displays a scheduler-k3s report for one or more apps
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>scheduler-k3s:set &lt;app|--global&gt; &lt;property&gt; (&lt;value&gt;) # Set or clear a scheduler-k3s property for an app or globally
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>scheduler-k3s:show-kubeconfig # Displays the kubeconfig for remote usage
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>scheduler-k3s:uninstall # Uninstalls k3s from the Dokku server
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -7350,18 +7408,36 @@ Users with older installations will need to manually install Keda.</p>
 <p>Alternatively, a comma separated list of chart names can be specified to only force install the specified charts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>cert-manager
 </code></pre></div>
+<h4 id="replacing-the-entire-chart-override-set">Replacing the entire chart override set<a class="headerlink" href="#replacing-the-entire-chart-override-set" title="Permanent link">&para;</a></h4>
+<p>The per-property form above changes one chart override at a time, so matching the stored overrides for a chart to a declared set means computing the difference and issuing one command per added, changed and removed property. The <code>--replace</code> flag writes the whole override map for a chart in a single call, taking the chart name followed by <code>property=value</code> pairs instead of a single <code>&lt;chart-name&gt;.&lt;property&gt;</code> argument and value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>--replace<span class="w"> </span>cert-manager<span class="w"> </span><span class="nv">installCRDs</span><span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="nv">replicaCount</span><span class="o">=</span><span class="m">2</span>
+</code></pre></div>
+<p>Anything previously stored for that chart and not named in the call is removed. Overrides for other charts are left untouched.</p>
+<p>Every pair is parsed before anything is written, so a rejected pair leaves the stored overrides untouched. A pair without a <code>=</code>, a pair with an empty property, and a property named more than once are all rejected. Only the first <code>=</code> in a pair separates the property from the value, so values may themselves contain <code>=</code>.</p>
+<p>A pair ending in <code>=</code> stores an empty value, which the per-property form cannot express - there, an empty value deletes the property instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:set<span class="w"> </span>--replace<span class="w"> </span>cert-manager<span class="w"> </span><span class="nv">installCRDs</span><span class="o">=</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An empty pair list is rejected rather than treated as a request to remove everything, so a generated list that expands to nothing cannot silently drop a chart's overrides. Use <code>scheduler-k3s:charts:clear</code> for that.</p>
+</div>
+<h4 id="clearing-chart-overrides">Clearing chart overrides<a class="headerlink" href="#clearing-chart-overrides" title="Permanent link">&para;</a></h4>
+<p>The <code>scheduler-k3s:charts:clear</code> command removes every override configured for a chart.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a>dokku<span class="w"> </span>scheduler-k3s:charts:clear<span class="w"> </span>cert-manager
+</code></pre></div>
+<p>As with any other chart property change, a <code>scheduler-k3s:ensure-charts --force</code> or <code>scheduler-k3s:ensure-charts --charts &lt;chart&gt;</code> call is required after replacing or clearing chart overrides in order to have them apply.</p>
 <h3 id="persistent-storage">Persistent storage<a class="headerlink" href="#persistent-storage" title="Permanent link">&para;</a></h3>
 <p>K3s apps mount persistent volumes through the Dokku storage plugin. A <code>storage:create --scheduler k3s</code> call provisions a PersistentVolumeClaim through a small per-entry helm release; <code>storage:mount &lt;app&gt; &lt;name&gt; --container-dir &lt;path&gt;</code> then attaches it to an app. Because storage entries are global, the same PVC can be mounted into multiple apps (for <code>ReadWriteMany</code> workloads) or into the same app at multiple subpaths.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a><span class="c1"># dynamically-provisioned PVC backed by Longhorn</span>
-<a id="__codelineno-114-2" name="__codelineno-114-2" href="#__codelineno-114-2"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>demo-data<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-114-3" name="__codelineno-114-3" href="#__codelineno-114-3"></a><span class="w">  </span>--scheduler<span class="w"> </span>k3s<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-114-4" name="__codelineno-114-4" href="#__codelineno-114-4"></a><span class="w">  </span>--size<span class="w"> </span>2Gi<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-114-5" name="__codelineno-114-5" href="#__codelineno-114-5"></a><span class="w">  </span>--access-mode<span class="w"> </span>ReadWriteOnce<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-114-6" name="__codelineno-114-6" href="#__codelineno-114-6"></a><span class="w">  </span>--storage-class-name<span class="w"> </span>longhorn
-<a id="__codelineno-114-7" name="__codelineno-114-7" href="#__codelineno-114-7"></a>
-<a id="__codelineno-114-8" name="__codelineno-114-8" href="#__codelineno-114-8"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>demo<span class="w"> </span>demo-data<span class="w"> </span>--container-dir<span class="w"> </span>/data
-<a id="__codelineno-114-9" name="__codelineno-114-9" href="#__codelineno-114-9"></a>dokku<span class="w"> </span>storage:wait<span class="w"> </span>demo-data
-<a id="__codelineno-114-10" name="__codelineno-114-10" href="#__codelineno-114-10"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
+<div class="highlight"><pre><span></span><code><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a><span class="c1"># dynamically-provisioned PVC backed by Longhorn</span>
+<a id="__codelineno-117-2" name="__codelineno-117-2" href="#__codelineno-117-2"></a>dokku<span class="w"> </span>storage:create<span class="w"> </span>demo-data<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-117-3" name="__codelineno-117-3" href="#__codelineno-117-3"></a><span class="w">  </span>--scheduler<span class="w"> </span>k3s<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-117-4" name="__codelineno-117-4" href="#__codelineno-117-4"></a><span class="w">  </span>--size<span class="w"> </span>2Gi<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-117-5" name="__codelineno-117-5" href="#__codelineno-117-5"></a><span class="w">  </span>--access-mode<span class="w"> </span>ReadWriteOnce<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-117-6" name="__codelineno-117-6" href="#__codelineno-117-6"></a><span class="w">  </span>--storage-class-name<span class="w"> </span>longhorn
+<a id="__codelineno-117-7" name="__codelineno-117-7" href="#__codelineno-117-7"></a>
+<a id="__codelineno-117-8" name="__codelineno-117-8" href="#__codelineno-117-8"></a>dokku<span class="w"> </span>storage:mount<span class="w"> </span>demo<span class="w"> </span>demo-data<span class="w"> </span>--container-dir<span class="w"> </span>/data
+<a id="__codelineno-117-9" name="__codelineno-117-9" href="#__codelineno-117-9"></a>dokku<span class="w"> </span>storage:wait<span class="w"> </span>demo-data
+<a id="__codelineno-117-10" name="__codelineno-117-10" href="#__codelineno-117-10"></a>git<span class="w"> </span>push<span class="w"> </span>dokku<span class="w"> </span>master
 </code></pre></div>
 <p>For a hostPath-backed PV (no StorageClass), pass <code>&lt;path&gt;</code> as the second positional argument and omit <code>--storage-class-name</code>. The plugin renders both the PV and the PVC into the entry's helm release. The <code>--reclaim-policy</code> flag (<code>Retain</code> or <code>Delete</code>) controls whether the underlying PV survives <code>storage:destroy</code>. Annotations and labels set via <code>storage:annotations:set</code> and <code>storage:labels:set</code> propagate to both the PVC and the PV so backup tools (Velero, Longhorn snapshots) can find them.</p>
 <p><code>storage:mount --process-type &lt;proc&gt;</code> scopes a volume to a single process type, so only that deployment's pods mount the PVC; a mount left in the default <code>_default_</code> scope is mounted by every deployment. Cron jobs are keyed by a generated cron ID rather than a Procfile process type, so they mount default-scoped volumes only. Only deploy-phase attachments are mounted on k3s - <code>--phase run</code> has no effect here.</p>
@@ -7429,16 +7505,16 @@ Users with older installations will need to manually install Keda.</p>
 <h3 id="logging-support">Logging support<a class="headerlink" href="#logging-support" title="Permanent link">&para;</a></h3>
 <p>App logs for the <code>logs</code> command are fetched by Dokku from running containers via the Kubernetes api. While the <code>k3s</code> scheduler does not integrate with the <code>logs:vector-*</code> subcommands, it does respect the global <code>vector-sink</code> logs property. When that property is set, the <code>scheduler-k3s:ensure-charts</code> command can be utilized to reconfigure vector to ship kubernetes logs to the provided sink.</p>
 <p>To setup log shipping, configure the global <code>vector-sink</code> property for the <code>logs</code> plugin.. Note that this can be run before <em>or</em> after the <code>scheduler-k3s:ensure-charts</code> command - if run before, the <code>scheduler-k3s:ensure-charts</code> subcommand will pick up the value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">"console://?encoding[codec]=json"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-sink<span class="w"> </span><span class="s2">"console://?encoding[codec]=json"</span>
 </code></pre></div>
 <p>Next, run the <code>scheduler-k3s:ensure-charts</code> command with the <code>vector</code> chart to force the <code>k3s</code> scheduler to reconfigure vector with the specified sink:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
+<div class="highlight"><pre><span></span><code><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
 </code></pre></div>
 <p>Please see the <a href="../../logs/#configuring-a-log-sink">vector logs documentation</a> for more information on specifying vector sinks.</p>
 <h4 id="shipping-cron-task-logs">Shipping cron task logs<a class="headerlink" href="#shipping-cron-task-logs" title="Permanent link">&para;</a></h4>
 <p>The global <code>vector-cron-sink</code> property is also respected. When set, logs from cron task pods are routed to that sink instead of the sink configured for everything else, matching the behavior described in the <a href="../../logs/#configuring-a-cron-task-log-sink">cron task log sink documentation</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">"console://?encoding[codec]=text"</span>
-<a id="__codelineno-117-2" name="__codelineno-117-2" href="#__codelineno-117-2"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
+<div class="highlight"><pre><span></span><code><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a>dokku<span class="w"> </span>logs:set<span class="w"> </span>--global<span class="w"> </span>vector-cron-sink<span class="w"> </span><span class="s2">"console://?encoding[codec]=text"</span>
+<a id="__codelineno-120-2" name="__codelineno-120-2" href="#__codelineno-120-2"></a>dokku<span class="w"> </span>scheduler-k3s:ensure-charts<span class="w"> </span>--charts<span class="w"> </span>vector
 </code></pre></div>
 <p>As with <code>vector-sink</code>, only the global property is respected - a per-app <code>vector-cron-sink</code> has no effect on the <code>k3s</code> scheduler.</p>
 <p>Cron events carry the same <code>dokku_app</code> and <code>dokku_cron_id</code> fields as they do on the <code>docker-local</code> scheduler, so sink configuration referencing them is portable between the two.</p>
