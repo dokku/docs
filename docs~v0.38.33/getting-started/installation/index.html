@@ -27,31 +27,29 @@
       
       
       
-        <link rel="canonical" href="https://dokku.com/docs/deployment/builders/dockerfiles/">
+        <link rel="canonical" href="https://dokku.com/docs/getting-started/installation/">
       
       
-        <link rel="prev" href="../herokuish-buildpacks/">
       
-      
-        <link rel="next" href="../lambda/">
+        <link rel="next" href="../advanced-installation/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/favicons/favicon-96x96.png">
+      <link rel="icon" href="../../assets/favicons/favicon-96x96.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
-        <title>Dockerfile Deployment - Dokku Documentation</title>
+        <title>Getting Started with Dokku - Dokku Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
   
@@ -80,9 +78,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -92,7 +90,7 @@
   <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
   <link
     rel="stylesheet"
-    href="../../../overrides/assets/stylesheets/main.css"
+    href="../../overrides/assets/stylesheets/main.css"
   />
 
   </head>
@@ -114,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dockerfile-deployment" class="md-skip">
+        <a href="#getting-started-with-dokku" class="md-skip">
           Skip to content
         </a>
       
@@ -145,12 +143,12 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="/docs/deployment/builders/dockerfiles/">
+  <a href="/docs/getting-started/installation/">
     <strong>Click here to go to latest.</strong>
   </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -160,9 +158,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Documentation" class="md-header__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -179,7 +177,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dockerfile Deployment
+              Getting Started with Dokku
             
           </span>
         </div>
@@ -312,7 +310,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../getting-started/installation/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -430,9 +428,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
+    <a href="../.." title="Dokku Documentation" class="md-nav__button md-logo" aria-label="Dokku Documentation" data-md-component="logo">
       
-  <img src="../../../assets/dokku-logo.svg" alt="logo">
+  <img src="../../assets/dokku-logo.svg" alt="logo">
 
     </a>
     Dokku Documentation
@@ -545,6 +543,8 @@
                 
   
   
+    
+  
   
   
     
@@ -572,11 +572,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
         
           
           <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="">
@@ -597,7 +597,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,6 +612,8 @@
                 
   
   
+    
+  
   
   
     
@@ -644,15 +646,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../getting-started/installation/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -670,13 +672,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1_1_1" id="__nav_1_1_1_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_1_1_1" id="__nav_1_1_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -696,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/advanced-installation/" class="md-nav__link">
+      <a href="../advanced-installation/" class="md-nav__link">
         
   
   
@@ -724,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/azure/" class="md-nav__link">
+      <a href="../install/azure/" class="md-nav__link">
         
   
   
@@ -752,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/debian/" class="md-nav__link">
+      <a href="../install/debian/" class="md-nav__link">
         
   
   
@@ -780,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/digitalocean/" class="md-nav__link">
+      <a href="../install/digitalocean/" class="md-nav__link">
         
   
   
@@ -808,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/docker/" class="md-nav__link">
+      <a href="../install/docker/" class="md-nav__link">
         
   
   
@@ -836,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/dreamhost/" class="md-nav__link">
+      <a href="../install/dreamhost/" class="md-nav__link">
         
   
   
@@ -864,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/install/vagrant/" class="md-nav__link">
+      <a href="../install/vagrant/" class="md-nav__link">
         
   
   
@@ -975,7 +977,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../getting-started/upgrading/" class="md-nav__link ">
+            <a href="../upgrading/" class="md-nav__link ">
               
   
   
@@ -1019,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.38.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.38.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1047,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.37.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.37.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1075,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.36.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.36.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1103,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.35.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.35.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1131,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.34.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.34.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1159,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.33.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.33.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1187,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.32.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.32.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1215,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.31.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.31.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1243,7 +1245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.30.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.30.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1271,7 +1273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.29.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.29.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1299,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.28.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.28.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1327,7 +1329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.27.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.27.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1355,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.26.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.26.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1383,7 +1385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.25.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.25.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1411,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.24.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.24.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1439,7 +1441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.23.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.23.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1467,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.22.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.22.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1495,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.21.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.21.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1523,7 +1525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.20.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.20.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1551,7 +1553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.10.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.10.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1579,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.9.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.9.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1607,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.8.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.8.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1635,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.7.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.7.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1663,7 +1665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.6.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.6.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1691,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/0.5.0-migration-guide/" class="md-nav__link">
+      <a href="../../appendices/0.5.0-migration-guide/" class="md-nav__link">
         
   
   
@@ -1719,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats" class="md-nav__link">
+      <a href="../../appendices/file-formats" class="md-nav__link">
         
   
   
@@ -1755,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/uninstalling/" class="md-nav__link">
+      <a href="../uninstalling/" class="md-nav__link">
         
   
   
@@ -1783,7 +1785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -1811,7 +1813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/where-to-get-help/" class="md-nav__link">
+      <a href="../where-to-get-help/" class="md-nav__link">
         
   
   
@@ -1906,7 +1908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../enterprise/pro/" class="md-nav__link">
+      <a href="../../enterprise/pro/" class="md-nav__link">
         
   
   
@@ -2011,7 +2013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../application-deployment/" class="md-nav__link">
+      <a href="../../deployment/application-deployment/" class="md-nav__link">
         
   
   
@@ -2039,7 +2041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../application-management/" class="md-nav__link">
+      <a href="../../deployment/application-management/" class="md-nav__link">
         
   
   
@@ -2067,7 +2069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../logs/" class="md-nav__link">
+      <a href="../../deployment/logs/" class="md-nav__link">
         
   
   
@@ -2095,7 +2097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../remote-commands/" class="md-nav__link">
+      <a href="../../deployment/remote-commands/" class="md-nav__link">
         
   
   
@@ -2123,7 +2125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-management/" class="md-nav__link">
+      <a href="../../deployment/user-management/" class="md-nav__link">
         
   
   
@@ -2151,7 +2153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../zero-downtime-deploys/" class="md-nav__link">
+      <a href="../../deployment/zero-downtime-deploys/" class="md-nav__link">
         
   
   
@@ -2184,8 +2186,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2221,11 +2221,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
         
           
           <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
@@ -2246,7 +2246,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2264,7 +2264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../builder-management/" class="md-nav__link">
+      <a href="../../deployment/builders/builder-management/" class="md-nav__link">
         
   
   
@@ -2292,7 +2292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../buildpack-management/" class="md-nav__link">
+      <a href="../../deployment/builders/buildpack-management/" class="md-nav__link">
         
   
   
@@ -2320,7 +2320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud-native-buildpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/cloud-native-buildpacks/" class="md-nav__link">
         
   
   
@@ -2348,7 +2348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../herokuish-buildpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/herokuish-buildpacks/" class="md-nav__link">
         
   
   
@@ -2373,37 +2373,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dockerfile Deployment
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../deployment/builders/dockerfiles/" class="md-nav__link">
         
   
   
@@ -2419,187 +2392,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#switching-from-buildpack-deployments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Switching from buildpack deployments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changing-the-dockerfile-location" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changing the Dockerfile location
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaying-builder-dockerfile-reports-for-an-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Displaying builder-dockerfile reports for an app
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-time-configuration-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Build-time configuration variables
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#building-images-with-docker-buildkit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Building images with Docker BuildKit
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building images with Docker BuildKit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#buildkit-directory-caching" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BuildKit directory caching
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#customizing-the-run-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing the run command
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#procfiles-and-multiple-processes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Procfiles and multiple processes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exposed-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exposed ports
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#settable-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Settable properties
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2612,7 +2404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lambda/" class="md-nav__link">
+      <a href="../../deployment/builders/lambda/" class="md-nav__link">
         
   
   
@@ -2640,7 +2432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../nixpacks/" class="md-nav__link">
+      <a href="../../deployment/builders/nixpacks/" class="md-nav__link">
         
   
   
@@ -2668,7 +2460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../null/" class="md-nav__link">
+      <a href="../../deployment/builders/null/" class="md-nav__link">
         
   
   
@@ -2696,7 +2488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../railpack/" class="md-nav__link">
+      <a href="../../deployment/builders/railpack/" class="md-nav__link">
         
   
   
@@ -2795,7 +2587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../methods/git/" class="md-nav__link">
+      <a href="../../deployment/methods/git/" class="md-nav__link">
         
   
   
@@ -2823,7 +2615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../methods/image/" class="md-nav__link">
+      <a href="../../deployment/methods/image/" class="md-nav__link">
         
   
   
@@ -2851,7 +2643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../methods/archive/" class="md-nav__link">
+      <a href="../../deployment/methods/archive/" class="md-nav__link">
         
   
   
@@ -2950,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/environment-variables/" class="md-nav__link">
+      <a href="../../configuration/environment-variables/" class="md-nav__link">
         
   
   
@@ -2978,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/domains/" class="md-nav__link">
+      <a href="../../configuration/domains/" class="md-nav__link">
         
   
   
@@ -3006,7 +2798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/ssl/" class="md-nav__link">
+      <a href="../../configuration/ssl/" class="md-nav__link">
         
   
   
@@ -3107,7 +2899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/entering-containers/" class="md-nav__link">
+      <a href="../../processes/entering-containers/" class="md-nav__link">
         
   
   
@@ -3135,7 +2927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/one-off-tasks/" class="md-nav__link">
+      <a href="../../processes/one-off-tasks/" class="md-nav__link">
         
   
   
@@ -3163,7 +2955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/process-management/" class="md-nav__link">
+      <a href="../../processes/process-management/" class="md-nav__link">
         
   
   
@@ -3191,7 +2983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../processes/scheduled-cron-tasks/" class="md-nav__link">
+      <a href="../../processes/scheduled-cron-tasks/" class="md-nav__link">
         
   
   
@@ -3290,7 +3082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/dns/" class="md-nav__link">
+      <a href="../../networking/dns/" class="md-nav__link">
         
   
   
@@ -3318,7 +3110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/network/" class="md-nav__link">
+      <a href="../../networking/network/" class="md-nav__link">
         
   
   
@@ -3346,7 +3138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/port-management/" class="md-nav__link">
+      <a href="../../networking/port-management/" class="md-nav__link">
         
   
   
@@ -3451,7 +3243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxy-management/" class="md-nav__link">
+      <a href="../../networking/proxy-management/" class="md-nav__link">
         
   
   
@@ -3479,7 +3271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/caddy/" class="md-nav__link">
+      <a href="../../networking/proxies/caddy/" class="md-nav__link">
         
   
   
@@ -3507,7 +3299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/haproxy/" class="md-nav__link">
+      <a href="../../networking/proxies/haproxy/" class="md-nav__link">
         
   
   
@@ -3535,7 +3327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/nginx/" class="md-nav__link">
+      <a href="../../networking/proxies/nginx/" class="md-nav__link">
         
   
   
@@ -3563,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/openresty/" class="md-nav__link">
+      <a href="../../networking/proxies/openresty/" class="md-nav__link">
         
   
   
@@ -3591,7 +3383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/proxies/traefik/" class="md-nav__link">
+      <a href="../../networking/proxies/traefik/" class="md-nav__link">
         
   
   
@@ -3704,7 +3496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/backup-recovery/" class="md-nav__link">
+      <a href="../../advanced-usage/backup-recovery/" class="md-nav__link">
         
   
   
@@ -3732,7 +3524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/builds/" class="md-nav__link">
+      <a href="../../advanced-usage/builds/" class="md-nav__link">
         
   
   
@@ -3760,7 +3552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/deployment-tasks/" class="md-nav__link">
+      <a href="../../advanced-usage/deployment-tasks/" class="md-nav__link">
         
   
   
@@ -3788,7 +3580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/docker-options/" class="md-nav__link">
+      <a href="../../advanced-usage/docker-options/" class="md-nav__link">
         
   
   
@@ -3816,7 +3608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/registry-management/" class="md-nav__link">
+      <a href="../../advanced-usage/registry-management/" class="md-nav__link">
         
   
   
@@ -3844,7 +3636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/event-logs/" class="md-nav__link">
+      <a href="../../advanced-usage/event-logs/" class="md-nav__link">
         
   
   
@@ -3872,7 +3664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/persistent-storage/" class="md-nav__link">
+      <a href="../../advanced-usage/persistent-storage/" class="md-nav__link">
         
   
   
@@ -3900,7 +3692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/plugin-management/" class="md-nav__link">
+      <a href="../../advanced-usage/plugin-management/" class="md-nav__link">
         
   
   
@@ -3928,7 +3720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/repository-management/" class="md-nav__link">
+      <a href="../../advanced-usage/repository-management/" class="md-nav__link">
         
   
   
@@ -3956,7 +3748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced-usage/resource-management/" class="md-nav__link">
+      <a href="../../advanced-usage/resource-management/" class="md-nav__link">
         
   
   
@@ -4059,7 +3851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schedulers/scheduler-management/" class="md-nav__link">
+      <a href="../../deployment/schedulers/scheduler-management/" class="md-nav__link">
         
   
   
@@ -4087,7 +3879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schedulers/docker-local/" class="md-nav__link">
+      <a href="../../deployment/schedulers/docker-local/" class="md-nav__link">
         
   
   
@@ -4115,7 +3907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schedulers/k3s/" class="md-nav__link">
+      <a href="../../deployment/schedulers/k3s/" class="md-nav__link">
         
   
   
@@ -4143,7 +3935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schedulers/nomad/" class="md-nav__link">
+      <a href="../../deployment/schedulers/nomad/" class="md-nav__link">
         
   
   
@@ -4171,7 +3963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schedulers/null/" class="md-nav__link">
+      <a href="../../deployment/schedulers/null/" class="md-nav__link">
         
   
   
@@ -4274,7 +4066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/architecture/" class="md-nav__link">
+      <a href="../../development/architecture/" class="md-nav__link">
         
   
   
@@ -4302,7 +4094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/plugin-creation/" class="md-nav__link">
+      <a href="../../development/plugin-creation/" class="md-nav__link">
         
   
   
@@ -4330,7 +4122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/plugin-triggers/" class="md-nav__link">
+      <a href="../../development/plugin-triggers/" class="md-nav__link">
         
   
   
@@ -4358,7 +4150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/testing/" class="md-nav__link">
+      <a href="../../development/testing/" class="md-nav__link">
         
   
   
@@ -4386,7 +4178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../development/release-process/" class="md-nav__link">
+      <a href="../../development/release-process/" class="md-nav__link">
         
   
   
@@ -4487,7 +4279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/github-actions/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/github-actions/" class="md-nav__link">
         
   
   
@@ -4515,7 +4307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/gitlab-ci/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/gitlab-ci/" class="md-nav__link">
         
   
   
@@ -4543,7 +4335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/generic/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/generic/" class="md-nav__link">
         
   
   
@@ -4571,7 +4363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-integration/woodpecker-ci/" class="md-nav__link">
+      <a href="../../deployment/continuous-integration/woodpecker-ci/" class="md-nav__link">
         
   
   
@@ -4668,7 +4460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/clients/" class="md-nav__link">
+      <a href="../../community/clients/" class="md-nav__link">
         
   
   
@@ -4696,7 +4488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/plugins/" class="md-nav__link">
+      <a href="../../community/plugins/" class="md-nav__link">
         
   
   
@@ -4805,7 +4597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/app-json/" class="md-nav__link">
+      <a href="../../appendices/file-formats/app-json/" class="md-nav__link">
         
   
   
@@ -4833,7 +4625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/dockerfile/" class="md-nav__link">
+      <a href="../../appendices/file-formats/dockerfile/" class="md-nav__link">
         
   
   
@@ -4861,7 +4653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/lambda-yml/" class="md-nav__link">
+      <a href="../../appendices/file-formats/lambda-yml/" class="md-nav__link">
         
   
   
@@ -4889,7 +4681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/nginx-conf-sigil/" class="md-nav__link">
+      <a href="../../appendices/file-formats/nginx-conf-sigil/" class="md-nav__link">
         
   
   
@@ -4917,7 +4709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/nixpacks-toml/" class="md-nav__link">
+      <a href="../../appendices/file-formats/nixpacks-toml/" class="md-nav__link">
         
   
   
@@ -4945,7 +4737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/procfile/" class="md-nav__link">
+      <a href="../../appendices/file-formats/procfile/" class="md-nav__link">
         
   
   
@@ -4973,7 +4765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/project-toml/" class="md-nav__link">
+      <a href="../../appendices/file-formats/project-toml/" class="md-nav__link">
         
   
   
@@ -5001,7 +4793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../appendices/file-formats/railpack-json/" class="md-nav__link">
+      <a href="../../appendices/file-formats/railpack-json/" class="md-nav__link">
         
   
   
@@ -5172,155 +4964,66 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#what-is-dokku" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        What is Dokku?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#switching-from-buildpack-deployments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Switching from buildpack deployments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changing-the-dockerfile-location" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changing the Dockerfile location
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaying-builder-dockerfile-reports-for-an-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Displaying builder-dockerfile reports for an app
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-time-configuration-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Build-time configuration variables
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#building-images-with-docker-buildkit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Building images with Docker BuildKit
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building images with Docker BuildKit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#buildkit-directory-caching" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BuildKit directory caching
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#customizing-the-run-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing the run command
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#procfiles-and-multiple-processes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Procfiles and multiple processes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exposed-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exposed ports
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#system-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Properties
+        System Requirements
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Properties">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-latest-stable-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing the latest stable version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing the latest stable version">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#settable-properties" class="md-nav__link">
+  <a href="#1-install-dokku" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Settable properties
+        1. Install Dokku
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-setup-ssh-key-and-virtualhost-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Setup SSH key and Virtualhost Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deploy-your-first-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deploy your first application
       
     </span>
   </a>
@@ -5349,7 +5052,7 @@
 
 
   
-    <a href="https://github.com/dokku/dokku/edit/master/docs/deployment/builders/dockerfiles.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dokku/dokku/edit/master/docs/getting-started/installation/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5358,208 +5061,62 @@
     
       
     
-    <a href="https://github.com/dokku/dokku/raw/master/docs/deployment/builders/dockerfiles.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dokku/dokku/raw/master/docs/getting-started/installation/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="dockerfile-deployment">Dockerfile Deployment<a class="headerlink" href="#dockerfile-deployment" title="Permanent link">&para;</a></h1>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.3.15</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>builder-dockerfile:report [&lt;app&gt;] [&lt;flag&gt;]   # Displays a builder-dockerfile report for one or more apps
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>builder-dockerfile:set &lt;app&gt; &lt;key&gt; (&lt;value&gt;) # Set or clear a builder-dockerfile property for an app
-</code></pre></div>
-<p>While Dokku normally defaults to using <a href="https://devcenter.heroku.com/articles/buildpacks">Heroku buildpacks</a> for deployment, you can also use Docker's native <code>Dockerfile</code> system to define a container.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Dockerfile support is considered a <em>power user</em> feature. By using Dockerfile-based deployment, you agree that you will not have the same comfort as that enjoyed by buildpack users, and Dokku features may work differently. Differences between the two systems will be documented here.</p>
-</div>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
-<p>This builder will be auto-detected in the following case:</p>
+<h1 id="getting-started-with-dokku">Getting Started with Dokku<a class="headerlink" href="#getting-started-with-dokku" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-dokku">What is Dokku?<a class="headerlink" href="#what-is-dokku" title="Permanent link">&para;</a></h2>
+<p>Dokku is an extensible, open source Platform as a Service that runs on a single server of your choice. Dokku supports building apps on the fly from a <code>git push</code> via either Dockerfile or by auto-detecting the language with Buildpacks, and then starts containers based on your built image. Using technologies such as nginx and cron, Web processes are automatically routed to, while background processes and automated cron tasks are also managed by Dokku.</p>
+<h2 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h2>
+<p>To start using Dokku, you'll need a system that meets the following minimum requirements:</p>
 <ul>
-<li>A <code>Dockerfile</code> exists in the root of the app repository.</li>
+<li>Operating Systems: <a href="https://www.ubuntu.com/download">Ubuntu 22.04/24.04/26.04</a> or <a href="https://www.debian.org/distrib/">Debian 11+ x64</a></li>
+<li>Supported Architectures: <code>AMD64</code> (<code>x86_64</code>) and <code>arm64</code> (<code>armv8</code>)</li>
+<li>Minimum Memory:<ul>
+<li>Docker Scheduler: 1GB of system memory, or <a href="../advanced-installation/#vms-with-less-than-1-gb-of-memory">add swap memory</a></li>
+<li>K3s Scheduler: 2GB of system memory on every node in the cluster</li>
 </ul>
-<p>Dokku will only select the <code>dockerfile</code> builder if both the <code>herokuish</code> and <code>pack</code> builders are not detected and a Dockerfile exists. For more information on how those are detected, see the following links:</p>
+</li>
+</ul>
+<p>Finally, we recommend attaching at least one domain name to your server. This is not required, but using a domain name will make app access easier. When connecting a domain, either a single domain or a wildcard may be associated to the server's IP.</p>
 <ul>
-<li><a href="../cloud-native-buildpacks/#detection">Cloud Native Buildpacks documentation</a></li>
-<li><a href="../herokuish-buildpacks/#detection">Herokuish documentation</a></li>
+<li>Wildcard domain (<code>*.domain.tld</code> A Record): will allow access to apps via <code>$APP.domain.tld</code>.</li>
+<li>Single domain (<code>domain.tld</code> A or CNAME Record): will result in apps being accessed via <code>domain.tld:$RANDOM_PORT</code>.</li>
 </ul>
-<h3 id="switching-from-buildpack-deployments">Switching from buildpack deployments<a class="headerlink" href="#switching-from-buildpack-deployments" title="Permanent link">&para;</a></h3>
-<p>If an application was previously deployed via buildpacks and ports were customized, the following commands should be run prior to a deploy to ensure the Dockerfile ports are respected:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>ports:clear<span class="w"> </span>node-js-app
+<p>Please see the <a href="../../networking/dns/">dns documentation</a> and <a href="../../configuration/domains/">domains documentation</a> for more details.</p>
+<h2 id="installing-the-latest-stable-version">Installing the latest stable version<a class="headerlink" href="#installing-the-latest-stable-version" title="Permanent link">&para;</a></h2>
+<p>This is the simple method of installing Dokku. For alternative methods of installation, see the <a href="../advanced-installation/#installing-via-other-methods">advanced install guide</a>.</p>
+<h3 id="1-install-dokku">1. Install Dokku<a class="headerlink" href="#1-install-dokku" title="Permanent link">&para;</a></h3>
+<p>To install the latest stable version of Dokku, you can run the following shell commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># for debian systems, installs Dokku via apt-get</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>-NP<span class="w"> </span>.<span class="w"> </span>https://dokku.com/install/v0.38.33/bootstrap.sh
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_TAG</span><span class="o">=</span>v0.38.33<span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
 </code></pre></div>
-<h3 id="changing-the-dockerfile-location">Changing the <code>Dockerfile</code> location<a class="headerlink" href="#changing-the-dockerfile-location" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>The previous method to perform this - via <code>docker-options:add</code> - should be removed in favor of the <code>builder-dockerfile:set</code> command outlined here.</p>
-</div>
-<p>The <code>Dockerfile</code> is expected to be found in a specific directory, depending on the deploy approach:</p>
-<ul>
-<li>The <code>WORKDIR</code> of the Docker image for deploys resulting from <code>git:from-image</code> and <code>git:load-image</code> commands.</li>
-<li>The root of the source code tree for all other deploys (git push, <code>git:from-archive</code>, <code>git:sync</code>).</li>
-</ul>
-<p>Sometimes it may be desirable to set a different path for a given app, e.g. when deploying from a monorepo. This can be done via the <code>dockerfile-path</code> property:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path<span class="w"> </span>.dokku/Dockerfile
+<p>The installation process takes about 5-10 minutes, depending upon internet connection speed.</p>
+<h3 id="2-setup-ssh-key-and-virtualhost-settings">2. Setup SSH key and Virtualhost Settings<a class="headerlink" href="#2-setup-ssh-key-and-virtualhost-settings" title="Permanent link">&para;</a></h3>
+<p>Once the installation is complete, you should configure an ssh key and set your global domain.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># usually your key is already available under the current user's `~/.ssh/authorized_keys` file</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span>~/.ssh/authorized_keys<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>dokku<span class="w"> </span>ssh-keys:add<span class="w"> </span>admin
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># you can use any domain you already have access to</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># this domain should have an A record or CNAME pointing at your server's IP</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span>dokku.me
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># you can also use the ip of your server</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span><span class="m">10</span>.0.0.2
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># finally, you can use sslip.io to get subdomain support</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># as you would with a regular domain name</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># this would be done by appending `.sslip.io` to your ip address</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>dokku<span class="w"> </span>domains:set-global<span class="w"> </span><span class="m">10</span>.0.0.2.sslip.io
 </code></pre></div>
-<p>The value is the path to the desired file <em>relative</em> to the base search directory, and will never be treated as absolute paths in any context. If that file does not exist within the repository, the build will fail.</p>
-<p>The default value may be set by passing an empty value for the option:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-path
-</code></pre></div>
-<p>The <code>dockerfile-path</code> property can also be set globally. The global default is <code>Dockerfile</code>, and the global value is used when no app-specific value is set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>--global<span class="w"> </span>dockerfile-path<span class="w"> </span>Dockerfile2
-</code></pre></div>
-<p>The default value may be set by passing an empty value for the option.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>builder-dockerfile:set<span class="w"> </span>--global<span class="w"> </span>dockerfile-path
-</code></pre></div>
-<h3 id="displaying-builder-dockerfile-reports-for-an-app">Displaying builder-dockerfile reports for an app<a class="headerlink" href="#displaying-builder-dockerfile-reports-for-an-app" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.25.0</p>
-</div>
-<p>You can get a report about the app's storage status using the <code>builder-dockerfile:report</code> command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>builder-dockerfile:report
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>=====&gt; node-js-app builder-dockerfile information
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>       Builder dockerfile computed dockerfile path: Dockerfile2
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>       Builder dockerfile global dockerfile path:
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>       Builder dockerfile dockerfile path:          Dockerfile2
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>=====&gt; python-sample builder-dockerfile information
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>       Builder dockerfile computed dockerfile path: Dockerfile
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>       Builder dockerfile global dockerfile path:
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>       Builder dockerfile dockerfile path:
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>=====&gt; ruby-sample builder-dockerfile information
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>       Builder dockerfile computed dockerfile path: Dockerfile
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       Builder dockerfile global dockerfile path:
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>       Builder dockerfile dockerfile path:
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>The <code>dockerfile-path</code> and <code>global-dockerfile-path</code> keys hold the raw per-app and global value respectively, and are empty when nothing has been set. The <code>computed-dockerfile-path</code> key holds the effective value used at deploy time, falling back to the global value (where one has been set) and then to the built-in default of <code>Dockerfile</code>.</p>
-<p>You can run the command for a specific app also.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>builder-dockerfile:report<span class="w"> </span>node-js-app
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>=====&gt; node-js-app builder-dockerfile information
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       Builder dockerfile computed dockerfile path: Dockerfile2
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Builder dockerfile global dockerfile path:
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Builder dockerfile dockerfile path:          Dockerfile2
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Shell</label><label for="__tabbed_3_2">Output</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>builder-dockerfile:report<span class="w"> </span>node-js-app<span class="w"> </span>--builder-dockerfile-dockerfile-path
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Dockerfile2
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="build-time-configuration-variables">Build-time configuration variables<a class="headerlink" href="#build-time-configuration-variables" title="Permanent link">&para;</a></h3>
-<p>For security reasons - and as per <a href="https://github.com/docker/docker/issues/13490">Docker recommendations</a> - Dockerfile-based deploys have variables available only during runtime.</p>
-<p>For users that require customization in the <code>build</code> phase, you may use build arguments via the <a href="../../../advanced-usage/docker-options/">docker-options plugin</a>. All environment variables set by the <code>config</code> plugin are automatically exported during a docker build, and thus <code>--build-arg</code> only requires setting a key without a value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>docker-options:add<span class="w"> </span>node-js-app<span class="w"> </span>build<span class="w"> </span><span class="s1">'--build-arg NODE_ENV'</span>
-</code></pre></div>
-<p>Once set, the Dockerfile usage would be as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c"># set the argument default</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">ARG</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c"># use the argument</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$NODE_ENV</span>
-</code></pre></div>
-<p>You may also set the argument as an environment variable</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c"># set the argument default</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">ARG</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c"># assign it to an environment variable</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c"># we can wrap the variable in brackets</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">ENV</span><span class="w"> </span>NODE_ENV<span class="w"> </span><span class="si">${</span><span class="nv">NODE_ENV</span><span class="si">}</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c"># or omit them completely</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="c"># use the argument</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$NODE_ENV</span>
-</code></pre></div>
-<h3 id="building-images-with-docker-buildkit">Building images with Docker BuildKit<a class="headerlink" href="#building-images-with-docker-buildkit" title="Permanent link">&para;</a></h3>
-<p>If your Dockerfile is using Docker Engine's <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">BuildKit</a> (not to be confused with buildpacks), then the <code>DOCKER_BUILDKIT=1</code> environment variable needs to be set (unless you're using Docker Engine v24 or higher, which <a href="https://docs.docker.com/build/buildkit/#getting-started">uses BuildKit by default</a>). Additionally, complete build log output can be forced via <code>BUILDKIT_PROGRESS=plain</code>. Both of these environment variables can be set as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"export DOCKER_BUILDKIT=1"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"export BUILDKIT_PROGRESS=plain"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
-</code></pre></div>
-<h4 id="buildkit-directory-caching">BuildKit directory caching<a class="headerlink" href="#buildkit-directory-caching" title="Permanent link">&para;</a></h4>
-<p>BuildKit implements the <code>RUN --mount</code> option, enabling mount directory caches for <code>RUN</code> directives. The following is an example that mounts debian packaging related directories, which can speed up fetching of remote package data.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">debian:latest</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/lib/apt/lists,type<span class="o">=</span>cache<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span>--mount<span class="o">=</span><span class="nv">target</span><span class="o">=</span>/var/cache/apt,type<span class="o">=</span>cache<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">      </span>git
-</code></pre></div>
-<p>Mount cache targets may vary depending on the tool in use, and users are encouraged to investigate the directories that apply for their language and framework.</p>
-<p>You would adjust the cache directory for whatever application cache you have, e.g. <code>/root/.pnpm-store/v3</code> for pnpm, <code>$HOME/.m2</code> for maven, or <code>/root/.cache</code> for golang.</p>
-<h3 id="customizing-the-run-command">Customizing the run command<a class="headerlink" href="#customizing-the-run-command" title="Permanent link">&para;</a></h3>
-<p>By default no arguments are passed to <code>docker run</code> when deploying the container and the <code>CMD</code> or <code>ENTRYPOINT</code> defined in the <code>Dockerfile</code> are executed. You can take advantage of docker's ability to override the <code>CMD</code> or pass parameters to your <code>ENTRYPOINT</code> by setting the <code>dockerfile-start-cmd</code> property on the <code>ps</code> plugin. Let's say for example you are deploying a base Node.js image, with the following <code>ENTRYPOINT</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"node"</span><span class="p">]</span>
-</code></pre></div>
-<p>You can do:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-start-cmd<span class="w"> </span><span class="s2">"--harmony server.js"</span>
-</code></pre></div>
-<p>To tell Docker what to run. Pass an empty value to clear the override:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>ps:set<span class="w"> </span>node-js-app<span class="w"> </span>dockerfile-start-cmd
-</code></pre></div>
-<h3 id="procfiles-and-multiple-processes">Procfiles and multiple processes<a class="headerlink" href="#procfiles-and-multiple-processes" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">New</p>
-<p>Introduced in 0.5.0</p>
-</div>
-<p>See the <a href="../../../processes/process-management/#procfile">Procfile documentation</a> for more information on how to specify different processes for your app.</p>
-<h3 id="exposed-ports">Exposed ports<a class="headerlink" href="#exposed-ports" title="Permanent link">&para;</a></h3>
-<p>See the <a href="../../../networking/port-management/">port management documentation</a> for more information on how Dokku exposes ports for applications and how you can configure these for your app.</p>
-<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
-<h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Scope</th>
-<th>Default</th>
-<th>Report flags</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dockerfile-path</code></td>
-<td>app + global</td>
-<td><code>Dockerfile</code></td>
-<td><code>--builder-dockerfile-dockerfile-path</code>, <code>--builder-dockerfile-global-dockerfile-path</code>, <code>--builder-dockerfile-computed-dockerfile-path</code></td>
-<td>Path within the app to the Dockerfile used by the dockerfile builder</td>
-</tr>
-</tbody>
-</table>
+<p>See the <a href="../../deployment/user-management/#adding-ssh-keys">user management</a> and <a href="../../configuration/domains/#customizing-hostnames">domains documentation</a> for more information.</p>
+<h3 id="3-deploy-your-first-application">3. Deploy your first application<a class="headerlink" href="#3-deploy-your-first-application" title="Permanent link">&para;</a></h3>
+<p>At this point, you should be able to <a href="../../deployment/application-deployment/">deploy to the Dokku installation</a>.</p>
 
 
 
@@ -5594,31 +5151,15 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../herokuish-buildpacks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Herokuish Buildpacks">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Herokuish Buildpacks
-              </div>
-            </div>
-          </a>
-        
         
           
-          <a href="../lambda/" class="md-footer__link md-footer__link--next" aria-label="Next: Lambda Builder">
+          <a href="../advanced-installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Advanced installation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Lambda Builder
+                Advanced installation
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5748,16 +5289,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "content.action.view", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
   
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
 
   <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
-  <script src="../../../overrides/assets/javascripts/bundle.js"></script>
+  <script src="../../overrides/assets/javascripts/bundle.js"></script>
 
   </body>
 </html>
