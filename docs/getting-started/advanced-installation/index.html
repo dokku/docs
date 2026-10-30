@@ -792,6 +792,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bootstrap-script-output-and-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap script output and logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-configuration-by-the-bootstrap-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic configuration by the bootstrap script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-herokuish-build" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3566,6 +3588,8 @@
       
         
       
+        
+      
     
     
     
@@ -3657,6 +3681,34 @@
     
   
     Build Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/datastore-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datastore Management
   
 
     
@@ -5133,6 +5185,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bootstrap-script-output-and-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap script output and logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-configuration-by-the-bootstrap-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic configuration by the bootstrap script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-herokuish-build" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5246,11 +5320,29 @@
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>bootstrap.sh
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span><span class="nv">DOKKU_REPO</span><span class="o">=</span>https://github.com/yourusername/dokku.git<span class="w"> </span><span class="nv">DOKKU_BRANCH</span><span class="o">=</span>master<span class="w"> </span>./bootstrap.sh
 </code></pre></div>
+<h2 id="bootstrap-script-output-and-logs">Bootstrap script output and logs<a class="headerlink" href="#bootstrap-script-output-and-logs" title="Permanent link">&para;</a></h2>
+<p>When run from a terminal, the bootstrap script shows each install step with a spinner and the last few lines of output from the running step. When the output is not a terminal - such as in CI, Vagrant, or when piping to a file - it prints one line when each step starts and one when it finishes.</p>
+<p>All command output is written to a log file at <code>/var/log/dokku/install-&lt;timestamp&gt;.log</code>, with a timestamp on every line. If a step fails, the full output of the failed step is printed along with the path to the full log.</p>
+<p>The following environment variables change the output:</p>
+<ul>
+<li><code>DOKKU_VERBOSE=1</code>: Stream the full output of every command instead of the condensed view.</li>
+<li><code>TRACE=1</code>: Same as <code>DOKKU_VERBOSE=1</code>, and also enables <code>set -x</code>.</li>
+<li><code>NO_COLOR=1</code>: Disable colors.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span><span class="nv">DOKKU_TAG</span><span class="o">=</span>v0.38.32<span class="w"> </span><span class="nv">DOKKU_VERBOSE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>bash<span class="w"> </span>bootstrap.sh
+</code></pre></div>
+<h2 id="automatic-configuration-by-the-bootstrap-script">Automatic configuration by the bootstrap script<a class="headerlink" href="#automatic-configuration-by-the-bootstrap-script" title="Permanent link">&para;</a></h2>
+<p>After installing, the bootstrap script fills in configuration that is still missing:</p>
+<ul>
+<li>SSH keys: If no SSH keys have been added to Dokku, <code>DOKKU_SKIP_KEY_FILE</code> is not <code>true</code>, and <code>/root/.ssh/authorized_keys</code> contains keys, each key is added via <code>dokku ssh-keys:add</code>. The first key is named <code>admin</code>, and any others are named <code>admin-2</code>, <code>admin-3</code>, and so on.</li>
+<li>Global domain: If no global domain is set, it is set to the server's primary IPv4 address via <code>dokku domains:set-global</code>. On a server behind NAT, this is the private address.</li>
+</ul>
+<p>Anything already configured - for example via the <code>DOKKU_KEY_FILE</code> or <code>DOKKU_HOSTNAME</code> debconf settings - is left as is. The summary at the end of the install shows what was configured, along with the commands to configure anything that was not.</p>
 <h2 id="custom-herokuish-build">Custom Herokuish build<a class="headerlink" href="#custom-herokuish-build" title="Permanent link">&para;</a></h2>
 <p>Dokku ships with a pre-built version of the <a href="https://github.com/gliderlabs/herokuish">Herokuish</a> component by default. If you want to build your own version you can specify that with an environment variable.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku.git
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">STACK_URL</span><span class="o">=</span>https://github.com/gliderlabs/herokuish.git<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dokku/dokku.git
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>dokku
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span><span class="nv">BUILD_STACK</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">STACK_URL</span><span class="o">=</span>https://github.com/gliderlabs/herokuish.git<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <h2 id="skipping-herokuish-installation">Skipping Herokuish installation<a class="headerlink" href="#skipping-herokuish-installation" title="Permanent link">&para;</a></h2>
 <p>The Herokuish package is recommended but not required if not using Heroku buildpacks for deployment. Debian-based OS users can run the bootstrap installer via <code>sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " bash bootstrap.sh</code> to skip the dependency. Please note that this will <em>also</em> skip installation of other recommended dependencies.</p>
@@ -5263,17 +5355,17 @@
 <p>Having less than 1 GB of system memory available for Dokku and its containers may result in unexpected errors, such as <code>! [remote rejected] master -&gt; master (pre-receive hook declined)</code> <a href="https://github.com/npm/npm/issues/3867">during installation of NPM dependencies</a>.</p>
 <p>To work around this issue, it might suffice to augment the Linux swap file size to a maximum of twice the physical memory size.</p>
 <p>To resize the swap file of a 512 MB machine to 1 GB, follow these steps while in SSH within your machine:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>/var
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>touch<span class="w"> </span>swap.img
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>swap.img
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>swapoff<span class="w"> </span>/var/swap.img
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/var/swap.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1024k<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1000</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>mkswap<span class="w"> </span>/var/swap.img
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>swapon<span class="w"> </span>/var/swap.img
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>free
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/var/swap.img    none    swap    sw    0    0"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>/var
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>touch<span class="w"> </span>swap.img
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>swap.img
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>swapoff<span class="w"> </span>/var/swap.img
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/var/swap.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1024k<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1000</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>mkswap<span class="w"> </span>/var/swap.img
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>swapon<span class="w"> </span>/var/swap.img
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>free
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/var/swap.img    none    swap    sw    0    0"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
 </code></pre></div>
 <p>Note: it may be necessary to call swapoff, mkswap and swapon explicitly: <code>sudo /sbin/swapoff /var/swap.img</code>, etc.</p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-virtual-memory-swap-file-on-a-vps">Reference</a></p>

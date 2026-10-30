@@ -3500,6 +3500,8 @@
       
         
       
+        
+      
     
     
     
@@ -3591,6 +3593,34 @@
     
   
     Build Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-usage/datastore-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datastore Management
   
 
     
@@ -5083,13 +5113,13 @@
 <li>The nginx-vhosts template language is now <a href="https://github.com/gliderlabs/sigil">sigil</a><ul>
 <li>No need to escape literal <code>$</code> characters (or other "bash-isms")</li>
 <li>Template variables are represented as {{ .VARIABLE_NAME }}</li>
-<li>A detailed list of template variables can be found <a href="../../networking/proxies/nginx/#available-template-variables">here</a></li>
+<li>A detailed list of template variables can be found in the <a href="../../networking/proxies/nginx/#available-template-variables">available template variables documentation</a></li>
 </ul>
 </li>
 <li>A custom nginx-vhosts template must be named <code>nginx.conf.sigil</code><ul>
 <li>The default path for this custom template is the root of your repo (i.e. <code>/app</code> in the container or <code>WORKDIR</code> if defined in a dockerfile app)</li>
 <li>Dokku no longer looks for this file in <code>/home/dokku/node-js-app</code> on the Dokku server</li>
-<li>Check out an example template <a href="../../networking/proxies/nginx/">here</a></li>
+<li>Check out an <a href="../../networking/proxies/nginx/">example template</a></li>
 </ul>
 </li>
 <li>Support for server-wide SSL certs have been dropped in favor of using the <code>certs</code> plugin<ul>

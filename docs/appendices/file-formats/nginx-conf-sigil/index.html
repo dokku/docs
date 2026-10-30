@@ -3427,6 +3427,8 @@
       
         
       
+        
+      
     
     
     
@@ -3518,6 +3520,34 @@
     
   
     Build Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../advanced-usage/datastore-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datastore Management
   
 
     
@@ -5110,7 +5140,7 @@
 
 
 <h1 id="nginxconfsigil">nginx.conf.sigil<a class="headerlink" href="#nginxconfsigil" title="Permanent link">&para;</a></h1>
-<p>The <code>nginx.conf.sigil</code> file is used to configure the nginx server for an application. The default template can be found <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">here</a>. Dokku uses a tool named <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate the nginx configuration based on the template provided.</p>
+<p>The <code>nginx.conf.sigil</code> file is used to configure the nginx server for an application. The <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default template</a> is in the nginx-vhosts plugin. Dokku uses a tool named <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate the nginx configuration based on the template provided.</p>
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
 <p>A custom <code>nginx.conf.sigil</code> is pre-validated at the start of every deploy, immediately after it is extracted from the source tree and before the build phase runs. Pre-validation renders the template via sigil with the same parameters used at deploy time, wraps the rendered config in a minimal <code>events</code>/<code>http</code> scaffold, and runs <code>nginx -t</code> against the result. The deploy is aborted if either the sigil render or the <code>nginx -t</code> check fails, so build work is not wasted on a syntactically invalid template. When no app listeners exist yet (typical for first deploys), pre-validation injects a placeholder <code>127.0.0.1:5000</code> listener for <code>DOKKU_APP_WEB_LISTENERS</code> so that the rendered upstream block has a static server entry and <code>nginx -t</code> does not bail out on "host not found in upstream".</p>
 <p>Pre-validation is skipped when the proxy type is not <code>nginx</code> or when <code>disable-custom-config</code> is set to <code>true</code> for the app.</p>
