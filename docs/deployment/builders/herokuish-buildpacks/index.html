@@ -5639,7 +5639,7 @@
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--global<span class="w"> </span><span class="nv">CURL_CONNECT_TIMEOUT</span><span class="o">=</span><span class="m">180</span>
 </code></pre></div>
 <h3 id="clearing-buildpack-cache">Clearing buildpack cache<a class="headerlink" href="#clearing-buildpack-cache" title="Permanent link">&para;</a></h3>
-<p>See the <a href="../../../advanced-usage/repository-management/#clearing-application-cache">repository management documentation</a> for more information on how to clear buildpack build cache for an application.</p>
+<p>See the <a href="../../../advanced-usage/repository-management/#clearing-application-cache">repository management documentation</a> for more information on how to clear buildpack build cache for an application. The cache may also be purged as part of a rebuild via <code>ps:rebuild --no-cache</code>. See the <a href="../../../processes/process-management/#rebuilding-without-the-build-cache">rebuilding without the build cache</a> documentation for more information.</p>
 <h3 id="specifying-commands-via-procfile">Specifying commands via Procfile<a class="headerlink" href="#specifying-commands-via-procfile" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../processes/process-management/#procfile">Procfile documentation</a> for more information on how to specify different processes for your app.</p>
 <h3 id="listing-buildpacks-in-use">Listing Buildpacks in Use<a class="headerlink" href="#listing-buildpacks-in-use" title="Permanent link">&para;</a></h3>

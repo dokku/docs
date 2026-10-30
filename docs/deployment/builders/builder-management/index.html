@@ -5422,6 +5422,7 @@
 </ul>
 </li>
 </ul>
+<p>When an app is rebuilt via <code>ps:rebuild --no-cache</code>, the <code>DOKKU_BUILD_NO_CACHE</code> environment variable is set to <code>true</code> during the <code>builder-build</code> trigger. Custom builders should skip any build cache they use when this variable is set.</p>
 <p>Custom plugins names <em>must</em> have the prefix <code>builder-</code> or builder overriding via <code>builder:set</code> may not function as expected.</p>
 <p>Builders can use any tools available on the system to build the docker image, and may even be used to schedule building off-server. The only current requirement is that the image must exist on the server at the end of the <code>builder-build</code> command, though this requirement may be relaxed in a future release.</p>
 <p>For a simple example of how to implement this trigger, see <code>builder-pack</code>, which utilizes a cli tool - <code>pack-cli</code> - to generate an OCI image that is compatible with Docker and can be scheduled by the official scheduling plugins.</p>

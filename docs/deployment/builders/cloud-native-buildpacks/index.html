@@ -5307,7 +5307,7 @@
 </li>
 <li>The default process type is <code>web</code>.</li>
 <li>Build cache is stored in Docker volumes instead of on disk. As such, <code>repo:purge-cache</code> currently has no effect.<ul>
-<li>A future version will add integration with the <code>repo</code> plugin.</li>
+<li>The build cache may be cleared for a single rebuild via <code>ps:rebuild --no-cache</code>. See the <a href="../../../processes/process-management/#rebuilding-without-the-build-cache">rebuilding without the build cache</a> documentation for more information.</li>
 </ul>
 </li>
 <li><code>pack</code> is not currently included with Dokku, nor is it added as a package dependency.<ul>
