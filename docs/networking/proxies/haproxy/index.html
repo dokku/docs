@@ -5608,7 +5608,7 @@
 <li>Haproxy integration is exposed via docker labels attached to containers. Changes in labels require either app deploys or rebuilds.</li>
 <li>While Haproxy will respect labels associated with other containers, only <code>web</code> containers have Haproxy labels injected by the plugin.</li>
 <li>Only <code>http:80</code> and <code>https:443</code> port mappings are supported at this time.</li>
-<li>Requests are routed as soon as the container is running and passing healthchecks.</li>
+<li>Requests are routed as soon as the container is running, before Dokku's healthchecks have passed. Haproxy does not support healthcheck configuration via container labels, so <code>app.json</code> healthchecks are not used for routing.</li>
 </ul>
 <h3 id="switching-to-haproxy">Switching to Haproxy<a class="headerlink" href="#switching-to-haproxy" title="Permanent link">&para;</a></h3>
 <p>To use the Haproxy plugin, use the <code>proxy:set</code> command for the app in question:</p>

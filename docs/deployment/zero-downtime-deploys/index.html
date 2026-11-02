@@ -2287,6 +2287,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Customizing checks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#healthchecks-and-label-based-proxies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Healthchecks and label-based proxies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5243,6 +5260,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Customizing checks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#healthchecks-and-label-based-proxies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Healthchecks and label-based proxies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5492,6 +5526,15 @@ checks will fail. To avoid this:</p>
 <p>Healthchecks are implemented by specific scheduler plugins, and not all plugins support all options. Please consult the scheduler documentation for further details on what is supported.</p>
 </div>
 <p>See the <a href="https://github.com/dokku/docker-container-healthchecker">docker-container-healthchecker</a> documentation for more details on how healthchecks are interpreted.</p>
+<h3 id="healthchecks-and-label-based-proxies">Healthchecks and label-based proxies<a class="headerlink" href="#healthchecks-and-label-based-proxies" title="Permanent link">&para;</a></h3>
+<p>When using the <code>docker-local</code> scheduler, the <code>nginx</code> proxy only routes traffic to new containers once healthchecks have passed. The <code>caddy</code>, <code>haproxy</code>, <code>openresty</code>, and <code>traefik</code> proxies instead discover containers via docker labels, which are attached when a container is created, and will route requests to a new container as soon as it is running. As Dokku's healthchecks are run from the host, these proxies are not aware of their result.</p>
+<p>To reduce the number of requests routed to a container that is not yet ready, the first <code>readiness</code> healthcheck with a <code>path</code> for the <code>web</code> process is translated into proxy-specific configuration:</p>
+<ul>
+<li><a href="../../networking/proxies/caddy/#healthchecks">Caddy</a>: Active healthchecks against the <code>path</code>, and retries of failed requests against other containers.</li>
+<li><a href="../../networking/proxies/openresty/#healthchecks">OpenResty</a>: Active healthchecks against the <code>path</code>, and retries of failed requests against other containers.</li>
+<li><a href="../../networking/proxies/traefik/#healthchecks">Traefik</a>: Active healthchecks against the <code>path</code>.</li>
+</ul>
+<p>Haproxy does not support this configuration. Healthchecks of other types are not translated, as proxy healthchecks run for the lifetime of a container. Translating a <code>startup</code> healthcheck would turn it into a <code>readiness</code> healthcheck.</p>
 <h2 id="manually-invoking-checks">Manually invoking checks<a class="headerlink" href="#manually-invoking-checks" title="Permanent link">&para;</a></h2>
 <p>Checks can also be manually invoked via the <code>checks:run</code> command. This can be used to check the status of an application via cron to provide integration with external healthchecking software.</p>
 <p>Checks are run against a specific application:</p>

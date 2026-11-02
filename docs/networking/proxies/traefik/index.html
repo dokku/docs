@@ -5777,11 +5777,11 @@
 <li>If no <code>http:80</code> mapping is found, the first <code>http</code> port mapping is used for http requests.</li>
 <li>If no <code>https:443</code> mapping is found, the first <code>https</code> port mapping is used for https requests.</li>
 <li>If no <code>https</code> mapping is found, the container port from <code>http:80</code> will be used for https requests.</li>
-<li>Requests are routed as soon as the container is running and passing healthchecks.</li>
+<li>Requests are routed as soon as the container is running, before Dokku's healthchecks have passed.</li>
 <li>Readiness healthchecks defined in <code>app.json</code> with a <code>path</code> property are automatically transformed into Traefik healthcheck labels.</li>
 </ul>
 <h3 id="healthchecks">Healthchecks<a class="headerlink" href="#healthchecks" title="Permanent link">&para;</a></h3>
-<p>When an app has a readiness healthcheck defined in its <code>app.json</code> file with a <code>path</code> property, Dokku automatically generates Traefik healthcheck labels. These labels configure Traefik to perform health checks on the container before routing traffic to it.</p>
+<p>When an app has a readiness healthcheck defined in its <code>app.json</code> file with a <code>path</code> property, Dokku automatically generates Traefik healthcheck labels. These labels configure Traefik to periodically check each container and stop routing traffic to containers that fail the check. Traefik considers a new container healthy until its first check fails, so requests may reach a container before its first check runs.</p>
 <p>The following <code>app.json</code> healthcheck properties are mapped to Traefik labels:</p>
 <table>
 <thead>
@@ -5836,7 +5836,7 @@
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Only the first readiness healthcheck with a <code>path</code> property is used. Liveness, startup, and command-based healthchecks are not transformed into Traefik labels.</p>
+<p>Only the first readiness healthcheck with a <code>path</code> property is used. Liveness, startup, and command-based healthchecks are not transformed into Traefik labels. See the <a href="../../../deployment/zero-downtime-deploys/#healthchecks-and-label-based-proxies">zero downtime deploys documentation</a> for more information.</p>
 </div>
 <h3 id="switching-to-traefik">Switching to Traefik<a class="headerlink" href="#switching-to-traefik" title="Permanent link">&para;</a></h3>
 <p>To use the Traefik plugin, use the <code>proxy:set</code> command for the app in question:</p>

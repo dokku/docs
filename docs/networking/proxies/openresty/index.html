@@ -3426,6 +3426,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#healthchecks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Healthchecks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#switching-to-openresty" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5335,6 +5346,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#healthchecks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Healthchecks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#switching-to-openresty" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5652,43 +5674,128 @@
 <li>OpenResty integration is exposed via docker labels attached to containers. Changes in labels require either app deploys or rebuilds.</li>
 <li>While OpenResty will respect labels associated with other containers, only <code>web</code> containers have OpenResty labels injected by the plugin.</li>
 <li>Only <code>http:80</code> and <code>https:443</code> port mappings are supported at this time.</li>
-<li>Requests are routed as soon as the container is running and passing healthchecks.</li>
+<li>Requests are routed as soon as the container is running, before Dokku's healthchecks have passed. See the <a href="#healthchecks">healthchecks</a> section for how failed requests to a container that is not yet listening are handled.</li>
 </ul>
+<h3 id="healthchecks">Healthchecks<a class="headerlink" href="#healthchecks" title="Permanent link">&para;</a></h3>
+<p>When an app has a readiness healthcheck defined in its <code>app.json</code> file with a <code>path</code> property, Dokku automatically generates OpenResty healthcheck labels. These configure OpenResty to periodically check each container and stop routing traffic to containers that fail the check until they pass again.</p>
+<p>The following <code>app.json</code> healthcheck properties are mapped to OpenResty labels:</p>
+<table>
+<thead>
+<tr>
+<th>app.json Property</th>
+<th>OpenResty Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>openresty.healthcheck-path</code></td>
+<td>The HTTP path to check (required)</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td><code>openresty.healthcheck-port</code></td>
+<td>The port to check</td>
+</tr>
+<tr>
+<td><code>scheme</code></td>
+<td><code>openresty.healthcheck-scheme</code></td>
+<td>The scheme to use (<code>http</code> or <code>https</code>)</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td><code>openresty.healthcheck-timeout</code></td>
+<td>Timeout in seconds (defaults to <code>5</code>)</td>
+</tr>
+<tr>
+<td><code>wait</code></td>
+<td><code>openresty.healthcheck-interval</code></td>
+<td>Interval between checks in seconds (defaults to <code>5</code>)</td>
+</tr>
+<tr>
+<td><code>attempts</code></td>
+<td><code>openresty.healthcheck-fall</code></td>
+<td>Number of successive failed checks before a container is taken out of rotation (defaults to <code>3</code>)</td>
+</tr>
+<tr>
+<td><code>httpHeaders</code></td>
+<td><code>openresty.healthcheck-header.&lt;name&gt;</code></td>
+<td>Headers to send with the check. A <code>Host</code> header is set via <code>openresty.healthcheck-host</code> instead</td>
+</tr>
+</tbody>
+</table>
+<p>If no <code>Host</code> header is specified, the first app domain is used, matching the header Dokku sends during deploy checks. Headers with invalid names or values containing quotes, backslashes, or control characters are skipped.</p>
+<p>Additionally, the following labels are generated so that a request that fails to connect to a container is retried against another container, and the failing container is immediately taken out of rotation:</p>
+<table>
+<thead>
+<tr>
+<th>OpenResty Label</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>openresty.upstream-max-fails</code></td>
+<td><code>1</code></td>
+<td>Number of failed requests before a container is taken out of rotation</td>
+</tr>
+<tr>
+<td><code>openresty.upstream-fail-timeout</code></td>
+<td>the healthcheck <code>wait</code> value, or <code>5s</code></td>
+<td>How long a container is taken out of rotation after a failed request</td>
+</tr>
+<tr>
+<td><code>openresty.proxy-next-upstream-timeout</code></td>
+<td><code>5s</code></td>
+<td>How long a failed request may be retried against other containers</td>
+</tr>
+</tbody>
+</table>
+<p>OpenResty considers a new container healthy until it fails a check or a request to it fails to connect, and healthcheck state is reset whenever the OpenResty configuration is reloaded. Responses with a <code>2xx</code> or <code>3xx</code> status are considered healthy, and the <code>content</code> property is not supported.</p>
+<p>The status of all checked upstreams can be viewed from within the OpenResty container:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>openresty-openresty-1<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>http://127.0.0.1:8999/upstream-healthcheck-status
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the first readiness healthcheck with a <code>path</code> property is used. Apps without one are routed as soon as the container is running, though requests that fail to connect to a container are still retried against other containers. See the <a href="../../../deployment/zero-downtime-deploys/#healthchecks-and-label-based-proxies">zero downtime deploys documentation</a> for more information.</p>
+</div>
 <h3 id="switching-to-openresty">Switching to OpenResty<a class="headerlink" href="#switching-to-openresty" title="Permanent link">&para;</a></h3>
 <p>To use the OpenResty plugin, use the <code>proxy:set</code> command for the app in question:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nb">type</span><span class="w"> </span>openresty
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>proxy:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nb">type</span><span class="w"> </span>openresty
 </code></pre></div>
 <p>This will enable the docker label-based OpenResty integration. All future deploys will inject the correct labels for OpenResty to read and route requests to containers. Due to the docker label-based integration used by OpenResty, a single deploy or rebuild will be required before requests will route successfully.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Any changes to domains or port mappings will also require either a deploy or rebuild.</p>
 <h3 id="starting-openresty-container">Starting OpenResty container<a class="headerlink" href="#starting-openresty-container" title="Permanent link">&para;</a></h3>
 <p>OpenResty can be started via the <code>openresty:start</code> command. This will start a OpenResty container via the <code>docker compose up</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dokku<span class="w"> </span>openresty:start
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>openresty:start
 </code></pre></div>
 <h3 id="stopping-the-openresty-container">Stopping the OpenResty container<a class="headerlink" href="#stopping-the-openresty-container" title="Permanent link">&para;</a></h3>
 <p>OpenResty may be stopped via the <code>openresty:stop</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>openresty:stop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>openresty:stop
 </code></pre></div>
 <p>The OpenResty container will be stopped and removed from the system. If the container is not running, this command will do nothing.</p>
 <h3 id="showing-the-openresty-compose-config">Showing the OpenResty compose config<a class="headerlink" href="#showing-the-openresty-compose-config" title="Permanent link">&para;</a></h3>
 <p>For debugging purposes, it may be useful to show the OpenResty compose config. This can be achieved via the <code>openresty:show-config</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>openresty:show-config
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>openresty:show-config
 </code></pre></div>
 <h3 id="customizing-the-openresty-container-image">Customizing the OpenResty container image<a class="headerlink" href="#customizing-the-openresty-container-image" title="Permanent link">&para;</a></h3>
 <p>While the default OpenResty image is hardcoded, users may specify an alternative by setting the <code>image</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>dokku/openresty-docker-proxy:0.5.6
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>image<span class="w"> </span>dokku/openresty-docker-proxy:0.5.6
 </code></pre></div>
 <h3 id="checking-the-openresty-containers-logs">Checking the OpenResty container's logs<a class="headerlink" href="#checking-the-openresty-containers-logs" title="Permanent link">&para;</a></h3>
 <p>It may be necessary to check the OpenResty container's logs to ensure that OpenResty is operating as expected. This can be performed with the <code>openresty:logs</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>openresty:logs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>openresty:logs
 </code></pre></div>
 <p>This command also supports the following modifiers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>--num<span class="w"> </span>NUM<span class="w">        </span><span class="c1"># the number of lines to display</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>--tail<span class="w">           </span><span class="c1"># continually stream logs</span>
 </code></pre></div>
 <p>You can use these modifiers as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>openresty:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>openresty:logs<span class="w"> </span>--tail<span class="w"> </span>--num<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>The above command will show logs continually from the openresty container, with an initial history of 10 log lines</p>
 <h3 id="customizing-openresty-settings-for-an-app">Customizing Openresty Settings for an app<a class="headerlink" href="#customizing-openresty-settings-for-an-app" title="Permanent link">&para;</a></h3>
@@ -5710,35 +5817,35 @@
 <p>Refer to the upstream <a href="https://github.com/dokku/openresty-docker-proxy">openresty-docker-proxy</a> documentation for more information on what labels are available.</p>
 <h4 id="adding-a-label">Adding a label<a class="headerlink" href="#adding-a-label" title="Permanent link">&para;</a></h4>
 <p>To add a custom container label to an app, use the <code>openresty:labels:add</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>openresty:labels:add<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive<span class="w"> </span>value
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>openresty:labels:add<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive<span class="w"> </span>value
 </code></pre></div>
 <p>This will add the label <code>openresty.directive=value</code> to the app's containers. After adding a label, you will need to rebuild or redeploy the app for the label to be applied to running containers.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <h4 id="removing-a-label">Removing a label<a class="headerlink" href="#removing-a-label" title="Permanent link">&para;</a></h4>
 <p>To remove a custom container label from an app, use the <code>openresty:labels:remove</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>openresty:labels:remove<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>openresty:labels:remove<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive
 </code></pre></div>
 <p>This will remove the specified label from the app. After removing a label, you will need to rebuild or redeploy the app for the change to be applied to running containers.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <h4 id="showing-labels">Showing labels<a class="headerlink" href="#showing-labels" title="Permanent link">&para;</a></h4>
 <p>To view all custom container labels for an app, use the <code>openresty:labels:show</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>openresty:labels:show<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>openresty:labels:show<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>To view a specific label value, provide the label name:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dokku<span class="w"> </span>openresty:labels:show<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>openresty:labels:show<span class="w"> </span>node-js-app<span class="w"> </span>openresty.directive
 </code></pre></div>
 <h3 id="ssl-configuration">SSL Configuration<a class="headerlink" href="#ssl-configuration" title="Permanent link">&para;</a></h3>
 <p>The OpenResty plugin only supports automatic ssl certificates from it's letsencrypt integration. Managed certificates provided by the <code>certs</code> plugin are ignored.</p>
 <h4 id="enabling-letsencrypt-integration">Enabling letsencrypt integration<a class="headerlink" href="#enabling-letsencrypt-integration" title="Permanent link">&para;</a></h4>
 <p>By default, letsencrypt is disabled and https port mappings are ignored. To enable, set the <code>letsencrypt-email</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-email<span class="w"> </span>automated@dokku.sh
 </code></pre></div>
 <p>After enabling, the OpenResty container will need to be restarted and apps will need to be rebuilt. All http requests will then be redirected to https.</p>
 <h4 id="customizing-the-letsencrypt-server">Customizing the letsencrypt server<a class="headerlink" href="#customizing-the-letsencrypt-server" title="Permanent link">&para;</a></h4>
 <p>The letsencrypt integration is set to the production letsencrypt server by default. To change this, set the <code>letsencrypt-server</code> property with the <code>--global</code> flag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>letsencrypt-server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>After enabling, the OpenResty container will need to be restarted and apps will need to be rebuilt to retrieve certificates from the new server.</p>
 <h4 id="limiting-letsencrypt-to-certain-domains">Limiting letsencrypt to certain domains<a class="headerlink" href="#limiting-letsencrypt-to-certain-domains" title="Permanent link">&para;</a></h4>
@@ -5748,48 +5855,48 @@
 </div>
 <p>In cases where your server's IP may have invalid domains pointing at it, limiting letsencrypt to certain allowed domains may be desirable to reduce spam requests on the Letsencrypt servers. The default is to allow all domains to have certificates retrieved, but this can be limited by specifying the <code>allowed-letsencrypt-domains-func-base64</code> global property.</p>
 <p>The default internal value for <code>allowed-letsencrypt-domains-func-base64</code> is the base64 representation of <code>return true</code>, and is meant to be the body of a lua function that return a boolean value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">'return true'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">"</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">'return true'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">"</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
 </code></pre></div>
 <p>As this is a global value, once changed, OpenResty should be stopped and started again for the value to take effect:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>dokku<span class="w"> </span>openresty:stop
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>dokku<span class="w"> </span>openresty:start
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dokku<span class="w"> </span>openresty:stop
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>dokku<span class="w"> </span>openresty:start
 </code></pre></div>
 <p>A more complex example would be to limit provisioning of certificates to domains in a specific list. The body of the lua function has access to a variable <code>domain</code>, and we can use it like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">body</span><span class="o">=</span><span class="s1">'allowed_domains = {"domain.com", "extra-domain.com"}</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="s1">for index, value in ipairs(allowed_domains) do</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="s1">  if value == domain then</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="s1">    return true</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="s1">  end</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="s1">end</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="s1">return false</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="s1">'</span>
-<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$body</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">"</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nv">body</span><span class="o">=</span><span class="s1">'allowed_domains = {"domain.com", "extra-domain.com"}</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="s1">for index, value in ipairs(allowed_domains) do</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="s1">  if value == domain then</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="s1">    return true</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="s1">  end</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="s1">end</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="s1">return false</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="s1">'</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$body</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="k">)</span><span class="s2">"</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64<span class="w"> </span><span class="nv">$value</span>
 </code></pre></div>
 <p>To reset the value to the default, simply specify a blank value prior to restarting OpenResty:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>openresty:set<span class="w"> </span>--global<span class="w"> </span>allowed-letsencrypt-domains-func-base64
 </code></pre></div>
 <h2 id="displaying-openresty-reports-for-an-app">Displaying OpenResty reports for an app<a class="headerlink" href="#displaying-openresty-reports-for-an-app" title="Permanent link">&para;</a></h2>
 <p>You can get a report about the app's OpenResty config using the <code>openresty:report</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>dokku<span class="w"> </span>openresty:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dokku<span class="w"> </span>openresty:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>=====&gt; node-js-app openresty information
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>       Openresty letsencrypt email:       automated@dokku.sh
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>=====&gt; python-app openresty information
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>       Openresty letsencrypt email:       automated@dokku.sh
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>=====&gt; ruby-app openresty information
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>       Openresty letsencrypt email:       automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>=====&gt; node-js-app openresty information
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>       Openresty letsencrypt email:       automated@dokku.sh
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>=====&gt; python-app openresty information
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>       Openresty letsencrypt email:       automated@dokku.sh
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>=====&gt; ruby-app openresty information
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>       Openresty letsencrypt email:       automated@dokku.sh
 </code></pre></div>
 </div>
 </div>
@@ -5798,19 +5905,19 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>=====&gt; node-js-app openresty information
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>       Openresty letsencrypt email:       automated@dokku.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>=====&gt; node-js-app openresty information
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>       Openresty image:                   dokku/openresty-docker-proxy:0.5.6
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>       Openresty letsencrypt email:       automated@dokku.sh
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app<span class="w"> </span>--openresty-computed-letsencrypt-email
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>dokku<span class="w"> </span>openresty:report<span class="w"> </span>node-js-app<span class="w"> </span>--openresty-computed-letsencrypt-email
 </code></pre></div>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
 <h3 id="settable-properties">Settable properties<a class="headerlink" href="#settable-properties" title="Permanent link">&para;</a></h3>
