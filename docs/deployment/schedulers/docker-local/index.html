@@ -3991,6 +3991,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#failed-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failed deploys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deploying-process-types-in-parallel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5247,6 +5258,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#failed-deploys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failed deploys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deploying-process-types-in-parallel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5468,6 +5490,11 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>scheduler-docker-local:set<span class="w"> </span>--global<span class="w"> </span>init-process
 </code></pre></div>
 <p>All image containers with the label <code>org.opencontainers.image.vendor=linuxserver.io</code> will have the automatic init process injection force-disabled without further intervention when neither an app-level nor a global value is set.</p>
+<h3 id="failed-deploys">Failed deploys<a class="headerlink" href="#failed-deploys" title="Permanent link">&para;</a></h3>
+<p>When a deploy fails - for example, because a new container does not pass its <a href="../../zero-downtime-deploys/">zero downtime checks</a> - the previously running containers are left in place. The app's <code>latest</code> image tag is restored to the image the previously running containers use, so commands such as <code>ps:restart</code>, <code>ps:start</code>, and <code>ps:restore</code> bring back the previous release instead of the failed one. The image of the failed release is then removed by <code>ps:retire</code>.</p>
+<p>To support this, the image an app is running is tagged as <code>dokku/&lt;app&gt;:dokku-previous</code> while a build and deploy are in progress. This tag is removed once the deploy completes.</p>
+<p>The image currently tagged as the app's <code>latest</code> image is never removed by <code>ps:retire</code>. This allows an app whose first deploy failed to be started once the cause of the failure has been corrected without requiring a rebuild.</p>
+<p>When the <code>registry</code> plugin's <code>push-on-release</code> property is enabled, the incremented image tag is kept after a failed deploy, and restarting the app will deploy that tag.</p>
 <h3 id="deploying-process-types-in-parallel">Deploying Process Types in Parallel<a class="headerlink" href="#deploying-process-types-in-parallel" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
