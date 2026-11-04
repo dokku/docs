@@ -946,6 +946,8 @@
       
         
       
+        
+      
     
     
     
@@ -998,6 +1000,34 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendices/0.39.0-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.39.0 Migration Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -2478,6 +2508,17 @@
     <span class="md-ellipsis">
       
         Settable properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
       
     </span>
   </a>
@@ -5267,6 +5308,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#internal-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal properties
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5390,14 +5442,23 @@
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Builder pack computed projecttoml path: project2.toml
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Builder pack global projecttoml path:
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Builder pack projecttoml path:          project2.toml
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>=====&gt; python-sample builder-pack information
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Builder pack computed projecttoml path: project.toml
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Builder pack global projecttoml path:
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Builder pack projecttoml path:
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>=====&gt; ruby-sample builder-pack information
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Builder pack computed projecttoml path: project.toml
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       Builder pack global projecttoml path:
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       Builder pack projecttoml path:
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>       Builder pack computed stack:            heroku/builder:24
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>       Builder pack global stack:
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Builder pack stack:
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>=====&gt; python-sample builder-pack information
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       Builder pack computed projecttoml path: project.toml
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Builder pack global projecttoml path:
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       Builder pack projecttoml path:
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       Builder pack computed stack:            heroku/builder:24
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>       Builder pack global stack:
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>       Builder pack stack:
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>=====&gt; ruby-sample builder-pack information
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>       Builder pack computed projecttoml path: project.toml
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>       Builder pack global projecttoml path:
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>       Builder pack projecttoml path:
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>       Builder pack computed stack:            heroku/builder:24
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>       Builder pack global stack:
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>       Builder pack stack:
 </code></pre></div>
 </div>
 </div>
@@ -5435,22 +5496,26 @@
 <h3 id="customizing-the-buildpack-stack-builder">Customizing the Buildpack stack builder<a class="headerlink" href="#customizing-the-buildpack-stack-builder" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">New</p>
-<p>Introduced in 0.23.0</p>
+<p>Introduced in 0.23.0. The <code>stack</code> property moved from the <code>buildpacks</code> plugin to the <code>builder-pack</code> plugin in 0.39.0.</p>
 </div>
-<p>The default stack builder in use by CNB buildpacks in Dokku is based on <code>heroku/builder:24</code>. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>buildpacks:set-property</code> command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
+<p>The default stack builder in use by CNB buildpacks in Dokku is based on <code>heroku/builder:24</code>. Users may desire to switch the stack builder to a custom version, either to update the operating system or to customize packages included with the stack builder. This can be performed via the <code>builder-pack:set</code> command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 </code></pre></div>
-<p>The specified stack builder can also be unset by omitting the name of the stack builder when calling <code>buildpacks:set-property</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>node-js-app<span class="w"> </span>stack
+<p>The specified stack builder can also be unset by omitting the name of the stack builder when calling <code>builder-pack:set</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>node-js-app<span class="w"> </span>stack
 </code></pre></div>
-<p>A change in the stack builder value will execute the <code>post-stack-set</code> trigger.</p>
+<p>A change in the stack builder value flags the next build to run with <code>--clear-cache</code> so a stale pack cache is not reused.</p>
 <p>Finally, stack builders can be set or unset globally as a fallback. This will take precedence over a globally set <code>DOKKU_CNB_BUILDER</code> environment variable (<code>heroku/builder:24</code> by default).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># set globally</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>stack<span class="w"> </span>paketobuildpacks/build:base-cnb
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># unset globally</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>dokku<span class="w"> </span>buildpacks:set-property<span class="w"> </span>--global<span class="w"> </span>stack
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>dokku<span class="w"> </span>builder-pack:set<span class="w"> </span>--global<span class="w"> </span>stack
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>buildpacks:set-property stack</code> command is deprecated. It still works but emits a deprecation warning and forwards the value to <code>builder-pack</code> (when the value is a CNB builder) or <code>builder-herokuish</code> (when the value references a herokuish image).</p>
+</div>
 <h3 id="specifying-commands-via-procfile">Specifying commands via Procfile<a class="headerlink" href="#specifying-commands-via-procfile" title="Permanent link">&para;</a></h3>
 <p>See the <a href="../../../processes/process-management/#procfile">Procfile documentation</a> for more information on how to specify different processes for your app.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
@@ -5472,6 +5537,33 @@
 <td><code>project.toml</code></td>
 <td><code>--builder-pack-projecttoml-path</code>, <code>--builder-pack-global-projecttoml-path</code>, <code>--builder-pack-computed-projecttoml-path</code></td>
 <td>Path within the app to the CNB <code>project.toml</code> manifest, relative to the build root</td>
+</tr>
+<tr>
+<td><code>stack</code></td>
+<td>app + global</td>
+<td><code>heroku/builder:24</code></td>
+<td><code>--builder-pack-stack</code>, <code>--builder-pack-global-stack</code>, <code>--builder-pack-computed-stack</code></td>
+<td>CNB builder image used to build the app (e.g. <code>paketobuildpacks/build:base-cnb</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="internal-properties">Internal properties<a class="headerlink" href="#internal-properties" title="Permanent link">&para;</a></h3>
+<p>The following properties are recorded internally by the builder-pack plugin and are not exposed via <code>builder-pack:report</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scope</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clear-cache</code></td>
+<td>per-app</td>
+<td>Transient flag set when the pack <code>stack</code> changes. The next <code>pack build</code> runs with <code>--clear-cache</code> and then the flag is deleted, ensuring a stack change does not reuse a stale pack cache</td>
+<td><code>plugins/builder-pack/subcommands/set</code> sets it on stack change; <code>plugins/builder-pack/builder-build</code> consumes and deletes it</td>
 </tr>
 </tbody>
 </table>
