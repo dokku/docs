@@ -4827,6 +4827,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#upstream-rendering-ip-based-vs-dns-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upstream Rendering: IP-based vs DNS-based
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upstream Rendering: IP-based vs DNS-based">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip-based-upstream-legacy-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP-based upstream (legacy path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-based-upstream-resolver-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS-based upstream (resolver path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-between-the-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between the two
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5136,6 +5186,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#upstream-rendering-ip-based-vs-dns-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upstream Rendering: IP-based vs DNS-based
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upstream Rendering: IP-based vs DNS-based">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip-based-upstream-legacy-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP-based upstream (legacy path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-based-upstream-resolver-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS-based upstream (resolver path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-between-the-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between the two
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5172,7 +5272,11 @@
 <h1 id="nginxconfsigil">nginx.conf.sigil<a class="headerlink" href="#nginxconfsigil" title="Permanent link">&para;</a></h1>
 <p>The <code>nginx.conf.sigil</code> file is used to configure the nginx server for an application. The <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/nginx.conf.sigil">default template</a> is in the nginx-vhosts plugin. Dokku uses a tool named <a href="https://github.com/gliderlabs/sigil">sigil</a> to generate the nginx configuration based on the template provided.</p>
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
-<p>A custom <code>nginx.conf.sigil</code> is pre-validated at the start of every deploy, immediately after it is extracted from the source tree and before the build phase runs. Pre-validation renders the template via sigil with the same parameters used at deploy time, wraps the rendered config in a minimal <code>events</code>/<code>http</code> scaffold, and runs <code>nginx -t</code> against the result. The deploy is aborted if either the sigil render or the <code>nginx -t</code> check fails, so build work is not wasted on a syntactically invalid template. When no app listeners exist yet (typical for first deploys), pre-validation injects a placeholder <code>127.0.0.1:5000</code> listener for <code>DOKKU_APP_WEB_LISTENERS</code> so that the rendered upstream block has a static server entry and <code>nginx -t</code> does not bail out on "host not found in upstream".</p>
+<p>A custom <code>nginx.conf.sigil</code> is pre-validated at the start of every deploy, immediately after it is extracted from the source tree and before the build phase runs. Pre-validation renders the template via sigil with the same parameters used at deploy time, wraps the rendered config in a minimal <code>events</code>/<code>http</code> scaffold, and runs <code>nginx -t</code> against the result. The deploy is aborted if either the sigil render or the <code>nginx -t</code> check fails, so build work is not wasted on a syntactically invalid template. When no app listeners exist yet (typical for first deploys), pre-validation injects placeholders so the rendered config parses cleanly under <code>nginx -t</code>:</p>
+<ul>
+<li><code>DOKKU_APP_WEB_LISTENERS</code> is set to <code>127.0.0.1:5000</code> so the legacy <code>upstream</code> block has a static server entry.</li>
+<li><code>DOKKU_APP_WEB_LISTENER_HOST</code> is set to <code>127.0.0.1</code> so the resolver-based <code>set $dokku_upstream "...";</code> line renders to a syntactically valid value.</li>
+</ul>
 <p>Pre-validation is skipped when the proxy type is not <code>nginx</code> or when <code>disable-custom-config</code> is set to <code>true</code> for the app.</p>
 <p>The wrapper declares the same <code>user</code> directive as the host's main nginx config, exposed to the wrapper template as <code>$.NGINX_USER</code>. This matters because <code>nginx -t</code> runs as <code>root</code> and chowns every directory the config registers - in particular any <code>proxy_cache_path</code> - to whichever user the config resolves to, whether or not that directory already exists. Without a matching <code>user</code>, validating a template that declares a <code>proxy_cache_path</code> would hand the running server's live cache directory to nginx's compile-time default user for the length of the build, and every request served from or stored in that cache would fail with a permission error until the deploy's own nginx reload restored the ownership.</p>
 <h3 id="custom-nginx-modules">Custom nginx modules<a class="headerlink" href="#custom-nginx-modules" title="Permanent link">&para;</a></h3>
@@ -5216,6 +5320,38 @@
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>{{ end }}
 </code></pre></div>
 <p>Dokku logs a deprecation warning during deploys when a custom template still uses the <code>listen ... http2</code> form, so the offending template can be located via the deploy output.</p>
+<h2 id="upstream-rendering-ip-based-vs-dns-based">Upstream Rendering: IP-based vs DNS-based<a class="headerlink" href="#upstream-rendering-ip-based-vs-dns-based" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>The bundled <code>nginx.conf.sigil</code> supports two rendering paths for the upstream, and both sets of sigil variables are populated on every render. Vendored templates can use either path independently of the global <code>dns-resolver</code> setting.</p>
+<h3 id="ip-based-upstream-legacy-path">IP-based upstream (legacy path)<a class="headerlink" href="#ip-based-upstream-legacy-path" title="Permanent link">&para;</a></h3>
+<p>The classic form uses <code>DOKKU_APP_&lt;PROC&gt;_LISTENERS</code>: a space-separated <code>&lt;ip&gt;:&lt;port&gt;</code> list, one entry per scaled instance of the process type. The IPs come from <code>/home/dokku/&lt;APP&gt;/IP.&lt;proc&gt;.&lt;index&gt;</code> and the ports from <code>/home/dokku/&lt;APP&gt;/PORT.&lt;proc&gt;.&lt;index&gt;</code>. A typical use is an <code>upstream</code> block with one <code>server &lt;ip&gt;:&lt;port&gt;;</code> per instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">upstream</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.APP</span><span class="w"> </span><span class="err">}}</span><span class="s">-</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$upstream_port</span><span class="w"> </span><span class="err">}}</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">{{</span><span class="w"> </span><span class="s">range</span><span class="w"> </span><span class="nv">$listeners</span><span class="w"> </span><span class="p">:=</span><span class="w"> </span><span class="nv">$.DOKKU_APP_WEB_LISTENERS</span><span class="w"> </span><span class="s">|</span><span class="w"> </span><span class="s">split</span><span class="w"> </span><span class="s">"</span><span class="w"> </span><span class="s">"</span><span class="w"> </span><span class="err">}}</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$listener_list</span><span class="w"> </span><span class="p">:=</span><span class="w"> </span><span class="nv">$listeners</span><span class="w"> </span><span class="s">|</span><span class="w"> </span><span class="s">split</span><span class="w"> </span><span class="s">":"</span><span class="w"> </span><span class="err">}}</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$listener_ip</span><span class="w"> </span><span class="p">:=</span><span class="w"> </span><span class="s">index</span><span class="w"> </span><span class="nv">$listener_list</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">}}</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="s">server</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$listener_ip</span><span class="w"> </span><span class="err">}}</span><span class="p">:{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$upstream_port</span><span class="w"> </span><span class="err">}}</span><span class="p">;</span><span class="kn">{{</span><span class="w"> </span><span class="s">end</span><span class="w"> </span><span class="err">}}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="err">}</span>
+</code></pre></div>
+<p>This path renders the IP that Dokku saw when the config was last built. After a host reboot, an <code>apt upgrade docker</code> without live-restore, or a single container restart, those IPs can become stale until <code>dokku proxy:build-config</code> runs again. The DNS-based path below addresses that staleness.</p>
+<h3 id="dns-based-upstream-resolver-path">DNS-based upstream (resolver path)<a class="headerlink" href="#dns-based-upstream-resolver-path" title="Permanent link">&para;</a></h3>
+<p>The new variables (<code>DOKKU_APP_&lt;PROC&gt;_LISTENER_HOST</code> + <code>NGINX_DNS_RESOLVER</code> + <code>NGINX_DNS_RESOLVER_TIMEOUT</code> + <code>NGINX_DNS_ZONE</code>) describe a single hostname per process type of the form <code>&lt;app&gt;.&lt;proctype&gt;.&lt;dns-zone&gt;</code> (for example, <code>myapp.web.docker</code>). The hostname is served by <a href="https://github.com/dokku/coredns-docker">coredns-docker</a> (&gt;= <code>0.8.0</code>), which watches Docker events and collapses every running instance of the process type onto one multi-A record set. Combined with an nginx <code>resolver</code> directive and a variable-based <code>proxy_pass</code>, the upstream re-resolves at request time honoring DNS TTL - which gives runtime IP refresh on container restarts and DNS round-robin across scaled instances.</p>
+<p>The bundled template emits this snippet:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">{{</span><span class="w"> </span><span class="s">if</span><span class="w"> </span><span class="nv">$.NGINX_DNS_RESOLVER</span><span class="w"> </span><span class="err">}}</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">resolver</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.NGINX_DNS_RESOLVER</span><span class="w"> </span><span class="err">}}</span><span class="w"> </span><span class="s">valid=10s</span><span class="w"> </span><span class="s">ipv6=off</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">resolver_timeout</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.NGINX_DNS_RESOLVER_TIMEOUT</span><span class="w"> </span><span class="err">}}</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">set</span><span class="w"> </span><span class="nv">$dokku_upstream</span><span class="w"> </span><span class="s">"</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.DOKKU_APP_WEB_LISTENER_HOST</span><span class="w"> </span><span class="err">}}</span><span class="p">:{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$upstream_port</span><span class="w"> </span><span class="err">}}</span><span class="s">"</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://</span><span class="nv">$dokku_upstream</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kn">{{</span><span class="w"> </span><span class="s">else</span><span class="w"> </span><span class="err">}}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">proxy_pass</span><span class="w"> </span><span class="s">http://</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$.APP</span><span class="w"> </span><span class="err">}}</span><span class="s">-</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="nv">$upstream_port</span><span class="w"> </span><span class="err">}}</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kn">{{</span><span class="w"> </span><span class="s">end</span><span class="w"> </span><span class="err">}}</span>
+</code></pre></div>
+<p>The <code>$dokku_upstream</code> variable name is intentionally namespaced (rather than <code>$upstream</code>) so vendored templates that already define <code>$upstream</code> will not collide if they adopt the resolver branch.</p>
+<p><code>NGINX_DNS_RESOLVER</code> is empty by default, <code>NGINX_DNS_RESOLVER_TIMEOUT</code> defaults to <code>5s</code>, and <code>NGINX_DNS_ZONE</code> defaults to <code>docker</code>; all three are configurable via <code>dokku nginx:set --global dns-resolver ...</code>, <code>dokku nginx:set --global dns-resolver-timeout ...</code>, and <code>dokku nginx:set --global dns-zone ...</code>. The bundled template only renders the resolver branch when <code>NGINX_DNS_RESOLVER</code> is set, for example to <code>127.0.0.1:1053</code>. Unsetting <code>dns-resolver</code> switches the bundled template back to the IP-based upstream. The short default <code>dns-resolver-timeout</code> keeps clients from waiting on nginx's built-in 30s timeout when coredns-docker is unreachable; nginx returns 502 after the configured interval instead.</p>
+<h3 id="choosing-between-the-two">Choosing between the two<a class="headerlink" href="#choosing-between-the-two" title="Permanent link">&para;</a></h3>
+<p>The IP-based path is the default for the bundled template, and the DNS-based path is used once <code>dns-resolver</code> is set. Vendored templates that have not been updated continue to use <code>DOKKU_APP_&lt;PROC&gt;_LISTENERS</code> and are unaffected by the <code>dns-resolver</code> setting. The <code>DOKKU_APP_&lt;PROC&gt;_LISTENER_HOST</code> and <code>NGINX_DNS_ZONE</code> variables are populated regardless of whether <code>dns-resolver</code> is set, so a vendored template can adopt the resolver path on its own schedule by switching its rendering snippet, even if other apps on the host are still using IP-based upstreams.</p>
 
 
 
