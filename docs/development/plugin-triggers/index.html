@@ -10808,7 +10808,7 @@
 <ul>
 <li>Description: Return the path to a <code>sigil</code> template that should be used to generate the <code>dokku.conf</code> nginx configuration file.</li>
 <li>Invoked by: <code>nginx-vhosts#install</code></li>
-<li>Arguments: None, however the <code>sigil</code> template can make use of the following variables: <code>$.DOKKU_ROOT $.NGINX_ROOT</code></li>
+<li>Arguments: None, however the <code>sigil</code> template can make use of the following variables: <code>$.DOKKU_ROOT $.DOKKU_LIB_ROOT $.NGINX_ROOT</code></li>
 <li>Example:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="ch">#!/usr/bin/env bash</span>
@@ -10817,7 +10817,7 @@
 <a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>
 <a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="si">}</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/dokku.conf.sigil"</span>
 </code></pre></div>
-<p>The default template is viewable here: <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/dokku.conf.sigil">plugins/nginx-vhosts/templates/dokku.conf.sigil</a></p>
+<p>The default template is viewable here: <a href="https://github.com/dokku/dokku/blob/master/plugins/nginx-vhosts/templates/dokku.conf.sigil">plugins/nginx-vhosts/templates/dokku.conf.sigil</a>. Custom templates should keep its <code>include {{ $.DOKKU_LIB_ROOT }}/data/nginx-vhosts/http3/*.conf;</code> line so that the <a href="../../networking/proxies/nginx/#enabling-http3"><code>http3</code> property</a> works correctly.</p>
 <h3 id="nginx-hostname"><code>nginx-hostname</code><a class="headerlink" href="#nginx-hostname" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Description: Allows you to customize the hostname for a given app</li>
