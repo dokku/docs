@@ -3716,6 +3716,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#disabling-http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling HTTP/2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#running-behind-another-proxy-configuring-x-forwarded-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5890,6 +5901,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#disabling-http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disabling HTTP/2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#running-behind-another-proxy-configuring-x-forwarded-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6421,13 +6443,14 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>{{ .APP }}                          Application name
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>{{ .APP_SSL_PATH }}                 Path to SSL certificate and key
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>{{ .DOKKU_ROOT }}                   Global Dokku root directory (ex: app dir would be `{{ .DOKKU_ROOT }}/{{ .APP }}`)
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as the `proxy-port` property)
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as the `proxy-ssl-port` property)
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as the `map` ports property)
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from the `map` ports property)
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>{{ .HTTP2_ENABLED }}                Set to `true` when http2 should be enabled for https listeners (same as the computed `http2` property)
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as the `proxy-port` property)
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as the `proxy-ssl-port` property)
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as the `map` ports property)
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from the `map` ports property)
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
 </code></pre></div>
 <p>Finally, each process type has it's network listeners - a list of IP:PORT pairs for the respective app containers - exposed via an <code>.DOKKU_APP_${PROCESS_TYPE}_LISTENERS</code> variable - the <code>PROCESS_TYPE</code> will be upper-cased with hyphens transformed into underscores. Users can use the new variables to expose non-web processes via the nginx proxy.</p>
 <div class="admonition note">
@@ -6475,7 +6498,7 @@
 <p>Changing these value globally or on a per-app basis will require rebuilding the nginx config via the <code>proxy:build-config</code> command.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Validation is not performed against the values, and they are used as is within Dokku.</p>
+<p>Validation is not performed against the values, and they are used as is within Dokku. The exceptions are <code>http2</code>, which only accepts <code>true</code> or <code>false</code>, and <code>proxy-keepalive</code>, which only accepts an integer.</p>
 </div>
 <table>
 <thead>
@@ -6558,6 +6581,12 @@
 <td><code>false</code></td>
 <td>boolean</td>
 <td>Tells the browser to include the domain in their HSTS preload lists</td>
+</tr>
+<tr>
+<td>http2</td>
+<td><code>true</code></td>
+<td>boolean</td>
+<td>Enables or disables http2 for https listeners</td>
 </tr>
 <tr>
 <td>keepalive-timeout</td>
@@ -6649,6 +6678,30 @@
 <li><code>hsts-preload</code></li>
 </ul>
 <p>If SSL certificates are present, HSTS will be automatically enabled.</p>
+<h4 id="disabling-http2">Disabling HTTP/2<a class="headerlink" href="#disabling-http2" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users with apps that contain a custom <code>nginx.conf.sigil</code> file will need to modify the files to respect the new <code>HTTP2_ENABLED</code> variable.</p>
+</div>
+<p>Properties:</p>
+<ul>
+<li><code>http2</code></li>
+</ul>
+<p>HTTP/2 is enabled by default for all https listeners. It can be disabled for an app or globally, for example when the installed nginx version cannot be upgraded to address an HTTP/2 vulnerability.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># disable http2 for the node-js-app</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>http2<span class="w"> </span><span class="nb">false</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="c1"># disable http2 for all apps</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>--global<span class="w"> </span>http2<span class="w"> </span><span class="nb">false</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="c1"># rebuild the nginx config to apply the change</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>--all
+</code></pre></div>
+<p>gRPC (<code>grpc</code> and <code>grpcs</code>) listeners require HTTP/2 and are not affected by this property.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On nginx versions older than 1.25.1, http2 is enabled per listen address and port rather than per app. If any app listening on the same address and port has http2 enabled, it remains enabled for every app on that listener. On these versions, disable http2 globally instead of per app.</p>
+</div>
 <h4 id="running-behind-another-proxy-configuring-x-forwarded-headers">Running behind another proxy — configuring <code>X-Forwarded-*</code> headers<a class="headerlink" href="#running-behind-another-proxy-configuring-x-forwarded-headers" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -6665,9 +6718,9 @@
 These headers indicate the IP address of the original client making the request, the protocol of the original request (HTTP or HTTPS), and the port number of the original request, respectively.</p>
 <p>If you have another HTTP proxy sitting in between the end user and your server (for example, a load balancer, or a CDN), then the values of these headers will contain information about (e.g. the IP address of) the closest proxy, and not the end user.</p>
 <p>To fix this, assuming that the other proxy also passes <code>X-Forwarded-*</code> headers, which in turn contain information about the end user, you can tell Nginx include those values in the <code>X-Forwarded-*</code> headers that it sends to your application. You can do this via <code>nginx:set</code>, like so:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-for-value<span class="w"> </span><span class="s1">'$http_x_forwarded_for'</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-port-value<span class="w"> </span><span class="s1">'$http_x_forwarded_port'</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-proto-value<span class="w"> </span><span class="s1">'$http_x_forwarded_proto'</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-for-value<span class="w"> </span><span class="s1">'$http_x_forwarded_for'</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-port-value<span class="w"> </span><span class="s1">'$http_x_forwarded_port'</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-proto-value<span class="w"> </span><span class="s1">'$http_x_forwarded_proto'</span>
 </code></pre></div>
 <p>However, note that you should only do this if:</p>
 <ol>
@@ -6676,8 +6729,8 @@ These headers indicate the IP address of the original client making the request,
 </ol>
 <p>Otherwise, if it's possible for clients to make HTTP requests directly against your server, bypassing the other proxy, or if the other proxy is not configured to set these headers, then a client can basically pass any arbitrary values for these headers (which your app then presumably reads) and thereby fake an IP address, for example.</p>
 <p>There's also the <code>X-Forwarded-Ssl</code> header which a less common alternative to <code>X-Forwarded-Proto</code> — and because of that, isn't included in Dokku's default Nginx configuration. It can be turned <code>on</code> if need be:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># force-setting value to `on`</span>
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-ssl<span class="w"> </span>on
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># force-setting value to `on`</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>x-forwarded-ssl<span class="w"> </span>on
 </code></pre></div>
 <h4 id="changing-log-path">Changing log path<a class="headerlink" href="#changing-log-path" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
@@ -6690,8 +6743,8 @@ These headers indicate the IP address of the original client making the request,
 <li><code>error-log-path</code></li>
 </ul>
 <p>These setting can be useful for enabling or disabling logging by setting the values to <code>off</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>access-log-path<span class="w"> </span>off
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>error-log-path<span class="w"> </span>off
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>access-log-path<span class="w"> </span>off
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dokku<span class="w"> </span>nginx:set<span class="w"> </span>node-js-app<span class="w"> </span>error-log-path<span class="w"> </span>off
 </code></pre></div>
 <h4 id="changing-log-format">Changing log format<a class="headerlink" href="#changing-log-format" title="Permanent link">&para;</a></h4>
 <p>Properties:</p>
@@ -6699,20 +6752,20 @@ These headers indicate the IP address of the original client making the request,
 <li><code>access-log-format</code></li>
 </ul>
 <p>Prior to changing the log-format, log formats should be specified at a file such as <code>/etc/nginx/conf.d/00-log-formats.conf</code>. This will ensure they are available within your app's nginx context. For instance, the following may be added to the above file. It only needs to be specified once to be used for all apps.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># /etc/nginx/conf.d/00-log-formats.conf</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="c1"># escape=json was added in nginx 1.11.8</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="k">log_format</span><span class="w"> </span><span class="s">json_combined</span><span class="w"> </span><span class="s">escape=json</span>
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span><span class="s">'</span><span class="p">{</span><span class="kn">'</span>
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">    </span><span class="s">'"time_local":"</span><span class="nv">$time_local",'</span>
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="w">    </span><span class="s">'"remote_addr":"</span><span class="nv">$remote_addr",'</span>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">    </span><span class="s">'"remote_user":"</span><span class="nv">$remote_user",'</span>
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">    </span><span class="s">'"request":"</span><span class="nv">$request",'</span>
-<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="w">    </span><span class="s">'"status":"</span><span class="nv">$status",'</span>
-<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">    </span><span class="s">'"body_bytes_sent":"</span><span class="nv">$body_bytes_sent",'</span>
-<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">    </span><span class="s">'"request_time":"</span><span class="nv">$request_time",'</span>
-<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">    </span><span class="s">'"http_referrer":"</span><span class="nv">$http_referer",'</span>
-<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="w">    </span><span class="s">'"http_user_agent":"</span><span class="nv">$http_user_agent"'</span>
-<a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="w">  </span><span class="s">'</span><span class="err">}</span><span class="s">'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># /etc/nginx/conf.d/00-log-formats.conf</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="c1"># escape=json was added in nginx 1.11.8</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="k">log_format</span><span class="w"> </span><span class="s">json_combined</span><span class="w"> </span><span class="s">escape=json</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">  </span><span class="s">'</span><span class="p">{</span><span class="kn">'</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">    </span><span class="s">'"time_local":"</span><span class="nv">$time_local",'</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">    </span><span class="s">'"remote_addr":"</span><span class="nv">$remote_addr",'</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">    </span><span class="s">'"remote_user":"</span><span class="nv">$remote_user",'</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="w">    </span><span class="s">'"request":"</span><span class="nv">$request",'</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="w">    </span><span class="s">'"status":"</span><span class="nv">$status",'</span>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="w">    </span><span class="s">'"body_bytes_sent":"</span><span class="nv">$body_bytes_sent",'</span>
+<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="w">    </span><span class="s">'"request_time":"</span><span class="nv">$request_time",'</span>
+<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a><span class="w">    </span><span class="s">'"http_referrer":"</span><span class="nv">$http_referer",'</span>
+<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a><span class="w">    </span><span class="s">'"http_user_agent":"</span><span class="nv">$http_user_agent"'</span>
+<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a><span class="w">  </span><span class="s">'</span><span class="err">}</span><span class="s">'</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="specifying-a-read-timeout">Specifying a read timeout<a class="headerlink" href="#specifying-a-read-timeout" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
@@ -6874,6 +6927,13 @@ These headers indicate the IP address of the original client making the request,
 <td><code>false</code></td>
 <td><code>--nginx-hsts-preload</code>, <code>--nginx-global-hsts-preload</code>, <code>--nginx-computed-hsts-preload</code></td>
 <td>Adds the <code>preload</code> directive to the HSTS header</td>
+</tr>
+<tr>
+<td><code>http2</code></td>
+<td>app + global</td>
+<td><code>true</code></td>
+<td><code>--nginx-http2</code>, <code>--nginx-global-http2</code>, <code>--nginx-computed-http2</code></td>
+<td>When <code>false</code>, https listeners only serve HTTP/1.1. gRPC listeners always use HTTP/2</td>
 </tr>
 <tr>
 <td><code>keepalive-timeout</code></td>
