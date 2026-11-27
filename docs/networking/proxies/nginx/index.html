@@ -3682,6 +3682,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#setting-properties-for-the-nginx-config" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5878,6 +5889,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#setting-properties-for-the-nginx-config" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6470,11 +6492,12 @@
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>{{ .HTTP3_SUPPORTED }}              Set to `true` when the installed nginx is 1.25.0 or newer and built with `--with-http_v3_module`
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>{{ .PROXY_PORT }}                   Non-SSL nginx listener port (same as the `proxy-port` property)
 <a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>{{ .PROXY_SSL_PORT }}               SSL nginx listener port (same as the `proxy-ssl-port` property)
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>{{ .NOSSL_SERVER_NAME }}            List of non-SSL VHOSTS, without any redirect source
 <a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>{{ .PROXY_PORT_MAP }}               List of port mappings (same as the `map` ports property)
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from the `map` ports property)
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
-<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>{{ .PROXY_REDIRECTS }}              Space-separated list of `source|destination|code|tls` domain redirects (see `proxy:redirect:set`)
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>{{ .PROXY_UPSTREAM_PORTS }}         List of configured upstream ports (derived from the `map` ports property)
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>{{ .SSL_INUSE }}                    Boolean set when an app is SSL-enabled
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>{{ .SSL_SERVER_NAME }}              List of SSL VHOSTS, without any redirect source
 </code></pre></div>
 <p>Finally, each process type has it's network listeners - a list of IP:PORT pairs for the respective app containers - exposed via an <code>.DOKKU_APP_${PROCESS_TYPE}_LISTENERS</code> variable - the <code>PROCESS_TYPE</code> will be upper-cased with hyphens transformed into underscores. Users can use the new variables to expose non-web processes via the nginx proxy.</p>
 <div class="admonition note">
@@ -6503,6 +6526,14 @@
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>}
 </code></pre></div>
 <p>Please adjust the <code>Procfile</code> and <code>nginx.conf</code> file as appropriate.</p>
+<h3 id="domain-redirects">Domain redirects<a class="headerlink" href="#domain-redirects" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>Domain redirects declared via <code>proxy:redirect:set</code> are rendered as extra <code>server {}</code> blocks in the app's nginx config. See the <a href="../../proxy-management/#domain-redirects">proxy management documentation</a> for usage.</p>
+<p>Each redirect gets a <code>server {}</code> block per <code>http</code> port mapping, and per <code>https</code> port mapping when the app's certificate covers the redirect source. The block uses <code>server_name &lt;source&gt;</code>, includes the app's <code>nginx.conf.d/*.conf</code> files, and answers every request with <code>return &lt;code&gt; $scheme://&lt;destination&gt;$request_uri;</code>. Redirect sources are removed from <code>NOSSL_SERVER_NAME</code> and <code>SSL_SERVER_NAME</code>, so a source that is also an app domain doesn't cause a "conflicting server name" warning.</p>
+<p>Apps with a custom <code>nginx.conf.sigil</code> still have redirect sources removed from <code>NOSSL_SERVER_NAME</code> and <code>SSL_SERVER_NAME</code>, but only render the redirect blocks if the template iterates over the <code>PROXY_REDIRECTS</code> variable. Each entry is a <code>source|destination|code|tls</code> value, where <code>tls</code> is <code>true</code> when the app's certificate covers the source. See the default template in <code>plugins/nginx-vhosts/templates/nginx.conf.sigil</code> for an example.</p>
 <h3 id="setting-properties-for-the-nginx-config">Setting Properties for the nginx config<a class="headerlink" href="#setting-properties-for-the-nginx-config" title="Permanent link">&para;</a></h3>
 <p>The nginx plugin exposes a variety of properties configurable via the <code>nginx:set</code> command. The properties are used to configure the generated <code>nginx.conf</code> file from the <code>nginx.conf.sigil</code> template. The value precedence is app-specific, then global, and finally the Dokku default.</p>
 <p>The nginx:set command takes an app name or the <code>--global</code> flag.</p>

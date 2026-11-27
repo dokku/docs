@@ -3466,6 +3466,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5448,6 +5459,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5800,6 +5822,12 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>caddy:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying,  the Caddy container will need to be restarted.</p>
+<h3 id="domain-redirects">Domain redirects<a class="headerlink" href="#domain-redirects" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>Domain redirects declared via <code>proxy:redirect:set</code> are rendered as Caddy site labels (<code>caddy_&lt;n&gt;</code> and <code>caddy_&lt;n&gt;.redir</code>) on the app's <code>web</code> containers, and redirect sources are removed from the app's own <code>caddy</code> site. Caddy requests a certificate for the redirect source along with the app's other domains when a letsencrypt email is configured. Run <code>dokku ps:rebuild &lt;app&gt;</code> after changing redirects so the containers are recreated with the new labels. See the <a href="../../proxy-management/#domain-redirects">proxy management documentation</a> for usage.</p>
 <h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
 <p>The Caddy plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure Caddy behavior beyond what the plugin provides by default.</p>
 <p>Refer to the upstream <a href="https://github.com/lucaslorentz/caddy-docker-proxy">caddy-docker-proxy</a> documentation for more information on what labels are available.</p>

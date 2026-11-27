@@ -3583,6 +3583,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5503,6 +5514,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5842,6 +5864,12 @@
 <li><code>openresty/http-location-includes/</code>: Injected in the <code>location</code> block that proxies to the app in the app's respective <code>server</code> block.</li>
 </ul>
 <p>Custom snippets filenames may only include alphanumeric, underscore, and dot characters. For security reasons, filenames that contain other characters will be ignored.</p>
+<h3 id="domain-redirects">Domain redirects<a class="headerlink" href="#domain-redirects" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>Domain redirects declared via <code>proxy:redirect:set</code> are rendered as <code>openresty.redirect.&lt;n&gt;.*</code> labels on the app's <code>web</code> containers, and redirect sources are removed from the <code>openresty.domains</code> label. The sidecar renders a <code>server {}</code> block per redirect, including the letsencrypt challenge location when letsencrypt is enabled. When the app uses an imported certificate that does not cover a redirect source, only the <code>http</code> redirect is rendered for that source. Run <code>dokku ps:rebuild &lt;app&gt;</code> after changing redirects so the containers are recreated with the new labels. See the <a href="../../proxy-management/#domain-redirects">proxy management documentation</a> for usage.</p>
 <h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
 <p>The OpenResty plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure OpenResty behavior beyond what the plugin provides by default.</p>
 <p>Refer to the upstream <a href="https://github.com/dokku/openresty-docker-proxy">openresty-docker-proxy</a> documentation for more information on what labels are available.</p>

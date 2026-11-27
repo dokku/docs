@@ -3589,6 +3589,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5531,6 +5542,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5916,6 +5938,12 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dokku<span class="w"> </span>traefik:set<span class="w"> </span>--global<span class="w"> </span>log-level<span class="w"> </span>DEBUG
 </code></pre></div>
 <p>After modifying, the Traefik container will need to be restarted.</p>
+<h3 id="domain-redirects">Domain redirects<a class="headerlink" href="#domain-redirects" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>Domain redirects declared via <code>proxy:redirect:set</code> are rendered as a router and <code>redirectregex</code> middleware per redirect and entrypoint on the app's <code>web</code> containers, and redirect sources are removed from the app's own router rules. Traefik only distinguishes permanent from temporary redirects: <code>301</code> and <code>308</code> render as permanent redirects, and every other code renders as a temporary redirect, which traefik answers with a <code>302</code> for <code>GET</code> requests. Run <code>dokku ps:rebuild &lt;app&gt;</code> after changing redirects so the containers are recreated with the new labels. See the <a href="../../proxy-management/#domain-redirects">proxy management documentation</a> for usage.</p>
 <h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
 <p>The Traefik plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure Traefik behavior beyond what the plugin provides by default.</p>
 <p>Refer to the upstream <a href="https://doc.traefik.io/traefik/">Traefik</a> documentation for more information on what labels are available.</p>

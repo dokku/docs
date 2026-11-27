@@ -3494,6 +3494,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5437,6 +5448,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-management" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5687,6 +5709,12 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>haproxy:set<span class="w"> </span>--global<span class="w"> </span>refresh-conf<span class="w"> </span><span class="m">5</span>
 </code></pre></div>
 <p>The <code>refresh-conf</code> property is global-only and cannot be set on a per-app basis. Setting an empty value will reset it to the default. After modifying, the Haproxy container will need to be restarted.</p>
+<h3 id="domain-redirects">Domain redirects<a class="headerlink" href="#domain-redirects" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>Domain redirects declared via <code>proxy:redirect:set</code> are rendered as a <code>redirect</code> label on the app's <code>web</code> containers. The <code>byjg/easy-haproxy</code> sidecar always answers redirects with a <code>301</code>, so the <code>--code</code> flag is ignored under this backend. Redirect sources stay in the app's <code>host</code> label so the sidecar still requests certificates for them, and the sidecar matches redirects before routing a request to the app. Run <code>dokku ps:rebuild &lt;app&gt;</code> after changing redirects so the containers are recreated with the new labels. See the <a href="../../proxy-management/#domain-redirects">proxy management documentation</a> for usage.</p>
 <h3 id="label-management">Label Management<a class="headerlink" href="#label-management" title="Permanent link">&para;</a></h3>
 <p>The Haproxy plugin allows you to add custom container labels to apps. These labels are injected into containers during deployment and can be used to configure Haproxy behavior beyond what the plugin provides by default.</p>
 <p>Refer to the upstream <a href="https://github.com/byjg/docker-easy-haproxy">EasyHaproxy</a> documentation for more information on what labels are available.</p>

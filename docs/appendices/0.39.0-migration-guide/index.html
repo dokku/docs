@@ -5172,6 +5172,13 @@
 </ul>
 <p>All three can be set per app or globally via <code>dokku nginx:set</code>.
 - Vendored <code>nginx.conf.sigil</code> templates are unaffected by the change. The existing <code>DOKKU_APP_&lt;PROC&gt;_LISTENERS</code> variable continues to be populated with the IP-based listener list exactly as before, so templates that only reference it continue to render IP-based upstreams regardless of the new properties. To opt a vendored template into the resolver path, switch its <code>proxy_pass</code> line to use the new <code>DOKKU_APP_&lt;PROC&gt;_LISTENER_HOST</code>, <code>NGINX_DNS_RESOLVER</code>, <code>NGINX_DNS_RESOLVER_TIMEOUT</code>, and <code>NGINX_DNS_ZONE</code> sigil variables - see the <a href="../file-formats/nginx-conf-sigil/#upstream-rendering-ip-based-vs-dns-based">nginx.conf.sigil reference</a> for the exact snippet.
+- Domain redirects are now built into Dokku via the <code>proxy:redirect:*</code> commands, which replace the <a href="https://github.com/dokku/dokku-redirect">dokku-redirect</a> plugin. Existing <code>dokku-redirect</code> redirects are not migrated. Users of the plugin should recreate each redirect with <code>proxy:redirect:set</code> and then uninstall the plugin, as leaving both in place renders duplicate nginx server blocks for the same domains:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>redirect<span class="w"> </span>node-js-app
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dokku<span class="w"> </span>proxy:redirect:set<span class="w"> </span>node-js-app<span class="w"> </span>www.example.com<span class="w"> </span>example.com
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>dokku<span class="w"> </span>plugin:uninstall<span class="w"> </span>redirect
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>dokku<span class="w"> </span>proxy:build-config<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>See the <a href="../../networking/proxy-management/#domain-redirects">proxy management documentation</a> for details.
 - Debian 11 is no longer a supported installation target, and packages are no longer published for it. The installer now accepts Ubuntu 22.04, 24.04 and 26.04, and Debian 12 and 13. Users on Debian 11 should upgrade to Debian 12 or 13, or switch to the <a href="../../getting-started/install/docker/">Docker-based installation method</a>.</p>
 </li>
 </ul>

@@ -3510,6 +3510,89 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain redirects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a redirect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirects-and-app-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirects and app domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing a redirect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearing-all-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearing all redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirect-caveats-per-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirect caveats per backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#container-network-interface-binding" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5503,6 +5586,89 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#domain-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain redirects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain redirects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a redirect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirects-and-app-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirects and app domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-a-redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing a redirect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearing-all-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearing all redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirect-caveats-per-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirect caveats per backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#container-network-interface-binding" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5610,8 +5776,16 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>proxy:clear-config [--all|&lt;app&gt;] # Clears config for given app
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>proxy:disable [--parallel count] [--all|&lt;app&gt;]      # Disable proxy for app
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>proxy:enable [--parallel count] [--all|&lt;app&gt;]       # Enable proxy for app
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>proxy:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a proxy report for one or more apps
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>proxy:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)          # Set or clear a proxy property for an app
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>proxy:redirect:clear &lt;app&gt;                          # Removes every domain redirect for an app
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>proxy:redirect:remove &lt;app&gt; &lt;source&gt;                # Removes a domain redirect from an app
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>proxy:redirect:report [&lt;app&gt;] [--format json]       # Displays the domain redirects for an app
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>proxy:redirect:set &lt;app&gt; &lt;source&gt; &lt;destination&gt; [--code code] # Adds or updates a redirect from a source domain to a destination domain
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>proxy:report [&lt;app&gt;] [&lt;flag&gt;]                       # Displays a proxy report for one or more apps
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>proxy:route:clear &lt;app&gt;                             # Removes every path-based route for an app
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>proxy:route:remove &lt;app&gt; &lt;path&gt;                     # Removes a path-based route from an app
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>proxy:route:report [&lt;app&gt;] [--format json]          # Displays the path-based routes for an app
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>proxy:route:set &lt;app&gt; &lt;process&gt; &lt;path&gt; [--port port] [--strip-prefix] # Adds or updates a path-based route to a non-web process
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>proxy:set [&lt;app&gt;|--global] &lt;key&gt; (&lt;value&gt;)          # Set or clear a proxy property for an app
 </code></pre></div>
 <p>In Dokku 0.5.0, port proxying was decoupled from the <code>nginx-vhosts</code> plugin into the proxy plugin. Dokku 0.6.0 introduced the ability to map host ports to specific container ports. This allows other proxy software - such as HAProxy or Caddy - to be used in place of nginx.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
@@ -5831,6 +6005,63 @@
 <li><strong>haproxy</strong>: routes are stored but inert under this backend. They activate automatically if you switch to a rendering backend (<code>nginx</code>, <code>traefik</code>, <code>caddy</code>, <code>openresty</code>, or <code>k3s</code>).</li>
 <li><strong>WebSocket</strong> traffic is forwarded transparently on <code>nginx</code>, <code>traefik</code>, <code>caddy</code>, and <code>k3s</code> backends - no additional configuration is required.</li>
 <li>A route to a process that is scaled to <code>0</code> will resolve to no upstream until the process is scaled up (<code>dokku ps:scale &lt;app&gt; &lt;process&gt;=1</code>). <code>proxy:route:set</code> warns when this is the case.</li>
+</ul>
+<h3 id="domain-redirects">Domain redirects<a class="headerlink" href="#domain-redirects" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>Use <code>proxy:redirect:*</code> to redirect every request for one domain to another domain, for example sending <code>www.example.com</code> to <code>example.com</code>. The request path and query string are kept, so <code>http://www.example.com/docs?page=2</code> redirects to <code>http://example.com/docs?page=2</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Domain redirects are rendered by the <code>nginx</code>, <code>caddy</code>, <code>traefik</code>, <code>haproxy</code>, <code>openresty</code>, and <code>k3s</code> proxy backends. Redirects stored under any other proxy type are kept and render once the app switches to one of these backends.</p>
+</div>
+<h4 id="adding-a-redirect">Adding a redirect<a class="headerlink" href="#adding-a-redirect" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>dokku<span class="w"> </span>proxy:redirect:set<span class="w"> </span>node-js-app<span class="w"> </span>www.example.com<span class="w"> </span>example.com
+</code></pre></div>
+<p>The <code>--code</code> flag sets the http status code used for the redirect, and must be one of <code>301</code> (default), <code>302</code>, <code>303</code>, <code>307</code>, or <code>308</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dokku<span class="w"> </span>proxy:redirect:set<span class="w"> </span>node-js-app<span class="w"> </span>old.example.com<span class="w"> </span>example.com<span class="w"> </span>--code<span class="w"> </span><span class="m">302</span>
+</code></pre></div>
+<p><code>proxy:redirect:set</code> uses set semantics: the resulting redirect is fully described by its arguments, and omitting <code>--code</code> resets the code to <code>301</code>. Both the source and the destination must be plain hostnames; wildcards, the <code>_</code> catch-all, schemes, ports, and paths are rejected. The redirect uses the same scheme as the incoming request when the backend supports it, and always targets the default port for that scheme.</p>
+<h4 id="redirects-and-app-domains">Redirects and app domains<a class="headerlink" href="#redirects-and-app-domains" title="Permanent link">&para;</a></h4>
+<p>A redirect source does not need to be one of the app's domains. When it is - for example, because <code>www.example.com</code> was added with <code>domains:add</code> so that a certificate covers it - the source is removed from the hostnames the app is served on, and only the redirect answers requests for it. The domain stays in the app's domain list, so <code>domains:report</code> still shows it and the <a href="https://github.com/dokku/dokku-letsencrypt">letsencrypt plugin</a> still requests a certificate for it.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dokku<span class="w"> </span>domains:add<span class="w"> </span>node-js-app<span class="w"> </span>example.com<span class="w"> </span>www.example.com
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>dokku<span class="w"> </span>proxy:redirect:set<span class="w"> </span>node-js-app<span class="w"> </span>www.example.com<span class="w"> </span>example.com
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>dokku<span class="w"> </span>letsencrypt:enable<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>Under the <code>nginx</code> backend, the redirect server blocks include the app's <code>nginx.conf.d</code> files, so the letsencrypt http-01 challenge keeps working for the source domain, and an https redirect is only rendered when the app's certificate covers the source.</p>
+<h4 id="removing-a-redirect">Removing a redirect<a class="headerlink" href="#removing-a-redirect" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>dokku<span class="w"> </span>proxy:redirect:remove<span class="w"> </span>node-js-app<span class="w"> </span>www.example.com
+</code></pre></div>
+<p>Removing a source that is not registered is a successful no-op.</p>
+<h4 id="clearing-all-redirects">Clearing all redirects<a class="headerlink" href="#clearing-all-redirects" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>dokku<span class="w"> </span>proxy:redirect:clear<span class="w"> </span>node-js-app
+</code></pre></div>
+<h4 id="listing-redirects">Listing redirects<a class="headerlink" href="#listing-redirects" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Shell</label><label for="__tabbed_8_2">Output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dokku<span class="w"> </span>proxy:redirect:report<span class="w"> </span>node-js-app
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>=====&gt; node-js-app proxy redirects information
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>       Redirect old.example.com -&gt; example.com (302)
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>       Redirect www.example.com -&gt; example.com (301)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The report supports JSON output for scripting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>dokku<span class="w"> </span>proxy:redirect:report<span class="w"> </span>node-js-app<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
+<h4 id="redirect-caveats-per-backend">Redirect caveats per backend<a class="headerlink" href="#redirect-caveats-per-backend" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>nginx</strong>: redirect changes take effect immediately, as <code>proxy:redirect:*</code> rebuilds the nginx config. Apps with a custom <code>nginx.conf.sigil</code> must render the <code>PROXY_REDIRECTS</code> variable themselves; see the <a href="../proxies/nginx/#domain-redirects">nginx documentation</a>.</li>
+<li><strong>caddy</strong>, <strong>traefik</strong>, <strong>haproxy</strong>, and <strong>openresty</strong>: redirects are applied via Docker labels on the <code>web</code> containers. Containers must be recreated for the change to take effect, and the command prints a notice instructing you to run <code>dokku ps:rebuild &lt;app&gt;</code>.</li>
+<li><strong>traefik</strong>: redirects are either permanent or temporary. <code>301</code> and <code>308</code> render as a permanent redirect, and every other code renders as a temporary redirect, which traefik answers with a <code>302</code> for <code>GET</code> requests.</li>
+<li><strong>haproxy</strong>: the <code>byjg/easy-haproxy</code> sidecar always answers redirects with a <code>301</code>, so <code>--code</code> is ignored and the command prints a warning when it is set to anything else. Redirect sources stay in the app's host list so the sidecar still issues certificates for them.</li>
+<li><strong>k3s</strong>: redirect changes take effect on the next deploy when the chart is re-rendered. See the <a href="../../deployment/schedulers/k3s/#domain-redirects">k3s scheduler documentation</a>.</li>
 </ul>
 <h3 id="container-network-interface-binding">Container network interface binding<a class="headerlink" href="#container-network-interface-binding" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
