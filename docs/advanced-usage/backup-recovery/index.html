@@ -2703,6 +2703,8 @@
       
         
       
+        
+      
     
     
     
@@ -2766,6 +2768,34 @@
     
   
     Environment Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/environment-variable-groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Variable Groups
   
 
     
@@ -5469,7 +5499,7 @@
 <p>[!IMPORTANT]
 The <code>backup:export</code> and <code>backup:import</code> commands were introduced in 0.39.0.</p>
 </div>
-<p>Dokku can export an app (and/or service, and/or the global configuration) into a single <code>tar.gz</code> archive and restore it again, either on the same host or a fresh one. Each plugin serializes its own slice of state, so the archive captures config, app and global domains, ports, docker-options, process scale, the git repository, and any other plugin's data.</p>
+<p>Dokku can export an app (and/or service, and/or the global configuration) into a single <code>tar.gz</code> archive and restore it again, either on the same host or a fresh one. Each plugin serializes its own slice of state, so the archive captures config, <a href="../../configuration/environment-variable-groups/">env groups</a>, app and global domains, ports, docker-options, process scale, the git repository, and any other plugin's data.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># export everything (all apps, all services, global config) to /tmp</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dokku<span class="w"> </span>backup:export
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>

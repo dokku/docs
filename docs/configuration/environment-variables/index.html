@@ -33,7 +33,7 @@
         <link rel="prev" href="../../deployment/methods/archive/">
       
       
-        <link rel="next" href="../domains/">
+        <link rel="next" href="../environment-variable-groups/">
       
       
         
@@ -2705,6 +2705,8 @@
       
         
       
+        
+      
     
     
     
@@ -2884,6 +2886,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-variable-groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Variable Groups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -5233,7 +5263,7 @@
 <p>For buildpack deploys, Dokku will create a  <code>/app/.env</code> file that can be used for legacy buildpacks. Note that this is <em>not</em> updated when <code>config:set</code> or <code>config:unset</code> is called, and is only written during a <code>deploy</code> or <code>ps:rebuild</code>. Developers are encouraged to instead read from the application environment directly, as the proper values will be available then.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Global environment variables are sourced before app-specific environment variables. This means that app-specific variables will take precedence over global variables. Configuring global environment variables should be considered potentially dangerous as configuration applies to all applications.</p>
+<p>Global environment variables are sourced first, followed by the <a href="../environment-variable-groups/">environment variable groups</a> the app belongs to, followed by app-specific environment variables. This means that app-specific variables will take precedence over group variables, which in turn take precedence over global variables. Configuring global environment variables should be considered potentially dangerous as configuration applies to all applications.</p>
 </div>
 <p>You can set multiple environment variables at once:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">APP_ENV</span><span class="o">=</span>prod<span class="w"> </span><span class="nv">COMPILE_ASSETS</span><span class="o">=</span><span class="m">1</span>
@@ -5579,13 +5609,13 @@ setting that normally lives in <code>/etc/default/dokku</code> - name it in <cod
         
         
           
-          <a href="../domains/" class="md-footer__link md-footer__link--next" aria-label="Next: Domain Configuration">
+          <a href="../environment-variable-groups/" class="md-footer__link md-footer__link--next" aria-label="Next: Environment Variable Groups">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Domain Configuration
+                Environment Variable Groups
               </div>
             </div>
             <div class="md-footer__button md-icon">
