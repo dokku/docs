@@ -2822,6 +2822,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#importing-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importing environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-all-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing all environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-environment-variables-via-appjson" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5150,6 +5172,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#importing-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importing environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-all-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing all environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-environment-variables-via-appjson" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5246,14 +5290,15 @@
 <h1 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h1>
 <p>Typically an application will require some configuration to run properly. Dokku supports application configuration via environment variables. Environment variables may contain private data, such as passwords or API keys, so it is not recommended to store them in your application's repository.</p>
 <p>The <code>config</code> plugin provides the following commands to manage your variables:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>config:show (&lt;app&gt;|--global)                                                          Pretty-print an app or global environment
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>config:bundle (&lt;app&gt;|--global) [--merged]                                             Bundle environment into tarfile
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>config:clear (&lt;app&gt;|--global)                                                         Clears environment variables
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>config:export (&lt;app&gt;|--global) [--format &lt;format&gt;]                                    Export a global or app environment
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>config:get (&lt;app&gt;|--global) KEY                                                       Display a global or app-specific config value
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>config:keys (&lt;app&gt;|--global) [--merged]                                               Show keys set in environment
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>config:set [--encoded] [--no-restart] (&lt;app&gt;|--global) KEY1=VALUE1 [KEY2=VALUE2 ...]  Set one or more config vars
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>config:unset [--no-restart] (&lt;app&gt;|--global) KEY1 [KEY2 ...]                          Unset one or more config vars
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>config:show (&lt;app&gt;|--global)                                                                      Pretty-print an app or global environment
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>config:bundle (&lt;app&gt;|--global) [--merged]                                                         Bundle environment into tarfile
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>config:clear (&lt;app&gt;|--global)                                                                     Clears environment variables
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>config:export (&lt;app&gt;|--global) [--format &lt;format&gt;]                                                Export a global or app environment
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>config:get (&lt;app&gt;|--global) KEY                                                                   Display a global or app-specific config value
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>config:import [--no-restart] [--replace] (&lt;app&gt;|--global) [FILE|-]                                Import environment from file
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>config:keys (&lt;app&gt;|--global) [--merged]                                                           Show keys set in environment
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>config:set [--encoded] [--no-restart] [--replace] (&lt;app&gt;|--global) KEY1=VALUE1 [KEY2=VALUE2 ...]  Set one or more config vars
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>config:unset [--no-restart] (&lt;app&gt;|--global) KEY1 [KEY2 ...]                                      Unset one or more config vars
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -5302,21 +5347,38 @@
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">#</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">#   APP_ENV='prod' COMPILE_ASSETS='1'</span>
 </code></pre></div>
+<h2 id="importing-environment-variables">Importing environment variables<a class="headerlink" href="#importing-environment-variables" title="Permanent link">&para;</a></h2>
+<p>Environment variables can be imported from a file with the <code>config:import</code> command. Imported variables are merged into the existing environment. The file can be in <code>envfile</code> (default) or <code>json</code> format, and <code>-</code> reads it from stdin:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>config:import<span class="w"> </span>node-js-app<span class="w"> </span>./node-js-app.env
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dokku<span class="w"> </span>config:import<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>node-js-app<span class="w"> </span>-<span class="w"> </span>&lt;<span class="w"> </span>node-js-app.json
+</code></pre></div>
+<h2 id="replacing-all-environment-variables">Replacing all environment variables<a class="headerlink" href="#replacing-all-environment-variables" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">New</p>
+<p>Introduced in 0.39.0</p>
+</div>
+<p>To make an environment exactly match a given set of variables in a single change, pass the <code>--replace</code> flag to <code>config:set</code> or <code>config:import</code>. Any variable that is not given is unset, and the app is restarted once:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>config:set<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span><span class="nv">APP_ENV</span><span class="o">=</span>prod<span class="w"> </span><span class="nv">COMPILE_ASSETS</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dokku<span class="w"> </span>config:import<span class="w"> </span>--replace<span class="w"> </span>node-js-app<span class="w"> </span>./node-js-app.env
+</code></pre></div>
+<p>If the environment already matches the given variables, nothing is written and the app is not restarted, so the same command can be run repeatedly.</p>
+<p>Some variables in an app's environment are managed by Dokku itself, such as the variable holding the deployed git revision (<code>GIT_REV</code> by default, see <code>git:set &lt;app&gt; rev-env-var</code>) and <code>NO_VHOST</code> (set by <code>domains:disable</code> and <code>domains:enable</code>). These are kept when they are not given, and are overwritten when they are. The global environment has no managed variables, so <code>config:set --global --replace</code> replaces it exactly.</p>
+<p>To remove every variable from an environment, use <code>config:clear</code> instead.</p>
 <h2 id="setting-environment-variables-via-appjson">Setting Environment Variables via app.json<a class="headerlink" href="#setting-environment-variables-via-appjson" title="Permanent link">&para;</a></h2>
 <p>Environment variables can also be declared in an <code>app.json</code> file in your repository root. This is useful for setting default values, generating secrets, or requiring certain variables to be set before deployment.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">"SIMPLE_VAR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_value"</span><span class="p">,</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">"SECRET_KEY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A secret key for signing tokens"</span><span class="p">,</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">      </span><span class="nt">"generator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret"</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nt">"DATABASE_URL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostgreSQL connection string"</span><span class="p">,</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">      </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nt">"SIMPLE_VAR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_value"</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nt">"SECRET_KEY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A secret key for signing tokens"</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">      </span><span class="nt">"generator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret"</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nt">"DATABASE_URL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostgreSQL connection string"</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">      </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="p">}</span>
 </code></pre></div>
 <p>Environment variables from <code>app.json</code> are processed during the first deploy, before the predeploy script runs. Variables can be configured as:</p>
 <ul>
@@ -5531,10 +5593,10 @@ named explicitly and forwarded:</p>
 process gets its own.</p>
 <p>To forward anything else - a variable read by a third-party plugin, or a one-off override of a
 setting that normally lives in <code>/etc/default/dokku</code> - name it in <code>DOKKU_PRESERVE_ENV</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">DOKKU_PRESERVE_ENV</span><span class="o">=</span>DOCKER_BUILDKIT<span class="w"> </span><span class="nv">DOCKER_BUILDKIT</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">DOKKU_PRESERVE_ENV</span><span class="o">=</span>DOCKER_BUILDKIT<span class="w"> </span><span class="nv">DOCKER_BUILDKIT</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>dokku<span class="w"> </span>ps:rebuild<span class="w"> </span>node-js-app
 </code></pre></div>
 <p>Set it persistently to forward a variable for every invocation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"export DOKKU_PRESERVE_ENV=MY_PLUGIN_DEBUG"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"export DOKKU_PRESERVE_ENV=MY_PLUGIN_DEBUG"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/default/dokku
 </code></pre></div>
 <p>Variables sudo manages for the target user - <code>HOME</code>, <code>PATH</code>, <code>SHELL</code>, <code>USER</code>, <code>LOGNAME</code>, <code>MAIL</code> and
 <code>SUDO_*</code> - are never forwarded, and naming them in <code>DOKKU_PRESERVE_ENV</code> is not supported.</p>

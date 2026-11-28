@@ -5391,7 +5391,7 @@
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>dokku<span class="w"> </span>envgroup:import<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>--replace<span class="w"> </span>dev<span class="w"> </span>-<span class="w"> </span>&lt;<span class="w"> </span>dev.json
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>dokku<span class="w"> </span>envgroup:clear<span class="w"> </span>dev
 </code></pre></div>
-<p><code>envgroup:export</code> supports the same formats as <code>config:export</code>, and <code>envgroup:import</code> supports the same <code>envfile</code> and <code>json</code> formats as <code>config:import</code>.</p>
+<p><code>envgroup:export</code> supports the same formats as <code>config:export</code>, and <code>envgroup:import</code> supports the same <code>envfile</code> and <code>json</code> formats as <code>config:import</code>. With <code>--replace</code>, <code>envgroup:import</code> unsets every key not in the file, and leaves the group and its apps untouched when the group already holds exactly the imported keys.</p>
 <h3 id="adding-apps-to-groups">Adding apps to groups<a class="headerlink" href="#adding-apps-to-groups" title="Permanent link">&para;</a></h3>
 <p>An app is added to a group with <code>envgroup:add</code>, and removed from it with <code>envgroup:remove</code>. An app may belong to any number of groups.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>envgroup:add<span class="w"> </span>dev<span class="w"> </span>node-js-app
