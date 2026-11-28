@@ -5250,26 +5250,30 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dokku<span class="w"> </span>domains:enable<span class="w"> </span>node-js-app
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dokku<span class="w"> </span>domains:enable<span class="w"> </span>--all
 </code></pre></div>
+<p>Neither <code>domains:disable</code> nor <code>domains:enable</code> restart the app. The proxy configuration is rebuilt for proxies that support it, such as nginx. Proxies that read container labels, such as Caddy, HAProxy, OpenResty and Traefik, apply the change the next time the app is deployed or restarted:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dokku<span class="w"> </span>ps:restart<span class="w"> </span>node-js-app
+</code></pre></div>
+<p>Whether vhosts are disabled is stored by the domains plugin rather than in the app's environment, so it does not appear in <code>config:show</code> or <code>config:export</code>, is not exposed to the app's containers, and is kept when the environment is changed with <code>config:clear</code>, <code>config:set --replace</code> or <code>config:import --replace</code>.</p>
 <p>The domains plugin allows you to specify custom domains for applications. This plugin is aware of any ssl certificates that are imported via <code>certs:add</code>. Be aware that disabling domains (with <code>domains:disable</code>) will override any custom domains.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># where `node-js-app` is the name of your app</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># add a domain to an app</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>dokku<span class="w"> </span>domains:add<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># list custom domains for app</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># clear all custom domains for app</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>dokku<span class="w"> </span>domains:clear<span class="w"> </span>node-js-app
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># remove a custom domain from app</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>dokku<span class="w"> </span>domains:remove<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># set all custom domains for app</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me<span class="w"> </span>dokku.org
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="c1"># delete all app domains and configure available global domains on it</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>dokku<span class="w"> </span>domains:reset<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># where `node-js-app` is the name of your app</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># add a domain to an app</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>dokku<span class="w"> </span>domains:add<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># list custom domains for app</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># clear all custom domains for app</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>dokku<span class="w"> </span>domains:clear<span class="w"> </span>node-js-app
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># remove a custom domain from app</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>dokku<span class="w"> </span>domains:remove<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># set all custom domains for app</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>dokku<span class="w"> </span>domains:set<span class="w"> </span>node-js-app<span class="w"> </span>dokku.me<span class="w"> </span>dokku.org
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="c1"># delete all app domains and configure available global domains on it</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>dokku<span class="w"> </span>domains:reset<span class="w"> </span>node-js-app
 </code></pre></div>
 <h2 id="displaying-domains-reports-for-an-app">Displaying domains reports for an app<a class="headerlink" href="#displaying-domains-reports-for-an-app" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
@@ -5280,25 +5284,25 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Shell</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dokku<span class="w"> </span>domains:report
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dokku<span class="w"> </span>domains:report
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>=====&gt; node-js-app domains information
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>       Domains app enabled: true
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>       Domains app vhosts:  node-js-app.dokku.org
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>       Domains global enabled: true
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>       Domains global vhosts: dokku.org
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>=====&gt; python-app domains information
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>       Domains app enabled: true
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>       Domains app vhosts:  python-app.dokku.org
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>       Domains global enabled: true
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>       Domains global vhosts: dokku.org
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>=====&gt; ruby-app domains information
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>       Domains app enabled: true
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>       Domains app vhosts:  ruby-app.dokku.org
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>       Domains global enabled: true
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>       Domains global vhosts: dokku.org
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>=====&gt; node-js-app domains information
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>       Domains app enabled: true
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Domains app vhosts:  node-js-app.dokku.org
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>       Domains global enabled: true
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>       Domains global vhosts: dokku.org
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>=====&gt; python-app domains information
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       Domains app enabled: true
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       Domains app vhosts:  python-app.dokku.org
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       Domains global enabled: true
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>       Domains global vhosts: dokku.org
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>=====&gt; ruby-app domains information
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       Domains app enabled: true
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>       Domains app vhosts:  ruby-app.dokku.org
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>       Domains global enabled: true
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>       Domains global vhosts: dokku.org
 </code></pre></div>
 </div>
 </div>
@@ -5307,21 +5311,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shell</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>=====&gt; node-js-app domains information
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       Domains app enabled: true
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       Domains app vhosts:  node-js-app.dokku.org
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>       Domains global enabled: true
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>       Domains global vhosts: dokku.org
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>=====&gt; node-js-app domains information
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>       Domains app enabled: true
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>       Domains app vhosts:  node-js-app.dokku.org
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>       Domains global enabled: true
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>       Domains global vhosts: dokku.org
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>You can pass flags which will output only the value of the specific information you want. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app<span class="w"> </span>--domains-app-enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dokku<span class="w"> </span>domains:report<span class="w"> </span>node-js-app<span class="w"> </span>--domains-app-enabled
 </code></pre></div>
 <h2 id="default-site">Default site<a class="headerlink" href="#default-site" title="Permanent link">&para;</a></h2>
 <p>This is specific to your proxy plugin of choice. See the <a href="../../networking/proxies/nginx/#default-site">nginx documentation</a> for more information on how to configure this for the default nginx proxy implementation.</p>

@@ -10538,8 +10538,8 @@
 </code></pre></div>
 <h3 id="domains-disable"><code>domains-disable</code><a class="headerlink" href="#domains-disable" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Disables domains for an app</li>
-<li>Invoked by:</li>
+<li>Description: Disables domains for an app. When <code>$RESTART_APP</code> is <code>true</code>, a deployed app is restarted; otherwise the <code>post-domains-update</code> trigger is called so proxies can rebuild their configuration.</li>
+<li>Invoked by: <code>nginx-vhosts</code> during <code>dokku proxy:disable</code></li>
 <li>Arguments: <code>$APP</code> <code>$RESTART_APP</code></li>
 <li>Example:</li>
 </ul>
@@ -10551,8 +10551,8 @@
 </code></pre></div>
 <h3 id="domains-enable"><code>domains-enable</code><a class="headerlink" href="#domains-enable" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Description: Enables domains for an app</li>
-<li>Invoked by:</li>
+<li>Description: Enables domains for an app. When <code>$RESTART_APP</code> is <code>true</code>, a deployed app is restarted; otherwise the <code>post-domains-update</code> trigger is called so proxies can rebuild their configuration.</li>
+<li>Invoked by: <code>nginx-vhosts</code> during <code>dokku proxy:enable</code></li>
 <li>Arguments: <code>$APP</code> <code>$RESTART_APP</code></li>
 <li>Example:</li>
 </ul>
